@@ -1,0 +1,19 @@
+{
+  "name": "grommet-theme-hpe",
+  "version": "0.1.0",
+  "main": "index.js",
+  "sideEffects": false,
+  "description": "Hewlett Packard Enterprise theme for grommet",
+  "authors": [
+    "Alan Souza",
+    "Bryan Jacquot",
+    "Chris Carlozzi",
+    "Eric Soderberg"
+  ],
+  "bugs": "https://github.com/grommet/grommet-theme-hpe/issues",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grommet/grommet-theme-hpe.git"
+  }
+}
