@@ -1,8 +1,12 @@
 // (C) Copyright 2017-2018 Hewlett Packard Enterprise Development LP
+import { css } from 'styled-components';
+
+const isObject = item => (
+  item && typeof item === 'object' && !Array.isArray(item));
 
 const deepFreeze = (obj) => {
   Object.keys(obj).forEach(
-    key => key && isObject(obj[key]) && Object.freeze(obj[key])
+    key => key && isObject(obj[key]) && Object.freeze(obj[key]),
   );
   return Object.freeze(obj);
 };
@@ -81,6 +85,18 @@ export const hpe = deepFreeze({
       secondary: 'rgba(51,51,51,0.6)',
     },
     extend: 'letter-spacing: 0.04167em;',
+  },
+  checkBox: {
+    icon: {
+      extend: css`
+        box-sizing: border-box;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: ${props => props.theme.checkBox.size};
+        height: ${props => props.theme.checkBox.size};
+      `,
+    },
   },
   clock: {
     analog: {

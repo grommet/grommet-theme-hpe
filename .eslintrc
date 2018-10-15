@@ -1,0 +1,12 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "comma-dangle": ["error", "always-multiline"],
+    "import/prefer-default-export": 0
+  }
+}
