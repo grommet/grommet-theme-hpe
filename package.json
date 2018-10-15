@@ -34,7 +34,9 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0",
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "react": "^16.5.2",
+    "styled-components": "^4.0.0"
   },
   "scripts": {
     "prepublishOnly": "npm run build",
