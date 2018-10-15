@@ -12,7 +12,7 @@ Hewlett Packard Enterprise grommet theme
 
 ```
 import { Grommet } from 'grommet';
-import hpe from 'grommet-theme-hpe';
+import { hpe } from 'grommet-theme-hpe';
 
 <Grommet theme={hpe} />
 ```
