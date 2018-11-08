@@ -5,7 +5,7 @@ Hewlett Packard Enterprise grommet theme
 ## Installation
 
 ```
-  $ yarn install grommet-theme-hpe
+  $ yarn add grommet-theme-hpe
 ```
 
 ## Usage
