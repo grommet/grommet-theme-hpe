@@ -89,10 +89,6 @@ export const hpe = deepFreeze({
   checkBox: {
     icon: {
       extend: css`
-        box-sizing: border-box;
-        position: absolute;
-        top: 0px;
-        left: 0px;
         width: ${props => props.theme.checkBox.size};
         height: ${props => props.theme.checkBox.size};
       `,
