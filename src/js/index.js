@@ -1,6 +1,4 @@
 // (C) Copyright 2017-2018 Hewlett Packard Enterprise Development LP
-import { css } from 'styled-components';
-
 const isObject = item => (
   item && typeof item === 'object' && !Array.isArray(item));
 
@@ -85,14 +83,6 @@ export const hpe = deepFreeze({
       secondary: 'rgba(51,51,51,0.6)',
     },
     extend: 'letter-spacing: 0.04167em;',
-  },
-  checkBox: {
-    icon: {
-      extend: css`
-        width: ${props => props.theme.checkBox.size};
-        height: ${props => props.theme.checkBox.size};
-      `,
-    },
   },
   clock: {
     analog: {
