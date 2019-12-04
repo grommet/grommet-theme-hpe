@@ -1,8 +1,8 @@
 // (C) Copyright 2017-2018 Hewlett Packard Enterprise Development LP
-const isObject = item => (
-  item && typeof item === 'object' && !Array.isArray(item));
+const isObject = item =>
+  item && typeof item === 'object' && !Array.isArray(item);
 
-const deepFreeze = (obj) => {
+const deepFreeze = obj => {
   Object.keys(obj).forEach(
     key => key && isObject(obj[key]) && Object.freeze(obj[key]),
   );
@@ -25,14 +25,14 @@ const colors = {
   focus: accentColors[0],
 };
 
-const colorArray = (array, prefix) => (
+const colorArray = (array, prefix) =>
   array.forEach((color, index) => {
     colors[`${prefix}-${index + 1}`] = color;
-  }));
+  });
 
 colorArray(accentColors, 'accent');
 colorArray(neutralColors, 'neutral');
-Object.keys(statusColors).forEach((color) => {
+Object.keys(statusColors).forEach(color => {
   colors[`status-${color}`] = statusColors[color];
 });
 
