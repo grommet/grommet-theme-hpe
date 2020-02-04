@@ -182,6 +182,7 @@ export const hpe = deepFreeze({
     },
   },
   anchor: {
+    color: 'text',
     fontWeight: 700,
     textDecoration: 'none',
     hover: {
@@ -199,6 +200,20 @@ export const hpe = deepFreeze({
   checkBox: {
     gap: 'medium',
     color: 'text-strong',
+  },
+  formField: {
+    border: {
+      side: 'all',
+    },
+    content: {
+      pad: {
+        horizontal: 'small',
+        bottom: 'small',
+      },
+      disabled: {
+        background: '#CCCCCC',
+      },
+    },
   },
   heading: {
     level: {
