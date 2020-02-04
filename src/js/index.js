@@ -11,11 +11,11 @@ const deepFreeze = obj => {
   return Object.freeze(obj);
 };
 
-const baseSpacing = 24;
-
 export const hpe = deepFreeze({
-  spacing: baseSpacing,
-  defaultMode: 'dark',
+  // name: 'HPE 2',
+  // rounding: 4,
+  // spacing: 24,
+  // defaultMode: 'light',
   global: {
     colors: {
       icon: 'text',
@@ -150,14 +150,12 @@ export const hpe = deepFreeze({
       background: 'active-background',
       color: 'active-text',
     },
-    input: {
-      weight: 500,
-    },
     selected: {
       background: 'selected-background',
       color: 'selected-text',
     },
   },
+  // Missing from the Designer
   accordion: {
     border: {
       color: 'text',
@@ -166,6 +164,7 @@ export const hpe = deepFreeze({
       color: 'text',
     },
   },
+  // Missing from the Designer
   anchor: {
     color: 'text',
     fontWeight: 700,
@@ -174,6 +173,7 @@ export const hpe = deepFreeze({
       textDecoration: 'none',
     },
   },
+  // Radius + font is missing from the designer
   button: {
     border: {
       radius: '6px',
@@ -194,6 +194,7 @@ export const hpe = deepFreeze({
       daySize: '54.86px',
     },
   },
+  // Designer defaults to base.js, the following is extra
   checkBox: {
     gap: 'medium',
     color: 'text-strong',
@@ -214,17 +215,17 @@ export const hpe = deepFreeze({
         medium: {
           size: '69.2px',
           height: '75.2px',
-          maxWidth: '1660.8000000000002px',
+          maxWidth: '1660.8px',
         },
         large: {
           size: '120.4px',
           height: '126.4px',
-          maxWidth: '2889.6000000000004px',
+          maxWidth: '2889.6px',
         },
         xlarge: {
-          size: '171.60000000000002px',
-          height: '177.60000000000002px',
-          maxWidth: '4118.400000000001px',
+          size: '171.6px',
+          height: '177.6px',
+          maxWidth: '4118.4px',
         },
       },
       '2': {
@@ -241,19 +242,19 @@ export const hpe = deepFreeze({
         large: {
           size: '69.2px',
           height: '75.2px',
-          maxWidth: '1660.8000000000002px',
+          maxWidth: '1660.8px',
         },
         xlarge: {
-          size: '94.80000000000001px',
-          height: '100.80000000000001px',
-          maxWidth: '2275.2000000000003px',
+          size: '94.8px',
+          height: '100.8px',
+          maxWidth: '2275.2px',
         },
       },
       '3': {
         small: {
           size: '24.4px',
           height: '30.4px',
-          maxWidth: '585.5999999999999px',
+          maxWidth: '585.6px',
         },
         medium: {
           size: '30.8px',
@@ -266,9 +267,9 @@ export const hpe = deepFreeze({
           maxWidth: '1046.4px',
         },
         xlarge: {
-          size: '56.400000000000006px',
-          height: '62.400000000000006px',
-          maxWidth: '1353.6000000000001px',
+          size: '56.4px',
+          height: '62.4px',
+          maxWidth: '1353.6px',
         },
       },
       '4': {
@@ -337,9 +338,9 @@ export const hpe = deepFreeze({
           maxWidth: '278.4px',
         },
       },
-      weight: 700,
     },
   },
+  // Missing from the designer
   icon: {
     size: {
       xxlarge: '166px',
@@ -372,6 +373,7 @@ export const hpe = deepFreeze({
       maxWidth: '1046.4px',
     },
   },
+  // Missing from the designer
   radioButton: {
     color: 'text-strong',
     check: {
@@ -379,6 +381,7 @@ export const hpe = deepFreeze({
     },
     gap: 'medium',
   },
+  // Missing from the Designer
   rangeInput: {
     track: {
       color: 'background-contrast',
@@ -387,6 +390,7 @@ export const hpe = deepFreeze({
       color: 'text',
     },
   },
+  // Missing from the Designer
   select: {
     icons: {
       color: 'text',
@@ -397,6 +401,7 @@ export const hpe = deepFreeze({
       },
     },
   },
+  // Missing from the Designer
   tab: {
     border: {
       color: 'text-xweak',
@@ -409,10 +414,38 @@ export const hpe = deepFreeze({
       horizontal: 'small',
     },
   },
+  // Replaced aries text with the designer text
   text: {
-    small: '18px',
-    medium: '24px',
-    large: '36px',
+    xsmall: {
+      size: '8.4px',
+      height: '14.4px',
+      maxWidth: '201.6px',
+    },
+    small: {
+      size: '11.6px',
+      height: '17.6px',
+      maxWidth: '278.4px',
+    },
+    medium: {
+      size: '18px',
+      height: '24px',
+      maxWidth: '432px',
+    },
+    large: {
+      size: '24.4px',
+      height: '30.4px',
+      maxWidth: '585.6px',
+    },
+    xlarge: {
+      size: '30.8px',
+      height: '36.8px',
+      maxWidth: '739.2px',
+    },
+    xxlarge: {
+      size: '43.6px',
+      height: '49.6px',
+      maxWidth: '1046.4px',
+    },
   },
 });
 
