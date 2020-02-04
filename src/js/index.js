@@ -13,21 +13,6 @@ const deepFreeze = obj => {
 
 const baseSpacing = 24;
 
-const fontSizing = factor => {
-  const scale = baseSpacing * 0.25;
-  const baseFontSize = baseSpacing - scale;
-
-  const size = Math.round(baseFontSize + factor * scale);
-  const height = Math.round(baseSpacing + factor * scale);
-  const maxWidth = baseSpacing * size;
-
-  return {
-    size: `${size}px`,
-    height: `${height}px`,
-    maxWidth: `${maxWidth}px`,
-  };
-};
-
 export const hpe = deepFreeze({
   spacing: baseSpacing,
   defaultMode: 'dark',
@@ -197,6 +182,18 @@ export const hpe = deepFreeze({
       ${props => !props.plain && 'font-weight: bold;'}
     `,
   },
+  calendar: {
+    small: {
+      fontSize: '11.6px',
+      lineHeight: 1.375,
+      daySize: '27.43px',
+    },
+    medium: {
+      fontSize: '18px',
+      lineHeight: 1.45,
+      daySize: '54.86px',
+    },
+  },
   checkBox: {
     gap: 'medium',
     color: 'text-strong',
@@ -205,30 +202,143 @@ export const hpe = deepFreeze({
     border: {
       side: 'all',
     },
-    content: {
-      pad: {
-        horizontal: 'small',
-        bottom: 'small',
-      },
-      disabled: {
-        background: '#CCCCCC',
-      },
-    },
   },
   heading: {
     level: {
-      1: {
-        medium: fontSizing(5),
+      '1': {
+        small: {
+          size: '43.6px',
+          height: '49.6px',
+          maxWidth: '1046.4px',
+        },
+        medium: {
+          size: '69.2px',
+          height: '75.2px',
+          maxWidth: '1660.8000000000002px',
+        },
+        large: {
+          size: '120.4px',
+          height: '126.4px',
+          maxWidth: '2889.6000000000004px',
+        },
+        xlarge: {
+          size: '171.60000000000002px',
+          height: '177.60000000000002px',
+          maxWidth: '4118.400000000001px',
+        },
       },
-      2: {
-        small: fontSizing(1),
-        medium: fontSizing(3),
+      '2': {
+        small: {
+          size: '30.8px',
+          height: '36.8px',
+          maxWidth: '739.2px',
+        },
+        medium: {
+          size: '43.6px',
+          height: '49.6px',
+          maxWidth: '1046.4px',
+        },
+        large: {
+          size: '69.2px',
+          height: '75.2px',
+          maxWidth: '1660.8000000000002px',
+        },
+        xlarge: {
+          size: '94.80000000000001px',
+          height: '100.80000000000001px',
+          maxWidth: '2275.2000000000003px',
+        },
       },
-      3: {
-        medium: fontSizing(1),
+      '3': {
+        small: {
+          size: '24.4px',
+          height: '30.4px',
+          maxWidth: '585.5999999999999px',
+        },
+        medium: {
+          size: '30.8px',
+          height: '36.8px',
+          maxWidth: '739.2px',
+        },
+        large: {
+          size: '43.6px',
+          height: '49.6px',
+          maxWidth: '1046.4px',
+        },
+        xlarge: {
+          size: '56.400000000000006px',
+          height: '62.400000000000006px',
+          maxWidth: '1353.6000000000001px',
+        },
       },
+      '4': {
+        small: {
+          size: '18px',
+          height: '24px',
+          maxWidth: '432px',
+        },
+        medium: {
+          size: '18px',
+          height: '24px',
+          maxWidth: '432px',
+        },
+        large: {
+          size: '18px',
+          height: '24px',
+          maxWidth: '432px',
+        },
+        xlarge: {
+          size: '18px',
+          height: '24px',
+          maxWidth: '432px',
+        },
+      },
+      '5': {
+        small: {
+          size: '14.8px',
+          height: '20.8px',
+          maxWidth: '355.2px',
+        },
+        medium: {
+          size: '14.8px',
+          height: '20.8px',
+          maxWidth: '355.2px',
+        },
+        large: {
+          size: '14.8px',
+          height: '20.8px',
+          maxWidth: '355.2px',
+        },
+        xlarge: {
+          size: '14.8px',
+          height: '20.8px',
+          maxWidth: '355.2px',
+        },
+      },
+      '6': {
+        small: {
+          size: '11.6px',
+          height: '17.6px',
+          maxWidth: '278.4px',
+        },
+        medium: {
+          size: '11.6px',
+          height: '17.6px',
+          maxWidth: '278.4px',
+        },
+        large: {
+          size: '11.6px',
+          height: '17.6px',
+          maxWidth: '278.4px',
+        },
+        xlarge: {
+          size: '11.6px',
+          height: '17.6px',
+          maxWidth: '278.4px',
+        },
+      },
+      weight: 700,
     },
-    weight: 700,
   },
   icon: {
     size: {
@@ -236,9 +346,31 @@ export const hpe = deepFreeze({
     },
   },
   paragraph: {
-    small: fontSizing(0),
-    medium: fontSizing(1),
-    large: fontSizing(3),
+    small: {
+      size: '11.6px',
+      height: '17.6px',
+      maxWidth: '278.4px',
+    },
+    medium: {
+      size: '18px',
+      height: '24px',
+      maxWidth: '432px',
+    },
+    large: {
+      size: '24.4px',
+      height: '30.4px',
+      maxWidth: '585.6px',
+    },
+    xlarge: {
+      size: '30.8px',
+      height: '36.8px',
+      maxWidth: '739.2px',
+    },
+    xxlarge: {
+      size: '43.6px',
+      height: '49.6px',
+      maxWidth: '1046.4px',
+    },
   },
   radioButton: {
     color: 'text-strong',
@@ -278,9 +410,9 @@ export const hpe = deepFreeze({
     },
   },
   text: {
-    small: fontSizing(0), // 18
-    medium: fontSizing(1), // 24
-    large: fontSizing(3), // 36
+    small: '18px',
+    medium: '24px',
+    large: '36px',
   },
 });
 
