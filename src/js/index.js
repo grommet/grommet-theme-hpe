@@ -120,7 +120,7 @@ export const hpe = deepFreeze({
           font-weight: 700;
         }
         @font-face {
-          font-family: "Metric"; 
+          font-family: "Metric";
           src: url("https://hpefonts.s3.amazonaws.com/web/MetricHPE-Web-Semibold.woff") format('woff');
           font-weight: 600;
         }
