@@ -72,7 +72,7 @@ export const hpe = deepFreeze({
         dark: '#007A5E',
         light: '#6FFFB0',
       },
-      'green!': '#00C781',
+      'green!': '#01A982',
       teal: {
         dark: '#007366',
         light: '#82FFF2',
