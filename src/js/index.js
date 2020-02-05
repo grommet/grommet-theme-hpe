@@ -436,7 +436,7 @@ export const hpe = deepFreeze({
     },
   },
   // Theme-Designer only parameters
-  name: 'HPE 2',
+  name: 'HPE 1',
   rounding: 4,
   spacing: 24,
 });
