@@ -196,6 +196,7 @@ export const hpe = deepFreeze({
     border: {
       side: 'all',
     },
+    round: '4px',
   },
   heading: {
     level: {
