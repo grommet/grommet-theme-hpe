@@ -12,10 +12,7 @@ const deepFreeze = obj => {
 };
 
 export const hpe = deepFreeze({
-  // name: 'HPE 2',
-  // rounding: 4,
-  // spacing: 24,
-  // defaultMode: 'light',
+  defaultMode: 'light',
   global: {
     colors: {
       icon: 'text',
@@ -141,6 +138,11 @@ export const hpe = deepFreeze({
       },
       shadowSize: 'medium',
     },
+    elevation: {
+      dark: {
+        medium: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
+      },
+    },
     hover: {
       background: 'active-background',
       color: 'active-text',
@@ -150,7 +152,6 @@ export const hpe = deepFreeze({
       color: 'selected-text',
     },
   },
-  // Missing from the Designer
   accordion: {
     border: {
       color: 'text',
@@ -159,7 +160,6 @@ export const hpe = deepFreeze({
       color: 'text',
     },
   },
-  // Missing from the Designer
   anchor: {
     color: 'text',
     fontWeight: 700,
@@ -168,7 +168,6 @@ export const hpe = deepFreeze({
       textDecoration: 'none',
     },
   },
-  // Radius + font is missing from the designer
   button: {
     border: {
       radius: '6px',
@@ -189,7 +188,6 @@ export const hpe = deepFreeze({
       daySize: '54.86px',
     },
   },
-  // Designer defaults to base.js, the following is extra
   checkBox: {
     gap: 'medium',
     color: 'text-strong',
@@ -335,7 +333,6 @@ export const hpe = deepFreeze({
       },
     },
   },
-  // Missing from the designer
   icon: {
     size: {
       xxlarge: '166px',
@@ -368,7 +365,6 @@ export const hpe = deepFreeze({
       maxWidth: '1046.4px',
     },
   },
-  // Missing from the designer
   radioButton: {
     color: 'text-strong',
     check: {
@@ -376,7 +372,6 @@ export const hpe = deepFreeze({
     },
     gap: 'medium',
   },
-  // Missing from the Designer
   rangeInput: {
     track: {
       color: 'background-contrast',
@@ -385,7 +380,6 @@ export const hpe = deepFreeze({
       color: 'text',
     },
   },
-  // Missing from the Designer
   select: {
     icons: {
       color: 'text',
@@ -396,7 +390,6 @@ export const hpe = deepFreeze({
       },
     },
   },
-  // Missing from the Designer
   tab: {
     border: {
       color: 'text-xweak',
@@ -409,7 +402,6 @@ export const hpe = deepFreeze({
       horizontal: 'small',
     },
   },
-  // Replaced aries text with the designer text
   text: {
     xsmall: {
       size: '8.4px',
@@ -442,6 +434,10 @@ export const hpe = deepFreeze({
       maxWidth: '1046.4px',
     },
   },
+  // Theme-Designer only parameters
+  name: 'HPE 2',
+  rounding: 4,
+  spacing: 24,
 });
 
 export const { colors } = hpe.global;
