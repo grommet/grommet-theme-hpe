@@ -332,6 +332,7 @@ export const hpe = deepFreeze({
         },
       },
     },
+    weight: 700,
   },
   icon: {
     size: {
