@@ -10,7 +10,8 @@
     "Alan Souza",
     "Bryan Jacquot",
     "Chris Carlozzi",
-    "Eric Soderberg"
+    "Eric Soderberg",
+    "Shimrit (Shimi) Yacobi"
   ],
   "bugs": "https://github.com/grommet/grommet-theme-hpe/issues",
   "license": "Apache-2.0",
@@ -24,10 +25,11 @@
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
-    "@babel/node": "^7.0.0",
+    "@babel/node": "^7.8.4",
     "@babel/preset-env": "^7.1.0",
     "babel-eslint": "^10.0.1",
     "cross-env": "^5.2.0",
+    "del": "^5.1.0",
     "eslint": "^5.6.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^6.1.0",
@@ -36,9 +38,11 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.0",
+    "fs-extra": "^8.1.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.16.4",
-    "react": "^16.5.2",
+    "react": "^16.12.0",
+    "simple-git": "^1.131.0",
     "styled-components": "^5.0.0",
     "pretty-quick": "^1.8.0"
   },
@@ -47,7 +51,8 @@
     "build": "cross-env babel ./src/js/ --out-dir ./dist --copy-files && cross-env BABEL_ENV=es6 babel ./src/js/ --out-dir ./dist/es6 --copy-files",
     "lint": "eslint src",
     "lint-fix": "eslint src --fix",
-    "prettier": "pretty-quick --staged"
+    "prettier": "pretty-quick --staged",
+    "release-stable": "babel-node ./tools/release-stable"
   },
   "pre-commit": [
     "lint-fix",
