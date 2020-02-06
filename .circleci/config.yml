@@ -43,6 +43,16 @@ jobs:
           root: ~/grommet-ci
           paths:
             - ./
+  release-stable:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/grommet-ci
+      - run:
+          command: |
+            git config --global user.name "Grommet Community Bot"
+            git config --global user.email "grommet@hpe.com"
+            yarn release-stable
   publish:
     <<: *defaults
     steps:
@@ -73,6 +83,14 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - release-stable:
+          requires:
+            - lint
+            - build
+          filters:
+            branches:
+              only:
+                - master
       - publish:
           requires:
             - lint
