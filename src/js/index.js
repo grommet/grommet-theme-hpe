@@ -169,6 +169,35 @@ export const hpe = deepFreeze({
     },
   },
   button: {
+    size: {
+      small: {
+        border: {
+          radius: '5px',
+        },
+        pad: {
+          vertical: '4px',
+          horizontal: '20px',
+        },
+      },
+      medium: {
+        border: {
+          radius: '6px',
+        },
+        pad: {
+          vertical: '4px',
+          horizontal: '22px',
+        },
+      },
+      large: {
+        border: {
+          radius: '7px',
+        },
+        pad: {
+          vertical: '8px',
+          horizontal: '26px',
+        },
+      },
+    },
     border: {
       radius: '6px',
     },
