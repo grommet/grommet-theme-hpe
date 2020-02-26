@@ -28,6 +28,7 @@
     "@babel/node": "^7.8.4",
     "@babel/preset-env": "^7.1.0",
     "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.0-beta.6",
     "cross-env": "^5.2.0",
     "del": "^5.1.0",
     "eslint": "^5.6.1",
@@ -44,11 +45,13 @@
     "react": "^16.12.0",
     "simple-git": "^1.131.0",
     "styled-components": "^5.0.0",
-    "pretty-quick": "^1.8.0"
+    "pretty-quick": "^1.8.0",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0"
   },
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "cross-env babel ./src/js/ --out-dir ./dist --copy-files && cross-env BABEL_ENV=es6 babel ./src/js/ --out-dir ./dist/es6 --copy-files",
+    "build": "webpack --mode production && cross-env babel ./src/js/ --out-dir ./dist --copy-files && cross-env BABEL_ENV=es6 babel ./src/js/ --out-dir ./dist/es6 --copy-files",
     "lint": "eslint src",
     "lint-fix": "eslint src --fix",
     "prettier": "pretty-quick --staged",
