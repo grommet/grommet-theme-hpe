@@ -30,7 +30,7 @@ export const hpe = deepFreeze({
         light: '#FFFFFF',
       },
       'background-contrast': {
-        dark: '#FFFFFF08',
+        dark: '#FFFFFF12',
         light: '#11111108',
       },
       text: {
