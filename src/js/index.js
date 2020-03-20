@@ -101,8 +101,11 @@ export const hpe = deepFreeze({
       'graph-0': 'orange',
       'graph-1': 'blue',
       'graph-2': 'purple',
-      focus: 'green',
+      focus: 'teal!',
       placeholder: 'text-weak',
+      input: {
+        weight: 500, // normal 
+      },
     },
     font: {
       family: "'Metric', Arial, sans-serif",
@@ -158,14 +161,6 @@ export const hpe = deepFreeze({
     },
     icons: {
       color: 'text',
-    },
-  },
-  anchor: {
-    color: 'text',
-    fontWeight: 700,
-    textDecoration: 'none',
-    hover: {
-      textDecoration: 'none',
     },
   },
   button: {
@@ -229,10 +224,46 @@ export const hpe = deepFreeze({
   checkBox: {
     gap: 'medium',
     color: 'text-strong',
+    toggle: {
+      color: {
+        dark: 'background-front',
+        light: 'background',
+      },
+      background: 'background-back',
+    },
   },
   formField: {
     border: {
       side: 'all',
+    },
+    error: {
+      size: 'xsmall',
+      color: 'text-xweak',
+      margin: {
+        start: 'none',
+      },
+    },
+    help: {
+      size: 'xsmall',
+      color: 'text-xweak',
+      margin: {
+        start: 'none',
+        bottom: 'xsmall',
+      },
+    },
+    info: {
+      size: 'xsmall',
+      color: 'text-xweak',
+      margin: {
+        start: 'none',
+      },
+    },
+    label: {
+      size: 'xsmall',
+      color: 'text-weak',
+      margin: {
+        horizontal: 'none',
+      },
     },
     round: '4px',
   },
@@ -377,6 +408,9 @@ export const hpe = deepFreeze({
     size: {
       xxlarge: '166px',
     },
+  },
+  layer: {
+    background: 'background',
   },
   paragraph: {
     small: {
