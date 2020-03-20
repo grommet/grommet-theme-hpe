@@ -230,8 +230,8 @@ export const hpe = deepFreeze({
     color: 'text-strong',
     toggle: {
       color: {
-        dark: global.colors['text-strong'].dark,
-        light: global.colors['text-strong'].dark,
+        dark: 'background-front',
+        light: 'background',
       },
       background: 'background-back',
     },
