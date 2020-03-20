@@ -103,6 +103,9 @@ export const hpe = deepFreeze({
       'graph-2': 'purple',
       focus: 'teal!',
       placeholder: 'text-weak',
+      input: {
+        weight: 500, // normal 
+      },
     },
     input: {
       weight: 500,
@@ -167,34 +170,38 @@ export const hpe = deepFreeze({
     size: {
       small: {
         border: {
-          radius: '5px',
+          radius: '4px',
         },
         pad: {
           vertical: '4px',
-          horizontal: '20px',
+          horizontal: '8px',
         },
       },
       medium: {
         border: {
-          radius: '6px',
+          radius: '4px',
         },
         pad: {
           vertical: '4px',
-          horizontal: '22px',
+          horizontal: '10px',
         },
       },
       large: {
         border: {
-          radius: '7px',
+          radius: '6px',
         },
         pad: {
-          vertical: '8px',
-          horizontal: '26px',
+          vertical: '6px',
+          horizontal: '16px',
         },
       },
     },
     border: {
-      radius: '6px',
+      radius: '4px',
+    },
+    padding: {
+      vertical: '4px',
+      horizontal: '10px',
     },
     extend: css`
       ${props => !props.plain && 'font-weight: bold;'}
