@@ -163,14 +163,6 @@ export const hpe = deepFreeze({
       color: 'text',
     },
   },
-  anchor: {
-    color: 'brand',
-    textDecoration: 'none',
-    fontWeight: 500,
-    hover: {
-      textDecoration: 'underline',
-    },
-  },
   button: {
     size: {
       small: {
