@@ -104,7 +104,7 @@ export const hpe = deepFreeze({
       focus: 'teal!',
       placeholder: 'text-weak',
       input: {
-        weight: 500,
+        weight: 500, // normal 
       },
     },
     font: {
