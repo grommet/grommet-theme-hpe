@@ -199,7 +199,11 @@ export const hpe = deepFreeze({
       },
     },
     border: {
-      radius: '6px',
+      radius: '4px',
+    },
+    padding: {
+      vertical: '4px',
+      horizontal: '10px',
     },
     extend: css`
       ${props => !props.plain && 'font-weight: bold;'}
