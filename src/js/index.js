@@ -54,7 +54,10 @@ export const hpe = deepFreeze({
         dark: '#444444',
       },
       control: 'brand',
-      'active-background': 'background-contrast',
+      'active-background': {
+        dark: '#FFFFFF1F',
+        light: '#CCCCCC99',
+      },
       'active-text': 'text-strong',
       'selected-background': 'brand',
       'selected-text': 'text-strong',
@@ -104,7 +107,7 @@ export const hpe = deepFreeze({
       focus: 'teal!',
       placeholder: 'text-weak',
       input: {
-        weight: 500, // normal 
+        weight: 500, // normal
       },
     },
     input: {
