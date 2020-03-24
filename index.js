@@ -32,7 +32,15 @@ var hpe = deepFreeze({
   defaultMode: 'light',
   global: {
     colors: {
-      icon: 'text',
+      /* deprecated colors */
+      'accent-1': undefined,
+      'accent-2': undefined,
+      'accent-3': undefined,
+      'accent-4': undefined,
+      'neutral-1': undefined,
+      'neutral-2': undefined,
+      'neutral-3': undefined,
+      'neutral-4': undefined,
       brand: 'green!',
       background: {
         dark: '#1A1F2B',
@@ -50,6 +58,7 @@ var hpe = deepFreeze({
         dark: '#FFFFFF12',
         light: '#11111108'
       },
+      icon: 'text',
       text: {
         dark: '#EEEEEE',
         light: '#333333'
