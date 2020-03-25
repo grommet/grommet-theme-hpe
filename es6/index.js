@@ -56,7 +56,7 @@ export var hpe = deepFreeze({
       },
       icon: 'text',
       text: {
-        dark: '#EEEEEE',
+        dark: '#FFFFFF',
         light: '#333333'
       },
       'text-strong': {
