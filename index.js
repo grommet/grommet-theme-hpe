@@ -177,6 +177,14 @@ var hpe = deepFreeze({
       color: 'text'
     }
   },
+  anchor: {
+    color: 'text',
+    textDecoration: 'underline',
+    fontWeight: 500,
+    hover: {
+      textDecoration: 'underline'
+    }
+  },
   button: {
     size: {
       small: {
