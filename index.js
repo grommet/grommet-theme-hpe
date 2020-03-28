@@ -33,14 +33,14 @@ var hpe = deepFreeze({
   global: {
     colors: {
       /* deprecated colors */
-      'accent-1': undefined,
-      'accent-2': undefined,
-      'accent-3': undefined,
-      'accent-4': undefined,
-      'neutral-1': undefined,
-      'neutral-2': undefined,
-      'neutral-3': undefined,
-      'neutral-4': undefined,
+      // 'accent-1': undefined,
+      // 'accent-2': undefined,
+      // 'accent-3': undefined,
+      // 'accent-4': undefined,
+      // 'neutral-1': undefined,
+      // 'neutral-2': undefined,
+      // 'neutral-3': undefined,
+      // 'neutral-4': undefined,
       brand: 'green!',
       background: {
         dark: '#1A1F2B',
@@ -179,10 +179,10 @@ var hpe = deepFreeze({
   },
   anchor: {
     color: 'text',
-    textDecoration: 'underline',
-    fontWeight: 500,
+    fontWeight: 700,
+    textDecoration: 'none',
     hover: {
-      textDecoration: 'underline'
+      textDecoration: 'none'
     }
   },
   button: {
