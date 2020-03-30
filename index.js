@@ -131,11 +131,7 @@ var hpe = deepFreeze({
       'graph-1': 'blue',
       'graph-2': 'purple',
       focus: 'teal!',
-      placeholder: 'text-weak',
-      input: {
-        weight: 500 // normal
-
-      }
+      placeholder: 'text-weak'
     },
     input: {
       weight: 500
