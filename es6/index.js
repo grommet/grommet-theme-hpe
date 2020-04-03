@@ -51,8 +51,8 @@ export var hpe = deepFreeze({
         light: '#FFFFFF'
       },
       'background-contrast': {
-        dark: '#1FFFFFFF',
-        light: '#99CCCCCC'
+        dark: '#FFFFFF1F',
+        light: '#CCCCCC99'
       },
       icon: 'text',
       text: {
