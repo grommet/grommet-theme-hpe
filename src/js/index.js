@@ -114,7 +114,7 @@ export const hpe = deepFreeze({
       'graph-1': 'blue!',
       'graph-2': 'purple!',
       'graph-3': 'yellow!',
-      'graph-4': undefined,
+      'graph-4': 'teal!',
       focus: 'teal!',
       placeholder: 'text-weak',
       input: {
