@@ -127,9 +127,11 @@ var hpe = deepFreeze({
         light: '#FFEB59'
       },
       'yellow!': '#FEC901',
-      'graph-0': 'orange',
-      'graph-1': 'blue',
-      'graph-2': 'purple',
+      'graph-0': 'orange!',
+      'graph-1': 'blue!',
+      'graph-2': 'purple!',
+      'graph-3': 'yellow!',
+      'graph-4': 'teal!',
       focus: 'teal!',
       placeholder: 'text-weak'
     },
