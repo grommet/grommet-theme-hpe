@@ -5,7 +5,7 @@ import fs from 'fs-extra';
 import git from 'simple-git/promise';
 import path from 'path';
 
-const repoURL = `https://${process.env.GH_TOKEN}@github.com/grommet/grommet-theme-hpe/tree/NEXT`;
+const repoURL = `https://${process.env.GH_TOKEN}@github.com/grommet/grommet-theme-hpe/tree/NEXT.git`;
 const localFolder = path.resolve('.tmp/grommet-theme-hpe');
 const localDist = path.resolve('dist');
 
