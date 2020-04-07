@@ -41,6 +41,7 @@ var hpe = deepFreeze({
       // 'neutral-2': undefined,
       // 'neutral-3': undefined,
       // 'neutral-4': undefined,
+      shimi: 'pink',
       brand: 'green!',
       background: {
         dark: '#1A1F2B',
