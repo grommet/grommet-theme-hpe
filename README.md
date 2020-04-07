@@ -19,7 +19,7 @@ import { hpe } from 'grommet-theme-hpe';
 
 ## NEXT-stable
 
-grommet-theme-hpe is also available on a NEXT-stable branch build with the content of NExt branch.
+grommet-theme-hpe is also available on a NEXT-stable branch build with the content of NEXT branch.
 From your package.json point to NEXT-stable.
 
 ```
