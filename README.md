@@ -1,6 +1,6 @@
 # grommet-theme-hpe
 
-Hewlett Packard Enterprise desisn-system theme
+Hewlett Packard Enterprise design-system theme
 
 ## Installation
 
