@@ -1,6 +1,7 @@
 # grommet-theme-hpe
 
-Hewlett Packard Enterprise design-system theme
+Hewlett Packard Enterprise design-system theme.
+Pull-Requests with theme changes and adaptation to Figma designs, will be submitted to the NEXT branch rather than the master branch to avoid backward compatibility issues on official HPE theme releases.
 
 ## Installation
 
