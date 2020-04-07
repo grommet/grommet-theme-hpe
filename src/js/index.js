@@ -179,10 +179,10 @@ export const hpe = deepFreeze({
   },
   anchor: {
     color: 'text',
-    fontWeight: 700,
-    textDecoration: 'none',
+    textDecoration: 'underline',
+    fontWeight: 500,
     hover: {
-      textDecoration: 'none',
+      textDecoration: 'underline',
     },
   },
   button: {
@@ -244,14 +244,13 @@ export const hpe = deepFreeze({
     },
   },
   checkBox: {
-    gap: 'medium',
-    color: 'text-strong',
-    toggle: {
-      color: {
-        dark: 'background-front',
-        light: 'background',
-      },
-      background: 'background-back',
+    color: 'selected-text',
+    gap: 'small',
+    check: {
+      radius: '2px',
+    },
+    border: {
+      width: '1px',
     },
   },
   formField: {
