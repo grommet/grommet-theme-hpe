@@ -87,12 +87,20 @@ workflows:
           filters:
             tags:
               only: /.*/
+            branches:
+              ignore:
+                - stable
+                - NEXT-stable
       - build:
           requires:
             - checkout
           filters:
             tags:
               only: /.*/
+            branches:
+              ignore:
+                - stable
+                - NEXT-stable
       - release-stable:
           requires:
             - lint
