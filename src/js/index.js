@@ -44,32 +44,32 @@ export const hpe = deepFreeze({
       icon: 'text',
       text: {
         dark: '#FFFFFF',
-        light: '#333333',
+        light: '#444444',
       },
       'text-strong': {
         dark: '#FFFFFF',
         light: '#000000',
       },
       'text-weak': {
-        dark: '#CCCCCC',
-        light: '#444444',
-      },
-      'text-xweak': {
-        dark: '#999999',
+        dark: '#AAAAAA',
         light: '#666666',
       },
       border: {
-        light: '#CCCCCC',
-        dark: '#444444',
+        dark: '#DDDDDD',
+        light: '#666666',
       },
       control: 'brand',
       'active-background': {
         dark: '#FFFFFF1F',
         light: '#CCCCCC99',
       },
-      'active-text': 'text-strong',
+      'active-text': 'text',
+      'disabled-text': {
+        dark: '#999999',
+        light: '#777777',
+      },
       'selected-background': 'brand',
-      'selected-text': 'text-strong',
+      'selected-text': '#FFFFFF',
       'status-critical': '#FF4040',
       'status-warning': '#FFAA15',
       'status-ok': '#00C781',
@@ -116,7 +116,7 @@ export const hpe = deepFreeze({
       'graph-3': 'yellow!',
       'graph-4': 'teal!',
       focus: 'teal!',
-      placeholder: 'text-weak',
+      placeholder: 'disabled-text',
     },
     input: {
       weight: 500,
@@ -255,11 +255,18 @@ export const hpe = deepFreeze({
   },
   formField: {
     border: {
+      error: {
+        color: 'border',
+      },
+      color: 'border',
       side: 'all',
     },
     error: {
+      background: {
+        color: { light: '#FF404033', dark: '#FF40404D' },
+      },
       size: 'xsmall',
-      color: 'text-xweak',
+      color: 'text-weak',
       margin: {
         start: 'none',
       },
@@ -281,7 +288,10 @@ export const hpe = deepFreeze({
     },
     label: {
       size: 'xsmall',
-      color: 'text-weak',
+      color: {
+        dark: 'text',
+        light: 'text-weak',
+      },
       margin: {
         horizontal: 'none',
       },
