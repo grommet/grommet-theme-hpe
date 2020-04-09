@@ -260,14 +260,14 @@ export const hpe = deepFreeze({
     },
     error: {
       size: 'xsmall',
-      color: 'text-xweak',
+      color: 'text-weak',
       margin: {
         start: 'none',
       },
     },
     help: {
       size: 'xsmall',
-      color: 'text-xweak',
+      color: 'text-weak',
       margin: {
         start: 'none',
         bottom: 'xsmall',
@@ -275,7 +275,7 @@ export const hpe = deepFreeze({
     },
     info: {
       size: 'xsmall',
-      color: 'text-xweak',
+      color: 'text-weak',
       margin: {
         start: 'none',
       },
