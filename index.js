@@ -149,7 +149,7 @@ var hpe = deepFreeze({
     drop: {
       background: 'background-front',
       border: {
-        radius: '8px'
+        radius: '4px'
       },
       shadowSize: 'medium'
     },
