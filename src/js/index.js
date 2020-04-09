@@ -119,6 +119,10 @@ export const hpe = deepFreeze({
       placeholder: 'text-weak',
     },
     input: {
+      padding: {
+        horizontal: 'small',
+        vertical: 'xsmall',
+      },
       weight: 500,
     },
     font: {
