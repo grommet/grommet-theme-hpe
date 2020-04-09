@@ -278,7 +278,7 @@ var hpe = deepFreeze({
     },
     help: {
       size: 'xsmall',
-      color: 'text-xweak',
+      color: 'text-weak',
       margin: {
         start: 'none',
         bottom: 'xsmall'
@@ -286,7 +286,7 @@ var hpe = deepFreeze({
     },
     info: {
       size: 'xsmall',
-      color: 'text-xweak',
+      color: 'text-weak',
       margin: {
         start: 'none'
       }
