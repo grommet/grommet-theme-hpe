@@ -136,6 +136,10 @@ var hpe = deepFreeze({
       placeholder: 'disabled-text'
     },
     input: {
+      padding: {
+        horizontal: 'small',
+        vertical: 'xsmall'
+      },
       weight: 500
     },
     font: {
