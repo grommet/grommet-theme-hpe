@@ -32,15 +32,15 @@ var hpe = deepFreeze({
   defaultMode: 'light',
   global: {
     colors: {
-      /* deprecated colors */
-      // 'accent-1': undefined,
-      // 'accent-2': undefined,
-      // 'accent-3': undefined,
-      // 'accent-4': undefined,
-      // 'neutral-1': undefined,
-      // 'neutral-2': undefined,
-      // 'neutral-3': undefined,
-      // 'neutral-4': undefined,
+      /* deprecated accent and neutral colors */
+      'accent-1': undefined,
+      'accent-2': undefined,
+      'accent-3': undefined,
+      'accent-4': undefined,
+      'neutral-1': undefined,
+      'neutral-2': undefined,
+      'neutral-3': undefined,
+      'neutral-4': undefined,
       brand: 'green!',
       background: {
         dark: '#1A1F2B',
