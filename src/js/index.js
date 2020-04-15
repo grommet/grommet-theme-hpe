@@ -43,7 +43,7 @@ export const hpe = deepFreeze({
       },
       icon: 'text',
       text: {
-        dark: '#FFFFFF',
+        dark: '#DDDDDD',
         light: '#444444',
       },
       'text-strong': {
@@ -65,8 +65,8 @@ export const hpe = deepFreeze({
       },
       'active-text': 'text',
       'disabled-text': {
-        dark: '#999999',
-        light: '#777777',
+        dark: '#777777',
+        light: '#999999',
       },
       'selected-background': 'brand',
       'selected-text': '#FFFFFF',
@@ -123,7 +123,7 @@ export const hpe = deepFreeze({
         horizontal: 'small',
         vertical: 'xsmall',
       },
-      weight: 500,
+      weight: 400,
     },
     font: {
       family: "'Metric', Arial, sans-serif",
@@ -157,11 +157,25 @@ export const hpe = deepFreeze({
       border: {
         radius: '4px',
       },
+      extend: ({ theme }) => `
+        margin-top: ${theme.global.edgeSize.xxsmall};
+      `,
       shadowSize: 'medium',
     },
     elevation: {
+      light: {
+        xsmall: '0px 1px 2px #0000003D;',
+        small: '0px 2px 4px #0000003D;',
+        medium: '0px 4px 8px #0000003D;',
+        large: '0px 6px 12px #0000003D;',
+        xlarge: '0px 12px 24px #0000003D;',
+      },
       dark: {
-        medium: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
+        xsmall: '0px 1px 2px #00000099;',
+        small: '0px 2px 4px #00000099;',
+        medium: '0px 4px 8px #00000099;',
+        large: '0px 6px 12px #00000099;',
+        xlarge: '0px 12px 24px #00000099;',
       },
     },
     hover: {
@@ -292,10 +306,7 @@ export const hpe = deepFreeze({
     },
     label: {
       size: 'xsmall',
-      color: {
-        dark: 'text',
-        light: 'text-weak',
-      },
+      color: 'text',
       margin: {
         horizontal: 'none',
       },
@@ -495,7 +506,7 @@ export const hpe = deepFreeze({
     },
     options: {
       text: {
-        size: 'small',
+        size: 'medium',
       },
     },
   },
