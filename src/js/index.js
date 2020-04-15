@@ -1,5 +1,6 @@
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import { css } from 'styled-components';
+import { FormDown, FormUp } from 'grommet-icons';
 
 const isObject = item =>
   item && typeof item === 'object' && !Array.isArray(item);
@@ -503,6 +504,8 @@ export const hpe = deepFreeze({
   select: {
     icons: {
       color: 'text',
+      down: FormDown,
+      up: FormUp,
     },
     options: {
       text: {
