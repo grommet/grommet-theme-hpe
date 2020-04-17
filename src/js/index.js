@@ -62,14 +62,22 @@ export const hpe = deepFreeze({
         light: '#CCCCCC',
         dark: '#444444',
       },
+      'disabled-border': {
+        dark: '#777777',
+        light: '#999999',
+      },
       control: 'brand',
       'active-background': {
-        dark: '#FFFFFF1F',
-        light: '#CCCCCC99',
+        dark: 'background-front',
+        light: 'background-back',
       },
       'active-text': 'text-strong',
       'selected-background': 'brand',
       'selected-text': 'text-strong',
+      'disabled-text': {
+        dark: '#777777',
+        light: '#999999',
+      },
       'status-critical': '#FF4040',
       'status-warning': '#FFAA15',
       'status-ok': '#00C781',
@@ -225,6 +233,25 @@ export const hpe = deepFreeze({
     extend: css`
       ${props => !props.plain && 'font-weight: bold;'}
     `,
+    disabled: {
+      border: {
+        color: 'disabled-border',
+      },
+      color: 'disabled-text',
+      opacity: 1.0,
+      extend: ({ primary, theme }) =>
+        primary &&
+        `background: transparent; color: ${
+          theme.global.colors['disabled-text'][theme.dark ? 'dark' : 'light']
+        };`,
+    },
+    primary: {
+      active: {
+        border: {
+          color: { dark: 'background-front', light: 'background-back' },
+        },
+      },
+    },
   },
   calendar: {
     small: {
