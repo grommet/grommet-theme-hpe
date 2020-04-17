@@ -119,7 +119,10 @@ export const hpe = deepFreeze({
       placeholder: 'text-weak',
     },
     input: {
-      weight: 500,
+      font: {
+        height: 'inherit',
+        weight: 500,
+      },
     },
     font: {
       family: "'Metric', Arial, sans-serif",
