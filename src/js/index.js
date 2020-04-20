@@ -164,6 +164,10 @@ export const hpe = deepFreeze({
       shadowSize: 'medium',
     },
     elevation: {
+      // Elevation values were derived from this Figma file.
+      // https://www.figma.com/file/eZYR3dtWdb9U90QvJ7p3T9/HPE-Color-Styles?node-id=405%3A25
+      // Naming in Figma file is strong/default/weak vs. Grommet t-shirt sizing.
+      // As defined here, default is currently mapping to medium.
       light: {
         xsmall: '0px 1px 2px #0000003D;',
         small: '0px 2px 4px #0000003D;',
@@ -243,6 +247,11 @@ export const hpe = deepFreeze({
     },
     extend: css`
       ${props => !props.plain && 'font-weight: bold;'}
+      ${({ primary, theme }) =>
+        primary &&
+        `color: ${
+          theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
+        };`}
     `,
   },
   calendar: {
@@ -506,11 +515,6 @@ export const hpe = deepFreeze({
       color: 'text',
       down: FormDown,
       up: FormUp,
-    },
-    options: {
-      text: {
-        size: 'medium',
-      },
     },
   },
   tab: {
