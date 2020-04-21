@@ -169,18 +169,14 @@ export const hpe = deepFreeze({
       // Naming in Figma file is strong/default/weak vs. Grommet t-shirt sizing.
       // As defined here, default is currently mapping to medium.
       light: {
-        xsmall: '0px 1px 2px #0000003D;',
-        small: '0px 2px 4px #0000003D;',
-        medium: '0px 4px 8px #0000003D;',
-        large: '0px 6px 12px #0000003D;',
-        xlarge: '0px 12px 24px #0000003D;',
+        small: '0px 2px 4px #0000001F;',
+        medium: '0px 6px 12px #0000003D;',
+        large: '0px 12px 24px #0000001F;',
       },
       dark: {
-        xsmall: '0px 1px 2px #00000099;',
-        small: '0px 2px 4px #00000099;',
-        medium: '0px 4px 8px #00000099;',
-        large: '0px 6px 12px #00000099;',
-        xlarge: '0px 12px 24px #00000099;',
+        small: '0px 2px 4px #0000003D;',
+        medium: '0px 6px 12px #0000005C;',
+        large: '0px 12px 24px #0000007A;',
       },
     },
     hover: {
