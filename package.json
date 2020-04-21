@@ -19,6 +19,9 @@
     "type": "git",
     "url": "https://github.com/grommet/grommet-theme-hpe.git"
   },
+  "dependencies": {
+    "grommet-icons": "https://github.com/grommet/grommet-icons/tarball/stable"
+  },
   "peerDependencies": {
     "styled-components": "^5.0.0"
   },
