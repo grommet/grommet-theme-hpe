@@ -69,14 +69,10 @@ export const hpe = deepFreeze({
       },
       'active-text': 'text',
       'disabled-text': {
-        dark: '#999999',
-        light: '#777777',
-      },
-      'selected-background': 'brand',
-      'disabled-text': {
         dark: '#777777',
         light: '#999999',
       },
+      'selected-background': 'brand',
       'selected-text': '#FFFFFF',
       'status-critical': '#FF4040',
       'status-warning': '#FFAA15',
