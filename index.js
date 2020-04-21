@@ -5,6 +5,8 @@ exports.colors = exports.hpe = void 0;
 
 var _styledComponents = require("styled-components");
 
+var _grommetIcons = require("grommet-icons");
+
 function _templateObject() {
   var data = _taggedTemplateLiteralLoose(["\n      ", "\n    "]);
 
@@ -60,7 +62,7 @@ var hpe = deepFreeze({
       },
       icon: 'text',
       text: {
-        dark: '#FFFFFF',
+        dark: '#DDDDDD',
         light: '#444444'
       },
       'text-strong': {
@@ -82,8 +84,8 @@ var hpe = deepFreeze({
       },
       'active-text': 'text',
       'disabled-text': {
-        dark: '#999999',
-        light: '#777777'
+        dark: '#777777',
+        light: '#999999'
       },
       'selected-background': 'brand',
       'selected-text': '#FFFFFF',
@@ -138,7 +140,7 @@ var hpe = deepFreeze({
     input: {
       font: {
         height: 'inherit',
-        weight: 500
+        weight: 400
       },
       padding: {
         horizontal: 'small',
@@ -158,11 +160,26 @@ var hpe = deepFreeze({
       border: {
         radius: '4px'
       },
+      extend: function extend(_ref) {
+        var theme = _ref.theme;
+        return "\n        margin-top: " + theme.global.edgeSize.xxsmall + ";\n      ";
+      },
       shadowSize: 'medium'
     },
     elevation: {
+      // Elevation values were derived from this Figma file.
+      // https://www.figma.com/file/eZYR3dtWdb9U90QvJ7p3T9/HPE-Color-Styles?node-id=405%3A25
+      // Naming in Figma file is strong/default/weak vs. Grommet t-shirt sizing.
+      // As defined here, default is currently mapping to medium.
+      light: {
+        small: '0px 2px 4px #0000001F;',
+        medium: '0px 6px 12px #0000003D;',
+        large: '0px 12px 24px #0000001F;'
+      },
       dark: {
-        medium: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
+        small: '0px 2px 4px #0000003D;',
+        medium: '0px 6px 12px #0000005C;',
+        large: '0px 12px 24px #0000007A;'
       }
     },
     hover: {
@@ -223,6 +240,7 @@ var hpe = deepFreeze({
     border: {
       radius: '4px'
     },
+    color: 'text-strong',
     padding: {
       vertical: '4px',
       horizontal: '10px'
@@ -296,10 +314,7 @@ var hpe = deepFreeze({
     },
     label: {
       size: 'xsmall',
-      color: {
-        dark: 'text',
-        light: 'text-weak'
-      },
+      color: 'text',
       margin: {
         horizontal: 'none'
       }
@@ -495,12 +510,9 @@ var hpe = deepFreeze({
   },
   select: {
     icons: {
-      color: 'text'
-    },
-    options: {
-      text: {
-        size: 'small'
-      }
+      color: 'text',
+      down: _grommetIcons.FormDown,
+      up: _grommetIcons.FormUp
     }
   },
   tab: {
