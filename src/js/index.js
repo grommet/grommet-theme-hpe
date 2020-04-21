@@ -15,15 +15,15 @@ export const hpe = deepFreeze({
   defaultMode: 'light',
   global: {
     colors: {
-      /* deprecated colors */
-      // 'accent-1': undefined,
-      // 'accent-2': undefined,
-      // 'accent-3': undefined,
-      // 'accent-4': undefined,
-      // 'neutral-1': undefined,
-      // 'neutral-2': undefined,
-      // 'neutral-3': undefined,
-      // 'neutral-4': undefined,
+      /* deprecated accent and neutral colors */
+      'accent-1': undefined,
+      'accent-2': undefined,
+      'accent-3': undefined,
+      'accent-4': undefined,
+      'neutral-1': undefined,
+      'neutral-2': undefined,
+      'neutral-3': undefined,
+      'neutral-4': undefined,
       brand: 'green!',
       background: {
         dark: '#1A1F2B',
@@ -44,32 +44,32 @@ export const hpe = deepFreeze({
       icon: 'text',
       text: {
         dark: '#FFFFFF',
-        light: '#333333',
+        light: '#444444',
       },
       'text-strong': {
         dark: '#FFFFFF',
         light: '#000000',
       },
       'text-weak': {
-        dark: '#CCCCCC',
-        light: '#444444',
-      },
-      'text-xweak': {
-        dark: '#999999',
+        dark: '#AAAAAA',
         light: '#666666',
       },
       border: {
-        light: '#CCCCCC',
-        dark: '#444444',
+        dark: '#DDDDDD',
+        light: '#666666',
       },
       control: 'brand',
       'active-background': {
         dark: '#FFFFFF1F',
         light: '#CCCCCC99',
       },
-      'active-text': 'text-strong',
+      'active-text': 'text',
+      'disabled-text': {
+        dark: '#999999',
+        light: '#777777',
+      },
       'selected-background': 'brand',
-      'selected-text': 'text-strong',
+      'selected-text': '#FFFFFF',
       'status-critical': '#FF4040',
       'status-warning': '#FFAA15',
       'status-ok': '#00C781',
@@ -116,12 +116,16 @@ export const hpe = deepFreeze({
       'graph-3': 'yellow!',
       'graph-4': 'teal!',
       focus: 'teal!',
-      placeholder: 'text-weak',
+      placeholder: 'disabled-text',
     },
     input: {
       font: {
         height: 'inherit',
         weight: 500,
+      },
+      padding: {
+        horizontal: 'small',
+        vertical: 'xsmall',
       },
     },
     font: {
@@ -154,7 +158,7 @@ export const hpe = deepFreeze({
     drop: {
       background: 'background-front',
       border: {
-        radius: '8px',
+        radius: '4px',
       },
       shadowSize: 'medium',
     },
@@ -182,10 +186,10 @@ export const hpe = deepFreeze({
   },
   anchor: {
     color: 'text',
-    fontWeight: 700,
-    textDecoration: 'none',
+    textDecoration: 'underline',
+    fontWeight: 500,
     hover: {
-      textDecoration: 'none',
+      textDecoration: 'underline',
     },
   },
   button: {
@@ -247,30 +251,36 @@ export const hpe = deepFreeze({
     },
   },
   checkBox: {
-    gap: 'medium',
-    color: 'text-strong',
-    toggle: {
-      color: {
-        dark: 'background-front',
-        light: 'background',
-      },
-      background: 'background-back',
+    color: 'selected-text',
+    gap: 'small',
+    check: {
+      radius: '2px',
+    },
+    border: {
+      width: '1px',
     },
   },
   formField: {
     border: {
+      error: {
+        color: 'border',
+      },
+      color: 'border',
       side: 'all',
     },
     error: {
+      background: {
+        color: { light: '#FF404033', dark: '#FF40404D' },
+      },
       size: 'xsmall',
-      color: 'text-xweak',
+      color: 'text-weak',
       margin: {
         start: 'none',
       },
     },
     help: {
       size: 'xsmall',
-      color: 'text-xweak',
+      color: 'text-weak',
       margin: {
         start: 'none',
         bottom: 'xsmall',
@@ -278,14 +288,17 @@ export const hpe = deepFreeze({
     },
     info: {
       size: 'xsmall',
-      color: 'text-xweak',
+      color: 'text-weak',
       margin: {
         start: 'none',
       },
     },
     label: {
       size: 'xsmall',
-      color: 'text-weak',
+      color: {
+        dark: 'text',
+        light: 'text-weak',
+      },
       margin: {
         horizontal: 'none',
       },

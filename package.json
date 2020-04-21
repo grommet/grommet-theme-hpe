@@ -55,7 +55,8 @@
     "lint": "eslint src",
     "lint-fix": "eslint src --fix",
     "prettier": "pretty-quick --staged",
-    "release-stable": "babel-node ./tools/release-stable"
+    "release-stable": "babel-node ./tools/release-stable",
+    "release-next-stable": "babel-node ./tools/release-next-stable"
   },
   "pre-commit": [
     "lint-fix",
