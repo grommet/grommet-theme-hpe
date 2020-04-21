@@ -241,17 +241,13 @@ export const hpe = deepFreeze({
     border: {
       radius: '4px',
     },
+    color: 'text-strong',
     padding: {
       vertical: '4px',
       horizontal: '10px',
     },
     extend: css`
       ${props => !props.plain && 'font-weight: bold;'}
-      ${({ primary, theme }) =>
-        primary &&
-        `color: ${
-          theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
-        };`}
     `,
   },
   calendar: {
