@@ -300,7 +300,7 @@ export const hpe = deepFreeze({
     },
     error: {
       background: {
-        color: { light: '#FC6161', dark: '#C54E4B' },
+        color: { light: '#FC61613D', dark: '#C54E4B5C' },
       },
       size: 'xsmall',
       color: 'text-weak',
