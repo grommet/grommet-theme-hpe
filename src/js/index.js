@@ -122,7 +122,7 @@ export const hpe = deepFreeze({
       'orange!': '#FF8300',
       yellow: {
         dark: '#8D741C',
-        light: '#FFD63E',
+        light: '#FFEB59',
       },
       'yellow!': '#FEC901',
       'graph-0': 'orange!',
