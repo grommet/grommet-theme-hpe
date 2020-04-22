@@ -537,12 +537,12 @@ export const hpe = deepFreeze({
     },
     border: {
       side: 'bottom',
-      color: 'background-back',
+      color: 'border',
       active: {
-        color: 'border',
+        color: 'border-strong',
       },
       hover: {
-        color: 'background-back',
+        color: 'border',
       },
     },
     pad: 'small',
