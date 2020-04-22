@@ -287,14 +287,14 @@ export var hpe = deepFreeze({
         }
       },
       size: 'xsmall',
-      color: 'text-weak',
+      color: 'text',
       margin: {
         start: 'none'
       }
     },
     help: {
       size: 'xsmall',
-      color: 'text-weak',
+      color: 'text',
       margin: {
         start: 'none',
         bottom: 'xsmall'
@@ -302,7 +302,7 @@ export var hpe = deepFreeze({
     },
     info: {
       size: 'xsmall',
-      color: 'text-weak',
+      color: 'text',
       margin: {
         start: 'none'
       }
@@ -312,7 +312,8 @@ export var hpe = deepFreeze({
       color: 'text',
       margin: {
         horizontal: 'none'
-      }
+      },
+      weight: 600
     },
     round: '4px'
   },
