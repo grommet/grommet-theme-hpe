@@ -248,6 +248,14 @@ export const hpe = deepFreeze({
     },
   },
   checkBox: {
+    hover: {
+      border: {
+        color: undefined,
+      },
+      background: {
+        color: 'background-contrast',
+      },
+    },
     border: {
       color: 'border',
       width: '1px',
@@ -255,9 +263,12 @@ export const hpe = deepFreeze({
     check: {
       radius: '2px',
       extend: ({ theme, checked, indeterminate }) => `
+      background-color: ${
+        checked || indeterminate
+          ? theme.global.colors['green!']
+          : theme.global.colors.background[theme.dark ? 'dark' : 'light']
+      };
       ${(checked || indeterminate) && 'border: none;'}
-        ${(checked || indeterminate) &&
-          `background-color: ${theme.global.colors['green!']};`}
         `,
     },
     icon: {
@@ -280,8 +291,15 @@ export const hpe = deepFreeze({
       ${checked && `background-color: ${theme.global.colors['green!']};`}
     `,
     },
+    extend: `
+    width: 100%;
+    padding: 12px;
+`,
   },
   formField: {
+    content: {
+      pad: undefined,
+    },
     border: {
       error: {
         color: 'border',
