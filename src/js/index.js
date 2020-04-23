@@ -294,9 +294,9 @@ export const hpe = deepFreeze({
       `,
     },
     extend: `
-    width: 100%;
-    padding: 12px;
-`,
+      width: 100%;
+      padding: 12px;
+    `,
   },
   formField: {
     content: {
