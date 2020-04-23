@@ -272,8 +272,7 @@ export const hpe = deepFreeze({
         `,
     },
     icon: {
-      size: '18px',
-      extend: 'stroke: white;',
+      extend: 'stroke-width: 2px;',
     },
     gap: 'small',
     toggle: {
