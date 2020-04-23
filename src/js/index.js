@@ -292,9 +292,9 @@ export const hpe = deepFreeze({
         ${checked && `background-color: ${theme.global.colors['green!']};`}
       `,
     },
-    extend: `
+    extend: ({ theme }) => `
       width: 100%;
-      padding: 12px;
+      padding: ${theme.global.edgeSize.small};
     `,
   },
   formField: {
