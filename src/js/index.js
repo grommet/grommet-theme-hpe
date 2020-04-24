@@ -303,10 +303,10 @@ export const hpe = deepFreeze({
         color: undefined,
       },
       border: {
-        color: 'text-weak',
+        color: 'border-weak',
       },
       label: {
-        color: 'border-weak',
+        color: 'text-weak',
       },
     },
     error: {
