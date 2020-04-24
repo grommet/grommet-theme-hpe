@@ -298,6 +298,17 @@ export const hpe = deepFreeze({
       color: 'border',
       side: 'all',
     },
+    disabled: {
+      background: {
+        color: undefined,
+      },
+      border: {
+        color: 'text-weak',
+      },
+      label: {
+        color: 'border-weak',
+      },
+    },
     error: {
       background: {
         color: { light: '#FC61613D', dark: '#C54E4B5C' },
@@ -549,8 +560,10 @@ export const hpe = deepFreeze({
     pad: 'small',
     margin: 'none',
     extend: ({ theme }) => css`
-      border-top-left-radius: ${theme.global.control.border.radius}; // should use radius property of border
-      border-top-right-radius: ${theme.global.control.border.radius}; // should use radius property of border
+      border-top-left-radius: ${theme.global.control.border
+        .radius}; // should use radius property of border
+      border-top-right-radius: ${theme.global.control.border
+        .radius}; // should use radius property of border
       font-weight: bold;
     `,
   },
