@@ -303,6 +303,17 @@ export var hpe = deepFreeze({
       color: 'border',
       side: 'all'
     },
+    disabled: {
+      background: {
+        color: undefined
+      },
+      border: {
+        color: 'border-weak'
+      },
+      label: {
+        color: 'text-weak'
+      }
+    },
     error: {
       background: {
         color: {
