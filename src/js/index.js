@@ -280,20 +280,29 @@ export const hpe = deepFreeze({
       color: 'background',
       knob: {
         extend: ({ theme }) => `
-           box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+           box-shadow: ${
+              theme.global.elevation[theme.dark ? 'dark' : 'light'].small
+            };
            border: 1px solid ${
              theme.global.colors.border[theme.dark ? 'dark' : 'light']
            }
         `,
       },
       extend: ({ checked, theme }) => `
-      ${checked && `background-color: ${theme.global.colors['green!']};`}
-    `,
+        ${checked && `background-color: ${theme.global.colors['green!']};`}
+      `,
     },
-    extend: `
-    width: 100%;
-    padding: 12px;
-`,
+    extend: ({ theme }) => `
+      :hover {
+        background-color: ${
+          theme.global.colors['background-contrast'][
+            theme.dark ? 'dark' : 'light'
+          ]
+        };
+      }
+      width: 100%;
+      padding: ${theme.global.edgeSize.small};
+    `,
   },
   formField: {
     content: {
