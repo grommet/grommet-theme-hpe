@@ -293,6 +293,13 @@ export const hpe = deepFreeze({
       `,
     },
     extend: ({ theme }) => `
+      :hover {
+        background-color: ${
+          theme.global.colors['background-contrast'][
+            theme.dark ? 'dark' : 'light'
+          ]
+        };
+      }
       width: 100%;
       padding: ${theme.global.edgeSize.small};
     `,
