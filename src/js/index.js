@@ -256,6 +256,7 @@ export const hpe = deepFreeze({
         color: 'background-contrast',
       },
     },
+    color: 'background',
     border: {
       color: 'border',
       width: '1px',
@@ -265,14 +266,15 @@ export const hpe = deepFreeze({
       extend: ({ theme, checked, indeterminate }) => `
       background-color: ${
         checked || indeterminate
-          ? theme.global.colors['green!']
+          ? theme.global.colors.green[theme.dark ? 'dark' : 'light']
           : theme.global.colors.background[theme.dark ? 'dark' : 'light']
       };
       ${(checked || indeterminate) && 'border: none;'}
         `,
     },
     icon: {
-      extend: 'stroke-width: 2px;',
+      extend: `stroke-width: 2px;
+      stroke: white;`,
     },
     gap: 'small',
     toggle: {
@@ -281,15 +283,18 @@ export const hpe = deepFreeze({
       knob: {
         extend: ({ theme }) => `
            box-shadow: ${
-              theme.global.elevation[theme.dark ? 'dark' : 'light'].small
-            };
+             theme.global.elevation[theme.dark ? 'dark' : 'light'].small
+           };
            border: 1px solid ${
              theme.global.colors.border[theme.dark ? 'dark' : 'light']
            }
         `,
       },
       extend: ({ checked, theme }) => `
-        ${checked && `background-color: ${theme.global.colors['green!']};`}
+        ${checked &&
+          `background-color: ${
+            theme.global.colors.green[theme.dark ? 'dark' : 'light']
+          };`}
       `,
     },
     extend: ({ theme }) => `
