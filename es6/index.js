@@ -283,16 +283,56 @@ export var hpe = deepFreeze({
     }
   },
   checkBox: {
-    color: 'selected-text',
-    gap: 'small',
-    check: {
-      radius: '2px'
+    hover: {
+      border: {
+        color: undefined
+      },
+      background: {
+        color: 'background-contrast'
+      }
     },
+    color: 'background',
     border: {
+      color: 'border',
       width: '1px'
+    },
+    check: {
+      radius: '2px',
+      extend: function extend(_ref2) {
+        var theme = _ref2.theme,
+            checked = _ref2.checked,
+            indeterminate = _ref2.indeterminate;
+        return "\n      background-color: " + (checked || indeterminate ? theme.global.colors.green[theme.dark ? 'dark' : 'light'] : theme.global.colors.background[theme.dark ? 'dark' : 'light']) + ";\n      " + ((checked || indeterminate) && 'border: none;') + "\n        ";
+      }
+    },
+    icon: {
+      extend: "stroke-width: 2px;\n      stroke: white;"
+    },
+    gap: 'small',
+    toggle: {
+      background: 'background',
+      color: 'background',
+      knob: {
+        extend: function extend(_ref3) {
+          var theme = _ref3.theme;
+          return "\n           box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'].small + ";\n           border: 1px solid " + theme.global.colors.border[theme.dark ? 'dark' : 'light'] + "\n        ";
+        }
+      },
+      extend: function extend(_ref4) {
+        var checked = _ref4.checked,
+            theme = _ref4.theme;
+        return "\n        " + (checked && "background-color: " + theme.global.colors.green[theme.dark ? 'dark' : 'light'] + ";") + "\n      ";
+      }
+    },
+    extend: function extend(_ref5) {
+      var theme = _ref5.theme;
+      return "\n      :hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      width: 100%;\n      padding: " + theme.global.edgeSize.small + ";\n    ";
     }
   },
   formField: {
+    content: {
+      pad: undefined
+    },
     border: {
       error: {
         color: 'border'
@@ -573,8 +613,8 @@ export var hpe = deepFreeze({
     },
     pad: 'small',
     margin: 'none',
-    extend: function extend(_ref2) {
-      var theme = _ref2.theme;
+    extend: function extend(_ref6) {
+      var theme = _ref6.theme;
       return css(_templateObject2(), theme.global.control.border.radius, theme.global.control.border.radius);
     }
   },
