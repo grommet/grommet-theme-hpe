@@ -278,16 +278,71 @@ export const hpe = deepFreeze({
     },
   },
   checkBox: {
-    color: 'selected-text',
-    gap: 'small',
-    check: {
-      radius: '2px',
+    hover: {
+      border: {
+        color: undefined,
+      },
+      background: {
+        color: 'background-contrast',
+      },
     },
+    color: 'background',
     border: {
+      color: 'border',
       width: '1px',
     },
+    check: {
+      radius: '2px',
+      extend: ({ theme, checked, indeterminate }) => `
+      background-color: ${
+        checked || indeterminate
+          ? theme.global.colors.green[theme.dark ? 'dark' : 'light']
+          : theme.global.colors.background[theme.dark ? 'dark' : 'light']
+      };
+      ${(checked || indeterminate) && 'border: none;'}
+        `,
+    },
+    icon: {
+      extend: `stroke-width: 2px;
+      stroke: white;`,
+    },
+    gap: 'small',
+    toggle: {
+      background: 'background',
+      color: 'background',
+      knob: {
+        extend: ({ theme }) => `
+           box-shadow: ${
+             theme.global.elevation[theme.dark ? 'dark' : 'light'].small
+           };
+           border: 1px solid ${
+             theme.global.colors.border[theme.dark ? 'dark' : 'light']
+           }
+        `,
+      },
+      extend: ({ checked, theme }) => `
+        ${checked &&
+          `background-color: ${
+            theme.global.colors.green[theme.dark ? 'dark' : 'light']
+          };`}
+      `,
+    },
+    extend: ({ theme }) => `
+      :hover {
+        background-color: ${
+          theme.global.colors['background-contrast'][
+            theme.dark ? 'dark' : 'light'
+          ]
+        };
+      }
+      width: 100%;
+      padding: ${theme.global.edgeSize.small};
+    `,
   },
   formField: {
+    content: {
+      pad: undefined,
+    },
     border: {
       error: {
         color: 'border',
