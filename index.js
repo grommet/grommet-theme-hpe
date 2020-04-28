@@ -96,16 +96,13 @@ var hpe = deepFreeze({
         light: '#BBBBBB'
       },
       control: 'brand',
-      'active-background': {
-        dark: '#FFFFFF1F',
-        light: '#CCCCCC99'
-      },
+      'active-background': 'background-contrast',
       'active-text': 'text',
       'disabled-text': {
         dark: '#777777',
         light: '#999999'
       },
-      'selected-background': 'brand',
+      'selected-background': 'green',
       'selected-text': 'text-strong',
       'status-critical': {
         dark: 'red!',
@@ -549,6 +546,15 @@ var hpe = deepFreeze({
       color: 'text',
       down: _grommetIcons.FormDown,
       up: _grommetIcons.FormUp
+    },
+    options: {
+      pad: {
+        horizontal: 'small',
+        vertical: 'xsmall'
+      },
+      text: {
+        size: 'small'
+      }
     }
   },
   tab: {
