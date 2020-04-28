@@ -303,8 +303,7 @@ export const hpe = deepFreeze({
         `,
     },
     icon: {
-      extend: `stroke-width: 2px;
-      stroke: white;`,
+      extend: `stroke-width: 2px;`,
     },
     gap: 'small',
     toggle: {
@@ -336,7 +335,7 @@ export const hpe = deepFreeze({
         };
       }
       width: 100%;
-      padding: ${theme.global.edgeSize.small};
+      padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
     `,
   },
   formField: {
