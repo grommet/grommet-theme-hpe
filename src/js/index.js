@@ -531,14 +531,14 @@ export const hpe = deepFreeze({
   select: {
     icons: {
       color: 'text',
+      down: FormDown,
+      up: FormUp,
     },
     options: {
       pad: { horizontal: 'small', vertical: 'xsmall' },
       text: {
         size: 'small',
       },
-      down: FormDown,
-      up: FormUp,
     },
   },
   tab: {
