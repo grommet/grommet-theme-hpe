@@ -297,6 +297,8 @@ export const hpe = deepFreeze({
     check: {
       radius: '2px',
       extend: ({ theme, checked, indeterminate }) => `
+      box-shadow: none;
+      border-color: unset;
       background-color: ${
         checked || indeterminate
           ? theme.global.colors.green[theme.dark ? 'dark' : 'light']
@@ -306,7 +308,10 @@ export const hpe = deepFreeze({
         `,
     },
     icon: {
-      extend: `stroke-width: 2px;`,
+      extend: ({ theme }) => `stroke-width: 2px;
+      stroke: ${
+        theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
+      }`,
     },
     gap: 'small',
     toggle: {
