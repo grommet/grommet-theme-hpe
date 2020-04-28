@@ -163,6 +163,9 @@ export const hpe = deepFreeze({
           font-weight: 100;
         }`,
     },
+    focus: {
+      border: undefined,
+    },
     active: {
       background: 'active-background',
       color: 'active-text',
