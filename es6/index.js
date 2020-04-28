@@ -306,7 +306,7 @@ export var hpe = deepFreeze({
       }
     },
     icon: {
-      extend: "stroke-width: 2px;\n      stroke: white;"
+      extend: "stroke-width: 2px;"
     },
     gap: 'small',
     toggle: {
@@ -326,7 +326,7 @@ export var hpe = deepFreeze({
     },
     extend: function extend(_ref5) {
       var theme = _ref5.theme;
-      return "\n      :hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      width: 100%;\n      padding: " + theme.global.edgeSize.small + ";\n    ";
+      return "\n      :hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      width: 100%;\n      padding: " + theme.global.edgeSize.xsmall + " " + theme.global.edgeSize.small + ";\n    ";
     }
   },
   formField: {
