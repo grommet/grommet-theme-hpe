@@ -592,7 +592,9 @@ export const hpe = deepFreeze({
       up: FormUp,
     },
     options: {
-      pad: { horizontal: 'small', vertical: 'xsmall' },
+      container: {
+        pad: { horizontal: 'small', vertical: 'xsmall' },
+      },
       text: {
         size: 'small',
       },
