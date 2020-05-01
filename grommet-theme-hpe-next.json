@@ -155,6 +155,13 @@
     }
   },
   "accordion": {
+    "heading": {
+      "margin": {
+        "vertical": "medium",
+        "horizontal": "xsmall"
+      }
+    },
+    "hover": {},
     "border": {
       "color": "text"
     },
@@ -246,9 +253,7 @@
     "check": {
       "radius": "2px"
     },
-    "icon": {
-      "extend": "stroke-width: 2px;"
-    },
+    "icon": {},
     "gap": "small",
     "toggle": {
       "background": "background",
@@ -457,6 +462,11 @@
   "layer": {
     "background": "background"
   },
+  "menu": {
+    "icons": {
+      "color": "text-strong"
+    }
+  },
   "paragraph": {
     "small": {
       "size": "16px",
@@ -516,7 +526,7 @@
     }
   },
   "tab": {
-    "color": "text",
+    "color": "text-strong",
     "active": {
       "background": "background-contrast"
     },
