@@ -542,6 +542,11 @@ var hpe = deepFreeze({
   layer: {
     background: 'background'
   },
+  menu: {
+    icons: {
+      color: 'text-strong'
+    }
+  },
   paragraph: {
     small: {
       size: '16px',
