@@ -617,7 +617,7 @@ export const hpe = deepFreeze({
     },
   },
   tab: {
-    color: 'text',
+    color: 'text-strong',
     active: {
       background: 'background-contrast',
     },
