@@ -207,7 +207,7 @@ export const hpe = deepFreeze({
   },
   accordion: {
     heading: {
-      margin: { vertical: '24px', left: '6px', right: '6px', },
+      margin: { vertical: 'medium', horizontal: 'xsmall' },
     },
     hover: {
       color: undefined,
