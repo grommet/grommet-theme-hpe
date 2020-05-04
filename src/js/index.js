@@ -553,6 +553,9 @@ export const hpe = deepFreeze({
   },
   layer: {
     background: 'background',
+    overlay: {
+      background: '#00000080',
+    },
   },
   menu: {
     icons: {
