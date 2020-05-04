@@ -547,7 +547,10 @@ export var hpe = deepFreeze({
     }
   },
   layer: {
-    background: 'background'
+    background: 'background',
+    overlay: {
+      background: '#00000080'
+    }
   },
   menu: {
     icons: {
