@@ -151,7 +151,7 @@ export var hpe = deepFreeze({
       'graph-3': 'yellow!',
       'graph-4': 'teal!',
       focus: 'teal!',
-      placeholder: 'disabled-text'
+      placeholder: 'text-weak'
     },
     input: {
       font: {
