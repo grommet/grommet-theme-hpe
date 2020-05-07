@@ -58,7 +58,7 @@ export const hpe = deepFreeze({
         dark: '#DDDDDD',
         light: '#666666',
       },
-      control: 'brand',
+      control: 'green',
       'active-background': {
         dark: '#FFFFFF1F',
         light: '#CCCCCC99',
@@ -190,6 +190,86 @@ export const hpe = deepFreeze({
     },
   },
   button: {
+    default: {
+      color: 'text',
+      border: undefined,
+      padding: {
+        horizontal: '12px',
+        vertical: '6px',
+      },
+    },
+    primary: {
+      background: {
+        color: 'green',
+      },
+      border: undefined,
+      color: 'text-strong',
+      padding: {
+        horizontal: '12px',
+        vertical: '6px',
+      },
+    },
+    secondary: {
+      border: {
+        color: 'green',
+        width: '2px',
+      },
+      color: 'text',
+      padding: {
+        horizontal: '10px',
+        vertical: '4px',
+      },
+    },
+    active: {
+      background: {
+        color: 'background-contrast',
+      },
+      color: 'text',
+      secondary: {
+        border: {
+          color: 'transparent',
+        },
+      },
+    },
+    disabled: {
+      background: {
+        color: 'transparent',
+      },
+      color: 'text-weak',
+      primary: {
+        border: {
+          color: 'text-weak',
+          width: '2px',
+        },
+        padding: {
+          horizontal: '10px',
+          vertical: '4px',
+        },
+      },
+      secondary: {
+        border: {
+          color: 'text-weak',
+        },
+      },
+      opacity: 1.0,
+    },
+    hover: {
+      default: {
+        background: {
+          color: 'background-contrast',
+        },
+        color: undefined,
+      },
+      secondary: {
+        border: {
+          width: '3px',
+        },
+        padding: {
+          horizontal: '9px',
+          vertical: '3px',
+        },
+      },
+    },
     size: {
       small: {
         border: {
