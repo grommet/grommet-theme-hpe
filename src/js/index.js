@@ -1,5 +1,6 @@
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import { css } from 'styled-components';
+import { FormDown, FormUp } from 'grommet-icons';
 
 const isObject = item =>
   item && typeof item === 'object' && !Array.isArray(item);
@@ -15,35 +16,35 @@ export const hpe = deepFreeze({
   defaultMode: 'light',
   global: {
     colors: {
-      /* deprecated colors */
-      // 'accent-1': undefined,
-      // 'accent-2': undefined,
-      // 'accent-3': undefined,
-      // 'accent-4': undefined,
-      // 'neutral-1': undefined,
-      // 'neutral-2': undefined,
-      // 'neutral-3': undefined,
-      // 'neutral-4': undefined,
+      /* deprecated accent and neutral colors */
+      'accent-1': undefined,
+      'accent-2': undefined,
+      'accent-3': undefined,
+      'accent-4': undefined,
+      'neutral-1': undefined,
+      'neutral-2': undefined,
+      'neutral-3': undefined,
+      'neutral-4': undefined,
       brand: 'green!',
       background: {
-        dark: '#1A1F2B',
+        dark: '#263040',
         light: '#FFFFFF',
       },
       'background-back': {
-        dark: '#1A1F2B',
+        dark: '#263040',
         light: '#EFEFEF',
       },
       'background-front': {
-        dark: '#354050',
+        dark: '#404B5C',
         light: '#FFFFFF',
       },
       'background-contrast': {
-        dark: '#FFFFFF1F',
-        light: '#CCCCCC99',
+        dark: '#FFFFFF14',
+        light: '#0000000A',
       },
       icon: 'text',
       text: {
-        dark: '#FFFFFF',
+        dark: '#C0CADC',
         light: '#444444',
       },
       'text-strong': {
@@ -51,62 +52,73 @@ export const hpe = deepFreeze({
         light: '#000000',
       },
       'text-weak': {
-        dark: '#AAAAAA',
-        light: '#666666',
+        dark: '#606B7D',
+        light: '#BBBBBB',
       },
       border: {
-        dark: '#DDDDDD',
+        dark: '#7887A1',
+        light: '#999999',
+      },
+      'border-strong': {
+        dark: '#AFBCD2',
         light: '#666666',
       },
-      control: 'green',
-      'active-background': {
-        dark: '#FFFFFF1F',
-        light: '#CCCCCC99',
+      'border-weak': {
+        dark: '#606B7D',
+        light: '#BBBBBB',
       },
+      control: 'green',
+      'active-background': 'background-contrast',
       'active-text': 'text',
       'disabled-text': {
-        dark: '#999999',
-        light: '#777777',
+        dark: '#777777',
+        light: '#999999',
       },
-      'selected-background': 'brand',
-      'selected-text': '#FFFFFF',
-      'status-critical': '#FF4040',
-      'status-warning': '#FFAA15',
-      'status-ok': '#00C781',
-      'status-unknown': '#CCCCCC',
+      'selected-background': 'green',
+      'selected-text': 'text-strong',
+      'status-critical': {
+        dark: 'red!',
+        light: 'red',
+      },
+      'status-warning': 'orange',
+      'status-ok': 'green',
+      'status-unknown': {
+        dark: '#4F5F76',
+        light: '#CCCCCC',
+      },
       'status-disabled': '#CCCCCC',
       blue: {
-        dark: '#0E5265',
+        dark: '#00567A',
         light: '#00C8FF',
       },
       'blue!': '#00739D',
       green: {
-        dark: '#007A5E',
-        light: '#6FFFB0',
+        dark: '#008567',
+        light: '#17EBA0',
       },
       'green!': '#01A982',
       teal: {
-        dark: '#007366',
+        dark: '#117B82',
         light: '#82FFF2',
       },
       'teal!': '#00E8CF',
       purple: {
-        dark: '#371177',
+        dark: '#6633BC',
         light: '#F740FF',
       },
       'purple!': '#7630EA',
       red: {
-        dark: '#4B1916',
-        light: '#FF4F4F',
+        dark: '#A2423D',
+        light: '#FC6161',
       },
-      'red!': '#FF0000',
+      'red!': '#C54E4B',
       orange: {
-        dark: '#CC4B00',
-        light: '#FFB024',
+        dark: '#9B6310',
+        light: '#FFBC44',
       },
       'orange!': '#FF8300',
       yellow: {
-        dark: '#D78F00',
+        dark: '#8D741C',
         light: '#FFEB59',
       },
       'yellow!': '#FEC901',
@@ -116,14 +128,17 @@ export const hpe = deepFreeze({
       'graph-3': 'yellow!',
       'graph-4': 'teal!',
       focus: 'teal!',
-      placeholder: 'disabled-text',
+      placeholder: 'text-weak',
     },
     input: {
+      font: {
+        height: 'inherit',
+        weight: 400,
+      },
       padding: {
         horizontal: 'small',
         vertical: 'xsmall',
       },
-      weight: 500,
     },
     font: {
       family: "'Metric', Arial, sans-serif",
@@ -148,6 +163,9 @@ export const hpe = deepFreeze({
           font-weight: 100;
         }`,
     },
+    focus: {
+      border: undefined,
+    },
     active: {
       background: 'active-background',
       color: 'active-text',
@@ -157,11 +175,25 @@ export const hpe = deepFreeze({
       border: {
         radius: '4px',
       },
+      extend: ({ theme }) => `
+        margin-top: ${theme.global.edgeSize.xxsmall};
+      `,
       shadowSize: 'medium',
     },
     elevation: {
+      // Elevation values were derived from this Figma file.
+      // https://www.figma.com/file/eZYR3dtWdb9U90QvJ7p3T9/HPE-Color-Styles?node-id=405%3A25
+      // Naming in Figma file is strong/default/weak vs. Grommet t-shirt sizing.
+      // As defined here, default is currently mapping to medium.
+      light: {
+        small: '0px 2px 4px #0000001F;',
+        medium: '0px 6px 12px #0000003D;',
+        large: '0px 12px 24px #0000001F;',
+      },
       dark: {
-        medium: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
+        small: '0px 2px 4px #0000003D;',
+        medium: '0px 6px 12px #0000005C;',
+        large: '0px 12px 24px #0000007A;',
       },
     },
     hover: {
@@ -174,6 +206,12 @@ export const hpe = deepFreeze({
     },
   },
   accordion: {
+    heading: {
+      margin: { vertical: 'medium', horizontal: 'xsmall' },
+    },
+    hover: {
+      color: undefined,
+    },
     border: {
       color: 'text',
     },
@@ -302,6 +340,7 @@ export const hpe = deepFreeze({
     border: {
       radius: '4px',
     },
+    color: 'text-strong',
     padding: {
       vertical: '4px',
       horizontal: '10px',
@@ -328,16 +367,75 @@ export const hpe = deepFreeze({
     },
   },
   checkBox: {
-    color: 'selected-text',
-    gap: 'small',
-    check: {
-      radius: '2px',
+    hover: {
+      border: {
+        color: undefined,
+      },
+      background: {
+        color: 'background-contrast',
+      },
     },
+    color: 'background',
     border: {
+      color: 'border',
       width: '1px',
     },
+    check: {
+      radius: '2px',
+      extend: ({ theme, checked, indeterminate }) => `
+      box-shadow: none;
+      border-color: unset;
+      background-color: ${
+        checked || indeterminate
+          ? theme.global.colors.green[theme.dark ? 'dark' : 'light']
+          : theme.global.colors.background[theme.dark ? 'dark' : 'light']
+      };
+      ${(checked || indeterminate) && 'border: none;'}
+        `,
+    },
+    icon: {
+      extend: ({ theme }) => `stroke-width: 2px;
+      stroke: ${
+        theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
+      }`,
+    },
+    gap: 'small',
+    toggle: {
+      background: 'background',
+      color: 'background',
+      knob: {
+        extend: ({ theme }) => `
+           box-shadow: ${
+             theme.global.elevation[theme.dark ? 'dark' : 'light'].small
+           };
+           border: 1px solid ${
+             theme.global.colors.border[theme.dark ? 'dark' : 'light']
+           }
+        `,
+      },
+      extend: ({ checked, theme }) => `
+        ${checked &&
+          `background-color: ${
+            theme.global.colors.green[theme.dark ? 'dark' : 'light']
+          };`}
+      `,
+    },
+    extend: ({ theme }) => `
+      :hover {
+        background-color: ${
+          theme.global.colors['background-contrast'][
+            theme.dark ? 'dark' : 'light'
+          ]
+        };
+      }
+      width: 100%;
+      padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
+    `,
   },
   formField: {
+    content: {
+      pad: undefined,
+    },
     border: {
       error: {
         color: 'border',
@@ -345,19 +443,30 @@ export const hpe = deepFreeze({
       color: 'border',
       side: 'all',
     },
+    disabled: {
+      background: {
+        color: undefined,
+      },
+      border: {
+        color: 'border-weak',
+      },
+      label: {
+        color: 'text-weak',
+      },
+    },
     error: {
       background: {
-        color: { light: '#FF404033', dark: '#FF40404D' },
+        color: { light: '#FC61613D', dark: '#C54E4B5C' },
       },
       size: 'xsmall',
-      color: 'text-weak',
+      color: 'text',
       margin: {
         start: 'none',
       },
     },
     help: {
       size: 'xsmall',
-      color: 'text-weak',
+      color: 'text',
       margin: {
         start: 'none',
         bottom: 'xsmall',
@@ -365,20 +474,18 @@ export const hpe = deepFreeze({
     },
     info: {
       size: 'xsmall',
-      color: 'text-weak',
+      color: 'text',
       margin: {
         start: 'none',
       },
     },
     label: {
       size: 'xsmall',
-      color: {
-        dark: 'text',
-        light: 'text-weak',
-      },
+      color: 'text',
       margin: {
         horizontal: 'none',
       },
+      weight: 600,
     },
     round: '4px',
   },
@@ -526,6 +633,14 @@ export const hpe = deepFreeze({
   },
   layer: {
     background: 'background',
+    overlay: {
+      background: '#00000080',
+    },
+  },
+  menu: {
+    icons: {
+      color: 'text-strong',
+    },
   },
   paragraph: {
     small: {
@@ -572,24 +687,46 @@ export const hpe = deepFreeze({
   select: {
     icons: {
       color: 'text',
+      down: FormDown,
+      up: FormUp,
     },
     options: {
+      container: {
+        pad: { horizontal: 'small', vertical: 'xsmall' },
+      },
       text: {
         size: 'small',
       },
     },
   },
   tab: {
+    color: 'text-strong',
+    active: {
+      background: 'background-contrast',
+    },
+    hover: {
+      background: 'background-contrast',
+      color: 'text',
+    },
     border: {
-      color: 'text-xweak',
+      side: 'bottom',
+      color: 'border',
+      active: {
+        color: 'border-strong',
+      },
+      hover: {
+        color: 'border',
+      },
     },
-    color: 'text-xweak',
-    margin: {
-      horizontal: 'none',
-    },
-    pad: {
-      horizontal: 'small',
-    },
+    pad: 'small',
+    margin: 'none',
+    extend: ({ theme }) => css`
+      border-top-left-radius: ${theme.global.control.border
+        .radius}; // should use radius property of border
+      border-top-right-radius: ${theme.global.control.border
+        .radius}; // should use radius property of border
+      font-weight: bold;
+    `,
   },
   text: {
     xsmall: {

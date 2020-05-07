@@ -19,6 +19,9 @@
     "type": "git",
     "url": "https://github.com/grommet/grommet-theme-hpe.git"
   },
+  "dependencies": {
+    "grommet-icons": "https://github.com/grommet/grommet-icons/tarball/stable"
+  },
   "peerDependencies": {
     "styled-components": "^5.0.0"
   },
@@ -50,8 +53,9 @@
     "webpack-cli": "^3.1.0"
   },
   "scripts": {
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run build && npm run jsonify",
     "build": "webpack --mode production && cross-env babel ./src/js/ --out-dir ./dist --copy-files && cross-env BABEL_ENV=es6 babel ./src/js/ --out-dir ./dist/es6 --copy-files",
+    "jsonify": "babel-node ./tools/convert-to-json > dist/grommet-theme-hpe.json",
     "lint": "eslint src",
     "lint-fix": "eslint src --fix",
     "prettier": "pretty-quick --staged",
