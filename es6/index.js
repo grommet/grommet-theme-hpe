@@ -350,7 +350,7 @@ export var hpe = deepFreeze({
     },
     border: {
       error: {
-        color: 'border'
+        color: 'border-strong'
       },
       color: 'border',
       side: 'all'
@@ -377,6 +377,11 @@ export var hpe = deepFreeze({
       color: 'text',
       margin: {
         start: 'none'
+      }
+    },
+    focus: {
+      border: {
+        color: 'border-strong'
       }
     },
     help: {
