@@ -155,15 +155,20 @@
     }
   },
   "accordion": {
+    "panel": {
+      "border": {
+        "side": "horizontal",
+        "color": "text"
+      }
+    },
     "heading": {
       "margin": {
         "vertical": "medium",
         "horizontal": "xsmall"
       }
     },
-    "hover": {},
-    "border": {
-      "color": "text"
+    "hover": {
+      "heading": {}
     },
     "icons": {
       "color": "text"
