@@ -216,6 +216,12 @@ var hpe = deepFreeze({
     }
   },
   accordion: {
+    panel: {
+      border: {
+        side: 'horizontal',
+        color: 'text'
+      }
+    },
     heading: {
       margin: {
         vertical: 'medium',
@@ -223,11 +229,11 @@ var hpe = deepFreeze({
       }
     },
     hover: {
-      color: undefined
+      heading: {
+        color: undefined
+      }
     },
-    border: {
-      color: 'text'
-    },
+    border: undefined,
     icons: {
       color: 'text'
     }
