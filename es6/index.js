@@ -691,6 +691,9 @@ export var hpe = deepFreeze({
     }
   },
   select: {
+    control: {
+      extend: 'padding: 0px;'
+    },
     icons: {
       color: 'text',
       down: FormDown,
