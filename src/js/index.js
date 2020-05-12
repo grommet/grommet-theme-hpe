@@ -480,7 +480,7 @@ export const hpe = deepFreeze({
       color: 'text',
       margin: {
         start: 'none',
-        bottom: 'xsmall',
+        bottom: '4px',
       },
     },
     info: {
@@ -493,9 +493,7 @@ export const hpe = deepFreeze({
     label: {
       size: 'xsmall',
       color: 'text',
-      margin: {
-        horizontal: 'none',
-      },
+      margin: 'none',
       weight: 600,
     },
     round: '4px',
