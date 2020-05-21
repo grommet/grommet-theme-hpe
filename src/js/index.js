@@ -434,7 +434,7 @@ export const hpe = deepFreeze({
           ]
         };
       }
-      width: 100%;
+      width: auto;
       padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
     `,
   },
