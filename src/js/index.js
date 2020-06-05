@@ -1,6 +1,6 @@
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import { css } from 'styled-components';
-import { FormDown, FormUp } from 'grommet-icons';
+import { Blank, FormDown, FormUp } from 'grommet-icons';
 
 const isObject = item =>
   item && typeof item === 'object' && !Array.isArray(item);
@@ -691,11 +691,46 @@ export const hpe = deepFreeze({
     },
   },
   radioButton: {
-    color: 'text-strong',
-    check: {
-      color: 'text-strong',
+    border: {
+      color: 'border',
+      width: 'xsmall',
     },
-    gap: 'medium',
+    check: {
+      color: 'selected-background',
+      extend: ({ theme }) => `
+        background-color: ${
+          theme.global.colors['background-front'][theme.dark ? 'dark' : 'light']
+        };
+      `,
+    },
+    color: 'selected-background',
+    extend: ({ theme }) => `
+      :not(div):hover {
+        background-color: ${
+          theme.global.colors['background-contrast'][
+            theme.dark ? 'dark' : 'light'
+          ]
+        };
+      }
+      width: auto;
+      padding: ${theme.global.edgeSize.xxsmall} ${theme.global.edgeSize.xsmall};
+    `,
+    gap: 'xsmall',
+    hover: {
+      border: {
+        color: undefined,
+      },
+    },
+    icons: {
+      circle: () => (
+        /* eslint-disable react/react-in-jsx-scope */
+        // eslint-disable-next-line react/jsx-filename-extension
+        <Blank color="selected-background">
+          <circle cx="12" cy="12" r="8" />
+        </Blank>
+        /* eslint-enable react/react-in-jsx-scope */
+      ),
+    },
   },
   rangeInput: {
     track: {
