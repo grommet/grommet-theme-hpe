@@ -1,6 +1,6 @@
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import { css } from 'styled-components';
-import { Blank, FormDown, FormUp } from 'grommet-icons';
+import { FormDown, FormUp } from 'grommet-icons';
 
 const isObject = item =>
   item && typeof item === 'object' && !Array.isArray(item);
@@ -720,16 +720,6 @@ export const hpe = deepFreeze({
       border: {
         color: undefined,
       },
-    },
-    icons: {
-      circle: () => (
-        /* eslint-disable react/react-in-jsx-scope */
-        // eslint-disable-next-line react/jsx-filename-extension
-        <Blank color="selected-background">
-          <circle cx="12" cy="12" r="8" />
-        </Blank>
-        /* eslint-enable react/react-in-jsx-scope */
-      ),
     },
   },
   rangeInput: {
