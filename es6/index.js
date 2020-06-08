@@ -678,11 +678,28 @@ export var hpe = deepFreeze({
     }
   },
   radioButton: {
-    color: 'text-strong',
-    check: {
-      color: 'text-strong'
+    border: {
+      color: 'border',
+      width: 'xsmall'
     },
-    gap: 'medium'
+    check: {
+      color: 'selected-background',
+      extend: function extend(_ref7) {
+        var theme = _ref7.theme;
+        return "\n        background-color: " + theme.global.colors['background-front'][theme.dark ? 'dark' : 'light'] + ";\n      ";
+      }
+    },
+    color: 'selected-background',
+    extend: function extend(_ref8) {
+      var theme = _ref8.theme;
+      return "\n      :not(div):hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
+    },
+    gap: 'xsmall',
+    hover: {
+      border: {
+        color: undefined
+      }
+    }
   },
   rangeInput: {
     track: {
@@ -734,8 +751,8 @@ export var hpe = deepFreeze({
     },
     pad: 'small',
     margin: 'none',
-    extend: function extend(_ref7) {
-      var theme = _ref7.theme;
+    extend: function extend(_ref9) {
+      var theme = _ref9.theme;
       return css(_templateObject2(), theme.global.control.border.radius, theme.global.control.border.radius);
     }
   },
