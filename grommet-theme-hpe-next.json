@@ -344,7 +344,11 @@
     }
   },
   "formField": {
-    "content": {},
+    "content": {
+      "pad": {
+        "vertical": "xsmall"
+      }
+    },
     "border": {
       "error": {
         "color": "border-strong"
@@ -585,11 +589,18 @@
     }
   },
   "radioButton": {
-    "color": "text-strong",
-    "check": {
-      "color": "text-strong"
+    "border": {
+      "color": "border",
+      "width": "xsmall"
     },
-    "gap": "medium"
+    "check": {
+      "color": "selected-background"
+    },
+    "color": "selected-background",
+    "gap": "xsmall",
+    "hover": {
+      "border": {}
+    }
   },
   "rangeInput": {
     "track": {
@@ -638,7 +649,19 @@
       }
     },
     "pad": "small",
-    "margin": "none"
+    "margin": {
+      "vertical": "-2px",
+      "horizontal": "none"
+    }
+  },
+  "tabs": {
+    "header": {
+      "border": {
+        "side": "bottom",
+        "size": "small",
+        "color": "border"
+      }
+    }
   },
   "text": {
     "xsmall": {
