@@ -750,10 +750,23 @@ export var hpe = deepFreeze({
       }
     },
     pad: 'small',
-    margin: 'none',
+    margin: {
+      // bring the overall tabs border behind invidual tab borders
+      vertical: '-2px',
+      horizontal: 'none'
+    },
     extend: function extend(_ref9) {
       var theme = _ref9.theme;
       return css(_templateObject2(), theme.global.control.border.radius, theme.global.control.border.radius);
+    }
+  },
+  tabs: {
+    header: {
+      border: {
+        side: 'bottom',
+        size: 'small',
+        color: 'border'
+      }
     }
   },
   text: {
