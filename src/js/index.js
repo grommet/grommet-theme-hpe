@@ -768,7 +768,11 @@ export const hpe = deepFreeze({
       },
     },
     pad: 'small',
-    margin: 'none',
+    margin: {
+      // bring the overall tabs border behind invidual tab borders
+      vertical: '-2px',
+      horizontal: 'none',
+    },
     extend: ({ theme }) => css`
       border-top-left-radius: ${theme.global.control.border
         .radius}; // should use radius property of border
@@ -776,6 +780,15 @@ export const hpe = deepFreeze({
         .radius}; // should use radius property of border
       font-weight: bold;
     `,
+  },
+  tabs: {
+    header: {
+      border: {
+        side: 'bottom',
+        size: 'small',
+        color: 'border',
+      },
+    },
   },
   text: {
     xsmall: {
