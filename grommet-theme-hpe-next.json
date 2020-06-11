@@ -188,6 +188,9 @@
       "padding": {
         "horizontal": "12px",
         "vertical": "6px"
+      },
+      "font": {
+        "weight": 700
       }
     },
     "primary": {
@@ -211,6 +214,19 @@
         "vertical": "4px"
       }
     },
+    "option": {
+      "color": "text",
+      "border": {
+        "radius": "0px"
+      },
+      "padding": {
+        "horizontal": "12px",
+        "vertical": "6px"
+      },
+      "font": {
+        "weight": 400
+      }
+    },
     "active": {
       "background": {
         "color": "background-contrast"
@@ -220,6 +236,17 @@
         "border": {
           "color": "transparent"
         }
+      },
+      "option": {
+        "background": {
+          "color": "active-background"
+        }
+      }
+    },
+    "selected": {
+      "option": {
+        "background": "selected-background",
+        "color": "selected-text"
       }
     },
     "disabled": {
@@ -258,6 +285,10 @@
           "horizontal": "9px",
           "vertical": "3px"
         }
+      },
+      "option": {
+        "background": "active-background",
+        "color": "active-text"
       }
     },
     "size": {
@@ -296,12 +327,7 @@
     "padding": {
       "vertical": "4px",
       "horizontal": "10px"
-    },
-    "extend": [
-      "\n      ",
-      null,
-      "\n    "
-    ]
+    }
   },
   "calendar": {
     "small": {
@@ -611,22 +637,8 @@
     }
   },
   "select": {
-    "control": {
-      "extend": "padding: 0px;"
-    },
     "icons": {
       "color": "text"
-    },
-    "options": {
-      "container": {
-        "pad": {
-          "horizontal": "small",
-          "vertical": "xsmall"
-        }
-      },
-      "text": {
-        "size": "small"
-      }
     }
   },
   "tab": {
