@@ -276,7 +276,9 @@ export const hpe = deepFreeze({
     },
     option: {
       color: 'text',
-      border: undefined,
+      border: {
+        radius: '0px',
+      },
       padding: {
         horizontal: '12px',
         vertical: '6px',
@@ -762,14 +764,7 @@ export const hpe = deepFreeze({
       down: FormDown,
       up: FormUp,
     },
-    options: {
-      container: {
-        pad: { horizontal: 'small', vertical: 'xsmall' },
-      },
-      text: {
-        size: 'small',
-      },
-    },
+    options: undefined,
   },
   tab: {
     color: 'text-strong',
