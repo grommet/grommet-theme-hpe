@@ -185,9 +185,6 @@ export const hpe = deepFreeze({
       border: {
         radius: '4px',
       },
-      extend: ({ theme }) => `
-        margin-top: ${theme.global.edgeSize.xxsmall};
-      `,
       shadowSize: 'medium',
     },
     elevation: {
@@ -251,6 +248,9 @@ export const hpe = deepFreeze({
         horizontal: '12px',
         vertical: '6px',
       },
+      font: {
+        weight: 700,
+      },
     },
     primary: {
       background: {
@@ -274,6 +274,19 @@ export const hpe = deepFreeze({
         vertical: '4px',
       },
     },
+    option: {
+      color: 'text',
+      border: {
+        radius: '0px',
+      },
+      padding: {
+        horizontal: '12px',
+        vertical: '6px',
+      },
+      font: {
+        weight: 400,
+      },
+    },
     active: {
       background: {
         color: 'background-contrast',
@@ -283,6 +296,17 @@ export const hpe = deepFreeze({
         border: {
           color: 'transparent',
         },
+      },
+      option: {
+        background: {
+          color: 'active-background',
+        },
+      },
+    },
+    selected: {
+      option: {
+        background: 'selected-background',
+        color: 'selected-text',
       },
     },
     disabled: {
@@ -323,6 +347,10 @@ export const hpe = deepFreeze({
           vertical: '3px',
         },
       },
+      option: {
+        background: 'active-background',
+        color: 'active-text',
+      },
     },
     size: {
       small: {
@@ -361,9 +389,6 @@ export const hpe = deepFreeze({
       vertical: '4px',
       horizontal: '10px',
     },
-    extend: css`
-      ${props => !props.plain && 'font-weight: bold;'}
-    `,
   },
   calendar: {
     small: {
@@ -731,22 +756,12 @@ export const hpe = deepFreeze({
     },
   },
   select: {
-    control: {
-      extend: 'padding: 0px;',
-    },
     icons: {
       color: 'text',
       down: FormDown,
       up: FormUp,
     },
-    options: {
-      container: {
-        pad: { horizontal: 'small', vertical: 'xsmall' },
-      },
-      text: {
-        size: 'small',
-      },
-    },
+    options: undefined,
   },
   tab: {
     color: 'text-strong',
