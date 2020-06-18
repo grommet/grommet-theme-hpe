@@ -185,12 +185,12 @@
   "button": {
     "default": {
       "color": "text",
+      "font": {
+        "weight": 700
+      },
       "padding": {
         "horizontal": "12px",
         "vertical": "6px"
-      },
-      "font": {
-        "weight": 700
       }
     },
     "primary": {
@@ -198,6 +198,9 @@
         "color": "green"
       },
       "color": "text-strong",
+      "font": {
+        "weight": 700
+      },
       "padding": {
         "horizontal": "12px",
         "vertical": "6px"
@@ -209,6 +212,9 @@
         "width": "2px"
       },
       "color": "text",
+      "font": {
+        "weight": 700
+      },
       "padding": {
         "horizontal": "10px",
         "vertical": "4px"
