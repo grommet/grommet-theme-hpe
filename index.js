@@ -236,12 +236,12 @@ var hpe = deepFreeze({
     "default": {
       color: 'text',
       border: undefined,
+      font: {
+        weight: 700
+      },
       padding: {
         horizontal: '12px',
         vertical: '6px'
-      },
-      font: {
-        weight: 700
       }
     },
     primary: {
@@ -250,6 +250,9 @@ var hpe = deepFreeze({
       },
       border: undefined,
       color: 'text-strong',
+      font: {
+        weight: 700
+      },
       padding: {
         horizontal: '12px',
         vertical: '6px'
@@ -261,6 +264,9 @@ var hpe = deepFreeze({
         width: '2px'
       },
       color: 'text',
+      font: {
+        weight: 700
+      },
       padding: {
         horizontal: '10px',
         vertical: '4px'
