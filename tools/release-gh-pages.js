@@ -28,12 +28,7 @@ if (process.env.CI) {
           `${localFolder}/grommet-theme-hpe-next.json`,
         ),
       )
-      .then(() =>
-        git(localFolder).add([
-          `grommet-theme-hpe-next.json`,
-          `grommet-theme-hpe-next.min.js`,
-        ]),
-      )
+      .then(() => git(localFolder).add(['--all', '.']))
       .then(() =>
         git(localFolder).commit(
           'grommet-theme-hpe-next .min.js and .json updated',
