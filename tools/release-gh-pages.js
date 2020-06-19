@@ -32,6 +32,7 @@ if (process.env.CI) {
         git(localFolder).add([
           `${localFolder}/grommet-theme-hpe-next.json`,
           `${localFolder}/grommet-theme-hpe-next.min.js`,
+          '-f',
         ]),
       )
       .then(() =>
