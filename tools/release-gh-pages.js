@@ -18,14 +18,14 @@ if (process.env.CI) {
       .then(() => del([`${localFolder}/**/*`]))
       .then(() =>
         fs.copy(
-          `./${localDist}/grommet-theme-hpe.min.js`,
-          `./${localFolder}/grommet-theme-hpe-next.min.js`,
+          `${localDist}/grommet-theme-hpe.min.js`,
+          `${localFolder}/grommet-theme-hpe-next.min.js`,
         ),
       )
       .then(() =>
         fs.copy(
-          `./${localDist}/grommet-theme-hpe.json`,
-          `./${localFolder}/grommet-theme-hpe-next.json`,
+          `${localDist}/grommet-theme-hpe.json`,
+          `${localFolder}/grommet-theme-hpe-next.json`,
         ),
       )
       .then(() => git(localFolder).add(['--all', '.']))
