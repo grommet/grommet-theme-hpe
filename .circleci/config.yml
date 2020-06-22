@@ -101,6 +101,7 @@ workflows:
               ignore:
                 - stable
                 - NEXT-stable
+                - gh-pages
       - build:
           requires:
             - checkout
@@ -111,6 +112,7 @@ workflows:
               ignore:
                 - stable
                 - NEXT-stable
+                - gh-pages
       - release-stable:
           requires:
             - lint
