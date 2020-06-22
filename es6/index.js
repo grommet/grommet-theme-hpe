@@ -34,6 +34,7 @@ export var hpe = deepFreeze({
       'accent-2': undefined,
       'accent-3': undefined,
       'accent-4': undefined,
+      'accent-5': undefined,
       'neutral-1': undefined,
       'neutral-2': undefined,
       'neutral-3': undefined,
