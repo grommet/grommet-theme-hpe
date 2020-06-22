@@ -1,5 +1,6 @@
 {
   "defaultMode": "light",
+
   "global": {
     "colors": {
       "brand": "green!",
