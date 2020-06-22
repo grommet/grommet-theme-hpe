@@ -15,7 +15,6 @@ if (process.env.CI) {
       .silent(false)
       .clone(repoURL, localFolder)
       .then(() => git(localFolder).checkout('gh-pages'))
-      .then(() => del([`${localFolder}/**/*`]))
       .then(() =>
         fs.copy(
           `${localDist}/grommet-theme-hpe.min.js`,
