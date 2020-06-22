@@ -82,6 +82,7 @@ export const hpe = deepFreeze({
         light: 'red',
       },
       'status-warning': 'orange',
+      'status-hungry': 'blue',
       'status-ok': 'green',
       'status-unknown': {
         dark: '#4F5F76',
