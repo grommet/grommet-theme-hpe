@@ -626,10 +626,7 @@
       "width": "xsmall"
     },
     "check": {
-      "color": "selected-background",
-      "background": {
-        "color": "background-front"
-      }
+      "color": "selected-background"
     },
     "color": "selected-background",
     "gap": "xsmall",
