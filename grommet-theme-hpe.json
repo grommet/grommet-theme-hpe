@@ -626,7 +626,10 @@
       "width": "xsmall"
     },
     "check": {
-      "color": "selected-background"
+      "color": "selected-background",
+      "background": {
+        "color": "background-front"
+      }
     },
     "color": "selected-background",
     "gap": "xsmall",
@@ -662,9 +665,15 @@
       "active": {
         "color": "border-strong"
       },
+      "disabled": {
+        "color": "border-weak"
+      },
       "hover": {
         "color": "border"
       }
+    },
+    "disabled": {
+      "color": "text-weak"
     },
     "pad": "small",
     "margin": {

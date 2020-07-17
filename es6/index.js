@@ -705,14 +705,13 @@ export var hpe = deepFreeze({
     },
     check: {
       color: 'selected-background',
-      extend: function extend(_ref6) {
-        var theme = _ref6.theme;
-        return "\n        background-color: " + theme.global.colors['background-front'][theme.dark ? 'dark' : 'light'] + ";\n      ";
+      background: {
+        color: 'background-front'
       }
     },
     color: 'selected-background',
-    extend: function extend(_ref7) {
-      var theme = _ref7.theme;
+    extend: function extend(_ref6) {
+      var theme = _ref6.theme;
       return "\n      :not(div):hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
     },
     gap: 'xsmall',
@@ -753,9 +752,15 @@ export var hpe = deepFreeze({
       active: {
         color: 'border-strong'
       },
+      disabled: {
+        color: 'border-weak'
+      },
       hover: {
         color: 'border'
       }
+    },
+    disabled: {
+      color: 'text-weak'
     },
     pad: 'small',
     margin: {
@@ -763,8 +768,8 @@ export var hpe = deepFreeze({
       vertical: '-2px',
       horizontal: 'none'
     },
-    extend: function extend(_ref8) {
-      var theme = _ref8.theme;
+    extend: function extend(_ref7) {
+      var theme = _ref7.theme;
       return css(_templateObject(), theme.global.control.border.radius, theme.global.control.border.radius);
     }
   },
