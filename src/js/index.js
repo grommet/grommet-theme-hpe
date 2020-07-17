@@ -785,9 +785,15 @@ export const hpe = deepFreeze({
       active: {
         color: 'border-strong',
       },
+      disabled: {
+        color: 'border-weak',
+      },
       hover: {
         color: 'border',
       },
+    },
+    disabled: {
+      color: 'text-weak',
     },
     pad: 'small',
     margin: {
