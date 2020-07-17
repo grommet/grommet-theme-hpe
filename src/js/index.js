@@ -729,11 +729,9 @@ export const hpe = deepFreeze({
     },
     check: {
       color: 'selected-background',
-      extend: ({ theme }) => `
-        background-color: ${
-          theme.global.colors['background-front'][theme.dark ? 'dark' : 'light']
-        };
-      `,
+      background: {
+        color: 'background-front',
+      },
     },
     color: 'selected-background',
     extend: ({ theme }) => `
