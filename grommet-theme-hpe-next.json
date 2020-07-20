@@ -588,6 +588,9 @@
       "background": "#00000080"
     }
   },
+  "list": {
+    "item": {}
+  },
   "menu": {
     "icons": {
       "color": "text-strong"
@@ -626,7 +629,10 @@
       "width": "xsmall"
     },
     "check": {
-      "color": "selected-background"
+      "color": "selected-background",
+      "background": {
+        "color": "background-front"
+      }
     },
     "color": "selected-background",
     "gap": "xsmall",
