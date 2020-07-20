@@ -666,6 +666,11 @@ export var hpe = deepFreeze({
       background: '#00000080'
     }
   },
+  list: {
+    item: {
+      border: undefined
+    }
+  },
   menu: {
     icons: {
       color: 'text-strong'

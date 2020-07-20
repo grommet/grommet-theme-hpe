@@ -588,6 +588,9 @@
       "background": "#00000080"
     }
   },
+  "list": {
+    "item": {}
+  },
   "menu": {
     "icons": {
       "color": "text-strong"
