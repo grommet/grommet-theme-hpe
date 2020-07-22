@@ -96,8 +96,8 @@ var hpe = deepFreeze({
       'selected-background': 'green',
       'selected-text': 'text-strong',
       'status-critical': {
-        dark: 'red!',
-        light: 'red'
+        dark: '#FC5A5A',
+        light: '#D04F4E'
       },
       'status-warning': 'orange',
       'status-ok': 'green',
