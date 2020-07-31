@@ -118,6 +118,10 @@ export const hpe = deepFreeze({
         light: '#FFBC44',
       },
       'orange!': '#FF8300',
+      'validation-error': {
+        light: '#FC61613D',
+        dark: '#C54E4B5C',
+      },
       yellow: {
         dark: '#8D741C',
         light: '#FFEB59',
@@ -462,10 +466,12 @@ export const hpe = deepFreeze({
         `,
       },
       extend: ({ checked, theme }) => `
-        ${checked &&
+        ${
+          checked &&
           `background-color: ${
             theme.global.colors.green[theme.dark ? 'dark' : 'light']
-          };`}
+          };`
+        }
       `,
     },
     extend: ({ theme }) => `
@@ -504,7 +510,7 @@ export const hpe = deepFreeze({
     },
     error: {
       background: {
-        color: { light: '#FC61613D', dark: '#C54E4B5C' },
+        color: 'validation-error',
       },
       size: 'xsmall',
       color: 'text',
