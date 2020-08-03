@@ -118,7 +118,7 @@ export const hpe = deepFreeze({
         light: '#FFBC44',
       },
       'orange!': '#FF8300',
-      'validation-error': {
+      'validation-critical': {
         light: '#FC61613D',
         dark: '#C54E4B5C',
       },
@@ -510,7 +510,7 @@ export const hpe = deepFreeze({
     },
     error: {
       background: {
-        color: 'validation-error',
+        color: 'validation-critical',
       },
       size: 'xsmall',
       color: 'text',
