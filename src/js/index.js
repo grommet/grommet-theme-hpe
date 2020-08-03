@@ -2,12 +2,12 @@
 import { css } from 'styled-components';
 import { FormDown, FormUp } from 'grommet-icons';
 
-const isObject = item =>
+const isObject = (item) =>
   item && typeof item === 'object' && !Array.isArray(item);
 
-const deepFreeze = obj => {
+const deepFreeze = (obj) => {
   Object.keys(obj).forEach(
-    key => key && isObject(obj[key]) && Object.freeze(obj[key]),
+    (key) => key && isObject(obj[key]) && Object.freeze(obj[key]),
   );
   return Object.freeze(obj);
 };
@@ -466,12 +466,10 @@ export const hpe = deepFreeze({
         `,
       },
       extend: ({ checked, theme }) => `
-        ${
-          checked &&
+        ${checked &&
           `background-color: ${
             theme.global.colors.green[theme.dark ? 'dark' : 'light']
-          };`
-        }
+          };`}
       `,
     },
     extend: ({ theme }) => `
