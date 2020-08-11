@@ -761,6 +761,9 @@ export const hpe = deepFreeze({
       },
     },
   },
+  radioButtonGroup: {
+    container: { gap: 'none' },
+  },
   rangeInput: {
     track: {
       color: 'background-contrast',
