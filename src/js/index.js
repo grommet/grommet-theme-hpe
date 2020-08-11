@@ -486,6 +486,7 @@ export const hpe = deepFreeze({
   },
   formField: {
     content: {
+      margin: { vertical: 'xsmall' },
       pad: { vertical: 'xsmall' },
     },
     border: {
@@ -514,17 +515,6 @@ export const hpe = deepFreeze({
       color: 'text',
       margin: 'none',
     },
-    extend: `
-      // This selector will work when label or help
-      // are passed strings. However, it will be too
-      // broad in situations where a node is passed.
-      // The proper solution should be supporting a
-      // formField.input.margin or formField.input in 
-      // the theme.
-      > div:first-of-type {
-        margin: 4px 0px;
-      }
-    `,
     focus: {
       border: {
         color: 'border-strong',
@@ -543,9 +533,7 @@ export const hpe = deepFreeze({
     label: {
       size: 'xsmall',
       color: 'text',
-      margin: {
-        horizontal: 'none',
-      },
+      margin: 'none',
       weight: 500,
     },
     round: '4px',
