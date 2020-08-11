@@ -25,6 +25,7 @@ export const hpe = deepFreeze({
       'neutral-2': undefined,
       'neutral-3': undefined,
       'neutral-4': undefined,
+      'neutral-5': undefined,
       brand: 'green!',
       background: {
         dark: '#263040',
@@ -77,8 +78,8 @@ export const hpe = deepFreeze({
       'selected-background': 'green',
       'selected-text': 'text-strong',
       'status-critical': {
-        dark: 'red!',
-        light: 'red',
+        dark: '#FC5A5A',
+        light: '#D04F4E',
       },
       'status-warning': 'orange',
       'status-ok': 'green',
@@ -122,6 +123,10 @@ export const hpe = deepFreeze({
         light: '#FFEB59',
       },
       'yellow!': '#FEC901',
+      'validation-critical': {
+        light: '#FC61613D',
+        dark: '#C54E4B5C',
+      },
       'graph-0': 'orange!',
       'graph-1': 'blue!',
       'graph-2': 'purple!',
@@ -145,21 +150,31 @@ export const hpe = deepFreeze({
       face: `
         @font-face {
           font-family: "Metric";
-          src: url("https://hpefonts.s3.amazonaws.com/web/MetricHPE-Web-Regular.woff") format('woff');
+          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff2") format('woff2'),
+               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff") format('woff');
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://hpefonts.s3.amazonaws.com/web/MetricHPE-Web-Bold.woff") format('woff');
+          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff2") format('woff2'),
+               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff") format('woff');
           font-weight: 700;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://hpefonts.s3.amazonaws.com/web/MetricHPE-Web-Semibold.woff") format('woff');
+          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff2") format('woff2'),
+               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff") format('woff');
           font-weight: 600;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://hpefonts.s3.amazonaws.com/web/MetricHPE-Web-Light.woff") format('woff');
+          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff2") format('woff2'),
+               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff") format('woff');
+          font-weight: 500;
+        }
+        @font-face {
+          font-family: "Metric";
+          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff2") format('woff2'),
+               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff") format('woff');
           font-weight: 100;
         }`,
     },
@@ -175,9 +190,6 @@ export const hpe = deepFreeze({
       border: {
         radius: '4px',
       },
-      extend: ({ theme }) => `
-        margin-top: ${theme.global.edgeSize.xxsmall};
-      `,
       shadowSize: 'medium',
     },
     elevation: {
@@ -237,6 +249,9 @@ export const hpe = deepFreeze({
     default: {
       color: 'text',
       border: undefined,
+      font: {
+        weight: 700,
+      },
       padding: {
         horizontal: '12px',
         vertical: '6px',
@@ -248,6 +263,9 @@ export const hpe = deepFreeze({
       },
       border: undefined,
       color: 'text-strong',
+      font: {
+        weight: 700,
+      },
       padding: {
         horizontal: '12px',
         vertical: '6px',
@@ -259,9 +277,25 @@ export const hpe = deepFreeze({
         width: '2px',
       },
       color: 'text',
+      font: {
+        weight: 700,
+      },
       padding: {
         horizontal: '10px',
         vertical: '4px',
+      },
+    },
+    option: {
+      color: 'text',
+      border: {
+        radius: '0px',
+      },
+      padding: {
+        horizontal: '12px',
+        vertical: '6px',
+      },
+      font: {
+        weight: 400,
       },
     },
     active: {
@@ -273,6 +307,17 @@ export const hpe = deepFreeze({
         border: {
           color: 'transparent',
         },
+      },
+      option: {
+        background: {
+          color: 'active-background',
+        },
+      },
+    },
+    selected: {
+      option: {
+        background: 'selected-background',
+        color: 'selected-text',
       },
     },
     disabled: {
@@ -313,6 +358,10 @@ export const hpe = deepFreeze({
           vertical: '3px',
         },
       },
+      option: {
+        background: 'active-background',
+        color: 'active-text',
+      },
     },
     size: {
       small: {
@@ -351,9 +400,6 @@ export const hpe = deepFreeze({
       vertical: '4px',
       horizontal: '10px',
     },
-    extend: css`
-      ${props => !props.plain && 'font-weight: bold;'}
-    `,
   },
   calendar: {
     small: {
@@ -434,13 +480,13 @@ export const hpe = deepFreeze({
           ]
         };
       }
-      width: 100%;
+      width: auto;
       padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
     `,
   },
   formField: {
     content: {
-      pad: undefined,
+      pad: { vertical: 'xsmall' },
     },
     border: {
       error: {
@@ -462,7 +508,7 @@ export const hpe = deepFreeze({
     },
     error: {
       background: {
-        color: { light: '#FC61613D', dark: '#C54E4B5C' },
+        color: 'validation-critical',
       },
       size: 'xsmall',
       color: 'text',
@@ -497,8 +543,10 @@ export const hpe = deepFreeze({
     label: {
       size: 'xsmall',
       color: 'text',
-      margin: 'none',
-      weight: 600,
+      margin: {
+        horizontal: 'none',
+      },
+      weight: 500,
     },
     round: '4px',
   },
@@ -650,6 +698,11 @@ export const hpe = deepFreeze({
       background: '#00000080',
     },
   },
+  list: {
+    item: {
+      border: undefined,
+    },
+  },
   menu: {
     icons: {
       color: 'text-strong',
@@ -683,11 +736,34 @@ export const hpe = deepFreeze({
     },
   },
   radioButton: {
-    color: 'text-strong',
-    check: {
-      color: 'text-strong',
+    border: {
+      color: 'border',
+      width: 'xsmall',
     },
-    gap: 'medium',
+    check: {
+      color: 'selected-background',
+      background: {
+        color: 'background-front',
+      },
+    },
+    color: 'selected-background',
+    extend: ({ theme }) => `
+      :not(div):hover {
+        background-color: ${
+          theme.global.colors['background-contrast'][
+            theme.dark ? 'dark' : 'light'
+          ]
+        };
+      }
+      width: auto;
+      padding: ${theme.global.edgeSize.xxsmall} ${theme.global.edgeSize.xsmall};
+    `,
+    gap: 'xsmall',
+    hover: {
+      border: {
+        color: undefined,
+      },
+    },
   },
   rangeInput: {
     track: {
@@ -698,22 +774,12 @@ export const hpe = deepFreeze({
     },
   },
   select: {
-    control: {
-      extend: 'padding: 0px;',
-    },
     icons: {
       color: 'text',
       down: FormDown,
       up: FormUp,
     },
-    options: {
-      container: {
-        pad: { horizontal: 'small', vertical: 'xsmall' },
-      },
-      text: {
-        size: 'small',
-      },
-    },
+    options: undefined,
   },
   tab: {
     color: 'text-strong',
@@ -730,12 +796,22 @@ export const hpe = deepFreeze({
       active: {
         color: 'border-strong',
       },
+      disabled: {
+        color: 'border-weak',
+      },
       hover: {
         color: 'border',
       },
     },
+    disabled: {
+      color: 'text-weak',
+    },
     pad: 'small',
-    margin: 'none',
+    margin: {
+      // bring the overall tabs border behind invidual tab borders
+      vertical: '-2px',
+      horizontal: 'none',
+    },
     extend: ({ theme }) => css`
       border-top-left-radius: ${theme.global.control.border
         .radius}; // should use radius property of border
@@ -743,6 +819,15 @@ export const hpe = deepFreeze({
         .radius}; // should use radius property of border
       font-weight: bold;
     `,
+  },
+  tabs: {
+    header: {
+      border: {
+        side: 'bottom',
+        size: 'small',
+        color: 'border',
+      },
+    },
   },
   text: {
     xsmall: {

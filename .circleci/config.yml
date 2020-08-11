@@ -38,7 +38,7 @@ jobs:
           at: ~/grommet-ci
       - run:
           name: Build
-          command: yarn build
+          command: yarn build && yarn jsonify
       - persist_to_workspace:
           root: ~/grommet-ci
           paths:
@@ -63,6 +63,16 @@ jobs:
             git config --global user.name "Grommet Community Bot"
             git config --global user.email "grommet@hpe.com"
             yarn release-next-stable
+  release-gh-pages:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/grommet-ci
+      - run:
+          command: |
+            git config --global user.name "Grommet Community Bot"
+            git config --global user.email "grommet@hpe.com"
+            yarn release-gh-pages
   publish:
     <<: *defaults
     steps:
@@ -91,6 +101,7 @@ workflows:
               ignore:
                 - stable
                 - NEXT-stable
+                - gh-pages
       - build:
           requires:
             - checkout
@@ -101,6 +112,7 @@ workflows:
               ignore:
                 - stable
                 - NEXT-stable
+                - gh-pages
       - release-stable:
           requires:
             - lint
@@ -110,6 +122,14 @@ workflows:
               only:
                 - master
       - release-next-stable:
+          requires:
+            - lint
+            - build
+          filters:
+            branches:
+              only:
+                - NEXT
+      - release-gh-pages:
           requires:
             - lint
             - build
