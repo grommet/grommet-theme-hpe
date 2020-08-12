@@ -462,6 +462,9 @@ var hpe = deepFreeze({
   },
   formField: {
     content: {
+      margin: {
+        vertical: 'xsmall'
+      },
       pad: {
         vertical: 'xsmall'
       }
@@ -490,9 +493,7 @@ var hpe = deepFreeze({
       },
       size: 'xsmall',
       color: 'text',
-      margin: {
-        start: 'none'
-      }
+      margin: 'none'
     },
     focus: {
       border: {
@@ -502,24 +503,17 @@ var hpe = deepFreeze({
     help: {
       size: 'xsmall',
       color: 'text',
-      margin: {
-        start: 'none',
-        bottom: 'xsmall'
-      }
+      margin: 'none'
     },
     info: {
       size: 'xsmall',
       color: 'text',
-      margin: {
-        start: 'none'
-      }
+      margin: 'none'
     },
     label: {
       size: 'xsmall',
       color: 'text',
-      margin: {
-        horizontal: 'none'
-      },
+      margin: 'none',
       weight: 500
     },
     round: '4px'
