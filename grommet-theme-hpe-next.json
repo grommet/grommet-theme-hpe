@@ -635,6 +635,11 @@
       "border": {}
     }
   },
+  "radioButtonGroup": {
+    "container": {
+      "gap": "none"
+    }
+  },
   "rangeInput": {
     "track": {
       "color": "background-contrast"
