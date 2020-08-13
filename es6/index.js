@@ -455,6 +455,11 @@ export var hpe = deepFreeze({
       return "\n      :hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      width: auto;\n      padding: " + theme.global.edgeSize.xsmall + " " + theme.global.edgeSize.small + ";\n    ";
     }
   },
+  dateInput: {
+    icon: {
+      size: 'small'
+    }
+  },
   formField: {
     content: {
       margin: {
