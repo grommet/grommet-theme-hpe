@@ -181,6 +181,11 @@ export const hpe = deepFreeze({
       background: 'active-background',
       color: 'active-text',
     },
+    dateInput: {
+      icon: {
+        size: 'small',
+      },
+    },
     drop: {
       background: 'background-front',
       border: {
