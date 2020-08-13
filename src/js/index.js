@@ -181,11 +181,6 @@ export const hpe = deepFreeze({
       background: 'active-background',
       color: 'active-text',
     },
-    dateInput: {
-      icon: {
-        size: 'small',
-      },
-    },
     drop: {
       background: 'background-front',
       border: {
@@ -484,6 +479,11 @@ export const hpe = deepFreeze({
       width: auto;
       padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
     `,
+  },
+  dateInput: {
+    icon: {
+      size: 'small',
+    },
   },
   formField: {
     content: {
