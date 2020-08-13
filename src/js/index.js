@@ -484,6 +484,11 @@ export const hpe = deepFreeze({
       padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
     `,
   },
+  dateInput: {
+    icon: {
+      size: 'small',
+    },
+  },
   formField: {
     content: {
       margin: { vertical: 'xsmall' },
