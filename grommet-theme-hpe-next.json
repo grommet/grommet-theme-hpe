@@ -379,6 +379,11 @@
       "knob": {}
     }
   },
+  "dateInput": {
+    "icon": {
+      "size": "small"
+    }
+  },
   "formField": {
     "content": {
       "margin": {
