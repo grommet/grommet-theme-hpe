@@ -44,6 +44,7 @@ var hpe = deepFreeze({
       'neutral-3': undefined,
       'neutral-4': undefined,
       'neutral-5': undefined,
+      'status-error': undefined,
       brand: 'green!',
       background: {
         dark: '#263040',
