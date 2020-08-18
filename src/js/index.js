@@ -186,9 +186,11 @@ export const hpe = deepFreeze({
       border: {
         radius: '4px',
       },
-      extend: ({ theme }) =>
-        `margin-top: ${theme.global.edgeSize.xsmall}; 
-       margin-bottom: ${theme.global.edgeSize.xsmall};`,
+      extend: ({ alignProp, theme }) =>
+        `margin-top: ${alignProp.top !== 'top' &&
+          theme.global.edgeSize.xsmall}; 
+        margin-bottom: ${alignProp.bottom !== 'bottom' &&
+          theme.global.edgeSize.xsmall}`,
       shadowSize: 'medium',
     },
     elevation: {
