@@ -180,6 +180,11 @@ var hpe = deepFreeze({
       border: {
         radius: '4px'
       },
+      extend: function extend(_ref) {
+        var alignProp = _ref.alignProp,
+            theme = _ref.theme;
+        return "\n        margin-top: " + (alignProp.top !== 'top' && theme.global.edgeSize.xsmall) + "; \n        margin-bottom: " + (alignProp.bottom !== 'bottom' && theme.global.edgeSize.xsmall);
+      },
       shadowSize: 'medium'
     },
     elevation: {
@@ -427,16 +432,16 @@ var hpe = deepFreeze({
     },
     check: {
       radius: '2px',
-      extend: function extend(_ref) {
-        var theme = _ref.theme,
-            checked = _ref.checked,
-            indeterminate = _ref.indeterminate;
+      extend: function extend(_ref2) {
+        var theme = _ref2.theme,
+            checked = _ref2.checked,
+            indeterminate = _ref2.indeterminate;
         return "\n      box-shadow: none;\n      border-color: unset;\n      background-color: " + (checked || indeterminate ? theme.global.colors.green[theme.dark ? 'dark' : 'light'] : theme.global.colors.background[theme.dark ? 'dark' : 'light']) + ";\n      " + ((checked || indeterminate) && 'border: none;') + "\n        ";
       }
     },
     icon: {
-      extend: function extend(_ref2) {
-        var theme = _ref2.theme;
+      extend: function extend(_ref3) {
+        var theme = _ref3.theme;
         return "stroke-width: 2px;\n      stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'];
       }
     },
@@ -445,19 +450,19 @@ var hpe = deepFreeze({
       background: 'background',
       color: 'background',
       knob: {
-        extend: function extend(_ref3) {
-          var theme = _ref3.theme;
+        extend: function extend(_ref4) {
+          var theme = _ref4.theme;
           return "\n           box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'].small + ";\n           border: 1px solid " + theme.global.colors.border[theme.dark ? 'dark' : 'light'] + "\n        ";
         }
       },
-      extend: function extend(_ref4) {
-        var checked = _ref4.checked,
-            theme = _ref4.theme;
+      extend: function extend(_ref5) {
+        var checked = _ref5.checked,
+            theme = _ref5.theme;
         return "\n        " + (checked && "background-color: " + theme.global.colors.green[theme.dark ? 'dark' : 'light'] + ";") + "\n      ";
       }
     },
-    extend: function extend(_ref5) {
-      var theme = _ref5.theme;
+    extend: function extend(_ref6) {
+      var theme = _ref6.theme;
       return "\n      :hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      width: auto;\n      padding: " + theme.global.edgeSize.xsmall + " " + theme.global.edgeSize.small + ";\n    ";
     }
   },
@@ -721,8 +726,8 @@ var hpe = deepFreeze({
       }
     },
     color: 'selected-background',
-    extend: function extend(_ref6) {
-      var theme = _ref6.theme;
+    extend: function extend(_ref7) {
+      var theme = _ref7.theme;
       return "\n      :not(div):hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
     },
     gap: 'xsmall',
@@ -784,8 +789,8 @@ var hpe = deepFreeze({
       vertical: '-2px',
       horizontal: 'none'
     },
-    extend: function extend(_ref7) {
-      var theme = _ref7.theme;
+    extend: function extend(_ref8) {
+      var theme = _ref8.theme;
       return (0, _styledComponents.css)(_templateObject(), theme.global.control.border.radius, theme.global.control.border.radius);
     }
   },
