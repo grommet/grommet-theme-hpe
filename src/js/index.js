@@ -186,6 +186,9 @@ export const hpe = deepFreeze({
       border: {
         radius: '4px',
       },
+      extend: ({ theme }) =>
+        `margin-top: ${theme.global.edgeSize.xsmall}; 
+       margin-bottom: ${theme.global.edgeSize.xsmall};`,
       shadowSize: 'medium',
     },
     elevation: {
