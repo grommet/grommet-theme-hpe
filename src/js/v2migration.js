@@ -2,7 +2,7 @@
  * The following theme has transitional properties to
  * mitigate the upgrade to the design-system theme, i.e. migrating from hpe
  * theme version ^1.0.0 to ^2.0.0
- * Using the interim theme will help you avoid critical
+ * Using the v2migration interim theme support will help you avoid critical
  * and immediate breaking changes.
  *
  * How does it work?
@@ -12,11 +12,11 @@
  * Copying the content of this file will help you avoid immediate
  * breaking changes behavior.
  * However the main goal is for your theme to work independently without
- * the interim theme support.
+ * this interim theme support.
  *
  */
 
-export const interimTheme = {
+export const v2migration = {
   global: {
     colors: {
       // accent-1 used to be the focus color, use 'green' color instead.
