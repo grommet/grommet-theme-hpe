@@ -652,11 +652,16 @@
     }
   },
   "rangeInput": {
-    "track": {
-      "color": "background-contrast"
-    },
     "thumb": {
-      "color": "text"
+      "color": "background"
+    },
+    "track": {
+      "lower": {
+        "color": "green"
+      },
+      "upper": {
+        "color": "border"
+      }
     }
   },
   "select": {
