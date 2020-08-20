@@ -26,6 +26,7 @@ export const hpe = deepFreeze({
       'neutral-3': undefined,
       'neutral-4': undefined,
       'neutral-5': undefined,
+      'status-error': undefined,
       brand: 'green!',
       background: {
         dark: '#263040',
@@ -190,6 +191,10 @@ export const hpe = deepFreeze({
       border: {
         radius: '4px',
       },
+      extend: ({ alignProp, theme }) => `
+        margin-top: ${alignProp.top !== 'top' && theme.global.edgeSize.xsmall}; 
+        margin-bottom: ${alignProp.bottom !== 'bottom' &&
+          theme.global.edgeSize.xsmall}`,
       shadowSize: 'medium',
     },
     elevation: {
