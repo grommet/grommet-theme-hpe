@@ -749,11 +749,20 @@ var hpe = deepFreeze({
     }
   },
   rangeInput: {
-    track: {
-      color: 'background-contrast'
-    },
     thumb: {
-      color: 'text'
+      color: 'background',
+      extend: function extend(_ref8) {
+        var theme = _ref8.theme;
+        return "\n        border: 1px solid " + theme.global.colors.border[theme.dark ? 'dark' : 'light'] + ";\n        box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'].small + ";\n      ";
+      }
+    },
+    track: {
+      lower: {
+        color: 'green'
+      },
+      upper: {
+        color: 'border'
+      }
     }
   },
   select: {
@@ -795,8 +804,8 @@ var hpe = deepFreeze({
       vertical: '-2px',
       horizontal: 'none'
     },
-    extend: function extend(_ref8) {
-      var theme = _ref8.theme;
+    extend: function extend(_ref9) {
+      var theme = _ref9.theme;
       return (0, _styledComponents.css)(_templateObject(), theme.global.control.border.radius, theme.global.control.border.radius);
     }
   },
