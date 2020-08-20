@@ -773,11 +773,24 @@ export const hpe = deepFreeze({
     container: { gap: 'none' },
   },
   rangeInput: {
-    track: {
-      color: 'background-contrast',
-    },
     thumb: {
-      color: 'text',
+      color: 'background',
+      extend: ({ theme }) => `
+        border: 1px solid ${
+          theme.global.colors.border[theme.dark ? 'dark' : 'light']
+        };
+        box-shadow: ${
+          theme.global.elevation[theme.dark ? 'dark' : 'light'].small
+        };
+      `,
+    },
+    track: {
+      lower: {
+        color: 'green',
+      },
+      upper: {
+        color: 'border',
+      },
     },
   },
   select: {
