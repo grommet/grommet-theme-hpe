@@ -794,6 +794,13 @@ export const hpe = deepFreeze({
     },
   },
   select: {
+    control: {
+      extend: ({ disabled }) => css`
+        input {
+          ${disabled && 'cursor: default; opacity: 0.3;'}
+        }
+      `,
+    },
     icons: {
       color: 'text',
       down: FormDown,
