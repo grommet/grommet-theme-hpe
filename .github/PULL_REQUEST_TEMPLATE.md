@@ -14,4 +14,4 @@
 
 #### Is this change backward compatible or could it be a breaking change for the official HPE theme?
 
-#### How should this PR be communictaed in the release notes?
+#### How should this PR be communicated in the release notes?

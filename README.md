@@ -27,7 +27,7 @@ From your package.json point to NEXT-stable.
 "grommet-theme-hpe": "https://github.com/grommet/grommet-theme-hpe/tarball/NEXT-stable",
 ```
 
-_NOTE: To install `grommet-theme-hpe` from a branch, use the `yarn` package 
+_NOTE: To install `grommet-theme-hpe` from a branch, use the `yarn` package
 manager, since `npm install` fails to install from a branch name. `npm install`
 will produce the error:_
 
