@@ -1,16 +1,18 @@
 /**
- * The following theme has transitional properties to
+ * In the event your application relies on color names that have been deprecated, 
+ * use this theme to restore the deprecated color names.
+ * The following theme has transitional properties to 
  * mitigate the upgrade to the design-system theme, i.e. migrating from hpe
  * theme version ^1.0.0 to ^2.0.0
  * Using the v2migration interim theme support will help you avoid critical
  * and immediate breaking changes.
  *
  * How does it work?
- * Copy the content of the interimTheme file to your local theme file
- * and update your official HPE theme to point to the new HPE
- * design-system theme (via your package.json).
+ * After upgrading your official HPE theme to point to the new HPE
+ * design-system theme 2.0.0 (via your package.json), 
+ * copy the content of this file to your local theme file. 
  * Copying the content of this file will help you avoid immediate
- * breaking changes behavior.
+ * breaking changes behavior (such as undefined colors)
  * However the main goal is for your theme to work independently without
  * this interim theme support.
  *
@@ -19,11 +21,9 @@
 export const v2migration = {
   global: {
     colors: {
-      // accent-1 used to be the focus color, use 'green' color instead.
-      'accent-1': '#6FFFB0',
-      // All accent and neutral colors should be replaced with 'graph-*' colors,
-      // or with the branded HPE colors from the design-system
-      // theme (grommet-theme-hpe v2).
+      // accent-1 will need to be replaced with either 'graph-0', 'graph-1', 'control', 'brand' and more generic colors.
+      'accent-1': 'graph-0',
+      // All accent and neutral colors should be replaced with 'graph-*', 'control', 'brand' colors,
       'accent-2': '#FD6FFF',
       'accent-3': '#81FCED',
       'accent-4': '#FFCA58',
