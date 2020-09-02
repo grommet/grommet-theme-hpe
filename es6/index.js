@@ -1,5 +1,15 @@
+function _templateObject2() {
+  var data = _taggedTemplateLiteralLoose(["\n      border-top-left-radius: ", "; // should use radius property of border\n      border-top-right-radius: ", "; // should use radius property of border\n      font-weight: bold;\n    "]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject() {
-  var data = _taggedTemplateLiteralLoose(["\n      ", "\n    "]);
+  var data = _taggedTemplateLiteralLoose(["\n        ", "\n      "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -12,6 +22,7 @@ function _taggedTemplateLiteralLoose(strings, raw) { if (!raw) { raw = strings.s
 
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import { css } from 'styled-components';
+import { FormDown, FormUp } from 'grommet-icons';
 
 var isObject = function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
@@ -28,101 +39,124 @@ export var hpe = deepFreeze({
   defaultMode: 'light',
   global: {
     colors: {
-      /* deprecated colors */
-      // 'accent-1': undefined,
-      // 'accent-2': undefined,
-      // 'accent-3': undefined,
-      // 'accent-4': undefined,
-      // 'neutral-1': undefined,
-      // 'neutral-2': undefined,
-      // 'neutral-3': undefined,
-      // 'neutral-4': undefined,
+      /* deprecated accent and neutral colors */
+      'accent-1': undefined,
+      'accent-2': undefined,
+      'accent-3': undefined,
+      'accent-4': undefined,
+      'neutral-1': undefined,
+      'neutral-2': undefined,
+      'neutral-3': undefined,
+      'neutral-4': undefined,
+      'neutral-5': undefined,
+      'status-error': undefined,
       brand: 'green!',
       background: {
-        dark: '#1A1F2B',
+        dark: '#263040',
         light: '#FFFFFF'
       },
       'background-back': {
-        dark: '#1A1F2B',
+        dark: '#263040',
         light: '#EFEFEF'
       },
       'background-front': {
-        dark: '#354050',
+        dark: '#404B5C',
         light: '#FFFFFF'
       },
       'background-contrast': {
-        dark: '#FFFFFF1F',
-        light: '#CCCCCC99'
+        dark: '#FFFFFF14',
+        light: '#0000000A'
       },
       icon: 'text',
       text: {
-        dark: '#FFFFFF',
-        light: '#333333'
+        dark: '#C0CADC',
+        light: '#444444'
       },
       'text-strong': {
         dark: '#FFFFFF',
         light: '#000000'
       },
       'text-weak': {
-        dark: '#CCCCCC',
-        light: '#444444'
-      },
-      'text-xweak': {
-        dark: '#999999',
-        light: '#666666'
+        dark: '#606B7D',
+        light: '#BBBBBB'
       },
       border: {
-        light: '#CCCCCC',
-        dark: '#444444'
+        dark: '#7887A1',
+        light: '#999999'
       },
-      control: 'brand',
-      'active-background': {
-        dark: '#FFFFFF1F',
-        light: '#CCCCCC99'
+      'border-strong': {
+        dark: '#AFBCD2',
+        light: '#666666'
       },
-      'active-text': 'text-strong',
-      'selected-background': 'brand',
+      'border-weak': {
+        dark: '#606B7D',
+        light: '#BBBBBB'
+      },
+      control: 'green',
+      'active-background': 'background-contrast',
+      'active-text': 'text',
+      'disabled-text': {
+        dark: '#777777',
+        light: '#999999'
+      },
+      'selected-background': 'green',
       'selected-text': 'text-strong',
-      'status-critical': '#FF4040',
-      'status-warning': '#FFAA15',
-      'status-ok': '#00C781',
-      'status-unknown': '#CCCCCC',
+      'status-critical': {
+        dark: '#D04F4E',
+        light: '#FC5A5A'
+      },
+      'status-warning': {
+        dark: '#9B6310',
+        light: '#FFBC44'
+      },
+      'status-ok': {
+        dark: '#008567',
+        light: '#17EBA0'
+      },
+      'status-unknown': {
+        dark: '#4F5F76',
+        light: '#CCCCCC'
+      },
       'status-disabled': '#CCCCCC',
       blue: {
-        dark: '#0E5265',
+        dark: '#00567A',
         light: '#00C8FF'
       },
       'blue!': '#00739D',
       green: {
-        dark: '#007A5E',
-        light: '#6FFFB0'
+        dark: '#008567',
+        light: '#17EBA0'
       },
       'green!': '#01A982',
       teal: {
-        dark: '#007366',
+        dark: '#117B82',
         light: '#82FFF2'
       },
       'teal!': '#00E8CF',
       purple: {
-        dark: '#371177',
+        dark: '#6633BC',
         light: '#F740FF'
       },
       'purple!': '#7630EA',
       red: {
-        dark: '#4B1916',
-        light: '#FF4F4F'
+        dark: '#A2423D',
+        light: '#FC6161'
       },
-      'red!': '#FF0000',
+      'red!': '#C54E4B',
       orange: {
-        dark: '#CC4B00',
-        light: '#FFB024'
+        dark: '#9B6310',
+        light: '#FFBC44'
       },
       'orange!': '#FF8300',
       yellow: {
-        dark: '#D78F00',
+        dark: '#8D741C',
         light: '#FFEB59'
       },
       'yellow!': '#FEC901',
+      'validation-critical': {
+        light: '#FC61613D',
+        dark: '#C54E4B5C'
+      },
       'graph-0': 'orange!',
       'graph-1': 'blue!',
       'graph-2': 'purple!',
@@ -132,11 +166,21 @@ export var hpe = deepFreeze({
       placeholder: 'text-weak'
     },
     input: {
-      weight: 500
+      font: {
+        height: 'inherit',
+        weight: 400
+      },
+      padding: {
+        horizontal: 'small',
+        vertical: 'xsmall'
+      }
     },
     font: {
       family: "'Metric', Arial, sans-serif",
-      face: "\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://hpefonts.s3.amazonaws.com/web/MetricHPE-Web-Regular.woff\") format('woff');\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://hpefonts.s3.amazonaws.com/web/MetricHPE-Web-Bold.woff\") format('woff');\n          font-weight: 700;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://hpefonts.s3.amazonaws.com/web/MetricHPE-Web-Semibold.woff\") format('woff');\n          font-weight: 600;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://hpefonts.s3.amazonaws.com/web/MetricHPE-Web-Light.woff\") format('woff');\n          font-weight: 100;\n        }"
+      face: "\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff\") format('woff');\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff\") format('woff');\n          font-weight: 700;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff\") format('woff');\n          font-weight: 600;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff\") format('woff');\n          font-weight: 500;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff\") format('woff');\n          font-weight: 100;\n        }"
+    },
+    focus: {
+      border: undefined
     },
     active: {
       background: 'active-background',
@@ -145,13 +189,29 @@ export var hpe = deepFreeze({
     drop: {
       background: 'background-front',
       border: {
-        radius: '8px'
+        radius: '4px'
+      },
+      extend: function extend(_ref) {
+        var alignProp = _ref.alignProp,
+            theme = _ref.theme;
+        return "\n        margin-top: " + (alignProp.top !== 'top' && theme.global.edgeSize.xsmall) + "; \n        margin-bottom: " + (alignProp.bottom !== 'bottom' && theme.global.edgeSize.xsmall);
       },
       shadowSize: 'medium'
     },
     elevation: {
+      // Elevation values were derived from this Figma file.
+      // https://www.figma.com/file/eZYR3dtWdb9U90QvJ7p3T9/HPE-Color-Styles?node-id=405%3A25
+      // Naming in Figma file is strong/default/weak vs. Grommet t-shirt sizing.
+      // As defined here, default is currently mapping to medium.
+      light: {
+        small: '0px 2px 4px #0000001F;',
+        medium: '0px 6px 12px #0000003D;',
+        large: '0px 12px 24px #0000001F;'
+      },
       dark: {
-        medium: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
+        small: '0px 2px 4px #0000003D;',
+        medium: '0px 6px 12px #0000005C;',
+        large: '0px 12px 24px #0000007A;'
       }
     },
     hover: {
@@ -164,22 +224,154 @@ export var hpe = deepFreeze({
     }
   },
   accordion: {
-    border: {
-      color: 'text'
+    panel: {
+      border: {
+        side: 'horizontal',
+        color: 'text'
+      }
     },
+    heading: {
+      margin: {
+        vertical: 'medium',
+        horizontal: 'xsmall'
+      }
+    },
+    hover: {
+      heading: {
+        color: undefined
+      }
+    },
+    border: undefined,
     icons: {
       color: 'text'
     }
   },
   anchor: {
     color: 'text',
-    fontWeight: 700,
-    textDecoration: 'none',
+    textDecoration: 'underline',
+    fontWeight: 500,
     hover: {
-      textDecoration: 'none'
+      textDecoration: 'underline'
     }
   },
   button: {
+    "default": {
+      color: 'text',
+      border: undefined,
+      font: {
+        weight: 700
+      },
+      padding: {
+        horizontal: '12px',
+        vertical: '6px'
+      }
+    },
+    primary: {
+      background: {
+        color: 'green'
+      },
+      border: undefined,
+      color: 'text-strong',
+      font: {
+        weight: 700
+      },
+      padding: {
+        horizontal: '12px',
+        vertical: '6px'
+      }
+    },
+    secondary: {
+      border: {
+        color: 'green',
+        width: '2px'
+      },
+      color: 'text',
+      font: {
+        weight: 700
+      },
+      padding: {
+        horizontal: '10px',
+        vertical: '4px'
+      }
+    },
+    option: {
+      color: 'text',
+      border: {
+        radius: '0px'
+      },
+      padding: {
+        horizontal: '12px',
+        vertical: '6px'
+      },
+      font: {
+        weight: 400
+      }
+    },
+    active: {
+      background: {
+        color: 'background-contrast'
+      },
+      color: 'text',
+      secondary: {
+        border: {
+          color: 'transparent'
+        }
+      },
+      option: {
+        background: {
+          color: 'active-background'
+        }
+      }
+    },
+    selected: {
+      option: {
+        background: 'selected-background',
+        color: 'selected-text'
+      }
+    },
+    disabled: {
+      background: {
+        color: 'transparent'
+      },
+      color: 'text-weak',
+      primary: {
+        border: {
+          color: 'text-weak',
+          width: '2px'
+        },
+        padding: {
+          horizontal: '10px',
+          vertical: '4px'
+        }
+      },
+      secondary: {
+        border: {
+          color: 'text-weak'
+        }
+      },
+      opacity: 1.0
+    },
+    hover: {
+      "default": {
+        background: {
+          color: 'background-contrast'
+        },
+        color: undefined
+      },
+      secondary: {
+        border: {
+          width: '3px'
+        },
+        padding: {
+          horizontal: '9px',
+          vertical: '3px'
+        }
+      },
+      option: {
+        background: 'active-background',
+        color: 'active-text'
+      }
+    },
     size: {
       small: {
         border: {
@@ -212,13 +404,11 @@ export var hpe = deepFreeze({
     border: {
       radius: '4px'
     },
+    color: 'text-strong',
     padding: {
       vertical: '4px',
       horizontal: '10px'
-    },
-    extend: css(_templateObject(), function (props) {
-      return !props.plain && 'font-weight: bold;';
-    })
+    }
   },
   calendar: {
     small: {
@@ -238,48 +428,115 @@ export var hpe = deepFreeze({
     }
   },
   checkBox: {
-    gap: 'medium',
-    color: 'text-strong',
-    toggle: {
-      color: {
-        dark: 'background-front',
-        light: 'background'
+    hover: {
+      border: {
+        color: undefined
       },
-      background: 'background-back'
+      background: {
+        color: 'background-contrast'
+      }
+    },
+    color: 'background',
+    border: {
+      color: 'border',
+      width: '1px'
+    },
+    check: {
+      radius: '2px',
+      extend: function extend(_ref2) {
+        var theme = _ref2.theme,
+            checked = _ref2.checked,
+            indeterminate = _ref2.indeterminate;
+        return "\n      box-shadow: none;\n      border-color: unset;\n      background-color: " + (checked || indeterminate ? theme.global.colors.green[theme.dark ? 'dark' : 'light'] : theme.global.colors.background[theme.dark ? 'dark' : 'light']) + ";\n      " + ((checked || indeterminate) && 'border: none;') + "\n        ";
+      }
+    },
+    icon: {
+      extend: function extend(_ref3) {
+        var theme = _ref3.theme;
+        return "stroke-width: 2px;\n      stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'];
+      }
+    },
+    gap: 'small',
+    toggle: {
+      background: 'background',
+      color: 'background',
+      knob: {
+        extend: function extend(_ref4) {
+          var theme = _ref4.theme;
+          return "\n           box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'].small + ";\n           border: 1px solid " + theme.global.colors.border[theme.dark ? 'dark' : 'light'] + "\n        ";
+        }
+      },
+      extend: function extend(_ref5) {
+        var checked = _ref5.checked,
+            theme = _ref5.theme;
+        return "\n        " + (checked && "background-color: " + theme.global.colors.green[theme.dark ? 'dark' : 'light'] + ";") + "\n      ";
+      }
+    },
+    extend: function extend(_ref6) {
+      var theme = _ref6.theme;
+      return "\n      :hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      width: auto;\n      padding: " + theme.global.edgeSize.xsmall + " " + theme.global.edgeSize.small + ";\n    ";
+    }
+  },
+  dateInput: {
+    icon: {
+      size: 'small'
     }
   },
   formField: {
+    content: {
+      margin: {
+        vertical: 'xsmall'
+      },
+      pad: {
+        vertical: 'xsmall'
+      }
+    },
     border: {
+      error: {
+        color: 'border-strong'
+      },
+      color: 'border',
       side: 'all'
     },
+    disabled: {
+      background: {
+        color: undefined
+      },
+      border: {
+        color: 'border-weak'
+      },
+      label: {
+        color: 'text-weak'
+      }
+    },
     error: {
+      background: {
+        color: 'validation-critical'
+      },
       size: 'xsmall',
-      color: 'text-xweak',
-      margin: {
-        start: 'none'
+      color: 'text',
+      margin: 'none'
+    },
+    focus: {
+      border: {
+        color: 'border-strong'
       }
     },
     help: {
       size: 'xsmall',
-      color: 'text-xweak',
-      margin: {
-        start: 'none',
-        bottom: 'xsmall'
-      }
+      color: 'text',
+      margin: 'none'
     },
     info: {
       size: 'xsmall',
-      color: 'text-xweak',
-      margin: {
-        start: 'none'
-      }
+      color: 'text',
+      margin: 'none'
     },
     label: {
       size: 'xsmall',
-      color: 'text-weak',
-      margin: {
-        horizontal: 'none'
-      }
+      color: 'text',
+      margin: 'none',
+      weight: 500
     },
     round: '4px'
   },
@@ -426,7 +683,20 @@ export var hpe = deepFreeze({
     }
   },
   layer: {
-    background: 'background'
+    background: 'background',
+    overlay: {
+      background: '#00000080'
+    }
+  },
+  list: {
+    item: {
+      border: undefined
+    }
+  },
+  menu: {
+    icons: {
+      color: 'text-strong'
+    }
   },
   paragraph: {
     small: {
@@ -456,40 +726,107 @@ export var hpe = deepFreeze({
     }
   },
   radioButton: {
-    color: 'text-strong',
+    border: {
+      color: 'border',
+      width: 'xsmall'
+    },
     check: {
-      color: 'text-strong'
+      color: 'selected-background',
+      background: {
+        color: 'background-front'
+      }
     },
-    gap: 'medium'
-  },
-  rangeInput: {
-    track: {
-      color: 'background-contrast'
+    color: 'selected-background',
+    extend: function extend(_ref7) {
+      var theme = _ref7.theme;
+      return "\n      :not(div):hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
     },
-    thumb: {
-      color: 'text'
-    }
-  },
-  select: {
-    icons: {
-      color: 'text'
-    },
-    options: {
-      text: {
-        size: 'small'
+    gap: 'xsmall',
+    hover: {
+      border: {
+        color: undefined
       }
     }
   },
-  tab: {
-    border: {
-      color: 'text-xweak'
+  radioButtonGroup: {
+    container: {
+      gap: 'none'
+    }
+  },
+  rangeInput: {
+    thumb: {
+      color: 'background',
+      extend: function extend(_ref8) {
+        var theme = _ref8.theme;
+        return "\n        border: 1px solid " + theme.global.colors.border[theme.dark ? 'dark' : 'light'] + ";\n        box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'].small + ";\n      ";
+      }
     },
-    color: 'text-xweak',
+    track: {
+      lower: {
+        color: 'green'
+      },
+      upper: {
+        color: 'border'
+      }
+    }
+  },
+  select: {
+    control: {
+      extend: function extend(_ref9) {
+        var disabled = _ref9.disabled;
+        return css(_templateObject(), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
+      }
+    },
+    icons: {
+      color: 'text',
+      down: FormDown,
+      up: FormUp
+    },
+    options: undefined
+  },
+  tab: {
+    color: 'text-strong',
+    active: {
+      background: 'background-contrast'
+    },
+    hover: {
+      background: 'background-contrast',
+      color: 'text'
+    },
+    border: {
+      side: 'bottom',
+      color: 'border',
+      active: {
+        color: 'border-strong'
+      },
+      disabled: {
+        color: 'border-weak'
+      },
+      hover: {
+        color: 'border'
+      }
+    },
+    disabled: {
+      color: 'text-weak'
+    },
+    pad: 'small',
     margin: {
+      // bring the overall tabs border behind invidual tab borders
+      vertical: '-2px',
       horizontal: 'none'
     },
-    pad: {
-      horizontal: 'small'
+    extend: function extend(_ref10) {
+      var theme = _ref10.theme;
+      return css(_templateObject2(), theme.global.control.border.radius, theme.global.control.border.radius);
+    }
+  },
+  tabs: {
+    header: {
+      border: {
+        side: 'bottom',
+        size: 'small',
+        color: 'border'
+      }
     }
   },
   text: {
