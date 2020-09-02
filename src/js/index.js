@@ -26,6 +26,7 @@ export const hpe = deepFreeze({
       'neutral-3': undefined,
       'neutral-4': undefined,
       'neutral-5': undefined,
+      'status-error': undefined,
       brand: 'green!',
       background: {
         dark: '#263040',
@@ -78,11 +79,17 @@ export const hpe = deepFreeze({
       'selected-background': 'green',
       'selected-text': 'text-strong',
       'status-critical': {
-        dark: '#FC5A5A',
-        light: '#D04F4E',
+        dark: '#D04F4E',
+        light: '#FC5A5A',
       },
-      'status-warning': 'orange',
-      'status-ok': 'green',
+      'status-warning': {
+        dark: '#9B6310',
+        light: '#FFBC44',
+      },
+      'status-ok': {
+        dark: '#008567',
+        light: '#17EBA0',
+      },
       'status-unknown': {
         dark: '#4F5F76',
         light: '#CCCCCC',
@@ -190,6 +197,10 @@ export const hpe = deepFreeze({
       border: {
         radius: '4px',
       },
+      extend: ({ alignProp, theme }) => `
+        margin-top: ${alignProp.top !== 'top' && theme.global.edgeSize.xsmall}; 
+        margin-bottom: ${alignProp.bottom !== 'bottom' &&
+          theme.global.edgeSize.xsmall}`,
       shadowSize: 'medium',
     },
     elevation: {
@@ -762,11 +773,24 @@ export const hpe = deepFreeze({
     container: { gap: 'none' },
   },
   rangeInput: {
-    track: {
-      color: 'background-contrast',
-    },
     thumb: {
-      color: 'text',
+      color: 'background',
+      extend: ({ theme }) => `
+        border: 1px solid ${
+          theme.global.colors.border[theme.dark ? 'dark' : 'light']
+        };
+        box-shadow: ${
+          theme.global.elevation[theme.dark ? 'dark' : 'light'].small
+        };
+      `,
+    },
+    track: {
+      lower: {
+        color: 'green',
+      },
+      upper: {
+        color: 'border',
+      },
     },
   },
   select: {
