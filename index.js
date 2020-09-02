@@ -7,8 +7,18 @@ var _styledComponents = require("styled-components");
 
 var _grommetIcons = require("grommet-icons");
 
-function _templateObject() {
+function _templateObject2() {
   var data = _taggedTemplateLiteralLoose(["\n      border-top-left-radius: ", "; // should use radius property of border\n      border-top-right-radius: ", "; // should use radius property of border\n      font-weight: bold;\n    "]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteralLoose(["\n        ", "\n      "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -766,6 +776,12 @@ var hpe = deepFreeze({
     }
   },
   select: {
+    control: {
+      extend: function extend(_ref9) {
+        var disabled = _ref9.disabled;
+        return (0, _styledComponents.css)(_templateObject(), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
+      }
+    },
     icons: {
       color: 'text',
       down: _grommetIcons.FormDown,
@@ -804,9 +820,9 @@ var hpe = deepFreeze({
       vertical: '-2px',
       horizontal: 'none'
     },
-    extend: function extend(_ref9) {
-      var theme = _ref9.theme;
-      return (0, _styledComponents.css)(_templateObject(), theme.global.control.border.radius, theme.global.control.border.radius);
+    extend: function extend(_ref10) {
+      var theme = _ref10.theme;
+      return (0, _styledComponents.css)(_templateObject2(), theme.global.control.border.radius, theme.global.control.border.radius);
     }
   },
   tabs: {
