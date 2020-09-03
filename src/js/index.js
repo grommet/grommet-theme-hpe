@@ -411,6 +411,13 @@ export const hpe = deepFreeze({
       vertical: '4px',
       horizontal: '10px',
     },
+    // temporary fix so that hoverIndicator does not appear on disabled buttons
+    // issue caused by https://github.com/grommet/grommet/blob/master/src/js/components/Button/StyledButtonKind.js#L256
+    // not checking if button is disabled before applying hoverIndicator
+    // Resolve in next grommet release, then remove this line
+    extend: ({ disabled }) => css`
+      ${disabled && '&:hover { background: transparent; } '}
+    `,
   },
   calendar: {
     small: {
@@ -796,12 +803,7 @@ export const hpe = deepFreeze({
   select: {
     control: {
       extend: ({ disabled }) => css`
-        ${disabled &&
-          `
-        opacity: 0.3;
-        input {
-          cursor: default;
-        }`}
+        ${disabled && 'opacity: 0.3;'}
       `,
     },
     icons: {
