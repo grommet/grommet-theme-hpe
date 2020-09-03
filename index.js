@@ -5,7 +5,9 @@ exports.colors = exports.hpe = void 0;
 
 var _styledComponents = require("styled-components");
 
-var _grommetIcons = require("grommet-icons");
+var _FormDown = require("grommet-icons/icons/FormDown");
+
+var _FormUp = require("grommet-icons/icons/FormUp");
 
 function _templateObject2() {
   var data = _taggedTemplateLiteralLoose(["\n      border-top-left-radius: ", "; // should use radius property of border\n      border-top-right-radius: ", "; // should use radius property of border\n      font-weight: bold;\n    "]);
@@ -784,8 +786,8 @@ var hpe = deepFreeze({
     },
     icons: {
       color: 'text',
-      down: _grommetIcons.FormDown,
-      up: _grommetIcons.FormUp
+      down: _FormDown.FormDown,
+      up: _FormUp.FormUp
     },
     options: undefined
   },

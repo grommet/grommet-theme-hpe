@@ -22,7 +22,8 @@ function _taggedTemplateLiteralLoose(strings, raw) { if (!raw) { raw = strings.s
 
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import { css } from 'styled-components';
-import { FormDown, FormUp } from 'grommet-icons';
+import { FormDown } from 'grommet-icons/icons/FormDown';
+import { FormUp } from 'grommet-icons/icons/FormUp';
 
 var isObject = function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
