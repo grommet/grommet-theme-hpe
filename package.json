@@ -53,15 +53,12 @@
     "webpack-cli": "^3.1.0"
   },
   "scripts": {
-    "prepublishOnly": "npm run build && npm run jsonify",
+    "prepublishOnly": "npm run build",
     "build": "webpack --mode production && cross-env babel ./src/js/ --out-dir ./dist --copy-files && cross-env BABEL_ENV=es6 babel ./src/js/ --out-dir ./dist/es6 --copy-files",
-    "jsonify": "babel-node ./tools/convert-to-json > dist/grommet-theme-hpe.json",
     "lint": "eslint src",
     "lint-fix": "eslint src --fix",
     "prettier": "pretty-quick --staged",
-    "release-gh-pages": "babel-node ./tools/release-gh-pages",
-    "release-stable": "babel-node ./tools/release-stable",
-    "release-next-stable": "babel-node ./tools/release-next-stable"
+    "release-stable": "babel-node ./tools/release-stable"
   },
   "pre-commit": [
     "lint-fix",
