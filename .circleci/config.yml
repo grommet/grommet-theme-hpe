@@ -77,12 +77,18 @@ workflows:
           filters:
             tags:
               only: /.*/
+            branches:
+              ignore:
+                - stable
       - build:
           requires:
             - checkout
           filters:
             tags:
               only: /.*/
+            branches:
+              ignore:
+                - stable
       - release-stable:
           requires:
             - lint
