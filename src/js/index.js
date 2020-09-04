@@ -484,14 +484,15 @@ export const hpe = deepFreeze({
           };`}
       `,
     },
-    extend: ({ theme }) => `
-      :hover {
+    extend: ({ disabled, theme }) => `
+      ${!disabled &&
+        `:hover {
         background-color: ${
           theme.global.colors['background-contrast'][
             theme.dark ? 'dark' : 'light'
           ]
         };
-      }
+      }`}
       width: auto;
       padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
     `,
