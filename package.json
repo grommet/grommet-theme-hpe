@@ -20,7 +20,7 @@
     "url": "https://github.com/grommet/grommet-theme-hpe.git"
   },
   "dependencies": {
-    "grommet-icons": "https://github.com/grommet/grommet-icons/tarball/stable"
+    "grommet-icons": "^4.4.0"
   },
   "peerDependencies": {
     "styled-components": "^5.0.0"
