@@ -2,8 +2,6 @@
 
 #### What does this PR do?
 
-#### Should this PR be placed on the NEXT branch (design-system theme)?
-
 #### What testing has been done on this PR?
 
 #### Any background context you want to provide?
