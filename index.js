@@ -5,6 +5,10 @@ exports.colors = exports.hpe = void 0;
 
 var _styledComponents = require("styled-components");
 
+var _Ascending = require("grommet-icons/icons/Ascending");
+
+var _Descending = require("grommet-icons/icons/Descending");
+
 var _FormDown = require("grommet-icons/icons/FormDown");
 
 var _FormUp = require("grommet-icons/icons/FormUp");
@@ -483,6 +487,12 @@ var hpe = deepFreeze({
       var disabled = _ref6.disabled,
           theme = _ref6.theme;
       return "\n      " + (!disabled && ":hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }") + "\n      width: auto;\n      padding: " + theme.global.edgeSize.xsmall + " " + theme.global.edgeSize.small + ";\n    ";
+    }
+  },
+  dataTable: {
+    icons: {
+      ascending: _Ascending.Ascending,
+      descending: _Descending.Descending
     }
   },
   dateInput: {

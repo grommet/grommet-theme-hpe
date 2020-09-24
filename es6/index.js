@@ -22,6 +22,8 @@ function _taggedTemplateLiteralLoose(strings, raw) { if (!raw) { raw = strings.s
 
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import { css } from 'styled-components';
+import { Ascending } from 'grommet-icons/icons/Ascending';
+import { Descending } from 'grommet-icons/icons/Descending';
 import { FormDown } from 'grommet-icons/icons/FormDown';
 import { FormUp } from 'grommet-icons/icons/FormUp';
 
@@ -477,6 +479,12 @@ export var hpe = deepFreeze({
       var disabled = _ref6.disabled,
           theme = _ref6.theme;
       return "\n      " + (!disabled && ":hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }") + "\n      width: auto;\n      padding: " + theme.global.edgeSize.xsmall + " " + theme.global.edgeSize.small + ";\n    ";
+    }
+  },
+  dataTable: {
+    icons: {
+      ascending: Ascending,
+      descending: Descending
     }
   },
   dateInput: {
