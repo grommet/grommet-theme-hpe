@@ -438,6 +438,23 @@ var hpe = deepFreeze({
       daySize: '109.71px'
     }
   },
+  card: {
+    container: {
+      background: 'background-front'
+    },
+    body: {
+      pad: 'medium'
+    },
+    footer: {
+      pad: {
+        horizontal: 'medium',
+        vertical: 'small'
+      }
+    },
+    header: {
+      pad: 'medium'
+    }
+  },
   checkBox: {
     hover: {
       border: {
