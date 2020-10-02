@@ -822,11 +822,12 @@ var hpe = deepFreeze({
   tab: {
     color: 'text-strong',
     active: {
-      background: 'background-contrast'
+      background: 'background-contrast',
+      color: 'text-strong'
     },
     hover: {
       background: 'background-contrast',
-      color: 'text'
+      color: 'text-strong'
     },
     border: {
       side: 'bottom',
