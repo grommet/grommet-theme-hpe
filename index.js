@@ -772,9 +772,15 @@ var hpe = deepFreeze({
       }
     },
     color: 'selected-background',
-    extend: function extend(_ref7) {
-      var theme = _ref7.theme;
-      return "\n      :not(div):hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
+    container: {
+      extend: function extend(_ref7) {
+        var theme = _ref7.theme;
+        return "\n      :not(div):hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
+      }
+    },
+    extend: function extend(_ref8) {
+      var theme = _ref8.theme;
+      return "\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
     },
     gap: 'xsmall',
     hover: {
@@ -791,8 +797,8 @@ var hpe = deepFreeze({
   rangeInput: {
     thumb: {
       color: 'background',
-      extend: function extend(_ref8) {
-        var theme = _ref8.theme;
+      extend: function extend(_ref9) {
+        var theme = _ref9.theme;
         return "\n        border: 1px solid " + theme.global.colors.border[theme.dark ? 'dark' : 'light'] + ";\n        box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'].small + ";\n      ";
       }
     },
@@ -807,8 +813,8 @@ var hpe = deepFreeze({
   },
   select: {
     control: {
-      extend: function extend(_ref9) {
-        var disabled = _ref9.disabled;
+      extend: function extend(_ref10) {
+        var disabled = _ref10.disabled;
         return (0, _styledComponents.css)(_templateObject(), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
       }
     },
@@ -851,8 +857,8 @@ var hpe = deepFreeze({
       vertical: '-2px',
       horizontal: 'none'
     },
-    extend: function extend(_ref10) {
-      var theme = _ref10.theme;
+    extend: function extend(_ref11) {
+      var theme = _ref11.theme;
       return (0, _styledComponents.css)(_templateObject2(), theme.global.control.border.radius, theme.global.control.border.radius);
     }
   },
