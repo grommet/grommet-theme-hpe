@@ -261,7 +261,7 @@ export const hpe = deepFreeze({
   },
   button: {
     default: {
-      color: 'text',
+      color: 'text-strong',
       border: undefined,
       font: {
         weight: 700,
@@ -290,7 +290,7 @@ export const hpe = deepFreeze({
         color: 'green',
         width: '2px',
       },
-      color: 'text',
+      color: 'text-strong',
       font: {
         weight: 700,
       },
