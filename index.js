@@ -3,15 +3,21 @@
 exports.__esModule = true;
 exports.colors = exports.hpe = void 0;
 
+var _react = _interopRequireDefault(require("react"));
+
 var _styledComponents = require("styled-components");
 
 var _Ascending = require("grommet-icons/icons/Ascending");
+
+var _Blank = require("grommet-icons/icons/Blank");
 
 var _Descending = require("grommet-icons/icons/Descending");
 
 var _FormDown = require("grommet-icons/icons/FormDown");
 
 var _FormUp = require("grommet-icons/icons/FormUp");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _templateObject2() {
   var data = _taggedTemplateLiteralLoose(["\n      border-top-left-radius: ", "; // should use radius property of border\n      border-top-right-radius: ", "; // should use radius property of border\n      font-weight: bold;\n    "]);
@@ -787,6 +793,17 @@ var hpe = deepFreeze({
     hover: {
       border: {
         color: undefined
+      }
+    },
+    icons: {
+      circle: function circle() {
+        return /*#__PURE__*/_react["default"].createElement(_Blank.Blank, {
+          color: "selected-background"
+        }, /*#__PURE__*/_react["default"].createElement("circle", {
+          cx: "12",
+          cy: "12",
+          r: "8"
+        }));
       }
     }
   },

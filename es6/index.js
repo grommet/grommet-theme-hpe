@@ -21,8 +21,10 @@ function _templateObject() {
 function _taggedTemplateLiteralLoose(strings, raw) { if (!raw) { raw = strings.slice(0); } strings.raw = raw; return strings; }
 
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
+import React from 'react';
 import { css } from 'styled-components';
 import { Ascending } from 'grommet-icons/icons/Ascending';
+import { Blank } from 'grommet-icons/icons/Blank';
 import { Descending } from 'grommet-icons/icons/Descending';
 import { FormDown } from 'grommet-icons/icons/FormDown';
 import { FormUp } from 'grommet-icons/icons/FormUp';
@@ -779,6 +781,17 @@ export var hpe = deepFreeze({
     hover: {
       border: {
         color: undefined
+      }
+    },
+    icons: {
+      circle: function circle() {
+        return /*#__PURE__*/React.createElement(Blank, {
+          color: "selected-background"
+        }, /*#__PURE__*/React.createElement("circle", {
+          cx: "12",
+          cy: "12",
+          r: "8"
+        }));
       }
     }
   },
