@@ -30,6 +30,7 @@ export const hpe = deepFreeze({
       'neutral-4': undefined,
       'neutral-5': undefined,
       'status-error': undefined,
+      'text-xweak': undefined,
       brand: 'green!',
       background: {
         dark: '#263040',
