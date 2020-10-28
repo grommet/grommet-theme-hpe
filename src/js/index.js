@@ -1,6 +1,8 @@
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
+import React from 'react';
 import { css } from 'styled-components';
 import { Ascending } from 'grommet-icons/icons/Ascending';
+import { Blank } from 'grommet-icons/icons/Blank';
 import { Descending } from 'grommet-icons/icons/Descending';
 import { FormDown } from 'grommet-icons/icons/FormDown';
 import { FormUp } from 'grommet-icons/icons/FormUp';
@@ -797,6 +799,13 @@ export const hpe = deepFreeze({
       border: {
         color: undefined,
       },
+    },
+    icons: {
+      circle: () => (
+        <Blank color="selected-background">
+          <circle cx="12" cy="12" r="8" />
+        </Blank>
+      ),
     },
   },
   radioButtonGroup: {
