@@ -91,6 +91,7 @@ var hpe = deepFreeze({
         dark: '#606B7D',
         light: '#BBBBBB'
       },
+      'text-xweak': 'text-weak',
       border: {
         dark: '#7887A1',
         light: '#999999'
