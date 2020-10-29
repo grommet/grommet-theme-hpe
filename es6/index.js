@@ -25,6 +25,7 @@ import React from 'react';
 import { css } from 'styled-components';
 import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
+import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
 import { Descending } from 'grommet-icons/icons/Descending';
 import { FormDown } from 'grommet-icons/icons/FormDown';
 import { FormUp } from 'grommet-icons/icons/FormUp';
@@ -543,6 +544,15 @@ export var hpe = deepFreeze({
       background: {
         color: 'validation-critical'
       },
+      container: {
+        gap: 'xsmall'
+      },
+      icon: /*#__PURE__*/React.createElement(CircleAlert, {
+        size: "small",
+        style: {
+          marginTop: '4px'
+        }
+      }),
       size: 'xsmall',
       color: 'text',
       margin: 'none'

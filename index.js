@@ -11,6 +11,8 @@ var _Ascending = require("grommet-icons/icons/Ascending");
 
 var _Blank = require("grommet-icons/icons/Blank");
 
+var _CircleAlert = require("grommet-icons/icons/CircleAlert");
+
 var _Descending = require("grommet-icons/icons/Descending");
 
 var _FormDown = require("grommet-icons/icons/FormDown");
@@ -555,6 +557,15 @@ var hpe = deepFreeze({
       background: {
         color: 'validation-critical'
       },
+      container: {
+        gap: 'xsmall'
+      },
+      icon: /*#__PURE__*/_react["default"].createElement(_CircleAlert.CircleAlert, {
+        size: "small",
+        style: {
+          marginTop: '4px'
+        }
+      }),
       size: 'xsmall',
       color: 'text',
       margin: 'none'
