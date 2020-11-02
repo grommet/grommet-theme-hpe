@@ -64,6 +64,7 @@ export const hpe = deepFreeze({
         light: '#BBBBBB',
       },
       'text-xweak': 'text-weak',
+      'text-disabled': 'text-weak',
       border: {
         dark: '#7887A1',
         light: '#999999',
@@ -79,10 +80,7 @@ export const hpe = deepFreeze({
       control: 'green',
       'active-background': 'background-contrast',
       'active-text': 'text',
-      'disabled-text': {
-        dark: '#777777',
-        light: '#999999',
-      },
+      'disabled-text': 'text-disabled', // keeping for backwards compatibility, should deprecate in next release
       'selected-background': 'green',
       'selected-text': 'text-strong',
       'status-critical': {
@@ -342,10 +340,10 @@ export const hpe = deepFreeze({
       background: {
         color: 'transparent',
       },
-      color: 'text-weak',
+      color: 'text-disabled',
       primary: {
         border: {
-          color: 'text-weak',
+          color: 'border-weak',
           width: '2px',
         },
         padding: {
@@ -355,7 +353,7 @@ export const hpe = deepFreeze({
       },
       secondary: {
         border: {
-          color: 'text-weak',
+          color: 'border-weak',
         },
       },
       opacity: 1.0,
@@ -548,7 +546,7 @@ export const hpe = deepFreeze({
         color: 'border-weak',
       },
       label: {
-        color: 'text-weak',
+        color: 'text-disabled',
       },
     },
     error: {
@@ -879,7 +877,7 @@ export const hpe = deepFreeze({
       },
     },
     disabled: {
-      color: 'text-weak',
+      color: 'text-disabled',
     },
     pad: 'small',
     margin: {
