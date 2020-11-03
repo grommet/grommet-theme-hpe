@@ -138,6 +138,7 @@ var hpe = deepFreeze({
         light: '#CCCCCC'
       },
       'status-disabled': '#CCCCCC',
+      // deprecated, does not support light and dark. use text-weak instead
       blue: {
         dark: '#00567A',
         light: '#00C8FF'
