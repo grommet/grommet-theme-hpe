@@ -739,6 +739,20 @@ export const hpe = deepFreeze({
       border: undefined,
     },
   },
+  maskedInput: {
+    container: {
+      extend: ({ theme }) => `
+        svg {
+          fill: ${
+            theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
+          };
+          stroke: ${
+            theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
+          };
+        }
+      `,
+    },
+  },
   menu: {
     icons: {
       color: 'text-strong',
@@ -934,6 +948,20 @@ export const hpe = deepFreeze({
       size: '36px',
       height: '42px',
       maxWidth: '854px',
+    },
+  },
+  textInput: {
+    container: {
+      extend: ({ theme }) => `
+        svg {
+          fill: ${
+            theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
+          };
+          stroke: ${
+            theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
+          };
+        }
+      `,
     },
   },
   // Theme-Designer only parameters
