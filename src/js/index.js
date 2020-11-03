@@ -101,7 +101,7 @@ export const hpe = deepFreeze({
         dark: '#4F5F76',
         light: '#CCCCCC',
       },
-      'status-disabled': '#CCCCCC',
+      'status-disabled': '#CCCCCC', // deprecated, does not support light and dark. use text-weak instead
       blue: {
         dark: '#00567A',
         light: '#00C8FF',
