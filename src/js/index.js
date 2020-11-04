@@ -79,10 +79,7 @@ export const hpe = deepFreeze({
       control: 'green',
       'active-background': 'background-contrast',
       'active-text': 'text',
-      'disabled-text': {
-        dark: '#777777',
-        light: '#999999',
-      },
+      'disabled-text': 'text-weak', // deprecated, use text-weak instead
       'selected-background': 'green',
       'selected-text': 'text-strong',
       'status-critical': {
@@ -358,7 +355,7 @@ export const hpe = deepFreeze({
       color: 'text-weak',
       primary: {
         border: {
-          color: 'text-weak',
+          color: 'border-weak',
           width: '2px',
         },
         padding: {
@@ -368,7 +365,7 @@ export const hpe = deepFreeze({
       },
       secondary: {
         border: {
-          color: 'text-weak',
+          color: 'border-weak',
         },
       },
       opacity: 1.0,
