@@ -571,7 +571,11 @@ export const hpe = deepFreeze({
       icon: <CircleAlert size="small" style={{ marginTop: '4px' }} />,
       size: 'xsmall',
       color: 'text',
-      margin: 'none',
+      margin: {
+        bottom: 'xsmall',
+        top: 'none',
+        horizontal: 'none',
+      },
     },
     focus: {
       border: {
@@ -586,13 +590,24 @@ export const hpe = deepFreeze({
     info: {
       size: 'xsmall',
       color: 'text',
-      margin: 'none',
+      margin: {
+        bottom: 'xsmall',
+        top: 'none',
+        horizontal: 'none',
+      },
     },
     label: {
       size: 'xsmall',
       color: 'text',
-      margin: 'none',
+      margin: {
+        bottom: 'none',
+        top: 'xsmall',
+        horizontal: 'none',
+      },
       weight: 500,
+    },
+    margin: {
+      bottom: 'none',
     },
     round: '4px',
   },
