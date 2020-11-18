@@ -549,6 +549,7 @@ export const hpe = deepFreeze({
   formField: {
     content: {
       margin: { vertical: 'xsmall' },
+      pad: undefined,
     },
     border: {
       error: {
