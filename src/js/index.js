@@ -7,6 +7,7 @@ import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
 import { Descending } from 'grommet-icons/icons/Descending';
 import { FormDown } from 'grommet-icons/icons/FormDown';
 import { FormUp } from 'grommet-icons/icons/FormUp';
+import { Unsorted } from 'grommet-icons/icons/Unsorted';
 
 const isObject = item =>
   item && typeof item === 'object' && !Array.isArray(item);
@@ -536,9 +537,88 @@ export const hpe = deepFreeze({
     },
   },
   dataTable: {
+    body: {
+      extend: ({ theme }) => `
+        /* Margin and pad allow room for focus on table body */
+        margin: ${theme.global.edgeSize.xxsmall} 0px;
+        pad: 0px ${theme.global.edgeSize.xxsmall};
+      `,
+    },
+    header: {
+      border: { side: 'bottom' },
+      color: 'text-strong',
+      extend: ({ column, sort, sortable, theme }) => {
+        return `
+          ${sort &&
+            sort.property === column &&
+            `
+            background: ${
+              theme.global.colors['background-contrast'][
+                theme.dark ? 'dark' : 'light'
+              ]
+            }
+          `};
+          ${sortable &&
+            sort &&
+            sort.property !== column &&
+            `
+              svg {
+                opacity: 0;
+              }
+              :hover {
+                svg {
+                  opacity: 1;
+                }
+              }
+            `};
+         `;
+      },
+      font: {
+        weight: 'bold',
+      },
+      gap: 'none',
+      hover: {
+        background: {
+          color: 'background-contrast',
+        },
+      },
+      pad: { horizontal: 'small', vertical: 'xsmall' },
+    },
     icons: {
       ascending: Ascending,
       descending: Descending,
+      sortable: Unsorted,
+    },
+    pinned: {
+      header: {
+        background: {
+          color: 'background-front',
+          opacity: 'strong',
+        },
+        extend: 'backdrop-filter: blur(8px);',
+      },
+      body: {
+        background: {
+          color: 'background-front',
+          opacity: 'strong',
+        },
+        extend: 'backdrop-filter: blur(8px);',
+      },
+      footer: {
+        background: {
+          color: 'background-front',
+          opacity: 'strong',
+        },
+        extend: 'backdrop-filter: blur(8px);',
+      },
+    },
+    resize: {
+      hover: {
+        border: {
+          color: 'border-strong',
+          size: 'small',
+        },
+      },
     },
   },
   dateInput: {
@@ -940,6 +1020,49 @@ export const hpe = deepFreeze({
         size: 'small',
         color: 'border',
       },
+    },
+  },
+  table: {
+    header: {
+      extend: `
+        > div { 
+          height: 100%;
+          justify-content: center;
+        }
+        // align onSelect checkbox to center of header cell
+        label { 
+          justify-content: center;
+        }
+      `,
+      // space for focus indicator on sortable columns
+      pad: { left: 'none', vertical: 'none', right: 'xxsmall' },
+    },
+    body: {
+      extend: ({ theme }) => {
+        return `
+          :hover {
+            button {
+              background: ${
+                theme.global.colors['background-contrast'][
+                  theme.dark ? 'dark' : 'light'
+                ]
+              }
+            }
+          }
+        `;
+      },
+    },
+    row: {
+      hover: {
+        background: 'background-contrast',
+      },
+    },
+    footer: {
+      extend: `
+          span {
+            font-weight: bold;
+          }
+        `,
     },
   },
   text: {
