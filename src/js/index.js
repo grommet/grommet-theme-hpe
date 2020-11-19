@@ -478,7 +478,6 @@ export const hpe = deepFreeze({
       radius: '2px',
       extend: ({ theme, checked, indeterminate }) => `
       box-shadow: none;
-      border-color: unset;
       background-color: ${
         checked || indeterminate
           ? theme.global.colors.green[theme.dark ? 'dark' : 'light']
@@ -523,9 +522,18 @@ export const hpe = deepFreeze({
           ]
         };
       }`}
+      font-weight: 500;
       width: auto;
       padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
     `,
+  },
+  checkBoxGroup: {
+    container: {
+      gap: 'none',
+      margin: {
+        vertical: 'xsmall',
+      },
+    },
   },
   dataTable: {
     icons: {
@@ -541,7 +549,7 @@ export const hpe = deepFreeze({
   formField: {
     content: {
       margin: { vertical: 'xsmall' },
-      pad: { vertical: 'xsmall' },
+      pad: undefined,
     },
     border: {
       error: {
@@ -816,6 +824,7 @@ export const hpe = deepFreeze({
           ]
         };
       }
+      font-weight: 500;
       width: auto;
       padding: ${theme.global.edgeSize.xxsmall} ${theme.global.edgeSize.xsmall};
     `,
@@ -838,7 +847,12 @@ export const hpe = deepFreeze({
     },
   },
   radioButtonGroup: {
-    container: { gap: 'none' },
+    container: {
+      gap: 'none',
+      margin: {
+        vertical: 'xsmall',
+      },
+    },
   },
   rangeInput: {
     thumb: {
