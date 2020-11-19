@@ -471,7 +471,7 @@ export var hpe = deepFreeze({
         var theme = _ref2.theme,
             checked = _ref2.checked,
             indeterminate = _ref2.indeterminate;
-        return "\n      box-shadow: none;\n      border-color: unset;\n      background-color: " + (checked || indeterminate ? theme.global.colors.green[theme.dark ? 'dark' : 'light'] : theme.global.colors.background[theme.dark ? 'dark' : 'light']) + ";\n      " + ((checked || indeterminate) && 'border: none;') + "\n        ";
+        return "\n      box-shadow: none;\n      background-color: " + (checked || indeterminate ? theme.global.colors.green[theme.dark ? 'dark' : 'light'] : theme.global.colors.background[theme.dark ? 'dark' : 'light']) + ";\n      " + ((checked || indeterminate) && 'border: none;') + "\n        ";
       }
     },
     icon: {
@@ -499,7 +499,15 @@ export var hpe = deepFreeze({
     extend: function extend(_ref6) {
       var disabled = _ref6.disabled,
           theme = _ref6.theme;
-      return "\n      " + (!disabled && ":hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }") + "\n      width: auto;\n      padding: " + theme.global.edgeSize.xsmall + " " + theme.global.edgeSize.small + ";\n    ";
+      return "\n      " + (!disabled && ":hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }") + "\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xsmall + " " + theme.global.edgeSize.small + ";\n    ";
+    }
+  },
+  checkBoxGroup: {
+    container: {
+      gap: 'none',
+      margin: {
+        vertical: 'xsmall'
+      }
     }
   },
   dataTable: {
@@ -518,9 +526,7 @@ export var hpe = deepFreeze({
       margin: {
         vertical: 'xsmall'
       },
-      pad: {
-        vertical: 'xsmall'
-      }
+      pad: undefined
     },
     border: {
       error: {
@@ -788,7 +794,7 @@ export var hpe = deepFreeze({
     container: {
       extend: function extend(_ref8) {
         var theme = _ref8.theme;
-        return "\n      :not(div):hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
+        return "\n      :not(div):hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
       }
     },
     extend: function extend(_ref9) {
@@ -815,7 +821,10 @@ export var hpe = deepFreeze({
   },
   radioButtonGroup: {
     container: {
-      gap: 'none'
+      gap: 'none',
+      margin: {
+        vertical: 'xsmall'
+      }
     }
   },
   rangeInput: {
