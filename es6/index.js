@@ -561,7 +561,11 @@ export var hpe = deepFreeze({
       }),
       size: 'xsmall',
       color: 'text',
-      margin: 'none'
+      margin: {
+        bottom: 'xsmall',
+        top: 'none',
+        horizontal: 'none'
+      }
     },
     focus: {
       border: {
@@ -576,13 +580,24 @@ export var hpe = deepFreeze({
     info: {
       size: 'xsmall',
       color: 'text',
-      margin: 'none'
+      margin: {
+        bottom: 'xsmall',
+        top: 'none',
+        horizontal: 'none'
+      }
     },
     label: {
       size: 'xsmall',
       color: 'text',
-      margin: 'none',
+      margin: {
+        bottom: 'none',
+        top: 'xsmall',
+        horizontal: 'none'
+      },
       weight: 500
+    },
+    margin: {
+      bottom: 'none'
     },
     round: '4px'
   },
