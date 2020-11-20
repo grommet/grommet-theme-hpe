@@ -539,9 +539,9 @@ export const hpe = deepFreeze({
   dataTable: {
     body: {
       extend: ({ theme }) => `
-        /* Margin and pad allow room for focus on table body */
+        /* Margin and padding allow room for focus on table body */
         margin: ${theme.global.edgeSize.xxsmall} 0px;
-        pad: 0px ${theme.global.edgeSize.xxsmall};
+        padding: 0px ${theme.global.edgeSize.xxsmall};
       `,
     },
     header: {
@@ -1059,10 +1059,8 @@ export const hpe = deepFreeze({
     },
     footer: {
       extend: `
-          span {
-            font-weight: bold;
-          }
-        `,
+        font-weight: bold;
+      `,
     },
   },
   text: {
