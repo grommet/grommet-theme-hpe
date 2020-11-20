@@ -29,6 +29,7 @@ import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
 import { Descending } from 'grommet-icons/icons/Descending';
 import { FormDown } from 'grommet-icons/icons/FormDown';
 import { FormUp } from 'grommet-icons/icons/FormUp';
+import { Unsorted } from 'grommet-icons/icons/Unsorted';
 
 var isObject = function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
@@ -511,9 +512,73 @@ export var hpe = deepFreeze({
     }
   },
   dataTable: {
+    body: {
+      extend: function extend(_ref7) {
+        var theme = _ref7.theme;
+        return "\n        /* Margin and padding allow room for focus on table body */\n        margin: " + theme.global.edgeSize.xxsmall + " 0px;\n        padding: 0px " + theme.global.edgeSize.xxsmall + ";\n      ";
+      }
+    },
+    header: {
+      border: {
+        side: 'bottom'
+      },
+      color: 'text-strong',
+      extend: function extend(_ref8) {
+        var column = _ref8.column,
+            sort = _ref8.sort,
+            sortable = _ref8.sortable,
+            theme = _ref8.theme;
+        return "\n          " + (sort && sort.property === column && "\n            background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n          ") + ";\n          " + (sortable && sort && sort.property !== column && "\n              svg {\n                opacity: 0;\n              }\n              :hover {\n                svg {\n                  opacity: 1;\n                }\n              }\n            ") + ";\n         ";
+      },
+      font: {
+        weight: 'bold'
+      },
+      gap: 'none',
+      hover: {
+        background: {
+          color: 'background-contrast'
+        }
+      },
+      pad: {
+        horizontal: 'small',
+        vertical: 'xsmall'
+      }
+    },
     icons: {
       ascending: Ascending,
-      descending: Descending
+      descending: Descending,
+      sortable: Unsorted
+    },
+    pinned: {
+      header: {
+        background: {
+          color: 'background-front',
+          opacity: 'strong'
+        },
+        extend: 'backdrop-filter: blur(8px);'
+      },
+      body: {
+        background: {
+          color: 'background-front',
+          opacity: 'strong'
+        },
+        extend: 'backdrop-filter: blur(8px);'
+      },
+      footer: {
+        background: {
+          color: 'background-front',
+          opacity: 'strong'
+        },
+        extend: 'backdrop-filter: blur(8px);'
+      }
+    },
+    resize: {
+      hover: {
+        border: {
+          color: 'border-strong',
+          size: 'small'
+        }
+      }
     }
   },
   dateInput: {
@@ -756,8 +821,8 @@ export var hpe = deepFreeze({
   },
   maskedInput: {
     container: {
-      extend: function extend(_ref7) {
-        var theme = _ref7.theme;
+      extend: function extend(_ref9) {
+        var theme = _ref9.theme;
         return "\n        svg {\n          fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n        }\n      ";
       }
     }
@@ -807,13 +872,13 @@ export var hpe = deepFreeze({
     },
     color: 'selected-background',
     container: {
-      extend: function extend(_ref8) {
-        var theme = _ref8.theme;
+      extend: function extend(_ref10) {
+        var theme = _ref10.theme;
         return "\n      :not(div):hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
       }
     },
-    extend: function extend(_ref9) {
-      var theme = _ref9.theme;
+    extend: function extend(_ref11) {
+      var theme = _ref11.theme;
       return "\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
     },
     gap: 'xsmall',
@@ -845,8 +910,8 @@ export var hpe = deepFreeze({
   rangeInput: {
     thumb: {
       color: 'background',
-      extend: function extend(_ref10) {
-        var theme = _ref10.theme;
+      extend: function extend(_ref12) {
+        var theme = _ref12.theme;
         return "\n        border: 1px solid " + theme.global.colors.border[theme.dark ? 'dark' : 'light'] + ";\n        box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'].small + ";\n      ";
       }
     },
@@ -861,8 +926,8 @@ export var hpe = deepFreeze({
   },
   select: {
     control: {
-      extend: function extend(_ref11) {
-        var disabled = _ref11.disabled;
+      extend: function extend(_ref13) {
+        var disabled = _ref13.disabled;
         return css(_templateObject(), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
       }
     },
@@ -905,8 +970,8 @@ export var hpe = deepFreeze({
       vertical: '-2px',
       horizontal: 'none'
     },
-    extend: function extend(_ref12) {
-      var theme = _ref12.theme;
+    extend: function extend(_ref14) {
+      var theme = _ref14.theme;
       return css(_templateObject2(), theme.global.control.border.radius, theme.global.control.border.radius);
     }
   },
@@ -917,6 +982,31 @@ export var hpe = deepFreeze({
         size: 'small',
         color: 'border'
       }
+    }
+  },
+  table: {
+    header: {
+      extend: "\n        > div { \n          height: 100%;\n          justify-content: center;\n        }\n        // align onSelect checkbox to center of header cell\n        label { \n          justify-content: center;\n        }\n      ",
+      // space for focus indicator on sortable columns
+      pad: {
+        left: 'none',
+        vertical: 'none',
+        right: 'xxsmall'
+      }
+    },
+    body: {
+      extend: function extend(_ref15) {
+        var theme = _ref15.theme;
+        return "\n          :hover {\n            button {\n              background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n            }\n          }\n        ";
+      }
+    },
+    row: {
+      hover: {
+        background: 'background-contrast'
+      }
+    },
+    footer: {
+      extend: "\n        font-weight: bold;\n      "
     }
   },
   text: {
@@ -953,8 +1043,8 @@ export var hpe = deepFreeze({
   },
   textInput: {
     container: {
-      extend: function extend(_ref13) {
-        var theme = _ref13.theme;
+      extend: function extend(_ref16) {
+        var theme = _ref16.theme;
         return "\n        svg {\n          fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n        }\n      ";
       }
     }
