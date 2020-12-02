@@ -20,8 +20,8 @@
     "url": "https://github.com/grommet/grommet-theme-hpe.git"
   },
   "peerDependencies": {
-    "grommet": "^2.15.2",
-    "grommet-icons": "^4.4.0",
+    "grommet": "^2.16.0",
+    "grommet-icons": "^4.5.0",
     "react": "^16.13.1",
     "styled-components": "^5.0.0"
   },
