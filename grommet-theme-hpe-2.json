@@ -32,6 +32,7 @@
         "dark": "#606B7D",
         "light": "#BBBBBB"
       },
+      "text-xweak": "text-weak",
       "border": {
         "dark": "#7887A1",
         "light": "#999999"
@@ -47,10 +48,7 @@
       "control": "green",
       "active-background": "background-contrast",
       "active-text": "text",
-      "disabled-text": {
-        "dark": "#777777",
-        "light": "#999999"
-      },
+      "disabled-text": "text-weak",
       "selected-background": "green",
       "selected-text": "text-strong",
       "status-critical": {
@@ -120,12 +118,13 @@
     "input": {
       "font": {
         "height": "inherit",
-        "weight": 400
+        "weight": 500
       },
       "padding": {
         "horizontal": "small",
         "vertical": "xsmall"
-      }
+      },
+      "extend": "\n        &::-webkit-input-placeholder {\n          font-weight: 400;\n        }\n      \n        &::-moz-placeholder {\n          font-weight: 400;\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: 400;\n        }\n      "
     },
     "font": {
       "family": "'Metric', Arial, sans-serif",
@@ -194,7 +193,7 @@
   },
   "button": {
     "default": {
-      "color": "text",
+      "color": "text-strong",
       "font": {
         "weight": 700
       },
@@ -221,7 +220,7 @@
         "color": "green",
         "width": "2px"
       },
-      "color": "text",
+      "color": "text-strong",
       "font": {
         "weight": 700
       },
@@ -272,7 +271,7 @@
       "color": "text-weak",
       "primary": {
         "border": {
-          "color": "text-weak",
+          "color": "border-weak",
           "width": "2px"
         },
         "padding": {
@@ -282,7 +281,7 @@
       },
       "secondary": {
         "border": {
-          "color": "text-weak"
+          "color": "border-weak"
         }
       },
       "opacity": 1
@@ -362,6 +361,23 @@
       "daySize": "109.71px"
     }
   },
+  "card": {
+    "container": {
+      "background": "background-front"
+    },
+    "body": {
+      "pad": "medium"
+    },
+    "footer": {
+      "pad": {
+        "horizontal": "medium",
+        "vertical": "small"
+      }
+    },
+    "header": {
+      "pad": "medium"
+    }
+  },
   "checkBox": {
     "hover": {
       "border": {},
@@ -385,6 +401,68 @@
       "knob": {}
     }
   },
+  "checkBoxGroup": {
+    "container": {
+      "gap": "none",
+      "margin": {
+        "vertical": "xsmall"
+      }
+    }
+  },
+  "dataTable": {
+    "body": {},
+    "header": {
+      "border": {
+        "side": "bottom"
+      },
+      "color": "text-strong",
+      "font": {
+        "weight": "bold"
+      },
+      "gap": "none",
+      "hover": {
+        "background": {
+          "color": "background-contrast"
+        }
+      },
+      "pad": {
+        "horizontal": "small",
+        "vertical": "xsmall"
+      }
+    },
+    "icons": {},
+    "pinned": {
+      "header": {
+        "background": {
+          "color": "background-front",
+          "opacity": "strong"
+        },
+        "extend": "backdrop-filter: blur(8px);"
+      },
+      "body": {
+        "background": {
+          "color": "background-front",
+          "opacity": "strong"
+        },
+        "extend": "backdrop-filter: blur(8px);"
+      },
+      "footer": {
+        "background": {
+          "color": "background-front",
+          "opacity": "strong"
+        },
+        "extend": "backdrop-filter: blur(8px);"
+      }
+    },
+    "resize": {
+      "hover": {
+        "border": {
+          "color": "border-strong",
+          "size": "small"
+        }
+      }
+    }
+  },
   "dateInput": {
     "icon": {
       "size": "small"
@@ -393,9 +471,6 @@
   "formField": {
     "content": {
       "margin": {
-        "vertical": "xsmall"
-      },
-      "pad": {
         "vertical": "xsmall"
       }
     },
@@ -419,9 +494,28 @@
       "background": {
         "color": "validation-critical"
       },
+      "container": {
+        "gap": "xsmall"
+      },
+      "icon": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "size": "small",
+          "style": {
+            "marginTop": "4px"
+          }
+        },
+        "_owner": null,
+        "_store": {}
+      },
       "size": "xsmall",
       "color": "text",
-      "margin": "none"
+      "margin": {
+        "bottom": "xsmall",
+        "top": "none",
+        "horizontal": "none"
+      }
     },
     "focus": {
       "border": {
@@ -436,13 +530,24 @@
     "info": {
       "size": "xsmall",
       "color": "text",
-      "margin": "none"
+      "margin": {
+        "bottom": "xsmall",
+        "top": "none",
+        "horizontal": "none"
+      }
     },
     "label": {
       "size": "xsmall",
       "color": "text",
-      "margin": "none",
+      "margin": {
+        "bottom": "none",
+        "top": "xsmall",
+        "horizontal": "none"
+      },
       "weight": 500
+    },
+    "margin": {
+      "bottom": "none"
     },
     "round": "4px"
   },
@@ -597,6 +702,9 @@
   "list": {
     "item": {}
   },
+  "maskedInput": {
+    "container": {}
+  },
   "menu": {
     "icons": {
       "color": "text-strong"
@@ -641,14 +749,19 @@
       }
     },
     "color": "selected-background",
+    "container": {},
     "gap": "xsmall",
     "hover": {
       "border": {}
-    }
+    },
+    "icons": {}
   },
   "radioButtonGroup": {
     "container": {
-      "gap": "none"
+      "gap": "none",
+      "margin": {
+        "vertical": "xsmall"
+      }
     }
   },
   "rangeInput": {
@@ -673,11 +786,12 @@
   "tab": {
     "color": "text-strong",
     "active": {
-      "background": "background-contrast"
+      "background": "background-contrast",
+      "color": "text-strong"
     },
     "hover": {
       "background": "background-contrast",
-      "color": "text"
+      "color": "text-strong"
     },
     "border": {
       "side": "bottom",
@@ -708,6 +822,25 @@
         "size": "small",
         "color": "border"
       }
+    }
+  },
+  "table": {
+    "header": {
+      "extend": "\n        > div { \n          height: 100%;\n          justify-content: center;\n        }\n        // align onSelect checkbox to center of header cell\n        label { \n          justify-content: center;\n        }\n      ",
+      "pad": {
+        "left": "none",
+        "vertical": "none",
+        "right": "xxsmall"
+      }
+    },
+    "body": {},
+    "row": {
+      "hover": {
+        "background": "background-contrast"
+      }
+    },
+    "footer": {
+      "extend": "\n        font-weight: bold;\n      "
     }
   },
   "text": {
@@ -741,6 +874,9 @@
       "height": "42px",
       "maxWidth": "854px"
     }
+  },
+  "textInput": {
+    "container": {}
   },
   "name": "HPE 1",
   "rounding": 4,
