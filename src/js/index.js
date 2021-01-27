@@ -700,6 +700,7 @@ export const hpe = deepFreeze({
     round: '4px',
   },
   heading: {
+    color: 'text-strong',
     level: {
       '1': {
         small: {
@@ -835,10 +836,6 @@ export const hpe = deepFreeze({
       },
     },
     weight: 700,
-    extend: ({ theme }) =>
-      `color: ${
-        theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
-      };`,
   },
   icon: {
     size: {
