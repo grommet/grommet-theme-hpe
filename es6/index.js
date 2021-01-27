@@ -667,6 +667,7 @@ export var hpe = deepFreeze({
     round: '4px'
   },
   heading: {
+    color: 'text-strong',
     level: {
       '1': {
         small: {
