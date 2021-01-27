@@ -826,6 +826,10 @@ var hpe = deepFreeze({
   },
   layer: {
     background: 'background',
+    border: {
+      radius: 'small',
+      intelligentRounding: true
+    },
     container: {
       elevation: 'large'
     },
