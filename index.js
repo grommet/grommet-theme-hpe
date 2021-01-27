@@ -227,8 +227,8 @@ var hpe = deepFreeze({
       // As defined here, default is currently mapping to medium.
       light: {
         small: '0px 2px 4px #0000001F;',
-        medium: '0px 6px 12px #0000003D;',
-        large: '0px 12px 24px #0000001F;'
+        medium: '0px 6px 12px #0000001F;',
+        large: '0px 12px 24px #0000003D;'
       },
       dark: {
         small: '0px 2px 4px #0000003D;',
@@ -451,7 +451,8 @@ var hpe = deepFreeze({
   },
   card: {
     container: {
-      background: 'background-front'
+      background: 'background-front',
+      elevation: 'medium'
     },
     body: {
       pad: 'medium'
