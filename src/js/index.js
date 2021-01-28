@@ -78,10 +78,7 @@ export const hpe = deepFreeze({
         light: '#BBBBBB',
       },
       control: 'green',
-      'active-background': {
-        dark: '#FFFFFF14',
-        light: '#0000000A',
-      },
+      'active-background': 'background-contrast',
       'active-text': 'text',
       'disabled-text': 'text-weak', // deprecated, use text-weak instead
       'selected-background': 'green',
