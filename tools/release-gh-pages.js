@@ -15,8 +15,18 @@ if (process.env.CI) {
       .silent(false)
       .clone(repoURL, localFolder)
       .then(() => git(localFolder).checkout('gh-pages'))
-      .then(() => fs.copy(`${localDist}/grommet-theme-hpe.min.js`))
-      .then(() => fs.copy(`${localDist}/grommet-theme-hpe.json`))
+      .then(() =>
+        fs.copy(
+          `${localDist}/grommet-theme-hpe.min.js`,
+          `${localFolder}/grommet-theme-hpe-2.min.js`,
+        ),
+      )
+      .then(() =>
+        fs.copy(
+          `${localDist}/grommet-theme-hpe.json`,
+          `${localFolder}/grommet-theme-hpe-2.json`,
+        ),
+      )
       .then(() => git(localFolder).add(['--all', '.']))
       .then(() =>
         git(localFolder).commit('grommet-theme-hpe .min.js and .json updated'),
