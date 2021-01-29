@@ -55,7 +55,7 @@
     "webpack-cli": "^3.1.0"
   },
   "scripts": {
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run build && npm run jsonify",
     "build": "webpack --mode production && cross-env babel ./src/js/ --out-dir ./dist --copy-files && cross-env BABEL_ENV=es6 babel ./src/js/ --out-dir ./dist/es6 --copy-files",
     "lint": "eslint src",
     "lint-fix": "eslint src --fix",
