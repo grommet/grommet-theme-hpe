@@ -1009,21 +1009,28 @@ export const hpe = deepFreeze({
     },
     border: {
       side: 'bottom',
-      color: 'border',
+      color: 'transparent',
+      size: 'medium',
       active: {
         color: 'border-strong',
       },
       disabled: {
-        color: 'border-weak',
+        color: undefined,
       },
       hover: {
-        color: 'border',
+        color: undefined,
       },
     },
     disabled: {
       color: 'text-weak',
     },
-    pad: 'small',
+    pad: {
+      // top and bottom pad need to be defined individually, specifying
+      // "vertical" only applies to top
+      bottom: 'small',
+      top: 'small',
+      horizontal: 'medium',
+    },
     margin: {
       // bring the overall tabs border behind invidual tab borders
       vertical: '-2px',
