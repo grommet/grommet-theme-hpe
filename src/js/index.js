@@ -1015,10 +1015,10 @@ export const hpe = deepFreeze({
         color: 'border-strong',
       },
       disabled: {
-        color: 'transparent',
+        color: undefined,
       },
       hover: {
-        color: 'transparent',
+        color: undefined,
       },
     },
     disabled: {
