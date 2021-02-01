@@ -804,21 +804,22 @@
     },
     "border": {
       "side": "bottom",
-      "color": "border",
+      "color": "transparent",
+      "size": "medium",
       "active": {
         "color": "border-strong"
       },
-      "disabled": {
-        "color": "border-weak"
-      },
-      "hover": {
-        "color": "border"
-      }
+      "disabled": {},
+      "hover": {}
     },
     "disabled": {
       "color": "text-weak"
     },
-    "pad": "small",
+    "pad": {
+      "bottom": "small",
+      "top": "small",
+      "horizontal": "medium"
+    },
     "margin": {
       "vertical": "-2px",
       "horizontal": "none"
