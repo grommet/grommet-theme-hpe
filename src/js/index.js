@@ -693,6 +693,7 @@ export const hpe = deepFreeze({
         top: 'xsmall',
         horizontal: 'none',
       },
+      requiredIndicator: true,
       weight: 500,
     },
     margin: {
