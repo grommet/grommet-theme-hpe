@@ -281,10 +281,6 @@ export const hpe = deepFreeze({
       font: {
         weight: 700,
       },
-      padding: {
-        horizontal: '12px',
-        vertical: '6px',
-      },
     },
     primary: {
       background: {
@@ -294,10 +290,6 @@ export const hpe = deepFreeze({
       color: 'text-strong',
       font: {
         weight: 700,
-      },
-      padding: {
-        horizontal: '12px',
-        vertical: '6px',
       },
     },
     secondary: {
@@ -309,19 +301,11 @@ export const hpe = deepFreeze({
       font: {
         weight: 700,
       },
-      padding: {
-        horizontal: '10px',
-        vertical: '4px',
-      },
     },
     option: {
       color: 'text',
       border: {
         radius: '0px',
-      },
-      padding: {
-        horizontal: '12px',
-        vertical: '6px',
       },
       font: {
         weight: 400,
@@ -359,10 +343,6 @@ export const hpe = deepFreeze({
           color: 'border-weak',
           width: '2px',
         },
-        padding: {
-          horizontal: '10px',
-          vertical: '4px',
-        },
       },
       secondary: {
         border: {
@@ -381,10 +361,6 @@ export const hpe = deepFreeze({
       secondary: {
         border: {
           width: '3px',
-        },
-        padding: {
-          horizontal: '9px',
-          vertical: '3px',
         },
       },
       option: {
