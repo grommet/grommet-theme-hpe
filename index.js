@@ -385,8 +385,8 @@ var hpe = deepFreeze({
           radius: '4px'
         },
         pad: {
-          vertical: '4px',
-          horizontal: '10px'
+          vertical: '6px',
+          horizontal: '12px'
         }
       },
       large: {
