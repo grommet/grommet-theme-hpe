@@ -107,6 +107,14 @@
         "light": "#FC61613D",
         "dark": "#C54E4B5C"
       },
+      "validation-ok": {
+        "light": "#17EBA03D",
+        "dark": "#00856759"
+      },
+      "validation-warning": {
+        "light": "#FFBC443D",
+        "dark": "#9B63105C"
+      },
       "graph-0": "orange!",
       "graph-1": "blue!",
       "graph-2": "purple!",
