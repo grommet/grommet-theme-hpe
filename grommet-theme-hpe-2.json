@@ -873,6 +873,21 @@
   "textInput": {
     "container": {}
   },
+  "tip": {
+    "content": {
+      "background": "background",
+      "border": {
+        "color": "border-weak"
+      },
+      "margin": "xxsmall",
+      "elevation": "small",
+      "pad": {
+        "vertical": "none",
+        "horizontal": "small"
+      },
+      "round": "xsmall"
+    }
+  },
   "name": "HPE 1",
   "rounding": 4,
   "scale": 1.1,
