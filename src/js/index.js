@@ -1119,7 +1119,6 @@ export const hpe = deepFreeze({
   },
   tip: {
     content: {
-      margin: 'xxsmall',
       background: 'background',
       border: {
         color: 'border-weak',
