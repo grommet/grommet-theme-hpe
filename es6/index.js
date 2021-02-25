@@ -1050,6 +1050,21 @@ export var hpe = deepFreeze({
       }
     }
   },
+  tip: {
+    content: {
+      background: 'background',
+      border: {
+        color: 'border-weak'
+      },
+      margin: 'xxsmall',
+      elevation: 'small',
+      pad: {
+        vertical: 'none',
+        horizontal: 'small'
+      },
+      round: 'xsmall'
+    }
+  },
   // Theme-Designer only parameters
   name: 'HPE 1',
   rounding: 4,
