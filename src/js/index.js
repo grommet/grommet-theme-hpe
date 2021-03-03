@@ -861,6 +861,12 @@ export const hpe = deepFreeze({
     },
   },
   menu: {
+    drop: {
+      align: {
+        top: 'bottom',
+        left: 'left',
+      },
+    },
     icons: {
       color: 'text-strong',
     },
