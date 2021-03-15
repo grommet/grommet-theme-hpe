@@ -846,6 +846,18 @@ var hpe = deepFreeze({
       color: 'text-strong'
     }
   },
+  pagination: {
+    button: {
+      font: {
+        weight: 700
+      },
+      active: {
+        font: {
+          weight: 700
+        }
+      }
+    }
+  },
   paragraph: {
     small: {
       size: '16px',
