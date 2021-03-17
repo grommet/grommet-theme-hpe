@@ -881,6 +881,9 @@ export const hpe = deepFreeze({
           weight: 700,
         },
       },
+      disabled: {
+        color: 'text-weak',
+      },
     },
   },
   paragraph: {
