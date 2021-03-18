@@ -841,6 +841,9 @@ export var hpe = deepFreeze({
         font: {
           weight: 700
         }
+      },
+      disabled: {
+        color: 'text-weak'
       }
     }
   },
