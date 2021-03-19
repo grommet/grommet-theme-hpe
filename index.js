@@ -967,6 +967,27 @@ var hpe = deepFreeze({
     },
     options: undefined
   },
+  spinner: {
+    container: {
+      border: [{
+        side: 'all',
+        color: 'background-contrast',
+        size: 'medium'
+      }, {
+        side: 'right',
+        color: 'green',
+        size: 'medium'
+      }, {
+        side: 'top',
+        color: 'green',
+        size: 'medium'
+      }, {
+        side: 'left',
+        color: 'green',
+        size: 'medium'
+      }]
+    }
+  },
   tab: {
     color: 'text-strong',
     active: {
