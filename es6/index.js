@@ -1,22 +1,4 @@
-function _templateObject2() {
-  var data = _taggedTemplateLiteralLoose(["\n      border-top-left-radius: ", "; // should use radius property of border\n      border-top-right-radius: ", "; // should use radius property of border\n      font-weight: bold;\n    "]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteralLoose(["\n        ", "\n      "]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
+var _templateObject, _templateObject2;
 
 function _taggedTemplateLiteralLoose(strings, raw) { if (!raw) { raw = strings.slice(0); } strings.raw = raw; return strings; }
 
@@ -943,7 +925,7 @@ export var hpe = deepFreeze({
     control: {
       extend: function extend(_ref13) {
         var disabled = _ref13.disabled;
-        return css(_templateObject(), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
+        return css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
       }
     },
     icons: {
@@ -1015,7 +997,7 @@ export var hpe = deepFreeze({
     },
     extend: function extend(_ref14) {
       var theme = _ref14.theme;
-      return css(_templateObject2(), theme.global.control.border.radius, theme.global.control.border.radius);
+      return css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n      border-top-left-radius: ", "; // should use radius property of border\n      border-top-right-radius: ", "; // should use radius property of border\n      font-weight: bold;\n    "])), theme.global.control.border.radius, theme.global.control.border.radius);
     }
   },
   tabs: {
