@@ -223,10 +223,8 @@ export const hpe = deepFreeze({
       border: {
         radius: '4px',
       },
-      extend: ({ alignProp, theme }) => `
-        margin-top: ${alignProp.top !== 'top' && theme.global.edgeSize.xsmall}; 
-        margin-bottom: ${alignProp.bottom !== 'bottom' &&
-          theme.global.edgeSize.xsmall}`,
+      margin: 'xsmall',
+      intelligentMargin: true,
       shadowSize: 'medium',
     },
     elevation: {
