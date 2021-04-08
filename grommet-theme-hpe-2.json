@@ -148,6 +148,8 @@
       "border": {
         "radius": "4px"
       },
+      "margin": "xsmall",
+      "intelligentMargin": true,
       "shadowSize": "medium"
     },
     "elevation": {
