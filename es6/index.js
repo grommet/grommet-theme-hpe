@@ -189,11 +189,8 @@ export var hpe = deepFreeze({
       border: {
         radius: '4px'
       },
-      extend: function extend(_ref) {
-        var alignProp = _ref.alignProp,
-            theme = _ref.theme;
-        return "\n        margin-top: " + (alignProp.top !== 'top' && theme.global.edgeSize.xsmall) + "; \n        margin-bottom: " + (alignProp.bottom !== 'bottom' && theme.global.edgeSize.xsmall);
-      },
+      margin: 'xsmall',
+      intelligentMargin: true,
       shadowSize: 'medium'
     },
     elevation: {
@@ -435,16 +432,16 @@ export var hpe = deepFreeze({
     },
     check: {
       radius: '2px',
-      extend: function extend(_ref2) {
-        var theme = _ref2.theme,
-            checked = _ref2.checked,
-            indeterminate = _ref2.indeterminate;
+      extend: function extend(_ref) {
+        var theme = _ref.theme,
+            checked = _ref.checked,
+            indeterminate = _ref.indeterminate;
         return "\n      box-shadow: none;\n      background-color: " + (checked || indeterminate ? theme.global.colors.green[theme.dark ? 'dark' : 'light'] : theme.global.colors.background[theme.dark ? 'dark' : 'light']) + ";\n      " + ((checked || indeterminate) && 'border: none;') + "\n        ";
       }
     },
     icon: {
-      extend: function extend(_ref3) {
-        var theme = _ref3.theme;
+      extend: function extend(_ref2) {
+        var theme = _ref2.theme;
         return "stroke-width: 2px;\n      stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'];
       }
     },
@@ -453,20 +450,20 @@ export var hpe = deepFreeze({
       background: 'background',
       color: 'background',
       knob: {
-        extend: function extend(_ref4) {
-          var theme = _ref4.theme;
+        extend: function extend(_ref3) {
+          var theme = _ref3.theme;
           return "\n           box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'].small + ";\n           border: 1px solid " + theme.global.colors.border[theme.dark ? 'dark' : 'light'] + "\n        ";
         }
       },
-      extend: function extend(_ref5) {
-        var checked = _ref5.checked,
-            theme = _ref5.theme;
+      extend: function extend(_ref4) {
+        var checked = _ref4.checked,
+            theme = _ref4.theme;
         return "\n        " + (checked && "background-color: " + theme.global.colors.green[theme.dark ? 'dark' : 'light'] + ";") + "\n      ";
       }
     },
-    extend: function extend(_ref6) {
-      var disabled = _ref6.disabled,
-          theme = _ref6.theme;
+    extend: function extend(_ref5) {
+      var disabled = _ref5.disabled,
+          theme = _ref5.theme;
       return "\n      " + (!disabled && ":hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }") + "\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xsmall + " " + theme.global.edgeSize.small + ";\n    ";
     }
   },
@@ -480,8 +477,8 @@ export var hpe = deepFreeze({
   },
   dataTable: {
     body: {
-      extend: function extend(_ref7) {
-        var theme = _ref7.theme;
+      extend: function extend(_ref6) {
+        var theme = _ref6.theme;
         return "\n        /* Margin and padding allow room for focus on table body */\n        margin: " + theme.global.edgeSize.xxsmall + " 0px;\n        padding: 0px " + theme.global.edgeSize.xxsmall + ";\n      ";
       }
     },
@@ -490,11 +487,11 @@ export var hpe = deepFreeze({
         side: 'bottom'
       },
       color: 'text-strong',
-      extend: function extend(_ref8) {
-        var column = _ref8.column,
-            sort = _ref8.sort,
-            sortable = _ref8.sortable,
-            theme = _ref8.theme;
+      extend: function extend(_ref7) {
+        var column = _ref7.column,
+            sort = _ref7.sort,
+            sortable = _ref7.sortable,
+            theme = _ref7.theme;
         return "\n          " + (sort && sort.property === column && "\n            background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n          ") + ";\n          " + (sortable && sort && sort.property !== column && "\n              svg {\n                opacity: 0;\n              }\n              :hover {\n                svg {\n                  opacity: 1;\n                }\n              }\n            ") + ";\n         ";
       },
       font: {
@@ -797,8 +794,8 @@ export var hpe = deepFreeze({
   },
   maskedInput: {
     container: {
-      extend: function extend(_ref9) {
-        var theme = _ref9.theme;
+      extend: function extend(_ref8) {
+        var theme = _ref8.theme;
         return "\n        svg {\n          fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n        }\n      ";
       }
     }
@@ -869,13 +866,13 @@ export var hpe = deepFreeze({
     },
     color: 'selected-background',
     container: {
-      extend: function extend(_ref10) {
-        var theme = _ref10.theme;
+      extend: function extend(_ref9) {
+        var theme = _ref9.theme;
         return "\n      :not(div):hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
       }
     },
-    extend: function extend(_ref11) {
-      var theme = _ref11.theme;
+    extend: function extend(_ref10) {
+      var theme = _ref10.theme;
       return "\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
     },
     gap: 'xsmall',
@@ -907,8 +904,8 @@ export var hpe = deepFreeze({
   rangeInput: {
     thumb: {
       color: 'background',
-      extend: function extend(_ref12) {
-        var theme = _ref12.theme;
+      extend: function extend(_ref11) {
+        var theme = _ref11.theme;
         return "\n        border: 1px solid " + theme.global.colors.border[theme.dark ? 'dark' : 'light'] + ";\n        box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'].small + ";\n      ";
       }
     },
@@ -923,8 +920,8 @@ export var hpe = deepFreeze({
   },
   select: {
     control: {
-      extend: function extend(_ref13) {
-        var disabled = _ref13.disabled;
+      extend: function extend(_ref12) {
+        var disabled = _ref12.disabled;
         return css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
       }
     },
@@ -995,8 +992,8 @@ export var hpe = deepFreeze({
       vertical: '-2px',
       horizontal: 'none'
     },
-    extend: function extend(_ref14) {
-      var theme = _ref14.theme;
+    extend: function extend(_ref13) {
+      var theme = _ref13.theme;
       return css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n      border-top-left-radius: ", "; // should use radius property of border\n      border-top-right-radius: ", "; // should use radius property of border\n      font-weight: bold;\n    "])), theme.global.control.border.radius, theme.global.control.border.radius);
     }
   },
@@ -1020,8 +1017,8 @@ export var hpe = deepFreeze({
       }
     },
     body: {
-      extend: function extend(_ref15) {
-        var theme = _ref15.theme;
+      extend: function extend(_ref14) {
+        var theme = _ref14.theme;
         return "\n          :hover {\n            button {\n              background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n            }\n          }\n        ";
       }
     },
@@ -1068,8 +1065,8 @@ export var hpe = deepFreeze({
   },
   textInput: {
     container: {
-      extend: function extend(_ref16) {
-        var theme = _ref16.theme;
+      extend: function extend(_ref15) {
+        var theme = _ref15.theme;
         return "\n        svg {\n          fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n        }\n      ";
       }
     }
