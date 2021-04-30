@@ -150,7 +150,8 @@
       },
       "margin": "xsmall",
       "intelligentMargin": true,
-      "shadowSize": "medium"
+      "shadowSize": "medium",
+      "zIndex": "110"
     },
     "elevation": {
       "light": {

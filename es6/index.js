@@ -191,7 +191,12 @@ export var hpe = deepFreeze({
       },
       margin: 'xsmall',
       intelligentMargin: true,
-      shadowSize: 'medium'
+      shadowSize: 'medium',
+
+      /* HPE Global Header/Footer Service a.k.a. HPE Common HFWS sets the header
+       * at a z-index of 101. This adjustment brings Drop in alignment with Layer
+       * which needs an elevated z-index to sit atop the Global header. */
+      zIndex: '110'
     },
     elevation: {
       // Elevation values were derived from this Figma file.
