@@ -785,7 +785,12 @@ export var hpe = deepFreeze({
     },
     overlay: {
       background: '#00000080'
-    }
+    },
+
+    /* HPE Global Header/Footer Service a.k.a. HPE Common HFWS sets the header
+     * at a z-index of 101. This adjustment allows for Layer modals and side-drawers
+     * to sit atop the Global header. */
+    zIndex: '110'
   },
   list: {
     item: {

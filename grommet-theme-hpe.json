@@ -693,7 +693,8 @@
     },
     "overlay": {
       "background": "#00000080"
-    }
+    },
+    "zIndex": "110"
   },
   "list": {
     "item": {}
