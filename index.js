@@ -298,6 +298,16 @@ var hpe = deepFreeze({
         weight: 700
       }
     },
+    toolbar: {
+      border: {
+        color: 'border',
+        width: '1px'
+      },
+      color: 'text-strong',
+      font: {
+        weight: 700
+      }
+    },
     option: {
       color: 'text',
       border: {
@@ -362,6 +372,9 @@ var hpe = deepFreeze({
       option: {
         background: 'active-background',
         color: 'active-text'
+      },
+      toolbar: {
+        background: 'transparent'
       }
     },
     size: {
