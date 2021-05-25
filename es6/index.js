@@ -11,6 +11,7 @@ import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
 import { Descending } from 'grommet-icons/icons/Descending';
 import { FormDown } from 'grommet-icons/icons/FormDown';
 import { FormUp } from 'grommet-icons/icons/FormUp';
+import { Trash } from 'grommet-icons/icons/Trash';
 import { Unsorted } from 'grommet-icons/icons/Unsorted';
 
 var isObject = function isObject(item) {
@@ -554,6 +555,46 @@ export var hpe = deepFreeze({
     icon: {
       size: 'small'
     }
+  },
+  fileInput: {
+    border: {
+      size: 'xsmall'
+    },
+    button: {
+      border: {
+        radius: '4px'
+      },
+      pad: {
+        vertical: '6px',
+        horizontal: '12px'
+      },
+      color: 'text-strong',
+      font: {
+        weight: 'bold'
+      },
+      hover: {
+        background: 'background-contrast'
+      }
+    },
+    dragOver: {
+      background: 'background-contrast',
+      border: 'none'
+    },
+    hover: {
+      border: {
+        color: 'border'
+      }
+    },
+    icons: {
+      remove: Trash
+    },
+    message: {
+      color: 'text-weak'
+    },
+    pad: {
+      horizontal: 'xsmall'
+    },
+    extend: 'border-radius: 4px;'
   },
   formField: {
     content: {

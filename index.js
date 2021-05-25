@@ -19,6 +19,8 @@ var _FormDown = require("grommet-icons/icons/FormDown");
 
 var _FormUp = require("grommet-icons/icons/FormUp");
 
+var _Trash = require("grommet-icons/icons/Trash");
+
 var _Unsorted = require("grommet-icons/icons/Unsorted");
 
 var _templateObject, _templateObject2;
@@ -568,6 +570,46 @@ var hpe = deepFreeze({
     icon: {
       size: 'small'
     }
+  },
+  fileInput: {
+    border: {
+      size: 'xsmall'
+    },
+    button: {
+      border: {
+        radius: '4px'
+      },
+      pad: {
+        vertical: '6px',
+        horizontal: '12px'
+      },
+      color: 'text-strong',
+      font: {
+        weight: 'bold'
+      },
+      hover: {
+        background: 'background-contrast'
+      }
+    },
+    dragOver: {
+      background: 'background-contrast',
+      border: 'none'
+    },
+    hover: {
+      border: {
+        color: 'border'
+      }
+    },
+    icons: {
+      remove: _Trash.Trash
+    },
+    message: {
+      color: 'text-weak'
+    },
+    pad: {
+      horizontal: 'xsmall'
+    },
+    extend: 'border-radius: 4px;'
   },
   formField: {
     content: {
