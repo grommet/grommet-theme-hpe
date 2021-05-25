@@ -390,6 +390,7 @@ export const hpe = deepFreeze({
       },
       toolbar: {
         background: 'transparent',
+        color: undefined,
       },
     },
     size: {
