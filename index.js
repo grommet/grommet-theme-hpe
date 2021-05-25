@@ -374,7 +374,8 @@ var hpe = deepFreeze({
         color: 'active-text'
       },
       toolbar: {
-        background: 'transparent'
+        background: 'transparent',
+        color: undefined
       }
     },
     size: {
