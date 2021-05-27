@@ -822,6 +822,9 @@
     "container": {},
     "gap": "xsmall",
     "hover": {
+      "background": {
+        "color": "background-contrast"
+      },
       "border": {}
     },
     "icons": {}

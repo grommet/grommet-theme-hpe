@@ -933,7 +933,7 @@ export var hpe = deepFreeze({
     container: {
       extend: function extend(_ref9) {
         var theme = _ref9.theme;
-        return "\n      :not(div):hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
+        return "\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
       }
     },
     extend: function extend(_ref10) {
@@ -942,6 +942,9 @@ export var hpe = deepFreeze({
     },
     gap: 'xsmall',
     hover: {
+      background: {
+        color: 'background-contrast'
+      },
       border: {
         color: undefined
       }
