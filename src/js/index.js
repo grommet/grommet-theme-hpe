@@ -986,13 +986,6 @@ export const hpe = deepFreeze({
     color: 'selected-background',
     container: {
       extend: ({ theme }) => `
-      :not(div):hover {
-        background-color: ${
-          theme.global.colors['background-contrast'][
-            theme.dark ? 'dark' : 'light'
-          ]
-        };
-      }
       font-weight: 500;
       width: auto;
       padding: ${theme.global.edgeSize.xxsmall} ${theme.global.edgeSize.xsmall};
@@ -1003,6 +996,9 @@ export const hpe = deepFreeze({
     `,
     gap: 'xsmall',
     hover: {
+      background: {
+        color: 'background-contrast',
+      },
       border: {
         color: undefined,
       },
