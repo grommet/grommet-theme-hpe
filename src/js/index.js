@@ -480,7 +480,6 @@ export const hpe = deepFreeze({
     check: {
       radius: '2px',
       extend: ({ theme, checked, indeterminate }) => `
-      box-shadow: none;
       background-color: ${
         checked || indeterminate
           ? theme.global.colors.green[theme.dark ? 'dark' : 'light']
