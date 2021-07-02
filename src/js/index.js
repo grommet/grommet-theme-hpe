@@ -261,7 +261,7 @@ export const hpe = deepFreeze({
     panel: {
       border: {
         side: 'horizontal',
-        color: 'text',
+        color: 'border',
       },
     },
     heading: {
