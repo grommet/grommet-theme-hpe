@@ -6,6 +6,8 @@ import { Blank } from 'grommet-icons/icons/Blank';
 import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
 import { Descending } from 'grommet-icons/icons/Descending';
 import { FormDown } from 'grommet-icons/icons/FormDown';
+import { FormNext } from 'grommet-icons/icons/FormNext';
+import { FormPrevious } from 'grommet-icons/icons/FormPrevious';
 import { FormUp } from 'grommet-icons/icons/FormUp';
 import { Trash } from 'grommet-icons/icons/Trash';
 import { Unsorted } from 'grommet-icons/icons/Unsorted';
@@ -432,6 +434,10 @@ export const hpe = deepFreeze({
     },
   },
   calendar: {
+    icons: {
+      next: FormNext,
+      previous: FormPrevious,
+    },
     small: {
       fontSize: '13.6px',
       lineHeight: 1.375,
