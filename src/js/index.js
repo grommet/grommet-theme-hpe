@@ -9,7 +9,7 @@ import { FormDown } from 'grommet-icons/icons/FormDown';
 import { FormNext } from 'grommet-icons/icons/FormNext';
 import { FormPrevious } from 'grommet-icons/icons/FormPrevious';
 import { FormUp } from 'grommet-icons/icons/FormUp';
-import { Trash } from 'grommet-icons/icons/Trash';
+import { FormTrash } from 'grommet-icons/icons/FormTrash';
 import { Unsorted } from 'grommet-icons/icons/Unsorted';
 
 const isObject = item =>
@@ -663,7 +663,7 @@ export const hpe = deepFreeze({
       },
     },
     icons: {
-      remove: Trash,
+      remove: FormTrash,
     },
     message: {
       color: 'text-weak',
