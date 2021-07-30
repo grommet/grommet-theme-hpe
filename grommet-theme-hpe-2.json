@@ -178,7 +178,7 @@
     "panel": {
       "border": {
         "side": "horizontal",
-        "color": "text"
+        "color": "border"
       }
     },
     "heading": {
@@ -345,6 +345,7 @@
     }
   },
   "calendar": {
+    "icons": {},
     "small": {
       "fontSize": "13.6px",
       "lineHeight": 1.375,
