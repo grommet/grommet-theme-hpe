@@ -17,9 +17,13 @@ var _Descending = require("grommet-icons/icons/Descending");
 
 var _FormDown = require("grommet-icons/icons/FormDown");
 
+var _FormNext = require("grommet-icons/icons/FormNext");
+
+var _FormPrevious = require("grommet-icons/icons/FormPrevious");
+
 var _FormUp = require("grommet-icons/icons/FormUp");
 
-var _Trash = require("grommet-icons/icons/Trash");
+var _FormTrash = require("grommet-icons/icons/FormTrash");
 
 var _Unsorted = require("grommet-icons/icons/Unsorted");
 
@@ -243,7 +247,7 @@ var hpe = deepFreeze({
     panel: {
       border: {
         side: 'horizontal',
-        color: 'text'
+        color: 'border'
       }
     },
     heading: {
@@ -417,6 +421,10 @@ var hpe = deepFreeze({
     }
   },
   calendar: {
+    icons: {
+      next: _FormNext.FormNext,
+      previous: _FormPrevious.FormPrevious
+    },
     small: {
       fontSize: '13.6px',
       lineHeight: 1.375,
@@ -471,7 +479,7 @@ var hpe = deepFreeze({
         var theme = _ref.theme,
             checked = _ref.checked,
             indeterminate = _ref.indeterminate;
-        return "\n      box-shadow: none;\n      background-color: " + (checked || indeterminate ? theme.global.colors.green[theme.dark ? 'dark' : 'light'] : theme.global.colors.background[theme.dark ? 'dark' : 'light']) + ";\n      " + ((checked || indeterminate) && 'border: none;') + "\n        ";
+        return "\n      background-color: " + (checked || indeterminate ? theme.global.colors.green[theme.dark ? 'dark' : 'light'] : theme.global.colors.background[theme.dark ? 'dark' : 'light']) + ";\n      " + ((checked || indeterminate) && 'border: none;') + "\n        ";
       }
     },
     icon: {
@@ -615,7 +623,7 @@ var hpe = deepFreeze({
       }
     },
     icons: {
-      remove: _Trash.Trash
+      remove: _FormTrash.FormTrash
     },
     message: {
       color: 'text-weak'
