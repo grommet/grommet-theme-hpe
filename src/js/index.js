@@ -602,21 +602,30 @@ export const hpe = deepFreeze({
           color: 'background-front',
           opacity: 'strong',
         },
-        extend: 'backdrop-filter: blur(8px);',
+        extend: `backdrop-filter: blur(8px);
+        @-moz-document url-prefix() {
+          background-color: rgba(255, 255, 255, 0.92);
+      }`,
       },
       body: {
         background: {
           color: 'background-front',
           opacity: 'strong',
         },
-        extend: 'backdrop-filter: blur(8px);',
+        extend: `backdrop-filter: blur(8px);
+        @-moz-document url-prefix() {
+          background-color: rgba(255, 255, 255, 0.92);
+      }`,
       },
       footer: {
         background: {
           color: 'background-front',
           opacity: 'strong',
         },
-        extend: 'backdrop-filter: blur(8px);',
+        extend: `backdrop-filter: blur(8px);
+        @-moz-document url-prefix() {
+          background-color: rgba(255, 255, 255, 0.92);
+      }`,
       },
     },
     resize: {
