@@ -596,27 +596,43 @@ export const hpe = deepFreeze({
       descending: Descending,
       sortable: Unsorted,
     },
+    /* Add FireFox work around until it adds support for backdrop-filter
+    https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter
+    */
     pinned: {
       header: {
         background: {
           color: 'background-front',
           opacity: 'strong',
         },
-        extend: 'backdrop-filter: blur(8px);',
+        // values for background are same as 'background-front' set to a 95% opacity
+        extend: ({ theme }) => `backdrop-filter: blur(8px);
+        @-moz-document url-prefix() {
+          background: ${theme.dark ? '#404b5cF2' : '#ffffffF2'};
+          }
+      }`,
       },
       body: {
         background: {
           color: 'background-front',
           opacity: 'strong',
         },
-        extend: 'backdrop-filter: blur(8px);',
+        extend: ({ theme }) => `backdrop-filter: blur(8px);
+        @-moz-document url-prefix() {
+          background: ${theme.dark ? '#404b5cF2' : '#ffffffF2'};
+          }
+      }`,
       },
       footer: {
         background: {
           color: 'background-front',
           opacity: 'strong',
         },
-        extend: 'backdrop-filter: blur(8px);',
+        extend: ({ theme }) => `backdrop-filter: blur(8px);
+        @-moz-document url-prefix() {
+          background: ${theme.dark ? '#404b5cF2' : '#ffffffF2'};
+          }
+      }`,
       },
     },
     resize: {
