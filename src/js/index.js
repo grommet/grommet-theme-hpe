@@ -596,15 +596,19 @@ export const hpe = deepFreeze({
       descending: Descending,
       sortable: Unsorted,
     },
+    /* Add FireFox work around until it adds support for backdrop-filter
+    https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter
+    */
     pinned: {
       header: {
         background: {
           color: 'background-front',
           opacity: 'strong',
         },
-        extend: `backdrop-filter: blur(8px);
+        extend: ({ theme }) => `backdrop-filter: blur(8px);
         @-moz-document url-prefix() {
-          background-color: rgba(255, 255, 255, 0.92);
+          background: ${theme.dark ? '#404b5cF2' : '#ffffffF2'};
+          }
       }`,
       },
       body: {
@@ -612,9 +616,10 @@ export const hpe = deepFreeze({
           color: 'background-front',
           opacity: 'strong',
         },
-        extend: `backdrop-filter: blur(8px);
+        extend: ({ theme }) => `backdrop-filter: blur(8px);
         @-moz-document url-prefix() {
-          background-color: rgba(255, 255, 255, 0.92);
+          background: ${theme.dark ? '#404b5cF2' : '#ffffffF2'};
+          }
       }`,
       },
       footer: {
@@ -622,9 +627,10 @@ export const hpe = deepFreeze({
           color: 'background-front',
           opacity: 'strong',
         },
-        extend: `backdrop-filter: blur(8px);
+        extend: ({ theme }) => `backdrop-filter: blur(8px);
         @-moz-document url-prefix() {
-          background-color: rgba(255, 255, 255, 0.92);
+          background: ${theme.dark ? '#404b5cF2' : '#ffffffF2'};
+          }
       }`,
       },
     },
