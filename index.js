@@ -556,27 +556,41 @@ var hpe = deepFreeze({
       descending: _Descending.Descending,
       sortable: _Unsorted.Unsorted
     },
+
+    /* Add FireFox work around until it adds support for backdrop-filter
+    https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter
+    */
     pinned: {
       header: {
         background: {
           color: 'background-front',
           opacity: 'strong'
         },
-        extend: 'backdrop-filter: blur(8px);'
+        // values for background are same as 'background-front' set to a 95% opacity
+        extend: function extend(_ref8) {
+          var theme = _ref8.theme;
+          return "backdrop-filter: blur(8px);\n        @-moz-document url-prefix() {\n          background: " + (theme.dark ? '#404b5cF2' : '#ffffffF2') + ";\n          }\n      }";
+        }
       },
       body: {
         background: {
           color: 'background-front',
           opacity: 'strong'
         },
-        extend: 'backdrop-filter: blur(8px);'
+        extend: function extend(_ref9) {
+          var theme = _ref9.theme;
+          return "backdrop-filter: blur(8px);\n        @-moz-document url-prefix() {\n          background: " + (theme.dark ? '#404b5cF2' : '#ffffffF2') + ";\n          }\n      }";
+        }
       },
       footer: {
         background: {
           color: 'background-front',
           opacity: 'strong'
         },
-        extend: 'backdrop-filter: blur(8px);'
+        extend: function extend(_ref10) {
+          var theme = _ref10.theme;
+          return "backdrop-filter: blur(8px);\n        @-moz-document url-prefix() {\n          background: " + (theme.dark ? '#404b5cF2' : '#ffffffF2') + ";\n          }\n      }";
+        }
       }
     },
     resize: {
@@ -882,8 +896,8 @@ var hpe = deepFreeze({
   },
   maskedInput: {
     container: {
-      extend: function extend(_ref8) {
-        var theme = _ref8.theme;
+      extend: function extend(_ref11) {
+        var theme = _ref11.theme;
         return "\n        svg {\n          fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n        }\n      ";
       }
     }
@@ -954,13 +968,13 @@ var hpe = deepFreeze({
     },
     color: 'selected-background',
     container: {
-      extend: function extend(_ref9) {
-        var theme = _ref9.theme;
+      extend: function extend(_ref12) {
+        var theme = _ref12.theme;
         return "\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
       }
     },
-    extend: function extend(_ref10) {
-      var theme = _ref10.theme;
+    extend: function extend(_ref13) {
+      var theme = _ref13.theme;
       return "\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
     },
     gap: 'xsmall',
@@ -995,8 +1009,8 @@ var hpe = deepFreeze({
   rangeInput: {
     thumb: {
       color: 'background',
-      extend: function extend(_ref11) {
-        var theme = _ref11.theme;
+      extend: function extend(_ref14) {
+        var theme = _ref14.theme;
         return "\n        border: 1px solid " + theme.global.colors.border[theme.dark ? 'dark' : 'light'] + ";\n        box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'].small + ";\n      ";
       }
     },
@@ -1011,8 +1025,8 @@ var hpe = deepFreeze({
   },
   select: {
     control: {
-      extend: function extend(_ref12) {
-        var disabled = _ref12.disabled;
+      extend: function extend(_ref15) {
+        var disabled = _ref15.disabled;
         return (0, _styledComponents.css)(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
       }
     },
@@ -1083,8 +1097,8 @@ var hpe = deepFreeze({
       vertical: '-2px',
       horizontal: 'none'
     },
-    extend: function extend(_ref13) {
-      var theme = _ref13.theme;
+    extend: function extend(_ref16) {
+      var theme = _ref16.theme;
       return (0, _styledComponents.css)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n      border-top-left-radius: ", "; // should use radius property of border\n      border-top-right-radius: ", "; // should use radius property of border\n      font-weight: bold;\n    "])), theme.global.control.border.radius, theme.global.control.border.radius);
     }
   },
@@ -1108,8 +1122,8 @@ var hpe = deepFreeze({
       }
     },
     body: {
-      extend: function extend(_ref14) {
-        var theme = _ref14.theme;
+      extend: function extend(_ref17) {
+        var theme = _ref17.theme;
         return "\n          :hover {\n            button {\n              background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n            }\n          }\n        ";
       }
     },
@@ -1156,8 +1170,8 @@ var hpe = deepFreeze({
   },
   textInput: {
     container: {
-      extend: function extend(_ref15) {
-        var theme = _ref15.theme;
+      extend: function extend(_ref18) {
+        var theme = _ref18.theme;
         return "\n        svg {\n          fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n        }\n      ";
       }
     }

@@ -438,22 +438,19 @@
         "background": {
           "color": "background-front",
           "opacity": "strong"
-        },
-        "extend": "backdrop-filter: blur(8px);"
+        }
       },
       "body": {
         "background": {
           "color": "background-front",
           "opacity": "strong"
-        },
-        "extend": "backdrop-filter: blur(8px);"
+        }
       },
       "footer": {
         "background": {
           "color": "background-front",
           "opacity": "strong"
-        },
-        "extend": "backdrop-filter: blur(8px);"
+        }
       }
     },
     "resize": {
