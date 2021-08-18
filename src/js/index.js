@@ -605,6 +605,7 @@ export const hpe = deepFreeze({
           color: 'background-front',
           opacity: 'strong',
         },
+        // values for background are same as 'background-front' set to a 95% opacity
         extend: ({ theme }) => `backdrop-filter: blur(8px);
         @-moz-document url-prefix() {
           background: ${theme.dark ? '#404b5cF2' : '#ffffffF2'};
