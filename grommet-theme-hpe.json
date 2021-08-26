@@ -346,12 +346,8 @@
   },
   "calendar": {
     "icons": {
-      "next": {
-        "displayName": "FormNext"
-      },
-      "previous": {
-        "displayName": "FormPrevious"
-      }
+      "next": {},
+      "previous": {}
     },
     "small": {
       "fontSize": "13.6px",
@@ -440,15 +436,9 @@
       }
     },
     "icons": {
-      "ascending": {
-        "displayName": "Ascending"
-      },
-      "descending": {
-        "displayName": "Descending"
-      },
-      "sortable": {
-        "displayName": "Unsorted"
-      }
+      "ascending": {},
+      "descending": {},
+      "sortable": {}
     },
     "pinned": {
       "header": {
@@ -514,9 +504,7 @@
       }
     },
     "icons": {
-      "remove": {
-        "displayName": "FormTrash"
-      }
+      "remove": {}
     },
     "message": {
       "color": "text-weak"
@@ -556,9 +544,7 @@
         "gap": "xsmall"
       },
       "icon": {
-        "type": {
-          "displayName": "CircleAlert"
-        },
+        "type": {},
         "key": null,
         "ref": null,
         "props": {
@@ -876,12 +862,8 @@
     "control": {},
     "icons": {
       "color": "text",
-      "down": {
-        "displayName": "FormDown"
-      },
-      "up": {
-        "displayName": "FormUp"
-      }
+      "down": {},
+      "up": {}
     }
   },
   "spinner": {

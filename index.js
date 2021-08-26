@@ -535,7 +535,7 @@ var hpe = deepFreeze({
             sort = _ref7.sort,
             sortable = _ref7.sortable,
             theme = _ref7.theme;
-        return "\n          " + (sort && sort.property === column && "\n            background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n          ") + ";\n          " + (sortable && sort && sort.property !== column && "\n              svg {\n                opacity: 0;\n              }\n              :hover {\n                svg {\n                  opacity: 1;\n                }\n              }\n            ") + ";\n         ";
+        return "\n          " + (sort && sort.property === column && "\n            background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n          ") + ";\n          " + (sortable && sort && sort.property !== column && "\n              svg {\n                opacity: 0;\n              }\n              :hover {\n                svg {\n                  opacity: 1;\n                }\n              }\n            ") + ";\n        ";
       },
       font: {
         weight: 'bold'
@@ -731,7 +731,7 @@ var hpe = deepFreeze({
   heading: {
     color: 'text-strong',
     level: {
-      '1': {
+      1: {
         small: {
           size: '36px',
           height: '42px',
@@ -753,7 +753,7 @@ var hpe = deepFreeze({
           maxWidth: '2966px'
         }
       },
-      '2': {
+      2: {
         small: {
           size: '31px',
           height: '37px',
@@ -775,7 +775,7 @@ var hpe = deepFreeze({
           maxWidth: '1699px'
         }
       },
-      '3': {
+      3: {
         small: {
           size: '27px',
           height: '33px',
@@ -797,7 +797,7 @@ var hpe = deepFreeze({
           maxWidth: '1277px'
         }
       },
-      '4': {
+      4: {
         small: {
           size: '22px',
           height: '28px',
@@ -819,7 +819,7 @@ var hpe = deepFreeze({
           maxWidth: '854px'
         }
       },
-      '5': {
+      5: {
         small: {
           size: '16px',
           height: '22px',
@@ -841,7 +841,7 @@ var hpe = deepFreeze({
           maxWidth: '379px'
         }
       },
-      '6': {
+      6: {
         small: {
           size: '14px',
           height: '20px',
