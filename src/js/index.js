@@ -12,12 +12,12 @@ import { FormUp } from 'grommet-icons/icons/FormUp';
 import { FormTrash } from 'grommet-icons/icons/FormTrash';
 import { Unsorted } from 'grommet-icons/icons/Unsorted';
 
-const isObject = item =>
+const isObject = (item) =>
   item && typeof item === 'object' && !Array.isArray(item);
 
-const deepFreeze = obj => {
+const deepFreeze = (obj) => {
   Object.keys(obj).forEach(
-    key => key && isObject(obj[key]) && Object.freeze(obj[key]),
+    (key) => key && isObject(obj[key]) && Object.freeze(obj[key]),
   );
   return Object.freeze(obj);
 };
@@ -515,21 +515,25 @@ export const hpe = deepFreeze({
         `,
       },
       extend: ({ checked, theme }) => `
-        ${checked &&
+        ${
+          checked &&
           `background-color: ${
             theme.global.colors.green[theme.dark ? 'dark' : 'light']
-          };`}
+          };`
+        }
       `,
     },
     extend: ({ disabled, theme }) => `
-      ${!disabled &&
+      ${
+        !disabled &&
         `:hover {
         background-color: ${
           theme.global.colors['background-contrast'][
             theme.dark ? 'dark' : 'light'
           ]
         };
-      }`}
+      }`
+      }
       font-weight: 500;
       width: auto;
       padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
@@ -554,9 +558,10 @@ export const hpe = deepFreeze({
     header: {
       border: { side: 'bottom' },
       color: 'text-strong',
-      extend: ({ column, sort, sortable, theme }) => {
-        return `
-          ${sort &&
+      extend: ({ column, sort, sortable, theme }) =>
+        `
+          ${
+            sort &&
             sort.property === column &&
             `
             background: ${
@@ -564,8 +569,10 @@ export const hpe = deepFreeze({
                 theme.dark ? 'dark' : 'light'
               ]
             }
-          `};
-          ${sortable &&
+          `
+          };
+          ${
+            sortable &&
             sort &&
             sort.property !== column &&
             `
@@ -577,9 +584,9 @@ export const hpe = deepFreeze({
                   opacity: 1;
                 }
               }
-            `};
-         `;
-      },
+            `
+          };
+        `,
       font: {
         weight: 'bold',
       },
@@ -764,7 +771,7 @@ export const hpe = deepFreeze({
   heading: {
     color: 'text-strong',
     level: {
-      '1': {
+      1: {
         small: {
           size: '36px',
           height: '42px',
@@ -786,7 +793,7 @@ export const hpe = deepFreeze({
           maxWidth: '2966px',
         },
       },
-      '2': {
+      2: {
         small: {
           size: '31px',
           height: '37px',
@@ -808,7 +815,7 @@ export const hpe = deepFreeze({
           maxWidth: '1699px',
         },
       },
-      '3': {
+      3: {
         small: {
           size: '27px',
           height: '33px',
@@ -830,7 +837,7 @@ export const hpe = deepFreeze({
           maxWidth: '1277px',
         },
       },
-      '4': {
+      4: {
         small: {
           size: '22px',
           height: '28px',
@@ -852,7 +859,7 @@ export const hpe = deepFreeze({
           maxWidth: '854px',
         },
       },
-      '5': {
+      5: {
         small: {
           size: '16px',
           height: '22px',
@@ -874,7 +881,7 @@ export const hpe = deepFreeze({
           maxWidth: '379px',
         },
       },
-      '6': {
+      6: {
         small: {
           size: '14px',
           height: '20px',
@@ -1065,7 +1072,7 @@ export const hpe = deepFreeze({
     control: {
       extend: ({ disabled }) => css`
         ${disabled &&
-          `
+        `
         opacity: 0.3;
         input {
           cursor: default;
@@ -1161,8 +1168,8 @@ export const hpe = deepFreeze({
       pad: { left: 'none', vertical: 'none', right: 'xxsmall' },
     },
     body: {
-      extend: ({ theme }) => {
-        return `
+      extend: ({ theme }) =>
+        `
           :hover {
             button {
               background: ${
@@ -1172,8 +1179,7 @@ export const hpe = deepFreeze({
               }
             }
           }
-        `;
-      },
+        `,
     },
     row: {
       hover: {
