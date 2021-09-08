@@ -164,7 +164,7 @@ export const hpe = deepFreeze({
         weight: 500,
       },
       padding: {
-        horizontal: '11px',
+        horizontal: '11px', // equivalent to 'small' when combined with 1px border
         vertical: '5px', // equivalent to 'small' when combined with 1px border
       },
       extend: `
