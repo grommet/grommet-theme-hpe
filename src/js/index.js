@@ -391,7 +391,9 @@ export const hpe = deepFreeze({
         color: 'active-text',
       },
       toolbar: {
-        background: 'transparent',
+        background: {
+          color: 'background-contrast',
+        },
         color: undefined,
       },
     },
