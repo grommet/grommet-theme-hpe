@@ -171,8 +171,10 @@ export var hpe = deepFreeze({
         weight: 500
       },
       padding: {
-        horizontal: 'small',
-        vertical: 'xsmall'
+        horizontal: '11px',
+        // equivalent to 'small' when combined with 1px border
+        vertical: '5px' // equivalent to 'xsmall' when combined with 1px border
+
       },
       extend: "\n        &::-webkit-input-placeholder {\n          font-weight: 400;\n        }\n      \n        &::-moz-placeholder {\n          font-weight: 400;\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: 400;\n        }\n      "
     },
