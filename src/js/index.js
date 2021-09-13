@@ -164,8 +164,8 @@ export const hpe = deepFreeze({
         weight: 500,
       },
       padding: {
-        horizontal: 'small',
-        vertical: 'xsmall',
+        horizontal: '11px', // equivalent to 'small' when combined with 1px border
+        vertical: '5px', // equivalent to 'xsmall' when combined with 1px border
       },
       extend: `
         &::-webkit-input-placeholder {
