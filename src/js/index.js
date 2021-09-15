@@ -12,12 +12,12 @@ import { FormUp } from 'grommet-icons/icons/FormUp';
 import { FormTrash } from 'grommet-icons/icons/FormTrash';
 import { Unsorted } from 'grommet-icons/icons/Unsorted';
 
-const isObject = (item) =>
+const isObject = item =>
   item && typeof item === 'object' && !Array.isArray(item);
 
-const deepFreeze = (obj) => {
+const deepFreeze = obj => {
   Object.keys(obj).forEach(
-    (key) => key && isObject(obj[key]) && Object.freeze(obj[key]),
+    key => key && isObject(obj[key]) && Object.freeze(obj[key]),
   );
   return Object.freeze(obj);
 };
@@ -517,25 +517,21 @@ export const hpe = deepFreeze({
         `,
       },
       extend: ({ checked, theme }) => `
-        ${
-          checked &&
+        ${checked &&
           `background-color: ${
             theme.global.colors.green[theme.dark ? 'dark' : 'light']
-          };`
-        }
+          };`}
       `,
     },
     extend: ({ disabled, theme }) => `
-      ${
-        !disabled &&
+      ${!disabled &&
         `:hover {
         background-color: ${
           theme.global.colors['background-contrast'][
             theme.dark ? 'dark' : 'light'
           ]
         };
-      }`
-      }
+      }`}
       font-weight: 500;
       width: auto;
       padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
@@ -562,8 +558,7 @@ export const hpe = deepFreeze({
       color: 'text-strong',
       extend: ({ column, sort, sortable, theme }) =>
         `
-          ${
-            sort &&
+          ${sort &&
             sort.property === column &&
             `
             background: ${
@@ -571,10 +566,8 @@ export const hpe = deepFreeze({
                 theme.dark ? 'dark' : 'light'
               ]
             }
-          `
-          };
-          ${
-            sortable &&
+          `};
+          ${sortable &&
             sort &&
             sort.property !== column &&
             `
@@ -586,8 +579,7 @@ export const hpe = deepFreeze({
                   opacity: 1;
                 }
               }
-            `
-          };
+            `};
         `,
       font: {
         weight: 'bold',
@@ -610,38 +602,16 @@ export const hpe = deepFreeze({
     */
     pinned: {
       header: {
-        background: {
-          color: 'background-front',
-          opacity: 'strong',
-        },
-        // values for background are same as 'background-front' set to a 95% opacity
-        extend: ({ theme }) => `backdrop-filter: blur(8px);
-        @-moz-document url-prefix() {
-          background: ${theme.dark ? '#404b5cF2' : '#ffffffF2'};
-          }
-      }`,
+        background: { opacity: 0.95 },
+        extend: 'backdrop-filter: blur(8px);',
       },
       body: {
-        background: {
-          color: 'background-front',
-          opacity: 'strong',
-        },
-        extend: ({ theme }) => `backdrop-filter: blur(8px);
-        @-moz-document url-prefix() {
-          background: ${theme.dark ? '#404b5cF2' : '#ffffffF2'};
-          }
-      }`,
+        background: { opacity: 0.95 },
+        extend: 'backdrop-filter: blur(8px);',
       },
       footer: {
-        background: {
-          color: 'background-front',
-          opacity: 'strong',
-        },
-        extend: ({ theme }) => `backdrop-filter: blur(8px);
-        @-moz-document url-prefix() {
-          background: ${theme.dark ? '#404b5cF2' : '#ffffffF2'};
-          }
-      }`,
+        background: { opacity: 0.95 },
+        extend: 'backdrop-filter: blur(8px);',
       },
     },
     resize: {
@@ -1074,7 +1044,7 @@ export const hpe = deepFreeze({
     control: {
       extend: ({ disabled }) => css`
         ${disabled &&
-        `
+          `
         opacity: 0.3;
         input {
           cursor: default;
