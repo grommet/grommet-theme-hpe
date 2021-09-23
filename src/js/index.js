@@ -1026,15 +1026,7 @@ export const hpe = deepFreeze({
   },
   rangeInput: {
     thumb: {
-      color: 'background',
-      extend: ({ theme }) => `
-        border: 1px solid ${
-          theme.global.colors.border[theme.dark ? 'dark' : 'light']
-        };
-        box-shadow: ${
-          theme.global.elevation[theme.dark ? 'dark' : 'light'].small
-        };
-      `,
+      color: 'green',
     },
     track: {
       lower: {
