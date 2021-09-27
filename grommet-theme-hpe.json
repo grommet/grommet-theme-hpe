@@ -849,7 +849,7 @@
   },
   "rangeInput": {
     "thumb": {
-      "color": "background"
+      "color": "green"
     },
     "track": {
       "lower": {

@@ -982,11 +982,7 @@ export var hpe = deepFreeze({
   },
   rangeInput: {
     thumb: {
-      color: 'background',
-      extend: function extend(_ref11) {
-        var theme = _ref11.theme;
-        return "\n        border: 1px solid " + theme.global.colors.border[theme.dark ? 'dark' : 'light'] + ";\n        box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'].small + ";\n      ";
-      }
+      color: 'green'
     },
     track: {
       lower: {
@@ -999,8 +995,8 @@ export var hpe = deepFreeze({
   },
   select: {
     control: {
-      extend: function extend(_ref12) {
-        var disabled = _ref12.disabled;
+      extend: function extend(_ref11) {
+        var disabled = _ref11.disabled;
         return css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
       }
     },
@@ -1071,8 +1067,8 @@ export var hpe = deepFreeze({
       vertical: '-2px',
       horizontal: 'none'
     },
-    extend: function extend(_ref13) {
-      var theme = _ref13.theme;
+    extend: function extend(_ref12) {
+      var theme = _ref12.theme;
       return css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n      border-top-left-radius: ", "; // should use radius property of border\n      border-top-right-radius: ", "; // should use radius property of border\n      font-weight: bold;\n    "])), theme.global.control.border.radius, theme.global.control.border.radius);
     }
   },
@@ -1096,8 +1092,8 @@ export var hpe = deepFreeze({
       }
     },
     body: {
-      extend: function extend(_ref14) {
-        var theme = _ref14.theme;
+      extend: function extend(_ref13) {
+        var theme = _ref13.theme;
         return "\n          :hover {\n            button {\n              background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n            }\n          }\n        ";
       }
     },
@@ -1144,8 +1140,8 @@ export var hpe = deepFreeze({
   },
   textInput: {
     container: {
-      extend: function extend(_ref15) {
-        var theme = _ref15.theme;
+      extend: function extend(_ref14) {
+        var theme = _ref14.theme;
         return "\n        svg {\n          fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n        }\n      ";
       }
     }
