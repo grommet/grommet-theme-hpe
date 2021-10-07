@@ -1,5 +1,5 @@
 declare const hpe: object;
 declare const colors: object;
-declare const codeTheme: object;
+declare const prism: object;
 
-export { hpe };
+export { hpe, colors, prism };
