@@ -1,3 +1,1 @@
-declare const hpe: object;
-
-export { hpe };
+export * from './themes';
