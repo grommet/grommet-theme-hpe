@@ -137,7 +137,7 @@ var themeMode = function themeMode(mode) {
       msHyphens: 'none',
       hyphens: 'none',
       padding: '1em',
-      margin: '0.5em 0',
+      margin: '0',
       overflow: 'auto',
       borderRadius: '0.3em'
     },
