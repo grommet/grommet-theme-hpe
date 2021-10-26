@@ -23,7 +23,7 @@ const colors = {
   },
   char: { dark: hpeColors['teal!'], light: hpeColors.teal.dark },
   code: hpeColors.text,
-  comment: hpeColors['status-unknown'],
+  comment: { dark: hpeColors.green.light, light: hpeColors.green.dark },
   entity: { dark: hpeColors.blue.light, light: hpeColors.blue.dark },
   function: {
     dark: hpeColors['status-critical'].light,
