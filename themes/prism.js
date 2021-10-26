@@ -42,7 +42,10 @@ var colors = {
     light: _colors.colors.teal.dark
   },
   code: _colors.colors.text,
-  comment: _colors.colors['status-unknown'],
+  comment: {
+    dark: _colors.colors.green.light,
+    light: _colors.colors.green.dark
+  },
   entity: {
     dark: _colors.colors.blue.light,
     light: _colors.colors.blue.dark
