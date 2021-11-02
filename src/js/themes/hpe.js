@@ -808,6 +808,12 @@ export const hpe = deepFreeze({
       color: 'text-strong',
     },
   },
+  nameValueList: {
+    gap: {
+      column: 'large',
+      row: 'small',
+    },
+  },
   pagination: {
     button: {
       font: {
