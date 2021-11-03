@@ -316,7 +316,8 @@ var hpe = deepFreeze({
   card: {
     container: {
       background: 'background-front',
-      elevation: 'medium'
+      elevation: 'medium',
+      extend: 'transition: all 0.3s ease-in-out;'
     },
     body: {
       pad: 'medium'
@@ -329,6 +330,11 @@ var hpe = deepFreeze({
     },
     header: {
       pad: 'medium'
+    },
+    hover: {
+      container: {
+        elevation: 'large'
+      }
     }
   },
   checkBox: {
