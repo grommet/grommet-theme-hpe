@@ -330,6 +330,7 @@ export const hpe = deepFreeze({
     container: {
       background: 'background-front',
       elevation: 'medium',
+      extend: 'transition: all 0.3s ease-in-out;',
     },
     body: {
       pad: 'medium',
@@ -339,6 +340,11 @@ export const hpe = deepFreeze({
     },
     header: {
       pad: 'medium',
+    },
+    hover: {
+      container: {
+        elevation: 'large',
+      },
     },
   },
   checkBox: {
