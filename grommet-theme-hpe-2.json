@@ -408,6 +408,9 @@
     },
     "icon": {},
     "gap": "small",
+    "label": {
+      "align": "start"
+    },
     "toggle": {
       "background": "background",
       "color": "background",
