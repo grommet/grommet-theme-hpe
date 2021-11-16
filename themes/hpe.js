@@ -367,6 +367,9 @@ var hpe = deepFreeze({
       }
     },
     gap: 'small',
+    label: {
+      align: 'start'
+    },
     toggle: {
       background: 'background',
       color: 'background',
