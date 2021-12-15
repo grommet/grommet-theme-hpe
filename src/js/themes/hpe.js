@@ -251,6 +251,33 @@ export const hpe = deepFreeze({
         },
         color: undefined,
       },
+      extend: ({ colorValue, primary, theme }) => `
+      ${
+        primary &&
+        colorValue &&
+        `:hover {
+        background-color: ${
+          theme.dark
+            ? theme.global.colors[colorValue].dark
+            : theme.global.colors[colorValue].light
+        };
+      }`
+      }
+    `,
+      primary: {
+        // Designs call for using text-strong for the text color.
+        // Keeping the label color the same on hover to maintain readablility.
+        // color: hpe.global.colors['text-strong'].light,
+        background: {
+          dark: 'validation-ok',
+          // Designs call for using a lower opacity of exisiting green!
+          // instead of creating a new color name for this single usecase.
+          light: {
+            color: 'green!',
+            opacity: 0.75,
+          },
+        },
+      },
       secondary: {
         border: {
           width: '3px',
