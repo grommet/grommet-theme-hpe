@@ -251,19 +251,6 @@ export const hpe = deepFreeze({
         },
         color: undefined,
       },
-      extend: ({ colorValue, primary, theme }) => `
-      ${
-        primary &&
-        colorValue &&
-        `:hover {
-        background-color: ${
-          theme.dark
-            ? theme.global.colors[colorValue].dark
-            : theme.global.colors[colorValue].light
-        };
-      }`
-      }
-    `,
       primary: {
         // Designs call for using text-strong for the text color.
         // Keeping the label color the same on hover to maintain readablility.
@@ -293,6 +280,19 @@ export const hpe = deepFreeze({
         },
         color: undefined,
       },
+      extend: ({ colorValue, primary, theme }) => `
+      ${
+        primary &&
+        colorValue &&
+        `:hover {
+        background-color: ${
+          theme.dark
+            ? theme.global.colors[colorValue].dark
+            : theme.global.colors[colorValue].light
+        };
+      }`
+      }
+    `,
     },
     size: {
       small: {
