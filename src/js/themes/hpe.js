@@ -254,7 +254,7 @@ export const hpe = deepFreeze({
       primary: {
         // Designs call for using text-strong for the text color.
         // Keeping the label color the same on hover to maintain readablility.
-       color: 'text-strong',
+        color: 'text-strong',
         background: {
           dark: 'validation-ok',
           // Designs call for using a lower opacity of exisiting green!
