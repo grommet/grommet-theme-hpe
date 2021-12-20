@@ -1,5 +1,6 @@
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import React from 'react';
+import { backgroundIsDark } from 'grommet/utils';
 import { css } from 'styled-components';
 import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
@@ -285,10 +286,17 @@ export const hpe = deepFreeze({
         primary &&
         colorValue &&
         `:hover {
+        color: ${
+          backgroundIsDark(colorValue, theme)
+            ? theme.global.colors['text-strong'].dark
+            : theme.global.colors['text-strong'].light
+        };
         background-color: ${
           theme.dark
-            ? theme.global.colors[colorValue].dark
-            : theme.global.colors[colorValue].light
+            ? theme.global.colors[colorValue].dark ||
+              theme.global.colors[colorValue]
+            : theme.global.colors[colorValue].light ||
+              theme.global.colors[colorValue]
         };
       }`
       }
