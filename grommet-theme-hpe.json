@@ -293,16 +293,6 @@
           "color": "background-contrast"
         }
       },
-      "primary": {
-        "color": "text-strong",
-        "background": {
-          "dark": "validation-ok",
-          "light": {
-            "color": "green!",
-            "opacity": 0.75
-          }
-        }
-      },
       "secondary": {
         "border": {
           "width": "3px"
