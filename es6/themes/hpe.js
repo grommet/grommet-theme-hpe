@@ -177,7 +177,7 @@ export var hpe = deepFreeze({
       background: {
         color: 'background-contrast'
       },
-      color: 'text',
+      color: 'text-strong',
       secondary: {
         border: {
           color: 'transparent'
