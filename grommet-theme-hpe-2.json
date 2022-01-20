@@ -306,7 +306,8 @@
         "background": {
           "color": "background-contrast"
         }
-      }
+      },
+      "primary": {}
     },
     "size": {
       "small": {
