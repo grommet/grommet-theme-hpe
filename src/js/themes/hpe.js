@@ -266,6 +266,21 @@ export const hpe = deepFreeze({
         },
         color: undefined,
       },
+      primary: {
+        extend: ({ active, colorValue, theme }) => {
+          let color;
+          if (!colorValue && !active) {
+            if (theme.dark) {
+              color = '#01a982';
+            } else color = 'rgb(1, 169, 130)';
+          }
+
+          const style = `inset 0 0 100px 100px ${color}`;
+          return `-moz-box-shadow: ${style};
+            -webkit-box-shadow: ${style};
+            box-shadow: ${style};`;
+        },
+      },
     },
     size: {
       small: {
