@@ -262,8 +262,8 @@ var hpe = deepFreeze({
 
           if (!colorValue && !active) {
             if (theme.dark) {
-              color = '#01a982';
-            } else color = 'rgb(1, 169, 130)';
+              color = 'rgba(0, 0, 0, 0.2)';
+            } else color = '#01a982';
           }
 
           var style = "inset 0 0 100px 100px " + color;
