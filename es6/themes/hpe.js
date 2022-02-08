@@ -134,6 +134,7 @@ export var hpe = deepFreeze({
         weight: 700
       }
     },
+    gap: 'xsmall',
     primary: {
       background: {
         color: 'green'
