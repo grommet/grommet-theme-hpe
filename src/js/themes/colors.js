@@ -37,10 +37,13 @@ export const colors = {
     light: '#000000',
   },
   'text-weak': {
-    dark: '#606B7D',
-    light: '#BBBBBB',
+    dark: '#8c98aa',
+    light: '#757575',
   },
-  'text-xweak': 'text-weak',
+  'text-xweak': {
+    dark: '#606b7d',
+    light: '#bbbbbb',
+  },
   border: {
     dark: '#7887A1',
     light: '#999999',
