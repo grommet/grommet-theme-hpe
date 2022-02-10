@@ -42,7 +42,7 @@ export const colors = {
   },
   'text-xweak': {
     dark: '#606B7D',
-    light: '#bbbbbb',
+    light: '#BBBBBB',
   },
   border: {
     dark: '#7887A1',
