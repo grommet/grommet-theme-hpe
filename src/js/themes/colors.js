@@ -37,7 +37,7 @@ export const colors = {
     light: '#000000',
   },
   'text-weak': {
-    dark: '#8c98aa',
+    dark: '#8C98AA',
     light: '#757575',
   },
   'text-xweak': {
