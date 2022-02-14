@@ -29,10 +29,13 @@
         "light": "#000000"
       },
       "text-weak": {
+        "dark": "#8C98AA",
+        "light": "#757575"
+      },
+      "text-xweak": {
         "dark": "#606B7D",
         "light": "#BBBBBB"
       },
-      "text-xweak": "text-weak",
       "border": {
         "dark": "#7887A1",
         "light": "#999999"
@@ -274,7 +277,7 @@
       "background": {
         "color": "transparent"
       },
-      "color": "text-weak",
+      "color": "text-xweak",
       "primary": {
         "border": {
           "color": "border-weak",
@@ -520,7 +523,7 @@
       "remove": {}
     },
     "message": {
-      "color": "text-weak"
+      "color": "text-xweak"
     },
     "pad": {
       "horizontal": "xsmall"
@@ -546,7 +549,7 @@
         "color": "border-weak"
       },
       "label": {
-        "color": "text-weak"
+        "color": "text-xweak"
       }
     },
     "error": {
@@ -797,7 +800,7 @@
         }
       },
       "disabled": {
-        "color": "text-weak"
+        "color": "text-xweak"
       }
     }
   },
@@ -926,7 +929,7 @@
       "hover": {}
     },
     "disabled": {
-      "color": "text-weak"
+      "color": "text-xweak"
     },
     "pad": {
       "bottom": "small",

@@ -218,7 +218,7 @@ var hpe = deepFreeze({
       background: {
         color: 'transparent'
       },
-      color: 'text-weak',
+      color: 'text-xweak',
       primary: {
         border: {
           color: 'border-weak',
@@ -526,7 +526,7 @@ var hpe = deepFreeze({
       remove: _FormTrash.FormTrash
     },
     message: {
-      color: 'text-weak'
+      color: 'text-xweak'
     },
     pad: {
       horizontal: 'xsmall'
@@ -555,7 +555,7 @@ var hpe = deepFreeze({
         color: 'border-weak'
       },
       label: {
-        color: 'text-weak'
+        color: 'text-xweak'
       }
     },
     error: {
@@ -810,7 +810,7 @@ var hpe = deepFreeze({
         }
       },
       disabled: {
-        color: 'text-weak'
+        color: 'text-xweak'
       }
     }
   },
@@ -965,7 +965,7 @@ var hpe = deepFreeze({
       }
     },
     disabled: {
-      color: 'text-weak'
+      color: 'text-xweak'
     },
     pad: {
       // top and bottom pad need to be defined individually, specifying

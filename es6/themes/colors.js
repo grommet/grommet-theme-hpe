@@ -37,10 +37,13 @@ export var colors = {
     light: '#000000'
   },
   'text-weak': {
+    dark: '#8C98AA',
+    light: '#757575'
+  },
+  'text-xweak': {
     dark: '#606B7D',
     light: '#BBBBBB'
   },
-  'text-xweak': 'text-weak',
   border: {
     dark: '#7887A1',
     light: '#999999'
