@@ -950,7 +950,11 @@ export const hpe = deepFreeze({
       down: FormDown,
       up: FormUp,
     },
-    options: undefined,
+    options: {
+      text: {
+        weight: 500,
+      },
+    },
   },
   spinner: {
     container: {
