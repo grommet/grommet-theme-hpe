@@ -202,7 +202,7 @@ export const hpe = deepFreeze({
         radius: '0px',
       },
       font: {
-        weight: 400,
+        weight: 500,
       },
     },
     active: {
