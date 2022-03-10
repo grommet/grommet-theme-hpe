@@ -799,6 +799,29 @@ var hpe = deepFreeze({
       color: 'text-strong'
     }
   },
+  page: {
+    wide: {
+      width: {
+        min: '336px',
+        // 336 + 24 (margin) + 24 (margin) = 384 (e.g. 'medium')
+        max: 'xxlarge'
+      }
+    },
+    narrow: {
+      width: {
+        min: '336px',
+        // 336 + 24 (margin) + 24 (margin) = 384 (e.g. 'medium')
+        max: 'large'
+      }
+    },
+    full: {
+      width: {
+        min: '336px',
+        // 336 + 24 (margin) + 24 (margin) = 384 (e.g. 'medium')
+        max: '100%'
+      }
+    }
+  },
   pagination: {
     button: {
       font: {

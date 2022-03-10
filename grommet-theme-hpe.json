@@ -789,6 +789,26 @@
       "color": "text-strong"
     }
   },
+  "page": {
+    "wide": {
+      "width": {
+        "min": "336px",
+        "max": "xxlarge"
+      }
+    },
+    "narrow": {
+      "width": {
+        "min": "336px",
+        "max": "large"
+      }
+    },
+    "full": {
+      "width": {
+        "min": "336px",
+        "max": "100%"
+      }
+    }
+  },
   "pagination": {
     "button": {
       "font": {
