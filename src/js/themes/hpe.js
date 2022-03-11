@@ -833,6 +833,59 @@ export const hpe = deepFreeze({
       color: 'text-strong',
     },
   },
+  notification: {
+    actions: {
+      color: { light: 'text', dark: 'text-strong' },
+    },
+    direction: 'row',
+    container: {
+      round: 'xsmall',
+    },
+    global: {
+      container: {
+        round: 'none',
+      },
+    },
+    critical: {
+      background: 'validation-critical',
+      toast: {
+        background: 'background-front',
+      },
+    },
+    message: {
+      color: { dark: 'text-strong' },
+    },
+    warning: {
+      background: 'validation-warning',
+      toast: {
+        background: 'background-front',
+      },
+    },
+    normal: {
+      background: 'validation-ok',
+      toast: {
+        background: 'background-front',
+      },
+    },
+    unknown: {
+      background: 'background-contrast',
+      toast: {
+        background: 'background-front',
+      },
+    },
+    info: {
+      background: 'background-contrast',
+      toast: {
+        background: 'background-front',
+      },
+    },
+    undefined: {
+      background: 'background-contrast',
+      toast: {
+        background: 'background-front',
+      },
+    },
+  },
   page: {
     wide: {
       width: {
