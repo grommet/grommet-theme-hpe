@@ -847,7 +847,6 @@ export const hpe = deepFreeze({
       },
     },
     critical: {
-      background: 'validation-critical',
       toast: {
         background: 'background-front',
       },
