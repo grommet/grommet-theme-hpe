@@ -23,8 +23,6 @@ var _FormPrevious = require("grommet-icons/icons/FormPrevious");
 
 var _FormUp = require("grommet-icons/icons/FormUp");
 
-var _FormTrash = require("grommet-icons/icons/FormTrash");
-
 var _Unsorted = require("grommet-icons/icons/Unsorted");
 
 var _colors = require("./colors");
@@ -521,9 +519,6 @@ var hpe = deepFreeze({
       border: {
         color: 'border'
       }
-    },
-    icons: {
-      remove: _FormTrash.FormTrash
     },
     message: {
       color: 'text-xweak'

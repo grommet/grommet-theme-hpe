@@ -519,9 +519,6 @@
         "color": "border"
       }
     },
-    "icons": {
-      "remove": {}
-    },
     "message": {
       "color": "text-xweak"
     },
