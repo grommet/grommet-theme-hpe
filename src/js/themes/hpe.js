@@ -9,7 +9,6 @@ import { FormDown } from 'grommet-icons/icons/FormDown';
 import { FormNext } from 'grommet-icons/icons/FormNext';
 import { FormPrevious } from 'grommet-icons/icons/FormPrevious';
 import { FormUp } from 'grommet-icons/icons/FormUp';
-import { FormTrash } from 'grommet-icons/icons/FormTrash';
 import { Unsorted } from 'grommet-icons/icons/Unsorted';
 
 import { colors } from './colors';
@@ -559,9 +558,6 @@ export const hpe = deepFreeze({
       border: {
         color: 'border',
       },
-    },
-    icons: {
-      remove: FormTrash,
     },
     message: {
       color: 'text-xweak',
