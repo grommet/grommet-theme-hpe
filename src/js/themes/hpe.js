@@ -977,6 +977,12 @@ export const hpe = deepFreeze({
         min: '336px', // 336 + 24 (margin) + 24 (margin) = 384 (e.g. 'medium')
         max: '100%',
       },
+      xsmall: {
+        pad: { horizontal: 'large' },
+      },
+      xlarge: {
+        pad: { horizontal: 'large' },
+      },
     },
   },
   pagination: {
