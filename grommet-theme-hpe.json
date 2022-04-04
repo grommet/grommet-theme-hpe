@@ -1,6 +1,47 @@
 {
   "defaultMode": "light",
   "global": {
+    "breakpoints": {
+      "xsmall": {
+        "value": 576,
+        "borderSize": {
+          "xsmall": "1px",
+          "small": "2px",
+          "medium": "4px",
+          "large": "6px",
+          "xlarge": "12px"
+        },
+        "edgeSize": {
+          "none": "0px",
+          "hair": "1px",
+          "xxsmall": "2px",
+          "xsmall": "3px",
+          "small": "6px",
+          "medium": "12px",
+          "large": "24px",
+          "xlarge": "48px"
+        },
+        "size": {
+          "xxsmall": "24px",
+          "xsmall": "48px",
+          "small": "96px",
+          "medium": "192px",
+          "large": "384px",
+          "xlarge": "768px",
+          "full": "100%"
+        }
+      },
+      "small": {
+        "value": 768
+      },
+      "medium": {
+        "value": 1080
+      },
+      "large": {
+        "value": 1440
+      },
+      "xlarge": {}
+    },
     "colors": {
       "brand": "green!",
       "background": {
@@ -867,18 +908,48 @@
       "width": {
         "min": "336px",
         "max": "xxlarge"
+      },
+      "xsmall": {
+        "pad": {
+          "horizontal": "large"
+        }
+      },
+      "xlarge": {
+        "pad": {
+          "horizontal": "large"
+        }
       }
     },
     "narrow": {
       "width": {
         "min": "336px",
         "max": "large"
+      },
+      "xsmall": {
+        "pad": {
+          "horizontal": "large"
+        }
+      },
+      "xlarge": {
+        "pad": {
+          "horizontal": "large"
+        }
       }
     },
     "full": {
       "width": {
         "min": "336px",
         "max": "100%"
+      },
+      "xsmall": {
+        "pad": {
+          "horizontal": "large"
+        }
+      },
+      "xlarge": {
+        "pad": {
+          "horizontal": "large"
+        }
       }
     }
   },
