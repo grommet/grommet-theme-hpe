@@ -981,6 +981,34 @@ export const hpe = deepFreeze({
       },
     },
   },
+  pageHeader: {
+    title: {
+      size: 'small',
+    },
+    subtitle: {
+      size: 'large',
+    },
+    xsmall: {
+      areas: [
+        ['parent', 'null'],
+        ['title', 'actions'],
+        ['subtitle', 'actions'],
+      ],
+      columns: [['small', 'flex'], 'auto'],
+      rows: ['auto', 'auto', 'auto'],
+      gap: { row: 'xsmall', column: 'large' },
+    },
+    xlarge: {
+      areas: [
+        ['parent', 'null'],
+        ['title', 'actions'],
+        ['subtitle', 'actions'],
+      ],
+      columns: [['medium', 'large'], 'auto'],
+      rows: ['auto', 'auto', 'auto'],
+      gap: { row: 'xsmall', column: 'large' },
+    },
+  },
   pagination: {
     button: {
       font: {
