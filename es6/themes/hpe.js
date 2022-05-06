@@ -183,6 +183,7 @@ export var hpe = deepFreeze({
     color: 'text',
     textDecoration: 'underline',
     fontWeight: 500,
+    gap: 'xsmall',
     hover: {
       textDecoration: 'underline'
     }
