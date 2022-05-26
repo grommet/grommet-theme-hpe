@@ -982,25 +982,32 @@ export const hpe = deepFreeze({
     },
   },
   pageHeader: {
-    title: {
-      size: 'small',
+    actions: {
+      pad: { vertical: 'xxsmall' }, // aligns button height with heading font-size instead of line-height
+    },
+    pad: {
+      top: 'large',
+      bottom: 'medium',
     },
     subtitle: {
       size: 'large',
     },
+    title: {
+      size: 'small',
+    },
     xsmall: {
       areas: [
-        ['parent', 'null'],
+        ['parent', 'parent'],
         ['title', 'actions'],
         ['subtitle', 'actions'],
       ],
       columns: [['small', 'flex'], 'auto'],
       rows: ['auto', 'auto', 'auto'],
-      gap: { row: 'xsmall', column: 'large' },
+      gap: { row: 'xsmall', column: 'medium' },
     },
     xlarge: {
       areas: [
-        ['parent', 'null'],
+        ['parent', 'parent'],
         ['title', 'actions'],
         ['subtitle', 'actions'],
       ],
