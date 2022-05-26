@@ -985,10 +985,6 @@ export const hpe = deepFreeze({
     actions: {
       pad: { vertical: 'xxsmall' }, // aligns button height with heading font-size instead of line-height
     },
-    pad: {
-      top: 'large',
-      bottom: 'medium',
-    },
     subtitle: {
       size: 'large',
     },
