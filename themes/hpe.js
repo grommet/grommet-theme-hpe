@@ -188,6 +188,7 @@ var hpe = deepFreeze({
       }
     },
     hover: {
+      background: 'background-contrast',
       heading: {
         color: undefined
       }
