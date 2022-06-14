@@ -182,6 +182,7 @@ export const hpe = deepFreeze({
       margin: { vertical: 'medium', horizontal: 'xsmall' },
     },
     hover: {
+      background: 'background-contrast',
       heading: {
         color: undefined,
       },
