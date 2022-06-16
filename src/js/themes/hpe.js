@@ -1199,6 +1199,10 @@ export const hpe = deepFreeze({
         color: 'border',
       },
     },
+    step: {
+      xsmall: 1,
+      xlarge: 3,
+    },
   },
   table: {
     header: {
