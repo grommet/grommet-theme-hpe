@@ -182,6 +182,7 @@ export const hpe = deepFreeze({
       margin: { vertical: 'medium', horizontal: 'xsmall' },
     },
     hover: {
+      background: 'background-contrast',
       heading: {
         color: undefined,
       },
@@ -195,6 +196,7 @@ export const hpe = deepFreeze({
     color: 'text',
     textDecoration: 'underline',
     fontWeight: 500,
+    gap: 'xsmall',
     hover: {
       textDecoration: 'underline',
     },
@@ -979,6 +981,37 @@ export const hpe = deepFreeze({
       xlarge: {
         pad: { horizontal: 'large' },
       },
+    },
+  },
+  pageHeader: {
+    actions: {
+      pad: { vertical: 'xxsmall' }, // aligns button height with heading font-size instead of line-height
+    },
+    subtitle: {
+      size: 'large',
+    },
+    title: {
+      size: 'small',
+    },
+    xsmall: {
+      areas: [
+        ['parent', 'parent'],
+        ['title', 'actions'],
+        ['subtitle', 'actions'],
+      ],
+      columns: [['small', 'flex'], 'auto'],
+      rows: ['auto', 'auto', 'auto'],
+      gap: { row: 'xsmall', column: 'medium' },
+    },
+    xlarge: {
+      areas: [
+        ['parent', 'parent'],
+        ['title', 'actions'],
+        ['subtitle', 'actions'],
+      ],
+      columns: [['medium', 'large'], 'auto'],
+      rows: ['auto', 'auto', 'auto'],
+      gap: { row: 'xsmall', column: 'large' },
     },
   },
   pagination: {
