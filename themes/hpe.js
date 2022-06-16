@@ -1212,6 +1212,10 @@ var hpe = deepFreeze({
         size: 'small',
         color: 'border'
       }
+    },
+    step: {
+      xsmall: 1,
+      xlarge: 3
     }
   },
   table: {
