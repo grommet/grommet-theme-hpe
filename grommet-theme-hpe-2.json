@@ -148,15 +148,15 @@
       },
       "yellow!": "#FEC901",
       "validation-critical": {
-        "light": "#FC61613D",
+        "light": "#FED9D9",
         "dark": "#C54E4B5C"
       },
       "validation-ok": {
-        "light": "#17EBA03D",
+        "light": "#C7FAE8",
         "dark": "#00856759"
       },
       "validation-warning": {
-        "light": "#FFBC443D",
+        "light": "#FFEFD2",
         "dark": "#9B63105C"
       },
       "graph-0": "orange!",
