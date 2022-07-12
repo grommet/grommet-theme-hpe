@@ -933,6 +933,9 @@ var hpe = deepFreeze({
       toast: {
         background: 'background-front'
       }
+    },
+    toast: {
+      direction: 'column'
     }
   },
   page: {
