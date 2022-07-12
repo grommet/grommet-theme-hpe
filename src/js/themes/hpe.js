@@ -944,6 +944,9 @@ export const hpe = deepFreeze({
         background: 'background-front',
       },
     },
+    toast: {
+      direction: 'column',
+    },
   },
   page: {
     wide: {
