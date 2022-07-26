@@ -1136,6 +1136,7 @@ export const hpe = deepFreeze({
   },
   spinner: {
     container: {
+      pad: 'none',
       color: 'green',
       border: [
         { side: 'all', size: 'medium' },
