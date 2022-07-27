@@ -1127,21 +1127,19 @@ export var hpe = deepFreeze({
   },
   spinner: {
     container: {
+      pad: 'none',
+      color: 'green',
       border: [{
         side: 'all',
-        color: 'background-contrast',
         size: 'medium'
       }, {
         side: 'right',
-        color: 'green',
         size: 'medium'
       }, {
         side: 'top',
-        color: 'green',
         size: 'medium'
       }, {
         side: 'left',
-        color: 'green',
         size: 'medium'
       }]
     }
