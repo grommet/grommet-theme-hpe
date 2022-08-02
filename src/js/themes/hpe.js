@@ -15,12 +15,12 @@ import { colors } from './colors';
 
 const baseSpacing = 24;
 
-const isObject = (item) =>
+const isObject = item =>
   item && typeof item === 'object' && !Array.isArray(item);
 
-const deepFreeze = (obj) => {
+const deepFreeze = obj => {
   Object.keys(obj).forEach(
-    (key) => key && isObject(obj[key]) && Object.freeze(obj[key]),
+    key => key && isObject(obj[key]) && Object.freeze(obj[key]),
   );
   return Object.freeze(obj);
 };
@@ -202,6 +202,16 @@ export const hpe = deepFreeze({
     },
   },
   button: {
+    cta: {
+      background: {
+        color: 'brand',
+      },
+      border: undefined,
+      color: 'white', // 'text-strong',
+      font: {
+        weight: 700,
+      },
+    },
     default: {
       color: 'text-strong',
       border: undefined,
@@ -290,6 +300,21 @@ export const hpe = deepFreeze({
       opacity: 1.0,
     },
     hover: {
+      cta: {
+        extend: ({ active, colorValue, theme }) => {
+          let color;
+          if (!colorValue && !active) {
+            if (theme.dark) {
+              color = 'rgba(0, 0, 0, 0.2)';
+            } else color = 'rgba(0, 0, 0, 0.2)'; // TBD
+          }
+
+          const style = `inset 0 0 100px 100px ${color}`;
+          return `-moz-box-shadow: ${style};
+            -webkit-box-shadow: ${style};
+            box-shadow: ${style};`;
+        },
+      },
       default: {
         background: {
           color: 'background-contrast',
@@ -326,38 +351,6 @@ export const hpe = deepFreeze({
             box-shadow: ${style};`;
         },
       },
-    },
-    size: {
-      small: {
-        border: {
-          radius: '4px',
-        },
-        pad: {
-          vertical: '4px',
-          horizontal: '8px',
-        },
-      },
-      medium: {
-        border: {
-          radius: '4px',
-        },
-        pad: {
-          vertical: '6px',
-          horizontal: '12px',
-        },
-      },
-      large: {
-        border: {
-          radius: '6px',
-        },
-        pad: {
-          vertical: '6px',
-          horizontal: '16px',
-        },
-      },
-    },
-    border: {
-      radius: '4px',
     },
     color: 'text-strong',
     padding: {
@@ -456,25 +449,21 @@ export const hpe = deepFreeze({
         `,
       },
       extend: ({ checked, theme }) => `
-        ${
-          checked &&
+        ${checked &&
           `background-color: ${
             theme.global.colors.green[theme.dark ? 'dark' : 'light']
-          };`
-        }
+          };`}
       `,
     },
     extend: ({ disabled, theme }) => `
-      ${
-        !disabled &&
+      ${!disabled &&
         `:hover {
         background-color: ${
           theme.global.colors['background-contrast'][
             theme.dark ? 'dark' : 'light'
           ]
         };
-      }`
-      }
+      }`}
       font-weight: 500;
       width: auto;
       padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
@@ -501,8 +490,7 @@ export const hpe = deepFreeze({
       color: 'text-strong',
       extend: ({ column, sort, sortable, theme }) =>
         `
-          ${
-            sort &&
+          ${sort &&
             sort.property === column &&
             `
             background: ${
@@ -510,10 +498,8 @@ export const hpe = deepFreeze({
                 theme.dark ? 'dark' : 'light'
               ]
             }
-          `
-          };
-          ${
-            sortable &&
+          `};
+          ${sortable &&
             sort &&
             sort.property !== column &&
             `
@@ -525,8 +511,7 @@ export const hpe = deepFreeze({
                   opacity: 1;
                 }
               }
-            `
-          };
+            `};
         `,
       font: {
         weight: 'bold',
@@ -1123,7 +1108,7 @@ export const hpe = deepFreeze({
     control: {
       extend: ({ disabled }) => css`
         ${disabled &&
-        `
+          `
         opacity: 0.3;
         input {
           cursor: default;
