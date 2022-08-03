@@ -25,6 +25,11 @@ const deepFreeze = obj => {
   return Object.freeze(obj);
 };
 
+const hpeElement = color =>
+  `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 24' preserveAspectRatio='none'%3E%3Cg x='0' y='0' fill='${encodeURIComponent(
+    color,
+  )}' fill-rule='evenodd' clip-rule='evenodd' %3E%3Cpath d='M2 6h44v12H2V6zm3 3h38v6H5V9z' /%3E%3C/g%3E%3C/svg%3E")`;
+
 export const hpe = deepFreeze({
   defaultMode: 'light',
   global: {
@@ -211,7 +216,24 @@ export const hpe = deepFreeze({
       font: {
         weight: 700,
       },
+      extend: props => {
+        const color = props.disabled ? 'text-xweak' : 'text-strong';
+        const dark = props.active || props.disabled ? props.theme.dark : true;
+        const colorValue =
+          props.theme.global.colors[color][dark ? 'dark' : 'light'];
+
+        return `&:after {
+          display: inline-block;
+          width: 48px;
+          height: 24px;
+          padding-left: 12px;
+          padding-bottom: 3px;
+          vertical-align: middle;
+          content: ${hpeElement(colorValue)};
+        }`;
+      },
     },
+
     default: {
       color: 'text-strong',
       border: undefined,
@@ -286,6 +308,12 @@ export const hpe = deepFreeze({
         color: 'transparent',
       },
       color: 'text-xweak',
+      cta: {
+        border: {
+          color: 'border-weak',
+          width: '2px',
+        },
+      },
       primary: {
         border: {
           color: 'border-weak',
