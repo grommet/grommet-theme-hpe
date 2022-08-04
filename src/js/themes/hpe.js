@@ -226,7 +226,7 @@ export const hpe = deepFreeze({
           display: inline-block;
           width: 48px;
           height: 24px;
-          padding-left: 12px;
+          padding-left: ${props.hasLabel ? '12px' : '0px'};
           padding-bottom: 3px;
           vertical-align: middle;
           content: ${hpeElement(colorValue)};
