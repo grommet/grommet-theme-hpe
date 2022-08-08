@@ -1,6 +1,6 @@
 {
   "name": "grommet-theme-hpe",
-  "version": "1.0.5",
+  "version": "3.2.1",
   "main": "dist/index.js",
   "module": "dist/es6/index.js",
   "jsnext:main": "dist/es6/index.js",
@@ -19,10 +19,10 @@
     "type": "git",
     "url": "https://github.com/grommet/grommet-theme-hpe.git"
   },
-  "dependencies": {
-    "grommet-icons": "https://github.com/grommet/grommet-icons/tarball/stable"
-  },
   "peerDependencies": {
+    "grommet": "^2.17.2",
+    "grommet-icons": "^4.5.0",
+    "react": "^16.13.1 || ^17.0.1 || ^18.0.0",
     "styled-components": "^5.0.0"
   },
   "devDependencies": {
@@ -30,38 +30,39 @@
     "@babel/core": "^7.1.2",
     "@babel/node": "^7.8.4",
     "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.12.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.0-beta.6",
-    "cross-env": "^5.2.0",
-    "del": "^5.1.0",
-    "eslint": "^5.6.1",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^6.1.0",
+    "cross-env": "^7.0.3",
+    "del": "^6.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.19.0",
-    "fs-extra": "^8.1.0",
+    "fs-extra": "^10.0.0",
+    "grommet-icons": "^4.4.0",
     "pre-commit": "^1.2.2",
-    "prettier": "^1.16.4",
-    "pretty-quick": "^1.8.0",
-    "react": "^16.13.1",
-    "simple-git": "^1.131.0",
+    "prettier": "^2.3.2",
+    "pretty-quick": "^3.1.1",
+    "react": "^18.0.0",
+    "simple-git": "^2.44.0",
     "styled-components": "^5.0.0",
-    "webpack": "^4.16.2",
-    "webpack-cli": "^3.1.0"
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
   },
   "scripts": {
     "prepublishOnly": "npm run build && npm run jsonify",
     "build": "webpack --mode production && cross-env babel ./src/js/ --out-dir ./dist --copy-files && cross-env BABEL_ENV=es6 babel ./src/js/ --out-dir ./dist/es6 --copy-files",
-    "jsonify": "babel-node ./tools/convert-to-json > dist/grommet-theme-hpe.json",
     "lint": "eslint src",
     "lint-fix": "eslint src --fix",
     "prettier": "pretty-quick --staged",
-    "release-gh-pages": "babel-node ./tools/release-gh-pages",
     "release-stable": "babel-node ./tools/release-stable",
-    "release-next-stable": "babel-node ./tools/release-next-stable"
+    "jsonify": "babel-node ./tools/convert-to-json > dist/grommet-theme-hpe.json",
+    "release-gh-pages": "babel-node ./tools/release-gh-pages"
   },
   "pre-commit": [
     "lint-fix",

@@ -14,11 +14,7 @@ export default {
   resolve: {
     extensions: ['.js', '.json'],
   },
-  node: {
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
-  },
+  node: false,
   module: {
     rules: [
       {
