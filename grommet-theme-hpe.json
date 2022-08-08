@@ -249,6 +249,15 @@
     }
   },
   "button": {
+    "cta": {
+      "background": {
+        "color": "brand"
+      },
+      "color": "white",
+      "font": {
+        "weight": 700
+      }
+    },
     "default": {
       "color": "text-strong",
       "font": {
@@ -321,6 +330,12 @@
         "color": "transparent"
       },
       "color": "text-xweak",
+      "cta": {
+        "border": {
+          "color": "border-weak",
+          "width": "2px"
+        }
+      },
       "primary": {
         "border": {
           "color": "border-weak",
@@ -335,6 +350,7 @@
       "opacity": 1
     },
     "hover": {
+      "cta": {},
       "default": {
         "background": {
           "color": "background-contrast"
@@ -355,38 +371,6 @@
         }
       },
       "primary": {}
-    },
-    "size": {
-      "small": {
-        "border": {
-          "radius": "4px"
-        },
-        "pad": {
-          "vertical": "4px",
-          "horizontal": "8px"
-        }
-      },
-      "medium": {
-        "border": {
-          "radius": "4px"
-        },
-        "pad": {
-          "vertical": "6px",
-          "horizontal": "12px"
-        }
-      },
-      "large": {
-        "border": {
-          "radius": "6px"
-        },
-        "pad": {
-          "vertical": "6px",
-          "horizontal": "16px"
-        }
-      }
-    },
-    "border": {
-      "radius": "4px"
     },
     "color": "text-strong",
     "padding": {
