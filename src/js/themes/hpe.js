@@ -216,6 +216,8 @@ export const hpe = deepFreeze({
       font: {
         weight: 700,
       },
+     // TODO: Enhance Grommet to allow theme to set `button.{kind}.icon` which is an SVG.
+     // With this enhancement, the `extend` property definition should be able to be removed.
       extend: props => {
         const color = props.disabled ? 'text-xweak' : 'text-strong';
         const dark = props.active || props.disabled ? props.theme.dark : true;
