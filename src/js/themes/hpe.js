@@ -15,17 +15,17 @@ import { colors } from './colors';
 
 const baseSpacing = 24;
 
-const isObject = item =>
+const isObject = (item) =>
   item && typeof item === 'object' && !Array.isArray(item);
 
-const deepFreeze = obj => {
+const deepFreeze = (obj) => {
   Object.keys(obj).forEach(
-    key => key && isObject(obj[key]) && Object.freeze(obj[key]),
+    (key) => key && isObject(obj[key]) && Object.freeze(obj[key]),
   );
   return Object.freeze(obj);
 };
 
-const hpeElement = color =>
+const hpeElement = (color) =>
   `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 24' preserveAspectRatio='none'%3E%3Cg x='0' y='0' fill='${encodeURIComponent(
     color,
   )}' fill-rule='evenodd' clip-rule='evenodd' %3E%3Cpath d='M2 6h44v12H2V6zm3 3h38v6H5V9z' /%3E%3C/g%3E%3C/svg%3E")`;
@@ -207,7 +207,7 @@ export const hpe = deepFreeze({
     },
   },
   button: {
-    cta: {
+    'cta-primary': {
       background: {
         color: 'brand',
       },
@@ -216,26 +216,50 @@ export const hpe = deepFreeze({
       font: {
         weight: 700,
       },
-     // TODO: Enhance Grommet to allow theme to set `button.{kind}.icon` which is an SVG.
-     // With this enhancement, the `extend` property definition should be able to be removed.
-      extend: props => {
+      // TODO: Enhance Grommet to allow theme to set `button.{kind}.icon` which is an SVG.
+      // With this enhancement, the `extend` property definition should be able to be removed.
+      extend: (props) => {
         const color = props.disabled ? 'text-xweak' : 'text-strong';
         const dark = props.active || props.disabled ? props.theme.dark : true;
         const colorValue =
           props.theme.global.colors[color][dark ? 'dark' : 'light'];
 
         return `&:after {
-          display: inline-block;
-          width: 48px;
-          height: 24px;
-          padding-left: ${props.hasLabel ? '12px' : '0px'};
-          padding-bottom: 3px;
-          vertical-align: middle;
-          content: ${hpeElement(colorValue)};
-        }`;
+            display: inline-block;
+            width: 48px;
+            height: 20px;
+            padding-left: ${props.hasLabel ? '12px' : '0px'};
+            vertical-align: text-bottom;
+            content: ${hpeElement(colorValue)};
+          }`;
       },
     },
+    'cta-alternate': {
+      background: {
+        color: 'background-contrast',
+      },
+      border: undefined,
+      color: 'text-strong',
+      font: {
+        weight: 700,
+      },
+      extend: (props) => {
+        const color = props.disabled ? 'text-xweak' : 'green!';
+        const dark = props.active || props.disabled ? props.theme.dark : true;
+        const colorValue = !props.disabled
+          ? props.theme.global.colors[color]
+          : props.theme.global.colors[color][dark ? 'dark' : 'light'];
 
+        return `&:after {
+            display: inline-block;
+            width: 48px;
+            height: 20px;
+            padding-left: ${props.hasLabel ? '12px' : '0px'};
+            vertical-align: text-bottom;
+            content: ${hpeElement(colorValue)};
+          }`;
+      },
+    },
     default: {
       color: 'text-strong',
       border: undefined,
@@ -310,7 +334,13 @@ export const hpe = deepFreeze({
         color: 'transparent',
       },
       color: 'text-xweak',
-      cta: {
+      'cta-primary': {
+        border: {
+          color: 'border-weak',
+          width: '2px',
+        },
+      },
+      'cta-alternate': {
         border: {
           color: 'border-weak',
           width: '2px',
@@ -330,12 +360,27 @@ export const hpe = deepFreeze({
       opacity: 1.0,
     },
     hover: {
-      cta: {
+      'cta-primary': {
         extend: ({ active, colorValue, theme }) => {
           let color;
           if (!colorValue && !active) {
             if (theme.dark) {
               color = 'rgba(0, 0, 0, 0.2)';
+            } else color = 'rgba(0, 0, 0, 0.2)'; // TBD
+          }
+
+          const style = `inset 0 0 100px 100px ${color}`;
+          return `-moz-box-shadow: ${style};
+            -webkit-box-shadow: ${style};
+            box-shadow: ${style};`;
+        },
+      },
+      'cta-alternate': {
+        extend: ({ active, colorValue, theme }) => {
+          let color;
+          if (!colorValue && !active) {
+            if (theme.dark) {
+              color = 'rgba(0, 0, 0, 0.2)'; // TBD
             } else color = 'rgba(0, 0, 0, 0.2)'; // TBD
           }
 
@@ -385,7 +430,27 @@ export const hpe = deepFreeze({
     color: 'text-strong',
     padding: {
       vertical: '4px',
-      horizontal: '10px',
+      horizontal: '22px',
+    },
+    size: {
+      small: {
+        pad: {
+          vertical: '4px',
+          horizontal: '24px',
+        },
+      },
+      medium: {
+        pad: {
+          vertical: '6px',
+          horizontal: '24px',
+        },
+      },
+      large: {
+        pad: {
+          vertical: '6px',
+          horizontal: '24px',
+        },
+      },
     },
   },
   calendar: {
@@ -479,21 +544,25 @@ export const hpe = deepFreeze({
         `,
       },
       extend: ({ checked, theme }) => `
-        ${checked &&
+        ${
+          checked &&
           `background-color: ${
             theme.global.colors.green[theme.dark ? 'dark' : 'light']
-          };`}
+          };`
+        }
       `,
     },
     extend: ({ disabled, theme }) => `
-      ${!disabled &&
+      ${
+        !disabled &&
         `:hover {
         background-color: ${
           theme.global.colors['background-contrast'][
             theme.dark ? 'dark' : 'light'
           ]
         };
-      }`}
+      }`
+      }
       font-weight: 500;
       width: auto;
       padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
@@ -520,7 +589,8 @@ export const hpe = deepFreeze({
       color: 'text-strong',
       extend: ({ column, sort, sortable, theme }) =>
         `
-          ${sort &&
+          ${
+            sort &&
             sort.property === column &&
             `
             background: ${
@@ -528,8 +598,10 @@ export const hpe = deepFreeze({
                 theme.dark ? 'dark' : 'light'
               ]
             }
-          `};
-          ${sortable &&
+          `
+          };
+          ${
+            sortable &&
             sort &&
             sort.property !== column &&
             `
@@ -541,7 +613,8 @@ export const hpe = deepFreeze({
                   opacity: 1;
                 }
               }
-            `};
+            `
+          };
         `,
       font: {
         weight: 'bold',
@@ -1138,7 +1211,7 @@ export const hpe = deepFreeze({
     control: {
       extend: ({ disabled }) => css`
         ${disabled &&
-          `
+        `
         opacity: 0.3;
         input {
           cursor: default;
