@@ -249,11 +249,20 @@
     }
   },
   "button": {
-    "cta": {
+    "cta-primary": {
       "background": {
         "color": "brand"
       },
       "color": "white",
+      "font": {
+        "weight": 700
+      }
+    },
+    "cta-alternate": {
+      "background": {
+        "color": "background-contrast"
+      },
+      "color": "text-strong",
       "font": {
         "weight": 700
       }
@@ -330,7 +339,13 @@
         "color": "transparent"
       },
       "color": "text-xweak",
-      "cta": {
+      "cta-primary": {
+        "border": {
+          "color": "border-weak",
+          "width": "2px"
+        }
+      },
+      "cta-alternate": {
         "border": {
           "color": "border-weak",
           "width": "2px"
@@ -350,7 +365,8 @@
       "opacity": 1
     },
     "hover": {
-      "cta": {},
+      "cta-primary": {},
+      "cta-alternate": {},
       "default": {
         "background": {
           "color": "background-contrast"
@@ -375,7 +391,27 @@
     "color": "text-strong",
     "padding": {
       "vertical": "4px",
-      "horizontal": "10px"
+      "horizontal": "22px"
+    },
+    "size": {
+      "small": {
+        "pad": {
+          "vertical": "4px",
+          "horizontal": "24px"
+        }
+      },
+      "medium": {
+        "pad": {
+          "vertical": "6px",
+          "horizontal": "24px"
+        }
+      },
+      "large": {
+        "pad": {
+          "vertical": "6px",
+          "horizontal": "24px"
+        }
+      }
     }
   },
   "calendar": {
