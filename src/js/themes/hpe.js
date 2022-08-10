@@ -31,6 +31,7 @@ const hpeElement = (color) =>
   )}' fill-rule='evenodd' clip-rule='evenodd' %3E%3Cpath d='M2 6h44v12H2V6zm3 3h38v6H5V9z' /%3E%3C/g%3E%3C/svg%3E")`;
 
 export const hpe = deepFreeze({
+  // Option B - Full rounding applied to all components
   defaultMode: 'light',
   global: {
     breakpoints: {
@@ -81,7 +82,8 @@ export const hpe = deepFreeze({
         weight: 500,
       },
       padding: {
-        horizontal: '11px', // equivalent to 'small' when combined with 1px border
+        left: '14px', // equivalent to 'small' + 'xxsmall' when combined with 1px border
+        right: '11px', // equivalent to 'small' when combined with 1px border
         vertical: '5px', // equivalent to 'xsmall' when combined with 1px border
       },
       extend: `
@@ -138,10 +140,15 @@ export const hpe = deepFreeze({
       background: 'active-background',
       color: 'active-text',
     },
+    control: {
+      border: {
+        radius: '24px',
+      },
+    },
     drop: {
       background: 'background-front',
       border: {
-        radius: '4px',
+        radius: '12px',
       },
       margin: 'xsmall',
       intelligentMargin: true,
@@ -561,6 +568,7 @@ export const hpe = deepFreeze({
             theme.dark ? 'dark' : 'light'
           ]
         };
+        border-radius: ${theme.global.edgeSize.small};
       }`
       }
       font-weight: 500;
@@ -669,7 +677,7 @@ export const hpe = deepFreeze({
     },
     button: {
       border: {
-        radius: '4px',
+        radius: '24px',
       },
       pad: {
         vertical: '6px',
@@ -770,7 +778,7 @@ export const hpe = deepFreeze({
     margin: {
       bottom: 'none',
     },
-    round: '4px',
+    round: 'medium',
   },
   heading: {
     color: 'text-strong',
@@ -1164,6 +1172,7 @@ export const hpe = deepFreeze({
       font-weight: 500;
       width: auto;
       padding: ${theme.global.edgeSize.xxsmall} ${theme.global.edgeSize.xsmall};
+      border-radius: ${theme.global.edgeSize.small};
     `,
     },
     extend: ({ theme }) => `
