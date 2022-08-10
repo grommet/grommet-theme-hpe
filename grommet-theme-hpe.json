@@ -173,7 +173,8 @@
         "weight": 500
       },
       "padding": {
-        "horizontal": "11px",
+        "left": "14px",
+        "right": "11px",
         "vertical": "5px"
       },
       "extend": "\n        &::-webkit-input-placeholder {\n          font-weight: 400;\n        }\n      \n        &::-moz-placeholder {\n          font-weight: 400;\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: 400;\n        }\n      "
@@ -187,10 +188,15 @@
       "background": "active-background",
       "color": "active-text"
     },
+    "control": {
+      "border": {
+        "radius": "24px"
+      }
+    },
     "drop": {
       "background": "background-front",
       "border": {
-        "radius": "4px"
+        "radius": "12px"
       },
       "margin": "xsmall",
       "intelligentMargin": true,
@@ -559,7 +565,7 @@
     },
     "button": {
       "border": {
-        "radius": "4px"
+        "radius": "24px"
       },
       "pad": {
         "vertical": "6px",
@@ -673,7 +679,7 @@
     "margin": {
       "bottom": "none"
     },
-    "round": "4px"
+    "round": "medium"
   },
   "heading": {
     "color": "text-strong",
