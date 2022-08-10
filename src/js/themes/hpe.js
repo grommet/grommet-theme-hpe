@@ -31,6 +31,7 @@ const hpeElement = (color) =>
   )}' fill-rule='evenodd' clip-rule='evenodd' %3E%3Cpath d='M2 6h44v12H2V6zm3 3h38v6H5V9z' /%3E%3C/g%3E%3C/svg%3E")`;
 
 export const hpe = deepFreeze({
+  // Option A - Rounded buttons only
   defaultMode: 'light',
   global: {
     breakpoints: {
