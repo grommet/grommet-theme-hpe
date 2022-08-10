@@ -568,7 +568,7 @@ export const hpe = deepFreeze({
             theme.dark ? 'dark' : 'light'
           ]
         };
-        border-radius: ${theme.global.edgeSize.small};
+        border-radius: ${theme.global.edgeSize.hair};
       }`
       }
       font-weight: 500;
@@ -778,7 +778,7 @@ export const hpe = deepFreeze({
     margin: {
       bottom: 'none',
     },
-    round: 'medium',
+    round: 'small',
   },
   heading: {
     color: 'text-strong',
@@ -1172,7 +1172,7 @@ export const hpe = deepFreeze({
       font-weight: 500;
       width: auto;
       padding: ${theme.global.edgeSize.xxsmall} ${theme.global.edgeSize.xsmall};
-      border-radius: ${theme.global.edgeSize.small};
+      border-radius: ${theme.global.edgeSize.hair};
     `,
     },
     extend: ({ theme }) => `
