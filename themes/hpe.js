@@ -552,7 +552,7 @@ var hpe = deepFreeze({
     extend: function extend(_ref8) {
       var disabled = _ref8.disabled,
           theme = _ref8.theme;
-      return "\n      " + (!disabled && ":hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n        border-radius: " + theme.global.edgeSize.hair + ";\n      }") + "\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xsmall + " " + theme.global.edgeSize.small + ";\n    ";
+      return "\n      " + (!disabled && ":hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n        border-radius: " + theme.global.edgeSize.small + ";\n      }") + "\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xsmall + " " + theme.global.edgeSize.small + ";\n    ";
     }
   },
   checkBoxGroup: {
@@ -755,7 +755,7 @@ var hpe = deepFreeze({
     margin: {
       bottom: 'none'
     },
-    round: 'small'
+    round: 'medium'
   },
   heading: {
     color: 'text-strong',
@@ -1163,7 +1163,7 @@ var hpe = deepFreeze({
     container: {
       extend: function extend(_ref12) {
         var theme = _ref12.theme;
-        return "\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n      border-radius: " + theme.global.edgeSize.hair + ";\n    ";
+        return "\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n      border-radius: " + theme.global.edgeSize.small + ";\n    ";
       }
     },
     extend: function extend(_ref13) {

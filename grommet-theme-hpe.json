@@ -679,7 +679,7 @@
     "margin": {
       "bottom": "none"
     },
-    "round": "small"
+    "round": "medium"
   },
   "heading": {
     "color": "text-strong",
