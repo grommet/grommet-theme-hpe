@@ -173,8 +173,7 @@
         "weight": 500
       },
       "padding": {
-        "left": "14px",
-        "right": "11px",
+        "horizontal": "11px",
         "vertical": "5px"
       },
       "extend": "\n        &::-webkit-input-placeholder {\n          font-weight: 400;\n        }\n      \n        &::-moz-placeholder {\n          font-weight: 400;\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: 400;\n        }\n      "
@@ -188,15 +187,10 @@
       "background": "active-background",
       "color": "active-text"
     },
-    "control": {
-      "border": {
-        "radius": "24px"
-      }
-    },
     "drop": {
       "background": "background-front",
       "border": {
-        "radius": "12px"
+        "radius": "4px"
       },
       "margin": "xsmall",
       "intelligentMargin": true,
@@ -679,7 +673,7 @@
     "margin": {
       "bottom": "none"
     },
-    "round": "medium"
+    "round": "4px"
   },
   "heading": {
     "color": "text-strong",
