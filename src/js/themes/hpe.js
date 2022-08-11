@@ -82,8 +82,7 @@ export const hpe = deepFreeze({
         weight: 500,
       },
       padding: {
-        left: '14px', // equivalent to 'small' + 'xxsmall' when combined with 1px border
-        right: '11px', // equivalent to 'small' when combined with 1px border
+        horizontal: '11px', // equivalent to 'small' when combined with 1px border
         vertical: '5px', // equivalent to 'xsmall' when combined with 1px border
       },
       extend: `
@@ -140,15 +139,10 @@ export const hpe = deepFreeze({
       background: 'active-background',
       color: 'active-text',
     },
-    control: {
-      border: {
-        radius: '24px',
-      },
-    },
     drop: {
       background: 'background-front',
       border: {
-        radius: '12px',
+        radius: '4px',
       },
       margin: 'xsmall',
       intelligentMargin: true,
@@ -568,7 +562,6 @@ export const hpe = deepFreeze({
             theme.dark ? 'dark' : 'light'
           ]
         };
-        border-radius: ${theme.global.edgeSize.small};
       }`
       }
       font-weight: 500;
@@ -778,7 +771,7 @@ export const hpe = deepFreeze({
     margin: {
       bottom: 'none',
     },
-    round: 'medium',
+    round: '4px',
   },
   heading: {
     color: 'text-strong',
@@ -1172,7 +1165,6 @@ export const hpe = deepFreeze({
       font-weight: 500;
       width: auto;
       padding: ${theme.global.edgeSize.xxsmall} ${theme.global.edgeSize.xsmall};
-      border-radius: ${theme.global.edgeSize.small};
     `,
     },
     extend: ({ theme }) => `
