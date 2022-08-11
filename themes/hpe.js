@@ -51,7 +51,7 @@ var hpeElement = function hpeElement(color) {
 };
 
 var hpe = deepFreeze({
-  // Option B - Full rounding applied to all components
+  // Option A - Rounded buttons only
   defaultMode: 'light',
   global: {
     breakpoints: {
