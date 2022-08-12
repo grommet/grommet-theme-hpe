@@ -412,8 +412,9 @@ export const hpe = deepFreeze({
       border: {
         color: undefined,
       },
+      // use extend to leverage focusIndicator for background on hover
       background: {
-        color: 'background-contrast',
+        color: undefined,
       },
     },
     color: 'background',
@@ -464,9 +465,16 @@ export const hpe = deepFreeze({
         }
       `,
     },
-    extend: ({ disabled, theme }) => `
+    // focusIndicator is "false" when CheckBox is in a FormField.
+    // So, only apply hover background & horizontal pad when in FormField.
+
+    // NOTE: This won't work if teams have wrapped the Grommet input
+    // and named it "EZCheckBox" (for example), since FormField specifically
+    // looks for "CheckBox".
+    extend: ({ disabled, focusIndicator, theme }) => `
       ${
         !disabled &&
+        !focusIndicator &&
         `:hover {
         background-color: ${
           theme.global.colors['background-contrast'][
@@ -477,7 +485,9 @@ export const hpe = deepFreeze({
       }
       font-weight: 500;
       width: auto;
-      padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
+      padding: ${theme.global.edgeSize.xsmall} ${
+      !focusIndicator ? theme.global.edgeSize.small : 0
+    };
     `,
   },
   checkBoxGroup: {
