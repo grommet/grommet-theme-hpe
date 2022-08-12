@@ -412,7 +412,6 @@ export const hpe = deepFreeze({
       border: {
         color: undefined,
       },
-      // use extend to leverage focusIndicator for background on hover
       background: {
         color: 'background-contrast',
       },
