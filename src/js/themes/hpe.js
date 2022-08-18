@@ -11,6 +11,7 @@ import { FormPrevious } from 'grommet-icons/icons/FormPrevious';
 import { FormUp } from 'grommet-icons/icons/FormUp';
 import { Unsorted } from 'grommet-icons/icons/Unsorted';
 
+import { backgrounds } from './backgrounds';
 import { colors } from './colors';
 
 const baseSpacing = 24;
@@ -34,6 +35,7 @@ export const hpe = deepFreeze({
   // Option A - Rounded buttons only
   defaultMode: 'light',
   global: {
+    backgrounds,
     breakpoints: {
       xsmall: {
         value: baseSpacing * 24, // 576
