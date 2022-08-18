@@ -25,6 +25,8 @@ var _FormUp = require("grommet-icons/icons/FormUp");
 
 var _Unsorted = require("grommet-icons/icons/Unsorted");
 
+var _backgrounds = require("./backgrounds");
+
 var _colors = require("./colors");
 
 var _templateObject, _templateObject2;
@@ -54,6 +56,7 @@ var hpe = deepFreeze({
   // Option A - Rounded buttons only
   defaultMode: 'light',
   global: {
+    backgrounds: _backgrounds.backgrounds,
     breakpoints: {
       xsmall: {
         value: baseSpacing * 24,
