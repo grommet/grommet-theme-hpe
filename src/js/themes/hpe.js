@@ -467,7 +467,7 @@ export const hpe = deepFreeze({
         }
       `,
     },
-    extend: ({ disabled, plainProp, theme }) => `
+    extend: ({ disabled, plain, theme }) => `
     ${
       !disabled &&
       `:hover {
@@ -479,7 +479,7 @@ export const hpe = deepFreeze({
     }`
     }
     ${
-      !plainProp &&
+       plain !== true &&
       `padding-left: ${theme.global.edgeSize.small};
        padding-right: ${theme.global.edgeSize.small};`
     };
