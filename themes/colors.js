@@ -138,6 +138,8 @@ var colors = {
   'graph-3': 'yellow!',
   'graph-4': 'teal!',
   focus: 'teal!',
-  placeholder: 'text-weak'
+  placeholder: 'text-weak',
+  'text-primary-button': '#FFFFFF',
+  'background-cta-alternate': '#F2F2F2'
 };
 exports.colors = colors;
