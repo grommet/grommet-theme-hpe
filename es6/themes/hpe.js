@@ -398,6 +398,9 @@ export var hpe = deepFreeze({
       }
     },
     color: 'text-strong',
+    border: {
+      radius: '4px'
+    },
     padding: {
       vertical: '4px',
       horizontal: '22px'
