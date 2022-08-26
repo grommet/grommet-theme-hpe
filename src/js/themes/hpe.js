@@ -10,6 +10,7 @@ import { FormNext } from 'grommet-icons/icons/FormNext';
 import { FormPrevious } from 'grommet-icons/icons/FormPrevious';
 import { FormUp } from 'grommet-icons/icons/FormUp';
 import { Unsorted } from 'grommet-icons/icons/Unsorted';
+import { Hpe } from 'grommet-icons/icons/Hpe';
 
 import { backgrounds } from './backgrounds';
 import { colors } from './colors';
@@ -25,11 +26,6 @@ const deepFreeze = (obj) => {
   );
   return Object.freeze(obj);
 };
-
-const hpeElement = (color) =>
-  `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 24' preserveAspectRatio='none'%3E%3Cg x='0' y='0' fill='${encodeURIComponent(
-    color,
-  )}' fill-rule='evenodd' clip-rule='evenodd' %3E%3Cpath d='M2 6h44v12H2V6zm3 3h38v6H5V9z' /%3E%3C/g%3E%3C/svg%3E")`;
 
 export const hpe = deepFreeze({
   // Option A - Rounded buttons only
@@ -211,57 +207,26 @@ export const hpe = deepFreeze({
   },
   button: {
     'cta-primary': {
-      background: {
-        color: 'brand',
+      background: { color: 'brand' },
+      border: {
+        radius: '100px',
       },
-      border: undefined,
-      color: 'white', // 'text-strong',
-      font: {
-        weight: 700,
-      },
-      // TODO: Enhance Grommet to allow theme to set `button.{kind}.icon` which is an SVG.
-      // With this enhancement, the `extend` property definition should be able to be removed.
-      extend: (props) => {
-        const color = props.disabled ? 'text-xweak' : 'text-strong';
-        const dark = props.active || props.disabled ? props.theme.dark : true;
-        const colorValue =
-          props.theme.global.colors[color][dark ? 'dark' : 'light'];
-
-        return `&:after {
-            display: inline-block;
-            width: 48px;
-            height: 20px;
-            padding-left: ${props.hasLabel ? '12px' : '0px'};
-            vertical-align: text-bottom;
-            content: ${hpeElement(colorValue)};
-          }`;
-      },
+      color: 'text-primary-button',
+      font: { weight: 'bold' },
+      icon: <Hpe />,
+      reverse: true,
     },
     'cta-alternate': {
-      background: {
-        color: 'background-contrast',
+      background: 'background-cta-alternate',
+      border: {
+        radius: '100px',
       },
-      border: undefined,
       color: 'text-strong',
       font: {
-        weight: 700,
+        weight: 'bold',
       },
-      extend: (props) => {
-        const color = props.disabled ? 'text-xweak' : 'green!';
-        const dark = props.active || props.disabled ? props.theme.dark : true;
-        const colorValue = !props.disabled
-          ? props.theme.global.colors[color]
-          : props.theme.global.colors[color][dark ? 'dark' : 'light'];
-
-        return `&:after {
-            display: inline-block;
-            width: 48px;
-            height: 20px;
-            padding-left: ${props.hasLabel ? '12px' : '0px'};
-            vertical-align: text-bottom;
-            content: ${hpeElement(colorValue)};
-          }`;
-      },
+      icon: <Hpe color="brand" />,
+      reverse: true,
     },
     default: {
       color: 'text-strong',
@@ -273,17 +238,17 @@ export const hpe = deepFreeze({
     gap: 'xsmall',
     primary: {
       background: {
-        color: 'green',
+        color: 'brand',
       },
       border: undefined,
-      color: 'text-strong',
+      color: 'text-primary-button',
       font: {
         weight: 700,
       },
     },
     secondary: {
       border: {
-        color: 'green',
+        color: 'brand',
         width: '2px',
       },
       color: 'text-strong',
@@ -437,23 +402,108 @@ export const hpe = deepFreeze({
     },
     size: {
       small: {
+        border: {
+          radius: '4px',
+        },
         pad: {
           vertical: '4px',
-          horizontal: '24px',
+          horizontal: '8px',
+        },
+        'cta-primary': {
+          pad: {
+            vertical: '3px',
+            horizontal: '12px',
+          },
+        },
+        'cta-alternate': {
+          pad: {
+            vertical: '3px',
+            horizontal: '12px',
+          },
         },
       },
       medium: {
+        border: {
+          radius: '4px',
+        },
         pad: {
           vertical: '6px',
-          horizontal: '24px',
+          horizontal: '12px',
+        },
+        'cta-primary': {
+          pad: {
+            vertical: '6px',
+            horizontal: '16px',
+          },
+        },
+        'cta-alternate': {
+          pad: {
+            vertical: '6px',
+            horizontal: '16px',
+          },
         },
       },
       large: {
+        border: {
+          radius: '6px',
+        },
         pad: {
-          vertical: '6px',
-          horizontal: '24px',
+          vertical: '8px',
+          horizontal: '16px',
+        },
+        'cta-primary': {
+          pad: {
+            vertical: '8px',
+            horizontal: '20px',
+          },
+        },
+        'cta-alternate': {
+          pad: {
+            vertical: '8px',
+            horizontal: '20px',
+          },
         },
       },
+      xlarge: {
+        border: {
+          radius: '6px',
+        },
+        pad: {
+          vertical: '10px',
+          horizontal: '20px',
+        },
+        'cta-primary': {
+          pad: {
+            vertical: '10px',
+            horizontal: '28px',
+          },
+        },
+        'cta-alternate': {
+          pad: {
+            vertical: '10px',
+            horizontal: '28px',
+          },
+        },
+      },
+    },
+    // aligning with brand central which follows slightly different interval between t-shirt sizes
+    extend: ({ sizeProp }) => {
+      let fontSize = '19px'; // necessary so cta-primary label is accessible on HPE green background
+      let lineHeight = '24px';
+      if (sizeProp === 'small') {
+        fontSize = '16px';
+        lineHeight = '22px';
+      } else if (sizeProp === 'large') {
+        fontSize = '20px';
+        lineHeight = '26px';
+      } else if (sizeProp === 'xlarge') {
+        fontSize = '22px';
+        lineHeight = '28px';
+      }
+      return `
+      font-size: ${fontSize};
+      line-height: ${lineHeight}
+      `;
     },
   },
   calendar: {
