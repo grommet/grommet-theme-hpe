@@ -211,13 +211,13 @@ export const hpe = deepFreeze({
       border: {
         radius: '100px',
       },
-      color: 'white', // text-strong
+      color: 'text-primary-button',
       font: { weight: 'bold' },
       icon: <Hpe />,
       reverse: true,
     },
     'cta-alternate': {
-      background: 'background-contrast',
+      background: 'background-cta-alternate',
       border: {
         radius: '100px',
       },
@@ -241,7 +241,7 @@ export const hpe = deepFreeze({
         color: 'brand',
       },
       border: undefined,
-      color: 'white', // text-strong
+      color: 'text-primary-button',
       font: {
         weight: 700,
       },

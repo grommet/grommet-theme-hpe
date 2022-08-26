@@ -133,4 +133,6 @@ export const colors = {
   'graph-4': 'teal!',
   focus: 'teal!',
   placeholder: 'text-weak',
+  'text-primary-button': '#FFFFFF',
+  'background-cta-alternate': '#F2F2F2',
 };
