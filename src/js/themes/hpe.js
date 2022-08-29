@@ -182,6 +182,7 @@ export const hpe = deepFreeze({
       margin: { vertical: 'medium', horizontal: 'xsmall' },
     },
     hover: {
+      background: 'background-contrast',
       heading: {
         color: undefined,
       },
@@ -195,6 +196,7 @@ export const hpe = deepFreeze({
     color: 'text',
     textDecoration: 'underline',
     fontWeight: 500,
+    gap: 'xsmall',
     hover: {
       textDecoration: 'underline',
     },
@@ -942,6 +944,9 @@ export const hpe = deepFreeze({
         background: 'background-front',
       },
     },
+    toast: {
+      direction: 'column',
+    },
   },
   page: {
     wide: {
@@ -979,6 +984,37 @@ export const hpe = deepFreeze({
       xlarge: {
         pad: { horizontal: 'large' },
       },
+    },
+  },
+  pageHeader: {
+    actions: {
+      pad: { vertical: 'xxsmall' }, // aligns button height with heading font-size instead of line-height
+    },
+    subtitle: {
+      size: 'large',
+    },
+    title: {
+      size: 'small',
+    },
+    xsmall: {
+      areas: [
+        ['parent', 'parent'],
+        ['title', 'actions'],
+        ['subtitle', 'actions'],
+      ],
+      columns: [['small', 'flex'], 'auto'],
+      rows: ['auto', 'auto', 'auto'],
+      gap: { row: 'xsmall', column: 'medium' },
+    },
+    xlarge: {
+      areas: [
+        ['parent', 'parent'],
+        ['title', 'actions'],
+        ['subtitle', 'actions'],
+      ],
+      columns: [['medium', 'large'], 'auto'],
+      rows: ['auto', 'auto', 'auto'],
+      gap: { row: 'xsmall', column: 'large' },
     },
   },
   pagination: {
@@ -1103,11 +1139,13 @@ export const hpe = deepFreeze({
   },
   spinner: {
     container: {
+      pad: 'none',
+      color: 'green',
       border: [
-        { side: 'all', color: 'background-contrast', size: 'medium' },
-        { side: 'right', color: 'green', size: 'medium' },
-        { side: 'top', color: 'green', size: 'medium' },
-        { side: 'left', color: 'green', size: 'medium' },
+        { side: 'all', size: 'medium' },
+        { side: 'right', size: 'medium' },
+        { side: 'top', size: 'medium' },
+        { side: 'left', size: 'medium' },
       ],
     },
   },
@@ -1165,6 +1203,10 @@ export const hpe = deepFreeze({
         size: 'small',
         color: 'border',
       },
+    },
+    step: {
+      xsmall: 1,
+      xlarge: 3,
     },
   },
   table: {
