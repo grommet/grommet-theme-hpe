@@ -442,6 +442,9 @@ export const hpe = deepFreeze({
     label: {
       align: 'start',
     },
+    pad: {
+      vertical: 'xsmall',
+    },
     toggle: {
       background: 'background',
       color: 'background',
