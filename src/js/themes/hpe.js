@@ -467,7 +467,7 @@ export const hpe = deepFreeze({
         }
       `,
     },
-    extend: ({ disabled, plainProp, theme }) => `
+    extend: ({ disabled, theme }) => `
     ${
       !disabled &&
       `:hover {
@@ -478,11 +478,6 @@ export const hpe = deepFreeze({
       };
     }`
     }
-    ${
-      !plainProp &&
-      `padding-left: ${theme.global.edgeSize.small};
-       padding-right: ${theme.global.edgeSize.small};`
-    };
     font-weight: 500;
     width: auto;
   };
@@ -619,6 +614,12 @@ export const hpe = deepFreeze({
     extend: 'border-radius: 4px;',
   },
   formField: {
+    checkBox: {
+      pad: {
+        horizontal: 'small',
+        vertical: 'xsmall',
+      },
+    },
     content: {
       margin: { vertical: 'xsmall' },
       pad: undefined,
