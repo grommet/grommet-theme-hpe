@@ -444,6 +444,7 @@ export const hpe = deepFreeze({
     },
     pad: {
       vertical: 'xsmall',
+      horizontal: 'small',
     },
     toggle: {
       background: 'background',
@@ -614,12 +615,6 @@ export const hpe = deepFreeze({
     extend: 'border-radius: 4px;',
   },
   formField: {
-    checkBox: {
-      pad: {
-        horizontal: 'small',
-        vertical: 'xsmall',
-      },
-    },
     content: {
       margin: { vertical: 'xsmall' },
       pad: undefined,
