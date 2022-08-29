@@ -855,6 +855,11 @@ var hpe = deepFreeze({
         left: 'left'
       }
     },
+    group: {
+      separator: {
+        color: 'border-weak'
+      }
+    },
     icons: {
       color: 'text-strong'
     }
