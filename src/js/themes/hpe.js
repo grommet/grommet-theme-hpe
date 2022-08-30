@@ -442,6 +442,10 @@ export const hpe = deepFreeze({
     label: {
       align: 'start',
     },
+    pad: {
+      vertical: 'xsmall',
+      horizontal: 'small',
+    },
     toggle: {
       background: 'background',
       color: 'background',
@@ -465,20 +469,20 @@ export const hpe = deepFreeze({
       `,
     },
     extend: ({ disabled, theme }) => `
-      ${
-        !disabled &&
-        `:hover {
-        background-color: ${
-          theme.global.colors['background-contrast'][
-            theme.dark ? 'dark' : 'light'
-          ]
-        };
-      }`
-      }
-      font-weight: 500;
-      width: auto;
-      padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
-    `,
+    ${
+      !disabled &&
+      `:hover {
+      background-color: ${
+        theme.global.colors['background-contrast'][
+          theme.dark ? 'dark' : 'light'
+        ]
+      };
+    }`
+    }
+    font-weight: 500;
+    width: auto;
+  };
+  `,
   },
   checkBoxGroup: {
     container: {
