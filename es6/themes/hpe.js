@@ -433,6 +433,10 @@ export var hpe = deepFreeze({
     label: {
       align: 'start'
     },
+    pad: {
+      vertical: 'xsmall',
+      horizontal: 'small'
+    },
     toggle: {
       background: 'background',
       color: 'background',
@@ -451,7 +455,7 @@ export var hpe = deepFreeze({
     extend: function extend(_ref6) {
       var disabled = _ref6.disabled,
           theme = _ref6.theme;
-      return "\n      " + (!disabled && ":hover {\n        background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n      }") + "\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xsmall + " " + theme.global.edgeSize.small + ";\n    ";
+      return "\n    " + (!disabled && ":hover {\n      background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n    }") + "\n    font-weight: 500;\n    width: auto;\n  };\n  ";
     }
   },
   checkBoxGroup: {

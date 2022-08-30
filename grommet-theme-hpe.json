@@ -459,6 +459,10 @@
     "label": {
       "align": "start"
     },
+    "pad": {
+      "vertical": "xsmall",
+      "horizontal": "small"
+    },
     "toggle": {
       "background": "background",
       "color": "background",
