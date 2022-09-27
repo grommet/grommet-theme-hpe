@@ -413,7 +413,7 @@ export const hpe = deepFreeze({
         color: 'border-strong',
       },
       background: {
-        color: undefined,
+        color: 'background-contrast',
       },
     },
     color: 'background',
@@ -468,16 +468,13 @@ export const hpe = deepFreeze({
         }
       `,
     },
-    extend: ({ disabled, pad, theme }) => `
+    extend: ({ disabled, pad }) => `
     ${
       !disabled &&
-      !pad &&
+      pad &&
+      typeof pad !== 'object' &&
       `:hover {
-      background-color: ${
-        theme.global.colors['background-contrast'][
-          theme.dark ? 'dark' : 'light'
-        ]
-      };
+      background-color: unset;
     }`
     }
     font-weight: 500;
