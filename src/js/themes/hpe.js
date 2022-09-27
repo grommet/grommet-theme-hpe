@@ -410,10 +410,10 @@ export const hpe = deepFreeze({
   checkBox: {
     hover: {
       border: {
-        color: undefined,
+        color: 'border-strong',
       },
       background: {
-        color: 'background-contrast',
+        color: undefined,
       },
     },
     color: 'background',
@@ -468,9 +468,10 @@ export const hpe = deepFreeze({
         }
       `,
     },
-    extend: ({ disabled, theme }) => `
+    extend: ({ disabled, pad, theme }) => `
     ${
       !disabled &&
+      !pad &&
       `:hover {
       background-color: ${
         theme.global.colors['background-contrast'][
