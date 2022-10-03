@@ -28,7 +28,6 @@ const deepFreeze = (obj) => {
 };
 
 export const hpe = deepFreeze({
-  // Option A - Rounded buttons only
   defaultMode: 'light',
   global: {
     backgrounds,
@@ -724,6 +723,9 @@ export const hpe = deepFreeze({
     },
   },
   dateInput: {
+    container: {
+      round: 'xsmall',
+    },
     icon: {
       size: 'small',
     },
