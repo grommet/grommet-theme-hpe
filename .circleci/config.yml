@@ -136,7 +136,7 @@ workflows:
           filters:
             branches:
               only:
-                - NEXT
+                - master
       - publish:
           requires:
             - lint

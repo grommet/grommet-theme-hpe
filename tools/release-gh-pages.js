@@ -18,23 +18,21 @@ if (process.env.CI) {
       .then(() =>
         fs.copy(
           `${localDist}/grommet-theme-hpe.min.js`,
-          `${localFolder}/grommet-theme-hpe-next.min.js`,
+          `${localFolder}/grommet-theme-hpe-2.min.js`,
         ),
       )
       .then(() =>
         fs.copy(
           `${localDist}/grommet-theme-hpe.json`,
-          `${localFolder}/grommet-theme-hpe-next.json`,
+          `${localFolder}/grommet-theme-hpe-2.json`,
         ),
       )
       .then(() => git(localFolder).add(['--all', '.']))
       .then(() =>
-        git(localFolder).commit(
-          'grommet-theme-hpe-next .min.js and .json updated',
-        ),
+        git(localFolder).commit('grommet-theme-hpe .min.js and .json updated'),
       )
       .then(() => git(localFolder).push('origin', 'gh-pages'))
-      .catch(err => console.error('failed: ', err));
+      .catch((err) => console.error('failed: ', err));
   });
 } else {
   console.warn(
