@@ -191,6 +191,11 @@
       "text-primary-button": "#FFFFFF",
       "background-cta-alternate": "#F2F2F2"
     },
+    "control": {
+      "border": {
+        "radius": "6px"
+      }
+    },
     "input": {
       "font": {
         "height": "inherit",
@@ -438,7 +443,7 @@
     },
     "color": "text-strong",
     "border": {
-      "radius": "4px"
+      "radius": "6px"
     },
     "padding": {
       "vertical": "4px",
@@ -447,7 +452,7 @@
     "size": {
       "small": {
         "border": {
-          "radius": "4px"
+          "radius": "6px"
         },
         "pad": {
           "vertical": "4px",
@@ -468,7 +473,7 @@
       },
       "medium": {
         "border": {
-          "radius": "4px"
+          "radius": "6px"
         },
         "pad": {
           "vertical": "6px",
@@ -489,7 +494,7 @@
       },
       "large": {
         "border": {
-          "radius": "6px"
+          "radius": "8px"
         },
         "pad": {
           "vertical": "8px",
@@ -510,7 +515,7 @@
       },
       "xlarge": {
         "border": {
-          "radius": "6px"
+          "radius": "10px"
         },
         "pad": {
           "vertical": "10px",
@@ -589,7 +594,7 @@
       "width": "1px"
     },
     "check": {
-      "radius": "2px"
+      "radius": "4px"
     },
     "icon": {},
     "gap": "small",
@@ -790,7 +795,7 @@
     "margin": {
       "bottom": "none"
     },
-    "round": "4px"
+    "round": "6px"
   },
   "heading": {
     "color": "text-strong",
