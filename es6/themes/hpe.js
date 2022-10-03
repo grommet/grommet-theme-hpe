@@ -97,6 +97,11 @@ export var hpe = deepFreeze({
 
     },
     colors: colors,
+    control: {
+      border: {
+        radius: '6px'
+      }
+    },
     input: {
       font: {
         height: 'inherit',
@@ -389,7 +394,7 @@ export var hpe = deepFreeze({
           if (!colorValue && !active) {
             if (theme.dark) {
               color = 'rgba(0, 0, 0, 0.2)';
-            } else color = '#01a982';
+            } else color = 'rgba(0, 0, 0, 0.2)';
           }
 
           var style = "inset 0 0 100px 100px " + color;
@@ -399,7 +404,7 @@ export var hpe = deepFreeze({
     },
     color: 'text-strong',
     border: {
-      radius: '4px'
+      radius: '6px'
     },
     padding: {
       vertical: '4px',
@@ -408,7 +413,7 @@ export var hpe = deepFreeze({
     size: {
       small: {
         border: {
-          radius: '4px'
+          radius: '6px'
         },
         pad: {
           vertical: '4px',
@@ -429,7 +434,7 @@ export var hpe = deepFreeze({
       },
       medium: {
         border: {
-          radius: '4px'
+          radius: '6px'
         },
         pad: {
           vertical: '6px',
@@ -450,7 +455,7 @@ export var hpe = deepFreeze({
       },
       large: {
         border: {
-          radius: '6px'
+          radius: '8px'
         },
         pad: {
           vertical: '8px',
@@ -471,7 +476,7 @@ export var hpe = deepFreeze({
       },
       xlarge: {
         border: {
-          radius: '6px'
+          radius: '10px'
         },
         pad: {
           vertical: '10px',
@@ -572,7 +577,7 @@ export var hpe = deepFreeze({
       width: '1px'
     },
     check: {
-      radius: '2px',
+      radius: '4px',
       extend: function extend(_ref5) {
         var theme = _ref5.theme,
             checked = _ref5.checked,
@@ -811,7 +816,7 @@ export var hpe = deepFreeze({
     margin: {
       bottom: 'none'
     },
-    round: '4px'
+    round: '6px'
   },
   heading: {
     color: 'text-strong',
