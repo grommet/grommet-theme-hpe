@@ -28,7 +28,6 @@ const deepFreeze = (obj) => {
 };
 
 export const hpe = deepFreeze({
-  // Option A - Rounded buttons only
   defaultMode: 'light',
   global: {
     backgrounds,
