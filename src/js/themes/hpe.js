@@ -714,6 +714,9 @@ export const hpe = deepFreeze({
     },
   },
   dateInput: {
+    container: {
+      round: 'xsmall',
+    },
     icon: {
       size: 'small',
     },
