@@ -453,7 +453,7 @@ export const hpe = deepFreeze({
       },
       large: {
         border: {
-          radius: '6px',
+          radius: '8px',
         },
         pad: {
           vertical: '8px',
@@ -474,7 +474,7 @@ export const hpe = deepFreeze({
       },
       xlarge: {
         border: {
-          radius: '6px',
+          radius: '10px',
         },
         pad: {
           vertical: '10px',
