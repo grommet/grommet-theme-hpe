@@ -675,6 +675,9 @@
     }
   },
   "dateInput": {
+    "container": {
+      "round": "xsmall"
+    },
     "icon": {
       "size": "small"
     }
