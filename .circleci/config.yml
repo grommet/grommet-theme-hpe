@@ -53,16 +53,6 @@ jobs:
             git config --global user.name "Grommet Community Bot"
             git config --global user.email "grommet@hpe.com"
             yarn release-stable
-  release-next-stable:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/grommet-ci
-      - run:
-          command: |
-            git config --global user.name "Grommet Community Bot"
-            git config --global user.email "grommet@hpe.com"
-            yarn release-next-stable
   release-gh-pages:
     <<: *defaults
     steps:
@@ -100,7 +90,6 @@ workflows:
             branches:
               ignore:
                 - stable
-                - NEXT-stable
                 - gh-pages
       - build:
           requires:
@@ -111,7 +100,6 @@ workflows:
             branches:
               ignore:
                 - stable
-                - NEXT-stable
                 - gh-pages
       - release-stable:
           requires:
@@ -121,14 +109,6 @@ workflows:
             branches:
               only:
                 - master
-      - release-next-stable:
-          requires:
-            - lint
-            - build
-          filters:
-            branches:
-              only:
-                - NEXT
       - release-gh-pages:
           requires:
             - lint
@@ -136,7 +116,7 @@ workflows:
           filters:
             branches:
               only:
-                - NEXT
+                - master
       - publish:
           requires:
             - lint
