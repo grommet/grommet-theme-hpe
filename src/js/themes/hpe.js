@@ -586,6 +586,10 @@ export const hpe = deepFreeze({
     label: {
       align: 'start',
     },
+    pad: {
+      vertical: 'xsmall',
+      horizontal: 'small',
+    },
     toggle: {
       background: 'background',
       color: 'background',
@@ -609,20 +613,20 @@ export const hpe = deepFreeze({
       `,
     },
     extend: ({ disabled, theme }) => `
-      ${
-        !disabled &&
-        `:hover {
-        background-color: ${
-          theme.global.colors['background-contrast'][
-            theme.dark ? 'dark' : 'light'
-          ]
-        };
-      }`
-      }
-      font-weight: 500;
-      width: auto;
-      padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
-    `,
+    ${
+      !disabled &&
+      `:hover {
+      background-color: ${
+        theme.global.colors['background-contrast'][
+          theme.dark ? 'dark' : 'light'
+        ]
+      };
+    }`
+    }
+    font-weight: 500;
+    width: auto;
+  };
+  `,
   },
   checkBoxGroup: {
     container: {
@@ -1014,6 +1018,11 @@ export const hpe = deepFreeze({
         left: 'left',
       },
     },
+    group: {
+      separator: {
+        color: 'border-weak',
+      },
+    },
     icons: {
       color: 'text-strong',
     },
@@ -1306,9 +1315,9 @@ export const hpe = deepFreeze({
     border: {
       side: 'bottom',
       color: 'transparent',
-      size: 'medium',
+      size: '6px',
       active: {
-        color: 'border-strong',
+        color: 'text-strong',
       },
       disabled: {
         color: undefined,
