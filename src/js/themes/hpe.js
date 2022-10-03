@@ -74,6 +74,11 @@ export const hpe = deepFreeze({
       xlarge: {}, // anything larger than 1440,
     },
     colors,
+    control: {
+      border: {
+        radius: '6px',
+      },
+    },
     input: {
       font: {
         height: 'inherit',
@@ -385,7 +390,7 @@ export const hpe = deepFreeze({
           if (!colorValue && !active) {
             if (theme.dark) {
               color = 'rgba(0, 0, 0, 0.2)';
-            } else color = '#01a982';
+            } else color = 'rgba(0, 0, 0, 0.2)';
           }
 
           const style = `inset 0 0 100px 100px ${color}`;
@@ -397,7 +402,7 @@ export const hpe = deepFreeze({
     },
     color: 'text-strong',
     border: {
-      radius: '4px',
+      radius: '6px',
     },
     padding: {
       vertical: '4px',
@@ -406,7 +411,7 @@ export const hpe = deepFreeze({
     size: {
       small: {
         border: {
-          radius: '4px',
+          radius: '6px',
         },
         pad: {
           vertical: '4px',
@@ -427,7 +432,7 @@ export const hpe = deepFreeze({
       },
       medium: {
         border: {
-          radius: '4px',
+          radius: '6px',
         },
         pad: {
           vertical: '6px',
@@ -448,7 +453,7 @@ export const hpe = deepFreeze({
       },
       large: {
         border: {
-          radius: '6px',
+          radius: '8px',
         },
         pad: {
           vertical: '8px',
@@ -469,7 +474,7 @@ export const hpe = deepFreeze({
       },
       xlarge: {
         border: {
-          radius: '6px',
+          radius: '10px',
         },
         pad: {
           vertical: '10px',
@@ -566,7 +571,7 @@ export const hpe = deepFreeze({
       width: '1px',
     },
     check: {
-      radius: '2px',
+      radius: '4px',
       extend: ({ theme, checked, indeterminate }) => `
       background-color: ${
         checked || indeterminate
@@ -826,7 +831,7 @@ export const hpe = deepFreeze({
     margin: {
       bottom: 'none',
     },
-    round: '4px',
+    round: '6px',
   },
   heading: {
     color: 'text-strong',
