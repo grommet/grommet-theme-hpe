@@ -249,6 +249,17 @@ export const hpe = deepFreeze({
       font: {
         weight: 700,
       },
+      // for primary button with color, use text-strong
+      // instead of text-primary-button which is hard-coded
+      // to "white" specifically for HPE green.
+      extend: ({ colorValue, primary, theme }) =>
+        colorValue && primary
+          ? `
+        color: ${
+          theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
+        };
+      `
+          : ``,
     },
     secondary: {
       border: {
