@@ -415,6 +415,16 @@ export const hpe = deepFreeze({
       background: {
         color: 'background-contrast',
       },
+      extend: ({ disabled, pad, theme }) => `
+      ${
+        !disabled &&
+        pad &&
+        typeof pad !== 'object' &&
+        `outline: solid ${
+          theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light']
+        };`
+      }
+    `,
     },
     color: 'background',
     border: {
