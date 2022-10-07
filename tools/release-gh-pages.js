@@ -32,7 +32,7 @@ if (process.env.CI) {
         git(localFolder).commit('grommet-theme-hpe .min.js and .json updated'),
       )
       .then(() => git(localFolder).push('origin', 'gh-pages'))
-      .catch(err => console.error('failed: ', err));
+      .catch((err) => console.error('failed: ', err));
   });
 } else {
   console.warn(

@@ -10,7 +10,9 @@ import { FormNext } from 'grommet-icons/icons/FormNext';
 import { FormPrevious } from 'grommet-icons/icons/FormPrevious';
 import { FormUp } from 'grommet-icons/icons/FormUp';
 import { Unsorted } from 'grommet-icons/icons/Unsorted';
+import { Hpe } from 'grommet-icons/icons/Hpe';
 
+import { backgrounds } from './backgrounds';
 import { colors } from './colors';
 
 const baseSpacing = 24;
@@ -28,6 +30,7 @@ const deepFreeze = (obj) => {
 export const hpe = deepFreeze({
   defaultMode: 'light',
   global: {
+    backgrounds,
     breakpoints: {
       xsmall: {
         value: baseSpacing * 24, // 576
@@ -70,6 +73,11 @@ export const hpe = deepFreeze({
       xlarge: {}, // anything larger than 1440,
     },
     colors,
+    control: {
+      border: {
+        radius: '6px',
+      },
+    },
     input: {
       font: {
         height: 'inherit',
@@ -202,6 +210,28 @@ export const hpe = deepFreeze({
     },
   },
   button: {
+    'cta-primary': {
+      background: { color: 'brand' },
+      border: {
+        radius: '100px',
+      },
+      color: 'text-primary-button',
+      font: { weight: 'bold' },
+      icon: <Hpe />,
+      reverse: true,
+    },
+    'cta-alternate': {
+      background: 'background-cta-alternate',
+      border: {
+        radius: '100px',
+      },
+      color: 'text-strong',
+      font: {
+        weight: 'bold',
+      },
+      icon: <Hpe color="brand" />,
+      reverse: true,
+    },
     default: {
       color: 'text-strong',
       border: undefined,
@@ -212,17 +242,28 @@ export const hpe = deepFreeze({
     gap: 'xsmall',
     primary: {
       background: {
-        color: 'green',
+        color: 'brand',
       },
       border: undefined,
-      color: 'text-strong',
+      color: 'text-primary-button',
       font: {
         weight: 700,
       },
+      // for primary button with color, use text-strong
+      // instead of text-primary-button which is hard-coded
+      // to "white" specifically for HPE green.
+      extend: ({ colorValue, primary, theme }) =>
+        colorValue && primary
+          ? `
+        color: ${
+          theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
+        };
+      `
+          : ``,
     },
     secondary: {
       border: {
-        color: 'green',
+        color: 'brand',
         width: '2px',
       },
       color: 'text-strong',
@@ -276,6 +317,18 @@ export const hpe = deepFreeze({
         color: 'transparent',
       },
       color: 'text-xweak',
+      'cta-primary': {
+        border: {
+          color: 'border-weak',
+          width: '2px',
+        },
+      },
+      'cta-alternate': {
+        border: {
+          color: 'border-weak',
+          width: '2px',
+        },
+      },
       primary: {
         border: {
           color: 'border-weak',
@@ -290,6 +343,36 @@ export const hpe = deepFreeze({
       opacity: 1.0,
     },
     hover: {
+      'cta-primary': {
+        extend: ({ active, colorValue, theme }) => {
+          let color;
+          if (!colorValue && !active) {
+            if (theme.dark) {
+              color = 'rgba(0, 0, 0, 0.2)';
+            } else color = 'rgba(0, 0, 0, 0.2)'; // TBD
+          }
+
+          const style = `inset 0 0 100px 100px ${color}`;
+          return `-moz-box-shadow: ${style};
+            -webkit-box-shadow: ${style};
+            box-shadow: ${style};`;
+        },
+      },
+      'cta-alternate': {
+        extend: ({ active, colorValue, theme }) => {
+          let color;
+          if (!colorValue && !active) {
+            if (theme.dark) {
+              color = 'rgba(0, 0, 0, 0.2)'; // TBD
+            } else color = 'rgba(0, 0, 0, 0.2)'; // TBD
+          }
+
+          const style = `inset 0 0 100px 100px ${color}`;
+          return `-moz-box-shadow: ${style};
+            -webkit-box-shadow: ${style};
+            box-shadow: ${style};`;
+        },
+      },
       default: {
         background: {
           color: 'background-contrast',
@@ -317,7 +400,7 @@ export const hpe = deepFreeze({
           if (!colorValue && !active) {
             if (theme.dark) {
               color = 'rgba(0, 0, 0, 0.2)';
-            } else color = '#01a982';
+            } else color = 'rgba(0, 0, 0, 0.2)';
           }
 
           const style = `inset 0 0 100px 100px ${color}`;
@@ -327,42 +410,118 @@ export const hpe = deepFreeze({
         },
       },
     },
+    color: 'text-strong',
+    border: {
+      radius: '6px',
+    },
+    padding: {
+      vertical: '4px',
+      horizontal: '22px',
+    },
     size: {
       small: {
         border: {
-          radius: '4px',
+          radius: '6px',
         },
         pad: {
           vertical: '4px',
           horizontal: '8px',
         },
+        'cta-primary': {
+          pad: {
+            vertical: '3px',
+            horizontal: '12px',
+          },
+        },
+        'cta-alternate': {
+          pad: {
+            vertical: '3px',
+            horizontal: '12px',
+          },
+        },
       },
       medium: {
-        border: {
-          radius: '4px',
-        },
-        pad: {
-          vertical: '6px',
-          horizontal: '12px',
-        },
-      },
-      large: {
         border: {
           radius: '6px',
         },
         pad: {
           vertical: '6px',
+          horizontal: '12px',
+        },
+        'cta-primary': {
+          pad: {
+            vertical: '6px',
+            horizontal: '16px',
+          },
+        },
+        'cta-alternate': {
+          pad: {
+            vertical: '6px',
+            horizontal: '16px',
+          },
+        },
+      },
+      large: {
+        border: {
+          radius: '8px',
+        },
+        pad: {
+          vertical: '8px',
           horizontal: '16px',
+        },
+        'cta-primary': {
+          pad: {
+            vertical: '8px',
+            horizontal: '20px',
+          },
+        },
+        'cta-alternate': {
+          pad: {
+            vertical: '8px',
+            horizontal: '20px',
+          },
+        },
+      },
+      xlarge: {
+        border: {
+          radius: '10px',
+        },
+        pad: {
+          vertical: '10px',
+          horizontal: '20px',
+        },
+        'cta-primary': {
+          pad: {
+            vertical: '10px',
+            horizontal: '28px',
+          },
+        },
+        'cta-alternate': {
+          pad: {
+            vertical: '10px',
+            horizontal: '28px',
+          },
         },
       },
     },
-    border: {
-      radius: '4px',
-    },
-    color: 'text-strong',
-    padding: {
-      vertical: '4px',
-      horizontal: '10px',
+    // aligning with brand central which follows slightly different interval between t-shirt sizes
+    extend: ({ sizeProp }) => {
+      let fontSize = '19px'; // necessary so cta-primary label is accessible on HPE green background
+      let lineHeight = '24px';
+      if (sizeProp === 'small') {
+        fontSize = '16px';
+        lineHeight = '22px';
+      } else if (sizeProp === 'large') {
+        fontSize = '20px';
+        lineHeight = '26px';
+      } else if (sizeProp === 'xlarge') {
+        fontSize = '22px';
+        lineHeight = '28px';
+      }
+      return `
+      font-size: ${fontSize};
+      line-height: ${lineHeight}
+      `;
     },
   },
   calendar: {
@@ -434,7 +593,7 @@ export const hpe = deepFreeze({
       width: '1px',
     },
     check: {
-      radius: '2px',
+      radius: '4px',
       extend: ({ theme, checked, indeterminate }) => `
       background-color: ${
         checked || indeterminate
@@ -587,6 +746,9 @@ export const hpe = deepFreeze({
     },
   },
   dateInput: {
+    container: {
+      round: 'xsmall',
+    },
     icon: {
       size: 'small',
     },
@@ -597,7 +759,7 @@ export const hpe = deepFreeze({
     },
     button: {
       border: {
-        radius: '4px',
+        radius: '24px',
       },
       pad: {
         vertical: '6px',
@@ -698,7 +860,7 @@ export const hpe = deepFreeze({
     margin: {
       bottom: 'none',
     },
-    round: '4px',
+    round: '6px',
   },
   heading: {
     color: 'text-strong',
