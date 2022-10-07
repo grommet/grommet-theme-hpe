@@ -421,10 +421,19 @@ var hpe = deepFreeze({
   checkBox: {
     hover: {
       border: {
-        color: undefined
+        color: 'border-strong'
       },
       background: {
         color: 'background-contrast'
+      },
+      // HPE Design System guidance states that pad="none" should be applied on CheckBox
+      // when its used outside of a FormField. We will apply this hover treatment in
+      // those instances.
+      extend: function extend(_ref2) {
+        var disabled = _ref2.disabled,
+            pad = _ref2.pad,
+            theme = _ref2.theme;
+        return "\n      " + (!disabled && pad === 'none' && "border: 2px solid " + theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light'] + ";") + "\n    ";
       }
     },
     color: 'background',
@@ -434,16 +443,16 @@ var hpe = deepFreeze({
     },
     check: {
       radius: '2px',
-      extend: function extend(_ref2) {
-        var theme = _ref2.theme,
-            checked = _ref2.checked,
-            indeterminate = _ref2.indeterminate;
+      extend: function extend(_ref3) {
+        var theme = _ref3.theme,
+            checked = _ref3.checked,
+            indeterminate = _ref3.indeterminate;
         return "\n      background-color: " + (checked || indeterminate ? theme.global.colors.green[theme.dark ? 'dark' : 'light'] : theme.global.colors.background[theme.dark ? 'dark' : 'light']) + ";\n      " + ((checked || indeterminate) && 'border: none;') + "\n        ";
       }
     },
     icon: {
-      extend: function extend(_ref3) {
-        var theme = _ref3.theme;
+      extend: function extend(_ref4) {
+        var theme = _ref4.theme;
         return "stroke-width: 2px;\n      stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'];
       }
     },
@@ -459,21 +468,24 @@ var hpe = deepFreeze({
       background: 'background',
       color: 'background',
       knob: {
-        extend: function extend(_ref4) {
-          var theme = _ref4.theme;
+        extend: function extend(_ref5) {
+          var theme = _ref5.theme;
           return "\n           box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'].small + ";\n           border: 1px solid " + theme.global.colors.border[theme.dark ? 'dark' : 'light'] + "\n        ";
         }
       },
-      extend: function extend(_ref5) {
-        var checked = _ref5.checked,
-            theme = _ref5.theme;
+      extend: function extend(_ref6) {
+        var checked = _ref6.checked,
+            theme = _ref6.theme;
         return "\n        " + (checked && "background-color: " + theme.global.colors.green[theme.dark ? 'dark' : 'light'] + ";") + "\n      ";
       }
     },
-    extend: function extend(_ref6) {
-      var disabled = _ref6.disabled,
-          theme = _ref6.theme;
-      return "\n    " + (!disabled && ":hover {\n      background-color: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + ";\n    }") + "\n    font-weight: 500;\n    width: auto;\n  };\n  ";
+    // HPE Design System guidance states that pad="none" should be applied on CheckBox
+    // when its used outside of a FormField. We will apply this hover treatment in
+    // those instances.
+    extend: function extend(_ref7) {
+      var disabled = _ref7.disabled,
+          pad = _ref7.pad;
+      return "\n    " + (!disabled && pad === 'none' && ":hover {\n      background-color: unset;\n    }") + "\n    font-weight: 500;\n    width: auto;\n  };\n  ";
     }
   },
   checkBoxGroup: {
@@ -486,8 +498,8 @@ var hpe = deepFreeze({
   },
   dataTable: {
     body: {
-      extend: function extend(_ref7) {
-        var theme = _ref7.theme;
+      extend: function extend(_ref8) {
+        var theme = _ref8.theme;
         return "\n        /* Margin and padding allow room for focus on table body */\n        margin: " + theme.global.edgeSize.xxsmall + " 0px;\n        padding: 0px " + theme.global.edgeSize.xxsmall + ";\n      ";
       }
     },
@@ -496,11 +508,11 @@ var hpe = deepFreeze({
         side: 'bottom'
       },
       color: 'text-strong',
-      extend: function extend(_ref8) {
-        var column = _ref8.column,
-            sort = _ref8.sort,
-            sortable = _ref8.sortable,
-            theme = _ref8.theme;
+      extend: function extend(_ref9) {
+        var column = _ref9.column,
+            sort = _ref9.sort,
+            sortable = _ref9.sortable,
+            theme = _ref9.theme;
         return "\n          " + (sort && sort.property === column && "\n            background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n          ") + ";\n          " + (sortable && sort && sort.property !== column && "\n              svg {\n                opacity: 0;\n              }\n              :hover {\n                svg {\n                  opacity: 1;\n                }\n              }\n            ") + ";\n        ";
       },
       font: {
@@ -846,8 +858,8 @@ var hpe = deepFreeze({
   },
   maskedInput: {
     container: {
-      extend: function extend(_ref9) {
-        var theme = _ref9.theme;
+      extend: function extend(_ref10) {
+        var theme = _ref10.theme;
         return "\n        svg {\n          fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n        }\n      ";
       }
     }
@@ -1087,13 +1099,13 @@ var hpe = deepFreeze({
     },
     color: 'selected-background',
     container: {
-      extend: function extend(_ref10) {
-        var theme = _ref10.theme;
+      extend: function extend(_ref11) {
+        var theme = _ref11.theme;
         return "\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
       }
     },
-    extend: function extend(_ref11) {
-      var theme = _ref11.theme;
+    extend: function extend(_ref12) {
+      var theme = _ref12.theme;
       return "\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
     },
     gap: 'xsmall',
@@ -1140,8 +1152,8 @@ var hpe = deepFreeze({
   },
   select: {
     control: {
-      extend: function extend(_ref12) {
-        var disabled = _ref12.disabled;
+      extend: function extend(_ref13) {
+        var disabled = _ref13.disabled;
         return (0, _styledComponents.css)(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
       }
     },
@@ -1210,8 +1222,8 @@ var hpe = deepFreeze({
       vertical: '-2px',
       horizontal: 'none'
     },
-    extend: function extend(_ref13) {
-      var theme = _ref13.theme;
+    extend: function extend(_ref14) {
+      var theme = _ref14.theme;
       return (0, _styledComponents.css)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n      border-top-left-radius: ", "; // should use radius property of border\n      border-top-right-radius: ", "; // should use radius property of border\n      font-weight: bold;\n    "])), theme.global.control.border.radius, theme.global.control.border.radius);
     }
   },
@@ -1239,8 +1251,8 @@ var hpe = deepFreeze({
       }
     },
     body: {
-      extend: function extend(_ref14) {
-        var theme = _ref14.theme;
+      extend: function extend(_ref15) {
+        var theme = _ref15.theme;
         return "\n          :hover {\n            button {\n              background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n            }\n          }\n        ";
       }
     },
@@ -1287,8 +1299,8 @@ var hpe = deepFreeze({
   },
   textInput: {
     container: {
-      extend: function extend(_ref15) {
-        var theme = _ref15.theme;
+      extend: function extend(_ref16) {
+        var theme = _ref16.theme;
         return "\n        svg {\n          fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n        }\n      ";
       }
     }

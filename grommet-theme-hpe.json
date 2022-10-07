@@ -441,7 +441,9 @@
   },
   "checkBox": {
     "hover": {
-      "border": {},
+      "border": {
+        "color": "border-strong"
+      },
       "background": {
         "color": "background-contrast"
       }
