@@ -1,2 +1,2 @@
-// (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
+// (C) Copyright 2021-2022 Hewlett Packard Enterprise Development LP
 export * from './themes';

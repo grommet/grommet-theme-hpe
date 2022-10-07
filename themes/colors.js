@@ -16,49 +16,60 @@ var colors = {
   'status-error': undefined,
   brand: 'green!',
   background: {
-    dark: '#263040',
+    dark: '#1C1C1C',
     light: '#FFFFFF'
   },
   'background-back': {
-    dark: '#263040',
-    light: '#EFEFEF'
+    dark: '#1C1C1C',
+    light: '#F7F7F7'
   },
   'background-front': {
-    dark: '#404B5C',
+    dark: '#222222',
     light: '#FFFFFF'
   },
   'background-contrast': {
-    dark: '#FFFFFF14',
+    dark: '#FFFFFF0F',
+    // 6%
     light: '#0000000A'
   },
   icon: 'text',
   text: {
-    dark: '#C0CADC',
+    dark: '#FFFFFFE6',
+    // 90%
     light: '#444444'
   },
   'text-strong': {
-    dark: '#FFFFFF',
+    dark: '#FFFFFFF5',
+    // 96%
     light: '#000000'
   },
   'text-weak': {
-    dark: '#8C98AA',
+    dark: '#FFFFFF80',
+    // 50%
     light: '#757575'
   },
   'text-xweak': {
-    dark: '#606B7D',
+    dark: '#FFFFFF33',
+    // 20%
     light: '#BBBBBB'
   },
   border: {
-    dark: '#7887A1',
-    light: '#999999'
+    dark: '#FFFFFF5C',
+    // 36%
+    light: '#0000005C' // 36%
+
   },
   'border-strong': {
-    dark: '#AFBCD2',
-    light: '#666666'
+    dark: '#FFFFFFB8',
+    // 72%
+    light: '#000000B8' // 72%
+
   },
   'border-weak': {
-    dark: '#606B7D',
-    light: '#BBBBBB'
+    dark: '#FFFFFF1F',
+    // 12%
+    light: '#0000001F' // 12%
+
   },
   control: 'green',
   'active-background': 'background-contrast',
@@ -80,7 +91,7 @@ var colors = {
     light: '#17EBA0'
   },
   'status-unknown': {
-    dark: '#4F5F76',
+    dark: '#555555',
     light: '#CCCCCC'
   },
   'status-disabled': '#CCCCCC',
@@ -121,16 +132,17 @@ var colors = {
   },
   'yellow!': '#FEC901',
   'validation-critical': {
-    light: '#FED9D9',
-    dark: '#C54E4B5C'
+    light: '#FC61613D',
+    dark: '#CC1F1A4D' // 30%
+
   },
   'validation-ok': {
-    light: '#C7FAE8',
-    dark: '#00856759'
+    light: '#17EBA03D',
+    dark: '#17D0A64D'
   },
   'validation-warning': {
-    light: '#FFEFD2',
-    dark: '#9B63105C'
+    light: '#FFBC443D',
+    dark: '#D891284D'
   },
   'graph-0': 'orange!',
   'graph-1': 'blue!',
@@ -138,6 +150,8 @@ var colors = {
   'graph-3': 'yellow!',
   'graph-4': 'teal!',
   focus: 'teal!',
-  placeholder: 'text-weak'
+  placeholder: 'text-weak',
+  'text-primary-button': '#FFFFFF',
+  'background-cta-alternate': '#F2F2F2'
 };
 exports.colors = colors;
