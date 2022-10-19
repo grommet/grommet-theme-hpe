@@ -757,7 +757,7 @@ export var hpe = deepFreeze({
       }
     },
     message: {
-      color: 'text-xweak'
+      color: 'placeholder'
     },
     pad: {
       horizontal: 'xsmall'
