@@ -783,7 +783,7 @@ export const hpe = deepFreeze({
       },
     },
     message: {
-      color: 'text-xweak',
+      color: 'placeholder',
     },
     pad: { horizontal: 'xsmall' },
     extend: 'border-radius: 4px;',
