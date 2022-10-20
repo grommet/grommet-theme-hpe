@@ -1053,6 +1053,7 @@ export const hpe = deepFreeze({
         pad: 'none',
       },
       separator: {
+        color: 'border',
         pad: 'none',
       },
     },
