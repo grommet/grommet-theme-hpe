@@ -201,6 +201,18 @@ export const hpe = deepFreeze({
       textDecoration: 'underline',
     },
   },
+  avatar: {
+    avatar: {
+      size: {
+        large: `${baseSpacing * 4}px`, // 96px
+      },
+      text: {
+        size: {
+          large: 'xxlarge', // 34px
+        },
+      },
+    },
+  },
   button: {
     default: {
       color: 'text-strong',
