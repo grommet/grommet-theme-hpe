@@ -1049,8 +1049,11 @@ export const hpe = deepFreeze({
       },
     },
     group: {
+      container: {
+        pad: 'none',
+      },
       separator: {
-        color: 'border-weak',
+        pad: 'none',
       },
     },
     icons: {
