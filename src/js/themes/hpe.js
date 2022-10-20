@@ -202,14 +202,12 @@ export const hpe = deepFreeze({
     },
   },
   avatar: {
-    avatar: {
+    size: {
+      large: `${baseSpacing * 4}px`, // 96px
+    },
+    text: {
       size: {
-        large: `${baseSpacing * 4}px`, // 96px
-      },
-      text: {
-        size: {
-          large: 'xxlarge', // 34px
-        },
+        large: 'xxlarge', // 34px
       },
     },
   },
