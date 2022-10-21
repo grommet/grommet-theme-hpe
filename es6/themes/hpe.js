@@ -1027,8 +1027,12 @@ export var hpe = deepFreeze({
       }
     },
     group: {
+      container: {
+        pad: 'none'
+      },
       separator: {
-        color: 'border-weak'
+        color: 'border',
+        pad: 'none'
       }
     },
     icons: {
