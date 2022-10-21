@@ -207,7 +207,7 @@ export const hpe = deepFreeze({
     },
     text: {
       size: {
-        large: 'xxlarge', // 34px
+        large: 'xxlarge', // 36px
       },
     },
   },
