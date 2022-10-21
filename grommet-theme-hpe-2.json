@@ -277,6 +277,16 @@
       "textDecoration": "underline"
     }
   },
+  "avatar": {
+    "size": {
+      "large": "96px"
+    },
+    "text": {
+      "size": {
+        "large": "xxlarge"
+      }
+    }
+  },
   "button": {
     "cta-primary": {
       "background": {
