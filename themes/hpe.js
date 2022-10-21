@@ -217,6 +217,18 @@ var hpe = deepFreeze({
       textDecoration: 'underline'
     }
   },
+  avatar: {
+    size: {
+      large: baseSpacing * 4 + "px" // 96px
+
+    },
+    text: {
+      size: {
+        large: 'xxlarge' // 36px
+
+      }
+    }
+  },
   button: {
     'cta-primary': {
       background: {
