@@ -209,6 +209,16 @@ export const hpe = deepFreeze({
       textDecoration: 'underline',
     },
   },
+  avatar: {
+    size: {
+      large: `${baseSpacing * 4}px`, // 96px
+    },
+    text: {
+      size: {
+        large: 'xxlarge', // 36px
+      },
+    },
+  },
   button: {
     'cta-primary': {
       background: { color: 'brand' },
@@ -569,11 +579,23 @@ export const hpe = deepFreeze({
   checkBox: {
     hover: {
       border: {
-        color: undefined,
+        color: 'border-strong',
       },
       background: {
         color: 'background-contrast',
       },
+      // HPE Design System guidance states that pad="none" should be applied on CheckBox
+      // when its used outside of a FormField. We will apply this hover treatment in
+      // those instances.
+      extend: ({ disabled, pad, theme }) => `
+      ${
+        !disabled &&
+        pad === 'none' &&
+        `border: 2px solid ${
+          theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light']
+        };`
+      }
+    `,
     },
     color: 'background',
     border: {
@@ -627,15 +649,15 @@ export const hpe = deepFreeze({
         }
       `,
     },
-    extend: ({ disabled, theme }) => `
+    // HPE Design System guidance states that pad="none" should be applied on CheckBox
+    // when its used outside of a FormField. We will apply this hover treatment in
+    // those instances.
+    extend: ({ disabled, pad }) => `
     ${
       !disabled &&
+      pad === 'none' &&
       `:hover {
-      background-color: ${
-        theme.global.colors['background-contrast'][
-          theme.dark ? 'dark' : 'light'
-        ]
-      };
+      background-color: unset;
     }`
     }
     font-weight: 500;
@@ -771,7 +793,7 @@ export const hpe = deepFreeze({
       },
     },
     message: {
-      color: 'text-xweak',
+      color: 'placeholder',
     },
     pad: { horizontal: 'xsmall' },
     extend: 'border-radius: 4px;',
@@ -1037,8 +1059,12 @@ export const hpe = deepFreeze({
       },
     },
     group: {
+      container: {
+        pad: 'none',
+      },
       separator: {
-        color: 'border-weak',
+        color: 'border',
+        pad: 'none',
       },
     },
     icons: {
