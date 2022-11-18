@@ -119,7 +119,7 @@ export var hpe = deepFreeze({
       family: "'Metric', Arial, sans-serif",
       // This face configuration is intended for typography exploration. Proper config
       // will need enhancements to Grommet.
-      face: "\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff\") format('woff');     \n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSThin-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSThin-Regular.woff\") format('woff');\n          font-weight: 100;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff\") format('woff');\n          font-weight: 300;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff\") format('woff');\n          font-weight: 450;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff\") format('woff');\n          font-weight: 500;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff\") format('woff');\n          font-weight: 600;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff\") format('woff');\n          font-weight: 700;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSBlack-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSBlack-Regular.woff\") format('woff');\n          font-weight: 900;\n        }"
+      face: "\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSThin-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSThin-Regular.woff\") format('woff');\n          font-weight: 100;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff\") format('woff');\n          font-weight: 300;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff\") format('woff');\n          font-weight: 400;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff\") format('woff');\n          font-weight: 500;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff\") format('woff');\n          font-weight: 600;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff\") format('woff');\n          font-weight: 700;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSBlack-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSBlack-Regular.woff\") format('woff');\n          font-weight: 900;\n        }"
     },
     focus: {
       border: undefined
@@ -863,7 +863,7 @@ export var hpe = deepFreeze({
   },
   heading: {
     color: 'text-strong',
-    weight: 450,
+    weight: 400,
     level: {
       1: {
         small: {
@@ -963,9 +963,6 @@ export var hpe = deepFreeze({
           weight: 500
         },
         small: {
-          // Design file call for h4 small to bump up to font-weight 500,
-          // however the theme does not currently support this at the 'size'
-          // level, only for at the 'level' level.
           size: '18px',
           // size: '22px',
           height: '18px',
@@ -973,15 +970,13 @@ export var hpe = deepFreeze({
           maxWidth: '538px'
         },
         medium: {
-          // Design file call for h4 medium to bump up to font-weight 500,
-          // however the theme does not currently support this at the 'size'
-          // level, only for at the 'level' level.
           size: '24px',
           // size: '27px',
           height: '24px',
           // height: '33px',
           maxWidth: '643px'
         },
+        // This should be a weight of 400, while all smaller sizes 500.
         large: {
           size: '36px',
           // size: '31px',
@@ -989,6 +984,7 @@ export var hpe = deepFreeze({
           // height: '37px',
           maxWidth: '749px'
         },
+        // This should be a weight of 400, while all smaller sizes 500.
         xlarge: {
           size: '48px',
           // size: '36px',
@@ -1315,17 +1311,20 @@ export var hpe = deepFreeze({
       maxWidth: '432px'
     },
     large: {
+      // weight needs to be modified at the size level by bumping down to 300
       size: '24px',
       height: '30px',
       maxWidth: '538px'
     },
     xlarge: {
+      // weight needs to be modified at the size level by bumping down to 300
       size: '36px',
       height: '42px',
       maxWidth: '643px'
     },
     // xxlarge is not part of Chris's type exploration
     xxlarge: {
+      // weight needs to be modified at the size level by bumping down to 300
       size: '42px',
       height: '48px',
       maxWidth: '854px'
@@ -1530,17 +1529,20 @@ export var hpe = deepFreeze({
       maxWidth: '432px'
     },
     large: {
+      // weight needs to be modified at the size level by bumping down to 300
       size: '24px',
       height: '30px',
       maxWidth: '538px'
     },
     xlarge: {
+      // weight needs to be modified at the size level by bumping down to 300
       size: '36px',
       height: '42px',
       maxWidth: '643px'
     },
     // xxlarge is not part of Chris's type exploration
     xxlarge: {
+      // weight needs to be modified at the size level by bumping down to 300
       size: '42px',
       height: '48px',
       maxWidth: '854px'
