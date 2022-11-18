@@ -36,19 +36,25 @@ var colors = {
   text: {
     dark: '#FFFFFFE6',
     // 90%
-    light: '#444444'
+    light: '#6F6F6F' // light: '#444444',
+
   },
   'text-strong': {
     dark: '#FFFFFFF5',
     // 96%
-    light: '#000000'
+    light: '#444444' // light: '#000000',
+
   },
   'text-weak': {
     dark: '#FFFFFF80',
     // 50%
+    // light value may need to be revisited to allow enough differentiation
+    // from 'text'
     light: '#757575'
   },
   'text-xweak': {
+    // light value may need to be revisited to allow enough differentiation
+    // from 'text' / 'text-weak'
     dark: '#FFFFFF33',
     // 20%
     light: '#BBBBBB'

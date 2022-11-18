@@ -124,7 +124,8 @@ var hpe = deepFreeze({
     input: {
       font: {
         height: 'inherit',
-        weight: 500
+        weight: 450 // weight: 500,
+
       },
       padding: {
         horizontal: '11px',
@@ -136,7 +137,9 @@ var hpe = deepFreeze({
     },
     font: {
       family: "'Metric', Arial, sans-serif",
-      face: "\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff\") format('woff');\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff\") format('woff');\n          font-weight: 700;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff\") format('woff');\n          font-weight: 600;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff\") format('woff');\n          font-weight: 500;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff\") format('woff');\n          font-weight: 100;\n        }"
+      // This face configuration is intended for typography exploration. Proper config
+      // will need enhancements to Grommet.
+      face: "\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff\") format('woff');     \n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSThin-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSThin-Regular.woff\") format('woff');\n          font-weight: 100;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff\") format('woff');\n          font-weight: 300;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff\") format('woff');\n          font-weight: 450;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff\") format('woff');\n          font-weight: 500;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff\") format('woff');\n          font-weight: 600;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff\") format('woff');\n          font-weight: 700;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSBlack-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSBlack-Regular.woff\") format('woff');\n          font-weight: 900;\n        }"
     },
     focus: {
       border: undefined
@@ -870,7 +873,8 @@ var hpe = deepFreeze({
         horizontal: 'none'
       },
       requiredIndicator: true,
-      weight: 500
+      weight: 450 // weight: 500,
+
     },
     margin: {
       bottom: 'none'
@@ -879,141 +883,208 @@ var hpe = deepFreeze({
   },
   heading: {
     color: 'text-strong',
+    weight: 450,
     level: {
       1: {
         small: {
-          size: '36px',
-          height: '42px',
+          size: '48px',
+          // size: '36px',
+          height: '48px',
+          // height: '42px',
           maxWidth: '854px'
         },
         medium: {
-          size: '53px',
-          height: '59px',
+          size: '72px',
+          // size: '53px',
+          height: '72px',
+          // height: '59px',
           maxWidth: '1277px'
         },
         large: {
-          size: '88px',
-          height: '94px',
+          size: '96px',
+          // size: '88px',
+          height: '96px',
+          // height: '94px',
           maxWidth: '2122px'
         },
         xlarge: {
-          size: '124px',
-          height: '130px',
+          size: '120px',
+          // size: '124px',
+          height: '120px',
+          // height: '130px',
           maxWidth: '2966px'
         }
       },
       2: {
         small: {
-          size: '31px',
-          height: '37px',
+          size: '36px',
+          // size: '31px',
+          height: '36px',
+          // height: '37px',
           maxWidth: '749px'
         },
         medium: {
-          size: '44px',
-          height: '50px',
+          size: '48px',
+          // size: '44px',
+          height: '48px',
+          // height: '50px',
           maxWidth: '1066px'
         },
         large: {
-          size: '58px',
-          height: '64px',
+          size: '72px',
+          // size: '58px',
+          height: '72px',
+          // height: '64px',
           maxWidth: '1382px'
         },
         xlarge: {
-          size: '71px',
-          height: '77px',
+          size: '96px',
+          // size: '71px',
+          height: '96px',
+          // height: '77px',
           maxWidth: '1699px'
         }
       },
       3: {
         small: {
-          size: '27px',
-          height: '33px',
+          // Design file call for h3 small to bump up to font-weight 500,
+          // however the theme does not currently support this at the 'size'
+          // level, only for at the 'level' level.
+          size: '24px',
+          // size: '27px',
+          height: '24px',
+          // height: '33px',
           maxWidth: '643px'
         },
         medium: {
           size: '36px',
-          height: '42px',
+          // size: '36px',
+          height: '36px',
+          // height: '42px',
           maxWidth: '854px'
         },
         large: {
-          size: '44px',
-          height: '50px',
+          size: '48px',
+          // size: '44px',
+          height: '48px',
+          // height: '50px',
           maxWidth: '1066px'
         },
         xlarge: {
-          size: '53px',
-          height: '59px',
+          size: '72px',
+          // size: '53px',
+          height: '72px',
+          // height: '59px',
           maxWidth: '1277px'
         }
       },
       4: {
+        font: {
+          weight: 500
+        },
         small: {
-          size: '22px',
-          height: '28px',
+          // Design file call for h4 small to bump up to font-weight 500,
+          // however the theme does not currently support this at the 'size'
+          // level, only for at the 'level' level.
+          size: '18px',
+          // size: '22px',
+          height: '18px',
+          // height: '28px',
           maxWidth: '538px'
         },
         medium: {
-          size: '27px',
-          height: '33px',
+          // Design file call for h4 medium to bump up to font-weight 500,
+          // however the theme does not currently support this at the 'size'
+          // level, only for at the 'level' level.
+          size: '24px',
+          // size: '27px',
+          height: '24px',
+          // height: '33px',
           maxWidth: '643px'
         },
         large: {
-          size: '31px',
-          height: '37px',
+          size: '36px',
+          // size: '31px',
+          height: '36px',
+          // height: '37px',
           maxWidth: '749px'
         },
         xlarge: {
-          size: '36px',
-          height: '42px',
+          size: '48px',
+          // size: '36px',
+          height: '48px',
+          // height: '42px',
           maxWidth: '854px'
         }
       },
       5: {
+        font: {
+          weight: 500
+        },
         small: {
           size: '16px',
-          height: '22px',
+          // size: '16px',
+          height: '16px',
+          // height: '22px',
           maxWidth: '379px'
         },
         medium: {
-          size: '16px',
-          height: '22px',
+          size: '18px',
+          // size: '16px',
+          height: '18px',
+          // height: '22px',
           maxWidth: '379px'
         },
         large: {
-          size: '16px',
-          height: '22px',
+          size: '24px',
+          // size: '16px',
+          height: '24px',
+          // height: '22px',
           maxWidth: '379px'
         },
         xlarge: {
-          size: '16px',
-          height: '22px',
+          // This should be a weight of 400, while all smaller sizes 500.
+          size: '36px',
+          // size: '16px',
+          height: '36px',
+          // height: '22px',
           maxWidth: '379px'
         }
       },
       6: {
+        font: {
+          weight: 500
+        },
         small: {
           size: '14px',
-          height: '20px',
+          // size: '14px',
+          height: '14px',
+          // height: '20px',
           maxWidth: '326px'
         },
         medium: {
-          size: '14px',
-          height: '20px',
+          size: '16px',
+          // size: '14px',
+          height: '16px',
+          // height: '20px',
           maxWidth: '326px'
         },
         large: {
-          size: '14px',
-          height: '20px',
+          size: '18px',
+          // size: '14px',
+          height: '18px',
+          // height: '20px',
           maxWidth: '326px'
         },
         xlarge: {
-          size: '14px',
-          height: '20px',
+          size: '24px',
+          // size: '14px',
+          height: '24px',
+          // height: '20px',
           maxWidth: '326px'
         }
       }
-    },
-    weight: 700
+    }
   },
   icon: {
     size: {
@@ -1252,28 +1323,31 @@ var hpe = deepFreeze({
   },
   paragraph: {
     small: {
+      // weight needs to be modified at the size level
       size: '16px',
-      height: '22px',
+      height: '20px',
       maxWidth: '379px'
     },
     medium: {
+      // weight needs to be modified at the size level
       size: '18px',
-      height: '24px',
+      height: '22px',
       maxWidth: '432px'
     },
     large: {
-      size: '22px',
-      height: '28px',
+      size: '24px',
+      height: '30px',
       maxWidth: '538px'
     },
     xlarge: {
-      size: '27px',
-      height: '33px',
-      maxWidth: '643px'
-    },
-    xxlarge: {
       size: '36px',
       height: '42px',
+      maxWidth: '643px'
+    },
+    // xxlarge is not part of Chris's type exploration
+    xxlarge: {
+      size: '42px',
+      height: '48px',
       maxWidth: '854px'
     }
   },
@@ -1458,33 +1532,37 @@ var hpe = deepFreeze({
   },
   text: {
     xsmall: {
+      // weight needs to be modified at the size level
       size: '14px',
-      height: '20px',
+      height: '18px',
       maxWidth: '326px'
     },
     small: {
+      // weight needs to be modified at the size level
       size: '16px',
-      height: '22px',
+      height: '20px',
       maxWidth: '379px'
     },
     medium: {
+      // weight needs to be modified at the size level
       size: '18px',
-      height: '24px',
+      height: '22px',
       maxWidth: '432px'
     },
     large: {
-      size: '22px',
-      height: '28px',
+      size: '24px',
+      height: '30px',
       maxWidth: '538px'
     },
     xlarge: {
-      size: '27px',
-      height: '33px',
-      maxWidth: '643px'
-    },
-    xxlarge: {
       size: '36px',
       height: '42px',
+      maxWidth: '643px'
+    },
+    // xxlarge is not part of Chris's type exploration
+    xxlarge: {
+      size: '42px',
+      height: '48px',
       maxWidth: '854px'
     }
   },
