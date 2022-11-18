@@ -1493,7 +1493,7 @@ export const hpe = deepFreeze({
       // weight needs to be modified at the size level
       size: '14px',
       height: '18px',
-      maxWidth: '379px',
+      maxWidth: '326px',
     },
     small: {
       // weight needs to be modified at the size level
