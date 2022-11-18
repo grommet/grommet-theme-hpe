@@ -81,7 +81,7 @@ export const hpe = deepFreeze({
     input: {
       font: {
         height: 'inherit',
-        weight: 500,
+        weight: 450, // weight: 500,
       },
       padding: {
         horizontal: '11px', // equivalent to 'small' when combined with 1px border
@@ -103,6 +103,8 @@ export const hpe = deepFreeze({
     },
     font: {
       family: "'Metric', Arial, sans-serif",
+      // This face configuration is intended for typography exploration. Proper config
+      // will need enhancements to Grommet.
       face: `
         @font-face {
           font-family: "Metric";
@@ -878,7 +880,7 @@ export const hpe = deepFreeze({
         horizontal: 'none',
       },
       requiredIndicator: true,
-      weight: 500,
+      weight: 450, // weight: 500,
     },
     margin: {
       bottom: 'none',
@@ -1259,11 +1261,13 @@ export const hpe = deepFreeze({
   },
   paragraph: {
     small: {
+      // weight needs to be modified at the size level
       size: '16px',
       height: '20px',
       maxWidth: '379px',
     },
     medium: {
+      // weight needs to be modified at the size level
       size: '18px',
       height: '22px',
       maxWidth: '432px',
@@ -1480,16 +1484,19 @@ export const hpe = deepFreeze({
   },
   text: {
     xsmall: {
+      // weight needs to be modified at the size level
       size: '14px',
       height: '18px',
       maxWidth: '326px',
     },
     small: {
+      // weight needs to be modified at the size level
       size: '16px',
       height: '20px',
       maxWidth: '379px',
     },
     medium: {
+      // weight needs to be modified at the size level
       size: '18px',
       height: '22px',
       maxWidth: '432px',
