@@ -103,8 +103,6 @@ export const hpe = deepFreeze({
     },
     font: {
       family: "'Metric', Arial, sans-serif",
-      // This face configuration is intended for typography exploration. Proper config
-      // will need enhancements to Grommet.
       face: `
         @font-face {
           font-family: "Metric";
