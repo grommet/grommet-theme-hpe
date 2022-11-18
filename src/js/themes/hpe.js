@@ -81,7 +81,7 @@ export const hpe = deepFreeze({
     input: {
       font: {
         height: 'inherit',
-        weight: 500,
+        weight: 450, // weight: 500,
       },
       padding: {
         horizontal: '11px', // equivalent to 'small' when combined with 1px border
@@ -885,7 +885,7 @@ export const hpe = deepFreeze({
         horizontal: 'none',
       },
       requiredIndicator: true,
-      weight: 500,
+      weight: 450, // weight: 500,
     },
     margin: {
       bottom: 'none',
