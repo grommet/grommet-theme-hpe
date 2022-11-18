@@ -81,7 +81,7 @@ export const hpe = deepFreeze({
     input: {
       font: {
         height: 'inherit',
-        weight: 450, // weight: 500,
+        weight: 500,
       },
       padding: {
         horizontal: '11px', // equivalent to 'small' when combined with 1px border
@@ -108,11 +108,6 @@ export const hpe = deepFreeze({
       face: `
         @font-face {
           font-family: "Metric";
-          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff2") format('woff2'),
-               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff") format('woff');     
-        }
-        @font-face {
-          font-family: "Metric";
           src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSThin-Regular.woff2") format('woff2'),
                url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSThin-Regular.woff") format('woff');
           font-weight: 100;
@@ -127,7 +122,7 @@ export const hpe = deepFreeze({
           font-family: "Metric";
           src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff2") format('woff2'),
                url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff") format('woff');
-          font-weight: 450;
+          font-weight: 400;
         }
         @font-face {
           font-family: "Metric";
@@ -885,7 +880,7 @@ export const hpe = deepFreeze({
         horizontal: 'none',
       },
       requiredIndicator: true,
-      weight: 450, // weight: 500,
+      weight: 500,
     },
     margin: {
       bottom: 'none',
@@ -894,7 +889,7 @@ export const hpe = deepFreeze({
   },
   heading: {
     color: 'text-strong',
-    weight: 450,
+    weight: 400,
     level: {
       1: {
         small: {
@@ -970,26 +965,22 @@ export const hpe = deepFreeze({
           weight: 500,
         },
         small: {
-          // Design file call for h4 small to bump up to font-weight 500,
-          // however the theme does not currently support this at the 'size'
-          // level, only for at the 'level' level.
           size: '18px', // size: '22px',
           height: '18px', // height: '28px',
           maxWidth: '538px',
         },
         medium: {
-          // Design file call for h4 medium to bump up to font-weight 500,
-          // however the theme does not currently support this at the 'size'
-          // level, only for at the 'level' level.
           size: '24px', // size: '27px',
           height: '24px', // height: '33px',
           maxWidth: '643px',
         },
+        // This should be a weight of 400, while all smaller sizes 500.
         large: {
           size: '36px', // size: '31px',
           height: '36px', // height: '37px',
           maxWidth: '749px',
         },
+        // This should be a weight of 400, while all smaller sizes 500.
         xlarge: {
           size: '48px', // size: '36px',
           height: '48px', // height: '42px',
@@ -1270,29 +1261,30 @@ export const hpe = deepFreeze({
   },
   paragraph: {
     small: {
-      // weight needs to be modified at the size level
       size: '16px',
       height: '20px',
       maxWidth: '379px',
     },
     medium: {
-      // weight needs to be modified at the size level
       size: '18px',
       height: '22px',
       maxWidth: '432px',
     },
     large: {
+      // weight needs to be modified at the size level by bumping down to 300
       size: '24px',
       height: '30px',
       maxWidth: '538px',
     },
     xlarge: {
+      // weight needs to be modified at the size level by bumping down to 300
       size: '36px',
       height: '42px',
       maxWidth: '643px',
     },
     // xxlarge is not part of Chris's type exploration
     xxlarge: {
+      // weight needs to be modified at the size level by bumping down to 300
       size: '42px',
       height: '48px',
       maxWidth: '854px',
@@ -1490,35 +1482,35 @@ export const hpe = deepFreeze({
   },
   text: {
     xsmall: {
-      // weight needs to be modified at the size level
       size: '14px',
       height: '18px',
       maxWidth: '326px',
     },
     small: {
-      // weight needs to be modified at the size level
       size: '16px',
       height: '20px',
       maxWidth: '379px',
     },
     medium: {
-      // weight needs to be modified at the size level
       size: '18px',
       height: '22px',
       maxWidth: '432px',
     },
     large: {
+      // weight needs to be modified at the size level by bumping down to 300
       size: '24px',
       height: '30px',
       maxWidth: '538px',
     },
     xlarge: {
+      // weight needs to be modified at the size level by bumping down to 300
       size: '36px',
       height: '42px',
       maxWidth: '643px',
     },
     // xxlarge is not part of Chris's type exploration
     xxlarge: {
+      // weight needs to be modified at the size level by bumping down to 300
       size: '42px',
       height: '48px',
       maxWidth: '854px',
