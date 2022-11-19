@@ -1039,6 +1039,17 @@ export const hpe = deepFreeze({
         },
       },
     },
+    extend: ({ level, size }) => {
+      let fontWeight = '';
+      if (level === 3 && size === 'small') {
+        fontWeight = 'font-weight: 500;';
+      } else if (level === 4 && ['large', 'xlarge'].includes(size)) {
+        fontWeight = 'font-weight: 400;';
+      } else if (level === 5 && size === 'xlarge') {
+        fontWeight = 'font-weight: 400;';
+      }
+      return fontWeight;
+    },
   },
   icon: {
     size: {
@@ -1291,6 +1302,11 @@ export const hpe = deepFreeze({
       height: '48px',
       maxWidth: '854px',
     },
+    extend: ({ size }) => {
+      if (['large', 'xlarge', 'xxlarge'].includes(size))
+        return 'font-weight: 300;';
+      return '';
+    },
   },
   radioButton: {
     border: {
@@ -1519,6 +1535,15 @@ export const hpe = deepFreeze({
       size: '42px',
       height: '48px',
       maxWidth: '854px',
+    },
+    extend: ({ size }) => {
+      if (
+        ['large', 'xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(
+          size,
+        )
+      )
+        return 'font-weight: 300;';
+      return '';
     },
   },
   textInput: {
