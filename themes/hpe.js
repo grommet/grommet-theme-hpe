@@ -1080,6 +1080,21 @@ var hpe = deepFreeze({
           maxWidth: '326px'
         }
       }
+    },
+    extend: function extend(_ref14) {
+      var level = _ref14.level,
+          size = _ref14.size;
+      var fontWeight = '';
+
+      if (level === 3 && size === 'small') {
+        fontWeight = 'font-weight: 500;';
+      } else if (level === 4 && ['large', 'xlarge'].includes(size)) {
+        fontWeight = 'font-weight: 400;';
+      } else if (level === 5 && size === 'xlarge') {
+        fontWeight = 'font-weight: 400;';
+      }
+
+      return fontWeight;
     }
   },
   icon: {
@@ -1112,8 +1127,8 @@ var hpe = deepFreeze({
   },
   maskedInput: {
     container: {
-      extend: function extend(_ref14) {
-        var theme = _ref14.theme;
+      extend: function extend(_ref15) {
+        var theme = _ref15.theme;
         return "\n        svg {\n          fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n        }\n      ";
       }
     }
@@ -1348,6 +1363,11 @@ var hpe = deepFreeze({
       size: '42px',
       height: '48px',
       maxWidth: '854px'
+    },
+    extend: function extend(_ref16) {
+      var size = _ref16.size;
+      if (['large', 'xlarge', 'xxlarge'].includes(size)) return 'font-weight: 300;';
+      return '';
     }
   },
   radioButton: {
@@ -1363,13 +1383,13 @@ var hpe = deepFreeze({
     },
     color: 'selected-background',
     container: {
-      extend: function extend(_ref15) {
-        var theme = _ref15.theme;
+      extend: function extend(_ref17) {
+        var theme = _ref17.theme;
         return "\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
       }
     },
-    extend: function extend(_ref16) {
-      var theme = _ref16.theme;
+    extend: function extend(_ref18) {
+      var theme = _ref18.theme;
       return "\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
     },
     gap: 'xsmall',
@@ -1416,8 +1436,8 @@ var hpe = deepFreeze({
   },
   select: {
     control: {
-      extend: function extend(_ref17) {
-        var disabled = _ref17.disabled;
+      extend: function extend(_ref19) {
+        var disabled = _ref19.disabled;
         return (0, _styledComponents.css)(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
       }
     },
@@ -1486,8 +1506,8 @@ var hpe = deepFreeze({
       vertical: '-2px',
       horizontal: 'none'
     },
-    extend: function extend(_ref18) {
-      var theme = _ref18.theme;
+    extend: function extend(_ref20) {
+      var theme = _ref20.theme;
       return (0, _styledComponents.css)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n      border-top-left-radius: ", "; // should use radius property of border\n      border-top-right-radius: ", "; // should use radius property of border\n      font-weight: bold;\n    "])), theme.global.control.border.radius, theme.global.control.border.radius);
     }
   },
@@ -1515,8 +1535,8 @@ var hpe = deepFreeze({
       }
     },
     body: {
-      extend: function extend(_ref19) {
-        var theme = _ref19.theme;
+      extend: function extend(_ref21) {
+        var theme = _ref21.theme;
         return "\n          :hover {\n            button {\n              background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n            }\n          }\n        ";
       }
     },
@@ -1566,12 +1586,17 @@ var hpe = deepFreeze({
       size: '42px',
       height: '48px',
       maxWidth: '854px'
+    },
+    extend: function extend(_ref22) {
+      var size = _ref22.size;
+      if (['large', 'xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size)) return 'font-weight: 300;';
+      return '';
     }
   },
   textInput: {
     container: {
-      extend: function extend(_ref20) {
-        var theme = _ref20.theme;
+      extend: function extend(_ref23) {
+        var theme = _ref23.theme;
         return "\n        svg {\n          fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n        }\n      ";
       }
     }
