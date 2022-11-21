@@ -316,7 +316,7 @@
       },
       "color": "text-strong",
       "font": {
-        "weight": "bold"
+        "weight": 500
       },
       "icon": {
         "type": {},
@@ -333,7 +333,7 @@
     "default": {
       "color": "text-strong",
       "font": {
-        "weight": 700
+        "weight": 500
       }
     },
     "gap": "xsmall",
@@ -353,7 +353,7 @@
       },
       "color": "text-strong",
       "font": {
-        "weight": 700
+        "weight": 500
       }
     },
     "toolbar": {
@@ -363,7 +363,7 @@
       },
       "color": "text-strong",
       "font": {
-        "weight": 700
+        "weight": 500
       }
     },
     "option": {
@@ -372,7 +372,7 @@
         "radius": "0px"
       },
       "font": {
-        "weight": 500
+        "weight": 400
       }
     },
     "active": {
@@ -639,7 +639,7 @@
       },
       "color": "text-strong",
       "font": {
-        "weight": "bold"
+        "weight": 500
       },
       "gap": "none",
       "hover": {
@@ -676,6 +676,10 @@
         },
         "extend": "backdrop-filter: blur(8px);"
       }
+    },
+    "primary": {
+      "weight": 500,
+      "color": "text-strong"
     },
     "resize": {
       "hover": {
@@ -815,6 +819,9 @@
       "bottom": "none"
     },
     "round": "6px"
+  },
+  "grommet": {
+    "extend": "line-height: 22px"
   },
   "heading": {
     "color": "text-strong",
@@ -1006,6 +1013,11 @@
     },
     "icons": {
       "color": "text-strong"
+    }
+  },
+  "nameValuePair": {
+    "name": {
+      "weight": "500"
     }
   },
   "notification": {
@@ -1217,11 +1229,12 @@
   "pagination": {
     "button": {
       "font": {
-        "weight": 700
+        "weight": 500
       },
       "active": {
+        "color": "text-strong",
         "font": {
-          "weight": 700
+          "weight": 500
         }
       },
       "disabled": {
@@ -1393,7 +1406,12 @@
       }
     },
     "footer": {
-      "extend": "\n        font-weight: bold;\n      "
+      "extend": "\n        font-weight: 500;\n      "
+    }
+  },
+  "tag": {
+    "value": {
+      "weight": 500
     }
   },
   "text": {

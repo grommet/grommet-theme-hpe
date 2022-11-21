@@ -234,7 +234,8 @@ export var hpe = deepFreeze({
       },
       color: 'text-strong',
       font: {
-        weight: 'bold'
+        weight: 500 // weight: 'bold',
+
       },
       icon: /*#__PURE__*/React.createElement(Hpe, {
         color: "brand"
@@ -245,7 +246,8 @@ export var hpe = deepFreeze({
       color: 'text-strong',
       border: undefined,
       font: {
-        weight: 700
+        weight: 500 // weight: 700,
+
       }
     },
     gap: 'xsmall',
@@ -275,7 +277,8 @@ export var hpe = deepFreeze({
       },
       color: 'text-strong',
       font: {
-        weight: 700
+        weight: 500 // weight: 700,
+
       }
     },
     toolbar: {
@@ -285,7 +288,8 @@ export var hpe = deepFreeze({
       },
       color: 'text-strong',
       font: {
-        weight: 700
+        weight: 500 // weight: 700,
+
       }
     },
     option: {
@@ -294,7 +298,8 @@ export var hpe = deepFreeze({
         radius: '0px'
       },
       font: {
-        weight: 500
+        weight: 400 // weight: 500,
+
       }
     },
     active: {
@@ -683,7 +688,8 @@ export var hpe = deepFreeze({
         return "\n          " + (sort && sort.property === column && "\n            background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n          ") + ";\n          " + (sortable && sort && sort.property !== column && "\n              svg {\n                opacity: 0;\n              }\n              :hover {\n                svg {\n                  opacity: 1;\n                }\n              }\n            ") + ";\n        ";
       },
       font: {
-        weight: 'bold'
+        weight: 500 // weight: 'bold',
+
       },
       gap: 'none',
       hover: {
@@ -724,6 +730,10 @@ export var hpe = deepFreeze({
         },
         extend: 'backdrop-filter: blur(8px);'
       }
+    },
+    primary: {
+      weight: 500,
+      color: 'text-strong'
     },
     resize: {
       hover: {
@@ -860,6 +870,10 @@ export var hpe = deepFreeze({
       bottom: 'none'
     },
     round: '6px'
+  },
+  grommet: {
+    // Tag was inheriting its line-height from StyledGrommet. Should fix in Tag.
+    extend: 'line-height: 22px'
   },
   heading: {
     color: 'text-strong',
@@ -1133,6 +1147,11 @@ export var hpe = deepFreeze({
       color: 'text-strong'
     }
   },
+  nameValuePair: {
+    name: {
+      weight: '500'
+    }
+  },
   notification: {
     actions: {
       color: {
@@ -1300,11 +1319,14 @@ export var hpe = deepFreeze({
   pagination: {
     button: {
       font: {
-        weight: 700
+        weight: 500 // weight: 700,
+
       },
       active: {
+        color: 'text-strong',
         font: {
-          weight: 700
+          weight: 500 // weight: 700,
+
         }
       },
       disabled: {
@@ -1488,7 +1510,7 @@ export var hpe = deepFreeze({
     },
     extend: function extend(_ref20) {
       var theme = _ref20.theme;
-      return css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n      border-top-left-radius: ", "; // should use radius property of border\n      border-top-right-radius: ", "; // should use radius property of border\n      font-weight: bold;\n    "])), theme.global.control.border.radius, theme.global.control.border.radius);
+      return css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n      border-top-left-radius: ", "; // should use radius property of border\n      border-top-right-radius: ", "; // should use radius property of border\n      font-weight: 500;\n    "])), theme.global.control.border.radius, theme.global.control.border.radius);
     }
   },
   tabs: {
@@ -1526,7 +1548,12 @@ export var hpe = deepFreeze({
       }
     },
     footer: {
-      extend: "\n        font-weight: bold;\n      "
+      extend: "\n        font-weight: 500;\n      "
+    }
+  },
+  tag: {
+    value: {
+      weight: 500
     }
   },
   text: {
