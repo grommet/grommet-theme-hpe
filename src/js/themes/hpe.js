@@ -1314,11 +1314,11 @@ export const hpe = deepFreeze({
       height: '48px',
       maxWidth: '854px',
     },
-    // extend: ({ size }) => {
-    //   if (['large', 'xlarge', 'xxlarge'].includes(size))
-    //     return 'font-weight: 300;';
-    //   return '';
-    // },
+    extend: ({ size }) => {
+      if (['large', 'xlarge', 'xxlarge'].includes(size))
+        return 'font-weight: 300;';
+      return '';
+    },
   },
   radioButton: {
     border: {
