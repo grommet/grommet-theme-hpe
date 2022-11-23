@@ -829,67 +829,70 @@
     "level": {
       "1": {
         "small": {
-          "size": "48px",
-          "height": "48px",
+          "size": "24px",
+          "height": "24px",
           "maxWidth": "854px"
         },
         "medium": {
-          "size": "72px",
-          "height": "72px",
+          "size": "36px",
+          "height": "36px",
           "maxWidth": "1277px"
         },
         "large": {
-          "size": "96px",
-          "height": "96px",
+          "size": "48px",
+          "height": "48px",
           "maxWidth": "2122px"
         },
         "xlarge": {
-          "size": "120px",
-          "height": "120px",
+          "size": "60px",
+          "height": "60px",
           "maxWidth": "2966px"
         }
       },
       "2": {
         "small": {
-          "size": "36px",
-          "height": "36px",
+          "size": "18px",
+          "height": "18px",
           "maxWidth": "749px"
         },
         "medium": {
-          "size": "48px",
-          "height": "48px",
+          "size": "24px",
+          "height": "24px",
           "maxWidth": "1066px"
         },
         "large": {
-          "size": "72px",
-          "height": "72px",
+          "size": "36px",
+          "height": "36px",
           "maxWidth": "1382px"
         },
         "xlarge": {
-          "size": "96px",
-          "height": "96px",
+          "size": "48px",
+          "height": "48px",
           "maxWidth": "1699px"
         }
       },
       "3": {
+        "font": {
+          "weight": 500
+        },
         "small": {
-          "size": "24px",
-          "height": "24px",
+          "size": "16px",
+          "height": "16px",
           "maxWidth": "643px"
         },
         "medium": {
-          "size": "36px",
-          "height": "36px",
+          "size": "18px",
+          "height": "18px",
           "maxWidth": "854px"
         },
         "large": {
-          "size": "48px",
-          "height": "48px",
+          "size": "24px",
+          "height": "24px",
           "maxWidth": "1066px"
         },
         "xlarge": {
-          "size": "72px",
-          "height": "72px",
+          "size": "36px",
+          "height": "36px",
           "maxWidth": "1277px"
         }
       },
@@ -898,23 +901,23 @@
           "weight": 500
         },
         "small": {
-          "size": "18px",
-          "height": "18px",
+          "size": "14px",
+          "height": "14px",
           "maxWidth": "538px"
         },
         "medium": {
-          "size": "24px",
-          "height": "24px",
+          "size": "16px",
+          "height": "16px",
           "maxWidth": "643px"
         },
         "large": {
-          "size": "36px",
-          "height": "36px",
+          "size": "18px",
+          "height": "18px",
           "maxWidth": "749px"
         },
         "xlarge": {
-          "size": "48px",
-          "height": "48px",
+          "size": "24px",
+          "height": "24px",
           "maxWidth": "854px"
         }
       },
@@ -923,29 +926,29 @@
           "weight": 500
         },
         "small": {
+          "size": "14px",
+          "height": "14px",
+          "maxWidth": "379px"
+        },
+        "medium": {
+          "size": "14px",
+          "height": "14px",
+          "maxWidth": "379px"
+        },
+        "large": {
           "size": "16px",
           "height": "16px",
           "maxWidth": "379px"
         },
-        "medium": {
+        "xlarge": {
           "size": "18px",
           "height": "18px",
-          "maxWidth": "379px"
-        },
-        "large": {
-          "size": "24px",
-          "height": "24px",
-          "maxWidth": "379px"
-        },
-        "xlarge": {
-          "size": "36px",
-          "height": "36px",
           "maxWidth": "379px"
         }
       },
       "6": {
         "font": {
-          "weight": 500
+          "weight": 600
         },
         "small": {
           "size": "14px",
@@ -953,18 +956,18 @@
           "maxWidth": "326px"
         },
         "medium": {
-          "size": "16px",
-          "height": "16px",
+          "size": "14px",
+          "height": "14px",
           "maxWidth": "326px"
         },
         "large": {
-          "size": "18px",
-          "height": "18px",
+          "size": "14px",
+          "height": "14px",
           "maxWidth": "326px"
         },
         "xlarge": {
-          "size": "24px",
-          "height": "24px",
+          "size": "16px",
+          "height": "16px",
           "maxWidth": "326px"
         }
       }
