@@ -1360,15 +1360,19 @@ var hpe = deepFreeze({
       pad: 'none',
       color: 'green',
       border: [{
+        color: 'border-weak',
         side: 'all',
         size: 'medium'
       }, {
+        color: 'border-weak',
         side: 'right',
         size: 'medium'
       }, {
+        color: 'border-weak',
         side: 'top',
         size: 'medium'
       }, {
+        color: 'border-weak',
         side: 'left',
         size: 'medium'
       }]
