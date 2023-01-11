@@ -1352,7 +1352,7 @@ export const hpe = deepFreeze({
     },
   },
   starRating: {
-    color: 'green',
+    color: 'purple!',
   },
   tab: {
     color: 'text-strong',
