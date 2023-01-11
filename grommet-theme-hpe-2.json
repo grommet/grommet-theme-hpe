@@ -814,7 +814,14 @@
     "margin": {
       "bottom": "none"
     },
-    "round": "6px"
+    "round": "6px",
+    "survey": {
+      "label": {
+        "margin": {
+          "bottom": "none"
+        }
+      }
+    }
   },
   "heading": {
     "color": "text-strong",
@@ -1326,6 +1333,9 @@
       ]
     }
   },
+  "starRating": {
+    "color": "purple!"
+  },
   "tab": {
     "color": "text-strong",
     "active": {
@@ -1439,6 +1449,14 @@
         "horizontal": "small"
       },
       "round": "xsmall"
+    }
+  },
+  "thumbsRating": {
+    "like": {
+      "color": "purple!"
+    },
+    "dislike": {
+      "color": "purple!"
     }
   },
   "name": "HPE 1",
