@@ -871,6 +871,11 @@ export const hpe = deepFreeze({
       bottom: 'none',
     },
     round: '6px',
+    survey: {
+      label: {
+        margin: { bottom: 'none' },
+      },
+    },
   },
   heading: {
     color: 'text-strong',
@@ -1346,6 +1351,9 @@ export const hpe = deepFreeze({
       ],
     },
   },
+  starRating: {
+    color: 'green',
+  },
   tab: {
     color: 'text-strong',
     active: {
@@ -1505,6 +1513,14 @@ export const hpe = deepFreeze({
         horizontal: 'small',
       },
       round: 'xsmall',
+    },
+  },
+  thumbsRating: {
+    like: {
+      color: 'purple!',
+    },
+    dislike: {
+      color: 'purple!',
     },
   },
   // Theme-Designer only parameters
