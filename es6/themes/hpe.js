@@ -855,7 +855,14 @@ export var hpe = deepFreeze({
     margin: {
       bottom: 'none'
     },
-    round: '6px'
+    round: '6px',
+    survey: {
+      label: {
+        margin: {
+          bottom: 'none'
+        }
+      }
+    }
   },
   heading: {
     color: 'text-strong',
@@ -1358,6 +1365,9 @@ export var hpe = deepFreeze({
       }]
     }
   },
+  starRating: {
+    color: 'purple!'
+  },
   tab: {
     color: 'text-strong',
     active: {
@@ -1493,6 +1503,14 @@ export var hpe = deepFreeze({
         horizontal: 'small'
       },
       round: 'xsmall'
+    }
+  },
+  thumbsRating: {
+    like: {
+      color: 'purple!'
+    },
+    dislike: {
+      color: 'purple!'
     }
   },
   // Theme-Designer only parameters
