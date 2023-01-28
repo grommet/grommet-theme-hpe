@@ -362,16 +362,6 @@ export const hpe = deepFreeze({
         color: 'selected-text',
       },
     },
-    disabled: {
-      opacity: 0.3,
-      background: undefined,
-      color: undefined,
-      primary: undefined,
-      secondary: undefined,
-      toolbar: undefined,
-      'cta-primary': undefined,
-      'cta-alternate': undefined,
-    },
     hover: {
       'cta-primary': {
         extend: (props) => primaryHoverBackground(props),
