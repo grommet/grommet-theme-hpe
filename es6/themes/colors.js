@@ -32,14 +32,12 @@ export var colors = {
   text: {
     dark: '#FFFFFFE6',
     // 90%
-    light: '#6F6F6F' // light: '#444444',
-
+    light: '#6F6F6F'
   },
   'text-strong': {
     dark: '#FFFFFFF5',
     // 96%
-    light: '#444444' // light: '#000000',
-
+    light: '#444444'
   },
   'text-weak': {
     dark: '#FFFFFF80',
