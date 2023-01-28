@@ -105,7 +105,7 @@ export const hpe = deepFreeze({
     input: {
       font: {
         height: 'inherit',
-        weight: 500,
+        weight: 450, // weight: 500,
       },
       padding: {
         horizontal: '11px', // equivalent to 'small' when combined with 1px border
@@ -127,23 +127,26 @@ export const hpe = deepFreeze({
     },
     font: {
       family: "'Metric', Arial, sans-serif",
+      // This face configuration is intended for typography exploration. Proper config
+      // will need enhancements to Grommet.
       face: `
+        @font-face {
+          font-family: "Metric";
+          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSThin-Regular.woff2") format('woff2'),
+               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSThin-Regular.woff") format('woff');
+          font-weight: 100;
+        }
+        @font-face {
+          font-family: "Metric";
+          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff2") format('woff2'),
+               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff") format('woff');
+          font-weight: 300;
+        }
         @font-face {
           font-family: "Metric";
           src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff2") format('woff2'),
                url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff") format('woff');
-        }
-        @font-face {
-          font-family: "Metric";
-          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff2") format('woff2'),
-               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff") format('woff');
-          font-weight: 700;
-        }
-        @font-face {
-          font-family: "Metric";
-          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff2") format('woff2'),
-               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff") format('woff');
-          font-weight: 600;
+          font-weight: 400;
         }
         @font-face {
           font-family: "Metric";
@@ -153,9 +156,21 @@ export const hpe = deepFreeze({
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff2") format('woff2'),
-               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff") format('woff');
-          font-weight: 100;
+          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff2") format('woff2'),
+               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff") format('woff');
+          font-weight: 600;
+        }
+        @font-face {
+          font-family: "Metric";
+          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff2") format('woff2'),
+               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff") format('woff');
+          font-weight: 700;
+        }
+        @font-face {
+          font-family: "Metric";
+          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSBlack-Regular.woff2") format('woff2'),
+               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSBlack-Regular.woff") format('woff');
+          font-weight: 900;
         }`,
     },
     focus: {
@@ -279,7 +294,7 @@ export const hpe = deepFreeze({
       },
       color: 'text-strong',
       font: {
-        weight: 'bold',
+        weight: 500, // weight: 'bold',
       },
       icon: <Hpe color="brand" />,
       reverse: true,
@@ -290,7 +305,7 @@ export const hpe = deepFreeze({
         radius: '100px',
       },
       font: {
-        weight: 700,
+        weight: 500, // weight: 700,
       },
     },
     gap: 'xsmall',
@@ -318,7 +333,7 @@ export const hpe = deepFreeze({
       },
       color: 'text-strong',
       font: {
-        weight: 700,
+        weight: 500, // weight: 700,
       },
     },
     toolbar: {
@@ -328,7 +343,7 @@ export const hpe = deepFreeze({
       },
       color: 'text-strong',
       font: {
-        weight: 700,
+        weight: 500, // weight: 700,
       },
     },
     option: {
@@ -337,7 +352,7 @@ export const hpe = deepFreeze({
         radius: '0px',
       },
       font: {
-        weight: 500,
+        weight: 400, // weight: 500,
       },
     },
     active: {
@@ -867,7 +882,7 @@ export const hpe = deepFreeze({
         horizontal: 'none',
       },
       requiredIndicator: true,
-      weight: 500,
+      weight: 450, // weight: 500,
     },
     margin: {
       bottom: 'none',
@@ -878,6 +893,10 @@ export const hpe = deepFreeze({
         margin: { bottom: 'none' },
       },
     },
+  },
+  grommet: {
+    // Tag was inheriting its line-height from StyledGrommet. Should fix in Tag.
+    extend: 'line-height: 22px',
   },
   heading: {
     color: 'text-strong',
@@ -923,6 +942,9 @@ export const hpe = deepFreeze({
         },
       },
       3: {
+        font: {
+          weight: 500,
+        },
         small: {
           size: '16px',
           height: '16px',
@@ -941,6 +963,9 @@ export const hpe = deepFreeze({
         },
       },
       4: {
+        font: {
+          weight: 500,
+        },
         small: {
           size: '12px',
           height: '12px',
@@ -1229,14 +1254,14 @@ export const hpe = deepFreeze({
         radius: '100px',
       },
       font: {
-        weight: 700,
+        weight: 500, // weight: 700,
       },
       active: {
         border: {
           radius: '100px',
         },
         font: {
-          weight: 700,
+          weight: 500, // weight: 700,
         },
       },
       disabled: {
@@ -1265,6 +1290,7 @@ export const hpe = deepFreeze({
       size: '30px',
       height: '36px',
     },
+    // xxlarge is not part of Chris's type exploration
     xxlarge: {
       size: '36px',
       height: '40px',
@@ -1476,14 +1502,17 @@ export const hpe = deepFreeze({
   },
   text: {
     xsmall: {
+      // weight needs to be modified at the size level
       size: '14px',
       height: '16px',
     },
     small: {
+      // weight needs to be modified at the size level
       size: '16px',
       height: '20px',
     },
     medium: {
+      // weight needs to be modified at the size level
       size: '18px',
       height: '24px',
     },
@@ -1495,6 +1524,7 @@ export const hpe = deepFreeze({
       size: '30px',
       height: '36px',
     },
+    // xxlarge is not part of Chris's type exploration
     xxlarge: {
       size: '36px',
       height: '40px',
