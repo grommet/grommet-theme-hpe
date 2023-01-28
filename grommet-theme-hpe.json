@@ -818,7 +818,14 @@
     "margin": {
       "bottom": "none"
     },
-    "round": "6px"
+    "round": "6px",
+    "survey": {
+      "label": {
+        "margin": {
+          "bottom": "none"
+        }
+      }
+    }
   },
   "grommet": {
     "extend": "line-height: 22px"
@@ -1329,23 +1336,30 @@
       "color": "green",
       "border": [
         {
+          "color": "border-weak",
           "side": "all",
           "size": "medium"
         },
         {
+          "color": "border-weak",
           "side": "right",
           "size": "medium"
         },
         {
+          "color": "border-weak",
           "side": "top",
           "size": "medium"
         },
         {
+          "color": "border-weak",
           "side": "left",
           "size": "medium"
         }
       ]
     }
+  },
+  "starRating": {
+    "color": "purple!"
   },
   "tab": {
     "color": "text-strong",
@@ -1465,6 +1479,14 @@
         "horizontal": "small"
       },
       "round": "xsmall"
+    }
+  },
+  "thumbsRating": {
+    "like": {
+      "color": "purple!"
+    },
+    "dislike": {
+      "color": "purple!"
     }
   },
   "name": "HPE 1",
