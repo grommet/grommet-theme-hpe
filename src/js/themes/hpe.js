@@ -890,6 +890,11 @@ export const hpe = deepFreeze({
       bottom: 'none',
     },
     round: '6px',
+    survey: {
+      label: {
+        margin: { bottom: 'none' },
+      },
+    },
   },
   grommet: {
     // Tag was inheriting its line-height from StyledGrommet. Should fix in Tag.
@@ -1403,12 +1408,15 @@ export const hpe = deepFreeze({
       pad: 'none',
       color: 'green',
       border: [
-        { side: 'all', size: 'medium' },
-        { side: 'right', size: 'medium' },
-        { side: 'top', size: 'medium' },
-        { side: 'left', size: 'medium' },
+        { color: 'border-weak', side: 'all', size: 'medium' },
+        { color: 'border-weak', side: 'right', size: 'medium' },
+        { color: 'border-weak', side: 'top', size: 'medium' },
+        { color: 'border-weak', side: 'left', size: 'medium' },
       ],
     },
+  },
+  starRating: {
+    color: 'purple!',
   },
   tab: {
     color: 'text-strong',
@@ -1590,6 +1598,14 @@ export const hpe = deepFreeze({
         horizontal: 'small',
       },
       round: 'xsmall',
+    },
+  },
+  thumbsRating: {
+    like: {
+      color: 'purple!',
+    },
+    dislike: {
+      color: 'purple!',
     },
   },
   // Theme-Designer only parameters
