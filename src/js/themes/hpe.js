@@ -105,7 +105,7 @@ export const hpe = deepFreeze({
     input: {
       font: {
         height: 'inherit',
-        weight: 450, // weight: 500,
+        weight: 500,
       },
       padding: {
         horizontal: '11px', // equivalent to 'small' when combined with 1px border
@@ -127,8 +127,6 @@ export const hpe = deepFreeze({
     },
     font: {
       family: "'Metric', Arial, sans-serif",
-      // This face configuration is intended for typography exploration. Proper config
-      // will need enhancements to Grommet.
       face: `
         @font-face {
           font-family: "Metric";
@@ -294,7 +292,7 @@ export const hpe = deepFreeze({
       },
       color: 'text-strong',
       font: {
-        weight: 500, // weight: 'bold',
+        weight: 'bold',
       },
       icon: <Hpe color="brand" />,
       reverse: true,
@@ -305,7 +303,7 @@ export const hpe = deepFreeze({
         radius: '100px',
       },
       font: {
-        weight: 500, // weight: 700,
+        weight: 700,
       },
     },
     gap: 'xsmall',
@@ -333,7 +331,7 @@ export const hpe = deepFreeze({
       },
       color: 'text-strong',
       font: {
-        weight: 500, // weight: 700,
+        weight: 700,
       },
     },
     toolbar: {
@@ -343,7 +341,7 @@ export const hpe = deepFreeze({
       },
       color: 'text-strong',
       font: {
-        weight: 500, // weight: 700,
+        weight: 700,
       },
     },
     option: {
@@ -352,7 +350,7 @@ export const hpe = deepFreeze({
         radius: '0px',
       },
       font: {
-        weight: 400, // weight: 500,
+        weight: 500,
       },
     },
     active: {
@@ -884,10 +882,6 @@ export const hpe = deepFreeze({
       },
     },
   },
-  grommet: {
-    // Tag was inheriting its line-height from StyledGrommet. Should fix in Tag.
-    extend: 'line-height: 22px',
-  },
   heading: {
     color: 'text-strong',
     weight: 500,
@@ -1244,14 +1238,14 @@ export const hpe = deepFreeze({
         radius: '100px',
       },
       font: {
-        weight: 500, // weight: 700,
+        weight: 700,
       },
       active: {
         border: {
           radius: '100px',
         },
         font: {
-          weight: 500, // weight: 700,
+          weight: 700,
         },
       },
       disabled: {
