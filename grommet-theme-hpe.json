@@ -199,7 +199,7 @@
     "input": {
       "font": {
         "height": "inherit",
-        "weight": 450
+        "weight": 500
       },
       "padding": {
         "horizontal": "11px",
@@ -317,7 +317,7 @@
       },
       "color": "text-strong",
       "font": {
-        "weight": 500
+        "weight": "bold"
       },
       "icon": {
         "type": {},
@@ -337,7 +337,7 @@
         "radius": "100px"
       },
       "font": {
-        "weight": 500
+        "weight": 700
       }
     },
     "gap": "xsmall",
@@ -361,7 +361,7 @@
       },
       "color": "text-strong",
       "font": {
-        "weight": 500
+        "weight": 700
       }
     },
     "toolbar": {
@@ -371,7 +371,7 @@
       },
       "color": "text-strong",
       "font": {
-        "weight": 500
+        "weight": 700
       }
     },
     "option": {
@@ -380,7 +380,7 @@
         "radius": "0px"
       },
       "font": {
-        "weight": 400
+        "weight": 500
       }
     },
     "active": {
@@ -808,9 +808,6 @@
       }
     }
   },
-  "grommet": {
-    "extend": "line-height: 22px"
-  },
   "heading": {
     "color": "text-strong",
     "weight": 500,
@@ -1196,14 +1193,14 @@
         "radius": "100px"
       },
       "font": {
-        "weight": 500
+        "weight": 700
       },
       "active": {
         "border": {
           "radius": "100px"
         },
         "font": {
-          "weight": 500
+          "weight": 700
         }
       },
       "disabled": {

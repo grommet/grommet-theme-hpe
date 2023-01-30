@@ -118,8 +118,7 @@ export var hpe = deepFreeze({
     input: {
       font: {
         height: 'inherit',
-        weight: 450 // weight: 500,
-
+        weight: 500
       },
       padding: {
         horizontal: '11px',
@@ -131,8 +130,6 @@ export var hpe = deepFreeze({
     },
     font: {
       family: "'Metric', Arial, sans-serif",
-      // This face configuration is intended for typography exploration. Proper config
-      // will need enhancements to Grommet.
       face: "\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSThin-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSThin-Regular.woff\") format('woff');\n          font-weight: 100;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff\") format('woff');\n          font-weight: 300;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff\") format('woff');\n          font-weight: 400;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff\") format('woff');\n          font-weight: 500;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff\") format('woff');\n          font-weight: 600;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff\") format('woff');\n          font-weight: 700;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSBlack-Regular.woff2\") format('woff2'),\n               url(\"https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSBlack-Regular.woff\") format('woff');\n          font-weight: 900;\n        }"
     },
     focus: {
@@ -260,8 +257,7 @@ export var hpe = deepFreeze({
       },
       color: 'text-strong',
       font: {
-        weight: 500 // weight: 'bold',
-
+        weight: 'bold'
       },
       icon: /*#__PURE__*/React.createElement(Hpe, {
         color: "brand"
@@ -274,8 +270,7 @@ export var hpe = deepFreeze({
         radius: '100px'
       },
       font: {
-        weight: 500 // weight: 700,
-
+        weight: 700
       }
     },
     gap: 'xsmall',
@@ -305,8 +300,7 @@ export var hpe = deepFreeze({
       },
       color: 'text-strong',
       font: {
-        weight: 500 // weight: 700,
-
+        weight: 700
       }
     },
     toolbar: {
@@ -316,8 +310,7 @@ export var hpe = deepFreeze({
       },
       color: 'text-strong',
       font: {
-        weight: 500 // weight: 700,
-
+        weight: 700
       }
     },
     option: {
@@ -326,8 +319,7 @@ export var hpe = deepFreeze({
         radius: '0px'
       },
       font: {
-        weight: 400 // weight: 500,
-
+        weight: 500
       }
     },
     active: {
@@ -846,10 +838,6 @@ export var hpe = deepFreeze({
       }
     }
   },
-  grommet: {
-    // Tag was inheriting its line-height from StyledGrommet. Should fix in Tag.
-    extend: 'line-height: 22px'
-  },
   heading: {
     color: 'text-strong',
     weight: 500,
@@ -1223,16 +1211,14 @@ export var hpe = deepFreeze({
         radius: '100px'
       },
       font: {
-        weight: 500 // weight: 700,
-
+        weight: 700
       },
       active: {
         border: {
           radius: '100px'
         },
         font: {
-          weight: 500 // weight: 700,
-
+          weight: 700
         }
       },
       disabled: {
