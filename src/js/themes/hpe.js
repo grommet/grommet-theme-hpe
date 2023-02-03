@@ -106,31 +106,37 @@ export const hpe = deepFreeze({
       face: `
         @font-face {
           font-family: "Metric";
-          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff2") format('woff2'),
-               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff2") format('woff2'),
-               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
+          font-weight: 400;
+        }
+        @font-face {
+          font-family: "Metric";
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff") format('woff');
           font-weight: 700;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff2") format('woff2'),
-               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff") format('woff');
           font-weight: 600;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff2") format('woff2'),
-               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff") format('woff');
           font-weight: 500;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff2") format('woff2'),
-               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff") format('woff');
           font-weight: 100;
         }`,
     },
@@ -207,6 +213,16 @@ export const hpe = deepFreeze({
     gap: 'xsmall',
     hover: {
       textDecoration: 'underline',
+    },
+  },
+  avatar: {
+    size: {
+      large: `${baseSpacing * 4}px`, // 96px
+    },
+    text: {
+      size: {
+        large: 'xxlarge', // 36px
+      },
     },
   },
   button: {
@@ -569,11 +585,23 @@ export const hpe = deepFreeze({
   checkBox: {
     hover: {
       border: {
-        color: undefined,
+        color: 'border-strong',
       },
       background: {
         color: 'background-contrast',
       },
+      // HPE Design System guidance states that pad="none" should be applied on CheckBox
+      // when its used outside of a FormField. We will apply this hover treatment in
+      // those instances.
+      extend: ({ disabled, pad, theme }) => `
+      ${
+        !disabled &&
+        pad === 'none' &&
+        `border: 2px solid ${
+          theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light']
+        };`
+      }
+    `,
     },
     color: 'background',
     border: {
@@ -627,15 +655,15 @@ export const hpe = deepFreeze({
         }
       `,
     },
-    extend: ({ disabled, theme }) => `
+    // HPE Design System guidance states that pad="none" should be applied on CheckBox
+    // when its used outside of a FormField. We will apply this hover treatment in
+    // those instances.
+    extend: ({ disabled, pad }) => `
     ${
       !disabled &&
+      pad === 'none' &&
       `:hover {
-      background-color: ${
-        theme.global.colors['background-contrast'][
-          theme.dark ? 'dark' : 'light'
-        ]
-      };
+      background-color: unset;
     }`
     }
     font-weight: 500;
@@ -771,7 +799,7 @@ export const hpe = deepFreeze({
       },
     },
     message: {
-      color: 'text-xweak',
+      color: 'placeholder',
     },
     pad: { horizontal: 'xsmall' },
     extend: 'border-radius: 4px;',
@@ -849,6 +877,11 @@ export const hpe = deepFreeze({
       bottom: 'none',
     },
     round: '6px',
+    survey: {
+      label: {
+        margin: { bottom: 'none' },
+      },
+    },
   },
   heading: {
     color: 'text-strong',
@@ -1037,8 +1070,12 @@ export const hpe = deepFreeze({
       },
     },
     group: {
+      container: {
+        pad: 'none',
+      },
       separator: {
-        color: 'border-weak',
+        color: 'border',
+        pad: 'none',
       },
     },
     icons: {
@@ -1313,12 +1350,15 @@ export const hpe = deepFreeze({
       pad: 'none',
       color: 'green',
       border: [
-        { side: 'all', size: 'medium' },
-        { side: 'right', size: 'medium' },
-        { side: 'top', size: 'medium' },
-        { side: 'left', size: 'medium' },
+        { color: 'border-weak', side: 'all', size: 'medium' },
+        { color: 'border-weak', side: 'right', size: 'medium' },
+        { color: 'border-weak', side: 'top', size: 'medium' },
+        { color: 'border-weak', side: 'left', size: 'medium' },
       ],
     },
+  },
+  starRating: {
+    color: 'purple!',
   },
   tab: {
     color: 'text-strong',
@@ -1479,6 +1519,14 @@ export const hpe = deepFreeze({
         horizontal: 'small',
       },
       round: 'xsmall',
+    },
+  },
+  thumbsRating: {
+    like: {
+      color: 'purple!',
+    },
+    dislike: {
+      color: 'purple!',
     },
   },
   // Theme-Designer only parameters
