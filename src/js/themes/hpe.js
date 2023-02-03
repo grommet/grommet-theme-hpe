@@ -27,6 +27,30 @@ const deepFreeze = (obj) => {
   return Object.freeze(obj);
 };
 
+const primaryBackground = (props) => {
+  let style = '';
+  if (!props.active) {
+    style += !props.colorValue
+      ? `background:
+linear-gradient(70deg, transparent,
+  ${props.theme.global.colors['green!']} 35%, transparent 70%)
+  ${props.theme.global.colors['green!']};`
+      : `
+  color: ${
+    props.theme.global.colors['text-strong'][
+      props.theme.dark ? 'dark' : 'light'
+    ]
+  };
+`;
+  }
+  return style;
+};
+
+const primaryHoverBackground = (props) =>
+  !props.active && !props.colorValue
+    ? 'background-color: rgb(16, 116, 85);'
+    : '';
+
 export const hpe = deepFreeze({
   defaultMode: 'light',
   global: {
@@ -193,6 +217,9 @@ export const hpe = deepFreeze({
       },
     },
     heading: {
+      // using level as a means of styling doesn't seem like the best...
+      // need to file an issue against Grommet
+      level: 3,
       margin: { vertical: 'medium', horizontal: 'xsmall' },
     },
     hover: {
@@ -207,13 +234,27 @@ export const hpe = deepFreeze({
     },
   },
   anchor: {
-    color: 'text',
-    textDecoration: 'underline',
-    fontWeight: 500,
+    color: 'brand',
+    textDecoration: 'none',
+    fontWeight: 700,
     gap: 'xsmall',
     hover: {
       textDecoration: 'underline',
     },
+    extend: ({ hasIcon, size, theme }) => `
+    ${
+      ['xsmall', 'small'].includes(size)
+        ? `color: ${
+            theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
+          };`
+        : ''
+    };
+    ${
+      ['xsmall', 'small'].includes(size) && hasIcon !== true
+        ? 'text-decoration: underline;'
+        : ''
+    };
+    `,
   },
   avatar: {
     size: {
@@ -235,6 +276,7 @@ export const hpe = deepFreeze({
       font: { weight: 'bold' },
       icon: <Hpe />,
       reverse: true,
+      extend: (props) => primaryBackground(props),
     },
     'cta-alternate': {
       background: 'background-cta-alternate',
@@ -250,7 +292,9 @@ export const hpe = deepFreeze({
     },
     default: {
       color: 'text-strong',
-      border: undefined,
+      border: {
+        radius: '100px',
+      },
       font: {
         weight: 700,
       },
@@ -260,7 +304,9 @@ export const hpe = deepFreeze({
       background: {
         color: 'brand',
       },
-      border: undefined,
+      border: {
+        radius: '100px',
+      },
       color: 'text-primary-button',
       font: {
         weight: 700,
@@ -268,18 +314,12 @@ export const hpe = deepFreeze({
       // for primary button with color, use text-strong
       // instead of text-primary-button which is hard-coded
       // to "white" specifically for HPE green.
-      extend: ({ colorValue, primary, theme }) =>
-        colorValue && primary
-          ? `
-        color: ${
-          theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
-        };
-      `
-          : ``,
+      extend: (props) => primaryBackground(props),
     },
     secondary: {
       border: {
         color: 'brand',
+        radius: '100px',
         width: '2px',
       },
       color: 'text-strong',
@@ -328,51 +368,9 @@ export const hpe = deepFreeze({
         color: 'selected-text',
       },
     },
-    disabled: {
-      background: {
-        color: 'transparent',
-      },
-      color: 'text-xweak',
-      'cta-primary': {
-        border: {
-          color: 'border-weak',
-          width: '2px',
-        },
-      },
-      'cta-alternate': {
-        border: {
-          color: 'border-weak',
-          width: '2px',
-        },
-      },
-      primary: {
-        border: {
-          color: 'border-weak',
-          width: '2px',
-        },
-      },
-      secondary: {
-        border: {
-          color: 'border-weak',
-        },
-      },
-      opacity: 1.0,
-    },
     hover: {
       'cta-primary': {
-        extend: ({ active, colorValue, theme }) => {
-          let color;
-          if (!colorValue && !active) {
-            if (theme.dark) {
-              color = 'rgba(0, 0, 0, 0.2)';
-            } else color = 'rgba(0, 0, 0, 0.2)'; // TBD
-          }
-
-          const style = `inset 0 0 100px 100px ${color}`;
-          return `-moz-box-shadow: ${style};
-            -webkit-box-shadow: ${style};
-            box-shadow: ${style};`;
-        },
+        extend: (props) => primaryHoverBackground(props),
       },
       'cta-alternate': {
         extend: ({ active, colorValue, theme }) => {
@@ -395,35 +393,23 @@ export const hpe = deepFreeze({
         },
         color: undefined,
       },
+      option: {
+        background: 'active-background',
+        color: 'active-text',
+      },
+      primary: {
+        extend: (props) => primaryHoverBackground(props),
+      },
       secondary: {
         border: {
           width: '3px',
         },
-      },
-      option: {
-        background: 'active-background',
-        color: 'active-text',
       },
       toolbar: {
         background: {
           color: 'background-contrast',
         },
         color: undefined,
-      },
-      primary: {
-        extend: ({ active, colorValue, theme }) => {
-          let color;
-          if (!colorValue && !active) {
-            if (theme.dark) {
-              color = 'rgba(0, 0, 0, 0.2)';
-            } else color = 'rgba(0, 0, 0, 0.2)';
-          }
-
-          const style = `inset 0 0 100px 100px ${color}`;
-          return `-moz-box-shadow: ${style};
-            -webkit-box-shadow: ${style};
-            box-shadow: ${style};`;
-        },
       },
     },
     color: 'text-strong',
@@ -440,19 +426,13 @@ export const hpe = deepFreeze({
           radius: '6px',
         },
         pad: {
-          vertical: '4px',
-          horizontal: '8px',
+          vertical: '6px',
+          horizontal: '18px',
         },
-        'cta-primary': {
+        toolbar: {
           pad: {
-            vertical: '3px',
-            horizontal: '12px',
-          },
-        },
-        'cta-alternate': {
-          pad: {
-            vertical: '3px',
-            horizontal: '12px',
+            vertical: '4px',
+            horizontal: '8px',
           },
         },
       },
@@ -462,7 +442,7 @@ export const hpe = deepFreeze({
         },
         pad: {
           vertical: '6px',
-          horizontal: '12px',
+          horizontal: '18px',
         },
         'cta-primary': {
           pad: {
@@ -474,6 +454,15 @@ export const hpe = deepFreeze({
           pad: {
             vertical: '6px',
             horizontal: '16px',
+          },
+        },
+        toolbar: {
+          border: {
+            radius: '6px',
+          },
+          pad: {
+            vertical: '6px',
+            horizontal: '12px',
           },
         },
       },
@@ -483,7 +472,7 @@ export const hpe = deepFreeze({
         },
         pad: {
           vertical: '8px',
-          horizontal: '16px',
+          horizontal: '24px',
         },
         'cta-primary': {
           pad: {
@@ -495,6 +484,12 @@ export const hpe = deepFreeze({
           pad: {
             vertical: '8px',
             horizontal: '20px',
+          },
+        },
+        toolbar: {
+          pad: {
+            vertical: '8px',
+            horizontal: '16px',
           },
         },
       },
@@ -520,27 +515,26 @@ export const hpe = deepFreeze({
         },
       },
     },
-    // aligning with brand central which follows slightly different interval between t-shirt sizes
-    extend: ({ sizeProp }) => {
-      let fontSize = '19px'; // necessary so cta-primary label is accessible on HPE green background
-      let lineHeight = '24px';
-      if (sizeProp === 'small') {
-        fontSize = '16px';
-        lineHeight = '22px';
-      } else if (sizeProp === 'large') {
-        fontSize = '20px';
-        lineHeight = '26px';
-      } else if (sizeProp === 'xlarge') {
-        fontSize = '22px';
-        lineHeight = '28px';
+    extend: (props) => {
+      let style = '';
+      // icon only specific padding still in progress
+      if (!props.hasLabel && !props.plain && props.kind !== 'toolbar') {
+        if (props.sizeProp === 'medium' || !props.sizeProp) {
+          if (props.kind === 'secondary') style += 'padding: 4px;';
+          else style += 'padding: 6px;';
+        } else if (props.kind === 'secondary') style += 'padding: 10px;';
+        else style += 'padding: 12px;';
       }
-      return `
-      font-size: ${fontSize};
-      line-height: ${lineHeight}
-      `;
+      if (props.sizeProp === 'small') {
+        style += 'line-height: 24px;';
+      }
+      return style;
     },
   },
   calendar: {
+    // using level as a means of styling doesn't seem like the best...
+    // need to file an issue against Grommet
+    heading: { level: 3 },
     icons: {
       next: FormNext,
       previous: FormPrevious,
@@ -720,7 +714,7 @@ export const hpe = deepFreeze({
           };
         `,
       font: {
-        weight: 'bold',
+        weight: 500,
       },
       gap: 'none',
       hover: {
@@ -735,22 +729,20 @@ export const hpe = deepFreeze({
       descending: Descending,
       sortable: Unsorted,
     },
-    /* Add FireFox work around until it adds support for backdrop-filter
-    https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter
-    */
     pinned: {
       header: {
-        background: { opacity: 0.95 },
-        extend: 'backdrop-filter: blur(8px);',
+        extend: 'backdrop-filter: blur(12px);',
       },
       body: {
-        background: { opacity: 0.95 },
-        extend: 'backdrop-filter: blur(8px);',
+        extend: 'backdrop-filter: blur(12px);',
       },
       footer: {
-        background: { opacity: 0.95 },
-        extend: 'backdrop-filter: blur(8px);',
+        extend: 'backdrop-filter: blur(12px);',
       },
+    },
+    primary: {
+      weight: 400,
+      color: 'text-strong',
     },
     resize: {
       hover: {
@@ -885,141 +877,147 @@ export const hpe = deepFreeze({
   },
   heading: {
     color: 'text-strong',
+    weight: 500,
     level: {
+      font: {
+        weight: 400,
+      },
       1: {
         small: {
-          size: '36px',
-          height: '42px',
-          maxWidth: '854px',
+          size: '24px',
+          height: '24px',
         },
         medium: {
-          size: '53px',
-          height: '59px',
-          maxWidth: '1277px',
+          size: '36px',
+          height: '36px',
         },
         large: {
-          size: '88px',
-          height: '94px',
-          maxWidth: '2122px',
+          size: '48px',
+          height: '48px',
         },
         xlarge: {
-          size: '124px',
-          height: '130px',
-          maxWidth: '2966px',
+          size: '60px',
+          height: '60px',
         },
       },
       2: {
         small: {
-          size: '31px',
-          height: '37px',
-          maxWidth: '749px',
+          size: '20px',
+          height: '20px',
         },
         medium: {
-          size: '44px',
-          height: '50px',
-          maxWidth: '1066px',
+          size: '24px',
+          height: '24px',
         },
         large: {
-          size: '58px',
-          height: '64px',
-          maxWidth: '1382px',
+          size: '36px',
+          height: '36px',
         },
         xlarge: {
-          size: '71px',
-          height: '77px',
-          maxWidth: '1699px',
+          size: '48px',
+          height: '48px',
         },
       },
       3: {
+        font: {
+          weight: 500,
+        },
         small: {
-          size: '27px',
-          height: '33px',
-          maxWidth: '643px',
+          size: '16px',
+          height: '16px',
         },
         medium: {
-          size: '36px',
-          height: '42px',
-          maxWidth: '854px',
+          size: '20px',
+          height: '20px',
         },
         large: {
-          size: '44px',
-          height: '50px',
-          maxWidth: '1066px',
+          size: '24px',
+          height: '24px',
         },
         xlarge: {
-          size: '53px',
-          height: '59px',
-          maxWidth: '1277px',
+          size: '36px',
+          height: '36px',
         },
       },
       4: {
+        font: {
+          weight: 500,
+        },
         small: {
-          size: '22px',
-          height: '28px',
-          maxWidth: '538px',
+          size: '12px',
+          height: '12px',
         },
         medium: {
-          size: '27px',
-          height: '33px',
-          maxWidth: '643px',
+          size: '16px',
+          height: '16px',
         },
         large: {
-          size: '31px',
-          height: '37px',
-          maxWidth: '749px',
+          size: '20px',
+          height: '20px',
         },
         xlarge: {
-          size: '36px',
-          height: '42px',
-          maxWidth: '854px',
+          size: '24px',
+          height: '24px',
         },
       },
       5: {
+        font: {
+          weight: 600,
+        },
         small: {
-          size: '16px',
-          height: '22px',
-          maxWidth: '379px',
+          size: '12px',
+          height: '12px',
         },
         medium: {
-          size: '16px',
-          height: '22px',
-          maxWidth: '379px',
+          size: '12px',
+          height: '12px',
         },
         large: {
           size: '16px',
-          height: '22px',
-          maxWidth: '379px',
+          height: '16px',
         },
         xlarge: {
-          size: '16px',
-          height: '22px',
-          maxWidth: '379px',
+          size: '20px',
+          height: '20px',
         },
       },
       6: {
+        font: {
+          weight: 600,
+        },
         small: {
-          size: '14px',
-          height: '20px',
-          maxWidth: '326px',
+          size: '12px',
+          height: '12px',
         },
         medium: {
-          size: '14px',
-          height: '20px',
-          maxWidth: '326px',
+          size: '12px',
+          height: '12px',
         },
         large: {
-          size: '14px',
-          height: '20px',
-          maxWidth: '326px',
+          size: '12px',
+          height: '12px',
         },
         xlarge: {
-          size: '14px',
-          height: '20px',
-          maxWidth: '326px',
+          size: '16px',
+          height: '16px',
         },
       },
     },
-    weight: 700,
+    extend: ({ level, size }) => {
+      let fontWeight = '';
+      if (level === 1 && size === 'small') {
+        fontWeight = 'font-weight: 500;';
+      } else if (level === 2 && ['large', 'xlarge'].includes(size)) {
+        fontWeight = 'font-weight: 400;';
+      } else if (level === 3 && size === 'small') {
+        fontWeight = 'font-weight: 600;';
+      } else if (level === 4 && ['small', 'medium'].includes(size)) {
+        fontWeight = 'font-weight: 600;';
+      } else if (level === 5 && size === 'xlarge') {
+        fontWeight = 'font-weight: 500;';
+      }
+      return fontWeight;
+    },
   },
   icon: {
     size: {
@@ -1035,8 +1033,10 @@ export const hpe = deepFreeze({
     container: {
       elevation: 'large',
     },
+    // temp CSS selector to target Layer overlay
+    extend: '> div { backdrop-filter: blur(12px); }',
     overlay: {
-      background: '#00000080',
+      background: '#0000001F',
     },
     /* HPE Global Header/Footer Service a.k.a. HPE Common HFWS sets the header
      * at a z-index of 101. This adjustment allows for Layer modals and side-drawers
@@ -1080,6 +1080,12 @@ export const hpe = deepFreeze({
     },
     icons: {
       color: 'text-strong',
+    },
+  },
+  nameValuePair: {
+    name: {
+      color: 'text-strong',
+      weight: '500',
     },
   },
   notification: {
@@ -1195,14 +1201,8 @@ export const hpe = deepFreeze({
     },
   },
   pageHeader: {
-    actions: {
-      pad: { vertical: 'xxsmall' }, // aligns button height with heading font-size instead of line-height
-    },
     subtitle: {
-      size: 'large',
-    },
-    title: {
-      size: 'small',
+      size: 'xlarge',
     },
     xsmall: {
       areas: [
@@ -1227,10 +1227,16 @@ export const hpe = deepFreeze({
   },
   pagination: {
     button: {
+      border: {
+        radius: '100px',
+      },
       font: {
         weight: 700,
       },
       active: {
+        border: {
+          radius: '100px',
+        },
         font: {
           weight: 700,
         },
@@ -1241,31 +1247,34 @@ export const hpe = deepFreeze({
     },
   },
   paragraph: {
+    xsmall: {
+      size: '14px',
+      height: '16px',
+    },
     small: {
       size: '16px',
-      height: '22px',
-      maxWidth: '379px',
+      height: '18px',
     },
     medium: {
       size: '18px',
       height: '24px',
-      maxWidth: '432px',
     },
     large: {
-      size: '22px',
-      height: '28px',
-      maxWidth: '538px',
+      size: '24px',
+      height: '32px',
     },
     xlarge: {
-      size: '27px',
-      height: '33px',
-      maxWidth: '643px',
+      size: '30px',
+      height: '36px',
     },
+    // xxlarge is not part of Chris's type exploration
     xxlarge: {
       size: '36px',
-      height: '42px',
-      maxWidth: '854px',
+      height: '40px',
     },
+    extend: ({ size }) => `
+      ${['xlarge', 'xxlarge'].includes(size) ? 'font-weight: 300;' : ''};
+    `,
   },
   radioButton: {
     border: {
@@ -1361,27 +1370,27 @@ export const hpe = deepFreeze({
     color: 'purple!',
   },
   tab: {
-    color: 'text-strong',
+    color: 'text',
     active: {
-      background: 'background-contrast',
+      background: undefined,
       color: 'text-strong',
     },
     hover: {
-      background: 'background-contrast',
-      color: 'text-strong',
+      background: 'transparent',
+      color: 'text',
     },
     border: {
       side: 'bottom',
       color: 'transparent',
-      size: '6px',
+      size: 'medium',
       active: {
-        color: 'text-strong',
+        color: 'green!',
       },
       disabled: {
         color: undefined,
       },
       hover: {
-        color: undefined,
+        color: 'border-weak',
       },
     },
     disabled: {
@@ -1399,20 +1408,23 @@ export const hpe = deepFreeze({
       vertical: '-2px',
       horizontal: 'none',
     },
-    extend: ({ theme }) => css`
-      border-top-left-radius: ${theme.global.control.border
-        .radius}; // should use radius property of border
-      border-top-right-radius: ${theme.global.control.border
-        .radius}; // should use radius property of border
-      font-weight: bold;
-    `,
+    extend: (props) => `
+        font-weight: ${
+          props.border.color === props.theme.global.colors['green!'] ? 700 : 400
+        };
+        // necessary to remove default line-height of 24px
+        // how will this behave if tab has an icon?
+        // is that allowed?
+        // grommet enhancement should be considered if so
+        > span { line-height: 18px; }
+      `,
   },
   tabs: {
     header: {
       border: {
         side: 'bottom',
         size: 'small',
-        color: 'border',
+        color: 'none',
       },
     },
     step: {
@@ -1456,41 +1468,67 @@ export const hpe = deepFreeze({
     },
     footer: {
       extend: `
-        font-weight: bold;
+        font-weight: 500;
       `,
+    },
+  },
+  tag: {
+    value: {
+      weight: 500,
     },
   },
   text: {
     xsmall: {
+      // weight needs to be modified at the size level
       size: '14px',
-      height: '20px',
-      maxWidth: '326px',
+      height: '16px',
     },
     small: {
+      // weight needs to be modified at the size level
       size: '16px',
-      height: '22px',
-      maxWidth: '379px',
+      height: '20px',
     },
     medium: {
+      // weight needs to be modified at the size level
       size: '18px',
       height: '24px',
-      maxWidth: '432px',
     },
     large: {
-      size: '22px',
-      height: '28px',
-      maxWidth: '538px',
+      size: '24px',
+      height: '32px',
     },
     xlarge: {
-      size: '27px',
-      height: '33px',
-      maxWidth: '643px',
+      size: '30px',
+      height: '36px',
     },
+    // xxlarge is not part of Chris's type exploration
     xxlarge: {
       size: '36px',
-      height: '42px',
-      maxWidth: '854px',
+      height: '40px',
     },
+    '3xl': {
+      size: '42px',
+      height: '46px',
+    },
+    '4xl': {
+      size: '48px',
+      height: '48px',
+    },
+    '5xl': {
+      size: '72px',
+      height: '72px',
+    },
+    '6xl': {
+      size: '72px',
+      height: '72px',
+    },
+    extend: ({ size }) => `
+      ${
+        ['xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size)
+          ? 'font-weight: 300;'
+          : ''
+      };
+    `,
   },
   textInput: {
     container: {
