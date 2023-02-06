@@ -446,6 +446,9 @@
           "vertical": "6px",
           "horizontal": "18px"
         },
+        "iconOnly": {
+          "pad": "6px"
+        },
         "toolbar": {
           "pad": {
             "vertical": "4px",
@@ -461,17 +464,8 @@
           "vertical": "6px",
           "horizontal": "18px"
         },
-        "cta-primary": {
-          "pad": {
-            "vertical": "6px",
-            "horizontal": "16px"
-          }
-        },
-        "cta-alternate": {
-          "pad": {
-            "vertical": "6px",
-            "horizontal": "16px"
-          }
+        "iconOnly": {
+          "pad": "6px"
         },
         "toolbar": {
           "border": {
@@ -491,17 +485,8 @@
           "vertical": "8px",
           "horizontal": "24px"
         },
-        "cta-primary": {
-          "pad": {
-            "vertical": "8px",
-            "horizontal": "20px"
-          }
-        },
-        "cta-alternate": {
-          "pad": {
-            "vertical": "8px",
-            "horizontal": "20px"
-          }
+        "iconOnly": {
+          "pad": "12px"
         },
         "toolbar": {
           "pad": {
@@ -951,9 +936,9 @@
     "container": {
       "elevation": "large"
     },
-    "extend": "> div { backdrop-filter: blur(12px); }",
     "overlay": {
-      "background": "#0000001F"
+      "background": "#0000001F",
+      "backdropFilter": "blur(12px)"
     },
     "zIndex": "110"
   },

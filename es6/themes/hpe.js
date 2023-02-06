@@ -412,6 +412,9 @@ export var hpe = deepFreeze({
           vertical: '6px',
           horizontal: '18px'
         },
+        iconOnly: {
+          pad: '6px'
+        },
         toolbar: {
           pad: {
             vertical: '4px',
@@ -427,17 +430,8 @@ export var hpe = deepFreeze({
           vertical: '6px',
           horizontal: '18px'
         },
-        'cta-primary': {
-          pad: {
-            vertical: '6px',
-            horizontal: '16px'
-          }
-        },
-        'cta-alternate': {
-          pad: {
-            vertical: '6px',
-            horizontal: '16px'
-          }
+        iconOnly: {
+          pad: '6px'
         },
         toolbar: {
           border: {
@@ -457,17 +451,8 @@ export var hpe = deepFreeze({
           vertical: '8px',
           horizontal: '24px'
         },
-        'cta-primary': {
-          pad: {
-            vertical: '8px',
-            horizontal: '20px'
-          }
-        },
-        'cta-alternate': {
-          pad: {
-            vertical: '8px',
-            horizontal: '20px'
-          }
+        iconOnly: {
+          pad: '12px'
         },
         toolbar: {
           pad: {
@@ -499,13 +484,7 @@ export var hpe = deepFreeze({
       }
     },
     extend: function extend(props) {
-      var style = ''; // icon only specific padding still in progress
-
-      if (!props.hasLabel && !props.plain && props.kind !== 'toolbar') {
-        if (props.sizeProp === 'medium' || !props.sizeProp) {
-          if (props.kind === 'secondary') style += 'padding: 4px;';else style += 'padding: 6px;';
-        } else if (props.kind === 'secondary') style += 'padding: 10px;';else style += 'padding: 12px;';
-      }
+      var style = '';
 
       if (props.sizeProp === 'small') {
         style += 'line-height: 24px;';
@@ -999,10 +978,9 @@ export var hpe = deepFreeze({
     container: {
       elevation: 'large'
     },
-    // temp CSS selector to target Layer overlay
-    extend: '> div { backdrop-filter: blur(12px); }',
     overlay: {
-      background: '#0000001F'
+      background: '#0000001F',
+      backdropFilter: "blur(12px)"
     },
 
     /* HPE Global Header/Footer Service a.k.a. HPE Common HFWS sets the header
