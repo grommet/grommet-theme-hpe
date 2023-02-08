@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
-import del from 'del';
+import { deleteAsync } from 'del';
 import fs from 'fs-extra';
 import path from 'path';
 import simpleGit from 'simple-git';
@@ -11,7 +11,7 @@ const localFolder = path.resolve('.tmp/grommet-theme-hpe');
 const localDist = path.resolve('dist');
 
 if (process.env.CI) {
-  del(localFolder).then(() => {
+  deleteAsync(localFolder).then(() => {
     git()
       .silent(false)
       .clone(repoURL, localFolder)
