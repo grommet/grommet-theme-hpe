@@ -1,6 +1,7 @@
 // Theme for code syntax highlighting
 // Exported theme object is consumed by ReactSyntaxHighlighter + PrismJS
 // https://github.com/react-syntax-highlighter/react-syntax-highlighter#prism
+
 import { colors as hpeColors } from './colors';
 var colors = {
   atrule: {
@@ -100,10 +101,11 @@ var colors = {
     dark: hpeColors.blue.light,
     light: hpeColors.blue.dark
   }
-}; // PrismJs + ReactSyntaxHighlighter implementation references:
+};
+
+// PrismJs + ReactSyntaxHighlighter implementation references:
 // https://github.com/react-syntax-highlighter/react-syntax-highlighter/blob/master/src/styles/prism/a11y-dark.js
 // Prism selectors: https://github.com/PrismJS/prism/blob/master/themes/prism.css
-
 var themeMode = function themeMode(mode) {
   return {
     'code[class*="language-"]': {
@@ -229,7 +231,6 @@ var themeMode = function themeMode(mode) {
     }
   };
 };
-
 export var prism = {
   dark: themeMode('dark'),
   light: themeMode('light')

@@ -57,20 +57,20 @@ var colors = {
     dark: '#FFFFFF5C',
     // 36%
     light: '#0000005C' // 36%
-
   },
+
   'border-strong': {
     dark: '#FFFFFFB8',
     // 72%
     light: '#000000B8' // 72%
-
   },
+
   'border-weak': {
     dark: '#FFFFFF1F',
     // 12%
     light: '#0000001F' // 12%
-
   },
+
   control: 'green',
   'active-background': 'background-contrast',
   'active-text': 'text',
@@ -134,8 +134,8 @@ var colors = {
   'validation-critical': {
     light: '#FC61613D',
     dark: '#CC1F1A4D' // 30%
-
   },
+
   'validation-ok': {
     light: '#17EBA03D',
     dark: '#17D0A64D'

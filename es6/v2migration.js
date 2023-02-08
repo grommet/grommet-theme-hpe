@@ -17,6 +17,7 @@
  * this interim theme support.
  *
  */
+
 export var v2migration = {
   global: {
     colors: {

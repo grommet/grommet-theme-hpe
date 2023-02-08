@@ -2,12 +2,11 @@
 
 exports.__esModule = true;
 exports.prism = void 0;
-
 var _colors = require("./colors");
-
 // Theme for code syntax highlighting
 // Exported theme object is consumed by ReactSyntaxHighlighter + PrismJS
 // https://github.com/react-syntax-highlighter/react-syntax-highlighter#prism
+
 var colors = {
   atrule: {
     dark: _colors.colors.orange.light,
@@ -106,10 +105,11 @@ var colors = {
     dark: _colors.colors.blue.light,
     light: _colors.colors.blue.dark
   }
-}; // PrismJs + ReactSyntaxHighlighter implementation references:
+};
+
+// PrismJs + ReactSyntaxHighlighter implementation references:
 // https://github.com/react-syntax-highlighter/react-syntax-highlighter/blob/master/src/styles/prism/a11y-dark.js
 // Prism selectors: https://github.com/PrismJS/prism/blob/master/themes/prism.css
-
 var themeMode = function themeMode(mode) {
   return {
     'code[class*="language-"]': {
@@ -235,7 +235,6 @@ var themeMode = function themeMode(mode) {
     }
   };
 };
-
 var prism = {
   dark: themeMode('dark'),
   light: themeMode('light')
