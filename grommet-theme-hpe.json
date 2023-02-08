@@ -995,6 +995,10 @@
         "dark": "text-strong"
       }
     },
+    "title": {
+      "color": "text-strong",
+      "weight": 500
+    },
     "critical": {
       "background": "validation-critical",
       "global": {

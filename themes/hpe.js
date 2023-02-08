@@ -1068,6 +1068,11 @@ var hpe = deepFreeze({
         dark: 'text-strong'
       }
     },
+    title: {
+      // any text props
+      color: 'text-strong',
+      weight: 500
+    },
     critical: {
       background: 'validation-critical',
       global: {
