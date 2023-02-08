@@ -1,22 +1,20 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
-import { deleteAsync } from 'del';
+import del from 'del';
 import fs from 'fs-extra';
 import path from 'path';
-import simpleGit from 'simple-git';
+import { simpleGit as git } from 'simple-git';
 
-const git = simpleGit();
 const repoURL = `https://${process.env.GH_TOKEN}@github.com/grommet/grommet-theme-hpe.git`;
 const localFolder = path.resolve('.tmp/grommet-theme-hpe');
 const localDist = path.resolve('dist');
 
 if (process.env.CI) {
-  deleteAsync(localFolder).then(() => {
+  del(localFolder).then(() => {
     git()
-      .silent(false)
       .clone(repoURL, localFolder)
       .then(() => git(localFolder).checkout('stable'))
-      .then(() => deleteAsync([`${localFolder}/**/*`]))
+      .then(() => del([`${localFolder}/**/*`]))
       .then(() => fs.copy(localDist, localFolder))
       .then(() => git(localFolder).add(['--all', '.']))
       .then(() => git(localFolder).commit('stable updated'))
