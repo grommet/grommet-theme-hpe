@@ -1368,6 +1368,7 @@ export const hpe = deepFreeze({
     active: {
       background: undefined,
       color: 'text-strong',
+      weight: 'bold',
     },
     hover: {
       background: 'transparent',
@@ -1402,10 +1403,7 @@ export const hpe = deepFreeze({
       vertical: '-2px',
       horizontal: 'none',
     },
-    extend: (props) => `
-        font-weight: ${
-          props.border.color === props.theme.global.colors['green!'] ? 700 : 400
-        };
+    extend: `
         // necessary to remove default line-height of 24px
         // how will this behave if tab has an icon?
         // is that allowed?
