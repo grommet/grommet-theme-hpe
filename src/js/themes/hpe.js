@@ -1514,7 +1514,7 @@ export const hpe = deepFreeze({
       size: '72px',
       height: '72px',
     },
-    // This block applies size-specific weights to headings to ensure
+    // This block applies size-specific weights to text to ensure
     // that as text sizes get larger, the weight decreases.
     // This block can be removed once grommet theme structure is enhanced
     // to support size-specific weights.
