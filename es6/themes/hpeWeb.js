@@ -1,5 +1,4 @@
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 import { hpe } from './hpe';
 export var isObject = function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
@@ -8,13 +7,10 @@ export var deepMerge = function deepMerge(target) {
   for (var _len = arguments.length, sources = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     sources[_key - 1] = arguments[_key];
   }
-
   if (!sources.length) {
     return target;
   }
-
   var output = _extends({}, target);
-
   sources.forEach(function (source) {
     if (isObject(source)) {
       Object.keys(source).forEach(function (key) {
@@ -157,9 +153,8 @@ export var hpeWeb = deepMerge(hpe, {
     },
     extend: function extend(_ref) {
       var level = _ref.level,
-          size = _ref.size;
+        size = _ref.size;
       var fontWeight = '';
-
       if (level === 3 && size === 'small') {
         fontWeight = 'font-weight: 500;';
       } else if (level === 4 && ['large', 'xlarge'].includes(size)) {
@@ -169,7 +164,6 @@ export var hpeWeb = deepMerge(hpe, {
       } else if (level === 6 && size === 'small') {
         fontWeight = 'font-weight: 600;';
       }
-
       return fontWeight;
     }
   },

@@ -1,7 +1,5 @@
 var _templateObject;
-
 function _taggedTemplateLiteralLoose(strings, raw) { if (!raw) { raw = strings.slice(0); } strings.raw = raw; return strings; }
-
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import React from 'react';
 import { css } from 'styled-components';
@@ -18,32 +16,25 @@ import { Hpe } from 'grommet-icons/icons/Hpe';
 import { backgrounds } from './backgrounds';
 import { colors } from './colors';
 var baseSpacing = 24;
-
 var isObject = function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
 };
-
 var deepFreeze = function deepFreeze(obj) {
   Object.keys(obj).forEach(function (key) {
     return key && isObject(obj[key]) && Object.freeze(obj[key]);
   });
   return Object.freeze(obj);
 };
-
 var primaryBackground = function primaryBackground(props) {
   var style = '';
-
   if (!props.active) {
     style += !props.colorValue ? "background:\nlinear-gradient(70deg, transparent,\n  " + props.theme.global.colors['green!'] + " 35%, transparent 70%)\n  " + props.theme.global.colors['green!'] + ";" : "\n  color: " + props.theme.global.colors['text-strong'][props.theme.dark ? 'dark' : 'light'] + ";\n";
   }
-
   return style;
 };
-
 var primaryHoverBackground = function primaryHoverBackground(props) {
   return !props.active && !props.colorValue ? 'background-color: rgb(16, 116, 85);' : '';
 };
-
 export var hpe = deepFreeze({
   defaultMode: 'light',
   global: {
@@ -60,8 +51,8 @@ export var hpe = deepFreeze({
           large: baseSpacing / 4 + "px",
           // 6
           xlarge: baseSpacing / 2 + "px" // 12
-
         },
+
         edgeSize: {
           none: '0px',
           hair: '1px',
@@ -76,8 +67,8 @@ export var hpe = deepFreeze({
           large: baseSpacing + "px",
           // 24
           xlarge: baseSpacing * 2 + "px" // 48
-
         },
+
         size: {
           xxsmall: baseSpacing + "px",
           // 24
@@ -96,19 +87,19 @@ export var hpe = deepFreeze({
       },
       small: {
         value: baseSpacing * 32 // 768
-
       },
+
       medium: {
         value: baseSpacing * 45 // 1080
-
       },
+
       large: {
         value: baseSpacing * 60 // 1440
-
       },
-      xlarge: {} // anything larger than 1440,
 
+      xlarge: {} // anything larger than 1440,
     },
+
     colors: colors,
     control: {
       border: {
@@ -124,8 +115,8 @@ export var hpe = deepFreeze({
         horizontal: '11px',
         // equivalent to 'small' when combined with 1px border
         vertical: '5px' // equivalent to 'xsmall' when combined with 1px border
-
       },
+
       extend: "\n        &::-webkit-input-placeholder {\n          font-weight: 400;\n        }\n      \n        &::-moz-placeholder {\n          font-weight: 400;\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: 400;\n        }\n      "
     },
     font: {
@@ -147,7 +138,6 @@ export var hpe = deepFreeze({
       margin: 'xsmall',
       intelligentMargin: true,
       shadowSize: 'medium',
-
       /* HPE Global Header/Footer Service a.k.a. HPE Common HFWS sets the header
        * at a z-index of 101. This adjustment brings Drop in alignment with Layer
        * which needs an elevated z-index to sit atop the Global header. */
@@ -215,23 +205,23 @@ export var hpe = deepFreeze({
     },
     extend: function extend(_ref) {
       var hasIcon = _ref.hasIcon,
-          size = _ref.size,
-          theme = _ref.theme;
+        size = _ref.size,
+        theme = _ref.theme;
       return "\n    " + (['xsmall', 'small'].includes(size) ? "color: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";" : '') + ";\n    " + (['xsmall', 'small'].includes(size) && hasIcon !== true ? 'text-decoration: underline;' : '') + ";\n    ";
     }
   },
   avatar: {
     size: {
       large: baseSpacing * 4 + "px" // 96px
-
     },
+
     text: {
       size: {
         large: 'xxlarge' // 36px
-
       }
     }
   },
+
   button: {
     'cta-primary': {
       background: {
@@ -353,15 +343,13 @@ export var hpe = deepFreeze({
       'cta-alternate': {
         extend: function extend(_ref2) {
           var active = _ref2.active,
-              colorValue = _ref2.colorValue,
-              theme = _ref2.theme;
+            colorValue = _ref2.colorValue,
+            theme = _ref2.theme;
           var color;
-
           if (!colorValue && !active) {
             if (theme.dark) {
               color = 'rgba(0, 0, 0, 0.2)'; // TBD
             } else color = 'rgba(0, 0, 0, 0.2)'; // TBD
-
           }
 
           var style = "inset 0 0 100px 100px " + color;
@@ -485,11 +473,9 @@ export var hpe = deepFreeze({
     },
     extend: function extend(props) {
       var style = '';
-
       if (props.sizeProp === 'small') {
         style += 'line-height: 24px;';
       }
-
       return style;
     }
   },
@@ -556,8 +542,8 @@ export var hpe = deepFreeze({
       // those instances.
       extend: function extend(_ref3) {
         var disabled = _ref3.disabled,
-            pad = _ref3.pad,
-            theme = _ref3.theme;
+          pad = _ref3.pad,
+          theme = _ref3.theme;
         return "\n      " + (!disabled && pad === 'none' && "border: 2px solid " + theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light'] + ";") + "\n    ";
       }
     },
@@ -570,8 +556,8 @@ export var hpe = deepFreeze({
       radius: '4px',
       extend: function extend(_ref4) {
         var theme = _ref4.theme,
-            checked = _ref4.checked,
-            indeterminate = _ref4.indeterminate;
+          checked = _ref4.checked,
+          indeterminate = _ref4.indeterminate;
         return "\n      background-color: " + (checked || indeterminate ? theme.global.colors.green[theme.dark ? 'dark' : 'light'] : theme.global.colors.background[theme.dark ? 'dark' : 'light']) + ";\n      " + ((checked || indeterminate) && 'border: none;') + "\n        ";
       }
     },
@@ -600,7 +586,7 @@ export var hpe = deepFreeze({
       },
       extend: function extend(_ref7) {
         var checked = _ref7.checked,
-            theme = _ref7.theme;
+          theme = _ref7.theme;
         return "\n        " + (checked && "background-color: " + theme.global.colors.green[theme.dark ? 'dark' : 'light'] + ";") + "\n      ";
       }
     },
@@ -609,7 +595,7 @@ export var hpe = deepFreeze({
     // those instances.
     extend: function extend(_ref8) {
       var disabled = _ref8.disabled,
-          pad = _ref8.pad;
+        pad = _ref8.pad;
       return "\n    " + (!disabled && pad === 'none' && ":hover {\n      background-color: unset;\n    }") + "\n    font-weight: 500;\n    width: auto;\n  };\n  ";
     }
   },
@@ -635,9 +621,9 @@ export var hpe = deepFreeze({
       color: 'text-strong',
       extend: function extend(_ref10) {
         var column = _ref10.column,
-            sort = _ref10.sort,
-            sortable = _ref10.sortable,
-            theme = _ref10.theme;
+          sort = _ref10.sort,
+          sortable = _ref10.sortable,
+          theme = _ref10.theme;
         return "\n          " + (sort && sort.property === column && "\n            background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n          ") + ";\n          " + (sortable && sort && sort.property !== column && "\n              svg {\n                opacity: 0;\n              }\n              :hover {\n                svg {\n                  opacity: 1;\n                }\n              }\n            ") + ";\n        ";
       },
       font: {
@@ -946,9 +932,8 @@ export var hpe = deepFreeze({
     },
     extend: function extend(_ref11) {
       var level = _ref11.level,
-          size = _ref11.size;
+        size = _ref11.size;
       var fontWeight = '';
-
       if (level === 1 && size === 'small') {
         fontWeight = 'font-weight: 500;';
       } else if (level === 2 && ['large', 'xlarge'].includes(size)) {
@@ -960,7 +945,6 @@ export var hpe = deepFreeze({
       } else if (level === 5 && size === 'xlarge') {
         fontWeight = 'font-weight: 500;';
       }
-
       return fontWeight;
     }
   },
@@ -982,7 +966,6 @@ export var hpe = deepFreeze({
       background: '#0000001F',
       backdropFilter: "blur(12px)"
     },
-
     /* HPE Global Header/Footer Service a.k.a. HPE Common HFWS sets the header
      * at a z-index of 101. This adjustment allows for Layer modals and side-drawers
      * to sit atop the Global header. */

@@ -2,7 +2,6 @@
 
 exports.__esModule = true;
 exports.v2migration = void 0;
-
 /**
  * In the event your application relies on color names that have been deprecated, 
  * use this theme to restore the deprecated color names.
@@ -22,6 +21,7 @@ exports.v2migration = void 0;
  * this interim theme support.
  *
  */
+
 var v2migration = {
   global: {
     colors: {
