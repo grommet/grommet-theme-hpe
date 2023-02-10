@@ -864,6 +864,9 @@ export const hpe = deepFreeze({
     weight: 500,
     level: {
       1: {
+        font: {
+          weight: 400,
+        },
         small: {
           size: '24px',
           height: '24px',
