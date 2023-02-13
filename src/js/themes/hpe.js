@@ -27,6 +27,7 @@ const deepFreeze = (obj) => {
   return Object.freeze(obj);
 };
 
+// necessary to apply a linear gradient for primary button background
 const primaryBackground = (props) => {
   let style = '';
   if (!props.active) {
@@ -46,6 +47,8 @@ linear-gradient(70deg, transparent,
   return style;
 };
 
+// necessary to adjust the background color
+// of button to darker green to expose gradient on hover
 const primaryHoverBackground = (props) =>
   !props.active && !props.colorValue
     ? 'background-color: rgb(16, 116, 85);'
@@ -241,6 +244,10 @@ export const hpe = deepFreeze({
     hover: {
       textDecoration: 'underline',
     },
+    // extend is necessary given current grommet theme structure
+    // this block ensures that xsmall/small anchors receive text-strong
+    // color and underline when there's no label.
+    // This extend block can be removed once grommet theme structure is enhanced.
     extend: ({ hasIcon, size, theme }) => `
     ${
       ['xsmall', 'small'].includes(size)
@@ -270,7 +277,7 @@ export const hpe = deepFreeze({
     'cta-primary': {
       background: { color: 'brand' },
       border: {
-        radius: '100px',
+        radius: '2em',
       },
       color: 'text-primary-button',
       font: { weight: 'bold' },
@@ -281,7 +288,7 @@ export const hpe = deepFreeze({
     'cta-alternate': {
       background: 'background-cta-alternate',
       border: {
-        radius: '100px',
+        radius: '2em',
       },
       color: 'text-strong',
       font: {
@@ -293,7 +300,7 @@ export const hpe = deepFreeze({
     default: {
       color: 'text-strong',
       border: {
-        radius: '100px',
+        radius: '2em',
       },
       font: {
         weight: 700,
@@ -305,7 +312,7 @@ export const hpe = deepFreeze({
         color: 'brand',
       },
       border: {
-        radius: '100px',
+        radius: '2em',
       },
       color: 'text-primary-button',
       font: {
@@ -319,7 +326,7 @@ export const hpe = deepFreeze({
     secondary: {
       border: {
         color: 'brand',
-        radius: '100px',
+        radius: '2em',
         width: '2px',
       },
       color: 'text-strong',
@@ -856,10 +863,10 @@ export const hpe = deepFreeze({
     color: 'text-strong',
     weight: 500,
     level: {
-      font: {
-        weight: 400,
-      },
       1: {
+        font: {
+          weight: 400,
+        },
         small: {
           size: '24px',
           height: '24px',
@@ -980,6 +987,11 @@ export const hpe = deepFreeze({
         },
       },
     },
+    // This block applies size-specific weights to headings to ensure
+    // that as heading sizes get small, the weight increases and as they
+    // get large, the weight decreases.
+    // This block can be removed once grommet theme structure is enhanced
+    // to support level and size specific weights.
     extend: ({ level, size }) => {
       let fontWeight = '';
       if (level === 1 && size === 'small') {
@@ -1061,7 +1073,7 @@ export const hpe = deepFreeze({
   nameValuePair: {
     name: {
       color: 'text-strong',
-      weight: '500',
+      weight: 500,
     },
   },
   notification: {
@@ -1209,7 +1221,7 @@ export const hpe = deepFreeze({
   pagination: {
     button: {
       border: {
-        radius: '100px',
+        radius: '2em',
       },
       font: {
         weight: 700,
@@ -1253,6 +1265,10 @@ export const hpe = deepFreeze({
       size: '36px',
       height: '40px',
     },
+    // This block applies size-specific weights to paragraph to ensure
+    // that as paragraph sizes get larger, the weight decreases.
+    // This block can be removed once grommet theme structure is enhanced
+    // to support size-specific weights.
     extend: ({ size }) => `
       ${['xlarge', 'xxlarge'].includes(size) ? 'font-weight: 300;' : ''};
     `,
@@ -1355,6 +1371,7 @@ export const hpe = deepFreeze({
     active: {
       background: undefined,
       color: 'text-strong',
+      weight: 'bold',
     },
     hover: {
       background: 'transparent',
@@ -1389,10 +1406,7 @@ export const hpe = deepFreeze({
       vertical: '-2px',
       horizontal: 'none',
     },
-    extend: (props) => `
-        font-weight: ${
-          props.border.color === props.theme.global.colors['green!'] ? 700 : 400
-        };
+    extend: `
         // necessary to remove default line-height of 24px
         // how will this behave if tab has an icon?
         // is that allowed?
@@ -1503,6 +1517,10 @@ export const hpe = deepFreeze({
       size: '72px',
       height: '72px',
     },
+    // This block applies size-specific weights to text to ensure
+    // that as text sizes get larger, the weight decreases.
+    // This block can be removed once grommet theme structure is enhanced
+    // to support size-specific weights.
     extend: ({ size }) => `
       ${
         ['xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size)
