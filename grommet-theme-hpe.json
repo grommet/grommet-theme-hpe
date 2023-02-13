@@ -294,7 +294,7 @@
         "color": "brand"
       },
       "border": {
-        "radius": "100px"
+        "radius": "2em"
       },
       "color": "text-primary-button",
       "font": {
@@ -313,7 +313,7 @@
     "cta-alternate": {
       "background": "background-cta-alternate",
       "border": {
-        "radius": "100px"
+        "radius": "2em"
       },
       "color": "text-strong",
       "font": {
@@ -334,7 +334,7 @@
     "default": {
       "color": "text-strong",
       "border": {
-        "radius": "100px"
+        "radius": "2em"
       },
       "font": {
         "weight": 700
@@ -346,7 +346,7 @@
         "color": "brand"
       },
       "border": {
-        "radius": "100px"
+        "radius": "2em"
       },
       "color": "text-primary-button",
       "font": {
@@ -356,7 +356,7 @@
     "secondary": {
       "border": {
         "color": "brand",
-        "radius": "100px",
+        "radius": "2em",
         "width": "2px"
       },
       "color": "text-strong",
@@ -798,6 +798,9 @@
     "weight": 500,
     "level": {
       "1": {
+        "font": {
+          "weight": 400
+        },
         "small": {
           "size": "24px",
           "height": "24px"
@@ -916,9 +919,6 @@
           "size": "16px",
           "height": "16px"
         }
-      },
-      "font": {
-        "weight": 400
       }
     }
   },
@@ -971,7 +971,7 @@
   "nameValuePair": {
     "name": {
       "color": "text-strong",
-      "weight": "500"
+      "weight": 500
     }
   },
   "notification": {
@@ -1179,7 +1179,7 @@
   "pagination": {
     "button": {
       "border": {
-        "radius": "100px"
+        "radius": "2em"
       },
       "font": {
         "weight": 700
@@ -1308,7 +1308,8 @@
   "tab": {
     "color": "text",
     "active": {
-      "color": "text-strong"
+      "color": "text-strong",
+      "weight": "bold"
     },
     "hover": {
       "background": "transparent",
@@ -1337,7 +1338,8 @@
     "margin": {
       "vertical": "-2px",
       "horizontal": "none"
-    }
+    },
+    "extend": "\n        // necessary to remove default line-height of 24px\n        // how will this behave if tab has an icon?\n        // is that allowed?\n        // grommet enhancement should be considered if so\n        > span { line-height: 18px; }\n      "
   },
   "tabs": {
     "header": {
