@@ -274,6 +274,13 @@ export const hpe = deepFreeze({
     },
   },
   button: {
+    icon: {
+      size: {
+        small: '16px',
+        medium: '18px',
+        large: '24px',
+      },
+    },
     'cta-primary': {
       background: { color: 'brand' },
       border: {
@@ -336,8 +343,7 @@ export const hpe = deepFreeze({
     },
     toolbar: {
       border: {
-        color: 'border',
-        width: '1px',
+        radius: '6px',
       },
       color: 'text-strong',
       font: {
@@ -373,6 +379,9 @@ export const hpe = deepFreeze({
       option: {
         background: 'selected-background',
         color: 'selected-text',
+        font: {
+          weight: 700,
+        },
       },
     },
     hover: {
@@ -591,7 +600,7 @@ export const hpe = deepFreeze({
       extend: ({ theme, checked, indeterminate }) => `
       background-color: ${
         checked || indeterminate
-          ? theme.global.colors.green[theme.dark ? 'dark' : 'light']
+          ? theme.global.colors['green!']
           : theme.global.colors.background[theme.dark ? 'dark' : 'light']
       };
       ${(checked || indeterminate) && 'border: none;'}
@@ -599,9 +608,7 @@ export const hpe = deepFreeze({
     },
     icon: {
       extend: ({ theme }) => `stroke-width: 2px;
-      stroke: ${
-        theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
-      }`,
+      stroke: ${theme.global.colors['text-primary-button']}`,
     },
     gap: 'small',
     label: {

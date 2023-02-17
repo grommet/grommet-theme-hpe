@@ -64,7 +64,7 @@ export const colors = {
   'active-background': 'background-contrast',
   'active-text': 'text',
   'disabled-text': 'text-weak', // deprecated, use text-weak instead
-  'selected-background': 'green',
+  'selected-background': 'green!',
   'selected-text': 'text-strong',
   'status-critical': {
     dark: '#D04F4E',
