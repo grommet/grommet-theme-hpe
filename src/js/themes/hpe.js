@@ -1406,11 +1406,12 @@ export const hpe = deepFreeze({
       // "vertical" only applies to top
       bottom: 'small',
       top: 'small',
-      horizontal: 'medium',
+      // align horizontal pad with button
+      horizontal: '18px',
     },
     margin: {
       // bring the overall tabs border behind invidual tab borders
-      vertical: '-2px',
+      vertical: '-1px',
       horizontal: 'none',
     },
     extend: `
@@ -1425,10 +1426,12 @@ export const hpe = deepFreeze({
     header: {
       border: {
         side: 'bottom',
-        size: 'small',
-        color: 'none',
+        size: 'xsmall',
+        color: 'border-weak',
       },
     },
+    // temp extend, grommet enhancement should be considered
+    extend: 'div[role=tablist] { align-self: start; }',
     step: {
       xsmall: 1,
       xlarge: 3,
