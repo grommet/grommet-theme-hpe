@@ -516,10 +516,18 @@ export const hpe = deepFreeze({
         },
       },
     },
-    extend: (props) => {
+    extend: ({ sizeProp }) => {
+      // necessary so primary label is accessible on HPE green background
+      const fontSize = '19px';
+      const lineHeight = '24px';
       let style = '';
-      if (props.sizeProp === 'small') {
-        style += 'line-height: 24px;';
+      // keep reasonable click target for small button
+      if (sizeProp === 'small') {
+        style += `line-height: ${lineHeight};`;
+      }
+      if (sizeProp === 'medium' || sizeProp === undefined) {
+        style += `font-size: ${fontSize};
+        line-height: ${lineHeight};`;
       }
       return style;
     },
