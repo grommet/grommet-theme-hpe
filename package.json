@@ -62,6 +62,7 @@
     "prettier": "pretty-quick --staged",
     "release-stable": "babel-node ./tools/release-stable",
     "release-next-stable": "babel-node ./tools/release-next-stable",
+    "release-audit-stable": "babel-node ./tools/release-audit-stable",
     "jsonify": "babel-node ./tools/convert-to-json > dist/grommet-theme-hpe.json",
     "release-gh-pages": "babel-node ./tools/release-gh-pages"
   },
