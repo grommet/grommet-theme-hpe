@@ -1428,14 +1428,13 @@ export const hpe = deepFreeze({
   },
   tabs: {
     header: {
+      alignSelf: 'start',
       border: {
         side: 'bottom',
         size: 'xsmall',
         color: 'border-weak',
       },
     },
-    // temp extend, grommet enhancement should be considered
-    extend: 'div[role=tablist] { align-self: start; }',
     step: {
       xsmall: 1,
       xlarge: 3,
