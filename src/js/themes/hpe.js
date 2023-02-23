@@ -1025,6 +1025,9 @@ export const hpe = deepFreeze({
   },
   icon: {
     size: {
+      small: '16px',
+      medium: '18px',
+      large: '24px',
       xxlarge: '166px',
     },
   },
