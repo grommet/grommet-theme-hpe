@@ -274,13 +274,6 @@ export const hpe = deepFreeze({
     },
   },
   button: {
-    icon: {
-      size: {
-        small: '16px',
-        medium: '18px',
-        large: '24px',
-      },
-    },
     'cta-primary': {
       background: { color: 'brand' },
       border: {
