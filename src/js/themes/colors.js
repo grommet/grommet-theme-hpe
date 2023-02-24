@@ -64,8 +64,8 @@ export const colors = {
   'active-background': 'background-contrast',
   'active-text': 'text',
   'disabled-text': 'text-weak', // deprecated, use text-weak instead
-  'selected-background': 'green',
-  'selected-text': 'text-strong',
+  'selected-background': 'green!',
+  'selected-text': 'text-primary-button', // necessary to meet color contrast on HPE green background
   'status-critical': {
     dark: '#D04F4E',
     light: '#FC5A5A',

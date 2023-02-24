@@ -237,31 +237,43 @@ export const hpe = deepFreeze({
     },
   },
   anchor: {
-    color: 'brand',
-    textDecoration: 'none',
+    color: 'text-strong',
+    textDecoration: 'underline',
     fontWeight: 700,
     gap: 'xsmall',
     hover: {
       textDecoration: 'underline',
     },
-    // extend is necessary given current grommet theme structure
-    // this block ensures that xsmall/small anchors receive text-strong
-    // color and underline when there's no label.
-    // This extend block can be removed once grommet theme structure is enhanced.
-    extend: ({ hasIcon, size, theme }) => `
-    ${
-      ['xsmall', 'small'].includes(size)
-        ? `color: ${
-            theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
-          };`
-        : ''
-    };
-    ${
-      ['xsmall', 'small'].includes(size) && hasIcon !== true
-        ? 'text-decoration: underline;'
-        : ''
-    };
-    `,
+    size: {
+      large: {
+        color: 'brand',
+        textDecoration: 'none',
+      },
+      xlarge: {
+        color: 'brand',
+        textDecoration: 'none',
+      },
+      xxlarge: {
+        color: 'brand',
+        textDecoration: 'none',
+      },
+      '3xl': {
+        color: 'brand',
+        textDecoration: 'none',
+      },
+      '4xl': {
+        color: 'brand',
+        textDecoration: 'none',
+      },
+      '5xl': {
+        color: 'brand',
+        textDecoration: 'none',
+      },
+      '6xl': {
+        color: 'brand',
+        textDecoration: 'none',
+      },
+    },
   },
   avatar: {
     size: {
@@ -336,8 +348,7 @@ export const hpe = deepFreeze({
     },
     toolbar: {
       border: {
-        color: 'border',
-        width: '1px',
+        radius: '6px',
       },
       color: 'text-strong',
       font: {
@@ -373,6 +384,9 @@ export const hpe = deepFreeze({
       option: {
         background: 'selected-background',
         color: 'selected-text',
+        font: {
+          weight: 700,
+        },
       },
     },
     hover: {
@@ -437,7 +451,7 @@ export const hpe = deepFreeze({
           horizontal: '18px',
         },
         iconOnly: {
-          pad: '6px',
+          pad: '9px',
         },
         toolbar: {
           pad: {
@@ -455,7 +469,7 @@ export const hpe = deepFreeze({
           horizontal: '18px',
         },
         iconOnly: {
-          pad: '6px',
+          pad: '9px',
         },
         toolbar: {
           border: {
@@ -476,7 +490,7 @@ export const hpe = deepFreeze({
           horizontal: '24px',
         },
         iconOnly: {
-          pad: '12px',
+          pad: '15px',
         },
         toolbar: {
           pad: {
@@ -507,10 +521,18 @@ export const hpe = deepFreeze({
         },
       },
     },
-    extend: (props) => {
+    extend: ({ sizeProp }) => {
+      // necessary so primary label is accessible on HPE green background
+      const fontSize = '19px';
+      const lineHeight = '24px';
       let style = '';
-      if (props.sizeProp === 'small') {
-        style += 'line-height: 24px;';
+      // keep reasonable click target for small button
+      if (sizeProp === 'small') {
+        style += `line-height: ${lineHeight};`;
+      }
+      if (sizeProp === 'medium' || sizeProp === undefined) {
+        style += `font-size: ${fontSize};
+        line-height: ${lineHeight};`;
       }
       return style;
     },
@@ -591,7 +613,7 @@ export const hpe = deepFreeze({
       extend: ({ theme, checked, indeterminate }) => `
       background-color: ${
         checked || indeterminate
-          ? theme.global.colors.green[theme.dark ? 'dark' : 'light']
+          ? theme.global.colors['green!']
           : theme.global.colors.background[theme.dark ? 'dark' : 'light']
       };
       ${(checked || indeterminate) && 'border: none;'}
@@ -599,9 +621,7 @@ export const hpe = deepFreeze({
     },
     icon: {
       extend: ({ theme }) => `stroke-width: 2px;
-      stroke: ${
-        theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
-      }`,
+      stroke: ${theme.global.colors['text-primary-button']}`,
     },
     gap: 'small',
     label: {
@@ -1010,6 +1030,9 @@ export const hpe = deepFreeze({
   },
   icon: {
     size: {
+      small: '16px',
+      medium: '18px',
+      large: '24px',
       xxlarge: '166px',
     },
   },
@@ -1399,11 +1422,12 @@ export const hpe = deepFreeze({
       // "vertical" only applies to top
       bottom: 'small',
       top: 'small',
-      horizontal: 'medium',
+      // align horizontal pad with button
+      horizontal: '18px',
     },
     margin: {
       // bring the overall tabs border behind invidual tab borders
-      vertical: '-2px',
+      vertical: '-1px',
       horizontal: 'none',
     },
     extend: `
@@ -1416,10 +1440,11 @@ export const hpe = deepFreeze({
   },
   tabs: {
     header: {
+      alignSelf: 'start',
       border: {
         side: 'bottom',
-        size: 'small',
-        color: 'none',
+        size: 'xsmall',
+        color: 'border-weak',
       },
     },
     step: {
