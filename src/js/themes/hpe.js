@@ -237,31 +237,43 @@ export const hpe = deepFreeze({
     },
   },
   anchor: {
-    color: 'brand',
-    textDecoration: 'none',
+    color: 'text-strong',
+    textDecoration: 'underline',
     fontWeight: 700,
     gap: 'xsmall',
     hover: {
       textDecoration: 'underline',
     },
-    // extend is necessary given current grommet theme structure
-    // this block ensures that xsmall/small anchors receive text-strong
-    // color and underline when there's no label.
-    // This extend block can be removed once grommet theme structure is enhanced.
-    extend: ({ hasIcon, size, theme }) => `
-    ${
-      ['xsmall', 'small'].includes(size)
-        ? `color: ${
-            theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
-          };`
-        : ''
-    };
-    ${
-      ['xsmall', 'small'].includes(size) && hasIcon !== true
-        ? 'text-decoration: underline;'
-        : ''
-    };
-    `,
+    size: {
+      large: {
+        color: 'brand',
+        textDecoration: 'none',
+      },
+      xlarge: {
+        color: 'brand',
+        textDecoration: 'none',
+      },
+      xxlarge: {
+        color: 'brand',
+        textDecoration: 'none',
+      },
+      '3xl': {
+        color: 'brand',
+        textDecoration: 'none',
+      },
+      '4xl': {
+        color: 'brand',
+        textDecoration: 'none',
+      },
+      '5xl': {
+        color: 'brand',
+        textDecoration: 'none',
+      },
+      '6xl': {
+        color: 'brand',
+        textDecoration: 'none',
+      },
+    },
   },
   avatar: {
     size: {
@@ -439,7 +451,7 @@ export const hpe = deepFreeze({
           horizontal: '18px',
         },
         iconOnly: {
-          pad: '6px',
+          pad: '9px',
         },
         toolbar: {
           pad: {
@@ -457,7 +469,7 @@ export const hpe = deepFreeze({
           horizontal: '18px',
         },
         iconOnly: {
-          pad: '6px',
+          pad: '9px',
         },
         toolbar: {
           border: {
@@ -478,7 +490,7 @@ export const hpe = deepFreeze({
           horizontal: '24px',
         },
         iconOnly: {
-          pad: '12px',
+          pad: '15px',
         },
         toolbar: {
           pad: {
