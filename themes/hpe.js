@@ -205,22 +205,42 @@ var hpe = deepFreeze({
     }
   },
   anchor: {
-    color: 'brand',
-    textDecoration: 'none',
+    color: 'text-strong',
+    textDecoration: 'underline',
     fontWeight: 700,
     gap: 'xsmall',
     hover: {
       textDecoration: 'underline'
     },
-    // extend is necessary given current grommet theme structure
-    // this block ensures that xsmall/small anchors receive text-strong
-    // color and underline when there's no label.
-    // This extend block can be removed once grommet theme structure is enhanced.
-    extend: function extend(_ref) {
-      var hasIcon = _ref.hasIcon,
-        size = _ref.size,
-        theme = _ref.theme;
-      return "\n    " + (['xsmall', 'small'].includes(size) ? "color: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";" : '') + ";\n    " + (['xsmall', 'small'].includes(size) && hasIcon !== true ? 'text-decoration: underline;' : '') + ";\n    ";
+    size: {
+      large: {
+        color: 'brand',
+        textDecoration: 'none'
+      },
+      xlarge: {
+        color: 'brand',
+        textDecoration: 'none'
+      },
+      xxlarge: {
+        color: 'brand',
+        textDecoration: 'none'
+      },
+      '3xl': {
+        color: 'brand',
+        textDecoration: 'none'
+      },
+      '4xl': {
+        color: 'brand',
+        textDecoration: 'none'
+      },
+      '5xl': {
+        color: 'brand',
+        textDecoration: 'none'
+      },
+      '6xl': {
+        color: 'brand',
+        textDecoration: 'none'
+      }
     }
   },
   avatar: {
@@ -308,8 +328,7 @@ var hpe = deepFreeze({
     },
     toolbar: {
       border: {
-        color: 'border',
-        width: '1px'
+        radius: '6px'
       },
       color: 'text-strong',
       font: {
@@ -344,7 +363,10 @@ var hpe = deepFreeze({
     selected: {
       option: {
         background: 'selected-background',
-        color: 'selected-text'
+        color: 'selected-text',
+        font: {
+          weight: 700
+        }
       }
     },
     hover: {
@@ -354,10 +376,10 @@ var hpe = deepFreeze({
         }
       },
       'cta-alternate': {
-        extend: function extend(_ref2) {
-          var active = _ref2.active,
-            colorValue = _ref2.colorValue,
-            theme = _ref2.theme;
+        extend: function extend(_ref) {
+          var active = _ref.active,
+            colorValue = _ref.colorValue,
+            theme = _ref.theme;
           var color;
           if (!colorValue && !active) {
             if (theme.dark) {
@@ -414,7 +436,7 @@ var hpe = deepFreeze({
           horizontal: '18px'
         },
         iconOnly: {
-          pad: '6px'
+          pad: '9px'
         },
         toolbar: {
           pad: {
@@ -432,7 +454,7 @@ var hpe = deepFreeze({
           horizontal: '18px'
         },
         iconOnly: {
-          pad: '6px'
+          pad: '9px'
         },
         toolbar: {
           border: {
@@ -453,7 +475,7 @@ var hpe = deepFreeze({
           horizontal: '24px'
         },
         iconOnly: {
-          pad: '12px'
+          pad: '15px'
         },
         toolbar: {
           pad: {
@@ -484,10 +506,18 @@ var hpe = deepFreeze({
         }
       }
     },
-    extend: function extend(props) {
+    extend: function extend(_ref2) {
+      var sizeProp = _ref2.sizeProp;
+      // necessary so primary label is accessible on HPE green background
+      var fontSize = '19px';
+      var lineHeight = '24px';
       var style = '';
-      if (props.sizeProp === 'small') {
-        style += 'line-height: 24px;';
+      // keep reasonable click target for small button
+      if (sizeProp === 'small') {
+        style += "line-height: " + lineHeight + ";";
+      }
+      if (sizeProp === 'medium' || sizeProp === undefined) {
+        style += "font-size: " + fontSize + ";\n        line-height: " + lineHeight + ";";
       }
       return style;
     }
@@ -571,13 +601,13 @@ var hpe = deepFreeze({
         var theme = _ref4.theme,
           checked = _ref4.checked,
           indeterminate = _ref4.indeterminate;
-        return "\n      background-color: " + (checked || indeterminate ? theme.global.colors.green[theme.dark ? 'dark' : 'light'] : theme.global.colors.background[theme.dark ? 'dark' : 'light']) + ";\n      " + ((checked || indeterminate) && 'border: none;') + "\n        ";
+        return "\n      background-color: " + (checked || indeterminate ? theme.global.colors['green!'] : theme.global.colors.background[theme.dark ? 'dark' : 'light']) + ";\n      " + ((checked || indeterminate) && 'border: none;') + "\n        ";
       }
     },
     icon: {
       extend: function extend(_ref5) {
         var theme = _ref5.theme;
-        return "stroke-width: 2px;\n      stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'];
+        return "stroke-width: 2px;\n      stroke: " + theme.global.colors['text-primary-button'];
       }
     },
     gap: 'small',
@@ -968,6 +998,9 @@ var hpe = deepFreeze({
   },
   icon: {
     size: {
+      small: '16px',
+      medium: '18px',
+      large: '24px',
       xxlarge: '166px'
     }
   },
@@ -1381,21 +1414,23 @@ var hpe = deepFreeze({
       // "vertical" only applies to top
       bottom: 'small',
       top: 'small',
-      horizontal: 'medium'
+      // align horizontal pad with button
+      horizontal: '18px'
     },
     margin: {
       // bring the overall tabs border behind invidual tab borders
-      vertical: '-2px',
+      vertical: '-1px',
       horizontal: 'none'
     },
     extend: "\n        // necessary to remove default line-height of 24px\n        // how will this behave if tab has an icon?\n        // is that allowed?\n        // grommet enhancement should be considered if so\n        > span { line-height: 18px; }\n      "
   },
   tabs: {
     header: {
+      alignSelf: 'start',
       border: {
         side: 'bottom',
-        size: 'small',
-        color: 'none'
+        size: 'xsmall',
+        color: 'border-weak'
       }
     },
     step: {

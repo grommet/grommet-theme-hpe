@@ -115,8 +115,8 @@
       "active-background": "background-contrast",
       "active-text": "text",
       "disabled-text": "text-weak",
-      "selected-background": "green",
-      "selected-text": "text-strong",
+      "selected-background": "green!",
+      "selected-text": "text-primary-button",
       "status-critical": {
         "dark": "#D04F4E",
         "light": "#FC5A5A"
@@ -270,12 +270,42 @@
     }
   },
   "anchor": {
-    "color": "brand",
-    "textDecoration": "none",
+    "color": "text-strong",
+    "textDecoration": "underline",
     "fontWeight": 700,
     "gap": "xsmall",
     "hover": {
       "textDecoration": "underline"
+    },
+    "size": {
+      "large": {
+        "color": "brand",
+        "textDecoration": "none"
+      },
+      "xlarge": {
+        "color": "brand",
+        "textDecoration": "none"
+      },
+      "xxlarge": {
+        "color": "brand",
+        "textDecoration": "none"
+      },
+      "3xl": {
+        "color": "brand",
+        "textDecoration": "none"
+      },
+      "4xl": {
+        "color": "brand",
+        "textDecoration": "none"
+      },
+      "5xl": {
+        "color": "brand",
+        "textDecoration": "none"
+      },
+      "6xl": {
+        "color": "brand",
+        "textDecoration": "none"
+      }
     }
   },
   "avatar": {
@@ -366,8 +396,7 @@
     },
     "toolbar": {
       "border": {
-        "color": "border",
-        "width": "1px"
+        "radius": "6px"
       },
       "color": "text-strong",
       "font": {
@@ -402,7 +431,10 @@
     "selected": {
       "option": {
         "background": "selected-background",
-        "color": "selected-text"
+        "color": "selected-text",
+        "font": {
+          "weight": 700
+        }
       }
     },
     "hover": {
@@ -447,7 +479,7 @@
           "horizontal": "18px"
         },
         "iconOnly": {
-          "pad": "6px"
+          "pad": "9px"
         },
         "toolbar": {
           "pad": {
@@ -465,7 +497,7 @@
           "horizontal": "18px"
         },
         "iconOnly": {
-          "pad": "6px"
+          "pad": "9px"
         },
         "toolbar": {
           "border": {
@@ -486,7 +518,7 @@
           "horizontal": "24px"
         },
         "iconOnly": {
-          "pad": "12px"
+          "pad": "15px"
         },
         "toolbar": {
           "pad": {
@@ -924,6 +956,9 @@
   },
   "icon": {
     "size": {
+      "small": "16px",
+      "medium": "18px",
+      "large": "24px",
       "xxlarge": "166px"
     }
   },
@@ -1333,20 +1368,21 @@
     "pad": {
       "bottom": "small",
       "top": "small",
-      "horizontal": "medium"
+      "horizontal": "18px"
     },
     "margin": {
-      "vertical": "-2px",
+      "vertical": "-1px",
       "horizontal": "none"
     },
     "extend": "\n        // necessary to remove default line-height of 24px\n        // how will this behave if tab has an icon?\n        // is that allowed?\n        // grommet enhancement should be considered if so\n        > span { line-height: 18px; }\n      "
   },
   "tabs": {
     "header": {
+      "alignSelf": "start",
       "border": {
         "side": "bottom",
-        "size": "small",
-        "color": "none"
+        "size": "xsmall",
+        "color": "border-weak"
       }
     },
     "step": {
