@@ -997,6 +997,7 @@ var hpe = deepFreeze({
     }
   },
   icon: {
+    disableScaleDown: true,
     size: {
       small: '16px',
       medium: '18px',
