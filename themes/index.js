@@ -7,11 +7,11 @@ Object.keys(_hpe).forEach(function (key) {
   if (key in exports && exports[key] === _hpe[key]) return;
   exports[key] = _hpe[key];
 });
-var _hpeWeb = require("./hpeWeb");
-Object.keys(_hpeWeb).forEach(function (key) {
+var _hpeMark = require("./hpeMark");
+Object.keys(_hpeMark).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
-  if (key in exports && exports[key] === _hpeWeb[key]) return;
-  exports[key] = _hpeWeb[key];
+  if (key in exports && exports[key] === _hpeMark[key]) return;
+  exports[key] = _hpeMark[key];
 });
 var _backgrounds = require("./backgrounds");
 Object.keys(_backgrounds).forEach(function (key) {
