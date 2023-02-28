@@ -320,6 +320,16 @@
     }
   },
   "button": {
+    "badge": {
+      "size": {
+        "medium": "18px"
+      },
+      "text": {
+        "size": {
+          "medium": "xsmall"
+        }
+      }
+    },
     "cta-primary": {
       "background": {
         "color": "brand"
@@ -1034,6 +1044,11 @@
     "container": {
       "round": "xsmall"
     },
+    "iconContainer": {
+      "pad": {
+        "top": "xxsmall"
+      }
+    },
     "global": {
       "container": {
         "round": "none"
@@ -1432,6 +1447,11 @@
   "tag": {
     "value": {
       "weight": 500
+    },
+    "remove": {
+      "margin": {
+        "top": "xxsmall"
+      }
     }
   },
   "text": {

@@ -42,7 +42,7 @@ var primaryBackground = function primaryBackground(props) {
 // necessary to adjust the background color
 // of button to darker green to expose gradient on hover
 var primaryHoverBackground = function primaryHoverBackground(props) {
-  return !props.active && !props.colorValue ? 'background-color: rgb(16, 116, 85);' : '';
+  return !props.active && !props.colorValue ? "background-color: " + props.theme.global.colors.green.dark + ";" : '';
 };
 var hpe = deepFreeze({
   defaultMode: 'light',
@@ -254,6 +254,16 @@ var hpe = deepFreeze({
   },
 
   button: {
+    badge: {
+      size: {
+        medium: '18px'
+      },
+      text: {
+        size: {
+          medium: 'xsmall'
+        }
+      }
+    },
     'cta-primary': {
       background: {
         color: 'brand'
@@ -306,9 +316,6 @@ var hpe = deepFreeze({
       font: {
         weight: 700
       },
-      // for primary button with color, use text-strong
-      // instead of text-primary-button which is hard-coded
-      // to "white" specifically for HPE green.
       extend: function extend(props) {
         return primaryBackground(props);
       }
@@ -1081,6 +1088,11 @@ var hpe = deepFreeze({
     container: {
       round: 'xsmall'
     },
+    iconContainer: {
+      pad: {
+        top: 'xxsmall'
+      }
+    },
     global: {
       container: {
         round: 'none'
@@ -1480,6 +1492,11 @@ var hpe = deepFreeze({
   tag: {
     value: {
       weight: 500
+    },
+    remove: {
+      margin: {
+        top: 'xxsmall'
+      }
     }
   },
   text: {
