@@ -29,7 +29,7 @@ export const deepMerge = (target, ...sources) => {
   return output;
 };
 
-export const hpeWeb = deepMerge(hpe, {
+export const hpeMark = deepMerge(hpe, {
   heading: {
     color: 'text-strong',
     weight: 400,
