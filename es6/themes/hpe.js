@@ -517,11 +517,6 @@ export var hpe = deepFreeze({
     }
   },
   calendar: {
-    // using level as a means of styling doesn't seem like the best...
-    // need to file an issue against Grommet
-    heading: {
-      level: 3
-    },
     icons: {
       next: FormNext,
       previous: FormPrevious
@@ -529,17 +524,32 @@ export var hpe = deepFreeze({
     small: {
       fontSize: '13.6px',
       lineHeight: 1.375,
-      daySize: '27.43px'
+      daySize: '27.43px',
+      title: {
+        size: 'medium',
+        weight: 500,
+        color: 'text-strong'
+      }
     },
     medium: {
       fontSize: '18px',
       lineHeight: 1.45,
-      daySize: '54.86px'
+      daySize: '54.86px',
+      title: {
+        size: 'large',
+        weight: 500,
+        color: 'text-strong'
+      }
     },
     large: {
       fontSize: '31.2px',
       lineHeight: 1.11,
-      daySize: '109.71px'
+      daySize: '109.71px',
+      title: {
+        size: 'xlarge',
+        weight: 500,
+        color: 'text-strong'
+      }
     }
   },
   card: {
