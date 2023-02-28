@@ -42,13 +42,9 @@ export var colors = {
   'text-weak': {
     dark: '#FFFFFF80',
     // 50%
-    // light value may need to be revisited to allow enough differentiation
-    // from 'text'
     light: '#757575'
   },
   'text-xweak': {
-    // light value may need to be revisited to allow enough differentiation
-    // from 'text' / 'text-weak'
     dark: '#FFFFFF33',
     // 20%
     light: '#BBBBBB'

@@ -185,8 +185,6 @@ var hpe = deepFreeze({
       }
     },
     heading: {
-      // using level as a means of styling doesn't seem like the best...
-      // need to file an issue against Grommet
       level: 3,
       margin: {
         vertical: 'medium',
@@ -630,7 +628,7 @@ var hpe = deepFreeze({
       extend: function extend(_ref7) {
         var checked = _ref7.checked,
           theme = _ref7.theme;
-        return "\n        " + (checked && "background-color: " + theme.global.colors.green[theme.dark ? 'dark' : 'light'] + ";") + "\n      ";
+        return "\n        " + (checked && "background-color: " + theme.global.colors['green!'] + ";") + "\n      ";
       }
     },
     // HPE Design System guidance states that pad="none" should be applied on CheckBox
@@ -1232,7 +1230,7 @@ var hpe = deepFreeze({
       },
       active: {
         border: {
-          radius: '100px'
+          radius: '2em'
         },
         font: {
           weight: 700
@@ -1269,7 +1267,6 @@ var hpe = deepFreeze({
       height: '36px',
       maxWidth: '27em'
     },
-    // xxlarge is not part of Chris's type exploration
     xxlarge: {
       size: '36px',
       height: '40px',
@@ -1477,17 +1474,14 @@ var hpe = deepFreeze({
   },
   text: {
     xsmall: {
-      // weight needs to be modified at the size level
       size: '14px',
       height: '16px'
     },
     small: {
-      // weight needs to be modified at the size level
       size: '16px',
       height: '20px'
     },
     medium: {
-      // weight needs to be modified at the size level
       size: '18px',
       height: '24px'
     },
@@ -1499,7 +1493,6 @@ var hpe = deepFreeze({
       size: '30px',
       height: '36px'
     },
-    // xxlarge is not part of Chris's type exploration
     xxlarge: {
       size: '36px',
       height: '40px'

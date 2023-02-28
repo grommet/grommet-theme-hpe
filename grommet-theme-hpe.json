@@ -1222,7 +1222,7 @@
       },
       "active": {
         "border": {
-          "radius": "100px"
+          "radius": "2em"
         },
         "font": {
           "weight": 700
