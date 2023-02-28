@@ -1019,7 +1019,7 @@ export var hpe = deepFreeze({
       elevation: 'large'
     },
     overlay: {
-      background: '#0000001F',
+      background: 'background-layer-overlay',
       backdropFilter: "blur(12px)"
     },
     /* HPE Global Header/Footer Service a.k.a. HPE Common HFWS sets the header

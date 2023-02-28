@@ -28,6 +28,7 @@ export var colors = {
     // 6%
     light: '#0000000A'
   },
+  'background-layer-overlay': '#0000001F',
   icon: 'text',
   text: {
     dark: '#FFFFFFE6',

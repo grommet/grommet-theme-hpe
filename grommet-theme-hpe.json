@@ -82,6 +82,7 @@
         "dark": "#FFFFFF0F",
         "light": "#0000000A"
       },
+      "background-layer-overlay": "#0000001F",
       "icon": "text",
       "text": {
         "dark": "#FFFFFFE6",
@@ -985,7 +986,7 @@
       "elevation": "large"
     },
     "overlay": {
-      "background": "#0000001F",
+      "background": "background-layer-overlay",
       "backdropFilter": "blur(12px)"
     },
     "zIndex": "110"
