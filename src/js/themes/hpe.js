@@ -1443,8 +1443,8 @@ export const hpe = deepFreeze({
     pad: {
       // top and bottom pad need to be defined individually, specifying
       // "vertical" only applies to top
-      bottom: 'small',
-      top: 'small',
+      bottom: '9px',
+      top: '9px',
       // align horizontal pad with button
       horizontal: '18px',
     },
@@ -1453,13 +1453,6 @@ export const hpe = deepFreeze({
       vertical: '-1px',
       horizontal: 'none',
     },
-    extend: `
-        // necessary to remove default line-height of 24px
-        // how will this behave if tab has an icon?
-        // is that allowed?
-        // grommet enhancement should be considered if so
-        > span { line-height: 18px; }
-      `,
   },
   tabs: {
     header: {
