@@ -1401,15 +1401,14 @@
       "color": "text-xweak"
     },
     "pad": {
-      "bottom": "small",
-      "top": "small",
+      "bottom": "9px",
+      "top": "9px",
       "horizontal": "18px"
     },
     "margin": {
       "vertical": "-1px",
       "horizontal": "none"
-    },
-    "extend": "\n        // necessary to remove default line-height of 24px\n        // how will this behave if tab has an icon?\n        // is that allowed?\n        // grommet enhancement should be considered if so\n        > span { line-height: 18px; }\n      "
+    }
   },
   "tabs": {
     "header": {
