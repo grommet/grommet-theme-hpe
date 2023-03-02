@@ -495,7 +495,7 @@ export const hpe = deepFreeze({
           horizontal: '24px',
         },
         iconOnly: {
-          pad: '15px',
+          pad: '12px',
         },
         toolbar: {
           pad: {
@@ -506,23 +506,14 @@ export const hpe = deepFreeze({
       },
       xlarge: {
         border: {
-          radius: '10px',
+          radius: '2em',
         },
         pad: {
-          vertical: '10px',
-          horizontal: '20px',
+          vertical: '18px',
+          horizontal: '30px',
         },
-        'cta-primary': {
-          pad: {
-            vertical: '10px',
-            horizontal: '28px',
-          },
-        },
-        'cta-alternate': {
-          pad: {
-            vertical: '10px',
-            horizontal: '28px',
-          },
+        iconOnly: {
+          pad: '21px',
         },
       },
     },
@@ -1042,10 +1033,12 @@ export const hpe = deepFreeze({
   },
   icon: {
     disableScaleDown: true,
+    matchSize: true,
     size: {
       small: '16px',
       medium: '18px',
       large: '24px',
+      xlarge: '30px',
       xxlarge: '166px',
     },
   },
