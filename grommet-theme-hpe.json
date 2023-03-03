@@ -1319,11 +1319,11 @@
   },
   "rangeInput": {
     "thumb": {
-      "color": "green"
+      "color": "brand"
     },
     "track": {
       "lower": {
-        "color": "green"
+        "color": "brand"
       },
       "upper": {
         "color": "border"
@@ -1341,7 +1341,7 @@
   "spinner": {
     "container": {
       "pad": "none",
-      "color": "green",
+      "color": "brand",
       "border": [
         {
           "color": "border-weak",
@@ -1384,7 +1384,7 @@
       "color": "transparent",
       "size": "medium",
       "active": {
-        "color": "green!"
+        "color": "brand"
       },
       "disabled": {},
       "hover": {
