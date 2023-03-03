@@ -8,11 +8,11 @@ var _Ascending = require("grommet-icons/icons/Ascending");
 var _Blank = require("grommet-icons/icons/Blank");
 var _CircleAlert = require("grommet-icons/icons/CircleAlert");
 var _Descending = require("grommet-icons/icons/Descending");
-var _FormDown = require("grommet-icons/icons/FormDown");
+var _Down = require("grommet-icons/icons/Down");
 var _FormNext = require("grommet-icons/icons/FormNext");
 var _FormPrevious = require("grommet-icons/icons/FormPrevious");
-var _FormUp = require("grommet-icons/icons/FormUp");
 var _Unsorted = require("grommet-icons/icons/Unsorted");
+var _Up = require("grommet-icons/icons/Up");
 var _Hpe = require("grommet-icons/icons/Hpe");
 var _backgrounds = require("./backgrounds");
 var _colors = require("./colors");
@@ -1010,7 +1010,7 @@ var hpe = deepFreeze({
       medium: '18px',
       large: '24px',
       xlarge: '30px',
-      xxlarge: '166px'
+      xxlarge: '36px'
     }
   },
   layer: {
@@ -1061,7 +1061,8 @@ var hpe = deepFreeze({
       }
     },
     icons: {
-      color: 'text-strong'
+      color: 'text-strong',
+      down: _Down.Down
     }
   },
   nameValuePair: {
@@ -1369,8 +1370,8 @@ var hpe = deepFreeze({
     },
     icons: {
       color: 'text',
-      down: _FormDown.FormDown,
-      up: _FormUp.FormUp
+      down: _Down.Down,
+      up: _Up.Up
     },
     options: undefined
   },

@@ -976,7 +976,7 @@
       "medium": "18px",
       "large": "24px",
       "xlarge": "30px",
-      "xxlarge": "166px"
+      "xxlarge": "36px"
     }
   },
   "layer": {
@@ -1017,7 +1017,8 @@
       }
     },
     "icons": {
-      "color": "text-strong"
+      "color": "text-strong",
+      "down": {}
     }
   },
   "nameValuePair": {
