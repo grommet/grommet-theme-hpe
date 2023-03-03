@@ -5,11 +5,11 @@ import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
 import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
 import { Descending } from 'grommet-icons/icons/Descending';
-import { FormDown } from 'grommet-icons/icons/FormDown';
+import { Down } from 'grommet-icons/icons/Down';
 import { FormNext } from 'grommet-icons/icons/FormNext';
 import { FormPrevious } from 'grommet-icons/icons/FormPrevious';
-import { FormUp } from 'grommet-icons/icons/FormUp';
 import { Unsorted } from 'grommet-icons/icons/Unsorted';
+import { Up } from 'grommet-icons/icons/Up';
 import { Hpe } from 'grommet-icons/icons/Hpe';
 
 import { backgrounds } from './backgrounds';
@@ -1039,7 +1039,7 @@ export const hpe = deepFreeze({
       medium: '18px',
       large: '24px',
       xlarge: '30px',
-      xxlarge: '166px',
+      xxlarge: '36px',
     },
   },
   layer: {
@@ -1097,6 +1097,7 @@ export const hpe = deepFreeze({
     },
     icons: {
       color: 'text-strong',
+      down: Down,
     },
   },
   nameValuePair: {
@@ -1385,8 +1386,8 @@ export const hpe = deepFreeze({
     },
     icons: {
       color: 'text',
-      down: FormDown,
-      up: FormUp,
+      down: Down,
+      up: Up,
     },
     options: undefined,
   },
