@@ -1269,32 +1269,32 @@ var hpe = deepFreeze({
     xsmall: {
       size: '14px',
       height: '16px',
-      maxWidth: '30em'
+      maxWidth: '25em'
     },
     small: {
       size: '16px',
       height: '18px',
-      maxWidth: '30em'
+      maxWidth: '25em'
     },
     medium: {
       size: '18px',
       height: '24px',
-      maxWidth: '30em'
+      maxWidth: '25em'
     },
     large: {
       size: '24px',
       height: '32px',
-      maxWidth: '30em'
+      maxWidth: '25em'
     },
     xlarge: {
       size: '30px',
       height: '36px',
-      maxWidth: '27em'
+      maxWidth: '25em'
     },
     xxlarge: {
       size: '36px',
       height: '40px',
-      maxWidth: '27em'
+      maxWidth: '25em'
     },
     // This block applies size-specific weights to paragraph to ensure
     // that as paragraph sizes get larger, the weight decreases.
