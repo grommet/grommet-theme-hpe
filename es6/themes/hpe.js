@@ -515,6 +515,14 @@ export var hpe = deepFreeze({
     }
   },
   calendar: {
+    // ensure color is #FFFFFF to meet color contrast requirement on HPE green
+    day: {
+      extend: function extend(_ref3) {
+        var isSelected = _ref3.isSelected,
+          theme = _ref3.theme;
+        return isSelected && "color: " + theme.global.colors['text-primary-button'] + ";";
+      }
+    },
     icons: {
       next: Next,
       previous: Previous
@@ -585,10 +593,10 @@ export var hpe = deepFreeze({
       // HPE Design System guidance states that pad="none" should be applied on CheckBox
       // when its used outside of a FormField. We will apply this hover treatment in
       // those instances.
-      extend: function extend(_ref3) {
-        var disabled = _ref3.disabled,
-          pad = _ref3.pad,
-          theme = _ref3.theme;
+      extend: function extend(_ref4) {
+        var disabled = _ref4.disabled,
+          pad = _ref4.pad,
+          theme = _ref4.theme;
         return "\n      " + (!disabled && pad === 'none' && "border: 2px solid " + theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light'] + ";") + "\n    ";
       }
     },
@@ -599,16 +607,16 @@ export var hpe = deepFreeze({
     },
     check: {
       radius: '4px',
-      extend: function extend(_ref4) {
-        var theme = _ref4.theme,
-          checked = _ref4.checked,
-          indeterminate = _ref4.indeterminate;
+      extend: function extend(_ref5) {
+        var theme = _ref5.theme,
+          checked = _ref5.checked,
+          indeterminate = _ref5.indeterminate;
         return "\n      background-color: " + (checked || indeterminate ? theme.global.colors['green!'] : theme.global.colors.background[theme.dark ? 'dark' : 'light']) + ";\n      " + ((checked || indeterminate) && 'border: none;') + "\n        ";
       }
     },
     icon: {
-      extend: function extend(_ref5) {
-        var theme = _ref5.theme;
+      extend: function extend(_ref6) {
+        var theme = _ref6.theme;
         return "stroke-width: 2px;\n      stroke: " + theme.global.colors['text-primary-button'];
       }
     },
@@ -624,23 +632,23 @@ export var hpe = deepFreeze({
       background: 'background',
       color: 'background',
       knob: {
-        extend: function extend(_ref6) {
-          var theme = _ref6.theme;
+        extend: function extend(_ref7) {
+          var theme = _ref7.theme;
           return "\n           box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'].small + ";\n           border: 1px solid " + theme.global.colors.border[theme.dark ? 'dark' : 'light'] + "\n        ";
         }
       },
-      extend: function extend(_ref7) {
-        var checked = _ref7.checked,
-          theme = _ref7.theme;
+      extend: function extend(_ref8) {
+        var checked = _ref8.checked,
+          theme = _ref8.theme;
         return "\n        " + (checked && "background-color: " + theme.global.colors['green!'] + ";") + "\n      ";
       }
     },
     // HPE Design System guidance states that pad="none" should be applied on CheckBox
     // when its used outside of a FormField. We will apply this hover treatment in
     // those instances.
-    extend: function extend(_ref8) {
-      var disabled = _ref8.disabled,
-        pad = _ref8.pad;
+    extend: function extend(_ref9) {
+      var disabled = _ref9.disabled,
+        pad = _ref9.pad;
       return "\n    " + (!disabled && pad === 'none' && ":hover {\n      background-color: unset;\n    }") + "\n    font-weight: 500;\n    width: auto;\n  };\n  ";
     }
   },
@@ -654,8 +662,8 @@ export var hpe = deepFreeze({
   },
   dataTable: {
     body: {
-      extend: function extend(_ref9) {
-        var theme = _ref9.theme;
+      extend: function extend(_ref10) {
+        var theme = _ref10.theme;
         return "\n        /* Margin and padding allow room for focus on table body */\n        margin: " + theme.global.edgeSize.xxsmall + " 0px;\n        padding: 0px " + theme.global.edgeSize.xxsmall + ";\n      ";
       }
     },
@@ -664,11 +672,11 @@ export var hpe = deepFreeze({
         side: 'bottom'
       },
       color: 'text-strong',
-      extend: function extend(_ref10) {
-        var column = _ref10.column,
-          sort = _ref10.sort,
-          sortable = _ref10.sortable,
-          theme = _ref10.theme;
+      extend: function extend(_ref11) {
+        var column = _ref11.column,
+          sort = _ref11.sort,
+          sortable = _ref11.sortable,
+          theme = _ref11.theme;
         return "\n          " + (sort && sort.property === column && "\n            background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n          ") + ";\n          " + (sortable && sort && sort.property !== column && "\n              svg {\n                opacity: 0;\n              }\n              :hover {\n                svg {\n                  opacity: 1;\n                }\n              }\n            ") + ";\n        ";
       },
       font: {
@@ -980,9 +988,9 @@ export var hpe = deepFreeze({
     // get large, the weight decreases.
     // This block can be removed once grommet theme structure is enhanced
     // to support level and size specific weights.
-    extend: function extend(_ref11) {
-      var level = _ref11.level,
-        size = _ref11.size;
+    extend: function extend(_ref12) {
+      var level = _ref12.level,
+        size = _ref12.size;
       var fontWeight = '';
       if (level === 1 && size === 'small') {
         fontWeight = 'font-weight: 500;';
@@ -1034,8 +1042,8 @@ export var hpe = deepFreeze({
   },
   maskedInput: {
     container: {
-      extend: function extend(_ref12) {
-        var theme = _ref12.theme;
+      extend: function extend(_ref13) {
+        var theme = _ref13.theme;
         return "\n        svg {\n          fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n        }\n      ";
       }
     }
@@ -1288,8 +1296,8 @@ export var hpe = deepFreeze({
     // that as paragraph sizes get larger, the weight decreases.
     // This block can be removed once grommet theme structure is enhanced
     // to support size-specific weights.
-    extend: function extend(_ref13) {
-      var size = _ref13.size;
+    extend: function extend(_ref14) {
+      var size = _ref14.size;
       return "\n      " + (['xlarge', 'xxlarge'].includes(size) ? 'font-weight: 300;' : '') + ";\n    ";
     }
   },
@@ -1306,13 +1314,13 @@ export var hpe = deepFreeze({
     },
     color: 'selected-background',
     container: {
-      extend: function extend(_ref14) {
-        var theme = _ref14.theme;
+      extend: function extend(_ref15) {
+        var theme = _ref15.theme;
         return "\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
       }
     },
-    extend: function extend(_ref15) {
-      var theme = _ref15.theme;
+    extend: function extend(_ref16) {
+      var theme = _ref16.theme;
       return "\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
     },
     gap: 'xsmall',
@@ -1359,8 +1367,8 @@ export var hpe = deepFreeze({
   },
   select: {
     control: {
-      extend: function extend(_ref16) {
-        var disabled = _ref16.disabled;
+      extend: function extend(_ref17) {
+        var disabled = _ref17.disabled;
         return css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
       }
     },
@@ -1464,8 +1472,8 @@ export var hpe = deepFreeze({
       }
     },
     body: {
-      extend: function extend(_ref17) {
-        var theme = _ref17.theme;
+      extend: function extend(_ref18) {
+        var theme = _ref18.theme;
         return "\n          :hover {\n            button {\n              background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n            }\n          }\n        ";
       }
     },
@@ -1533,15 +1541,15 @@ export var hpe = deepFreeze({
     // that as text sizes get larger, the weight decreases.
     // This block can be removed once grommet theme structure is enhanced
     // to support size-specific weights.
-    extend: function extend(_ref18) {
-      var size = _ref18.size;
+    extend: function extend(_ref19) {
+      var size = _ref19.size;
       return "\n      " + (['xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size) ? 'font-weight: 300;' : '') + ";\n    ";
     }
   },
   textInput: {
     container: {
-      extend: function extend(_ref19) {
-        var theme = _ref19.theme;
+      extend: function extend(_ref20) {
+        var theme = _ref20.theme;
         return "\n        svg {\n          fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n        }\n      ";
       }
     }

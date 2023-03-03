@@ -68,7 +68,7 @@ export var colors = {
     light: '#0000001F' // 12%
   },
 
-  control: 'green',
+  control: 'brand',
   'active-background': 'background-contrast',
   'active-text': 'text',
   'disabled-text': 'text-weak',

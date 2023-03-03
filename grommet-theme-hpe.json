@@ -112,7 +112,7 @@
         "dark": "#FFFFFF1F",
         "light": "#0000001F"
       },
-      "control": "green",
+      "control": "brand",
       "active-background": "background-contrast",
       "active-text": "text",
       "disabled-text": "text-weak",
@@ -553,6 +553,7 @@
     }
   },
   "calendar": {
+    "day": {},
     "icons": {
       "next": {},
       "previous": {}
