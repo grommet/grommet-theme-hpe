@@ -9,8 +9,8 @@ var _Blank = require("grommet-icons/icons/Blank");
 var _CircleAlert = require("grommet-icons/icons/CircleAlert");
 var _Descending = require("grommet-icons/icons/Descending");
 var _Down = require("grommet-icons/icons/Down");
-var _FormNext = require("grommet-icons/icons/FormNext");
-var _FormPrevious = require("grommet-icons/icons/FormPrevious");
+var _Next = require("grommet-icons/icons/Next");
+var _Previous = require("grommet-icons/icons/Previous");
 var _Unsorted = require("grommet-icons/icons/Unsorted");
 var _Up = require("grommet-icons/icons/Up");
 var _Hpe = require("grommet-icons/icons/Hpe");
@@ -520,8 +520,8 @@ var hpe = deepFreeze({
   },
   calendar: {
     icons: {
-      next: _FormNext.FormNext,
-      previous: _FormPrevious.FormPrevious
+      next: _Next.Next,
+      previous: _Previous.Previous
     },
     small: {
       fontSize: '13.6px',
