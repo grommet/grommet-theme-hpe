@@ -1362,11 +1362,11 @@ export const hpe = deepFreeze({
   },
   rangeInput: {
     thumb: {
-      color: 'green',
+      color: 'brand',
     },
     track: {
       lower: {
-        color: 'green',
+        color: 'brand',
       },
       upper: {
         color: 'border',
@@ -1394,7 +1394,7 @@ export const hpe = deepFreeze({
   spinner: {
     container: {
       pad: 'none',
-      color: 'green',
+      color: 'brand',
       border: [
         { color: 'border-weak', side: 'all', size: 'medium' },
         { color: 'border-weak', side: 'right', size: 'medium' },
@@ -1422,7 +1422,7 @@ export const hpe = deepFreeze({
       color: 'transparent',
       size: 'medium',
       active: {
-        color: 'green!',
+        color: 'brand',
       },
       disabled: {
         color: undefined,
