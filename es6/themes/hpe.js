@@ -499,16 +499,19 @@ export var hpe = deepFreeze({
       }
     },
     extend: function extend(_ref2) {
-      var sizeProp = _ref2.sizeProp;
+      var hasIcon = _ref2.hasIcon,
+        hasLabel = _ref2.hasLabel,
+        sizeProp = _ref2.sizeProp;
       // necessary so primary label is accessible on HPE green background
       var fontSize = '19px';
       var lineHeight = '24px';
       var style = '';
+      var iconOnly = hasIcon && !hasLabel;
       // keep reasonable click target for small button
-      if (sizeProp === 'small') {
+      if (sizeProp === 'small' && !iconOnly) {
         style += "line-height: " + lineHeight + ";";
       }
-      if (sizeProp === 'medium' || sizeProp === undefined) {
+      if ((sizeProp === 'medium' || sizeProp === undefined) && !iconOnly) {
         style += "font-size: " + fontSize + ";\n        line-height: " + lineHeight + ";";
       }
       return style;
