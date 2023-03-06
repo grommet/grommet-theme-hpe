@@ -517,16 +517,17 @@ export const hpe = deepFreeze({
         },
       },
     },
-    extend: ({ sizeProp }) => {
+    extend: ({ hasIcon, hasLabel, sizeProp }) => {
       // necessary so primary label is accessible on HPE green background
       const fontSize = '19px';
       const lineHeight = '24px';
       let style = '';
+      const iconOnly = hasIcon && !hasLabel;
       // keep reasonable click target for small button
-      if (sizeProp === 'small') {
+      if (sizeProp === 'small' && !iconOnly) {
         style += `line-height: ${lineHeight};`;
       }
-      if (sizeProp === 'medium' || sizeProp === undefined) {
+      if ((sizeProp === 'medium' || sizeProp === undefined) && !iconOnly) {
         style += `font-size: ${fontSize};
         line-height: ${lineHeight};`;
       }
