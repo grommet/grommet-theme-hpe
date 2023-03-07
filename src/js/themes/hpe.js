@@ -36,13 +36,7 @@ const primaryBackground = (props) => {
 linear-gradient(70deg, transparent,
   ${props.theme.global.colors['green!']} 35%, transparent 70%)
   ${props.theme.global.colors['green!']};`
-      : `
-  color: ${
-    props.theme.global.colors['text-strong'][
-      props.theme.dark ? 'dark' : 'light'
-    ]
-  };
-`;
+      : ``;
   }
   return style;
 };
