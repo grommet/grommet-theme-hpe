@@ -199,6 +199,8 @@ var hpe = deepFreeze({
     },
     border: undefined,
     icons: {
+      collapse: _Up.Up,
+      expand: _Down.Down,
       color: 'text'
     }
   },

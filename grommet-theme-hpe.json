@@ -267,6 +267,8 @@
       "heading": {}
     },
     "icons": {
+      "collapse": {},
+      "expand": {},
       "color": "text"
     }
   },
