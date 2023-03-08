@@ -1,9 +1,14 @@
+"use strict";
+
+exports.__esModule = true;
+exports.isObject = exports.hpePop = exports.deepMerge = void 0;
+var _hpe = require("./hpe");
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-import { hpe } from './hpe';
-export var isObject = function isObject(item) {
+var isObject = function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
 };
-export var deepMerge = function deepMerge(target) {
+exports.isObject = isObject;
+var deepMerge = function deepMerge(target) {
   for (var _len = arguments.length, sources = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     sources[_key - 1] = arguments[_key];
   }
@@ -28,7 +33,8 @@ export var deepMerge = function deepMerge(target) {
   });
   return output;
 };
-export var hpeMark = deepMerge(hpe, {
+exports.deepMerge = deepMerge;
+var hpePop = deepMerge(_hpe.hpe, {
   heading: {
     color: 'text-strong',
     weight: 400,
@@ -233,3 +239,4 @@ export var hpeMark = deepMerge(hpe, {
     }
   }
 });
+exports.hpePop = hpePop;
