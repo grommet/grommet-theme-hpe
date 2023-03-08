@@ -36,7 +36,13 @@ const primaryBackground = (props) => {
 linear-gradient(70deg, transparent,
   ${props.theme.global.colors['green!']} 35%, transparent 70%)
   ${props.theme.global.colors['green!']};`
-      : ``;
+      : `
+      color: ${
+        props.theme.global.colors['text-strong'][
+          props.theme.dark ? 'dark' : 'light'
+        ]
+      };
+    `;
   }
   return style;
 };
@@ -1384,6 +1390,15 @@ export const hpe = deepFreeze({
         input {
           cursor: default;
         }`}
+
+        // on small screens, Select responsive padding
+        // sizes down which brings the icon too tight with
+        // edge of control. add padding to retain spacing
+        @media only screen and (max-width: 768px) {
+          svg {
+            padding-right: 6px;
+          }
+        }
       `,
     },
     icons: {
@@ -1406,7 +1421,7 @@ export const hpe = deepFreeze({
     },
   },
   starRating: {
-    color: 'purple!',
+    color: 'brand',
   },
   tab: {
     color: 'text',
@@ -1598,10 +1613,10 @@ export const hpe = deepFreeze({
   },
   thumbsRating: {
     like: {
-      color: 'purple!',
+      color: 'brand',
     },
     dislike: {
-      color: 'purple!',
+      color: 'brand',
     },
   },
   // Theme-Designer only parameters
