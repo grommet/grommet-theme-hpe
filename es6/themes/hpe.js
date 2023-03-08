@@ -30,7 +30,7 @@ var deepFreeze = function deepFreeze(obj) {
 var primaryBackground = function primaryBackground(props) {
   var style = '';
   if (!props.active) {
-    style += !props.colorValue ? "background:\nlinear-gradient(70deg, transparent,\n  " + props.theme.global.colors['green!'] + " 35%, transparent 70%)\n  " + props.theme.global.colors['green!'] + ";" : "";
+    style += !props.colorValue ? "background:\nlinear-gradient(70deg, transparent,\n  " + props.theme.global.colors['green!'] + " 35%, transparent 70%)\n  " + props.theme.global.colors['green!'] + ";" : "\n      color: " + props.theme.global.colors['text-strong'][props.theme.dark ? 'dark' : 'light'] + ";\n    ";
   }
   return style;
 };
@@ -1374,7 +1374,7 @@ export var hpe = deepFreeze({
     control: {
       extend: function extend(_ref17) {
         var disabled = _ref17.disabled;
-        return css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
+        return css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n\n        // on small screens, Select responsive padding\n        // sizes down which brings the icon too tight with\n        // edge of control. add padding to retain spacing\n        @media only screen and (max-width: 768px) {\n          svg {\n            padding-right: 6px;\n          }\n        }\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
       }
     },
     icons: {
@@ -1408,7 +1408,7 @@ export var hpe = deepFreeze({
     }
   },
   starRating: {
-    color: 'purple!'
+    color: 'brand'
   },
   tab: {
     color: 'text',
@@ -1576,10 +1576,10 @@ export var hpe = deepFreeze({
   },
   thumbsRating: {
     like: {
-      color: 'purple!'
+      color: 'brand'
     },
     dislike: {
-      color: 'purple!'
+      color: 'brand'
     }
   },
   // Theme-Designer only parameters
