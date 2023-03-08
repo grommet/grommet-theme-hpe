@@ -203,7 +203,7 @@ export var hpe = deepFreeze({
   anchor: {
     color: 'text-strong',
     textDecoration: 'underline',
-    fontWeight: 700,
+    fontWeight: 500,
     gap: 'xsmall',
     hover: {
       textDecoration: 'underline'
@@ -211,30 +211,37 @@ export var hpe = deepFreeze({
     size: {
       large: {
         color: 'brand',
+        fontWeight: 700,
         textDecoration: 'none'
       },
       xlarge: {
         color: 'brand',
+        fontWeight: 700,
         textDecoration: 'none'
       },
       xxlarge: {
         color: 'brand',
+        fontWeight: 700,
         textDecoration: 'none'
       },
       '3xl': {
         color: 'brand',
+        fontWeight: 700,
         textDecoration: 'none'
       },
       '4xl': {
         color: 'brand',
+        fontWeight: 700,
         textDecoration: 'none'
       },
       '5xl': {
         color: 'brand',
+        fontWeight: 700,
         textDecoration: 'none'
       },
       '6xl': {
         color: 'brand',
+        fontWeight: 700,
         textDecoration: 'none'
       }
     }
