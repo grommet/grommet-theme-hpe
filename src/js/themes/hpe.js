@@ -5,11 +5,11 @@ import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
 import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
 import { Descending } from 'grommet-icons/icons/Descending';
-import { FormDown } from 'grommet-icons/icons/FormDown';
-import { FormNext } from 'grommet-icons/icons/FormNext';
-import { FormPrevious } from 'grommet-icons/icons/FormPrevious';
-import { FormUp } from 'grommet-icons/icons/FormUp';
+import { Down } from 'grommet-icons/icons/Down';
+import { Next } from 'grommet-icons/icons/Next';
+import { Previous } from 'grommet-icons/icons/Previous';
 import { Unsorted } from 'grommet-icons/icons/Unsorted';
+import { Up } from 'grommet-icons/icons/Up';
 import { Hpe } from 'grommet-icons/icons/Hpe';
 
 import { backgrounds } from './backgrounds';
@@ -37,12 +37,12 @@ linear-gradient(70deg, transparent,
   ${props.theme.global.colors['green!']} 35%, transparent 70%)
   ${props.theme.global.colors['green!']};`
       : `
-  color: ${
-    props.theme.global.colors['text-strong'][
-      props.theme.dark ? 'dark' : 'light'
-    ]
-  };
-`;
+      color: ${
+        props.theme.global.colors['text-strong'][
+          props.theme.dark ? 'dark' : 'light'
+        ]
+      };
+    `;
   }
   return style;
 };
@@ -231,13 +231,15 @@ export const hpe = deepFreeze({
     },
     border: undefined,
     icons: {
+      collapse: Up,
+      expand: Down,
       color: 'text',
     },
   },
   anchor: {
     color: 'text-strong',
     textDecoration: 'underline',
-    fontWeight: 700,
+    fontWeight: 500,
     gap: 'xsmall',
     hover: {
       textDecoration: 'underline',
@@ -245,30 +247,37 @@ export const hpe = deepFreeze({
     size: {
       large: {
         color: 'brand',
+        fontWeight: 700,
         textDecoration: 'none',
       },
       xlarge: {
         color: 'brand',
+        fontWeight: 700,
         textDecoration: 'none',
       },
       xxlarge: {
         color: 'brand',
+        fontWeight: 700,
         textDecoration: 'none',
       },
       '3xl': {
         color: 'brand',
+        fontWeight: 700,
         textDecoration: 'none',
       },
       '4xl': {
         color: 'brand',
+        fontWeight: 700,
         textDecoration: 'none',
       },
       '5xl': {
         color: 'brand',
+        fontWeight: 700,
         textDecoration: 'none',
       },
       '6xl': {
         color: 'brand',
+        fontWeight: 700,
         textDecoration: 'none',
       },
     },
@@ -495,7 +504,7 @@ export const hpe = deepFreeze({
           horizontal: '24px',
         },
         iconOnly: {
-          pad: '15px',
+          pad: '12px',
         },
         toolbar: {
           pad: {
@@ -506,36 +515,28 @@ export const hpe = deepFreeze({
       },
       xlarge: {
         border: {
-          radius: '10px',
+          radius: '2em',
         },
         pad: {
-          vertical: '10px',
-          horizontal: '20px',
+          vertical: '18px',
+          horizontal: '30px',
         },
-        'cta-primary': {
-          pad: {
-            vertical: '10px',
-            horizontal: '28px',
-          },
-        },
-        'cta-alternate': {
-          pad: {
-            vertical: '10px',
-            horizontal: '28px',
-          },
+        iconOnly: {
+          pad: '21px',
         },
       },
     },
-    extend: ({ sizeProp }) => {
+    extend: ({ hasIcon, hasLabel, sizeProp }) => {
       // necessary so primary label is accessible on HPE green background
       const fontSize = '19px';
       const lineHeight = '24px';
       let style = '';
+      const iconOnly = hasIcon && !hasLabel;
       // keep reasonable click target for small button
-      if (sizeProp === 'small') {
+      if (sizeProp === 'small' && !iconOnly) {
         style += `line-height: ${lineHeight};`;
       }
-      if (sizeProp === 'medium' || sizeProp === undefined) {
+      if ((sizeProp === 'medium' || sizeProp === undefined) && !iconOnly) {
         style += `font-size: ${fontSize};
         line-height: ${lineHeight};`;
       }
@@ -543,9 +544,14 @@ export const hpe = deepFreeze({
     },
   },
   calendar: {
+    // ensure color is #FFFFFF to meet color contrast requirement on HPE green
+    day: {
+      extend: ({ isSelected, theme }) =>
+        isSelected && `color: ${theme.global.colors['text-primary-button']};`,
+    },
     icons: {
-      next: FormNext,
-      previous: FormPrevious,
+      next: Next,
+      previous: Previous,
     },
     small: {
       fontSize: '13.6px',
@@ -1042,11 +1048,13 @@ export const hpe = deepFreeze({
   },
   icon: {
     disableScaleDown: true,
+    matchSize: true,
     size: {
       small: '16px',
       medium: '18px',
       large: '24px',
-      xxlarge: '166px',
+      xlarge: '30px',
+      xxlarge: '36px',
     },
   },
   layer: {
@@ -1104,6 +1112,7 @@ export const hpe = deepFreeze({
     },
     icons: {
       color: 'text-strong',
+      down: Down,
     },
   },
   nameValuePair: {
@@ -1284,32 +1293,32 @@ export const hpe = deepFreeze({
     xsmall: {
       size: '14px',
       height: '16px',
-      maxWidth: '30em',
+      maxWidth: '25em',
     },
     small: {
       size: '16px',
       height: '18px',
-      maxWidth: '30em',
+      maxWidth: '25em',
     },
     medium: {
       size: '18px',
       height: '24px',
-      maxWidth: '30em',
+      maxWidth: '25em',
     },
     large: {
       size: '24px',
       height: '32px',
-      maxWidth: '30em',
+      maxWidth: '25em',
     },
     xlarge: {
       size: '30px',
       height: '36px',
-      maxWidth: '27em',
+      maxWidth: '25em',
     },
     xxlarge: {
       size: '36px',
       height: '40px',
-      maxWidth: '27em',
+      maxWidth: '25em',
     },
     // This block applies size-specific weights to paragraph to ensure
     // that as paragraph sizes get larger, the weight decreases.
@@ -1368,11 +1377,11 @@ export const hpe = deepFreeze({
   },
   rangeInput: {
     thumb: {
-      color: 'green',
+      color: 'brand',
     },
     track: {
       lower: {
-        color: 'green',
+        color: 'brand',
       },
       upper: {
         color: 'border',
@@ -1388,19 +1397,28 @@ export const hpe = deepFreeze({
         input {
           cursor: default;
         }`}
+
+        // on small screens, Select responsive padding
+        // sizes down which brings the icon too tight with
+        // edge of control. add padding to retain spacing
+        @media only screen and (max-width: 768px) {
+          svg {
+            padding-right: 6px;
+          }
+        }
       `,
     },
     icons: {
       color: 'text',
-      down: FormDown,
-      up: FormUp,
+      down: Down,
+      up: Up,
     },
     options: undefined,
   },
   spinner: {
     container: {
       pad: 'none',
-      color: 'green',
+      color: 'brand',
       border: [
         { color: 'border-weak', side: 'all', size: 'medium' },
         { color: 'border-weak', side: 'right', size: 'medium' },
@@ -1410,7 +1428,7 @@ export const hpe = deepFreeze({
     },
   },
   starRating: {
-    color: 'purple!',
+    color: 'brand',
   },
   tab: {
     color: 'text',
@@ -1428,7 +1446,7 @@ export const hpe = deepFreeze({
       color: 'transparent',
       size: 'medium',
       active: {
-        color: 'green!',
+        color: 'brand',
       },
       disabled: {
         color: undefined,
@@ -1443,8 +1461,8 @@ export const hpe = deepFreeze({
     pad: {
       // top and bottom pad need to be defined individually, specifying
       // "vertical" only applies to top
-      bottom: 'small',
-      top: 'small',
+      bottom: '9px',
+      top: '9px',
       // align horizontal pad with button
       horizontal: '18px',
     },
@@ -1453,13 +1471,6 @@ export const hpe = deepFreeze({
       vertical: '-1px',
       horizontal: 'none',
     },
-    extend: `
-        // necessary to remove default line-height of 24px
-        // how will this behave if tab has an icon?
-        // is that allowed?
-        // grommet enhancement should be considered if so
-        > span { line-height: 18px; }
-      `,
   },
   tabs: {
     header: {
@@ -1609,10 +1620,10 @@ export const hpe = deepFreeze({
   },
   thumbsRating: {
     like: {
-      color: 'purple!',
+      color: 'brand',
     },
     dislike: {
-      color: 'purple!',
+      color: 'brand',
     },
   },
   // Theme-Designer only parameters
