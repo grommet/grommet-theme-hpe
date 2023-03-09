@@ -1,7 +1,7 @@
 import { hpe } from './hpe';
 import { deepMerge } from '../utils';
 
-export const hpeMark = deepMerge(hpe, {
+export const hpePop = deepMerge(hpe, {
   heading: {
     color: 'text-strong',
     weight: 400,

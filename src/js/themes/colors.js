@@ -57,7 +57,7 @@ export const colors = {
     dark: '#FFFFFF1F', // 12%
     light: '#0000001F', // 12%
   },
-  control: 'green',
+  control: 'brand',
   'active-background': 'background-contrast',
   'active-text': 'text',
   'disabled-text': 'text-weak', // deprecated, use text-weak instead
