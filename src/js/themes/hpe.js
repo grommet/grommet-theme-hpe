@@ -1129,11 +1129,6 @@ export const hpe = deepFreeze({
     container: {
       round: 'xsmall',
     },
-    iconContainer: {
-      pad: {
-        top: 'xxsmall',
-      },
-    },
     global: {
       container: {
         round: 'none',
