@@ -1340,6 +1340,10 @@
     "icons": {
       "color": "text",
       "down": {},
+      "margin": {
+        "left": "small",
+        "right": "12px"
+      },
       "up": {}
     }
   },

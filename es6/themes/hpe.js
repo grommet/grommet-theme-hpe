@@ -1376,12 +1376,20 @@ export var hpe = deepFreeze({
     control: {
       extend: function extend(_ref17) {
         var disabled = _ref17.disabled;
-        return css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n\n        // on small screens, Select responsive padding\n        // sizes down which brings the icon too tight with\n        // edge of control. add padding to retain spacing\n        @media only screen and (max-width: 768px) {\n          svg {\n            padding-right: 6px;\n          }\n        }\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
+        return css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
       }
     },
     icons: {
       color: 'text',
       down: Down,
+      margin: {
+        left: 'small',
+        // setting right margin to 12px because on small
+        // screens, Select responsive padding sizes down
+        // which brings the icon too tight with edge of
+        // control.
+        right: '12px'
+      },
       up: Up
     },
     options: undefined
