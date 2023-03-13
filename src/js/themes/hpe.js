@@ -1392,20 +1392,19 @@ export const hpe = deepFreeze({
         input {
           cursor: default;
         }`}
-
-        // on small screens, Select responsive padding
-        // sizes down which brings the icon too tight with
-        // edge of control. add padding to retain spacing
-        @media only screen and (max-width: 768px) {
-          svg {
-            padding-right: 6px;
-          }
-        }
       `,
     },
     icons: {
       color: 'text',
       down: Down,
+      margin: {
+        left: 'small',
+        // setting right margin to 12px because on small
+        // screens, Select responsive padding sizes down
+        // which brings the icon too tight with edge of
+        // control.
+        right: '12px',
+      },
       up: Up,
     },
     options: undefined,
