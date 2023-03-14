@@ -305,9 +305,6 @@ export const hpe = deepFreeze({
     },
     'cta-primary': {
       background: { color: 'brand' },
-      border: {
-        radius: '2em',
-      },
       color: 'text-primary-button',
       font: { weight: 'bold' },
       icon: <Hpe />,
@@ -316,9 +313,6 @@ export const hpe = deepFreeze({
     },
     'cta-alternate': {
       background: 'background-cta-alternate',
-      border: {
-        radius: '2em',
-      },
       color: 'text-strong',
       font: {
         weight: 'bold',
@@ -328,9 +322,7 @@ export const hpe = deepFreeze({
     },
     default: {
       color: 'text-strong',
-      border: {
-        radius: '2em',
-      },
+      border: undefined,
       font: {
         weight: 700,
       },
@@ -339,9 +331,6 @@ export const hpe = deepFreeze({
     primary: {
       background: {
         color: 'brand',
-      },
-      border: {
-        radius: '2em',
       },
       color: 'text-primary-button',
       font: {
@@ -352,7 +341,6 @@ export const hpe = deepFreeze({
     secondary: {
       border: {
         color: 'brand',
-        radius: '2em',
         width: '2px',
       },
       color: 'text-strong',
@@ -458,7 +446,7 @@ export const hpe = deepFreeze({
     size: {
       small: {
         border: {
-          radius: '6px',
+          radius: '2em',
         },
         pad: {
           vertical: '6px',
@@ -476,7 +464,7 @@ export const hpe = deepFreeze({
       },
       medium: {
         border: {
-          radius: '6px',
+          radius: '2em',
         },
         pad: {
           vertical: '6px',
@@ -497,7 +485,7 @@ export const hpe = deepFreeze({
       },
       large: {
         border: {
-          radius: '8px',
+          radius: '2em',
         },
         pad: {
           vertical: '8px',
