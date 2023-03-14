@@ -1524,11 +1524,6 @@ export const hpe = deepFreeze({
     value: {
       weight: 500,
     },
-    remove: {
-      margin: {
-        top: 'xxsmall',
-      },
-    },
   },
   text: {
     xsmall: {
