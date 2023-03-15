@@ -322,6 +322,7 @@ export const hpe = deepFreeze({
     },
     default: {
       color: 'text-strong',
+      // necessary so badge overlaps label/icon
       border: undefined,
       font: {
         weight: 700,
@@ -436,13 +437,6 @@ export const hpe = deepFreeze({
       },
     },
     color: 'text-strong',
-    border: {
-      radius: '6px',
-    },
-    padding: {
-      vertical: '4px',
-      horizontal: '22px',
-    },
     size: {
       small: {
         border: {
@@ -456,6 +450,9 @@ export const hpe = deepFreeze({
           pad: '9px',
         },
         toolbar: {
+          border: {
+            radius: '6px',
+          },
           pad: {
             vertical: '4px',
             horizontal: '8px',
@@ -495,6 +492,9 @@ export const hpe = deepFreeze({
           pad: '12px',
         },
         toolbar: {
+          border: {
+            radius: '8px',
+          },
           pad: {
             vertical: '8px',
             horizontal: '16px',
