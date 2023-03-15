@@ -273,9 +273,6 @@ export var hpe = deepFreeze({
       background: {
         color: 'brand'
       },
-      border: {
-        radius: '2em'
-      },
       color: 'text-primary-button',
       font: {
         weight: 'bold'
@@ -288,9 +285,6 @@ export var hpe = deepFreeze({
     },
     'cta-alternate': {
       background: 'background-cta-alternate',
-      border: {
-        radius: '2em'
-      },
       color: 'text-strong',
       font: {
         weight: 'bold'
@@ -302,9 +296,8 @@ export var hpe = deepFreeze({
     },
     "default": {
       color: 'text-strong',
-      border: {
-        radius: '2em'
-      },
+      // necessary so badge overlaps label/icon
+      border: undefined,
       font: {
         weight: 700
       }
@@ -313,9 +306,6 @@ export var hpe = deepFreeze({
     primary: {
       background: {
         color: 'brand'
-      },
-      border: {
-        radius: '2em'
       },
       color: 'text-primary-button',
       font: {
@@ -328,7 +318,6 @@ export var hpe = deepFreeze({
     secondary: {
       border: {
         color: 'brand',
-        radius: '2em',
         width: '2px'
       },
       color: 'text-strong',
@@ -429,17 +418,10 @@ export var hpe = deepFreeze({
       }
     },
     color: 'text-strong',
-    border: {
-      radius: '6px'
-    },
-    padding: {
-      vertical: '4px',
-      horizontal: '22px'
-    },
     size: {
       small: {
         border: {
-          radius: '6px'
+          radius: '2em'
         },
         pad: {
           vertical: '6px',
@@ -449,6 +431,9 @@ export var hpe = deepFreeze({
           pad: '9px'
         },
         toolbar: {
+          border: {
+            radius: '6px'
+          },
           pad: {
             vertical: '4px',
             horizontal: '8px'
@@ -457,7 +442,7 @@ export var hpe = deepFreeze({
       },
       medium: {
         border: {
-          radius: '6px'
+          radius: '2em'
         },
         pad: {
           vertical: '6px',
@@ -478,7 +463,7 @@ export var hpe = deepFreeze({
       },
       large: {
         border: {
-          radius: '8px'
+          radius: '2em'
         },
         pad: {
           vertical: '8px',
@@ -488,6 +473,9 @@ export var hpe = deepFreeze({
           pad: '12px'
         },
         toolbar: {
+          border: {
+            radius: '8px'
+          },
           pad: {
             vertical: '8px',
             horizontal: '16px'
@@ -1504,11 +1492,6 @@ export var hpe = deepFreeze({
   tag: {
     value: {
       weight: 500
-    },
-    remove: {
-      margin: {
-        top: 'xxsmall'
-      }
     }
   },
   text: {

@@ -343,9 +343,6 @@
       "background": {
         "color": "brand"
       },
-      "border": {
-        "radius": "2em"
-      },
       "color": "text-primary-button",
       "font": {
         "weight": "bold"
@@ -362,9 +359,6 @@
     },
     "cta-alternate": {
       "background": "background-cta-alternate",
-      "border": {
-        "radius": "2em"
-      },
       "color": "text-strong",
       "font": {
         "weight": "bold"
@@ -383,9 +377,6 @@
     },
     "default": {
       "color": "text-strong",
-      "border": {
-        "radius": "2em"
-      },
       "font": {
         "weight": 700
       }
@@ -395,9 +386,6 @@
       "background": {
         "color": "brand"
       },
-      "border": {
-        "radius": "2em"
-      },
       "color": "text-primary-button",
       "font": {
         "weight": 700
@@ -406,7 +394,6 @@
     "secondary": {
       "border": {
         "color": "brand",
-        "radius": "2em",
         "width": "2px"
       },
       "color": "text-strong",
@@ -482,17 +469,10 @@
       }
     },
     "color": "text-strong",
-    "border": {
-      "radius": "6px"
-    },
-    "padding": {
-      "vertical": "4px",
-      "horizontal": "22px"
-    },
     "size": {
       "small": {
         "border": {
-          "radius": "6px"
+          "radius": "2em"
         },
         "pad": {
           "vertical": "6px",
@@ -502,6 +482,9 @@
           "pad": "9px"
         },
         "toolbar": {
+          "border": {
+            "radius": "6px"
+          },
           "pad": {
             "vertical": "4px",
             "horizontal": "8px"
@@ -510,7 +493,7 @@
       },
       "medium": {
         "border": {
-          "radius": "6px"
+          "radius": "2em"
         },
         "pad": {
           "vertical": "6px",
@@ -531,7 +514,7 @@
       },
       "large": {
         "border": {
-          "radius": "8px"
+          "radius": "2em"
         },
         "pad": {
           "vertical": "8px",
@@ -541,6 +524,9 @@
           "pad": "12px"
         },
         "toolbar": {
+          "border": {
+            "radius": "8px"
+          },
           "pad": {
             "vertical": "8px",
             "horizontal": "16px"
@@ -1449,11 +1435,6 @@
   "tag": {
     "value": {
       "weight": 500
-    },
-    "remove": {
-      "margin": {
-        "top": "xxsmall"
-      }
     }
   },
   "text": {
