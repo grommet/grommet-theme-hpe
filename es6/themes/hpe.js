@@ -260,6 +260,7 @@ export var hpe = deepFreeze({
 
   button: {
     badge: {
+      align: 'container',
       size: {
         medium: '18px'
       },
