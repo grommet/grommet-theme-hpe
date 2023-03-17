@@ -339,6 +339,10 @@ export var hpe = deepFreeze({
       border: {
         radius: '0px'
       },
+      pad: {
+        horizontal: '12px',
+        vertical: '6px'
+      },
       font: {
         weight: 500
       }
@@ -1067,6 +1071,12 @@ export var hpe = deepFreeze({
     icons: {
       color: 'text-strong',
       down: Down
+    },
+    item: {
+      pad: {
+        horizontal: '18px',
+        vertical: '6px'
+      }
     }
   },
   nameValuePair: {

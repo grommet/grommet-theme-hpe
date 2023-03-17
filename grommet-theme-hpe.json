@@ -415,6 +415,10 @@
       "border": {
         "radius": "0px"
       },
+      "pad": {
+        "horizontal": "12px",
+        "vertical": "6px"
+      },
       "font": {
         "weight": 500
       }
@@ -1015,6 +1019,12 @@
     "icons": {
       "color": "text-strong",
       "down": {}
+    },
+    "item": {
+      "pad": {
+        "horizontal": "18px",
+        "vertical": "6px"
+      }
     }
   },
   "nameValuePair": {
