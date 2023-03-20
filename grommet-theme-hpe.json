@@ -331,6 +331,9 @@
   "button": {
     "badge": {
       "align": "container",
+      "container": {
+        "background": "text-strong"
+      },
       "size": {
         "medium": "18px"
       },

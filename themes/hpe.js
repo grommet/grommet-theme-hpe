@@ -265,6 +265,10 @@ var hpe = deepFreeze({
   button: {
     badge: {
       align: 'container',
+      container: {
+        // align badge background to button label color
+        background: 'text-strong'
+      },
       size: {
         medium: '18px'
       },
