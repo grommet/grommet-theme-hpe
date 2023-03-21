@@ -7,6 +7,7 @@ var _styledComponents = require("styled-components");
 var _Ascending = require("grommet-icons/icons/Ascending");
 var _Blank = require("grommet-icons/icons/Blank");
 var _CircleAlert = require("grommet-icons/icons/CircleAlert");
+var _Close = require("grommet-icons/icons/Close");
 var _Descending = require("grommet-icons/icons/Descending");
 var _Down = require("grommet-icons/icons/Down");
 var _Next = require("grommet-icons/icons/Next");
@@ -749,7 +750,7 @@ var hpe = deepFreeze({
     },
     button: {
       border: {
-        radius: '24px'
+        radius: '2em'
       },
       pad: {
         vertical: '6px',
@@ -760,7 +761,8 @@ var hpe = deepFreeze({
         weight: 'bold'
       },
       hover: {
-        background: 'background-contrast'
+        background: 'background-contrast',
+        color: 'text-strong'
       }
     },
     dragOver: {
@@ -771,6 +773,9 @@ var hpe = deepFreeze({
       border: {
         color: 'border'
       }
+    },
+    icons: {
+      remove: _Close.Close
     },
     message: {
       color: 'placeholder'

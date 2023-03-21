@@ -720,7 +720,7 @@
     },
     "button": {
       "border": {
-        "radius": "24px"
+        "radius": "2em"
       },
       "pad": {
         "vertical": "6px",
@@ -731,7 +731,8 @@
         "weight": "bold"
       },
       "hover": {
-        "background": "background-contrast"
+        "background": "background-contrast",
+        "color": "text-strong"
       }
     },
     "dragOver": {
@@ -742,6 +743,9 @@
       "border": {
         "color": "border"
       }
+    },
+    "icons": {
+      "remove": {}
     },
     "message": {
       "color": "placeholder"
