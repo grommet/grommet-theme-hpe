@@ -850,7 +850,7 @@ export const hpe = deepFreeze({
       container: {
         gap: 'xsmall',
       },
-      icon: <CircleAlert size="small" style={{ marginTop: '4px' }} />,
+      icon: <CircleAlert size="small" />,
       size: 'xsmall',
       color: 'text',
       margin: {
