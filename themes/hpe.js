@@ -1270,8 +1270,8 @@ var hpe = deepFreeze({
         border: {
           radius: '2em'
         },
+        color: 'text-strong',
         font: {
-          color: 'text-strong',
           weight: 700
         }
       },
