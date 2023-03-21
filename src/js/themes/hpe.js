@@ -4,6 +4,7 @@ import { css } from 'styled-components';
 import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
 import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
+import { Close } from 'grommet-icons/icons/Close';
 import { Descending } from 'grommet-icons/icons/Descending';
 import { Down } from 'grommet-icons/icons/Down';
 import { Next } from 'grommet-icons/icons/Next';
@@ -786,7 +787,7 @@ export const hpe = deepFreeze({
     },
     button: {
       border: {
-        radius: '24px',
+        radius: '2em',
       },
       pad: {
         vertical: '6px',
@@ -798,6 +799,7 @@ export const hpe = deepFreeze({
       },
       hover: {
         background: 'background-contrast',
+        color: 'text-strong',
       },
     },
     dragOver: {
@@ -808,6 +810,9 @@ export const hpe = deepFreeze({
       border: {
         color: 'border',
       },
+    },
+    icons: {
+      remove: Close,
     },
     message: {
       color: 'placeholder',
