@@ -1279,7 +1279,6 @@ export const hpe = deepFreeze({
         },
         color: 'text-strong',
         font: {
-          color: 'text-strong',
           weight: 700,
         },
       },
