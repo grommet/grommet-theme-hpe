@@ -814,10 +814,7 @@ export var hpe = deepFreeze({
         gap: 'xsmall'
       },
       icon: /*#__PURE__*/React.createElement(CircleAlert, {
-        size: "small",
-        style: {
-          marginTop: '4px'
-        }
+        size: "small"
       }),
       size: 'xsmall',
       color: 'text',

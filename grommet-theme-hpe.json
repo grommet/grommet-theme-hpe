@@ -789,10 +789,7 @@
         "key": null,
         "ref": null,
         "props": {
-          "size": "small",
-          "style": {
-            "marginTop": "4px"
-          }
+          "size": "small"
         },
         "_owner": null,
         "_store": {}
