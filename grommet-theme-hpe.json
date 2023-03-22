@@ -677,11 +677,7 @@
         "vertical": "xsmall"
       }
     },
-    "icons": {
-      "ascending": {},
-      "descending": {},
-      "sortable": {}
-    },
+    "icons": {},
     "pinned": {
       "header": {
         "extend": "backdrop-filter: blur(12px);"
