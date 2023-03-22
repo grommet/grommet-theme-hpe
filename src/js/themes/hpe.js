@@ -4,12 +4,13 @@ import { css } from 'styled-components';
 import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
 import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
+import { Close } from 'grommet-icons/icons/Close';
 import { Descending } from 'grommet-icons/icons/Descending';
-import { FormDown } from 'grommet-icons/icons/FormDown';
-import { FormNext } from 'grommet-icons/icons/FormNext';
-import { FormPrevious } from 'grommet-icons/icons/FormPrevious';
-import { FormUp } from 'grommet-icons/icons/FormUp';
+import { Down } from 'grommet-icons/icons/Down';
+import { Next } from 'grommet-icons/icons/Next';
+import { Previous } from 'grommet-icons/icons/Previous';
 import { Unsorted } from 'grommet-icons/icons/Unsorted';
+import { Up } from 'grommet-icons/icons/Up';
 import { Hpe } from 'grommet-icons/icons/Hpe';
 
 import { backgrounds } from './backgrounds';
@@ -26,6 +27,33 @@ const deepFreeze = (obj) => {
   );
   return Object.freeze(obj);
 };
+
+// necessary to apply a linear gradient for primary button background
+const primaryBackground = (props) => {
+  let style = '';
+  if (!props.active) {
+    style += !props.colorValue
+      ? `background:
+linear-gradient(70deg, transparent,
+  ${props.theme.global.colors['green!']} 35%, transparent 70%)
+  ${props.theme.global.colors['green!']};`
+      : `
+      color: ${
+        props.theme.global.colors['text-strong'][
+          props.theme.dark ? 'dark' : 'light'
+        ]
+      };
+    `;
+  }
+  return style;
+};
+
+// necessary to adjust the background color
+// of button to darker green to expose gradient on hover
+const primaryHoverBackground = (props) =>
+  !props.active && !props.colorValue
+    ? `background-color: ${props.theme.global.colors.green.dark};`
+    : '';
 
 export const hpe = deepFreeze({
   defaultMode: 'light',
@@ -193,6 +221,7 @@ export const hpe = deepFreeze({
       },
     },
     heading: {
+      level: 3,
       margin: { vertical: 'medium', horizontal: 'xsmall' },
     },
     hover: {
@@ -203,16 +232,55 @@ export const hpe = deepFreeze({
     },
     border: undefined,
     icons: {
+      collapse: Up,
+      expand: Down,
       color: 'text',
     },
   },
   anchor: {
-    color: 'text',
+    color: 'text-strong',
     textDecoration: 'underline',
     fontWeight: 500,
     gap: 'xsmall',
     hover: {
       textDecoration: 'underline',
+    },
+    size: {
+      large: {
+        color: 'brand',
+        fontWeight: 700,
+        textDecoration: 'none',
+      },
+      xlarge: {
+        color: 'brand',
+        fontWeight: 700,
+        textDecoration: 'none',
+      },
+      xxlarge: {
+        color: 'brand',
+        fontWeight: 700,
+        textDecoration: 'none',
+      },
+      '3xl': {
+        color: 'brand',
+        fontWeight: 700,
+        textDecoration: 'none',
+      },
+      '4xl': {
+        color: 'brand',
+        fontWeight: 700,
+        textDecoration: 'none',
+      },
+      '5xl': {
+        color: 'brand',
+        fontWeight: 700,
+        textDecoration: 'none',
+      },
+      '6xl': {
+        color: 'brand',
+        fontWeight: 700,
+        textDecoration: 'none',
+      },
     },
   },
   avatar: {
@@ -226,21 +294,31 @@ export const hpe = deepFreeze({
     },
   },
   button: {
+    badge: {
+      align: 'container',
+      container: {
+        // align badge background to button label color
+        background: 'text-strong',
+      },
+      size: {
+        medium: '18px',
+      },
+      text: {
+        size: {
+          medium: 'xsmall',
+        },
+      },
+    },
     'cta-primary': {
       background: { color: 'brand' },
-      border: {
-        radius: '100px',
-      },
       color: 'text-primary-button',
       font: { weight: 'bold' },
       icon: <Hpe />,
       reverse: true,
+      extend: (props) => primaryBackground(props),
     },
     'cta-alternate': {
       background: 'background-cta-alternate',
-      border: {
-        radius: '100px',
-      },
       color: 'text-strong',
       font: {
         weight: 'bold',
@@ -260,22 +338,11 @@ export const hpe = deepFreeze({
       background: {
         color: 'brand',
       },
-      border: undefined,
       color: 'text-primary-button',
       font: {
         weight: 700,
       },
-      // for primary button with color, use text-strong
-      // instead of text-primary-button which is hard-coded
-      // to "white" specifically for HPE green.
-      extend: ({ colorValue, primary, theme }) =>
-        colorValue && primary
-          ? `
-        color: ${
-          theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
-        };
-      `
-          : ``,
+      extend: (props) => primaryBackground(props),
     },
     secondary: {
       border: {
@@ -289,8 +356,7 @@ export const hpe = deepFreeze({
     },
     toolbar: {
       border: {
-        color: 'border',
-        width: '1px',
+        radius: '6px',
       },
       color: 'text-strong',
       font: {
@@ -301,6 +367,10 @@ export const hpe = deepFreeze({
       color: 'text',
       border: {
         radius: '0px',
+      },
+      pad: {
+        horizontal: '12px',
+        vertical: '6px',
       },
       font: {
         weight: 500,
@@ -326,53 +396,14 @@ export const hpe = deepFreeze({
       option: {
         background: 'selected-background',
         color: 'selected-text',
-      },
-    },
-    disabled: {
-      background: {
-        color: 'transparent',
-      },
-      color: 'text-xweak',
-      'cta-primary': {
-        border: {
-          color: 'border-weak',
-          width: '2px',
+        font: {
+          weight: 700,
         },
       },
-      'cta-alternate': {
-        border: {
-          color: 'border-weak',
-          width: '2px',
-        },
-      },
-      primary: {
-        border: {
-          color: 'border-weak',
-          width: '2px',
-        },
-      },
-      secondary: {
-        border: {
-          color: 'border-weak',
-        },
-      },
-      opacity: 1.0,
     },
     hover: {
       'cta-primary': {
-        extend: ({ active, colorValue, theme }) => {
-          let color;
-          if (!colorValue && !active) {
-            if (theme.dark) {
-              color = 'rgba(0, 0, 0, 0.2)';
-            } else color = 'rgba(0, 0, 0, 0.2)'; // TBD
-          }
-
-          const style = `inset 0 0 100px 100px ${color}`;
-          return `-moz-box-shadow: ${style};
-            -webkit-box-shadow: ${style};
-            box-shadow: ${style};`;
-        },
+        extend: (props) => primaryHoverBackground(props),
       },
       'cta-alternate': {
         extend: ({ active, colorValue, theme }) => {
@@ -395,14 +426,17 @@ export const hpe = deepFreeze({
         },
         color: undefined,
       },
+      option: {
+        background: 'active-background',
+        color: 'active-text',
+      },
+      primary: {
+        extend: (props) => primaryHoverBackground(props),
+      },
       secondary: {
         border: {
           width: '3px',
         },
-      },
-      option: {
-        background: 'active-background',
-        color: 'active-text',
       },
       toolbar: {
         background: {
@@ -410,155 +444,141 @@ export const hpe = deepFreeze({
         },
         color: undefined,
       },
-      primary: {
-        extend: ({ active, colorValue, theme }) => {
-          let color;
-          if (!colorValue && !active) {
-            if (theme.dark) {
-              color = 'rgba(0, 0, 0, 0.2)';
-            } else color = 'rgba(0, 0, 0, 0.2)';
-          }
-
-          const style = `inset 0 0 100px 100px ${color}`;
-          return `-moz-box-shadow: ${style};
-            -webkit-box-shadow: ${style};
-            box-shadow: ${style};`;
-        },
-      },
     },
     color: 'text-strong',
-    border: {
-      radius: '6px',
-    },
-    padding: {
-      vertical: '4px',
-      horizontal: '22px',
-    },
     size: {
       small: {
         border: {
-          radius: '6px',
+          radius: '2em',
         },
         pad: {
-          vertical: '4px',
-          horizontal: '8px',
+          vertical: '6px',
+          horizontal: '18px',
         },
-        'cta-primary': {
-          pad: {
-            vertical: '3px',
-            horizontal: '12px',
+        iconOnly: {
+          pad: '9px',
+        },
+        toolbar: {
+          border: {
+            radius: '6px',
           },
-        },
-        'cta-alternate': {
           pad: {
-            vertical: '3px',
-            horizontal: '12px',
+            vertical: '4px',
+            horizontal: '8px',
           },
         },
       },
       medium: {
         border: {
-          radius: '6px',
+          radius: '2em',
         },
         pad: {
           vertical: '6px',
-          horizontal: '12px',
+          horizontal: '18px',
         },
-        'cta-primary': {
-          pad: {
-            vertical: '6px',
-            horizontal: '16px',
+        iconOnly: {
+          pad: '9px',
+        },
+        toolbar: {
+          border: {
+            radius: '6px',
           },
-        },
-        'cta-alternate': {
           pad: {
             vertical: '6px',
-            horizontal: '16px',
+            horizontal: '12px',
           },
         },
       },
       large: {
         border: {
-          radius: '8px',
+          radius: '2em',
         },
         pad: {
           vertical: '8px',
-          horizontal: '16px',
+          horizontal: '24px',
         },
-        'cta-primary': {
-          pad: {
-            vertical: '8px',
-            horizontal: '20px',
+        iconOnly: {
+          pad: '12px',
+        },
+        toolbar: {
+          border: {
+            radius: '8px',
           },
-        },
-        'cta-alternate': {
           pad: {
             vertical: '8px',
-            horizontal: '20px',
+            horizontal: '16px',
           },
         },
       },
       xlarge: {
         border: {
-          radius: '10px',
+          radius: '2em',
         },
         pad: {
-          vertical: '10px',
-          horizontal: '20px',
+          vertical: '18px',
+          horizontal: '30px',
         },
-        'cta-primary': {
-          pad: {
-            vertical: '10px',
-            horizontal: '28px',
-          },
-        },
-        'cta-alternate': {
-          pad: {
-            vertical: '10px',
-            horizontal: '28px',
-          },
+        iconOnly: {
+          pad: '21px',
         },
       },
     },
-    // aligning with brand central which follows slightly different interval between t-shirt sizes
-    extend: ({ sizeProp }) => {
-      let fontSize = '19px'; // necessary so cta-primary label is accessible on HPE green background
-      let lineHeight = '24px';
-      if (sizeProp === 'small') {
-        fontSize = '16px';
-        lineHeight = '22px';
-      } else if (sizeProp === 'large') {
-        fontSize = '20px';
-        lineHeight = '26px';
-      } else if (sizeProp === 'xlarge') {
-        fontSize = '22px';
-        lineHeight = '28px';
+    extend: ({ hasIcon, hasLabel, sizeProp }) => {
+      // necessary so primary label is accessible on HPE green background
+      const fontSize = '19px';
+      const lineHeight = '24px';
+      let style = '';
+      const iconOnly = hasIcon && !hasLabel;
+      // keep reasonable click target for small button
+      if (sizeProp === 'small' && !iconOnly) {
+        style += `line-height: ${lineHeight};`;
       }
-      return `
-      font-size: ${fontSize};
-      line-height: ${lineHeight}
-      `;
+      if ((sizeProp === 'medium' || sizeProp === undefined) && !iconOnly) {
+        style += `font-size: ${fontSize};
+        line-height: ${lineHeight};`;
+      }
+      return style;
     },
   },
   calendar: {
+    // ensure color is #FFFFFF to meet color contrast requirement on HPE green
+    day: {
+      extend: ({ isSelected, theme }) =>
+        isSelected && `color: ${theme.global.colors['text-primary-button']};`,
+    },
     icons: {
-      next: FormNext,
-      previous: FormPrevious,
+      next: Next,
+      previous: Previous,
     },
     small: {
       fontSize: '13.6px',
       lineHeight: 1.375,
       daySize: '27.43px',
+      title: {
+        size: 'medium',
+        weight: 500,
+        color: 'text-strong',
+      },
     },
     medium: {
       fontSize: '18px',
       lineHeight: 1.45,
       daySize: '54.86px',
+      title: {
+        size: 'large',
+        weight: 500,
+        color: 'text-strong',
+      },
     },
     large: {
       fontSize: '31.2px',
       lineHeight: 1.11,
       daySize: '109.71px',
+      title: {
+        size: 'xlarge',
+        weight: 500,
+        color: 'text-strong',
+      },
     },
   },
   card: {
@@ -613,7 +633,7 @@ export const hpe = deepFreeze({
       extend: ({ theme, checked, indeterminate }) => `
       background-color: ${
         checked || indeterminate
-          ? theme.global.colors.green[theme.dark ? 'dark' : 'light']
+          ? theme.global.colors['green!']
           : theme.global.colors.background[theme.dark ? 'dark' : 'light']
       };
       ${(checked || indeterminate) && 'border: none;'}
@@ -621,9 +641,7 @@ export const hpe = deepFreeze({
     },
     icon: {
       extend: ({ theme }) => `stroke-width: 2px;
-      stroke: ${
-        theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
-      }`,
+      stroke: ${theme.global.colors['text-primary-button']}`,
     },
     gap: 'small',
     label: {
@@ -647,12 +665,7 @@ export const hpe = deepFreeze({
         `,
       },
       extend: ({ checked, theme }) => `
-        ${
-          checked &&
-          `background-color: ${
-            theme.global.colors.green[theme.dark ? 'dark' : 'light']
-          };`
-        }
+        ${checked && `background-color: ${theme.global.colors['green!']};`}
       `,
     },
     // HPE Design System guidance states that pad="none" should be applied on CheckBox
@@ -720,7 +733,7 @@ export const hpe = deepFreeze({
           };
         `,
       font: {
-        weight: 'bold',
+        weight: 500,
       },
       gap: 'none',
       hover: {
@@ -731,26 +744,26 @@ export const hpe = deepFreeze({
       pad: { horizontal: 'small', vertical: 'xsmall' },
     },
     icons: {
-      ascending: Ascending,
-      descending: Descending,
-      sortable: Unsorted,
+      ascending: () => <Ascending size="large" />,
+      descending: () => <Descending size="large" />,
+      contract: () => <Up height="medium" />,
+      expand: () => <Down height="medium" />,
+      sortable: () => <Unsorted size="large" />,
     },
-    /* Add FireFox work around until it adds support for backdrop-filter
-    https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter
-    */
     pinned: {
       header: {
-        background: { opacity: 0.95 },
-        extend: 'backdrop-filter: blur(8px);',
+        extend: 'backdrop-filter: blur(12px);',
       },
       body: {
-        background: { opacity: 0.95 },
-        extend: 'backdrop-filter: blur(8px);',
+        extend: 'backdrop-filter: blur(12px);',
       },
       footer: {
-        background: { opacity: 0.95 },
-        extend: 'backdrop-filter: blur(8px);',
+        extend: 'backdrop-filter: blur(12px);',
       },
+    },
+    primary: {
+      weight: 400,
+      color: 'text-strong',
     },
     resize: {
       hover: {
@@ -775,7 +788,7 @@ export const hpe = deepFreeze({
     },
     button: {
       border: {
-        radius: '24px',
+        radius: '2em',
       },
       pad: {
         vertical: '6px',
@@ -787,6 +800,7 @@ export const hpe = deepFreeze({
       },
       hover: {
         background: 'background-contrast',
+        color: 'text-strong',
       },
     },
     dragOver: {
@@ -797,6 +811,9 @@ export const hpe = deepFreeze({
       border: {
         color: 'border',
       },
+    },
+    icons: {
+      remove: Close,
     },
     message: {
       color: 'placeholder',
@@ -834,7 +851,7 @@ export const hpe = deepFreeze({
       container: {
         gap: 'xsmall',
       },
-      icon: <CircleAlert size="small" style={{ marginTop: '4px' }} />,
+      icon: <CircleAlert size="small" />,
       size: 'xsmall',
       color: 'text',
       margin: {
@@ -885,145 +902,162 @@ export const hpe = deepFreeze({
   },
   heading: {
     color: 'text-strong',
+    weight: 500,
     level: {
       1: {
+        font: {
+          weight: 400,
+        },
         small: {
-          size: '36px',
-          height: '42px',
-          maxWidth: '854px',
+          size: '24px',
+          height: '24px',
         },
         medium: {
-          size: '53px',
-          height: '59px',
-          maxWidth: '1277px',
+          size: '36px',
+          height: '36px',
         },
         large: {
-          size: '88px',
-          height: '94px',
-          maxWidth: '2122px',
+          size: '48px',
+          height: '48px',
         },
         xlarge: {
-          size: '124px',
-          height: '130px',
-          maxWidth: '2966px',
+          size: '60px',
+          height: '60px',
         },
       },
       2: {
         small: {
-          size: '31px',
-          height: '37px',
-          maxWidth: '749px',
+          size: '20px',
+          height: '20px',
         },
         medium: {
-          size: '44px',
-          height: '50px',
-          maxWidth: '1066px',
+          size: '24px',
+          height: '24px',
         },
         large: {
-          size: '58px',
-          height: '64px',
-          maxWidth: '1382px',
+          size: '36px',
+          height: '36px',
         },
         xlarge: {
-          size: '71px',
-          height: '77px',
-          maxWidth: '1699px',
+          size: '48px',
+          height: '48px',
         },
       },
       3: {
+        font: {
+          weight: 500,
+        },
         small: {
-          size: '27px',
-          height: '33px',
-          maxWidth: '643px',
+          size: '16px',
+          height: '16px',
         },
         medium: {
-          size: '36px',
-          height: '42px',
-          maxWidth: '854px',
+          size: '20px',
+          height: '20px',
         },
         large: {
-          size: '44px',
-          height: '50px',
-          maxWidth: '1066px',
+          size: '24px',
+          height: '24px',
         },
         xlarge: {
-          size: '53px',
-          height: '59px',
-          maxWidth: '1277px',
+          size: '36px',
+          height: '36px',
         },
       },
       4: {
+        font: {
+          weight: 500,
+        },
         small: {
-          size: '22px',
-          height: '28px',
-          maxWidth: '538px',
+          size: '12px',
+          height: '12px',
         },
         medium: {
-          size: '27px',
-          height: '33px',
-          maxWidth: '643px',
+          size: '16px',
+          height: '16px',
         },
         large: {
-          size: '31px',
-          height: '37px',
-          maxWidth: '749px',
+          size: '20px',
+          height: '20px',
         },
         xlarge: {
-          size: '36px',
-          height: '42px',
-          maxWidth: '854px',
+          size: '24px',
+          height: '24px',
         },
       },
       5: {
+        font: {
+          weight: 600,
+        },
         small: {
-          size: '16px',
-          height: '22px',
-          maxWidth: '379px',
+          size: '12px',
+          height: '12px',
         },
         medium: {
-          size: '16px',
-          height: '22px',
-          maxWidth: '379px',
+          size: '12px',
+          height: '12px',
         },
         large: {
           size: '16px',
-          height: '22px',
-          maxWidth: '379px',
+          height: '16px',
         },
         xlarge: {
-          size: '16px',
-          height: '22px',
-          maxWidth: '379px',
+          size: '20px',
+          height: '20px',
         },
       },
       6: {
+        font: {
+          weight: 600,
+        },
         small: {
-          size: '14px',
-          height: '20px',
-          maxWidth: '326px',
+          size: '12px',
+          height: '12px',
         },
         medium: {
-          size: '14px',
-          height: '20px',
-          maxWidth: '326px',
+          size: '12px',
+          height: '12px',
         },
         large: {
-          size: '14px',
-          height: '20px',
-          maxWidth: '326px',
+          size: '12px',
+          height: '12px',
         },
         xlarge: {
-          size: '14px',
-          height: '20px',
-          maxWidth: '326px',
+          size: '16px',
+          height: '16px',
         },
       },
     },
-    weight: 700,
+    // This block applies size-specific weights to headings to ensure
+    // that as heading sizes get small, the weight increases and as they
+    // get large, the weight decreases.
+    // This block can be removed once grommet theme structure is enhanced
+    // to support level and size specific weights.
+    extend: ({ level, size }) => {
+      let fontWeight = '';
+      if (level === 1 && size === 'small') {
+        fontWeight = 'font-weight: 500;';
+      } else if (level === 2 && ['large', 'xlarge'].includes(size)) {
+        fontWeight = 'font-weight: 400;';
+      } else if (level === 3 && size === 'small') {
+        fontWeight = 'font-weight: 600;';
+      } else if (level === 4 && ['small', 'medium'].includes(size)) {
+        fontWeight = 'font-weight: 600;';
+      } else if (level === 5 && size === 'xlarge') {
+        fontWeight = 'font-weight: 500;';
+      }
+      return fontWeight;
+    },
   },
   icon: {
+    disableScaleDown: true,
+    matchSize: true,
     size: {
-      xxlarge: '166px',
+      small: '16px',
+      medium: '18px',
+      large: '24px',
+      xlarge: '30px',
+      xxlarge: '36px',
     },
   },
   layer: {
@@ -1036,7 +1070,7 @@ export const hpe = deepFreeze({
       elevation: 'large',
     },
     overlay: {
-      background: '#00000080',
+      background: 'background-layer-overlay',
     },
     /* HPE Global Header/Footer Service a.k.a. HPE Common HFWS sets the header
      * at a z-index of 101. This adjustment allows for Layer modals and side-drawers
@@ -1080,6 +1114,19 @@ export const hpe = deepFreeze({
     },
     icons: {
       color: 'text-strong',
+      down: Down,
+    },
+    item: {
+      pad: {
+        horizontal: '18px',
+        vertical: '6px',
+      },
+    },
+  },
+  nameValuePair: {
+    name: {
+      color: 'text-strong',
+      weight: 500,
     },
   },
   notification: {
@@ -1097,6 +1144,11 @@ export const hpe = deepFreeze({
     },
     message: {
       color: { dark: 'text-strong' },
+    },
+    title: {
+      // any text props
+      color: 'text-strong',
+      weight: 500,
     },
     critical: {
       background: 'validation-critical',
@@ -1195,14 +1247,8 @@ export const hpe = deepFreeze({
     },
   },
   pageHeader: {
-    actions: {
-      pad: { vertical: 'xxsmall' }, // aligns button height with heading font-size instead of line-height
-    },
     subtitle: {
-      size: 'large',
-    },
-    title: {
-      size: 'small',
+      size: 'xlarge',
     },
     xsmall: {
       areas: [
@@ -1227,10 +1273,17 @@ export const hpe = deepFreeze({
   },
   pagination: {
     button: {
+      border: {
+        radius: '2em',
+      },
       font: {
         weight: 700,
       },
       active: {
+        border: {
+          radius: '2em',
+        },
+        color: 'text-strong',
         font: {
           weight: 700,
         },
@@ -1241,31 +1294,43 @@ export const hpe = deepFreeze({
     },
   },
   paragraph: {
+    xsmall: {
+      size: '14px',
+      height: '16px',
+      maxWidth: '25em',
+    },
     small: {
       size: '16px',
-      height: '22px',
-      maxWidth: '379px',
+      height: '20px',
+      maxWidth: '25em',
     },
     medium: {
       size: '18px',
       height: '24px',
-      maxWidth: '432px',
+      maxWidth: '25em',
     },
     large: {
-      size: '22px',
-      height: '28px',
-      maxWidth: '538px',
+      size: '24px',
+      height: '32px',
+      maxWidth: '25em',
     },
     xlarge: {
-      size: '27px',
-      height: '33px',
-      maxWidth: '643px',
+      size: '30px',
+      height: '36px',
+      maxWidth: '25em',
     },
     xxlarge: {
       size: '36px',
-      height: '42px',
-      maxWidth: '854px',
+      height: '40px',
+      maxWidth: '25em',
     },
+    // This block applies size-specific weights to paragraph to ensure
+    // that as paragraph sizes get larger, the weight decreases.
+    // This block can be removed once grommet theme structure is enhanced
+    // to support size-specific weights.
+    extend: ({ size }) => `
+      ${['xlarge', 'xxlarge'].includes(size) ? 'font-weight: 300;' : ''};
+    `,
   },
   radioButton: {
     border: {
@@ -1316,11 +1381,11 @@ export const hpe = deepFreeze({
   },
   rangeInput: {
     thumb: {
-      color: 'green',
+      color: 'brand',
     },
     track: {
       lower: {
-        color: 'green',
+        color: 'brand',
       },
       upper: {
         color: 'border',
@@ -1340,15 +1405,23 @@ export const hpe = deepFreeze({
     },
     icons: {
       color: 'text',
-      down: FormDown,
-      up: FormUp,
+      down: Down,
+      margin: {
+        left: 'small',
+        // setting right margin to 12px because on small
+        // screens, Select responsive padding sizes down
+        // which brings the icon too tight with edge of
+        // control.
+        right: '12px',
+      },
+      up: Up,
     },
     options: undefined,
   },
   spinner: {
     container: {
       pad: 'none',
-      color: 'green',
+      color: 'brand',
       border: [
         { color: 'border-weak', side: 'all', size: 'medium' },
         { color: 'border-weak', side: 'right', size: 'medium' },
@@ -1358,30 +1431,31 @@ export const hpe = deepFreeze({
     },
   },
   starRating: {
-    color: 'purple!',
+    color: 'brand',
   },
   tab: {
-    color: 'text-strong',
+    color: 'text',
     active: {
-      background: 'background-contrast',
+      background: undefined,
       color: 'text-strong',
+      weight: 'bold',
     },
     hover: {
-      background: 'background-contrast',
-      color: 'text-strong',
+      background: 'transparent',
+      color: 'text',
     },
     border: {
       side: 'bottom',
       color: 'transparent',
-      size: '6px',
+      size: 'medium',
       active: {
-        color: 'text-strong',
+        color: 'brand',
       },
       disabled: {
         color: undefined,
       },
       hover: {
-        color: undefined,
+        color: 'border-weak',
       },
     },
     disabled: {
@@ -1390,29 +1464,24 @@ export const hpe = deepFreeze({
     pad: {
       // top and bottom pad need to be defined individually, specifying
       // "vertical" only applies to top
-      bottom: 'small',
-      top: 'small',
-      horizontal: 'medium',
+      bottom: '9px',
+      top: '9px',
+      // align horizontal pad with button
+      horizontal: '18px',
     },
     margin: {
       // bring the overall tabs border behind invidual tab borders
-      vertical: '-2px',
+      vertical: '-1px',
       horizontal: 'none',
     },
-    extend: ({ theme }) => css`
-      border-top-left-radius: ${theme.global.control.border
-        .radius}; // should use radius property of border
-      border-top-right-radius: ${theme.global.control.border
-        .radius}; // should use radius property of border
-      font-weight: bold;
-    `,
   },
   tabs: {
     header: {
+      alignSelf: 'start',
       border: {
         side: 'bottom',
-        size: 'small',
-        color: 'border',
+        size: 'xsmall',
+        color: 'border-weak',
       },
     },
     step: {
@@ -1456,41 +1525,67 @@ export const hpe = deepFreeze({
     },
     footer: {
       extend: `
-        font-weight: bold;
+        font-weight: 500;
       `,
+    },
+  },
+  tag: {
+    value: {
+      weight: 500,
     },
   },
   text: {
     xsmall: {
       size: '14px',
-      height: '20px',
-      maxWidth: '326px',
+      height: '16px',
     },
     small: {
       size: '16px',
-      height: '22px',
-      maxWidth: '379px',
+      height: '20px',
     },
     medium: {
       size: '18px',
       height: '24px',
-      maxWidth: '432px',
     },
     large: {
-      size: '22px',
-      height: '28px',
-      maxWidth: '538px',
+      size: '24px',
+      height: '32px',
     },
     xlarge: {
-      size: '27px',
-      height: '33px',
-      maxWidth: '643px',
+      size: '30px',
+      height: '36px',
     },
     xxlarge: {
       size: '36px',
-      height: '42px',
-      maxWidth: '854px',
+      height: '40px',
     },
+    '3xl': {
+      size: '42px',
+      height: '46px',
+    },
+    '4xl': {
+      size: '48px',
+      height: '48px',
+    },
+    '5xl': {
+      size: '72px',
+      height: '72px',
+    },
+    '6xl': {
+      size: '72px',
+      height: '72px',
+    },
+    // This block applies size-specific weights to text to ensure
+    // that as text sizes get larger, the weight decreases.
+    // This block can be removed once grommet theme structure is enhanced
+    // to support size-specific weights.
+    extend: ({ size }) => `
+      ${
+        ['xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size)
+          ? 'font-weight: 300;'
+          : ''
+      };
+    `,
   },
   textInput: {
     container: {
@@ -1523,10 +1618,10 @@ export const hpe = deepFreeze({
   },
   thumbsRating: {
     like: {
-      color: 'purple!',
+      color: 'brand',
     },
     dislike: {
-      color: 'purple!',
+      color: 'brand',
     },
   },
   // Theme-Designer only parameters

@@ -27,14 +27,15 @@ export const colors = {
     dark: '#FFFFFF0F', // 6%
     light: '#0000000A',
   },
+  'background-layer-overlay': '#00000080',
   icon: 'text',
   text: {
     dark: '#FFFFFFE6', // 90%
-    light: '#444444',
+    light: '#6F6F6F',
   },
   'text-strong': {
     dark: '#FFFFFFF5', // 96%
-    light: '#000000',
+    light: '#444444',
   },
   'text-weak': {
     dark: '#FFFFFF80', // 50%
@@ -56,12 +57,12 @@ export const colors = {
     dark: '#FFFFFF1F', // 12%
     light: '#0000001F', // 12%
   },
-  control: 'green',
+  control: 'brand',
   'active-background': 'background-contrast',
   'active-text': 'text',
   'disabled-text': 'text-weak', // deprecated, use text-weak instead
-  'selected-background': 'green',
-  'selected-text': 'text-strong',
+  'selected-background': 'green!',
+  'selected-text': 'text-primary-button', // necessary to meet color contrast on HPE green background
   'status-critical': {
     dark: '#D04F4E',
     light: '#FC5A5A',
