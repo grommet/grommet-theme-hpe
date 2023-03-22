@@ -677,11 +677,7 @@
         "vertical": "xsmall"
       }
     },
-    "icons": {
-      "ascending": {},
-      "descending": {},
-      "sortable": {}
-    },
+    "icons": {},
     "pinned": {
       "header": {
         "extend": "backdrop-filter: blur(12px);"
@@ -1269,7 +1265,7 @@
     },
     "small": {
       "size": "16px",
-      "height": "18px",
+      "height": "20px",
       "maxWidth": "25em"
     },
     "medium": {

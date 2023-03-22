@@ -704,9 +704,31 @@ export var hpe = deepFreeze({
       }
     },
     icons: {
-      ascending: Ascending,
-      descending: Descending,
-      sortable: Unsorted
+      ascending: function ascending() {
+        return /*#__PURE__*/React.createElement(Ascending, {
+          size: "large"
+        });
+      },
+      descending: function descending() {
+        return /*#__PURE__*/React.createElement(Descending, {
+          size: "large"
+        });
+      },
+      contract: function contract() {
+        return /*#__PURE__*/React.createElement(Up, {
+          height: "medium"
+        });
+      },
+      expand: function expand() {
+        return /*#__PURE__*/React.createElement(Down, {
+          height: "medium"
+        });
+      },
+      sortable: function sortable() {
+        return /*#__PURE__*/React.createElement(Unsorted, {
+          size: "large"
+        });
+      }
     },
     pinned: {
       header: {
@@ -1281,7 +1303,7 @@ export var hpe = deepFreeze({
     },
     small: {
       size: '16px',
-      height: '18px',
+      height: '20px',
       maxWidth: '25em'
     },
     medium: {
