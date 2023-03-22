@@ -306,7 +306,6 @@ var hpe = deepFreeze({
     },
     "default": {
       color: 'text-strong',
-      // necessary so badge overlaps label/icon
       border: undefined,
       font: {
         weight: 700
