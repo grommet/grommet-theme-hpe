@@ -745,7 +745,7 @@ export const hpe = deepFreeze({
       pad: { horizontal: 'small', vertical: 'xsmall' },
     },
     icons: {
-      ascending: Ascending,
+      ascending: () => <Ascending size="large" />,
       descending: Descending,
       contract: () => <Up height="medium" />,
       expand: () => <Down height="medium" />,
