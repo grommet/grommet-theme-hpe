@@ -749,7 +749,7 @@ export const hpe = deepFreeze({
       descending: () => <Descending size="large" />,
       contract: () => <Up height="medium" />,
       expand: () => <Down height="medium" />,
-      sortable: Unsorted,
+      sortable: () => <Unsorted size="large" />,
     },
     pinned: {
       header: {
