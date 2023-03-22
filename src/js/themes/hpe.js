@@ -1300,7 +1300,7 @@ export const hpe = deepFreeze({
     },
     small: {
       size: '16px',
-      height: '18px',
+      height: '20px',
       maxWidth: '25em',
     },
     medium: {
