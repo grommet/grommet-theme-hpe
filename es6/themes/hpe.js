@@ -704,31 +704,9 @@ export var hpe = deepFreeze({
       }
     },
     icons: {
-      ascending: function ascending() {
-        return /*#__PURE__*/React.createElement(Ascending, {
-          size: "large"
-        });
-      },
-      descending: function descending() {
-        return /*#__PURE__*/React.createElement(Descending, {
-          size: "large"
-        });
-      },
-      contract: function contract() {
-        return /*#__PURE__*/React.createElement(Up, {
-          height: "medium"
-        });
-      },
-      expand: function expand() {
-        return /*#__PURE__*/React.createElement(Down, {
-          height: "medium"
-        });
-      },
-      sortable: function sortable() {
-        return /*#__PURE__*/React.createElement(Unsorted, {
-          size: "large"
-        });
-      }
+      ascending: Ascending,
+      descending: Descending,
+      sortable: Unsorted
     },
     pinned: {
       header: {

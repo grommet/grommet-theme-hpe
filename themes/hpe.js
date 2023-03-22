@@ -708,31 +708,9 @@ var hpe = deepFreeze({
       }
     },
     icons: {
-      ascending: function ascending() {
-        return /*#__PURE__*/_react["default"].createElement(_Ascending.Ascending, {
-          size: "large"
-        });
-      },
-      descending: function descending() {
-        return /*#__PURE__*/_react["default"].createElement(_Descending.Descending, {
-          size: "large"
-        });
-      },
-      contract: function contract() {
-        return /*#__PURE__*/_react["default"].createElement(_Up.Up, {
-          height: "medium"
-        });
-      },
-      expand: function expand() {
-        return /*#__PURE__*/_react["default"].createElement(_Down.Down, {
-          height: "medium"
-        });
-      },
-      sortable: function sortable() {
-        return /*#__PURE__*/_react["default"].createElement(_Unsorted.Unsorted, {
-          size: "large"
-        });
-      }
+      ascending: _Ascending.Ascending,
+      descending: _Descending.Descending,
+      sortable: _Unsorted.Unsorted
     },
     pinned: {
       header: {
