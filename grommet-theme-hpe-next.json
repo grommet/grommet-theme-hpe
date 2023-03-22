@@ -82,7 +82,7 @@
         "dark": "#FFFFFF0F",
         "light": "#0000000A"
       },
-      "background-layer-overlay": "#0000001F",
+      "background-layer-overlay": "#00000080",
       "icon": "text",
       "text": {
         "dark": "#FFFFFFE6",
@@ -275,7 +275,7 @@
   "anchor": {
     "color": "text-strong",
     "textDecoration": "underline",
-    "fontWeight": 700,
+    "fontWeight": 500,
     "gap": "xsmall",
     "hover": {
       "textDecoration": "underline"
@@ -283,30 +283,37 @@
     "size": {
       "large": {
         "color": "brand",
+        "fontWeight": 700,
         "textDecoration": "none"
       },
       "xlarge": {
         "color": "brand",
+        "fontWeight": 700,
         "textDecoration": "none"
       },
       "xxlarge": {
         "color": "brand",
+        "fontWeight": 700,
         "textDecoration": "none"
       },
       "3xl": {
         "color": "brand",
+        "fontWeight": 700,
         "textDecoration": "none"
       },
       "4xl": {
         "color": "brand",
+        "fontWeight": 700,
         "textDecoration": "none"
       },
       "5xl": {
         "color": "brand",
+        "fontWeight": 700,
         "textDecoration": "none"
       },
       "6xl": {
         "color": "brand",
+        "fontWeight": 700,
         "textDecoration": "none"
       }
     }
@@ -323,6 +330,10 @@
   },
   "button": {
     "badge": {
+      "align": "container",
+      "container": {
+        "background": "text-strong"
+      },
       "size": {
         "medium": "18px"
       },
@@ -335,9 +346,6 @@
     "cta-primary": {
       "background": {
         "color": "brand"
-      },
-      "border": {
-        "radius": "2em"
       },
       "color": "text-primary-button",
       "font": {
@@ -355,9 +363,6 @@
     },
     "cta-alternate": {
       "background": "background-cta-alternate",
-      "border": {
-        "radius": "2em"
-      },
       "color": "text-strong",
       "font": {
         "weight": "bold"
@@ -376,9 +381,6 @@
     },
     "default": {
       "color": "text-strong",
-      "border": {
-        "radius": "2em"
-      },
       "font": {
         "weight": 700
       }
@@ -388,9 +390,6 @@
       "background": {
         "color": "brand"
       },
-      "border": {
-        "radius": "2em"
-      },
       "color": "text-primary-button",
       "font": {
         "weight": 700
@@ -399,7 +398,6 @@
     "secondary": {
       "border": {
         "color": "brand",
-        "radius": "2em",
         "width": "2px"
       },
       "color": "text-strong",
@@ -420,6 +418,10 @@
       "color": "text",
       "border": {
         "radius": "0px"
+      },
+      "pad": {
+        "horizontal": "12px",
+        "vertical": "6px"
       },
       "font": {
         "weight": 500
@@ -475,17 +477,10 @@
       }
     },
     "color": "text-strong",
-    "border": {
-      "radius": "6px"
-    },
-    "padding": {
-      "vertical": "4px",
-      "horizontal": "22px"
-    },
     "size": {
       "small": {
         "border": {
-          "radius": "6px"
+          "radius": "2em"
         },
         "pad": {
           "vertical": "6px",
@@ -495,6 +490,9 @@
           "pad": "9px"
         },
         "toolbar": {
+          "border": {
+            "radius": "6px"
+          },
           "pad": {
             "vertical": "4px",
             "horizontal": "8px"
@@ -503,7 +501,7 @@
       },
       "medium": {
         "border": {
-          "radius": "6px"
+          "radius": "2em"
         },
         "pad": {
           "vertical": "6px",
@@ -524,7 +522,7 @@
       },
       "large": {
         "border": {
-          "radius": "8px"
+          "radius": "2em"
         },
         "pad": {
           "vertical": "8px",
@@ -534,6 +532,9 @@
           "pad": "12px"
         },
         "toolbar": {
+          "border": {
+            "radius": "8px"
+          },
           "pad": {
             "vertical": "8px",
             "horizontal": "16px"
@@ -676,11 +677,7 @@
         "vertical": "xsmall"
       }
     },
-    "icons": {
-      "ascending": {},
-      "descending": {},
-      "sortable": {}
-    },
+    "icons": {},
     "pinned": {
       "header": {
         "extend": "backdrop-filter: blur(12px);"
@@ -719,7 +716,7 @@
     },
     "button": {
       "border": {
-        "radius": "24px"
+        "radius": "2em"
       },
       "pad": {
         "vertical": "6px",
@@ -730,7 +727,8 @@
         "weight": "bold"
       },
       "hover": {
-        "background": "background-contrast"
+        "background": "background-contrast",
+        "color": "text-strong"
       }
     },
     "dragOver": {
@@ -741,6 +739,9 @@
       "border": {
         "color": "border"
       }
+    },
+    "icons": {
+      "remove": {}
     },
     "message": {
       "color": "placeholder"
@@ -784,10 +785,7 @@
         "key": null,
         "ref": null,
         "props": {
-          "size": "small",
-          "style": {
-            "marginTop": "4px"
-          }
+          "size": "small"
         },
         "_owner": null,
         "_store": {}
@@ -992,8 +990,7 @@
       "elevation": "large"
     },
     "overlay": {
-      "background": "background-layer-overlay",
-      "backdropFilter": "blur(12px)"
+      "background": "background-layer-overlay"
     },
     "zIndex": "110"
   },
@@ -1022,6 +1019,12 @@
     "icons": {
       "color": "text-strong",
       "down": {}
+    },
+    "item": {
+      "pad": {
+        "horizontal": "18px",
+        "vertical": "6px"
+      }
     }
   },
   "nameValuePair": {
@@ -1040,11 +1043,6 @@
     "direction": "row",
     "container": {
       "round": "xsmall"
-    },
-    "iconContainer": {
-      "pad": {
-        "top": "xxsmall"
-      }
     },
     "global": {
       "container": {
@@ -1249,6 +1247,7 @@
         "border": {
           "radius": "2em"
         },
+        "color": "text-strong",
         "font": {
           "weight": 700
         }
@@ -1266,7 +1265,7 @@
     },
     "small": {
       "size": "16px",
-      "height": "18px",
+      "height": "20px",
       "maxWidth": "25em"
     },
     "medium": {
@@ -1338,6 +1337,10 @@
     "icons": {
       "color": "text",
       "down": {},
+      "margin": {
+        "left": "small",
+        "right": "12px"
+      },
       "up": {}
     }
   },
@@ -1443,11 +1446,6 @@
   "tag": {
     "value": {
       "weight": 500
-    },
-    "remove": {
-      "margin": {
-        "top": "xxsmall"
-      }
     }
   },
   "text": {
