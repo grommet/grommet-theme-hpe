@@ -313,7 +313,7 @@ export const hpe = deepFreeze({
       background: { color: 'brand' },
       color: 'text-primary-button',
       font: { weight: 'bold' },
-      icon: Hpe,
+      icon: <Hpe />,
       reverse: true,
       extend: (props) => primaryBackground(props),
     },
@@ -323,7 +323,7 @@ export const hpe = deepFreeze({
       font: {
         weight: 'bold',
       },
-      icon: () => <Hpe color="brand" />,
+      icon: <Hpe color="brand" />,
       reverse: true,
     },
     default: {
@@ -456,7 +456,7 @@ export const hpe = deepFreeze({
           horizontal: '18px',
         },
         iconOnly: {
-          pad: '9px',
+          pad: '10px',
         },
         toolbar: {
           border: {
@@ -851,7 +851,7 @@ export const hpe = deepFreeze({
       container: {
         gap: 'xsmall',
       },
-      icon: () => <CircleAlert size="small" />,
+      icon: <CircleAlert size="small" />,
       size: 'xsmall',
       color: 'text',
       margin: {
