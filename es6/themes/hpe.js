@@ -283,7 +283,7 @@ export var hpe = deepFreeze({
       font: {
         weight: 'bold'
       },
-      icon: Hpe,
+      icon: /*#__PURE__*/React.createElement(Hpe, null),
       reverse: true,
       extend: function extend(props) {
         return primaryBackground(props);
@@ -295,11 +295,9 @@ export var hpe = deepFreeze({
       font: {
         weight: 'bold'
       },
-      icon: function icon() {
-        return /*#__PURE__*/React.createElement(Hpe, {
-          color: "brand"
-        });
-      },
+      icon: /*#__PURE__*/React.createElement(Hpe, {
+        color: "brand"
+      }),
       reverse: true
     },
     "default": {
@@ -439,7 +437,7 @@ export var hpe = deepFreeze({
           horizontal: '18px'
         },
         iconOnly: {
-          pad: '9px'
+          pad: '10px'
         },
         toolbar: {
           border: {
@@ -836,11 +834,9 @@ export var hpe = deepFreeze({
       container: {
         gap: 'xsmall'
       },
-      icon: function icon() {
-        return /*#__PURE__*/React.createElement(CircleAlert, {
-          size: "small"
-        });
-      },
+      icon: /*#__PURE__*/React.createElement(CircleAlert, {
+        size: "small"
+      }),
       size: 'xsmall',
       color: 'text',
       margin: {
