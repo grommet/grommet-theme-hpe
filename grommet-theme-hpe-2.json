@@ -351,7 +351,14 @@
       "font": {
         "weight": "bold"
       },
-      "icon": {},
+      "icon": {
+        "type": {},
+        "key": null,
+        "ref": null,
+        "props": {},
+        "_owner": null,
+        "_store": {}
+      },
       "reverse": true
     },
     "cta-alternate": {
@@ -359,6 +366,16 @@
       "color": "text-strong",
       "font": {
         "weight": "bold"
+      },
+      "icon": {
+        "type": {},
+        "key": null,
+        "ref": null,
+        "props": {
+          "color": "brand"
+        },
+        "_owner": null,
+        "_store": {}
       },
       "reverse": true
     },
@@ -470,7 +487,7 @@
           "horizontal": "18px"
         },
         "iconOnly": {
-          "pad": "9px"
+          "pad": "10px"
         },
         "toolbar": {
           "border": {
@@ -762,6 +779,16 @@
       },
       "container": {
         "gap": "xsmall"
+      },
+      "icon": {
+        "type": {},
+        "key": null,
+        "ref": null,
+        "props": {
+          "size": "small"
+        },
+        "_owner": null,
+        "_store": {}
       },
       "size": "xsmall",
       "color": "text",
