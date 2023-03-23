@@ -287,7 +287,7 @@ var hpe = deepFreeze({
       font: {
         weight: 'bold'
       },
-      icon: /*#__PURE__*/_react["default"].createElement(_Hpe.Hpe, null),
+      icon: _Hpe.Hpe,
       reverse: true,
       extend: function extend(props) {
         return primaryBackground(props);
@@ -299,9 +299,11 @@ var hpe = deepFreeze({
       font: {
         weight: 'bold'
       },
-      icon: /*#__PURE__*/_react["default"].createElement(_Hpe.Hpe, {
-        color: "brand"
-      }),
+      icon: function icon() {
+        return /*#__PURE__*/_react["default"].createElement(_Hpe.Hpe, {
+          color: "brand"
+        });
+      },
       reverse: true
     },
     "default": {
@@ -838,9 +840,11 @@ var hpe = deepFreeze({
       container: {
         gap: 'xsmall'
       },
-      icon: /*#__PURE__*/_react["default"].createElement(_CircleAlert.CircleAlert, {
-        size: "small"
-      }),
+      icon: function icon() {
+        return /*#__PURE__*/_react["default"].createElement(_CircleAlert.CircleAlert, {
+          size: "small"
+        });
+      },
       size: 'xsmall',
       color: 'text',
       margin: {
