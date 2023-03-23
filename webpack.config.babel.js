@@ -10,7 +10,6 @@ export default {
   },
   externals: {
     react: 'React',
-    'grommet-icons': 'GrommetIcons',
     'styled-components': 'styled',
   },
   resolve: {
