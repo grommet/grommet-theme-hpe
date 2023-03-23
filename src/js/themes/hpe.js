@@ -1,17 +1,19 @@
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import React from 'react';
 import { css } from 'styled-components';
-import { Ascending } from 'grommet-icons/icons/Ascending';
-import { Blank } from 'grommet-icons/icons/Blank';
-import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
-import { Close } from 'grommet-icons/icons/Close';
-import { Descending } from 'grommet-icons/icons/Descending';
-import { Down } from 'grommet-icons/icons/Down';
-import { Next } from 'grommet-icons/icons/Next';
-import { Previous } from 'grommet-icons/icons/Previous';
-import { Unsorted } from 'grommet-icons/icons/Unsorted';
-import { Up } from 'grommet-icons/icons/Up';
-import { Hpe } from 'grommet-icons/icons/Hpe';
+import {
+  Ascending,
+  Blank,
+  CircleAlert,
+  Close,
+  Descending,
+  Down,
+  Next,
+  Previous,
+  Unsorted,
+  Up,
+  Hpe,
+} from 'grommet-icons';
 
 import { backgrounds } from './backgrounds';
 import { colors } from './colors';
@@ -313,7 +315,7 @@ export const hpe = deepFreeze({
       background: { color: 'brand' },
       color: 'text-primary-button',
       font: { weight: 'bold' },
-      icon: <Hpe />,
+      icon: Hpe,
       reverse: true,
       extend: (props) => primaryBackground(props),
     },
@@ -323,7 +325,7 @@ export const hpe = deepFreeze({
       font: {
         weight: 'bold',
       },
-      icon: <Hpe color="brand" />,
+      icon: () => <Hpe color="brand" />,
       reverse: true,
     },
     default: {
@@ -851,7 +853,7 @@ export const hpe = deepFreeze({
       container: {
         gap: 'xsmall',
       },
-      icon: <CircleAlert size="small" />,
+      icon: () => <CircleAlert size="small" />,
       size: 'xsmall',
       color: 'text',
       margin: {

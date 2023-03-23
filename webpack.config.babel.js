@@ -9,6 +9,8 @@ export default {
     library: 'GrommetThemeHpe',
   },
   externals: {
+    react: 'React',
+    'grommet-icons': 'GrommetIcons',
     'styled-components': 'styled',
   },
   resolve: {
