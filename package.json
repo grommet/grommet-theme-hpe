@@ -1,6 +1,6 @@
 {
   "name": "grommet-theme-hpe",
-  "version": "4.2.0",
+  "version": "5.0.1",
   "main": "dist/index.js",
   "module": "dist/es6/index.js",
   "jsnext:main": "dist/es6/index.js",
@@ -20,8 +20,8 @@
     "url": "https://github.com/grommet/grommet-theme-hpe.git"
   },
   "peerDependencies": {
-    "grommet": "^2.17.2",
-    "grommet-icons": "^4.5.0",
+    "grommet": "^2.31.0",
+    "grommet-icons": "^4.10.0",
     "react": "^16.13.1 || ^17.0.1 || ^18.0.0",
     "styled-components": "^5.0.0"
   },
@@ -44,7 +44,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "fs-extra": "^11.1.0",
-    "grommet-icons": "^4.9.0",
+    "grommet-icons": "^4.10.0",
     "pre-commit": "^1.2.2",
     "prettier": "^2.8.3",
     "pretty-quick": "^3.1.1",
