@@ -32,7 +32,7 @@ var colors = {
     // 6%
     light: '#0000000A'
   },
-  'background-layer-overlay': '#0000001F',
+  'background-layer-overlay': '#00000080',
   icon: 'text',
   text: {
     dark: '#FFFFFFE6',

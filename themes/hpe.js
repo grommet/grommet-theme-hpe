@@ -7,6 +7,7 @@ var _styledComponents = require("styled-components");
 var _Ascending = require("grommet-icons/icons/Ascending");
 var _Blank = require("grommet-icons/icons/Blank");
 var _CircleAlert = require("grommet-icons/icons/CircleAlert");
+var _Close = require("grommet-icons/icons/Close");
 var _Descending = require("grommet-icons/icons/Descending");
 var _Down = require("grommet-icons/icons/Down");
 var _Next = require("grommet-icons/icons/Next");
@@ -264,6 +265,11 @@ var hpe = deepFreeze({
 
   button: {
     badge: {
+      align: 'container',
+      container: {
+        // align badge background to button label color
+        background: 'text-strong'
+      },
       size: {
         medium: '18px'
       },
@@ -277,9 +283,6 @@ var hpe = deepFreeze({
       background: {
         color: 'brand'
       },
-      border: {
-        radius: '2em'
-      },
       color: 'text-primary-button',
       font: {
         weight: 'bold'
@@ -292,9 +295,6 @@ var hpe = deepFreeze({
     },
     'cta-alternate': {
       background: 'background-cta-alternate',
-      border: {
-        radius: '2em'
-      },
       color: 'text-strong',
       font: {
         weight: 'bold'
@@ -317,9 +317,6 @@ var hpe = deepFreeze({
     primary: {
       background: {
         color: 'brand'
-      },
-      border: {
-        radius: '2em'
       },
       color: 'text-primary-button',
       font: {
@@ -353,6 +350,10 @@ var hpe = deepFreeze({
       color: 'text',
       border: {
         radius: '0px'
+      },
+      pad: {
+        horizontal: '12px',
+        vertical: '6px'
       },
       font: {
         weight: 500
@@ -433,26 +434,22 @@ var hpe = deepFreeze({
       }
     },
     color: 'text-strong',
-    border: {
-      radius: '6px'
-    },
-    padding: {
-      vertical: '4px',
-      horizontal: '22px'
-    },
     size: {
       small: {
         border: {
-          radius: '6px'
+          radius: '2em'
         },
         pad: {
           vertical: '6px',
           horizontal: '18px'
         },
         iconOnly: {
-          pad: '9px'
+          pad: '10px'
         },
         toolbar: {
+          border: {
+            radius: '6px'
+          },
           pad: {
             vertical: '4px',
             horizontal: '8px'
@@ -461,7 +458,7 @@ var hpe = deepFreeze({
       },
       medium: {
         border: {
-          radius: '6px'
+          radius: '2em'
         },
         pad: {
           vertical: '6px',
@@ -482,7 +479,7 @@ var hpe = deepFreeze({
       },
       large: {
         border: {
-          radius: '8px'
+          radius: '2em'
         },
         pad: {
           vertical: '8px',
@@ -492,6 +489,9 @@ var hpe = deepFreeze({
           pad: '12px'
         },
         toolbar: {
+          border: {
+            radius: '8px'
+          },
           pad: {
             vertical: '8px',
             horizontal: '16px'
@@ -710,9 +710,31 @@ var hpe = deepFreeze({
       }
     },
     icons: {
-      ascending: _Ascending.Ascending,
-      descending: _Descending.Descending,
-      sortable: _Unsorted.Unsorted
+      ascending: function ascending() {
+        return /*#__PURE__*/_react["default"].createElement(_Ascending.Ascending, {
+          size: "large"
+        });
+      },
+      descending: function descending() {
+        return /*#__PURE__*/_react["default"].createElement(_Descending.Descending, {
+          size: "large"
+        });
+      },
+      contract: function contract() {
+        return /*#__PURE__*/_react["default"].createElement(_Up.Up, {
+          height: "medium"
+        });
+      },
+      expand: function expand() {
+        return /*#__PURE__*/_react["default"].createElement(_Down.Down, {
+          height: "medium"
+        });
+      },
+      sortable: function sortable() {
+        return /*#__PURE__*/_react["default"].createElement(_Unsorted.Unsorted, {
+          size: "large"
+        });
+      }
     },
     pinned: {
       header: {
@@ -752,7 +774,7 @@ var hpe = deepFreeze({
     },
     button: {
       border: {
-        radius: '24px'
+        radius: '2em'
       },
       pad: {
         vertical: '6px',
@@ -763,7 +785,8 @@ var hpe = deepFreeze({
         weight: 'bold'
       },
       hover: {
-        background: 'background-contrast'
+        background: 'background-contrast',
+        color: 'text-strong'
       }
     },
     dragOver: {
@@ -774,6 +797,9 @@ var hpe = deepFreeze({
       border: {
         color: 'border'
       }
+    },
+    icons: {
+      remove: _Close.Close
     },
     message: {
       color: 'placeholder'
@@ -816,10 +842,7 @@ var hpe = deepFreeze({
         gap: 'xsmall'
       },
       icon: /*#__PURE__*/_react["default"].createElement(_CircleAlert.CircleAlert, {
-        size: "small",
-        style: {
-          marginTop: '4px'
-        }
+        size: "small"
       }),
       size: 'xsmall',
       color: 'text',
@@ -1043,8 +1066,7 @@ var hpe = deepFreeze({
       elevation: 'large'
     },
     overlay: {
-      background: 'background-layer-overlay',
-      backdropFilter: "blur(12px)"
+      background: 'background-layer-overlay'
     },
     /* HPE Global Header/Footer Service a.k.a. HPE Common HFWS sets the header
      * at a z-index of 101. This adjustment allows for Layer modals and side-drawers
@@ -1083,6 +1105,12 @@ var hpe = deepFreeze({
     icons: {
       color: 'text-strong',
       down: _Down.Down
+    },
+    item: {
+      pad: {
+        horizontal: '18px',
+        vertical: '6px'
+      }
     }
   },
   nameValuePair: {
@@ -1268,6 +1296,7 @@ var hpe = deepFreeze({
         border: {
           radius: '2em'
         },
+        color: 'text-strong',
         font: {
           weight: 700
         }
@@ -1285,7 +1314,7 @@ var hpe = deepFreeze({
     },
     small: {
       size: '16px',
-      height: '18px',
+      height: '20px',
       maxWidth: '25em'
     },
     medium: {
@@ -1391,6 +1420,14 @@ var hpe = deepFreeze({
     icons: {
       color: 'text',
       down: _Down.Down,
+      margin: {
+        left: 'small',
+        // setting right margin to 12px because on small
+        // screens, Select responsive padding sizes down
+        // which brings the icon too tight with edge of
+        // control.
+        right: '12px'
+      },
       up: _Up.Up
     },
     options: undefined
@@ -1505,11 +1542,6 @@ var hpe = deepFreeze({
   tag: {
     value: {
       weight: 500
-    },
-    remove: {
-      margin: {
-        top: 'xxsmall'
-      }
     }
   },
   text: {
