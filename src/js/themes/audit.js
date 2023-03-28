@@ -57,7 +57,9 @@ const legendColors = {
   buttonToken: colors.blue.light,
   colorProp: `${colors.teal.light}40`,
   colorToken: `${colors.teal.dark}40`,
-  sizeProp: `${colors.orange.light}40`,
+  default: `${colors.orange.light}40`,
+  issue: `${colors['background-back'].light}`,
+  sizeProp: `${colors.purple.light}40`,
   weightProp: `${colors.yellow.light}40`,
   styleProp: `${colors.red.light}40`,
 };
@@ -66,19 +68,19 @@ const legend = {
   anchor: {
     'color value': {
       rule: (props) => props.colorProp,
-      highlight: `background-color: ${legendColors.colorProp};`,
+      highlight: `background-color: ${legendColors.default};`,
       issue: `color value is set by prop rather than theme`,
       resolution: ``,
     },
     'size override': {
       rule: (props) => props.size,
-      highlight: `background-color: ${legendColors.sizeProp};`,
+      highlight: `background-color: ${legendColors.default};`,
       issue: `size value is set by prop; instead size should be inherited from its parent`,
       resolution: ``,
     },
     'weight override': {
       rule: (props) => props.weight,
-      highlight: `background-color: ${legendColors.weightProp};`,
+      highlight: `background-color: ${legendColors.default};`,
       issue: `weight value is set by prop rather than theme`,
       resolution: ``,
     },
@@ -132,7 +134,7 @@ const legend = {
     'color value': {
       rule: (props) => props.colorProp,
       highlight: `
-        background-color: ${legendColors.colorProp};
+        background-color: ${legendColors.default};
     `,
       issue: `Heading override - color value is set by prop rather than theme.`,
       resolution: ``,
@@ -140,17 +142,29 @@ const legend = {
     'size value': {
       rule: (props) => props.size && props.size !== 'medium',
       highlight: `
-        background-color: ${legendColors.sizeProp};
+        background-color: ${legendColors.default};
     `,
-      issue: `Heading override - size value is set by prop rather than theme.`,
+      issue: {
+        category: `Heading override`,
+        description: `Size value is set by prop rather than theme.`,
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="deeppink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle">
+          <path d="M10 8L12 12 10 16"></path><path d="M12 2L1 21h22L12 2z"></path>
+        </svg>`,
+      },
       resolution: ``,
     },
     'weight value': {
       rule: (props) => props.weight,
       highlight: `
-        background-color: ${legendColors.weightProp};
+        background-color: ${legendColors.default};
     `,
-      issue: `Heading override - weight value is set by prop rather than theme.`,
+      issue: {
+        category: 'Heading override',
+        description: `Heading override - weight value is set by prop rather than theme.`,
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="deeppink" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle">
+          <path d="M10 8L12 12 10 16"></path><path d="M12 2L1 21h22L12 2z"></path>
+        </svg>`,
+      },
       resolution: ``,
     },
   },
@@ -158,7 +172,7 @@ const legend = {
     'color value': {
       rule: (props) => props.colorProp,
       highlight: `
-        background-color: ${legendColors.colorProp};
+        background-color: ${legendColors.default};
     `,
       issue: `color value is set by prop rather than theme`,
       resolution: ``,
@@ -166,7 +180,7 @@ const legend = {
     'color design token': {
       rule: (props) => props.colorProp && !isColorToken(props.colorProp),
       highlight: `
-        background-color: ${legendColors.colorToken};
+        background-color: ${legendColors.default};
     `,
       issue: `color value is not a design token color`,
       resolution: ``,
@@ -174,7 +188,7 @@ const legend = {
     'size value': {
       rule: (props) => props.size && props.size !== 'medium',
       highlight: `
-        background-color: ${legendColors.sizeProp};
+        background-color: ${legendColors.default};
     `,
       issue: `Size override - size value is set by prop rather than theme.`,
       resolution: ``,
@@ -182,7 +196,7 @@ const legend = {
     'weight value': {
       rule: (props) => props.weight,
       highlight: `
-        background-color: ${legendColors.weightProp};
+        background-color: ${legendColors.default};
     `,
       issue: `weight value is set by prop rather than theme`,
       resolution: `remove weight prop and use default weight provided by the HPE theme.`,
@@ -200,7 +214,7 @@ const legend = {
     'color design token': {
       rule: (props) => props.colorProp && !isColorToken(props.colorProp),
       highlight: `
-        background-color: ${legendColors.colorToken};
+        background-color: ${legendColors.default};
     `,
       issue: `Color override - color value is not a design token color.`,
       resolution: ``,
@@ -208,7 +222,10 @@ const legend = {
     'size value': {
       rule: (props) => props.size && props.size !== 'medium',
       highlight: `
-        background-color: ${legendColors.sizeProp};
+        background-color: ${legendColors.default};
+        :before {
+          background-color: inherit;
+        ]
     `,
       issue: `Size override - size value is set by prop rather than theme.`,
       resolution: ``,
@@ -216,7 +233,7 @@ const legend = {
     'weight value': {
       rule: (props) => props.weight,
       highlight: `
-        background-color: ${legendColors.weightProp};
+        background-color: ${legendColors.default};
     `,
       issue: `Weight override - weight value is set by prop rather than theme`,
       resolution: `remove weight prop and use default weight provided by the HPE theme.`,
@@ -224,27 +241,37 @@ const legend = {
   },
   styleProp: {
     highlight: `
-      background-color: ${legendColors.styleProp} !important;
+      background-color: ${legendColors.default} !important;
     `,
     issue: `Inline style override - Style prop is present on the component. 
     Inline styles override styling provided by the HPE theme.`,
   },
 };
 
-const annotation = (issue) => `
-  :after { 
-    display: flex;
-    content: '${issue}';
-    background-color: ${colors['background-contrast'].light};
-    border-radius: 0.5em;
-    color: ${colors.text.light};
-    font-size: 16px;
-    margin: 6px;
-    padding: 6px 12px;
-    max-width: 100%;
-    width: fit-content;
-  }
-`;
+const annotation = (issue) => {
+  const issueText =
+    typeof issue === 'object'
+      ? `${issue.category} - ${issue.description}`
+      : issue;
+  return `
+    :before {
+      content: url('
+      data:image/svg+xml;
+      utf8,
+      ${issue.icon}
+      ') '  ${issueText}' / '${issueText}';
+      display: flex;
+      font-size: 16px;
+      font-weight: normal;
+      color: ${colors.text.light};
+      background-color: ${legendColors.issue};
+      padding: 6px;
+      border: solid 1px ${colors['border-weak'].light};
+      border-radius: 6px;
+      margin: 6px;
+    }
+  `;
+};
 
 const runAudit = (component, props, options = true) => {
   const result = [];
