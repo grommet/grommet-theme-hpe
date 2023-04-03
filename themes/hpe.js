@@ -704,6 +704,9 @@ var hpe = deepFreeze({
       pad: {
         horizontal: 'small',
         vertical: 'xsmall'
+      },
+      units: {
+        color: 'text-weak'
       }
     },
     icons: {
