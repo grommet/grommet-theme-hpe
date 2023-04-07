@@ -17,7 +17,7 @@ var _Up = require("grommet-icons/icons/Up");
 var _Hpe = require("grommet-icons/icons/Hpe");
 var _backgrounds = require("./backgrounds");
 var _colors = require("./colors");
-var _templateObject;
+var _templateObject, _templateObject2, _templateObject3;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _taggedTemplateLiteralLoose(strings, raw) { if (!raw) { raw = strings.slice(0); } strings.raw = raw; return strings; }
 var baseSpacing = 24;
@@ -610,7 +610,7 @@ var hpe = deepFreeze({
         var disabled = _ref4.disabled,
           pad = _ref4.pad,
           theme = _ref4.theme;
-        return "\n      " + (!disabled && pad === 'none' && "border: 2px solid " + theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light'] + ";") + "\n    ";
+        return (0, _styledComponents.css)(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), !disabled && pad === 'none' && "border: 2px solid " + theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light'] + ";");
       }
     },
     color: 'background',
@@ -662,7 +662,7 @@ var hpe = deepFreeze({
     extend: function extend(_ref9) {
       var disabled = _ref9.disabled,
         pad = _ref9.pad;
-      return "\n    " + (!disabled && pad === 'none' && ":hover {\n      background-color: unset;\n    }") + "\n    font-weight: 500;\n    width: auto;\n  };\n  ";
+      return (0, _styledComponents.css)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n    ", "\n    font-weight: 500;\n    width: auto;\n  };\n  "])), !disabled && pad === 'none' && ":hover {\n      background-color: unset;\n    }");
     }
   },
   checkBoxGroup: {
@@ -1409,7 +1409,7 @@ var hpe = deepFreeze({
     control: {
       extend: function extend(_ref17) {
         var disabled = _ref17.disabled;
-        return (0, _styledComponents.css)(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
+        return (0, _styledComponents.css)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
       }
     },
     icons: {
