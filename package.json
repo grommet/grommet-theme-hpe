@@ -1,6 +1,6 @@
 {
   "name": "grommet-theme-hpe",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "main": "dist/index.js",
   "module": "dist/es6/index.js",
   "jsnext:main": "dist/es6/index.js",
@@ -63,6 +63,7 @@
     "release-stable": "babel-node ./tools/release-stable",
     "release-next-stable": "babel-node ./tools/release-next-stable",
     "release-audit-stable": "babel-node ./tools/release-audit-stable",
+    "release-tokens-stable": "babel-node ./tools/release-tokens-stable",
     "jsonify": "babel-node ./tools/convert-to-json > dist/grommet-theme-hpe.json",
     "release-gh-pages": "babel-node ./tools/release-gh-pages"
   },
