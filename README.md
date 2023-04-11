@@ -1,6 +1,6 @@
 # grommet-theme-hpe
 
-Hewlett Packard Enterprise design system theme.
+The TOKENS branch is a POC consuming hpe-design-tokens. Hewlett Packard Enterprise design system theme.
 
 ## Installation
 
