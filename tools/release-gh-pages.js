@@ -17,13 +17,7 @@ if (process.env.CI) {
       .then(() =>
         fs.copy(
           `${localDist}/grommet-theme-hpe.min.js`,
-          `${localFolder}/grommet-theme-hpe-2.min.js`,
-        ),
-      )
-      .then(() =>
-        fs.copy(
-          `${localDist}/grommet-theme-hpe.json`,
-          `${localFolder}/grommet-theme-hpe-2.json`,
+          `${localFolder}/grommet-theme-hpe.min.js`,
         ),
       )
       .then(() => git(localFolder).add(['--all', '.']))
