@@ -2,6 +2,7 @@
 
 exports.__esModule = true;
 exports.colors = void 0;
+var _hpeDesignTokens = require("hpe-design-tokens");
 var colors = {
   /* deprecated accent and neutral colors */
   'accent-1': undefined,
@@ -14,62 +15,62 @@ var colors = {
   'neutral-4': undefined,
   'neutral-5': undefined,
   'status-error': undefined,
-  brand: 'green!',
+  brand: _hpeDesignTokens.tokens['color.brand'],
   background: {
     dark: '#1C1C1C',
-    light: '#FFFFFF'
+    light: _hpeDesignTokens.tokens['color.background']
   },
   'background-back': {
     dark: '#1C1C1C',
-    light: '#F7F7F7'
+    light: _hpeDesignTokens.tokens['color.background.back']
   },
   'background-front': {
     dark: '#222222',
-    light: '#FFFFFF'
+    light: _hpeDesignTokens.tokens['color.background.front']
   },
   'background-contrast': {
     dark: '#FFFFFF0F',
     // 6%
-    light: '#0000000A'
+    light: _hpeDesignTokens.tokens['color.background.contrast']
   },
   'background-layer-overlay': '#00000080',
   icon: 'text',
   text: {
     dark: '#FFFFFFE6',
     // 90%
-    light: '#6F6F6F'
+    light: _hpeDesignTokens.tokens['color.text']
   },
   'text-strong': {
     dark: '#FFFFFFF5',
     // 96%
-    light: '#444444'
+    light: _hpeDesignTokens.tokens['color.text.strong']
   },
   'text-weak': {
     dark: '#FFFFFF80',
     // 50%
-    light: '#757575'
+    light: _hpeDesignTokens.tokens['color.text.weak']
   },
   'text-xweak': {
     dark: '#FFFFFF33',
     // 20%
-    light: '#BBBBBB'
+    light: [_hpeDesignTokens.tokens['color.text.xweak']]
   },
   border: {
     dark: '#FFFFFF5C',
     // 36%
-    light: '#0000005C' // 36%
+    light: _hpeDesignTokens.tokens['color.border'] // 36%
   },
 
   'border-strong': {
     dark: '#FFFFFFB8',
     // 72%
-    light: '#000000B8' // 72%
+    light: _hpeDesignTokens.tokens['color.border.strong'] // 72%
   },
 
   'border-weak': {
     dark: '#FFFFFF1F',
     // 12%
-    light: '#0000001F' // 12%
+    light: _hpeDesignTokens.tokens['color.border.weak'] // 12%
   },
 
   control: 'brand',
@@ -82,19 +83,19 @@ var colors = {
   // necessary to meet color contrast on HPE green background
   'status-critical': {
     dark: '#D04F4E',
-    light: '#FC5A5A'
+    light: _hpeDesignTokens.tokens['color.status.critical']
   },
   'status-warning': {
     dark: '#9B6310',
-    light: '#FFBC44'
+    light: _hpeDesignTokens.tokens['color.status.warning']
   },
   'status-ok': {
     dark: '#008567',
-    light: '#17EBA0'
+    light: _hpeDesignTokens.tokens['color.status.ok']
   },
   'status-unknown': {
     dark: '#555555',
-    light: '#CCCCCC'
+    light: _hpeDesignTokens.tokens['color.status.unknown']
   },
   'status-disabled': '#CCCCCC',
   // deprecated, does not support light and dark. use text-weak instead
@@ -134,16 +135,16 @@ var colors = {
   },
   'yellow!': '#FEC901',
   'validation-critical': {
-    light: '#FC61613D',
+    light: _hpeDesignTokens.tokens['color.validation.critical'],
     dark: '#CC1F1A4D' // 30%
   },
 
   'validation-ok': {
-    light: '#17EBA03D',
+    light: _hpeDesignTokens.tokens['color.validation.ok'],
     dark: '#17D0A64D'
   },
   'validation-warning': {
-    light: '#FFBC443D',
+    light: _hpeDesignTokens.tokens['color.validation.warning'],
     dark: '#D891284D'
   },
   'graph-0': 'orange!',
