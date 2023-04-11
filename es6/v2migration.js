@@ -18,7 +18,7 @@
  *
  */
 
-export const v2migration = {
+export var v2migration = {
   global: {
     colors: {
       // accent-1 will need to be replaced with either 'graph-0', 'graph-1', 'control', 'brand' and more generic colors.
@@ -34,8 +34,8 @@ export const v2migration = {
       // Any references to status-error, should change to status-critical.
       'status-error': {
         dark: '#FC5A5A',
-        light: '#D04F4E',
-      },
-    },
-  },
+        light: '#D04F4E'
+      }
+    }
+  }
 };
