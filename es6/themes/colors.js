@@ -1,4 +1,4 @@
-export const colors = {
+export var colors = {
   /* deprecated accent and neutral colors */
   'accent-1': undefined,
   'accent-2': undefined,
@@ -13,119 +13,134 @@ export const colors = {
   brand: 'green!',
   background: {
     dark: '#1C1C1C',
-    light: '#FFFFFF',
+    light: '#FFFFFF'
   },
   'background-back': {
     dark: '#1C1C1C',
-    light: '#F7F7F7',
+    light: '#F7F7F7'
   },
   'background-front': {
     dark: '#222222',
-    light: '#FFFFFF',
+    light: '#FFFFFF'
   },
   'background-contrast': {
-    dark: '#FFFFFF0F', // 6%
-    light: '#0000000A',
+    dark: '#FFFFFF0F',
+    // 6%
+    light: '#0000000A'
   },
   'background-layer-overlay': '#00000080',
   icon: 'text',
   text: {
-    dark: '#FFFFFFE6', // 90%
-    light: '#6F6F6F',
+    dark: '#FFFFFFE6',
+    // 90%
+    light: '#6F6F6F'
   },
   'text-strong': {
-    dark: '#FFFFFFF5', // 96%
-    light: '#444444',
+    dark: '#FFFFFFF5',
+    // 96%
+    light: '#444444'
   },
   'text-weak': {
-    dark: '#FFFFFF80', // 50%
-    light: '#757575',
+    dark: '#FFFFFF80',
+    // 50%
+    light: '#757575'
   },
   'text-xweak': {
-    dark: '#FFFFFF33', // 20%
-    light: '#BBBBBB',
+    dark: '#FFFFFF33',
+    // 20%
+    light: '#BBBBBB'
   },
   border: {
-    dark: '#FFFFFF5C', // 36%
-    light: '#0000005C', // 36%
+    dark: '#FFFFFF5C',
+    // 36%
+    light: '#0000005C' // 36%
   },
+
   'border-strong': {
-    dark: '#FFFFFFB8', // 72%
-    light: '#000000B8', // 72%
+    dark: '#FFFFFFB8',
+    // 72%
+    light: '#000000B8' // 72%
   },
+
   'border-weak': {
-    dark: '#FFFFFF1F', // 12%
-    light: '#0000001F', // 12%
+    dark: '#FFFFFF1F',
+    // 12%
+    light: '#0000001F' // 12%
   },
+
   control: 'brand',
   'active-background': 'background-contrast',
   'active-text': 'text',
-  'disabled-text': 'text-weak', // deprecated, use text-weak instead
+  'disabled-text': 'text-weak',
+  // deprecated, use text-weak instead
   'selected-background': 'green!',
-  'selected-text': 'text-primary-button', // necessary to meet color contrast on HPE green background
+  'selected-text': 'text-primary-button',
+  // necessary to meet color contrast on HPE green background
   'status-critical': {
     dark: '#D04F4E',
-    light: '#FC5A5A',
+    light: '#FC5A5A'
   },
   'status-warning': {
     dark: '#9B6310',
-    light: '#FFBC44',
+    light: '#FFBC44'
   },
   'status-ok': {
     dark: '#008567',
-    light: '#17EBA0',
+    light: '#17EBA0'
   },
   'status-unknown': {
     dark: '#555555',
-    light: '#CCCCCC',
+    light: '#CCCCCC'
   },
-  'status-disabled': '#CCCCCC', // deprecated, does not support light and dark. use text-weak instead
+  'status-disabled': '#CCCCCC',
+  // deprecated, does not support light and dark. use text-weak instead
   blue: {
     dark: '#00567A',
-    light: '#00C8FF',
+    light: '#00C8FF'
   },
   'blue!': '#00739D',
   green: {
     dark: '#008567',
-    light: '#17EBA0',
+    light: '#17EBA0'
   },
   'green!': '#01A982',
   teal: {
     dark: '#117B82',
-    light: '#82FFF2',
+    light: '#82FFF2'
   },
   'teal!': '#00E8CF',
   purple: {
     dark: '#6633BC',
-    light: '#F740FF',
+    light: '#F740FF'
   },
   'purple!': '#7630EA',
   red: {
     dark: '#A2423D',
-    light: '#FC6161',
+    light: '#FC6161'
   },
   'red!': '#C54E4B',
   orange: {
     dark: '#9B6310',
-    light: '#FFBC44',
+    light: '#FFBC44'
   },
   'orange!': '#FF8300',
   yellow: {
     dark: '#8D741C',
-    light: '#FFEB59',
+    light: '#FFEB59'
   },
   'yellow!': '#FEC901',
   'validation-critical': {
     light: '#FC61613D',
-    dark: '#CC1F1A4D', // 30%
+    dark: '#CC1F1A4D' // 30%
   },
+
   'validation-ok': {
     light: '#17EBA03D',
-    dark: '#17D0A64D',
+    dark: '#17D0A64D'
   },
   'validation-warning': {
     light: '#FFBC443D',
-    dark: '#D891284D',
+    dark: '#D891284D'
   },
   'graph-0': 'orange!',
   'graph-1': 'blue!',
@@ -135,5 +150,5 @@ export const colors = {
   focus: 'teal!',
   placeholder: 'text-weak',
   'text-primary-button': '#FFFFFF',
-  'background-cta-alternate': '#F2F2F2',
+  'background-cta-alternate': '#F2F2F2'
 };
