@@ -45,6 +45,7 @@
     "eslint-plugin-react": "^7.32.2",
     "fs-extra": "^11.1.0",
     "grommet-icons": "^4.10.0",
+    "hpe-design-tokens": "https://github.com/grommet/hpe-design-tokens/tarball/stable",
     "pre-commit": "^1.2.2",
     "prettier": "^2.8.3",
     "pretty-quick": "^3.1.1",
@@ -70,8 +71,5 @@
   "pre-commit": [
     "lint-fix",
     "prettier"
-  ],
-  "dependencies": {
-    "hpe-design-tokens": "https://github.com/grommet/hpe-design-tokens/tarball/stable"
-  }
+  ]
 }
