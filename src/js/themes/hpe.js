@@ -1,7 +1,7 @@
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import React from 'react';
 import { css } from 'styled-components';
-import { structuredTokens } from 'hpe-design-tokens';
+import { structuredTokens, tokens } from 'hpe-design-tokens';
 import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
 import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
@@ -230,14 +230,14 @@ export const hpe = deepFreeze({
       // Naming in Figma file is strong/default/weak vs. Grommet t-shirt sizing.
       // As defined here, default is currently mapping to medium.
       light: {
-        small: `${structuredTokens.elevation.small.boxShadow.light};`,
-        medium: `${structuredTokens.elevation.medium.boxShadow.light};`,
-        large: `${structuredTokens.elevation.large.boxShadow.light};`,
+        small: `${tokens['elevation.small.boxShadow.light']};`,
+        medium: `${tokens['elevation.medium.boxShadow.light']};`,
+        large: `${tokens['elevation.large.boxShadow.light']};`,
       },
       dark: {
-        small: `${structuredTokens.elevation.small.boxShadow.dark};`,
-        medium: `${structuredTokens.elevation.medium.boxShadow.dark};`,
-        large: `${structuredTokens.elevation.large.boxShadow.dark};`,
+        small: `${tokens['elevation.small.boxShadow.dark']};`,
+        medium: `${tokens['elevation.medium.boxShadow.dark']};`,
+        large: `${tokens['elevation.large.boxShadow.dark']};`,
       },
     },
     hover: {
