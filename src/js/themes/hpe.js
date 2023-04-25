@@ -166,7 +166,7 @@ export const hpe = deepFreeze({
       `,
     },
     font: {
-      family: structuredTokens.font['font-family'],
+      family: structuredTokens.font.fontFamily,
       face: `
         @font-face {
           font-family: "Metric";
