@@ -230,14 +230,14 @@ export const hpe = deepFreeze({
       // Naming in Figma file is strong/default/weak vs. Grommet t-shirt sizing.
       // As defined here, default is currently mapping to medium.
       light: {
-        small: `${structuredTokens.elevation.small['box-shadow'].light};`,
-        medium: `${structuredTokens.elevation.medium['box-shadow'].light};`,
-        large: `${structuredTokens.elevation.large['box-shadow'].light};`,
+        small: `${structuredTokens.elevation.small.boxShadow.light};`,
+        medium: `${structuredTokens.elevation.mediumsmall.boxShadow.light};`,
+        large: `${structuredTokens.elevation.largesmall.boxShadow.light};`,
       },
       dark: {
-        small: `${structuredTokens.elevation.small['box-shadow'].dark};`,
-        medium: `${structuredTokens.elevation.medium['box-shadow'].dark};`,
-        large: `${structuredTokens.elevation.large['box-shadow'].dark};`,
+        small: `${structuredTokens.elevation.small.boxShadow.dark};`,
+        medium: `${structuredTokens.elevation.mediumsmall.boxShadow.dark};`,
+        large: `${structuredTokens.elevation.largesmall.boxShadow.dark};`,
       },
     },
     hover: {
