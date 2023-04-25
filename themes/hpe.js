@@ -4,6 +4,7 @@ exports.__esModule = true;
 exports.hpe = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _styledComponents = require("styled-components");
+var _hpeDesignTokens = require("hpe-design-tokens");
 var _Ascending = require("grommet-icons/icons/Ascending");
 var _Blank = require("grommet-icons/icons/Blank");
 var _CircleAlert = require("grommet-icons/icons/CircleAlert");
@@ -49,34 +50,38 @@ var hpe = deepFreeze({
   defaultMode: 'light',
   global: {
     backgrounds: _backgrounds.backgrounds,
+    borderSize: {
+      xsmall: _hpeDesignTokens.structuredTokens.border.xsmall.desktop,
+      small: _hpeDesignTokens.structuredTokens.border.small.desktop,
+      medium: _hpeDesignTokens.structuredTokens.border.medium.desktop,
+      // 4
+      large: _hpeDesignTokens.structuredTokens.border.large.desktop,
+      // 12
+      xlarge: _hpeDesignTokens.structuredTokens.border.xlarge.desktop // 24
+    },
+
     breakpoints: {
       xsmall: {
         value: baseSpacing * 24,
         // 576
         borderSize: {
-          xsmall: '1px',
-          small: '2px',
-          medium: baseSpacing / 6 + "px",
-          // 4
-          large: baseSpacing / 4 + "px",
-          // 6
-          xlarge: baseSpacing / 2 + "px" // 12
+          xsmall: _hpeDesignTokens.structuredTokens.border.xsmall.mobile,
+          small: _hpeDesignTokens.structuredTokens.border.small.mobile,
+          medium: _hpeDesignTokens.structuredTokens.border.medium.mobile,
+          large: _hpeDesignTokens.structuredTokens.border.large.mobile,
+          xlarge: _hpeDesignTokens.structuredTokens.border.xlarge.mobile
         },
-
         edgeSize: {
           none: '0px',
-          hair: '1px',
-          // for Chart
-          xxsmall: '2px',
-          xsmall: baseSpacing / 8 + "px",
-          // 3
-          small: baseSpacing / 4 + "px",
-          // 6
-          medium: baseSpacing / 2 + "px",
+          hair: _hpeDesignTokens.structuredTokens.spacing['3xsmall'].mobile,
+          xxsmall: _hpeDesignTokens.structuredTokens.spacing.xxsmall.mobile,
+          xsmall: _hpeDesignTokens.structuredTokens.spacing.xsmall.mobile,
+          small: _hpeDesignTokens.structuredTokens.spacing.small.mobile,
+          medium: _hpeDesignTokens.structuredTokens.spacing.medium.mobile,
+          // 4
+          large: _hpeDesignTokens.structuredTokens.spacing.large.mobile,
           // 12
-          large: baseSpacing + "px",
-          // 24
-          xlarge: baseSpacing * 2 + "px" // 48
+          xlarge: _hpeDesignTokens.structuredTokens.spacing.xlarge.mobile // 24
         },
 
         size: {
@@ -96,7 +101,30 @@ var hpe = deepFreeze({
         }
       },
       small: {
-        value: baseSpacing * 32 // 768
+        value: baseSpacing * 32,
+        // 768
+        borderSize: {
+          xsmall: _hpeDesignTokens.structuredTokens.border.xsmall.mobile,
+          small: _hpeDesignTokens.structuredTokens.border.small.mobile,
+          medium: _hpeDesignTokens.structuredTokens.border.medium.mobile,
+          // 4
+          large: _hpeDesignTokens.structuredTokens.border.large.mobile,
+          // 12
+          xlarge: _hpeDesignTokens.structuredTokens.border.xlarge.mobile // 24
+        },
+
+        edgeSize: {
+          none: '0px',
+          hair: _hpeDesignTokens.structuredTokens.spacing['3xsmall'].mobile,
+          xxsmall: _hpeDesignTokens.structuredTokens.spacing.xxsmall.mobile,
+          xsmall: _hpeDesignTokens.structuredTokens.spacing.xsmall.mobile,
+          small: _hpeDesignTokens.structuredTokens.spacing.small.mobile,
+          medium: _hpeDesignTokens.structuredTokens.spacing.medium.mobile,
+          // 4
+          large: _hpeDesignTokens.structuredTokens.spacing.large.mobile,
+          // 12
+          xlarge: _hpeDesignTokens.structuredTokens.spacing.xlarge.mobile // 24
+        }
       },
 
       medium: {
@@ -116,10 +144,24 @@ var hpe = deepFreeze({
         radius: '6px'
       }
     },
+    edgeSize: {
+      none: '0px',
+      hair: _hpeDesignTokens.structuredTokens.spacing['3xsmall'].desktop,
+      xxsmall: _hpeDesignTokens.structuredTokens.spacing.xxsmall.desktop,
+      xsmall: _hpeDesignTokens.structuredTokens.spacing.xsmall.desktop,
+      small: _hpeDesignTokens.structuredTokens.spacing.small.desktop,
+      medium: _hpeDesignTokens.structuredTokens.spacing.medium.desktop,
+      // 4
+      large: _hpeDesignTokens.structuredTokens.spacing.large.desktop,
+      // 12
+      xlarge: _hpeDesignTokens.structuredTokens.spacing.xlarge.desktop,
+      // 24
+      responsiveBreakpoint: 'small'
+    },
     input: {
       font: {
         height: 'inherit',
-        weight: 500
+        weight: _hpeDesignTokens.structuredTokens.input.value['font-weight']
       },
       padding: {
         horizontal: '11px',
@@ -127,11 +169,11 @@ var hpe = deepFreeze({
         vertical: '5px' // equivalent to 'xsmall' when combined with 1px border
       },
 
-      extend: "\n        &::-webkit-input-placeholder {\n          font-weight: 400;\n        }\n      \n        &::-moz-placeholder {\n          font-weight: 400;\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: 400;\n        }\n      "
+      extend: "\n        &::-webkit-input-placeholder {\n          font-weight: " + _hpeDesignTokens.structuredTokens.input.placeholder['font-weight'] + ";\n        }\n      \n        &::-moz-placeholder {\n          font-weight: " + _hpeDesignTokens.structuredTokens.input.placeholder['font-weight'] + ";\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: " + _hpeDesignTokens.structuredTokens.input.placeholder['font-weight'] + ";\n        }\n      "
     },
     font: {
-      family: "'Metric', Arial, sans-serif",
-      face: "\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff\") format('woff');\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff\") format('woff');\n          font-weight: 400;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff\") format('woff');\n          font-weight: 700;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff\") format('woff');\n          font-weight: 600;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff\") format('woff');\n          font-weight: 500;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff\") format('woff');\n          font-weight: 100;\n        }"
+      family: _hpeDesignTokens.structuredTokens.font['font-family'],
+      face: "\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + _hpeDesignTokens.structuredTokens.font.regular.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff\") format('woff');\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + _hpeDesignTokens.structuredTokens.font.regular.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff\") format('woff');\n          font-weight: 400;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + _hpeDesignTokens.structuredTokens.font.bold.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff\") format('woff');\n          font-weight: 700;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + _hpeDesignTokens.structuredTokens.font.semibold.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff\") format('woff');\n          font-weight: 600;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + _hpeDesignTokens.structuredTokens.font.medium.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff\") format('woff');\n          font-weight: 500;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + _hpeDesignTokens.structuredTokens.font.light.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff\") format('woff');\n          font-weight: 100;\n        }"
     },
     focus: {
       border: undefined
@@ -159,14 +201,14 @@ var hpe = deepFreeze({
       // Naming in Figma file is strong/default/weak vs. Grommet t-shirt sizing.
       // As defined here, default is currently mapping to medium.
       light: {
-        small: '0px 2px 4px #0000001F;',
-        medium: '0px 6px 12px #0000001F;',
-        large: '0px 12px 24px #0000003D;'
+        small: _hpeDesignTokens.structuredTokens.elevation.small.boxShadow.light + ";",
+        medium: _hpeDesignTokens.structuredTokens.elevation.medium.boxShadow.light + ";",
+        large: _hpeDesignTokens.structuredTokens.elevation.large.boxShadow.light + ";"
       },
       dark: {
-        small: '0px 2px 4px #0000003D;',
-        medium: '0px 6px 12px #0000005C;',
-        large: '0px 12px 24px #0000007A;'
+        small: _hpeDesignTokens.structuredTokens.elevation.small.boxShadow.dark + ";",
+        medium: _hpeDesignTokens.structuredTokens.elevation.medium.boxShadow.dark + ";",
+        large: _hpeDesignTokens.structuredTokens.elevation.large.boxShadow.dark + ";"
       }
     },
     hover: {

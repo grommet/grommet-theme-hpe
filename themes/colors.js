@@ -17,60 +17,60 @@ var colors = {
   'status-error': undefined,
   brand: _hpeDesignTokens.tokens['color.brand'],
   background: {
-    dark: '#1C1C1C',
-    light: _hpeDesignTokens.tokens['color.background']
+    dark: _hpeDesignTokens.tokens['color.background.dark'],
+    light: _hpeDesignTokens.tokens['color.background.light']
   },
   'background-back': {
-    dark: '#1C1C1C',
-    light: _hpeDesignTokens.tokens['color.background.back']
+    dark: _hpeDesignTokens.tokens['color.background.back.dark'],
+    light: _hpeDesignTokens.tokens['color.background.back.light']
   },
   'background-front': {
-    dark: '#222222',
-    light: _hpeDesignTokens.tokens['color.background.front']
+    dark: _hpeDesignTokens.tokens['color.background.front.dark'],
+    light: _hpeDesignTokens.tokens['color.background.front.light']
   },
   'background-contrast': {
-    dark: '#FFFFFF0F',
+    dark: _hpeDesignTokens.tokens['color.background.contrast.dark'],
     // 6%
-    light: _hpeDesignTokens.tokens['color.background.contrast']
+    light: _hpeDesignTokens.tokens['color.background.contrast.light']
   },
-  'background-layer-overlay': '#00000080',
+  'background-layer-overlay': _hpeDesignTokens.tokens['color.background.layer.overlay'],
   icon: 'text',
   text: {
-    dark: '#FFFFFFE6',
+    dark: _hpeDesignTokens.tokens['color.text.dark'],
     // 90%
-    light: _hpeDesignTokens.tokens['color.text']
+    light: _hpeDesignTokens.tokens['color.text.light']
   },
   'text-strong': {
-    dark: '#FFFFFFF5',
+    dark: _hpeDesignTokens.tokens['color.text.strong.dark'],
     // 96%
-    light: _hpeDesignTokens.tokens['color.text.strong']
+    light: _hpeDesignTokens.tokens['color.text.strong.light']
   },
   'text-weak': {
-    dark: '#FFFFFF80',
+    dark: _hpeDesignTokens.tokens['color.text.weak.dark'],
     // 50%
-    light: _hpeDesignTokens.tokens['color.text.weak']
+    light: _hpeDesignTokens.tokens['color.text.weak.light']
   },
   'text-xweak': {
-    dark: '#FFFFFF33',
+    dark: _hpeDesignTokens.tokens['color.text.xweak.dark'],
     // 20%
-    light: [_hpeDesignTokens.tokens['color.text.xweak']]
+    light: _hpeDesignTokens.tokens['color.text.xweak.light']
   },
   border: {
-    dark: '#FFFFFF5C',
+    dark: _hpeDesignTokens.tokens['color.border.dark'],
     // 36%
-    light: _hpeDesignTokens.tokens['color.border'] // 36%
+    light: _hpeDesignTokens.tokens['color.border.light'] // 36%
   },
 
   'border-strong': {
-    dark: '#FFFFFFB8',
+    dark: _hpeDesignTokens.tokens['color.border.strong.dark'],
     // 72%
-    light: _hpeDesignTokens.tokens['color.border.strong'] // 72%
+    light: _hpeDesignTokens.tokens['color.border.strong.light'] // 72%
   },
 
   'border-weak': {
-    dark: '#FFFFFF1F',
+    dark: _hpeDesignTokens.tokens['color.border.weak.dark'],
     // 12%
-    light: _hpeDesignTokens.tokens['color.border.weak'] // 12%
+    light: _hpeDesignTokens.tokens['color.border.weak.light'] // 12%
   },
 
   control: 'brand',
@@ -82,20 +82,20 @@ var colors = {
   'selected-text': 'text-primary-button',
   // necessary to meet color contrast on HPE green background
   'status-critical': {
-    dark: '#D04F4E',
-    light: _hpeDesignTokens.tokens['color.status.critical']
+    dark: _hpeDesignTokens.tokens['color.status.critical.dark'],
+    light: _hpeDesignTokens.tokens['color.status.critical.light']
   },
   'status-warning': {
-    dark: '#9B6310',
-    light: _hpeDesignTokens.tokens['color.status.warning']
+    dark: _hpeDesignTokens.tokens['color.status.warning.dark'],
+    light: _hpeDesignTokens.tokens['color.status.warning.light']
   },
   'status-ok': {
-    dark: '#008567',
-    light: _hpeDesignTokens.tokens['color.status.ok']
+    dark: _hpeDesignTokens.tokens['color.status.ok.dark'],
+    light: _hpeDesignTokens.tokens['color.status.ok.light']
   },
   'status-unknown': {
-    dark: '#555555',
-    light: _hpeDesignTokens.tokens['color.status.unknown']
+    dark: _hpeDesignTokens.tokens['color.status.unknown.dark'],
+    light: _hpeDesignTokens.tokens['color.status.unknown.light']
   },
   'status-disabled': '#CCCCCC',
   // deprecated, does not support light and dark. use text-weak instead

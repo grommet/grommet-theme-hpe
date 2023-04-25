@@ -13,60 +13,60 @@ export var colors = {
   'status-error': undefined,
   brand: tokens['color.brand'],
   background: {
-    dark: '#1C1C1C',
-    light: tokens['color.background']
+    dark: tokens['color.background.dark'],
+    light: tokens['color.background.light']
   },
   'background-back': {
-    dark: '#1C1C1C',
-    light: tokens['color.background.back']
+    dark: tokens['color.background.back.dark'],
+    light: tokens['color.background.back.light']
   },
   'background-front': {
-    dark: '#222222',
-    light: tokens['color.background.front']
+    dark: tokens['color.background.front.dark'],
+    light: tokens['color.background.front.light']
   },
   'background-contrast': {
-    dark: '#FFFFFF0F',
+    dark: tokens['color.background.contrast.dark'],
     // 6%
-    light: tokens['color.background.contrast']
+    light: tokens['color.background.contrast.light']
   },
-  'background-layer-overlay': '#00000080',
+  'background-layer-overlay': tokens['color.background.layer.overlay'],
   icon: 'text',
   text: {
-    dark: '#FFFFFFE6',
+    dark: tokens['color.text.dark'],
     // 90%
-    light: tokens['color.text']
+    light: tokens['color.text.light']
   },
   'text-strong': {
-    dark: '#FFFFFFF5',
+    dark: tokens['color.text.strong.dark'],
     // 96%
-    light: tokens['color.text.strong']
+    light: tokens['color.text.strong.light']
   },
   'text-weak': {
-    dark: '#FFFFFF80',
+    dark: tokens['color.text.weak.dark'],
     // 50%
-    light: tokens['color.text.weak']
+    light: tokens['color.text.weak.light']
   },
   'text-xweak': {
-    dark: '#FFFFFF33',
+    dark: tokens['color.text.xweak.dark'],
     // 20%
-    light: [tokens['color.text.xweak']]
+    light: tokens['color.text.xweak.light']
   },
   border: {
-    dark: '#FFFFFF5C',
+    dark: tokens['color.border.dark'],
     // 36%
-    light: tokens['color.border'] // 36%
+    light: tokens['color.border.light'] // 36%
   },
 
   'border-strong': {
-    dark: '#FFFFFFB8',
+    dark: tokens['color.border.strong.dark'],
     // 72%
-    light: tokens['color.border.strong'] // 72%
+    light: tokens['color.border.strong.light'] // 72%
   },
 
   'border-weak': {
-    dark: '#FFFFFF1F',
+    dark: tokens['color.border.weak.dark'],
     // 12%
-    light: tokens['color.border.weak'] // 12%
+    light: tokens['color.border.weak.light'] // 12%
   },
 
   control: 'brand',
@@ -78,20 +78,20 @@ export var colors = {
   'selected-text': 'text-primary-button',
   // necessary to meet color contrast on HPE green background
   'status-critical': {
-    dark: '#D04F4E',
-    light: tokens['color.status.critical']
+    dark: tokens['color.status.critical.dark'],
+    light: tokens['color.status.critical.light']
   },
   'status-warning': {
-    dark: '#9B6310',
-    light: tokens['color.status.warning']
+    dark: tokens['color.status.warning.dark'],
+    light: tokens['color.status.warning.light']
   },
   'status-ok': {
-    dark: '#008567',
-    light: tokens['color.status.ok']
+    dark: tokens['color.status.ok.dark'],
+    light: tokens['color.status.ok.light']
   },
   'status-unknown': {
-    dark: '#555555',
-    light: tokens['color.status.unknown']
+    dark: tokens['color.status.unknown.dark'],
+    light: tokens['color.status.unknown.light']
   },
   'status-disabled': '#CCCCCC',
   // deprecated, does not support light and dark. use text-weak instead

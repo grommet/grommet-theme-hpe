@@ -23,15 +23,42 @@
       "purple-blue-yellow": "linear-gradient(\n      225deg,\n      hsl(263deg 82% 55%) 0%,\n      hsl(196deg 72% 53%) 25%,\n      hsl(171deg 80% 63%) 50%,\n      hsl(138deg 93% 68%) 75%,\n      hsl(47deg 99% 50%) 100%\n    );",
       "purple-magenta-yellow": "linear-gradient(\n      45deg,\n      hsl(274deg 100% 50%) 0%,\n      hsl(340deg 100% 50%) 50%,\n      hsl(46deg 100% 50%) 100%\n  );"
     },
+    "borderSize": {
+      "xsmall": {
+        "width": "1px"
+      },
+      "small": {
+        "width": "2px"
+      },
+      "medium": {
+        "width": "4px"
+      },
+      "large": {
+        "width": "12px"
+      },
+      "xlarge": {
+        "width": "24px"
+      }
+    },
     "breakpoints": {
       "xsmall": {
         "value": 576,
         "borderSize": {
-          "xsmall": "1px",
-          "small": "2px",
-          "medium": "4px",
-          "large": "6px",
-          "xlarge": "12px"
+          "xsmall": {
+            "width": "1px"
+          },
+          "small": {
+            "width": "2px"
+          },
+          "medium": {
+            "width": "4px"
+          },
+          "large": {
+            "width": "6px"
+          },
+          "xlarge": {
+            "width": "12px"
+          }
         },
         "edgeSize": {
           "none": "0px",
@@ -54,7 +81,34 @@
         }
       },
       "small": {
-        "value": 768
+        "value": 768,
+        "borderSize": {
+          "xsmall": {
+            "width": "1px"
+          },
+          "small": {
+            "width": "2px"
+          },
+          "medium": {
+            "width": "4px"
+          },
+          "large": {
+            "width": "6px"
+          },
+          "xlarge": {
+            "width": "12px"
+          }
+        },
+        "edgeSize": {
+          "none": "0px",
+          "hair": "1px",
+          "xxsmall": "2px",
+          "xsmall": "3px",
+          "small": "6px",
+          "medium": "12px",
+          "large": "24px",
+          "xlarge": "48px"
+        }
       },
       "medium": {
         "value": 1080
@@ -98,9 +152,7 @@
       },
       "text-xweak": {
         "dark": "#FFFFFF33",
-        "light": [
-          "#BBBBBB"
-        ]
+        "light": "#BBBBBB"
       },
       "border": {
         "dark": "#FFFFFF5C",
@@ -173,15 +225,12 @@
       },
       "yellow!": "#FEC901",
       "validation-critical": {
-        "light": "#C54E4B",
         "dark": "#CC1F1A4D"
       },
       "validation-ok": {
-        "light": "#01A982",
         "dark": "#17D0A64D"
       },
       "validation-warning": {
-        "light": "#FEC901",
         "dark": "#D891284D"
       },
       "graph-0": "orange!",
@@ -199,20 +248,29 @@
         "radius": "6px"
       }
     },
+    "edgeSize": {
+      "none": "0px",
+      "hair": "1px",
+      "xxsmall": "3px",
+      "xsmall": "6px",
+      "small": "12px",
+      "medium": "24px",
+      "large": "48px",
+      "xlarge": "96px",
+      "responsiveBreakpoint": "small"
+    },
     "input": {
       "font": {
-        "height": "inherit",
-        "weight": 500
+        "height": "inherit"
       },
       "padding": {
         "horizontal": "11px",
         "vertical": "5px"
       },
-      "extend": "\n        &::-webkit-input-placeholder {\n          font-weight: 400;\n        }\n      \n        &::-moz-placeholder {\n          font-weight: 400;\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: 400;\n        }\n      "
+      "extend": "\n        &::-webkit-input-placeholder {\n          font-weight: undefined;\n        }\n      \n        &::-moz-placeholder {\n          font-weight: undefined;\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: undefined;\n        }\n      "
     },
     "font": {
-      "family": "'Metric', Arial, sans-serif",
-      "face": "\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff\") format('woff');\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff\") format('woff');\n          font-weight: 400;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff\") format('woff');\n          font-weight: 700;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff\") format('woff');\n          font-weight: 600;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff\") format('woff');\n          font-weight: 500;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff\") format('woff');\n          font-weight: 100;\n        }"
+      "face": "\n        @font-face {\n          font-family: \"Metric\";\n          src: url(https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2) format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff\") format('woff');\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2) format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff\") format('woff');\n          font-weight: 400;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff2) format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff\") format('woff');\n          font-weight: 700;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff2) format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff\") format('woff');\n          font-weight: 600;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff2) format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff\") format('woff');\n          font-weight: 500;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff2) format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff\") format('woff');\n          font-weight: 100;\n        }"
     },
     "focus": {},
     "active": {
@@ -231,14 +289,14 @@
     },
     "elevation": {
       "light": {
-        "small": "0px 2px 4px #0000001F;",
-        "medium": "0px 6px 12px #0000001F;",
-        "large": "0px 12px 24px #0000003D;"
+        "small": "undefined;",
+        "medium": "undefined;",
+        "large": "undefined;"
       },
       "dark": {
-        "small": "0px 2px 4px #0000003D;",
-        "medium": "0px 6px 12px #0000005C;",
-        "large": "0px 12px 24px #0000007A;"
+        "small": "undefined;",
+        "medium": "undefined;",
+        "large": "undefined;"
       }
     },
     "hover": {
