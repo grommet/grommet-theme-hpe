@@ -231,12 +231,12 @@ export const hpe = deepFreeze({
       // As defined here, default is currently mapping to medium.
       light: {
         small: `${structuredTokens.elevation.small.boxShadow.light};`,
-        medium: `${structuredTokens.elevation.mediumsmall.boxShadow.light};`,
+        medium: `${structuredTokens.elevation.medium.boxShadow.light};`,
         large: `${structuredTokens.elevation.largesmall.boxShadow.light};`,
       },
       dark: {
         small: `${structuredTokens.elevation.small.boxShadow.dark};`,
-        medium: `${structuredTokens.elevation.mediumsmall.boxShadow.dark};`,
+        medium: `${structuredTokens.elevation.medium.boxShadow.dark};`,
         large: `${structuredTokens.elevation.largesmall.boxShadow.dark};`,
       },
     },
