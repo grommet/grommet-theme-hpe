@@ -73,5 +73,8 @@
   "pre-commit": [
     "lint-fix",
     "prettier"
-  ]
+  ],
+  "dependencies": {
+    "hpe-design-tokens": "https://github.com/grommet/hpe-design-tokens/tarball/stable"
+  }
 }
