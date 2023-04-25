@@ -232,12 +232,12 @@ export const hpe = deepFreeze({
       light: {
         small: `${structuredTokens.elevation.small.boxShadow.light};`,
         medium: `${structuredTokens.elevation.medium.boxShadow.light};`,
-        large: `${structuredTokens.elevation.largesmall.boxShadow.light};`,
+        large: `${structuredTokens.elevation.large.boxShadow.light};`,
       },
       dark: {
         small: `${structuredTokens.elevation.small.boxShadow.dark};`,
         medium: `${structuredTokens.elevation.medium.boxShadow.dark};`,
-        large: `${structuredTokens.elevation.largesmall.boxShadow.dark};`,
+        large: `${structuredTokens.elevation.large.boxShadow.dark};`,
       },
     },
     hover: {
