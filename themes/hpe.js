@@ -172,7 +172,7 @@ var hpe = deepFreeze({
       extend: "\n        &::-webkit-input-placeholder {\n          font-weight: " + _hpeDesignTokens.structuredTokens.input.placeholder['font-weight'] + ";\n        }\n      \n        &::-moz-placeholder {\n          font-weight: " + _hpeDesignTokens.structuredTokens.input.placeholder['font-weight'] + ";\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: " + _hpeDesignTokens.structuredTokens.input.placeholder['font-weight'] + ";\n        }\n      "
     },
     font: {
-      family: _hpeDesignTokens.structuredTokens.font['font-family'],
+      family: _hpeDesignTokens.structuredTokens.font.fontFamily,
       face: "\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + _hpeDesignTokens.structuredTokens.font.regular.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff\") format('woff');\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + _hpeDesignTokens.structuredTokens.font.regular.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff\") format('woff');\n          font-weight: 400;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + _hpeDesignTokens.structuredTokens.font.bold.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff\") format('woff');\n          font-weight: 700;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + _hpeDesignTokens.structuredTokens.font.semibold.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff\") format('woff');\n          font-weight: 600;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + _hpeDesignTokens.structuredTokens.font.medium.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff\") format('woff');\n          font-weight: 500;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + _hpeDesignTokens.structuredTokens.font.light.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff\") format('woff');\n          font-weight: 100;\n        }"
     },
     focus: {
@@ -201,14 +201,14 @@ var hpe = deepFreeze({
       // Naming in Figma file is strong/default/weak vs. Grommet t-shirt sizing.
       // As defined here, default is currently mapping to medium.
       light: {
-        small: _hpeDesignTokens.structuredTokens.elevation.small.boxShadow.light + ";",
-        medium: _hpeDesignTokens.structuredTokens.elevation.medium.boxShadow.light + ";",
-        large: _hpeDesignTokens.structuredTokens.elevation.large.boxShadow.light + ";"
+        small: _hpeDesignTokens.tokens['elevation.small.boxShadow.light'] + ";",
+        medium: _hpeDesignTokens.tokens['elevation.medium.boxShadow.light'] + ";",
+        large: _hpeDesignTokens.tokens['elevation.large.boxShadow.light'] + ";"
       },
       dark: {
-        small: _hpeDesignTokens.structuredTokens.elevation.small.boxShadow.dark + ";",
-        medium: _hpeDesignTokens.structuredTokens.elevation.medium.boxShadow.dark + ";",
-        large: _hpeDesignTokens.structuredTokens.elevation.large.boxShadow.dark + ";"
+        small: _hpeDesignTokens.tokens['elevation.small.boxShadow.dark'] + ";",
+        medium: _hpeDesignTokens.tokens['elevation.medium.boxShadow.dark'] + ";",
+        large: _hpeDesignTokens.tokens['elevation.large.boxShadow.dark'] + ";"
       }
     },
     hover: {

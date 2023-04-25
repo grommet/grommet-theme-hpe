@@ -3,7 +3,7 @@ function _taggedTemplateLiteralLoose(strings, raw) { if (!raw) { raw = strings.s
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import React from 'react';
 import { css } from 'styled-components';
-import { structuredTokens } from 'hpe-design-tokens';
+import { structuredTokens, tokens } from 'hpe-design-tokens';
 import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
 import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
@@ -168,7 +168,7 @@ export var hpe = deepFreeze({
       extend: "\n        &::-webkit-input-placeholder {\n          font-weight: " + structuredTokens.input.placeholder['font-weight'] + ";\n        }\n      \n        &::-moz-placeholder {\n          font-weight: " + structuredTokens.input.placeholder['font-weight'] + ";\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: " + structuredTokens.input.placeholder['font-weight'] + ";\n        }\n      "
     },
     font: {
-      family: structuredTokens.font['font-family'],
+      family: structuredTokens.font.fontFamily,
       face: "\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + structuredTokens.font.regular.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff\") format('woff');\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + structuredTokens.font.regular.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff\") format('woff');\n          font-weight: 400;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + structuredTokens.font.bold.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff\") format('woff');\n          font-weight: 700;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + structuredTokens.font.semibold.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff\") format('woff');\n          font-weight: 600;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + structuredTokens.font.medium.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff\") format('woff');\n          font-weight: 500;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(" + structuredTokens.font.light.url + ") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff\") format('woff');\n          font-weight: 100;\n        }"
     },
     focus: {
@@ -197,14 +197,14 @@ export var hpe = deepFreeze({
       // Naming in Figma file is strong/default/weak vs. Grommet t-shirt sizing.
       // As defined here, default is currently mapping to medium.
       light: {
-        small: structuredTokens.elevation.small.boxShadow.light + ";",
-        medium: structuredTokens.elevation.medium.boxShadow.light + ";",
-        large: structuredTokens.elevation.large.boxShadow.light + ";"
+        small: tokens['elevation.small.boxShadow.light'] + ";",
+        medium: tokens['elevation.medium.boxShadow.light'] + ";",
+        large: tokens['elevation.large.boxShadow.light'] + ";"
       },
       dark: {
-        small: structuredTokens.elevation.small.boxShadow.dark + ";",
-        medium: structuredTokens.elevation.medium.boxShadow.dark + ";",
-        large: structuredTokens.elevation.large.boxShadow.dark + ";"
+        small: tokens['elevation.small.boxShadow.dark'] + ";",
+        medium: tokens['elevation.medium.boxShadow.dark'] + ";",
+        large: tokens['elevation.large.boxShadow.dark'] + ";"
       }
     },
     hover: {
