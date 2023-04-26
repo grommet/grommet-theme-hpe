@@ -1447,6 +1447,10 @@
     }
   },
   "tag": {
+    "pad": {
+      "horizontal": "small",
+      "vertical": "5px"
+    },
     "value": {
       "weight": 500
     }

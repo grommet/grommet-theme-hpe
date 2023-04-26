@@ -17,7 +17,7 @@ var _Up = require("grommet-icons/icons/Up");
 var _Hpe = require("grommet-icons/icons/Hpe");
 var _backgrounds = require("./backgrounds");
 var _colors = require("./colors");
-var _templateObject, _templateObject2, _templateObject3;
+var _templateObject, _templateObject2, _templateObject3; // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _taggedTemplateLiteralLoose(strings, raw) { if (!raw) { raw = strings.slice(0); } strings.raw = raw; return strings; }
 var baseSpacing = 24;
@@ -1535,6 +1535,11 @@ var hpe = deepFreeze({
     }
   },
   tag: {
+    pad: {
+      horizontal: 'small',
+      vertical: '5px' // 5px pad + 1px border = 6px 'xsmall'
+    },
+
     value: {
       weight: 500
     }

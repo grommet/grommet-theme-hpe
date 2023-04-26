@@ -1531,6 +1531,11 @@ export var hpe = deepFreeze({
     }
   },
   tag: {
+    pad: {
+      horizontal: 'small',
+      vertical: '5px' // 5px pad + 1px border = 6px 'xsmall'
+    },
+
     value: {
       weight: 500
     }
