@@ -41,6 +41,22 @@ var primaryBackground = function primaryBackground(props) {
 var primaryHoverBackground = function primaryHoverBackground(props) {
   return !props.active && !props.colorValue ? "background-color: " + props.theme.global.colors.green.dark + ";" : '';
 };
+
+// option button kind styles. abstracted so select.emptySearchMessage
+// can reference pad value
+var option = {
+  color: 'text',
+  border: {
+    radius: '0px'
+  },
+  pad: {
+    horizontal: '12px',
+    vertical: '6px'
+  },
+  font: {
+    weight: 500
+  }
+};
 export var hpe = deepFreeze({
   defaultMode: 'light',
   global: {
@@ -339,19 +355,7 @@ export var hpe = deepFreeze({
         weight: 700
       }
     },
-    option: {
-      color: 'text',
-      border: {
-        radius: '0px'
-      },
-      pad: {
-        horizontal: '12px',
-        vertical: '6px'
-      },
-      font: {
-        weight: 500
-      }
-    },
+    option: option,
     active: {
       background: {
         color: 'background-contrast'
@@ -1406,6 +1410,11 @@ export var hpe = deepFreeze({
       extend: function extend(_ref17) {
         var disabled = _ref17.disabled;
         return css(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
+      }
+    },
+    emptySearchMessage: {
+      container: {
+        pad: option.pad
       }
     },
     icons: {

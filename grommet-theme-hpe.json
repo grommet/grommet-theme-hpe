@@ -1337,6 +1337,14 @@
   },
   "select": {
     "control": {},
+    "emptySearchMessage": {
+      "container": {
+        "pad": {
+          "horizontal": "12px",
+          "vertical": "6px"
+        }
+      }
+    },
     "icons": {
       "color": "text",
       "down": {},
