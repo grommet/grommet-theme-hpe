@@ -1257,6 +1257,9 @@ export var hpe = deepFreeze({
     }
   },
   pageHeader: {
+    responsive: {
+      breakpoints: ['xsmall', 'small']
+    },
     subtitle: {
       size: 'xlarge'
     },
