@@ -1,4 +1,4 @@
-var _templateObject;
+var _templateObject, _templateObject2, _templateObject3;
 function _taggedTemplateLiteralLoose(strings, raw) { if (!raw) { raw = strings.slice(0); } strings.raw = raw; return strings; }
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import React from 'react';
@@ -40,6 +40,22 @@ var primaryBackground = function primaryBackground(props) {
 // of button to darker green to expose gradient on hover
 var primaryHoverBackground = function primaryHoverBackground(props) {
   return !props.active && !props.colorValue ? "background-color: " + props.theme.global.colors.green.dark + ";" : '';
+};
+
+// option button kind styles. abstracted so select.emptySearchMessage
+// can reference pad value
+var option = {
+  color: 'text',
+  border: {
+    radius: '0px'
+  },
+  pad: {
+    horizontal: '12px',
+    vertical: '6px'
+  },
+  font: {
+    weight: 500
+  }
 };
 export var hpe = deepFreeze({
   defaultMode: 'light',
@@ -304,7 +320,7 @@ export var hpe = deepFreeze({
       color: 'text-strong',
       border: undefined,
       font: {
-        weight: 700
+        weight: 600
       }
     },
     gap: 'xsmall',
@@ -327,31 +343,21 @@ export var hpe = deepFreeze({
       },
       color: 'text-strong',
       font: {
-        weight: 700
+        weight: 600
       }
     },
     toolbar: {
       border: {
-        radius: '6px'
+        radius: '6px',
+        width: '1px',
+        color: 'border'
       },
       color: 'text-strong',
       font: {
-        weight: 700
+        weight: 600
       }
     },
-    option: {
-      color: 'text',
-      border: {
-        radius: '0px'
-      },
-      pad: {
-        horizontal: '12px',
-        vertical: '6px'
-      },
-      font: {
-        weight: 500
-      }
-    },
+    option: option,
     active: {
       background: {
         color: 'background-contrast'
@@ -433,19 +439,15 @@ export var hpe = deepFreeze({
           radius: '2em'
         },
         pad: {
-          vertical: '6px',
-          horizontal: '18px'
+          vertical: '5px',
+          horizontal: '12px'
         },
         iconOnly: {
-          pad: '9px'
+          pad: '7px'
         },
         toolbar: {
           border: {
             radius: '6px'
-          },
-          pad: {
-            vertical: '4px',
-            horizontal: '8px'
           }
         }
       },
@@ -475,11 +477,11 @@ export var hpe = deepFreeze({
           radius: '2em'
         },
         pad: {
-          vertical: '8px',
+          vertical: '10px',
           horizontal: '24px'
         },
         iconOnly: {
-          pad: '12px'
+          pad: '13px'
         },
         toolbar: {
           border: {
@@ -496,11 +498,11 @@ export var hpe = deepFreeze({
           radius: '2em'
         },
         pad: {
-          vertical: '18px',
+          vertical: '21px',
           horizontal: '30px'
         },
         iconOnly: {
-          pad: '21px'
+          pad: '24px'
         }
       }
     },
@@ -513,10 +515,6 @@ export var hpe = deepFreeze({
       var lineHeight = '24px';
       var style = '';
       var iconOnly = hasIcon && !hasLabel;
-      // keep reasonable click target for small button
-      if (sizeProp === 'small' && !iconOnly) {
-        style += "line-height: " + lineHeight + ";";
-      }
       if ((sizeProp === 'medium' || sizeProp === undefined) && !iconOnly) {
         style += "font-size: " + fontSize + ";\n        line-height: " + lineHeight + ";";
       }
@@ -606,7 +604,7 @@ export var hpe = deepFreeze({
         var disabled = _ref4.disabled,
           pad = _ref4.pad,
           theme = _ref4.theme;
-        return "\n      " + (!disabled && pad === 'none' && "border: 2px solid " + theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light'] + ";") + "\n    ";
+        return css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), !disabled && pad === 'none' && "border: 2px solid " + theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light'] + ";");
       }
     },
     color: 'background',
@@ -658,7 +656,7 @@ export var hpe = deepFreeze({
     extend: function extend(_ref9) {
       var disabled = _ref9.disabled,
         pad = _ref9.pad;
-      return "\n    " + (!disabled && pad === 'none' && ":hover {\n      background-color: unset;\n    }") + "\n    font-weight: 500;\n    width: auto;\n  };\n  ";
+      return css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n    ", "\n    font-weight: 500;\n    width: auto;\n  };\n  "])), !disabled && pad === 'none' && ":hover {\n      background-color: unset;\n    }");
     }
   },
   checkBoxGroup: {
@@ -700,6 +698,9 @@ export var hpe = deepFreeze({
       pad: {
         horizontal: 'small',
         vertical: 'xsmall'
+      },
+      units: {
+        color: 'text-weak'
       }
     },
     icons: {
@@ -741,7 +742,7 @@ export var hpe = deepFreeze({
       }
     },
     primary: {
-      weight: 400,
+      weight: 500,
       color: 'text-strong'
     },
     resize: {
@@ -893,7 +894,7 @@ export var hpe = deepFreeze({
     level: {
       1: {
         font: {
-          weight: 400
+          weight: 500
         },
         small: {
           size: '24px',
@@ -1020,15 +1021,12 @@ export var hpe = deepFreeze({
     // get large, the weight decreases.
     // This block can be removed once grommet theme structure is enhanced
     // to support level and size specific weights.
+    // TO DO revisit this with latest heading weights, but assuming level 2 should always be 500 also
     extend: function extend(_ref12) {
       var level = _ref12.level,
         size = _ref12.size;
       var fontWeight = '';
-      if (level === 1 && size === 'small') {
-        fontWeight = 'font-weight: 500;';
-      } else if (level === 2 && ['large', 'xlarge'].includes(size)) {
-        fontWeight = 'font-weight: 400;';
-      } else if (level === 3 && size === 'small') {
+      if (level === 3 && size === 'small') {
         fontWeight = 'font-weight: 600;';
       } else if (level === 4 && ['small', 'medium'].includes(size)) {
         fontWeight = 'font-weight: 600;';
@@ -1044,8 +1042,8 @@ export var hpe = deepFreeze({
     size: {
       small: '16px',
       medium: '18px',
-      large: '24px',
-      xlarge: '30px',
+      large: '22px',
+      xlarge: '24px',
       xxlarge: '36px'
     }
   },
@@ -1126,6 +1124,9 @@ export var hpe = deepFreeze({
     global: {
       container: {
         round: 'none'
+      },
+      close: {
+        icon: Close
       }
     },
     message: {
@@ -1250,6 +1251,9 @@ export var hpe = deepFreeze({
     }
   },
   pageHeader: {
+    responsive: {
+      breakpoints: ['xsmall', 'small']
+    },
     subtitle: {
       size: 'xlarge'
     },
@@ -1278,7 +1282,7 @@ export var hpe = deepFreeze({
         radius: '2em'
       },
       font: {
-        weight: 700
+        weight: 600
       },
       active: {
         border: {
@@ -1286,7 +1290,7 @@ export var hpe = deepFreeze({
         },
         color: 'text-strong',
         font: {
-          weight: 700
+          weight: 600
         }
       },
       disabled: {
@@ -1311,27 +1315,19 @@ export var hpe = deepFreeze({
       maxWidth: '25em'
     },
     large: {
-      size: '24px',
-      height: '32px',
+      size: '22px',
+      height: '28px',
       maxWidth: '25em'
     },
     xlarge: {
-      size: '30px',
-      height: '36px',
+      size: '24px',
+      height: '30px',
       maxWidth: '25em'
     },
     xxlarge: {
       size: '36px',
       height: '40px',
       maxWidth: '25em'
-    },
-    // This block applies size-specific weights to paragraph to ensure
-    // that as paragraph sizes get larger, the weight decreases.
-    // This block can be removed once grommet theme structure is enhanced
-    // to support size-specific weights.
-    extend: function extend(_ref14) {
-      var size = _ref14.size;
-      return "\n      " + (['xlarge', 'xxlarge'].includes(size) ? 'font-weight: 300;' : '') + ";\n    ";
     }
   },
   radioButton: {
@@ -1347,13 +1343,13 @@ export var hpe = deepFreeze({
     },
     color: 'selected-background',
     container: {
-      extend: function extend(_ref15) {
-        var theme = _ref15.theme;
+      extend: function extend(_ref14) {
+        var theme = _ref14.theme;
         return "\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
       }
     },
-    extend: function extend(_ref16) {
-      var theme = _ref16.theme;
+    extend: function extend(_ref15) {
+      var theme = _ref15.theme;
       return "\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
     },
     gap: 'xsmall',
@@ -1400,9 +1396,14 @@ export var hpe = deepFreeze({
   },
   select: {
     control: {
-      extend: function extend(_ref17) {
-        var disabled = _ref17.disabled;
-        return css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
+      extend: function extend(_ref16) {
+        var disabled = _ref16.disabled;
+        return css(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
+      }
+    },
+    emptySearchMessage: {
+      container: {
+        pad: option.pad
       }
     },
     icons: {
@@ -1451,7 +1452,7 @@ export var hpe = deepFreeze({
     active: {
       background: undefined,
       color: 'text-strong',
-      weight: 'bold'
+      weight: 600
     },
     hover: {
       background: 'transparent',
@@ -1490,7 +1491,6 @@ export var hpe = deepFreeze({
   },
   tabs: {
     header: {
-      alignSelf: 'start',
       border: {
         side: 'bottom',
         size: 'xsmall',
@@ -1513,8 +1513,8 @@ export var hpe = deepFreeze({
       }
     },
     body: {
-      extend: function extend(_ref18) {
-        var theme = _ref18.theme;
+      extend: function extend(_ref17) {
+        var theme = _ref17.theme;
         return "\n          :hover {\n            button {\n              background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n            }\n          }\n        ";
       }
     },
@@ -1528,6 +1528,11 @@ export var hpe = deepFreeze({
     }
   },
   tag: {
+    pad: {
+      horizontal: 'small',
+      vertical: '5px' // 5px pad + 1px border = 6px 'xsmall'
+    },
+
     value: {
       weight: 500
     }
@@ -1546,13 +1551,14 @@ export var hpe = deepFreeze({
       height: '24px'
     },
     large: {
-      size: '24px',
-      height: '32px'
+      size: '22px',
+      height: '28px'
     },
     xlarge: {
-      size: '30px',
-      height: '36px'
+      size: '24px',
+      height: '30px'
     },
+    // TO DO Revisit Ashley's text explorations for the larger sizes
     xxlarge: {
       size: '36px',
       height: '40px'
@@ -1577,15 +1583,16 @@ export var hpe = deepFreeze({
     // that as text sizes get larger, the weight decreases.
     // This block can be removed once grommet theme structure is enhanced
     // to support size-specific weights.
-    extend: function extend(_ref19) {
-      var size = _ref19.size;
-      return "\n      " + (['xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size) ? 'font-weight: 300;' : '') + ";\n    ";
+    // TO DO, do we still want to drop the weights?
+    extend: function extend(_ref18) {
+      var size = _ref18.size;
+      return "\n      " + (['xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size) ? 'font-weight: 300;' : '') + ";\n    ";
     }
   },
   textInput: {
     container: {
-      extend: function extend(_ref20) {
-        var theme = _ref20.theme;
+      extend: function extend(_ref19) {
+        var theme = _ref19.theme;
         return "\n        svg {\n          fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n        }\n      ";
       }
     }

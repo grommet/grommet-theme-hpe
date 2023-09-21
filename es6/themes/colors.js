@@ -31,14 +31,14 @@ export var colors = {
   'background-layer-overlay': '#00000080',
   icon: 'text',
   text: {
-    dark: '#FFFFFFE6',
+    dark: '#FFFFFF',
     // 90%
-    light: '#6F6F6F'
+    light: '#555555'
   },
   'text-strong': {
-    dark: '#FFFFFFF5',
+    dark: '#FFFFFF',
     // 96%
-    light: '#444444'
+    light: '#333333'
   },
   'text-weak': {
     dark: '#FFFFFF80',
