@@ -55,6 +55,22 @@ const primaryHoverBackground = (props) =>
     ? `background-color: ${props.theme.global.colors.green.dark};`
     : '';
 
+// option button kind styles. abstracted so select.emptySearchMessage
+// can reference pad value
+const option = {
+  color: 'text',
+  border: {
+    radius: '0px',
+  },
+  pad: {
+    horizontal: '12px',
+    vertical: '6px',
+  },
+  font: {
+    weight: 500,
+  },
+};
+
 export const hpe = deepFreeze({
   defaultMode: 'light',
   global: {
@@ -364,19 +380,7 @@ export const hpe = deepFreeze({
         weight: 700,
       },
     },
-    option: {
-      color: 'text',
-      border: {
-        radius: '0px',
-      },
-      pad: {
-        horizontal: '12px',
-        vertical: '6px',
-      },
-      font: {
-        weight: 500,
-      },
-    },
+    option,
     active: {
       background: {
         color: 'background-contrast',
@@ -457,7 +461,7 @@ export const hpe = deepFreeze({
           horizontal: '18px',
         },
         iconOnly: {
-          pad: '9px',
+          pad: '10px',
         },
         toolbar: {
           border: {
@@ -614,15 +618,13 @@ export const hpe = deepFreeze({
       // HPE Design System guidance states that pad="none" should be applied on CheckBox
       // when its used outside of a FormField. We will apply this hover treatment in
       // those instances.
-      extend: ({ disabled, pad, theme }) => `
-      ${
-        !disabled &&
+      extend: ({ disabled, pad, theme }) => css`
+        ${!disabled &&
         pad === 'none' &&
         `border: 2px solid ${
           theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light']
-        };`
-      }
-    `,
+        };`}
+      `,
     },
     color: 'background',
     border: {
@@ -672,7 +674,7 @@ export const hpe = deepFreeze({
     // HPE Design System guidance states that pad="none" should be applied on CheckBox
     // when its used outside of a FormField. We will apply this hover treatment in
     // those instances.
-    extend: ({ disabled, pad }) => `
+    extend: ({ disabled, pad }) => css`
     ${
       !disabled &&
       pad === 'none' &&
@@ -743,11 +745,16 @@ export const hpe = deepFreeze({
         },
       },
       pad: { horizontal: 'small', vertical: 'xsmall' },
+      units: {
+        color: 'text-weak',
+      },
     },
     icons: {
-      ascending: Ascending,
-      descending: Descending,
-      sortable: Unsorted,
+      ascending: () => <Ascending size="large" />,
+      descending: () => <Descending size="large" />,
+      contract: () => <Up height="medium" />,
+      expand: () => <Down height="medium" />,
+      sortable: () => <Unsorted size="large" />,
     },
     pinned: {
       header: {
@@ -1246,6 +1253,9 @@ export const hpe = deepFreeze({
     },
   },
   pageHeader: {
+    responsive: {
+      breakpoints: ['xsmall', 'small'],
+    },
     subtitle: {
       size: 'xlarge',
     },
@@ -1300,7 +1310,7 @@ export const hpe = deepFreeze({
     },
     small: {
       size: '16px',
-      height: '18px',
+      height: '20px',
       maxWidth: '25em',
     },
     medium: {
@@ -1401,6 +1411,11 @@ export const hpe = deepFreeze({
           cursor: default;
         }`}
       `,
+    },
+    emptySearchMessage: {
+      container: {
+        pad: option.pad,
+      },
     },
     icons: {
       color: 'text',
@@ -1529,6 +1544,10 @@ export const hpe = deepFreeze({
     },
   },
   tag: {
+    pad: {
+      horizontal: 'small',
+      vertical: '5px', // 5px pad + 1px border = 6px 'xsmall'
+    },
     value: {
       weight: 500,
     },
