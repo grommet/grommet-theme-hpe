@@ -347,7 +347,7 @@ export const hpe = deepFreeze({
       // necessary so badge overlaps label/icon
       border: undefined,
       font: {
-        weight: 700,
+        weight: 600,
       },
     },
     gap: 'xsmall',
@@ -368,16 +368,18 @@ export const hpe = deepFreeze({
       },
       color: 'text-strong',
       font: {
-        weight: 700,
+        weight: 600,
       },
     },
     toolbar: {
       border: {
         radius: '6px',
+        width: '1px',
+        color: 'border',
       },
       color: 'text-strong',
       font: {
-        weight: 700,
+        weight: 600,
       },
     },
     option,
@@ -457,19 +459,15 @@ export const hpe = deepFreeze({
           radius: '2em',
         },
         pad: {
-          vertical: '6px',
-          horizontal: '18px',
+          vertical: '5px',
+          horizontal: '12px',
         },
         iconOnly: {
-          pad: '10px',
+          pad: '7px',
         },
         toolbar: {
           border: {
             radius: '6px',
-          },
-          pad: {
-            vertical: '4px',
-            horizontal: '8px',
           },
         },
       },
@@ -499,11 +497,11 @@ export const hpe = deepFreeze({
           radius: '2em',
         },
         pad: {
-          vertical: '8px',
+          vertical: '10px',
           horizontal: '24px',
         },
         iconOnly: {
-          pad: '12px',
+          pad: '13px',
         },
         toolbar: {
           border: {
@@ -520,11 +518,11 @@ export const hpe = deepFreeze({
           radius: '2em',
         },
         pad: {
-          vertical: '18px',
+          vertical: '21px',
           horizontal: '30px',
         },
         iconOnly: {
-          pad: '21px',
+          pad: '24px',
         },
       },
     },
@@ -534,10 +532,6 @@ export const hpe = deepFreeze({
       const lineHeight = '24px';
       let style = '';
       const iconOnly = hasIcon && !hasLabel;
-      // keep reasonable click target for small button
-      if (sizeProp === 'small' && !iconOnly) {
-        style += `line-height: ${lineHeight};`;
-      }
       if ((sizeProp === 'medium' || sizeProp === undefined) && !iconOnly) {
         style += `font-size: ${fontSize};
         line-height: ${lineHeight};`;
@@ -768,7 +762,7 @@ export const hpe = deepFreeze({
       },
     },
     primary: {
-      weight: 400,
+      weight: 500,
       color: 'text-strong',
     },
     resize: {
@@ -912,7 +906,7 @@ export const hpe = deepFreeze({
     level: {
       1: {
         font: {
-          weight: 400,
+          weight: 500,
         },
         small: {
           size: '24px',
@@ -1039,13 +1033,10 @@ export const hpe = deepFreeze({
     // get large, the weight decreases.
     // This block can be removed once grommet theme structure is enhanced
     // to support level and size specific weights.
+    // TO DO revisit this with latest heading weights, but assuming level 2 should always be 500 also
     extend: ({ level, size }) => {
       let fontWeight = '';
-      if (level === 1 && size === 'small') {
-        fontWeight = 'font-weight: 500;';
-      } else if (level === 2 && ['large', 'xlarge'].includes(size)) {
-        fontWeight = 'font-weight: 400;';
-      } else if (level === 3 && size === 'small') {
+      if (level === 3 && size === 'small') {
         fontWeight = 'font-weight: 600;';
       } else if (level === 4 && ['small', 'medium'].includes(size)) {
         fontWeight = 'font-weight: 600;';
@@ -1061,8 +1052,8 @@ export const hpe = deepFreeze({
     size: {
       small: '16px',
       medium: '18px',
-      large: '24px',
-      xlarge: '30px',
+      large: '22px',
+      xlarge: '24px',
       xxlarge: '36px',
     },
   },
@@ -1146,6 +1137,9 @@ export const hpe = deepFreeze({
     global: {
       container: {
         round: 'none',
+      },
+      close: {
+        icon: Close,
       },
     },
     message: {
@@ -1286,7 +1280,7 @@ export const hpe = deepFreeze({
         radius: '2em',
       },
       font: {
-        weight: 700,
+        weight: 600,
       },
       active: {
         border: {
@@ -1294,7 +1288,7 @@ export const hpe = deepFreeze({
         },
         color: 'text-strong',
         font: {
-          weight: 700,
+          weight: 600,
         },
       },
       disabled: {
@@ -1319,13 +1313,13 @@ export const hpe = deepFreeze({
       maxWidth: '25em',
     },
     large: {
-      size: '24px',
-      height: '32px',
+      size: '22px',
+      height: '28px',
       maxWidth: '25em',
     },
     xlarge: {
-      size: '30px',
-      height: '36px',
+      size: '24px',
+      height: '30px',
       maxWidth: '25em',
     },
     xxlarge: {
@@ -1333,13 +1327,6 @@ export const hpe = deepFreeze({
       height: '40px',
       maxWidth: '25em',
     },
-    // This block applies size-specific weights to paragraph to ensure
-    // that as paragraph sizes get larger, the weight decreases.
-    // This block can be removed once grommet theme structure is enhanced
-    // to support size-specific weights.
-    extend: ({ size }) => `
-      ${['xlarge', 'xxlarge'].includes(size) ? 'font-weight: 300;' : ''};
-    `,
   },
   radioButton: {
     border: {
@@ -1452,7 +1439,7 @@ export const hpe = deepFreeze({
     active: {
       background: undefined,
       color: 'text-strong',
-      weight: 'bold',
+      weight: 600,
     },
     hover: {
       background: 'transparent',
@@ -1491,7 +1478,6 @@ export const hpe = deepFreeze({
   },
   tabs: {
     header: {
-      alignSelf: 'start',
       border: {
         side: 'bottom',
         size: 'xsmall',
@@ -1566,13 +1552,14 @@ export const hpe = deepFreeze({
       height: '24px',
     },
     large: {
-      size: '24px',
-      height: '32px',
+      size: '22px',
+      height: '28px',
     },
     xlarge: {
-      size: '30px',
-      height: '36px',
+      size: '24px',
+      height: '30px',
     },
+    // TO DO Revisit Ashley's text explorations for the larger sizes
     xxlarge: {
       size: '36px',
       height: '40px',
@@ -1597,9 +1584,10 @@ export const hpe = deepFreeze({
     // that as text sizes get larger, the weight decreases.
     // This block can be removed once grommet theme structure is enhanced
     // to support size-specific weights.
+    // TO DO, do we still want to drop the weights?
     extend: ({ size }) => `
       ${
-        ['xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size)
+        ['xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size)
           ? 'font-weight: 300;'
           : ''
       };

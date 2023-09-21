@@ -30,12 +30,12 @@ export const colors = {
   'background-layer-overlay': '#00000080',
   icon: 'text',
   text: {
-    dark: '#FFFFFFE6', // 90%
-    light: '#6F6F6F',
+    dark: '#FFFFFF', // 90%
+    light: '#555555',
   },
   'text-strong': {
-    dark: '#FFFFFFF5', // 96%
-    light: '#444444',
+    dark: '#FFFFFF', // 96%
+    light: '#333333',
   },
   'text-weak': {
     dark: '#FFFFFF80', // 50%
