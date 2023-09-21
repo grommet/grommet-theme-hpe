@@ -36,12 +36,10 @@ var colors = {
   icon: 'text',
   text: {
     dark: '#FFFFFF',
-    // 90%
     light: '#555555'
   },
   'text-strong': {
     dark: '#FFFFFF',
-    // 96%
     light: '#333333'
   },
   'text-weak': {
