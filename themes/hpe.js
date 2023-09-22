@@ -1332,6 +1332,14 @@ var hpe = deepFreeze({
       size: '36px',
       height: '40px',
       maxWidth: '25em'
+    },
+    // This block applies size-specific weights to paragraph to ensure
+    // that as paragraph sizes get larger, the weight decreases.
+    // This block can be removed once grommet theme structure is enhanced
+    // to support size-specific weights.
+    extend: function extend(_ref14) {
+      var size = _ref14.size;
+      return "\n      " + (['xxlarge'].includes(size) ? 'font-weight: 300;' : '') + ";\n    ";
     }
   },
   radioButton: {
@@ -1347,13 +1355,13 @@ var hpe = deepFreeze({
     },
     color: 'selected-background',
     container: {
-      extend: function extend(_ref14) {
-        var theme = _ref14.theme;
+      extend: function extend(_ref15) {
+        var theme = _ref15.theme;
         return "\n      font-weight: 500;\n      width: auto;\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
       }
     },
-    extend: function extend(_ref15) {
-      var theme = _ref15.theme;
+    extend: function extend(_ref16) {
+      var theme = _ref16.theme;
       return "\n      padding: " + theme.global.edgeSize.xxsmall + " " + theme.global.edgeSize.xsmall + ";\n    ";
     },
     gap: 'xsmall',
@@ -1400,8 +1408,8 @@ var hpe = deepFreeze({
   },
   select: {
     control: {
-      extend: function extend(_ref16) {
-        var disabled = _ref16.disabled;
+      extend: function extend(_ref17) {
+        var disabled = _ref17.disabled;
         return (0, _styledComponents.css)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), disabled && "\n        opacity: 0.3;\n        input {\n          cursor: default;\n        }");
       }
     },
@@ -1517,8 +1525,8 @@ var hpe = deepFreeze({
       }
     },
     body: {
-      extend: function extend(_ref17) {
-        var theme = _ref17.theme;
+      extend: function extend(_ref18) {
+        var theme = _ref18.theme;
         return "\n          :hover {\n            button {\n              background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n            }\n          }\n        ";
       }
     },
@@ -1562,7 +1570,6 @@ var hpe = deepFreeze({
       size: '24px',
       height: '30px'
     },
-    // TO DO Revisit Ashley's text explorations for the larger sizes
     xxlarge: {
       size: '36px',
       height: '40px'
@@ -1587,16 +1594,15 @@ var hpe = deepFreeze({
     // that as text sizes get larger, the weight decreases.
     // This block can be removed once grommet theme structure is enhanced
     // to support size-specific weights.
-    // TO DO, do we still want to drop the weights?
-    extend: function extend(_ref18) {
-      var size = _ref18.size;
+    extend: function extend(_ref19) {
+      var size = _ref19.size;
       return "\n      " + (['xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size) ? 'font-weight: 300;' : '') + ";\n    ";
     }
   },
   textInput: {
     container: {
-      extend: function extend(_ref19) {
-        var theme = _ref19.theme;
+      extend: function extend(_ref20) {
+        var theme = _ref20.theme;
         return "\n        svg {\n          fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n        }\n      ";
       }
     }
