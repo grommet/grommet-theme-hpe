@@ -30,11 +30,11 @@ export const colors = {
   'background-layer-overlay': '#00000080',
   icon: 'text',
   text: {
-    dark: '#FFFFFF', // 90%
+    dark: '#FFFFFF',
     light: '#555555',
   },
   'text-strong': {
-    dark: '#FFFFFF', // 96%
+    dark: '#FFFFFF',
     light: '#333333',
   },
   'text-weak': {
