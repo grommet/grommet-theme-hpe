@@ -1326,6 +1326,13 @@ export const hpe = deepFreeze({
       height: '40px',
       maxWidth: '25em',
     },
+    // This block applies size-specific weights to paragraph to ensure
+    // that as paragraph sizes get larger, the weight decreases.
+    // This block can be removed once grommet theme structure is enhanced
+    // to support size-specific weights.
+    extend: ({ size }) => `
+      ${['xxlarge'].includes(size) ? 'font-weight: 300;' : ''};
+    `,
   },
   radioButton: {
     border: {
@@ -1558,7 +1565,6 @@ export const hpe = deepFreeze({
       size: '24px',
       height: '30px',
     },
-    // TO DO Revisit Ashley's text explorations for the larger sizes
     xxlarge: {
       size: '36px',
       height: '40px',
@@ -1583,7 +1589,6 @@ export const hpe = deepFreeze({
     // that as text sizes get larger, the weight decreases.
     // This block can be removed once grommet theme structure is enhanced
     // to support size-specific weights.
-    // TO DO, do we still want to drop the weights?
     extend: ({ size }) => `
       ${
         ['xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size)
