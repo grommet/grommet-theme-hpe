@@ -85,12 +85,12 @@
       "background-layer-overlay": "#00000080",
       "icon": "text",
       "text": {
-        "dark": "#FFFFFFE6",
-        "light": "#6F6F6F"
+        "dark": "#FFFFFF",
+        "light": "#555555"
       },
       "text-strong": {
-        "dark": "#FFFFFFF5",
-        "light": "#444444"
+        "dark": "#FFFFFF",
+        "light": "#333333"
       },
       "text-weak": {
         "dark": "#FFFFFF80",
@@ -382,7 +382,7 @@
     "default": {
       "color": "text-strong",
       "font": {
-        "weight": 700
+        "weight": 600
       }
     },
     "gap": "xsmall",
@@ -402,16 +402,18 @@
       },
       "color": "text-strong",
       "font": {
-        "weight": 700
+        "weight": 600
       }
     },
     "toolbar": {
       "border": {
-        "radius": "6px"
+        "radius": "6px",
+        "width": "1px",
+        "color": "border"
       },
       "color": "text-strong",
       "font": {
-        "weight": 700
+        "weight": 600
       }
     },
     "option": {
@@ -483,19 +485,15 @@
           "radius": "2em"
         },
         "pad": {
-          "vertical": "6px",
-          "horizontal": "18px"
+          "vertical": "5px",
+          "horizontal": "12px"
         },
         "iconOnly": {
-          "pad": "10px"
+          "pad": "7px"
         },
         "toolbar": {
           "border": {
             "radius": "6px"
-          },
-          "pad": {
-            "vertical": "4px",
-            "horizontal": "8px"
           }
         }
       },
@@ -525,18 +523,18 @@
           "radius": "2em"
         },
         "pad": {
-          "vertical": "8px",
+          "vertical": "10px",
           "horizontal": "24px"
         },
         "iconOnly": {
-          "pad": "12px"
+          "pad": "13px"
         },
         "toolbar": {
           "border": {
             "radius": "8px"
           },
           "pad": {
-            "vertical": "8px",
+            "vertical": "10px",
             "horizontal": "16px"
           }
         }
@@ -546,11 +544,11 @@
           "radius": "2em"
         },
         "pad": {
-          "vertical": "18px",
+          "vertical": "21px",
           "horizontal": "30px"
         },
         "iconOnly": {
-          "pad": "21px"
+          "pad": "24px"
         }
       }
     }
@@ -693,7 +691,7 @@
       }
     },
     "primary": {
-      "weight": 400,
+      "weight": 500,
       "color": "text-strong"
     },
     "resize": {
@@ -849,7 +847,7 @@
     "level": {
       "1": {
         "font": {
-          "weight": 400
+          "weight": 500
         },
         "small": {
           "size": "24px",
@@ -978,8 +976,8 @@
     "size": {
       "small": "16px",
       "medium": "18px",
-      "large": "24px",
-      "xlarge": "30px",
+      "large": "22px",
+      "xlarge": "24px",
       "xxlarge": "36px"
     }
   },
@@ -1250,7 +1248,7 @@
         "radius": "2em"
       },
       "font": {
-        "weight": 700
+        "weight": 600
       },
       "active": {
         "border": {
@@ -1258,7 +1256,7 @@
         },
         "color": "text-strong",
         "font": {
-          "weight": 700
+          "weight": 600
         }
       },
       "disabled": {
@@ -1283,13 +1281,13 @@
       "maxWidth": "25em"
     },
     "large": {
-      "size": "24px",
-      "height": "32px",
+      "size": "22px",
+      "height": "28px",
       "maxWidth": "25em"
     },
     "xlarge": {
-      "size": "30px",
-      "height": "36px",
+      "size": "24px",
+      "height": "30px",
       "maxWidth": "25em"
     },
     "xxlarge": {
@@ -1396,7 +1394,7 @@
     "color": "text",
     "active": {
       "color": "text-strong",
-      "weight": "bold"
+      "weight": 600
     },
     "hover": {
       "background": "transparent",
@@ -1429,7 +1427,6 @@
   },
   "tabs": {
     "header": {
-      "alignSelf": "start",
       "border": {
         "side": "bottom",
         "size": "xsmall",
@@ -1483,12 +1480,12 @@
       "height": "24px"
     },
     "large": {
-      "size": "24px",
-      "height": "32px"
+      "size": "22px",
+      "height": "28px"
     },
     "xlarge": {
-      "size": "30px",
-      "height": "36px"
+      "size": "24px",
+      "height": "30px"
     },
     "xxlarge": {
       "size": "36px",

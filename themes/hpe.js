@@ -324,7 +324,7 @@ var hpe = deepFreeze({
       color: 'text-strong',
       border: undefined,
       font: {
-        weight: 700
+        weight: 600
       }
     },
     gap: 'xsmall',
@@ -347,16 +347,18 @@ var hpe = deepFreeze({
       },
       color: 'text-strong',
       font: {
-        weight: 700
+        weight: 600
       }
     },
     toolbar: {
       border: {
-        radius: '6px'
+        radius: '6px',
+        width: '1px',
+        color: 'border'
       },
       color: 'text-strong',
       font: {
-        weight: 700
+        weight: 600
       }
     },
     option: option,
@@ -441,19 +443,15 @@ var hpe = deepFreeze({
           radius: '2em'
         },
         pad: {
-          vertical: '6px',
-          horizontal: '18px'
+          vertical: '5px',
+          horizontal: '12px'
         },
         iconOnly: {
-          pad: '10px'
+          pad: '7px'
         },
         toolbar: {
           border: {
             radius: '6px'
-          },
-          pad: {
-            vertical: '4px',
-            horizontal: '8px'
           }
         }
       },
@@ -483,18 +481,18 @@ var hpe = deepFreeze({
           radius: '2em'
         },
         pad: {
-          vertical: '8px',
+          vertical: '10px',
           horizontal: '24px'
         },
         iconOnly: {
-          pad: '12px'
+          pad: '13px'
         },
         toolbar: {
           border: {
             radius: '8px'
           },
           pad: {
-            vertical: '8px',
+            vertical: '10px',
             horizontal: '16px'
           }
         }
@@ -504,11 +502,11 @@ var hpe = deepFreeze({
           radius: '2em'
         },
         pad: {
-          vertical: '18px',
+          vertical: '21px',
           horizontal: '30px'
         },
         iconOnly: {
-          pad: '21px'
+          pad: '24px'
         }
       }
     },
@@ -521,10 +519,6 @@ var hpe = deepFreeze({
       var lineHeight = '24px';
       var style = '';
       var iconOnly = hasIcon && !hasLabel;
-      // keep reasonable click target for small button
-      if (sizeProp === 'small' && !iconOnly) {
-        style += "line-height: " + lineHeight + ";";
-      }
       if ((sizeProp === 'medium' || sizeProp === undefined) && !iconOnly) {
         style += "font-size: " + fontSize + ";\n        line-height: " + lineHeight + ";";
       }
@@ -752,7 +746,7 @@ var hpe = deepFreeze({
       }
     },
     primary: {
-      weight: 400,
+      weight: 500,
       color: 'text-strong'
     },
     resize: {
@@ -904,7 +898,7 @@ var hpe = deepFreeze({
     level: {
       1: {
         font: {
-          weight: 400
+          weight: 500
         },
         small: {
           size: '24px',
@@ -1035,11 +1029,7 @@ var hpe = deepFreeze({
       var level = _ref12.level,
         size = _ref12.size;
       var fontWeight = '';
-      if (level === 1 && size === 'small') {
-        fontWeight = 'font-weight: 500;';
-      } else if (level === 2 && ['large', 'xlarge'].includes(size)) {
-        fontWeight = 'font-weight: 400;';
-      } else if (level === 3 && size === 'small') {
+      if (level === 3 && size === 'small') {
         fontWeight = 'font-weight: 600;';
       } else if (level === 4 && ['small', 'medium'].includes(size)) {
         fontWeight = 'font-weight: 600;';
@@ -1055,8 +1045,8 @@ var hpe = deepFreeze({
     size: {
       small: '16px',
       medium: '18px',
-      large: '24px',
-      xlarge: '30px',
+      large: '22px',
+      xlarge: '24px',
       xxlarge: '36px'
     }
   },
@@ -1292,7 +1282,7 @@ var hpe = deepFreeze({
         radius: '2em'
       },
       font: {
-        weight: 700
+        weight: 600
       },
       active: {
         border: {
@@ -1300,7 +1290,7 @@ var hpe = deepFreeze({
         },
         color: 'text-strong',
         font: {
-          weight: 700
+          weight: 600
         }
       },
       disabled: {
@@ -1325,13 +1315,13 @@ var hpe = deepFreeze({
       maxWidth: '25em'
     },
     large: {
-      size: '24px',
-      height: '32px',
+      size: '22px',
+      height: '28px',
       maxWidth: '25em'
     },
     xlarge: {
-      size: '30px',
-      height: '36px',
+      size: '24px',
+      height: '30px',
       maxWidth: '25em'
     },
     xxlarge: {
@@ -1345,7 +1335,7 @@ var hpe = deepFreeze({
     // to support size-specific weights.
     extend: function extend(_ref14) {
       var size = _ref14.size;
-      return "\n      " + (['xlarge', 'xxlarge'].includes(size) ? 'font-weight: 300;' : '') + ";\n    ";
+      return "\n      " + (['xxlarge'].includes(size) ? 'font-weight: 300;' : '') + ";\n    ";
     }
   },
   radioButton: {
@@ -1470,7 +1460,7 @@ var hpe = deepFreeze({
     active: {
       background: undefined,
       color: 'text-strong',
-      weight: 'bold'
+      weight: 600
     },
     hover: {
       background: 'transparent',
@@ -1509,7 +1499,6 @@ var hpe = deepFreeze({
   },
   tabs: {
     header: {
-      alignSelf: 'start',
       border: {
         side: 'bottom',
         size: 'xsmall',
@@ -1570,12 +1559,12 @@ var hpe = deepFreeze({
       height: '24px'
     },
     large: {
-      size: '24px',
-      height: '32px'
+      size: '22px',
+      height: '28px'
     },
     xlarge: {
-      size: '30px',
-      height: '36px'
+      size: '24px',
+      height: '30px'
     },
     xxlarge: {
       size: '36px',
@@ -1603,7 +1592,7 @@ var hpe = deepFreeze({
     // to support size-specific weights.
     extend: function extend(_ref19) {
       var size = _ref19.size;
-      return "\n      " + (['xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size) ? 'font-weight: 300;' : '') + ";\n    ";
+      return "\n      " + (['xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size) ? 'font-weight: 300;' : '') + ";\n    ";
     }
   },
   textInput: {
