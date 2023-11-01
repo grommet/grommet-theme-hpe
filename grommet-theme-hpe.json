@@ -1048,9 +1048,6 @@
     "global": {
       "container": {
         "round": "none"
-      },
-      "close": {
-        "icon": {}
       }
     },
     "message": {

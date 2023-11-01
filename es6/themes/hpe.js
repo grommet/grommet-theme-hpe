@@ -1123,9 +1123,6 @@ export var hpe = deepFreeze({
     global: {
       container: {
         round: 'none'
-      },
-      close: {
-        icon: Close
       }
     },
     message: {

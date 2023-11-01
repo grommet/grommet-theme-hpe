@@ -1127,9 +1127,6 @@ var hpe = deepFreeze({
     global: {
       container: {
         round: 'none'
-      },
-      close: {
-        icon: _Close.Close
       }
     },
     message: {
