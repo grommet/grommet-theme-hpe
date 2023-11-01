@@ -1137,9 +1137,6 @@ export const hpe = deepFreeze({
       container: {
         round: 'none',
       },
-      close: {
-        icon: Close,
-      },
     },
     message: {
       color: { dark: 'text-strong' },
