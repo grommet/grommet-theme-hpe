@@ -35,6 +35,9 @@ export const hpePop = deepMerge(hpe, {
     weight: 400,
     level: {
       1: {
+        font: {
+          weight: 400,
+        },
         small: {
           size: '48px',
           height: '48px',
