@@ -688,6 +688,11 @@ export const hpe = deepFreeze({
       },
     },
   },
+  data: {
+    button: {
+      kind: 'toolbar',
+    },
+  },
   dataTable: {
     body: {
       extend: ({ theme }) => `
