@@ -654,6 +654,11 @@
       }
     }
   },
+  "data": {
+    "button": {
+      "kind": "toolbar"
+    }
+  },
   "dataTable": {
     "body": {},
     "header": {

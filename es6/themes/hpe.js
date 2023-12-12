@@ -667,6 +667,11 @@ export var hpe = deepFreeze({
       }
     }
   },
+  data: {
+    button: {
+      kind: 'toolbar'
+    }
+  },
   dataTable: {
     body: {
       extend: function extend(_ref10) {
