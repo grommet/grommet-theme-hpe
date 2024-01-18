@@ -1032,7 +1032,9 @@ export var hpe = deepFreeze({
       var fontWeight = '';
       if (level === 3 && size === 'small') {
         fontWeight = 'font-weight: 600;';
-      } else if (level === 4 && ['small', 'medium'].includes(size)) {
+        // undefined necessary so an h4 without size prop explicitly defined
+        // still renders as weight 600
+      } else if (level === 4 && ['small', 'medium', undefined].includes(size)) {
         fontWeight = 'font-weight: 600;';
       } else if (level === 5 && size === 'xlarge') {
         fontWeight = 'font-weight: 500;';
