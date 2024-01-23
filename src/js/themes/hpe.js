@@ -1135,11 +1135,15 @@ export const hpe = deepFreeze({
     actions: {
       color: { light: 'text', dark: 'text-strong' },
     },
-    direction: 'row',
+    close: {
+      icon: Close,
+    },
     container: {
       round: 'xsmall',
     },
+    direction: 'column',
     global: {
+      direction: 'row',
       container: {
         round: 'none',
       },
@@ -1205,9 +1209,6 @@ export const hpe = deepFreeze({
       toast: {
         background: 'background-front',
       },
-    },
-    toast: {
-      direction: 'column',
     },
   },
   page: {
