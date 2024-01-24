@@ -1127,11 +1127,15 @@ var hpe = deepFreeze({
         dark: 'text-strong'
       }
     },
-    direction: 'row',
+    close: {
+      icon: _Close.Close
+    },
     container: {
       round: 'xsmall'
     },
+    direction: 'column',
     global: {
+      direction: 'row',
       container: {
         round: 'none'
       }
@@ -1199,9 +1203,6 @@ var hpe = deepFreeze({
       toast: {
         background: 'background-front'
       }
-    },
-    toast: {
-      direction: 'column'
     }
   },
   page: {

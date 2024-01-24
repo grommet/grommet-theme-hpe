@@ -1046,11 +1046,15 @@
         "dark": "text-strong"
       }
     },
-    "direction": "row",
+    "close": {
+      "icon": {}
+    },
     "container": {
       "round": "xsmall"
     },
+    "direction": "column",
     "global": {
+      "direction": "row",
       "container": {
         "round": "none"
       }
@@ -1117,9 +1121,6 @@
       "toast": {
         "background": "background-front"
       }
-    },
-    "toast": {
-      "direction": "column"
     }
   },
   "page": {
