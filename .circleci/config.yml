@@ -60,7 +60,7 @@ jobs:
           at: ~/grommet-ci
       - run:
           name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/grommet-ci/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_NEW" > ~/grommet-ci/.npmrc
       - run:
           name: Publish package
           command: npm publish
