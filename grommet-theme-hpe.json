@@ -1040,12 +1040,6 @@
     }
   },
   "notification": {
-    "actions": {
-      "color": {
-        "light": "text",
-        "dark": "text-strong"
-      }
-    },
     "close": {
       "icon": {}
     },

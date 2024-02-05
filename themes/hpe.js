@@ -1121,12 +1121,6 @@ var hpe = deepFreeze({
     }
   },
   notification: {
-    actions: {
-      color: {
-        light: 'text',
-        dark: 'text-strong'
-      }
-    },
     close: {
       icon: _Close.Close
     },
