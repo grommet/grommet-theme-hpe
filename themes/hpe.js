@@ -1029,7 +1029,7 @@ var hpe = deepFreeze({
     // that as heading sizes get small, the weight increases and as they
     // get large, the weight decreases.
     // This block can be removed once grommet theme structure is enhanced
-    // to support level and size specific weights.
+    // to support level and size-specific weights.
     extend: function extend(_ref12) {
       var level = _ref12.level,
         size = _ref12.size;
