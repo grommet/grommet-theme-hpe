@@ -1132,9 +1132,6 @@ export const hpe = deepFreeze({
     },
   },
   notification: {
-    actions: {
-      color: { light: 'text', dark: 'text-strong' },
-    },
     close: {
       icon: Close,
     },
