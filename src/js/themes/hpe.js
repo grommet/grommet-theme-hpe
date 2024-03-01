@@ -132,7 +132,7 @@ export const hpe = deepFreeze({
         vertical: '5px', // equivalent to 'xsmall' when combined with 1px border
       },
       readOnly: {
-        background: 'background-contrast',
+        background: 'background-back',
         border: {
           color: 'border-weak',
         },
