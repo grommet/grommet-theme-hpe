@@ -131,6 +131,12 @@ export const hpe = deepFreeze({
         horizontal: '11px', // equivalent to 'small' when combined with 1px border
         vertical: '5px', // equivalent to 'xsmall' when combined with 1px border
       },
+      readOnly: {
+        background: 'background-back',
+        border: {
+          color: 'border-weak',
+        },
+      },
       extend: `
         &::-webkit-input-placeholder {
           font-weight: 400;
