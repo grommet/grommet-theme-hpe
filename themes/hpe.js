@@ -143,6 +143,12 @@ var hpe = deepFreeze({
         vertical: '5px' // equivalent to 'xsmall' when combined with 1px border
       },
 
+      readOnly: {
+        background: 'background-back',
+        border: {
+          color: 'border-weak'
+        }
+      },
       extend: "\n        &::-webkit-input-placeholder {\n          font-weight: 400;\n        }\n      \n        &::-moz-placeholder {\n          font-weight: 400;\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: 400;\n        }\n      "
     },
     font: {

@@ -206,6 +206,12 @@
         "horizontal": "11px",
         "vertical": "5px"
       },
+      "readOnly": {
+        "background": "background-back",
+        "border": {
+          "color": "border-weak"
+        }
+      },
       "extend": "\n        &::-webkit-input-placeholder {\n          font-weight: 400;\n        }\n      \n        &::-moz-placeholder {\n          font-weight: 400;\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: 400;\n        }\n      "
     },
     "font": {
