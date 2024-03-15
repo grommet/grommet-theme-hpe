@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports.colors = void 0;
-var colors = {
+var colors = exports.colors = {
   /* deprecated accent and neutral colors */
   'accent-1': undefined,
   'accent-2': undefined,
@@ -57,19 +57,16 @@ var colors = {
     // 36%
     light: '#0000005C' // 36%
   },
-
   'border-strong': {
     dark: '#FFFFFFB8',
     // 72%
     light: '#000000B8' // 72%
   },
-
   'border-weak': {
     dark: '#FFFFFF1F',
     // 12%
     light: '#0000001F' // 12%
   },
-
   control: 'brand',
   'active-background': 'background-contrast',
   'active-text': 'text',
@@ -135,7 +132,6 @@ var colors = {
     light: '#FC61613D',
     dark: '#CC1F1A4D' // 30%
   },
-
   'validation-ok': {
     light: '#17EBA03D',
     dark: '#17D0A64D'
@@ -154,4 +150,3 @@ var colors = {
   'text-primary-button': '#FFFFFF',
   'background-cta-alternate': '#F2F2F2'
 };
-exports.colors = colors;

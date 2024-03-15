@@ -74,7 +74,6 @@ export var hpe = deepFreeze({
           // 6
           xlarge: baseSpacing / 2 + "px" // 12
         },
-
         edgeSize: {
           none: '0px',
           hair: '1px',
@@ -90,7 +89,6 @@ export var hpe = deepFreeze({
           // 24
           xlarge: baseSpacing * 2 + "px" // 48
         },
-
         size: {
           xxsmall: baseSpacing + "px",
           // 24
@@ -110,18 +108,14 @@ export var hpe = deepFreeze({
       small: {
         value: baseSpacing * 32 // 768
       },
-
       medium: {
         value: baseSpacing * 45 // 1080
       },
-
       large: {
         value: baseSpacing * 60 // 1440
       },
-
       xlarge: {} // anything larger than 1440,
     },
-
     colors: colors,
     control: {
       border: {
@@ -138,7 +132,6 @@ export var hpe = deepFreeze({
         // equivalent to 'small' when combined with 1px border
         vertical: '5px' // equivalent to 'xsmall' when combined with 1px border
       },
-
       readOnly: {
         background: 'background-back',
         border: {
@@ -273,14 +266,12 @@ export var hpe = deepFreeze({
     size: {
       large: baseSpacing * 4 + "px" // 96px
     },
-
     text: {
       size: {
         large: 'xxlarge' // 36px
       }
     }
   },
-
   button: {
     badge: {
       align: 'container',
@@ -406,7 +397,6 @@ export var hpe = deepFreeze({
               color = 'rgba(0, 0, 0, 0.2)'; // TBD
             } else color = 'rgba(0, 0, 0, 0.2)'; // TBD
           }
-
           var style = "inset 0 0 100px 100px " + color;
           return "-moz-box-shadow: " + style + ";\n            -webkit-box-shadow: " + style + ";\n            box-shadow: " + style + ";";
         }
@@ -1544,7 +1534,6 @@ export var hpe = deepFreeze({
       horizontal: 'small',
       vertical: '5px' // 5px pad + 1px border = 6px 'xsmall'
     },
-
     value: {
       weight: 500
     }

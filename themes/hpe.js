@@ -61,7 +61,7 @@ var option = {
     weight: 500
   }
 };
-var hpe = deepFreeze({
+var hpe = exports.hpe = deepFreeze({
   defaultMode: 'light',
   global: {
     backgrounds: _backgrounds.backgrounds,
@@ -78,7 +78,6 @@ var hpe = deepFreeze({
           // 6
           xlarge: baseSpacing / 2 + "px" // 12
         },
-
         edgeSize: {
           none: '0px',
           hair: '1px',
@@ -94,7 +93,6 @@ var hpe = deepFreeze({
           // 24
           xlarge: baseSpacing * 2 + "px" // 48
         },
-
         size: {
           xxsmall: baseSpacing + "px",
           // 24
@@ -114,18 +112,14 @@ var hpe = deepFreeze({
       small: {
         value: baseSpacing * 32 // 768
       },
-
       medium: {
         value: baseSpacing * 45 // 1080
       },
-
       large: {
         value: baseSpacing * 60 // 1440
       },
-
       xlarge: {} // anything larger than 1440,
     },
-
     colors: _colors.colors,
     control: {
       border: {
@@ -142,7 +136,6 @@ var hpe = deepFreeze({
         // equivalent to 'small' when combined with 1px border
         vertical: '5px' // equivalent to 'xsmall' when combined with 1px border
       },
-
       readOnly: {
         background: 'background-back',
         border: {
@@ -277,14 +270,12 @@ var hpe = deepFreeze({
     size: {
       large: baseSpacing * 4 + "px" // 96px
     },
-
     text: {
       size: {
         large: 'xxlarge' // 36px
       }
     }
   },
-
   button: {
     badge: {
       align: 'container',
@@ -410,7 +401,6 @@ var hpe = deepFreeze({
               color = 'rgba(0, 0, 0, 0.2)'; // TBD
             } else color = 'rgba(0, 0, 0, 0.2)'; // TBD
           }
-
           var style = "inset 0 0 100px 100px " + color;
           return "-moz-box-shadow: " + style + ";\n            -webkit-box-shadow: " + style + ";\n            box-shadow: " + style + ";";
         }
@@ -1548,7 +1538,6 @@ var hpe = deepFreeze({
       horizontal: 'small',
       vertical: '5px' // 5px pad + 1px border = 6px 'xsmall'
     },
-
     value: {
       weight: 500
     }
@@ -1640,4 +1629,3 @@ var hpe = deepFreeze({
   scale: 1.1,
   spacing: 24
 });
-exports.hpe = hpe;
