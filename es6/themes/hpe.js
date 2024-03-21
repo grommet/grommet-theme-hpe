@@ -697,10 +697,6 @@ export var hpe = deepFreeze({
           color: 'background-contrast'
         }
       },
-      pad: {
-        horizontal: 'small',
-        vertical: 'xsmall'
-      },
       units: {
         color: 'text-weak'
       }
@@ -1507,13 +1503,7 @@ export var hpe = deepFreeze({
   },
   table: {
     header: {
-      extend: "\n        > div { \n          height: 100%;\n          justify-content: center;\n        }\n        // align onSelect checkbox to center of header cell\n        label { \n          justify-content: center;\n        }\n      ",
-      // space for focus indicator on sortable columns
-      pad: {
-        left: 'none',
-        vertical: 'none',
-        right: 'xxsmall'
-      }
+      extend: "\n        > div { \n          height: 100%;\n          justify-content: center;\n        }\n        // align onSelect checkbox to center of header cell\n        label { \n          justify-content: center;\n        }\n      "
     },
     body: {
       extend: function extend(_ref18) {
