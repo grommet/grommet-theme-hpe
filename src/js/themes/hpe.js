@@ -749,7 +749,6 @@ export const hpe = deepFreeze({
           color: 'background-contrast',
         },
       },
-      pad: { horizontal: 'small', vertical: 'xsmall' },
       units: {
         color: 'text-weak',
       },
@@ -1515,8 +1514,6 @@ export const hpe = deepFreeze({
           justify-content: center;
         }
       `,
-      // space for focus indicator on sortable columns
-      pad: { left: 'none', vertical: 'none', right: 'xxsmall' },
     },
     body: {
       extend: ({ theme }) =>
