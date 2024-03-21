@@ -599,8 +599,9 @@ export var hpe = deepFreeze({
       extend: function extend(_ref4) {
         var disabled = _ref4.disabled,
           pad = _ref4.pad,
-          theme = _ref4.theme;
-        return css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), !disabled && pad === 'none' && "border: 2px solid " + theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light'] + ";");
+          theme = _ref4.theme,
+          toggle = _ref4.toggle;
+        return css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n        ", "\n      "])), !disabled && pad === 'none' && !toggle && "border: 2px solid " + theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light'] + ";");
       }
     },
     color: 'background',
