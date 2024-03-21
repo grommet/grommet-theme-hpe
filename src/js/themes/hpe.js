@@ -617,9 +617,10 @@ export const hpe = deepFreeze({
       // HPE Design System guidance states that pad="none" should be applied on CheckBox
       // when its used outside of a FormField. We will apply this hover treatment in
       // those instances.
-      extend: ({ disabled, pad, theme }) => css`
+      extend: ({ disabled, pad, theme, toggle }) => css`
         ${!disabled &&
         pad === 'none' &&
+        !toggle &&
         `border: 2px solid ${
           theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light']
         };`}
