@@ -1610,6 +1610,20 @@ export var hpe = deepFreeze({
       color: 'brand'
     }
   },
+  toggleGroup: {
+    button: {
+      pad: {
+        vertical: 'xsmall',
+        horizontal: 'small'
+      },
+      iconOnly: {
+        pad: {
+          vertical: '9px',
+          horizontal: '9px'
+        }
+      }
+    }
+  },
   // Theme-Designer only parameters
   name: 'HPE 1',
   rounding: 4,

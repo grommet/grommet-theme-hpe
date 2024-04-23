@@ -1531,6 +1531,20 @@
       "color": "brand"
     }
   },
+  "toggleGroup": {
+    "button": {
+      "pad": {
+        "vertical": "xsmall",
+        "horizontal": "small"
+      },
+      "iconOnly": {
+        "pad": {
+          "vertical": "9px",
+          "horizontal": "9px"
+        }
+      }
+    }
+  },
   "name": "HPE 1",
   "rounding": 4,
   "scale": 1.1,
