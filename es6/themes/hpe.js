@@ -57,6 +57,9 @@ var option = {
     weight: 500
   }
 };
+
+// abstracted so button and pinned list icon can reference
+var mediumIconOnlyPad = '9px';
 export var hpe = deepFreeze({
   defaultMode: 'light',
   global: {
@@ -456,7 +459,7 @@ export var hpe = deepFreeze({
           horizontal: '18px'
         },
         iconOnly: {
-          pad: '9px'
+          pad: mediumIconOnlyPad
         },
         toolbar: {
           border: {
@@ -1065,7 +1068,12 @@ export var hpe = deepFreeze({
   },
   list: {
     item: {
-      border: undefined
+      border: undefined,
+      pinned: {
+        icon: {
+          pad: mediumIconOnlyPad
+        }
+      }
     }
   },
   maskedInput: {

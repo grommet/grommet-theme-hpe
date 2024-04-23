@@ -1003,7 +1003,13 @@
     "zIndex": "110"
   },
   "list": {
-    "item": {}
+    "item": {
+      "pinned": {
+        "icon": {
+          "pad": "9px"
+        }
+      }
+    }
   },
   "maskedInput": {
     "container": {}
