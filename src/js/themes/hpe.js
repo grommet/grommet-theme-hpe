@@ -409,10 +409,10 @@ export const hpe = deepFreeze({
     },
     selected: {
       option: {
-        background: 'selected-background',
-        color: 'selected-text',
+        background: 'background-selected-subtle',
+        color: 'text-strong',
         font: {
-          weight: 700,
+          weight: 500,
         },
       },
     },
@@ -534,7 +534,7 @@ export const hpe = deepFreeze({
         },
       },
     },
-    extend: ({ hasIcon, hasLabel, sizeProp }) => {
+    extend: ({ hasIcon, hasLabel, kind, sizeProp, selected, theme }) => {
       // necessary so primary label is accessible on HPE green background
       const fontSize = '19px';
       const lineHeight = '24px';
@@ -544,6 +544,27 @@ export const hpe = deepFreeze({
         style += `font-size: ${fontSize};
         line-height: ${lineHeight};`;
       }
+      // manual solution for selected + hover state
+      // https://github.com/grommet/grommet-theme-hpe/issues/390#issuecomment-2083875178
+      style += `
+          &:hover {
+           background: ${
+             kind === 'option' && selected
+               ? theme.global.colors['background-selected-subtle-hover'][
+                   theme.dark ? 'dark' : 'light'
+                 ]
+               : ''
+           };
+           color: ${
+             kind === 'option' && selected
+               ? theme.global.colors[theme.button.selected.option.color][
+                   theme.dark ? 'dark' : 'light'
+                 ]
+               : ''
+           };
+          }
+        `;
+
       return style;
     },
   },

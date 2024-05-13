@@ -28,6 +28,14 @@ export const colors = {
     light: '#0000000A',
   },
   'background-layer-overlay': '#00000080',
+  'background-selected-subtle': {
+    light: '#CBFAEB',
+    dark: '#093A2F',
+  },
+  'background-selected-subtle-hover': {
+    light: '#AEF6DF',
+    dark: '#074B3B',
+  },
   icon: 'text',
   text: {
     dark: '#FFFFFF',
