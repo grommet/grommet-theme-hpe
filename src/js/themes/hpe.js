@@ -4,13 +4,16 @@ import { css } from 'styled-components';
 import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
 import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
+import { Close } from 'grommet-icons/icons/Close';
 import { Descending } from 'grommet-icons/icons/Descending';
-import { FormDown } from 'grommet-icons/icons/FormDown';
-import { FormNext } from 'grommet-icons/icons/FormNext';
-import { FormPrevious } from 'grommet-icons/icons/FormPrevious';
-import { FormUp } from 'grommet-icons/icons/FormUp';
+import { Down } from 'grommet-icons/icons/Down';
+import { Next } from 'grommet-icons/icons/Next';
+import { Previous } from 'grommet-icons/icons/Previous';
 import { Unsorted } from 'grommet-icons/icons/Unsorted';
+import { Up } from 'grommet-icons/icons/Up';
+import { Hpe } from 'grommet-icons/icons/Hpe';
 
+import { backgrounds } from './backgrounds';
 import { colors } from './colors';
 
 const baseSpacing = 24;
@@ -25,9 +28,56 @@ const deepFreeze = (obj) => {
   return Object.freeze(obj);
 };
 
+// necessary to apply a linear gradient for primary button background
+const primaryBackground = (props) => {
+  let style = '';
+  if (!props.active) {
+    style += !props.colorValue
+      ? `background:
+linear-gradient(70deg, transparent,
+  ${props.theme.global.colors['green!']} 35%, transparent 70%)
+  ${props.theme.global.colors['green!']};`
+      : `
+      color: ${
+        props.theme.global.colors['text-strong'][
+          props.theme.dark ? 'dark' : 'light'
+        ]
+      };
+    `;
+  }
+  return style;
+};
+
+// necessary to adjust the background color
+// of button to darker green to expose gradient on hover
+const primaryHoverBackground = (props) =>
+  !props.active && !props.colorValue
+    ? `background-color: ${props.theme.global.colors.green.dark};`
+    : '';
+
+// option button kind styles. abstracted so select.emptySearchMessage
+// can reference pad value
+const option = {
+  color: 'text',
+  border: {
+    radius: '0px',
+  },
+  pad: {
+    horizontal: '12px',
+    vertical: '6px',
+  },
+  font: {
+    weight: 500,
+  },
+};
+
+// abstracted so button and pinned list icon can reference
+const mediumIconOnlyPad = '9px';
+
 export const hpe = deepFreeze({
   defaultMode: 'light',
   global: {
+    backgrounds,
     breakpoints: {
       xsmall: {
         value: baseSpacing * 24, // 576
@@ -70,6 +120,11 @@ export const hpe = deepFreeze({
       xlarge: {}, // anything larger than 1440,
     },
     colors,
+    control: {
+      border: {
+        radius: '6px',
+      },
+    },
     input: {
       font: {
         height: 'inherit',
@@ -78,6 +133,12 @@ export const hpe = deepFreeze({
       padding: {
         horizontal: '11px', // equivalent to 'small' when combined with 1px border
         vertical: '5px', // equivalent to 'xsmall' when combined with 1px border
+      },
+      readOnly: {
+        background: 'background-back',
+        border: {
+          color: 'border-weak',
+        },
       },
       extend: `
         &::-webkit-input-placeholder {
@@ -98,31 +159,37 @@ export const hpe = deepFreeze({
       face: `
         @font-face {
           font-family: "Metric";
-          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff2") format('woff2'),
-               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Regular.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff2") format('woff2'),
-               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXS-Bold.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
+          font-weight: 400;
+        }
+        @font-face {
+          font-family: "Metric";
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff") format('woff');
           font-weight: 700;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff2") format('woff2'),
-               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSSemibold-Regular.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff") format('woff');
           font-weight: 600;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff2") format('woff2'),
-               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSMedium-Regular.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff") format('woff');
           font-weight: 500;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff2") format('woff2'),
-               url("https://d3hq6blov2iije.cloudfront.net/fonts/HPEXS-Metric-Fonts/MetricHPEXSLight-Regular.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff") format('woff');
           font-weight: 100;
         }`,
     },
@@ -179,74 +246,151 @@ export const hpe = deepFreeze({
       },
     },
     heading: {
+      level: 3,
       margin: { vertical: 'medium', horizontal: 'xsmall' },
     },
     hover: {
+      background: 'background-contrast',
       heading: {
         color: undefined,
       },
     },
     border: undefined,
     icons: {
+      collapse: Up,
+      expand: Down,
       color: 'text',
     },
   },
   anchor: {
-    color: 'text',
+    color: 'text-strong',
     textDecoration: 'underline',
     fontWeight: 500,
+    gap: 'xsmall',
     hover: {
       textDecoration: 'underline',
     },
+    size: {
+      large: {
+        color: 'brand',
+        fontWeight: 700,
+        textDecoration: 'none',
+      },
+      xlarge: {
+        color: 'brand',
+        fontWeight: 700,
+        textDecoration: 'none',
+      },
+      xxlarge: {
+        color: 'brand',
+        fontWeight: 700,
+        textDecoration: 'none',
+      },
+      '3xl': {
+        color: 'brand',
+        fontWeight: 700,
+        textDecoration: 'none',
+      },
+      '4xl': {
+        color: 'brand',
+        fontWeight: 700,
+        textDecoration: 'none',
+      },
+      '5xl': {
+        color: 'brand',
+        fontWeight: 700,
+        textDecoration: 'none',
+      },
+      '6xl': {
+        color: 'brand',
+        fontWeight: 700,
+        textDecoration: 'none',
+      },
+    },
+  },
+  avatar: {
+    size: {
+      large: `${baseSpacing * 4}px`, // 96px
+    },
+    text: {
+      size: {
+        large: 'xxlarge', // 36px
+      },
+    },
   },
   button: {
+    badge: {
+      align: 'container',
+      container: {
+        // align badge background to button label color
+        background: 'text-strong',
+      },
+      size: {
+        medium: '18px',
+      },
+      text: {
+        size: {
+          medium: 'xsmall',
+        },
+      },
+    },
+    'cta-primary': {
+      background: { color: 'brand' },
+      color: 'text-primary-button',
+      font: { weight: 'bold' },
+      icon: <Hpe />,
+      reverse: true,
+      extend: (props) => primaryBackground(props),
+    },
+    'cta-alternate': {
+      background: 'background-cta-alternate',
+      color: 'text-strong',
+      font: {
+        weight: 'bold',
+      },
+      icon: <Hpe color="brand" />,
+      reverse: true,
+    },
     default: {
       color: 'text-strong',
       border: undefined,
       font: {
-        weight: 700,
+        weight: 600,
       },
     },
     gap: 'xsmall',
     primary: {
       background: {
-        color: 'green',
+        color: 'brand',
       },
-      border: undefined,
-      color: 'text-strong',
+      color: 'text-primary-button',
       font: {
         weight: 700,
       },
+      extend: (props) => primaryBackground(props),
     },
     secondary: {
       border: {
-        color: 'green',
+        color: 'brand',
         width: '2px',
       },
       color: 'text-strong',
       font: {
-        weight: 700,
+        weight: 600,
       },
     },
     toolbar: {
       border: {
-        color: 'border',
+        radius: '6px',
         width: '1px',
+        color: 'border',
       },
       color: 'text-strong',
       font: {
-        weight: 700,
+        weight: 600,
       },
     },
-    option: {
-      color: 'text',
-      border: {
-        radius: '0px',
-      },
-      font: {
-        weight: 500,
-      },
-    },
+    option,
     active: {
       background: {
         color: 'background-contrast',
@@ -267,55 +411,22 @@ export const hpe = deepFreeze({
       option: {
         background: 'selected-background',
         color: 'selected-text',
-      },
-    },
-    disabled: {
-      background: {
-        color: 'transparent',
-      },
-      color: 'text-xweak',
-      primary: {
-        border: {
-          color: 'border-weak',
-          width: '2px',
+        font: {
+          weight: 700,
         },
       },
-      secondary: {
-        border: {
-          color: 'border-weak',
-        },
-      },
-      opacity: 1.0,
     },
     hover: {
-      default: {
-        background: {
-          color: 'background-contrast',
-        },
-        color: undefined,
+      'cta-primary': {
+        extend: (props) => primaryHoverBackground(props),
       },
-      secondary: {
-        border: {
-          width: '3px',
-        },
-      },
-      option: {
-        background: 'active-background',
-        color: 'active-text',
-      },
-      toolbar: {
-        background: {
-          color: 'background-contrast',
-        },
-        color: undefined,
-      },
-      primary: {
+      'cta-alternate': {
         extend: ({ active, colorValue, theme }) => {
           let color;
           if (!colorValue && !active) {
             if (theme.dark) {
-              color = 'rgba(0, 0, 0, 0.2)';
-            } else color = '#01a982';
+              color = 'rgba(0, 0, 0, 0.2)'; // TBD
+            } else color = 'rgba(0, 0, 0, 0.2)'; // TBD
           }
 
           const style = `inset 0 0 100px 100px ${color}`;
@@ -324,64 +435,157 @@ export const hpe = deepFreeze({
             box-shadow: ${style};`;
         },
       },
+      default: {
+        background: {
+          color: 'background-contrast',
+        },
+        color: undefined,
+      },
+      option: {
+        background: 'active-background',
+        color: 'active-text',
+      },
+      primary: {
+        extend: (props) => primaryHoverBackground(props),
+      },
+      secondary: {
+        border: {
+          width: '3px',
+        },
+      },
+      toolbar: {
+        background: {
+          color: 'background-contrast',
+        },
+        color: undefined,
+      },
     },
+    color: 'text-strong',
     size: {
       small: {
         border: {
-          radius: '4px',
+          radius: '2em',
         },
         pad: {
-          vertical: '4px',
-          horizontal: '8px',
+          vertical: '5px',
+          horizontal: '12px',
+        },
+        iconOnly: {
+          pad: '7px',
+        },
+        toolbar: {
+          border: {
+            radius: '6px',
+          },
         },
       },
       medium: {
         border: {
-          radius: '4px',
+          radius: '2em',
         },
         pad: {
           vertical: '6px',
-          horizontal: '12px',
+          horizontal: '18px',
+        },
+        iconOnly: {
+          pad: mediumIconOnlyPad,
+        },
+        toolbar: {
+          border: {
+            radius: '6px',
+          },
+          pad: {
+            vertical: '6px',
+            horizontal: '12px',
+          },
         },
       },
       large: {
         border: {
-          radius: '6px',
+          radius: '2em',
         },
         pad: {
-          vertical: '6px',
-          horizontal: '16px',
+          vertical: '10px',
+          horizontal: '24px',
+        },
+        iconOnly: {
+          pad: '13px',
+        },
+        toolbar: {
+          border: {
+            radius: '8px',
+          },
+          pad: {
+            vertical: '10px',
+            horizontal: '16px',
+          },
+        },
+      },
+      xlarge: {
+        border: {
+          radius: '2em',
+        },
+        pad: {
+          vertical: '21px',
+          horizontal: '30px',
+        },
+        iconOnly: {
+          pad: '24px',
         },
       },
     },
-    border: {
-      radius: '4px',
-    },
-    color: 'text-strong',
-    padding: {
-      vertical: '4px',
-      horizontal: '10px',
+    extend: ({ hasIcon, hasLabel, sizeProp }) => {
+      // necessary so primary label is accessible on HPE green background
+      const fontSize = '19px';
+      const lineHeight = '24px';
+      let style = '';
+      const iconOnly = hasIcon && !hasLabel;
+      if ((sizeProp === 'medium' || sizeProp === undefined) && !iconOnly) {
+        style += `font-size: ${fontSize};
+        line-height: ${lineHeight};`;
+      }
+      return style;
     },
   },
   calendar: {
+    // ensure color is #FFFFFF to meet color contrast requirement on HPE green
+    day: {
+      extend: ({ isSelected, theme }) =>
+        isSelected && `color: ${theme.global.colors['text-primary-button']};`,
+    },
     icons: {
-      next: FormNext,
-      previous: FormPrevious,
+      next: Next,
+      previous: Previous,
     },
     small: {
       fontSize: '13.6px',
       lineHeight: 1.375,
       daySize: '27.43px',
+      title: {
+        size: 'medium',
+        weight: 500,
+        color: 'text-strong',
+      },
     },
     medium: {
       fontSize: '18px',
       lineHeight: 1.45,
       daySize: '54.86px',
+      title: {
+        size: 'large',
+        weight: 500,
+        color: 'text-strong',
+      },
     },
     large: {
       fontSize: '31.2px',
       lineHeight: 1.11,
       daySize: '109.71px',
+      title: {
+        size: 'xlarge',
+        weight: 500,
+        color: 'text-strong',
+      },
     },
   },
   card: {
@@ -408,11 +612,22 @@ export const hpe = deepFreeze({
   checkBox: {
     hover: {
       border: {
-        color: undefined,
+        color: 'border-strong',
       },
       background: {
         color: 'background-contrast',
       },
+      // HPE Design System guidance states that pad="none" should be applied on CheckBox
+      // when its used outside of a FormField. We will apply this hover treatment in
+      // those instances.
+      extend: ({ disabled, pad, theme, toggle }) => css`
+        ${!disabled &&
+        pad === 'none' &&
+        !toggle &&
+        `border: 2px solid ${
+          theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light']
+        };`}
+      `,
     },
     color: 'background',
     border: {
@@ -420,11 +635,11 @@ export const hpe = deepFreeze({
       width: '1px',
     },
     check: {
-      radius: '2px',
+      radius: '4px',
       extend: ({ theme, checked, indeterminate }) => `
       background-color: ${
         checked || indeterminate
-          ? theme.global.colors.green[theme.dark ? 'dark' : 'light']
+          ? theme.global.colors['green!']
           : theme.global.colors.background[theme.dark ? 'dark' : 'light']
       };
       ${(checked || indeterminate) && 'border: none;'}
@@ -432,13 +647,15 @@ export const hpe = deepFreeze({
     },
     icon: {
       extend: ({ theme }) => `stroke-width: 2px;
-      stroke: ${
-        theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
-      }`,
+      stroke: ${theme.global.colors['text-primary-button']}`,
     },
     gap: 'small',
     label: {
       align: 'start',
+    },
+    pad: {
+      vertical: 'xsmall',
+      horizontal: 'small',
     },
     toggle: {
       background: 'background',
@@ -454,29 +671,24 @@ export const hpe = deepFreeze({
         `,
       },
       extend: ({ checked, theme }) => `
-        ${
-          checked &&
-          `background-color: ${
-            theme.global.colors.green[theme.dark ? 'dark' : 'light']
-          };`
-        }
+        ${checked && `background-color: ${theme.global.colors['green!']};`}
       `,
     },
-    extend: ({ disabled, theme }) => `
-      ${
-        !disabled &&
-        `:hover {
-        background-color: ${
-          theme.global.colors['background-contrast'][
-            theme.dark ? 'dark' : 'light'
-          ]
-        };
-      }`
-      }
-      font-weight: 500;
-      width: auto;
-      padding: ${theme.global.edgeSize.xsmall} ${theme.global.edgeSize.small};
-    `,
+    // HPE Design System guidance states that pad="none" should be applied on CheckBox
+    // when its used outside of a FormField. We will apply this hover treatment in
+    // those instances.
+    extend: ({ disabled, pad }) => css`
+    ${
+      !disabled &&
+      pad === 'none' &&
+      `:hover {
+      background-color: unset;
+    }`
+    }
+    font-weight: 500;
+    width: auto;
+  };
+  `,
   },
   checkBoxGroup: {
     container: {
@@ -484,6 +696,11 @@ export const hpe = deepFreeze({
       margin: {
         vertical: 'xsmall',
       },
+    },
+  },
+  data: {
+    button: {
+      kind: 'toolbar',
     },
   },
   dataTable: {
@@ -527,7 +744,7 @@ export const hpe = deepFreeze({
           };
         `,
       font: {
-        weight: 'bold',
+        weight: 500,
       },
       gap: 'none',
       hover: {
@@ -535,29 +752,31 @@ export const hpe = deepFreeze({
           color: 'background-contrast',
         },
       },
-      pad: { horizontal: 'small', vertical: 'xsmall' },
+      units: {
+        color: 'text-weak',
+      },
     },
     icons: {
-      ascending: Ascending,
-      descending: Descending,
-      sortable: Unsorted,
+      ascending: () => <Ascending size="large" />,
+      descending: () => <Descending size="large" />,
+      contract: () => <Up height="medium" />,
+      expand: () => <Down height="medium" />,
+      sortable: () => <Unsorted size="large" />,
     },
-    /* Add FireFox work around until it adds support for backdrop-filter
-    https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter
-    */
     pinned: {
       header: {
-        background: { opacity: 0.95 },
-        extend: 'backdrop-filter: blur(8px);',
+        extend: 'backdrop-filter: blur(12px);',
       },
       body: {
-        background: { opacity: 0.95 },
-        extend: 'backdrop-filter: blur(8px);',
+        extend: 'backdrop-filter: blur(12px);',
       },
       footer: {
-        background: { opacity: 0.95 },
-        extend: 'backdrop-filter: blur(8px);',
+        extend: 'backdrop-filter: blur(12px);',
       },
+    },
+    primary: {
+      weight: 500,
+      color: 'text-strong',
     },
     resize: {
       hover: {
@@ -569,6 +788,9 @@ export const hpe = deepFreeze({
     },
   },
   dateInput: {
+    container: {
+      round: 'xsmall',
+    },
     icon: {
       size: 'small',
     },
@@ -579,7 +801,7 @@ export const hpe = deepFreeze({
     },
     button: {
       border: {
-        radius: '4px',
+        radius: '2em',
       },
       pad: {
         vertical: '6px',
@@ -591,6 +813,7 @@ export const hpe = deepFreeze({
       },
       hover: {
         background: 'background-contrast',
+        color: 'text-strong',
       },
     },
     dragOver: {
@@ -602,8 +825,11 @@ export const hpe = deepFreeze({
         color: 'border',
       },
     },
+    icons: {
+      remove: Close,
+    },
     message: {
-      color: 'text-xweak',
+      color: 'placeholder',
     },
     pad: { horizontal: 'xsmall' },
     extend: 'border-radius: 4px;',
@@ -638,7 +864,7 @@ export const hpe = deepFreeze({
       container: {
         gap: 'xsmall',
       },
-      icon: <CircleAlert size="small" style={{ marginTop: '4px' }} />,
+      icon: <CircleAlert size="small" />,
       size: 'xsmall',
       color: 'text',
       margin: {
@@ -680,149 +906,169 @@ export const hpe = deepFreeze({
     margin: {
       bottom: 'none',
     },
-    round: '4px',
+    round: '6px',
+    survey: {
+      label: {
+        margin: { bottom: 'none' },
+      },
+    },
   },
   heading: {
     color: 'text-strong',
+    weight: 500,
     level: {
       1: {
+        font: {
+          weight: 500,
+        },
         small: {
-          size: '36px',
-          height: '42px',
-          maxWidth: '854px',
+          size: '24px',
+          height: '24px',
         },
         medium: {
-          size: '53px',
-          height: '59px',
-          maxWidth: '1277px',
+          size: '36px',
+          height: '36px',
         },
         large: {
-          size: '88px',
-          height: '94px',
-          maxWidth: '2122px',
+          size: '48px',
+          height: '48px',
         },
         xlarge: {
-          size: '124px',
-          height: '130px',
-          maxWidth: '2966px',
+          size: '60px',
+          height: '60px',
         },
       },
       2: {
         small: {
-          size: '31px',
-          height: '37px',
-          maxWidth: '749px',
+          size: '20px',
+          height: '20px',
         },
         medium: {
-          size: '44px',
-          height: '50px',
-          maxWidth: '1066px',
+          size: '24px',
+          height: '24px',
         },
         large: {
-          size: '58px',
-          height: '64px',
-          maxWidth: '1382px',
+          size: '36px',
+          height: '36px',
         },
         xlarge: {
-          size: '71px',
-          height: '77px',
-          maxWidth: '1699px',
+          size: '48px',
+          height: '48px',
         },
       },
       3: {
+        font: {
+          weight: 500,
+        },
         small: {
-          size: '27px',
-          height: '33px',
-          maxWidth: '643px',
+          size: '16px',
+          height: '16px',
         },
         medium: {
-          size: '36px',
-          height: '42px',
-          maxWidth: '854px',
+          size: '20px',
+          height: '20px',
         },
         large: {
-          size: '44px',
-          height: '50px',
-          maxWidth: '1066px',
+          size: '24px',
+          height: '24px',
         },
         xlarge: {
-          size: '53px',
-          height: '59px',
-          maxWidth: '1277px',
+          size: '36px',
+          height: '36px',
         },
       },
       4: {
+        font: {
+          weight: 500,
+        },
         small: {
-          size: '22px',
-          height: '28px',
-          maxWidth: '538px',
+          size: '12px',
+          height: '12px',
         },
         medium: {
-          size: '27px',
-          height: '33px',
-          maxWidth: '643px',
+          size: '16px',
+          height: '16px',
         },
         large: {
-          size: '31px',
-          height: '37px',
-          maxWidth: '749px',
+          size: '20px',
+          height: '20px',
         },
         xlarge: {
-          size: '36px',
-          height: '42px',
-          maxWidth: '854px',
+          size: '24px',
+          height: '24px',
         },
       },
       5: {
+        font: {
+          weight: 600,
+        },
         small: {
-          size: '16px',
-          height: '22px',
-          maxWidth: '379px',
+          size: '12px',
+          height: '12px',
         },
         medium: {
-          size: '16px',
-          height: '22px',
-          maxWidth: '379px',
+          size: '12px',
+          height: '12px',
         },
         large: {
           size: '16px',
-          height: '22px',
-          maxWidth: '379px',
+          height: '16px',
         },
         xlarge: {
-          size: '16px',
-          height: '22px',
-          maxWidth: '379px',
+          size: '20px',
+          height: '20px',
         },
       },
       6: {
+        font: {
+          weight: 600,
+        },
         small: {
-          size: '14px',
-          height: '20px',
-          maxWidth: '326px',
+          size: '12px',
+          height: '12px',
         },
         medium: {
-          size: '14px',
-          height: '20px',
-          maxWidth: '326px',
+          size: '12px',
+          height: '12px',
         },
         large: {
-          size: '14px',
-          height: '20px',
-          maxWidth: '326px',
+          size: '12px',
+          height: '12px',
         },
         xlarge: {
-          size: '14px',
-          height: '20px',
-          maxWidth: '326px',
+          size: '16px',
+          height: '16px',
         },
       },
     },
-    weight: 700,
+    // This block applies size-specific weights to headings to ensure
+    // that as heading sizes get small, the weight increases and as they
+    // get large, the weight decreases.
+    // This block can be removed once grommet theme structure is enhanced
+    // to support level and size-specific weights.
+    extend: ({ level, size }) => {
+      let fontWeight = '';
+      if (level === 3 && size === 'small') {
+        fontWeight = 'font-weight: 600;';
+        // undefined necessary so an h4 without size prop explicitly defined
+        // still renders as weight 600
+      } else if (level === 4 && ['small', 'medium', undefined].includes(size)) {
+        fontWeight = 'font-weight: 600;';
+      } else if (level === 5 && size === 'xlarge') {
+        fontWeight = 'font-weight: 500;';
+      }
+      return fontWeight;
+    },
   },
   icon: {
+    disableScaleDown: true,
+    matchSize: true,
     size: {
-      xxlarge: '166px',
+      small: '16px',
+      medium: '18px',
+      large: '22px',
+      xlarge: '24px',
+      xxlarge: '36px',
     },
   },
   layer: {
@@ -835,7 +1081,7 @@ export const hpe = deepFreeze({
       elevation: 'large',
     },
     overlay: {
-      background: '#00000080',
+      background: 'background-layer-overlay',
     },
     /* HPE Global Header/Footer Service a.k.a. HPE Common HFWS sets the header
      * at a z-index of 101. This adjustment allows for Layer modals and side-drawers
@@ -845,6 +1091,11 @@ export const hpe = deepFreeze({
   list: {
     item: {
       border: undefined,
+      pinned: {
+        icon: {
+          pad: mediumIconOnlyPad,
+        },
+      },
     },
   },
   maskedInput: {
@@ -868,25 +1119,53 @@ export const hpe = deepFreeze({
         left: 'left',
       },
     },
+    group: {
+      container: {
+        pad: 'none',
+      },
+      separator: {
+        color: 'border',
+        pad: 'none',
+      },
+    },
     icons: {
       color: 'text-strong',
+      down: Down,
+    },
+    item: {
+      pad: {
+        horizontal: '18px',
+        vertical: '6px',
+      },
+    },
+  },
+  nameValuePair: {
+    name: {
+      color: 'text-strong',
+      weight: 500,
     },
   },
   notification: {
-    actions: {
-      color: { light: 'text', dark: 'text-strong' },
+    close: {
+      icon: Close,
     },
-    direction: 'row',
     container: {
       round: 'xsmall',
     },
+    direction: 'column',
     global: {
+      direction: 'row',
       container: {
         round: 'none',
       },
     },
     message: {
       color: { dark: 'text-strong' },
+    },
+    title: {
+      // any text props
+      color: 'text-strong',
+      weight: 500,
     },
     critical: {
       background: 'validation-critical',
@@ -981,14 +1260,49 @@ export const hpe = deepFreeze({
       },
     },
   },
+  pageHeader: {
+    responsive: {
+      breakpoints: ['xsmall', 'small'],
+    },
+    subtitle: {
+      size: 'xlarge',
+    },
+    xsmall: {
+      areas: [
+        ['parent', 'parent'],
+        ['title', 'actions'],
+        ['subtitle', 'actions'],
+      ],
+      columns: [['small', 'flex'], 'auto'],
+      rows: ['auto', 'auto', 'auto'],
+      gap: { row: 'xsmall', column: 'medium' },
+    },
+    xlarge: {
+      areas: [
+        ['parent', 'parent'],
+        ['title', 'actions'],
+        ['subtitle', 'actions'],
+      ],
+      columns: [['medium', 'large'], 'auto'],
+      rows: ['auto', 'auto', 'auto'],
+      gap: { row: 'xsmall', column: 'large' },
+    },
+  },
   pagination: {
     button: {
+      border: {
+        radius: '2em',
+      },
       font: {
-        weight: 700,
+        weight: 600,
       },
       active: {
+        border: {
+          radius: '2em',
+        },
+        color: 'text-strong',
         font: {
-          weight: 700,
+          weight: 600,
         },
       },
       disabled: {
@@ -997,31 +1311,43 @@ export const hpe = deepFreeze({
     },
   },
   paragraph: {
+    xsmall: {
+      size: '14px',
+      height: '16px',
+      maxWidth: '25em',
+    },
     small: {
       size: '16px',
-      height: '22px',
-      maxWidth: '379px',
+      height: '20px',
+      maxWidth: '25em',
     },
     medium: {
       size: '18px',
       height: '24px',
-      maxWidth: '432px',
+      maxWidth: '25em',
     },
     large: {
       size: '22px',
       height: '28px',
-      maxWidth: '538px',
+      maxWidth: '25em',
     },
     xlarge: {
-      size: '27px',
-      height: '33px',
-      maxWidth: '643px',
+      size: '24px',
+      height: '30px',
+      maxWidth: '25em',
     },
     xxlarge: {
       size: '36px',
-      height: '42px',
-      maxWidth: '854px',
+      height: '40px',
+      maxWidth: '25em',
     },
+    // This block applies size-specific weights to paragraph to ensure
+    // that as paragraph sizes get larger, the weight decreases.
+    // This block can be removed once grommet theme structure is enhanced
+    // to support size-specific weights.
+    extend: ({ size }) => `
+      ${['xxlarge'].includes(size) ? 'font-weight: 300;' : ''};
+    `,
   },
   radioButton: {
     border: {
@@ -1072,11 +1398,11 @@ export const hpe = deepFreeze({
   },
   rangeInput: {
     thumb: {
-      color: 'green',
+      color: 'brand',
     },
     track: {
       lower: {
-        color: 'green',
+        color: 'brand',
       },
       upper: {
         color: 'border',
@@ -1094,45 +1420,64 @@ export const hpe = deepFreeze({
         }`}
       `,
     },
+    emptySearchMessage: {
+      container: {
+        pad: option.pad,
+      },
+    },
     icons: {
       color: 'text',
-      down: FormDown,
-      up: FormUp,
+      down: Down,
+      margin: {
+        left: 'small',
+        // setting right margin to 12px because on small
+        // screens, Select responsive padding sizes down
+        // which brings the icon too tight with edge of
+        // control.
+        right: '12px',
+      },
+      up: Up,
     },
     options: undefined,
   },
   spinner: {
     container: {
+      pad: 'none',
+      color: 'brand',
       border: [
-        { side: 'all', color: 'background-contrast', size: 'medium' },
-        { side: 'right', color: 'green', size: 'medium' },
-        { side: 'top', color: 'green', size: 'medium' },
-        { side: 'left', color: 'green', size: 'medium' },
+        { color: 'border-weak', side: 'all', size: 'medium' },
+        { color: 'border-weak', side: 'right', size: 'medium' },
+        { color: 'border-weak', side: 'top', size: 'medium' },
+        { color: 'border-weak', side: 'left', size: 'medium' },
       ],
     },
   },
+  starRating: {
+    color: 'brand',
+  },
   tab: {
-    color: 'text-strong',
+    color: 'text',
     active: {
-      background: 'background-contrast',
+      background: undefined,
       color: 'text-strong',
+      weight: 600,
     },
     hover: {
-      background: 'background-contrast',
-      color: 'text-strong',
+      background: 'transparent',
+      color: 'text',
     },
     border: {
       side: 'bottom',
       color: 'transparent',
       size: 'medium',
       active: {
-        color: 'border-strong',
+        color: 'brand',
       },
       disabled: {
         color: undefined,
       },
       hover: {
-        color: undefined,
+        color: 'border-weak',
       },
     },
     disabled: {
@@ -1141,30 +1486,28 @@ export const hpe = deepFreeze({
     pad: {
       // top and bottom pad need to be defined individually, specifying
       // "vertical" only applies to top
-      bottom: 'small',
-      top: 'small',
-      horizontal: 'medium',
+      bottom: '9px',
+      top: '9px',
+      // align horizontal pad with button
+      horizontal: '18px',
     },
     margin: {
       // bring the overall tabs border behind invidual tab borders
-      vertical: '-2px',
+      vertical: '-1px',
       horizontal: 'none',
     },
-    extend: ({ theme }) => css`
-      border-top-left-radius: ${theme.global.control.border
-        .radius}; // should use radius property of border
-      border-top-right-radius: ${theme.global.control.border
-        .radius}; // should use radius property of border
-      font-weight: bold;
-    `,
   },
   tabs: {
     header: {
       border: {
         side: 'bottom',
-        size: 'small',
-        color: 'border',
+        size: 'xsmall',
+        color: 'border-weak',
       },
+    },
+    step: {
+      xsmall: 1,
+      xlarge: 3,
     },
   },
   table: {
@@ -1179,8 +1522,6 @@ export const hpe = deepFreeze({
           justify-content: center;
         }
       `,
-      // space for focus indicator on sortable columns
-      pad: { left: 'none', vertical: 'none', right: 'xxsmall' },
     },
     body: {
       extend: ({ theme }) =>
@@ -1203,41 +1544,71 @@ export const hpe = deepFreeze({
     },
     footer: {
       extend: `
-        font-weight: bold;
+        font-weight: 500;
       `,
+    },
+  },
+  tag: {
+    pad: {
+      horizontal: 'small',
+      vertical: '5px', // 5px pad + 1px border = 6px 'xsmall'
+    },
+    value: {
+      weight: 500,
     },
   },
   text: {
     xsmall: {
       size: '14px',
-      height: '20px',
-      maxWidth: '326px',
+      height: '16px',
     },
     small: {
       size: '16px',
-      height: '22px',
-      maxWidth: '379px',
+      height: '20px',
     },
     medium: {
       size: '18px',
       height: '24px',
-      maxWidth: '432px',
     },
     large: {
       size: '22px',
       height: '28px',
-      maxWidth: '538px',
     },
     xlarge: {
-      size: '27px',
-      height: '33px',
-      maxWidth: '643px',
+      size: '24px',
+      height: '30px',
     },
     xxlarge: {
       size: '36px',
-      height: '42px',
-      maxWidth: '854px',
+      height: '40px',
     },
+    '3xl': {
+      size: '42px',
+      height: '46px',
+    },
+    '4xl': {
+      size: '48px',
+      height: '48px',
+    },
+    '5xl': {
+      size: '72px',
+      height: '72px',
+    },
+    '6xl': {
+      size: '72px',
+      height: '72px',
+    },
+    // This block applies size-specific weights to text to ensure
+    // that as text sizes get larger, the weight decreases.
+    // This block can be removed once grommet theme structure is enhanced
+    // to support size-specific weights.
+    extend: ({ size }) => `
+      ${
+        ['xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size)
+          ? 'font-weight: 300;'
+          : ''
+      };
+    `,
   },
   textInput: {
     container: {
@@ -1266,6 +1637,28 @@ export const hpe = deepFreeze({
         horizontal: 'small',
       },
       round: 'xsmall',
+    },
+  },
+  thumbsRating: {
+    like: {
+      color: 'brand',
+    },
+    dislike: {
+      color: 'brand',
+    },
+  },
+  toggleGroup: {
+    button: {
+      pad: {
+        vertical: 'xsmall',
+        horizontal: 'small',
+      },
+      iconOnly: {
+        pad: {
+          vertical: '9px',
+          horizontal: '9px',
+        },
+      },
     },
   },
   // Theme-Designer only parameters
