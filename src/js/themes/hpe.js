@@ -681,7 +681,7 @@ export const hpe = deepFreeze({
     ${
       !disabled &&
       pad === 'none' &&
-      `:hover {
+      `&:hover {
       background-color: unset;
     }`
     }
@@ -735,7 +735,7 @@ export const hpe = deepFreeze({
               svg {
                 opacity: 0;
               }
-              :hover {
+              &:hover {
                 svg {
                   opacity: 1;
                 }
@@ -1526,7 +1526,7 @@ export const hpe = deepFreeze({
     body: {
       extend: ({ theme }) =>
         `
-          :hover {
+          &:hover {
             button {
               background: ${
                 theme.global.colors['background-contrast'][
