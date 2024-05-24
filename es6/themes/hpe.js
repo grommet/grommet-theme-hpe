@@ -656,7 +656,7 @@ export var hpe = deepFreeze({
     extend: function extend(_ref9) {
       var disabled = _ref9.disabled,
         pad = _ref9.pad;
-      return css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n    ", "\n    font-weight: 500;\n    width: auto;\n  };\n  "])), !disabled && pad === 'none' && ":hover {\n      background-color: unset;\n    }");
+      return css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n    ", "\n    font-weight: 500;\n    width: auto;\n  };\n  "])), !disabled && pad === 'none' && "&:hover {\n      background-color: unset;\n    }");
     }
   },
   checkBoxGroup: {
@@ -689,7 +689,7 @@ export var hpe = deepFreeze({
           sort = _ref11.sort,
           sortable = _ref11.sortable,
           theme = _ref11.theme;
-        return "\n          " + (sort && sort.property === column && "\n            background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n          ") + ";\n          " + (sortable && sort && sort.property !== column && "\n              svg {\n                opacity: 0;\n              }\n              :hover {\n                svg {\n                  opacity: 1;\n                }\n              }\n            ") + ";\n        ";
+        return "\n          " + (sort && sort.property === column && "\n            background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n          ") + ";\n          " + (sortable && sort && sort.property !== column && "\n              svg {\n                opacity: 0;\n              }\n              &:hover {\n                svg {\n                  opacity: 1;\n                }\n              }\n            ") + ";\n        ";
       },
       font: {
         weight: 500
@@ -1516,7 +1516,7 @@ export var hpe = deepFreeze({
     body: {
       extend: function extend(_ref18) {
         var theme = _ref18.theme;
-        return "\n          :hover {\n            button {\n              background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n            }\n          }\n        ";
+        return "\n          &:hover {\n            button {\n              background: " + theme.global.colors['background-contrast'][theme.dark ? 'dark' : 'light'] + "\n            }\n          }\n        ";
       }
     },
     row: {
