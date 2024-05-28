@@ -3,7 +3,7 @@ version: 2.1
 defaults: &defaults
   working_directory: ~/grommet-ci
   docker:
-    - image: circleci/node:12
+    - image: cimg/node:18.13.0
 
 jobs:
   checkout:
@@ -53,6 +53,36 @@ jobs:
             git config --global user.name "Grommet Community Bot"
             git config --global user.email "grommet@hpe.com"
             yarn release-stable
+  release-next-stable:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/grommet-ci
+      - run:
+          command: |
+            git config --global user.name "Grommet Community Bot"
+            git config --global user.email "grommet@hpe.com"
+            yarn release-next-stable
+  release-audit-stable:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/grommet-ci
+      - run:
+          command: |
+            git config --global user.name "Grommet Community Bot"
+            git config --global user.email "grommet@hpe.com"
+            yarn release-audit-stable
+  release-tokens-stable:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/grommet-ci
+      - run:
+          command: |
+            git config --global user.name "Grommet Community Bot"
+            git config --global user.email "grommet@hpe.com"
+            yarn release-tokens-stable
   release-gh-pages:
     <<: *defaults
     steps:
@@ -70,7 +100,7 @@ jobs:
           at: ~/grommet-ci
       - run:
           name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/grommet-ci/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN_NEW" > ~/grommet-ci/.npmrc
       - run:
           name: Publish package
           command: npm publish
@@ -90,6 +120,9 @@ workflows:
             branches:
               ignore:
                 - stable
+                - NEXT-stable
+                - AUDIT-stable
+                - TOKENS-stable
                 - gh-pages
       - build:
           requires:
@@ -100,6 +133,9 @@ workflows:
             branches:
               ignore:
                 - stable
+                - NEXT-stable
+                - AUDIT-stable
+                - TOKENS-stable
                 - gh-pages
       - release-stable:
           requires:
@@ -109,6 +145,30 @@ workflows:
             branches:
               only:
                 - master
+      - release-next-stable:
+          requires:
+            - lint
+            - build
+          filters:
+            branches:
+              only:
+                - NEXT
+      - release-audit-stable:
+          requires:
+            - lint
+            - build
+          filters:
+            branches:
+              only:
+                - AUDIT
+      - release-tokens-stable:
+          requires:
+            - lint
+            - build
+          filters:
+            branches:
+              only:
+                - TOKENS
       - release-gh-pages:
           requires:
             - lint
