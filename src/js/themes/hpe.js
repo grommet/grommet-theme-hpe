@@ -267,6 +267,9 @@ export const hpe = deepFreeze({
     textDecoration: 'underline',
     fontWeight: 500,
     gap: 'xsmall',
+    icon: {
+      color: 'brand',
+    },
     hover: {
       textDecoration: 'underline',
     },
