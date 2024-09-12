@@ -25,6 +25,9 @@
     "react": "^16.13.1 || ^17.0.1 || ^18.0.0",
     "styled-components": "^5.0.0 || ^6.0.0"
   },
+  "dependencies": {
+    "hpe-design-tokens": "https://github.com/grommet/hpe-design-system/tarball/design-tokens-stable"
+  },
   "devDependencies": {
     "@babel/cli": "^7.24.1",
     "@babel/core": "^7.24.4",
@@ -59,6 +62,7 @@
     "build": "webpack --mode production && cross-env babel ./src/js/ --out-dir ./dist --copy-files && cross-env BABEL_ENV=es6 babel ./src/js/ --out-dir ./dist/es6 --copy-files",
     "lint": "eslint src",
     "lint-fix": "eslint src --fix",
+    "colors-from-tokens": "babel-node ./tools/colors-from-tokens",
     "prettier": "pretty-quick --staged",
     "release-stable": "babel-node ./tools/release-stable",
     "release-next-stable": "babel-node ./tools/release-next-stable",
