@@ -30,4 +30,4 @@ jobs:
           git config --global user.email "grommet@hpe.com"
           yarn release-stable
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_ACTION_ACCESS_TOKEN }}
