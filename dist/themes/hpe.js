@@ -368,6 +368,7 @@ var hpe = exports.hpe = deepFreeze({
     }
   },
   button: {
+    intelligentPad: false,
     badge: {
       align: 'container',
       container: {
