@@ -159,37 +159,37 @@ export const hpe = deepFreeze({
       face: `
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
-               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
+          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
+               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
-               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
+          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
+               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
           font-weight: 400;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff2") format('woff2'),
-               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff") format('woff');
+          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff2") format('woff2'),
+               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff") format('woff');
           font-weight: 700;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff2") format('woff2'),
-               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff") format('woff');
+          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff2") format('woff2'),
+               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff") format('woff');
           font-weight: 600;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff2") format('woff2'),
-               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff") format('woff');
+          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff2") format('woff2'),
+               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff") format('woff');
           font-weight: 500;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff2") format('woff2'),
-               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff") format('woff');
+          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Light.woff2") format('woff2'),
+               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Light.woff") format('woff');
           font-weight: 100;
         }`,
     },
@@ -759,9 +759,9 @@ export const hpe = deepFreeze({
         color: 'text-weak',
       },
     },
-   // Ascending order is represented by a descending icon. 
-   // Similarly, descending order is shown with an ascending icon, 
-   // both signifying the respective sorting actions in line with industry standard conventions.
+    // Ascending order is represented by a descending icon.
+    // Similarly, descending order is shown with an ascending icon,
+    // both signifying the respective sorting actions in line with industry standard conventions.
     icons: {
       ascending: () => <Descending size="large" />,
       descending: () => <Ascending size="large" />,
