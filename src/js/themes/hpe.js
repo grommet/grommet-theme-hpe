@@ -759,9 +759,12 @@ export const hpe = deepFreeze({
         color: 'text-weak',
       },
     },
+   // Ascending order is represented by a descending icon. 
+   // Similarly, descending order is shown with an ascending icon, 
+   // both signifying the respective sorting actions in line with industry standard conventions.
     icons: {
-      ascending: () => <Ascending size="large" />,
-      descending: () => <Descending size="large" />,
+      ascending: () => <Descending size="large" />,
+      descending: () => <Ascending size="large" />,
       contract: () => <Up height="medium" />,
       expand: () => <Down height="medium" />,
       sortable: () => <Unsorted size="large" />,
