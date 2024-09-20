@@ -711,14 +711,17 @@ var hpe = exports.hpe = deepFreeze({
         color: 'text-weak'
       }
     },
+    // Ascending order is represented by a descending icon. 
+    // Similarly, descending order is shown with an ascending icon, 
+    // both signifying the respective sorting actions in line with industry standard conventions.
     icons: {
       ascending: function ascending() {
-        return /*#__PURE__*/_react["default"].createElement(_Ascending.Ascending, {
+        return /*#__PURE__*/_react["default"].createElement(_Descending.Descending, {
           size: "large"
         });
       },
       descending: function descending() {
-        return /*#__PURE__*/_react["default"].createElement(_Descending.Descending, {
+        return /*#__PURE__*/_react["default"].createElement(_Ascending.Ascending, {
           size: "large"
         });
       },
