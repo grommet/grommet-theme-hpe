@@ -35,7 +35,7 @@ export const colors = {
   },
   'text-strong': {
     dark: '#FFFFFF',
-    light: '#333333',
+    light: '#2E2E2E',
   },
   'text-weak': {
     dark: '#FFFFFF80', // 50%
