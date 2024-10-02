@@ -1555,6 +1555,9 @@ export const hpe = deepFreeze({
     },
   },
   tag: {
+    icons:{
+      remove: Close,
+    },
     pad: {
       horizontal: 'small',
       vertical: '5px', // 5px pad + 1px border = 6px 'xsmall'
