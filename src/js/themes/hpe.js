@@ -1423,26 +1423,15 @@ export const hpe = deepFreeze({
           horizontal: '12px',
           vertical: '6px',
         },
+        hover: {
+          background: 'background-contrast',
+        },
       },
       text: {
         color: 'text-strong',
+        size: '19px', // align to button font size
         weight: 600,
       },
-    },
-    container: {
-      // align font size with buttons
-      extend: ({ theme }) => `
-      & button[aria-label*="Clear selection"] {
-        font-size: 19px;
-      }
-      & button[aria-label*="Clear selection"]:hover {
-        background: ${
-          theme.global.colors['background-contrast'][
-            theme.dark ? 'dark' : 'light'
-          ]
-        };
-      }
-    `,
     },
     control: {
       extend: ({ disabled }) => css`
