@@ -2859,9 +2859,6 @@
     },
     "divider": false
   },
-  "buttonGroup": {
-    "gap": "small"
-  },
   "name": "HPE 1",
   "rounding": 4,
   "scale": 1.1,

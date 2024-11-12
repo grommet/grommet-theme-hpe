@@ -1831,9 +1831,6 @@ export var hpe = deepFreeze({
     },
     divider: false
   },
-  buttonGroup: {
-    gap: 'small'
-  },
   // Theme-Designer only parameters
   name: 'HPE 1',
   rounding: 4,
