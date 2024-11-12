@@ -71,6 +71,9 @@ const option = {
   },
 };
 
+// abstracted so button and pinned list icon can reference
+const mediumIconOnlyPad = '9px';
+
 export const hpe = deepFreeze({
   defaultMode: 'light',
   global: {
@@ -131,6 +134,12 @@ export const hpe = deepFreeze({
         horizontal: '11px', // equivalent to 'small' when combined with 1px border
         vertical: '5px', // equivalent to 'xsmall' when combined with 1px border
       },
+      readOnly: {
+        background: 'background-back',
+        border: {
+          color: 'border-weak',
+        },
+      },
       extend: `
         &::-webkit-input-placeholder {
           font-weight: 400;
@@ -150,37 +159,37 @@ export const hpe = deepFreeze({
       face: `
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
-               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
+          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
+               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
-               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
+          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
+               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
           font-weight: 400;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff2") format('woff2'),
-               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff") format('woff');
+          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff2") format('woff2'),
+               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff") format('woff');
           font-weight: 700;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff2") format('woff2'),
-               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff") format('woff');
+          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff2") format('woff2'),
+               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff") format('woff');
           font-weight: 600;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff2") format('woff2'),
-               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff") format('woff');
+          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff2") format('woff2'),
+               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff") format('woff');
           font-weight: 500;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff2") format('woff2'),
-               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff") format('woff');
+          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Light.woff2") format('woff2'),
+               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Light.woff") format('woff');
           font-weight: 100;
         }`,
     },
@@ -258,6 +267,9 @@ export const hpe = deepFreeze({
     textDecoration: 'underline',
     fontWeight: 500,
     gap: 'xsmall',
+    icon: {
+      color: 'brand',
+    },
     hover: {
       textDecoration: 'underline',
     },
@@ -479,7 +491,7 @@ export const hpe = deepFreeze({
           horizontal: '18px',
         },
         iconOnly: {
-          pad: '9px',
+          pad: mediumIconOnlyPad,
         },
         toolbar: {
           border: {
@@ -611,9 +623,10 @@ export const hpe = deepFreeze({
       // HPE Design System guidance states that pad="none" should be applied on CheckBox
       // when its used outside of a FormField. We will apply this hover treatment in
       // those instances.
-      extend: ({ disabled, pad, theme }) => css`
+      extend: ({ disabled, pad, theme, toggle }) => css`
         ${!disabled &&
         pad === 'none' &&
+        !toggle &&
         `border: 2px solid ${
           theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light']
         };`}
@@ -671,7 +684,7 @@ export const hpe = deepFreeze({
     ${
       !disabled &&
       pad === 'none' &&
-      `:hover {
+      `&:hover {
       background-color: unset;
     }`
     }
@@ -686,6 +699,11 @@ export const hpe = deepFreeze({
       margin: {
         vertical: 'xsmall',
       },
+    },
+  },
+  data: {
+    button: {
+      kind: 'toolbar',
     },
   },
   dataTable: {
@@ -720,7 +738,7 @@ export const hpe = deepFreeze({
               svg {
                 opacity: 0;
               }
-              :hover {
+              &:hover {
                 svg {
                   opacity: 1;
                 }
@@ -737,14 +755,16 @@ export const hpe = deepFreeze({
           color: 'background-contrast',
         },
       },
-      pad: { horizontal: 'small', vertical: 'xsmall' },
       units: {
         color: 'text-weak',
       },
     },
+    // Ascending order is represented by a descending icon.
+    // Similarly, descending order is shown with an ascending icon,
+    // both signifying the respective sorting actions in line with industry standard conventions.
     icons: {
-      ascending: () => <Ascending size="large" />,
-      descending: () => <Descending size="large" />,
+      ascending: () => <Descending size="large" />,
+      descending: () => <Ascending size="large" />,
       contract: () => <Up height="medium" />,
       expand: () => <Down height="medium" />,
       sortable: () => <Unsorted size="large" />,
@@ -1031,12 +1051,14 @@ export const hpe = deepFreeze({
     // that as heading sizes get small, the weight increases and as they
     // get large, the weight decreases.
     // This block can be removed once grommet theme structure is enhanced
-    // to support level and size specific weights.
+    // to support level and size-specific weights.
     extend: ({ level, size }) => {
       let fontWeight = '';
       if (level === 3 && size === 'small') {
         fontWeight = 'font-weight: 600;';
-      } else if (level === 4 && ['small', 'medium'].includes(size)) {
+        // undefined necessary so an h4 without size prop explicitly defined
+        // still renders as weight 600
+      } else if (level === 4 && ['small', 'medium', undefined].includes(size)) {
         fontWeight = 'font-weight: 600;';
       } else if (level === 5 && size === 'xlarge') {
         fontWeight = 'font-weight: 500;';
@@ -1075,6 +1097,11 @@ export const hpe = deepFreeze({
   list: {
     item: {
       border: undefined,
+      pinned: {
+        icon: {
+          pad: mediumIconOnlyPad,
+        },
+      },
     },
   },
   maskedInput: {
@@ -1125,14 +1152,15 @@ export const hpe = deepFreeze({
     },
   },
   notification: {
-    actions: {
-      color: { light: 'text', dark: 'text-strong' },
+    close: {
+      icon: Close,
     },
-    direction: 'row',
     container: {
       round: 'xsmall',
     },
+    direction: 'column',
     global: {
+      direction: 'row',
       container: {
         round: 'none',
       },
@@ -1198,9 +1226,6 @@ export const hpe = deepFreeze({
       toast: {
         background: 'background-front',
       },
-    },
-    toast: {
-      direction: 'column',
     },
   },
   page: {
@@ -1503,13 +1528,11 @@ export const hpe = deepFreeze({
           justify-content: center;
         }
       `,
-      // space for focus indicator on sortable columns
-      pad: { left: 'none', vertical: 'none', right: 'xxsmall' },
     },
     body: {
       extend: ({ theme }) =>
         `
-          :hover {
+          &:hover {
             button {
               background: ${
                 theme.global.colors['background-contrast'][
@@ -1628,6 +1651,20 @@ export const hpe = deepFreeze({
     },
     dislike: {
       color: 'brand',
+    },
+  },
+  toggleGroup: {
+    button: {
+      pad: {
+        vertical: 'xsmall',
+        horizontal: 'small',
+      },
+      iconOnly: {
+        pad: {
+          vertical: '9px',
+          horizontal: '9px',
+        },
+      },
     },
   },
   // Theme-Designer only parameters
