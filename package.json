@@ -25,6 +25,9 @@
     "react": "^16.13.1 || ^17.0.1 || ^18.0.0",
     "styled-components": "^5.0.0 || ^6.0.0"
   },
+  "dependencies": {
+    "hpe-design-tokens": "https://github.com/grommet/hpe-design-system.git#design-tokens-NEXT-stable"
+  },
   "devDependencies": {
     "@babel/cli": "^7.24.1",
     "@babel/core": "^7.24.4",
@@ -70,8 +73,5 @@
   "pre-commit": [
     "lint-fix",
     "prettier"
-  ],
-  "dependencies": {
-    "hpe-design-tokens": "^0.1.0"
-  }
+  ]
 }
