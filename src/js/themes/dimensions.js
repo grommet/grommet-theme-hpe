@@ -1,4 +1,4 @@
-import { large, small } from 'hpe-design-tokens';
+import { global, large, small } from 'hpe-design-tokens';
 
 export const dimensions = {
   borderSize: {
