@@ -2,8 +2,22 @@
 
 exports.__esModule = true;
 exports.colors = void 0;
-var colors = {
-  /* deprecated accent and neutral colors */
+var _hpeDesignTokens = require("hpe-design-tokens");
+var _utils = require("../../../tools/utils");
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+var colorNames = (0, _utils.flattenObject)(_hpeDesignTokens.light, '-');
+var colorTokens = {};
+Object.keys(colorNames).forEach(function (color) {
+  if (!color.includes('elevation')) {
+    var adjustedColor = color.split('-').join('.');
+    colorTokens[color] = {
+      light: (0, _utils.access)("hpe.color." + adjustedColor, _hpeDesignTokens.light),
+      dark: (0, _utils.access)("hpe.color." + adjustedColor, _hpeDesignTokens.dark)
+    };
+  }
+});
+var colors = exports.colors = _extends({}, colorTokens, {
+  // ---- DEPRECATED ---- //
   'accent-1': undefined,
   'accent-2': undefined,
   'accent-3': undefined,
@@ -14,144 +28,159 @@ var colors = {
   'neutral-4': undefined,
   'neutral-5': undefined,
   'status-error': undefined,
-  brand: 'green!',
+  // ---- TO DO: Tokens do not exist, should they? ---- //
+  brand: _utils.MISSING.color,
+  control: _utils.MISSING.color,
+  'active-text': _utils.MISSING.color,
+  'disabled-text': _utils.MISSING.color,
+  // deprecated, use text-weak instead
+
+  'text-primary-button': _hpeDesignTokens.components.hpe.button.primary.enabled.textColor,
+  'background-cta-alternate': _utils.MISSING.color,
+  // ----------- These ones we need to map manually for backwards compatibility -----------
+  // ----------- with current color namespace ---------------
+  'background-layer-overlay': {
+    dark: _hpeDesignTokens.dark.hpe.color.background.screenOverlay,
+    light: _hpeDesignTokens.light.hpe.color.background.screenOverlay
+  },
+  'active-background': {
+    dark: _hpeDesignTokens.dark.hpe.color.background.active,
+    light: _hpeDesignTokens.light.hpe.color.background.active
+  },
   background: {
-    dark: '#1C1C1C',
-    light: '#FFFFFF'
+    dark: _hpeDesignTokens.dark.hpe.color.background["default"],
+    light: _hpeDesignTokens.light.hpe.color.background["default"]
   },
-  'background-back': {
-    dark: '#1C1C1C',
-    light: '#F7F7F7'
-  },
-  'background-front': {
-    dark: '#222222',
-    light: '#FFFFFF'
-  },
-  'background-contrast': {
-    dark: '#FFFFFF0F',
-    // 6%
-    light: '#0000000A'
-  },
-  'background-layer-overlay': '#00000080',
-  icon: 'text',
   text: {
-    dark: '#FFFFFF',
-    light: '#555555'
-  },
-  'text-strong': {
-    dark: '#FFFFFF',
-    light: '#333333'
-  },
-  'text-weak': {
-    dark: '#FFFFFF80',
-    // 50%
-    light: '#757575'
-  },
-  'text-xweak': {
-    dark: '#FFFFFF33',
-    // 20%
-    light: '#BBBBBB'
+    dark: _hpeDesignTokens.dark.hpe.color.text["default"],
+    light: _hpeDesignTokens.light.hpe.color.text["default"]
   },
   border: {
-    dark: '#FFFFFF5C',
-    // 36%
-    light: '#0000005C' // 36%
+    dark: _hpeDesignTokens.dark.hpe.color.border["default"],
+    light: _hpeDesignTokens.light.hpe.color.border["default"]
   },
-
-  'border-strong': {
-    dark: '#FFFFFFB8',
-    // 72%
-    light: '#000000B8' // 72%
+  blue: {
+    dark: _hpeDesignTokens.dark.hpe.color.decorative.blue,
+    light: _hpeDesignTokens.light.hpe.color.decorative.blue
   },
-
-  'border-weak': {
-    dark: '#FFFFFF1F',
-    // 12%
-    light: '#0000001F' // 12%
+  'blue!': {
+    dark: _hpeDesignTokens.dark.hpe.color.decorative['blue!'],
+    light: _hpeDesignTokens.light.hpe.color.decorative['blue!']
   },
-
-  control: 'brand',
-  'active-background': 'background-contrast',
-  'active-text': 'text',
-  'disabled-text': 'text-weak',
-  // deprecated, use text-weak instead
-  'selected-background': 'green!',
-  'selected-text': 'text-primary-button',
-  // necessary to meet color contrast on HPE green background
+  green: {
+    dark: _hpeDesignTokens.dark.hpe.color.decorative.green,
+    light: _hpeDesignTokens.light.hpe.color.decorative.green
+  },
+  'green!': {
+    dark: _hpeDesignTokens.dark.hpe.color.decorative['green!'],
+    light: _hpeDesignTokens.light.hpe.color.decorative['green!']
+  },
+  teal: {
+    dark: _hpeDesignTokens.dark.hpe.color.decorative.teal,
+    light: _hpeDesignTokens.light.hpe.color.decorative.teal
+  },
+  'teal!': {
+    dark: _hpeDesignTokens.dark.hpe.color.decorative['teal!'],
+    light: _hpeDesignTokens.light.hpe.color.decorative['teal!']
+  },
+  purple: {
+    dark: _hpeDesignTokens.dark.hpe.color.decorative.purple,
+    light: _hpeDesignTokens.light.hpe.color.decorative.purple
+  },
+  'purple!': {
+    dark: _hpeDesignTokens.dark.hpe.color.decorative['purple!'],
+    light: _hpeDesignTokens.light.hpe.color.decorative['purple!']
+  },
+  red: {
+    dark: _hpeDesignTokens.dark.hpe.color.decorative.red,
+    light: _hpeDesignTokens.light.hpe.color.decorative.red
+  },
+  'red!': {
+    dark: _hpeDesignTokens.dark.hpe.color.decorative['red!'],
+    light: _hpeDesignTokens.light.hpe.color.decorative['red!']
+  },
+  orange: {
+    dark: _hpeDesignTokens.dark.hpe.color.decorative.orange,
+    light: _hpeDesignTokens.light.hpe.color.decorative.orange
+  },
+  'orange!': {
+    dark: _hpeDesignTokens.dark.hpe.color.decorative['orange!'],
+    light: _hpeDesignTokens.light.hpe.color.decorative['orange!']
+  },
+  yellow: {
+    dark: _hpeDesignTokens.dark.hpe.color.decorative.yellow,
+    light: _hpeDesignTokens.light.hpe.color.decorative.yellow
+  },
+  'yellow!': {
+    dark: _hpeDesignTokens.dark.hpe.color.decorative['yellow!'],
+    light: _hpeDesignTokens.light.hpe.color.decorative['yellow!']
+  },
+  'graph-0': {
+    light: _hpeDesignTokens.light.hpe.color.dataVis.categorical[10],
+    dark: _hpeDesignTokens.dark.hpe.color.dataVis.categorical[10]
+  },
+  'graph-1': {
+    light: _hpeDesignTokens.light.hpe.color.dataVis.categorical[20],
+    dark: _hpeDesignTokens.dark.hpe.color.dataVis.categorical[20]
+  },
+  'graph-2': {
+    light: _hpeDesignTokens.light.hpe.color.dataVis.categorical[30],
+    dark: _hpeDesignTokens.dark.hpe.color.dataVis.categorical[30]
+  },
+  'graph-3': {
+    light: _hpeDesignTokens.light.hpe.color.dataVis.categorical[40],
+    dark: _hpeDesignTokens.dark.hpe.color.dataVis.categorical[40]
+  },
+  'graph-4': {
+    light: _hpeDesignTokens.light.hpe.color.dataVis.categorical[50],
+    dark: _hpeDesignTokens.dark.hpe.color.dataVis.categorical[50]
+  },
+  'graph-5': {
+    light: _hpeDesignTokens.light.hpe.color.dataVis.categorical[60],
+    dark: _hpeDesignTokens.dark.hpe.color.dataVis.categorical[60]
+  },
+  'graph-6': {
+    light: _hpeDesignTokens.light.hpe.color.dataVis.categorical[70],
+    dark: _hpeDesignTokens.dark.hpe.color.dataVis.categorical[70]
+  },
   'status-critical': {
-    dark: '#D04F4E',
-    light: '#FC5A5A'
+    dark: _hpeDesignTokens.dark.hpe.color.icon.critical,
+    light: _hpeDesignTokens.light.hpe.color.icon.critical
   },
   'status-warning': {
-    dark: '#9B6310',
-    light: '#FFBC44'
+    dark: _hpeDesignTokens.dark.hpe.color.icon.warning,
+    light: _hpeDesignTokens.light.hpe.color.icon.warning
   },
   'status-ok': {
-    dark: '#008567',
-    light: '#17EBA0'
+    dark: _hpeDesignTokens.dark.hpe.color.icon.ok,
+    light: _hpeDesignTokens.light.hpe.color.icon.ok
   },
   'status-unknown': {
-    dark: '#555555',
-    light: '#CCCCCC'
+    dark: _hpeDesignTokens.dark.hpe.color.icon.unknown,
+    light: _hpeDesignTokens.light.hpe.color.icon.unknown
   },
   'status-disabled': '#CCCCCC',
-  // deprecated, does not support light and dark. use text-weak instead
-  blue: {
-    dark: '#00567A',
-    light: '#00C8FF'
-  },
-  'blue!': '#00739D',
-  green: {
-    dark: '#008567',
-    light: '#17EBA0'
-  },
-  'green!': '#01A982',
-  teal: {
-    dark: '#117B82',
-    light: '#82FFF2'
-  },
-  'teal!': '#00E8CF',
-  purple: {
-    dark: '#6633BC',
-    light: '#F740FF'
-  },
-  'purple!': '#7630EA',
-  red: {
-    dark: '#A2423D',
-    light: '#FC6161'
-  },
-  'red!': '#C54E4B',
-  orange: {
-    dark: '#9B6310',
-    light: '#FFBC44'
-  },
-  'orange!': '#FF8300',
-  yellow: {
-    dark: '#8D741C',
-    light: '#FFEB59'
-  },
-  'yellow!': '#FEC901',
+  // deprecated, does not support light and dark. use text-disabled instead
   'validation-critical': {
-    light: '#FC61613D',
-    dark: '#CC1F1A4D' // 30%
+    light: _hpeDesignTokens.light.hpe.color.background.critical,
+    dark: _hpeDesignTokens.dark.hpe.color.background.critical
   },
-
   'validation-ok': {
-    light: '#17EBA03D',
-    dark: '#17D0A64D'
+    light: _hpeDesignTokens.light.hpe.color.background.ok,
+    dark: _hpeDesignTokens.dark.hpe.color.background.ok
   },
   'validation-warning': {
-    light: '#FFBC443D',
-    dark: '#D891284D'
+    light: _hpeDesignTokens.light.hpe.color.background.warning,
+    dark: _hpeDesignTokens.dark.hpe.color.background.critical
   },
-  'graph-0': 'orange!',
-  'graph-1': 'blue!',
-  'graph-2': 'purple!',
-  'graph-3': 'yellow!',
-  'graph-4': 'teal!',
-  focus: 'teal!',
-  placeholder: 'text-weak',
-  'text-primary-button': '#FFFFFF',
-  'background-cta-alternate': '#F2F2F2'
-};
-exports.colors = colors;
+  icon: {
+    light: _hpeDesignTokens.light.hpe.color.icon["default"],
+    dark: _hpeDesignTokens.dark.hpe.color.icon["default"]
+  },
+  'selected-background': 'background-selected-strong-enabled',
+  'selected-text': 'text-onSelectedStrong',
+  placeholder: {
+    light: _hpeDesignTokens.light.hpe.color.text.placeholder,
+    dark: _hpeDesignTokens.dark.hpe.color.text.placeholder
+  }
+});

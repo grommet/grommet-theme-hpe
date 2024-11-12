@@ -3,12 +3,11 @@
 exports.__esModule = true;
 exports.isObject = exports.hpePop = exports.deepMerge = void 0;
 var _hpe = require("./hpe");
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-var isObject = function isObject(item) {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+var isObject = exports.isObject = function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
 };
-exports.isObject = isObject;
-var deepMerge = function deepMerge(target) {
+var _deepMerge = exports.deepMerge = function deepMerge(target) {
   for (var _len = arguments.length, sources = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     sources[_key - 1] = arguments[_key];
   }
@@ -23,7 +22,7 @@ var deepMerge = function deepMerge(target) {
           if (!output[key]) {
             output[key] = _extends({}, source[key]);
           } else {
-            output[key] = deepMerge(output[key], source[key]);
+            output[key] = _deepMerge(output[key], source[key]);
           }
         } else {
           output[key] = source[key];
@@ -33,13 +32,15 @@ var deepMerge = function deepMerge(target) {
   });
   return output;
 };
-exports.deepMerge = deepMerge;
-var hpePop = deepMerge(_hpe.hpe, {
+var hpePop = exports.hpePop = _deepMerge(_hpe.hpe, {
   heading: {
     color: 'text-strong',
     weight: 400,
     level: {
       1: {
+        font: {
+          weight: 400
+        },
         small: {
           size: '48px',
           height: '48px'
@@ -239,4 +240,3 @@ var hpePop = deepMerge(_hpe.hpe, {
     }
   }
 });
-exports.hpePop = hpePop;

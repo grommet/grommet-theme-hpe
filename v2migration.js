@@ -22,7 +22,7 @@ exports.v2migration = void 0;
  *
  */
 
-var v2migration = {
+var v2migration = exports.v2migration = {
   global: {
     colors: {
       // accent-1 will need to be replaced with either 'graph-0', 'graph-1', 'control', 'brand' and more generic colors.
@@ -43,4 +43,3 @@ var v2migration = {
     }
   }
 };
-exports.v2migration = v2migration;

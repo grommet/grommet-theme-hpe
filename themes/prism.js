@@ -235,8 +235,7 @@ var themeMode = function themeMode(mode) {
     }
   };
 };
-var prism = {
+var prism = exports.prism = {
   dark: themeMode('dark'),
   light: themeMode('light')
 };
-exports.prism = prism;

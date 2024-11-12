@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports.backgrounds = void 0;
-var backgrounds = {
+var backgrounds = exports.backgrounds = {
   'datawave-green-1': 'url(https://d3hq6blov2iije.cloudfront.net/images/textures/AdobeStock-57301038_800_0_72_RGB+19849.jpg)',
   'datawave-green-2': 'url(https://d3hq6blov2iije.cloudfront.net/images/textures/AdobeStock_222468625_800_0_72_RGB+19870.jpg)',
   'datawave-multi-1': 'url(https://d3hq6blov2iije.cloudfront.net/images/textures/AdobeStock-257301038_800_0_72_RGB+19842.jpg)',
@@ -24,4 +24,3 @@ var backgrounds = {
   'purple-blue-yellow': "linear-gradient(\n      225deg,\n      hsl(263deg 82% 55%) 0%,\n      hsl(196deg 72% 53%) 25%,\n      hsl(171deg 80% 63%) 50%,\n      hsl(138deg 93% 68%) 75%,\n      hsl(47deg 99% 50%) 100%\n    );",
   'purple-magenta-yellow': "linear-gradient(\n      45deg,\n      hsl(274deg 100% 50%) 0%,\n      hsl(340deg 100% 50%) 50%,\n      hsl(46deg 100% 50%) 100%\n  );"
 };
-exports.backgrounds = backgrounds;
