@@ -3,19 +3,40 @@
 exports.__esModule = true;
 exports.colors = void 0;
 var _hpeDesignTokens = require("hpe-design-tokens");
-var _utils = require("../../../tools/utils");
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-var colorNames = (0, _utils.flattenObject)(_hpeDesignTokens.light, '-');
+var _flattenObject = function flattenObject(obj, delimiter, prefix) {
+  if (delimiter === void 0) {
+    delimiter = '.';
+  }
+  if (prefix === void 0) {
+    prefix = '';
+  }
+  return Object.keys(obj).reduce(function (acc, k) {
+    var pre = prefix.length ? "" + prefix + delimiter : '';
+    if (typeof obj[k] === 'object' && obj[k] !== null && Object.keys(obj[k]).length > 0 && !('$value' in obj[k])) Object.assign(acc, _flattenObject(obj[k], delimiter, !['hpe', 'color'].includes(k) ? pre + k : ''));else acc[pre + k] = obj[k];
+    return acc;
+  }, {});
+};
+var access = function access(path, object) {
+  return path.split('.').reduce(function (o, i) {
+    return o[i];
+  }, object);
+};
+var colorNames = _flattenObject(_hpeDesignTokens.light, '-');
 var colorTokens = {};
 Object.keys(colorNames).forEach(function (color) {
   if (!color.includes('elevation')) {
     var adjustedColor = color.split('-').join('.');
     colorTokens[color] = {
-      light: (0, _utils.access)("hpe.color." + adjustedColor, _hpeDesignTokens.light),
-      dark: (0, _utils.access)("hpe.color." + adjustedColor, _hpeDesignTokens.dark)
+      light: access("hpe.color." + adjustedColor, _hpeDesignTokens.light),
+      dark: access("hpe.color." + adjustedColor, _hpeDesignTokens.dark)
     };
   }
 });
+var MISSING = {
+  color: 'red',
+  weight: 700
+};
 var colors = exports.colors = _extends({}, colorTokens, {
   // ---- DEPRECATED ---- //
   'accent-1': undefined,
@@ -29,14 +50,14 @@ var colors = exports.colors = _extends({}, colorTokens, {
   'neutral-5': undefined,
   'status-error': undefined,
   // ---- TO DO: Tokens do not exist, should they? ---- //
-  brand: _utils.MISSING.color,
-  control: _utils.MISSING.color,
-  'active-text': _utils.MISSING.color,
-  'disabled-text': _utils.MISSING.color,
+  brand: MISSING.color,
+  control: MISSING.color,
+  'active-text': MISSING.color,
+  'disabled-text': MISSING.color,
   // deprecated, use text-weak instead
 
   'text-primary-button': _hpeDesignTokens.components.hpe.button.primary.enabled.textColor,
-  'background-cta-alternate': _utils.MISSING.color,
+  'background-cta-alternate': MISSING.color,
   // ----------- These ones we need to map manually for backwards compatibility -----------
   // ----------- with current color namespace ---------------
   'background-layer-overlay': {

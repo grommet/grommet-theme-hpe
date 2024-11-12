@@ -19,7 +19,6 @@ import { Hpe } from 'grommet-icons/icons/Hpe';
 import { backgrounds } from './backgrounds';
 import { colors } from './colors';
 import { dimensions } from './dimensions';
-import { anchorSizeTheme, paragraphTheme, textTheme, buttonKindTheme, buttonStatesTheme, buttonSizesTheme, MISSING } from '../../../tools/utils';
 var baseSpacing = 24;
 var isObject = function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
@@ -30,6 +29,148 @@ var deepFreeze = function deepFreeze(obj) {
   });
   return Object.freeze(obj);
 };
+var MISSING = {
+  color: 'red',
+  weight: 700
+};
+export var componentSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
+export var buttonKinds = ['default', 'secondary', 'primary', 'toolbar'];
+export var buttonStates = ['hover', 'active', 'disabled'];
+export var textSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'];
+var anchorSizeTheme = {};
+textSizes.forEach(function (size) {
+  anchorSizeTheme[size] = {
+    color: components.hpe.anchor["default"].enabled.textColor,
+    textDecoration: components.hpe.anchor["default"].enabled.textDecoration,
+    fontWeight: components.hpe.anchor["default"].enabled.fontWeight
+  };
+});
+var paragraphTheme = {};
+var textTheme = {};
+textSizes.forEach(function (size) {
+  var _large$hpe$text, _large$hpe$text2, _large$hpe$paragraph, _large$hpe$text3, _large$hpe$text4;
+  paragraphTheme[size] = {
+    size: (_large$hpe$text = large.hpe.text) == null || (_large$hpe$text = _large$hpe$text[size]) == null ? void 0 : _large$hpe$text.fontSize,
+    height: (_large$hpe$text2 = large.hpe.text) == null || (_large$hpe$text2 = _large$hpe$text2[size]) == null ? void 0 : _large$hpe$text2.lineHeight,
+    maxWidth: (_large$hpe$paragraph = large.hpe.paragraph) == null || (_large$hpe$paragraph = _large$hpe$paragraph[size]) == null ? void 0 : _large$hpe$paragraph.maxWidth
+  };
+  textTheme[size] = {
+    size: (_large$hpe$text3 = large.hpe.text) == null ? void 0 : _large$hpe$text3[size].fontSize,
+    height: (_large$hpe$text4 = large.hpe.text) == null ? void 0 : _large$hpe$text4[size].lineHeight
+  };
+});
+var buttonKindTheme = {};
+buttonKinds.forEach(function (kind) {
+  var _components$hpe$butto, _components$hpe$butto2, _components$hpe$butto3, _components$hpe$butto4, _components$hpe$butto5, _components$hpe$butto6, _components$hpe$butto7, _components$hpe$butto8;
+  buttonKindTheme[kind] = {
+    background: (_components$hpe$butto = components.hpe.button) == null ? void 0 : _components$hpe$butto[kind].enabled.background,
+    border: {
+      width: dimensions.borderSize[(_components$hpe$butto2 = components.hpe.button.medium) == null ? void 0 : _components$hpe$butto2[kind].borderWidth] || ((_components$hpe$butto3 = components.hpe.button.medium) == null ? void 0 : _components$hpe$butto3[kind].borderWidth),
+      color: (_components$hpe$butto4 = components.hpe.button) == null ? void 0 : _components$hpe$butto4[kind].enabled.borderColor,
+      radius: dimensions.borderSize[(_components$hpe$butto5 = components.hpe.button.medium) == null ? void 0 : _components$hpe$butto5[kind].borderRadius] || ((_components$hpe$butto6 = components.hpe.button.medium) == null ? void 0 : _components$hpe$butto6[kind].borderRadius)
+    },
+    color: (_components$hpe$butto7 = components.hpe.button) == null ? void 0 : _components$hpe$butto7[kind].enabled.textColor,
+    font: {
+      weight: (_components$hpe$butto8 = components.hpe.button) == null ? void 0 : _components$hpe$butto8[kind].enabled.fontWeight
+    }
+  };
+});
+var buttonStatesTheme = {};
+buttonStates.forEach(function (state) {
+  buttonStatesTheme[state] = {};
+  buttonKinds.forEach(function (kind) {
+    var adjustedState = state;
+    if (state === 'active') {
+      var _components$hpe$butto9, _components$hpe$butto10, _components$hpe$butto11, _components$hpe$butto12, _components$hpe$butto13, _components$hpe$butto14, _components$hpe$butto15, _components$hpe$butto16;
+      adjustedState = 'selected';
+      buttonStatesTheme[state][kind] = {
+        background: {
+          color: (_components$hpe$butto9 = components.hpe.button) == null || (_components$hpe$butto9 = _components$hpe$butto9[kind]) == null ? void 0 : _components$hpe$butto9[adjustedState].enabled.background
+        },
+        border: {
+          // Q: this token isn't correct
+          color: (_components$hpe$butto10 = components.hpe.button) == null || (_components$hpe$butto10 = _components$hpe$butto10[kind]) == null ? void 0 : _components$hpe$butto10[adjustedState].enabled.borderColor
+        },
+        color: (_components$hpe$butto11 = components.hpe.button) == null || (_components$hpe$butto11 = _components$hpe$butto11[kind]) == null ? void 0 : _components$hpe$butto11[adjustedState].enabled.textColor,
+        font: {
+          weight: (_components$hpe$butto12 = components.hpe.button) == null || (_components$hpe$butto12 = _components$hpe$butto12[kind]) == null ? void 0 : _components$hpe$butto12[adjustedState].enabled.fontWeight
+        }
+      };
+      if (!('active' in buttonStatesTheme.hover)) buttonStatesTheme.hover.active = {};
+      buttonStatesTheme.hover[state][kind] = {
+        background: {
+          color: (_components$hpe$butto13 = components.hpe.button) == null || (_components$hpe$butto13 = _components$hpe$butto13[kind]) == null || (_components$hpe$butto13 = _components$hpe$butto13[adjustedState]) == null || (_components$hpe$butto13 = _components$hpe$butto13.hover) == null ? void 0 : _components$hpe$butto13.background
+        },
+        border: {
+          color: (_components$hpe$butto14 = components.hpe.button) == null || (_components$hpe$butto14 = _components$hpe$butto14[kind]) == null || (_components$hpe$butto14 = _components$hpe$butto14[adjustedState]) == null || (_components$hpe$butto14 = _components$hpe$butto14.hover) == null ? void 0 : _components$hpe$butto14.borderColor
+        },
+        color: (_components$hpe$butto15 = components.hpe.button) == null || (_components$hpe$butto15 = _components$hpe$butto15[kind]) == null || (_components$hpe$butto15 = _components$hpe$butto15[adjustedState]) == null || (_components$hpe$butto15 = _components$hpe$butto15.hover) == null ? void 0 : _components$hpe$butto15.textColor,
+        font: {
+          weight: (_components$hpe$butto16 = components.hpe.button) == null || (_components$hpe$butto16 = _components$hpe$butto16[kind]) == null || (_components$hpe$butto16 = _components$hpe$butto16[adjustedState]) == null || (_components$hpe$butto16 = _components$hpe$butto16.hover) == null ? void 0 : _components$hpe$butto16.fontWeight
+        }
+      };
+    } else if (kind === 'option') {
+      var _components$hpe$selec, _components$hpe$selec2, _components$hpe$selec3;
+      if (state === 'active') adjustedState = 'selected';
+      buttonStatesTheme[state][kind] = {
+        background: {
+          color: (_components$hpe$selec = components.hpe.select.option) == null ? void 0 : _components$hpe$selec[adjustedState].enabled.background
+        },
+        border: {
+          color: (_components$hpe$selec2 = components.hpe.select.option) == null ? void 0 : _components$hpe$selec2[adjustedState].borderColor
+        },
+        color: (_components$hpe$selec3 = components.hpe.select.option) == null ? void 0 : _components$hpe$selec3[adjustedState].textColor
+      };
+    } else {
+      var _components$hpe$butto17, _components$hpe$butto18, _components$hpe$butto19, _components$hpe$butto20;
+      buttonStatesTheme[state][kind] = {
+        background: {
+          color: (_components$hpe$butto17 = components.hpe.button) == null || (_components$hpe$butto17 = _components$hpe$butto17[kind]) == null ? void 0 : _components$hpe$butto17[adjustedState].background
+        },
+        border: {
+          width: '',
+          color: (_components$hpe$butto18 = components.hpe.button) == null || (_components$hpe$butto18 = _components$hpe$butto18[kind]) == null ? void 0 : _components$hpe$butto18[adjustedState].borderColor
+        },
+        color: (_components$hpe$butto19 = components.hpe.button) == null || (_components$hpe$butto19 = _components$hpe$butto19[kind]) == null ? void 0 : _components$hpe$butto19[adjustedState].textColor,
+        font: {
+          weight: (_components$hpe$butto20 = components.hpe.button) == null || (_components$hpe$butto20 = _components$hpe$butto20[kind]) == null ? void 0 : _components$hpe$butto20[adjustedState].fontWeight
+        }
+      };
+    }
+  });
+});
+var buttonSizesTheme = {};
+componentSizes.forEach(function (size) {
+  var _components$hpe$butto24, _components$hpe$butto25, _components$hpe$butto26, _components$hpe$butto27, _components$hpe$butto28;
+  var kindStyles = {};
+  buttonKinds.forEach(function (kind) {
+    var _components$hpe$butto21, _components$hpe$butto22, _components$hpe$butto23;
+    kindStyles[kind] = {
+      border: {
+        radius: (_components$hpe$butto21 = components.hpe.button) == null || (_components$hpe$butto21 = _components$hpe$butto21[size]) == null ? void 0 : _components$hpe$butto21[kind].borderRadius
+      },
+      pad: {
+        vertical: (_components$hpe$butto22 = components.hpe.button) == null || (_components$hpe$butto22 = _components$hpe$butto22[size]) == null ? void 0 : _components$hpe$butto22[kind].paddingY,
+        horizontal: (_components$hpe$butto23 = components.hpe.button) == null || (_components$hpe$butto23 = _components$hpe$butto23[size]) == null ? void 0 : _components$hpe$butto23[kind].paddingX
+      }
+    };
+  });
+  buttonSizesTheme[size] = _extends({
+    border: {
+      radius: (_components$hpe$butto24 = components.hpe.button) == null || (_components$hpe$butto24 = _components$hpe$butto24[size]) == null ? void 0 : _components$hpe$butto24["default"].borderRadius
+    },
+    pad: {
+      vertical: (_components$hpe$butto25 = components.hpe.button) == null || (_components$hpe$butto25 = _components$hpe$butto25[size]) == null ? void 0 : _components$hpe$butto25["default"].paddingY,
+      horizontal: (_components$hpe$butto26 = components.hpe.button) == null || (_components$hpe$butto26 = _components$hpe$butto26[size]) == null ? void 0 : _components$hpe$butto26["default"].paddingX
+    },
+    iconOnly: {
+      pad: {
+        vertical: (_components$hpe$butto27 = components.hpe.button) == null || (_components$hpe$butto27 = _components$hpe$butto27[size]) == null ? void 0 : _components$hpe$butto27["default"].iconOnly.paddingY,
+        horizontal: (_components$hpe$butto28 = components.hpe.button) == null || (_components$hpe$butto28 = _components$hpe$butto28[size]) == null ? void 0 : _components$hpe$butto28["default"].iconOnly.paddingX
+      }
+    }
+  }, kindStyles);
+});
 
 // option button kind styles. abstracted so select.emptySearchMessage
 // can reference pad value

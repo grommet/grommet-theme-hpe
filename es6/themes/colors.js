@@ -1,7 +1,24 @@
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 import { dark, light, components } from 'hpe-design-tokens';
-import { flattenObject, access, MISSING } from '../../../tools/utils';
-var colorNames = flattenObject(light, '-');
+var _flattenObject = function flattenObject(obj, delimiter, prefix) {
+  if (delimiter === void 0) {
+    delimiter = '.';
+  }
+  if (prefix === void 0) {
+    prefix = '';
+  }
+  return Object.keys(obj).reduce(function (acc, k) {
+    var pre = prefix.length ? "" + prefix + delimiter : '';
+    if (typeof obj[k] === 'object' && obj[k] !== null && Object.keys(obj[k]).length > 0 && !('$value' in obj[k])) Object.assign(acc, _flattenObject(obj[k], delimiter, !['hpe', 'color'].includes(k) ? pre + k : ''));else acc[pre + k] = obj[k];
+    return acc;
+  }, {});
+};
+var access = function access(path, object) {
+  return path.split('.').reduce(function (o, i) {
+    return o[i];
+  }, object);
+};
+var colorNames = _flattenObject(light, '-');
 var colorTokens = {};
 Object.keys(colorNames).forEach(function (color) {
   if (!color.includes('elevation')) {
@@ -12,6 +29,10 @@ Object.keys(colorNames).forEach(function (color) {
     };
   }
 });
+var MISSING = {
+  color: 'red',
+  weight: 700
+};
 export var colors = _extends({}, colorTokens, {
   // ---- DEPRECATED ---- //
   'accent-1': undefined,

@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.hpe = void 0;
+exports.textSizes = exports.hpe = exports.componentSizes = exports.buttonStates = exports.buttonKinds = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _styledComponents = require("styled-components");
 var _hpeDesignTokens = require("hpe-design-tokens");
@@ -19,7 +19,6 @@ var _Hpe = require("grommet-icons/icons/Hpe");
 var _backgrounds = require("./backgrounds");
 var _colors = require("./colors");
 var _dimensions = require("./dimensions");
-var _utils = require("../../../tools/utils");
 var _components$hpe$eleme, _components$hpe$eleme2, _components$hpe$eleme3, _components$hpe$eleme4, _components$hpe$eleme5, _templateObject, _components$hpe$eleme6, _templateObject2, _components$hpe$dataC, _components$hpe$eleme7, _components$hpe$eleme8, _components$hpe$eleme9, _components$hpe$eleme10, _components$hpe$eleme11, _components$hpe$eleme12, _components$hpe$eleme13, _components$hpe$eleme14, _components$hpe$eleme15, _components$hpe$eleme16, _components$hpe$eleme17, _components$hpe$eleme18, _templateObject3, _components$hpe$eleme19, _components$hpe$eleme20, _components$hpe$eleme21, _components$hpe$eleme22, _components$hpe$eleme23, _components$hpe$eleme24, _components$hpe$eleme25, _components$hpe$eleme26, _components$hpe$eleme27, _components$hpe$eleme28, _components$hpe$eleme29, _components$hpe$eleme30, _components$hpe$eleme31, _components$hpe$eleme32, _components$hpe$eleme33, _components$hpe$eleme34, _components$hpe$eleme35, _components$hpe$eleme36, _components$hpe$eleme37, _components$hpe$eleme38, _components$hpe$eleme39, _components$hpe$eleme40;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _taggedTemplateLiteralLoose(e, t) { return t || (t = e.slice(0)), e.raw = t, e; }
@@ -34,6 +33,148 @@ var deepFreeze = function deepFreeze(obj) {
   });
   return Object.freeze(obj);
 };
+var MISSING = {
+  color: 'red',
+  weight: 700
+};
+var componentSizes = exports.componentSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
+var buttonKinds = exports.buttonKinds = ['default', 'secondary', 'primary', 'toolbar'];
+var buttonStates = exports.buttonStates = ['hover', 'active', 'disabled'];
+var textSizes = exports.textSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'];
+var anchorSizeTheme = {};
+textSizes.forEach(function (size) {
+  anchorSizeTheme[size] = {
+    color: _hpeDesignTokens.components.hpe.anchor["default"].enabled.textColor,
+    textDecoration: _hpeDesignTokens.components.hpe.anchor["default"].enabled.textDecoration,
+    fontWeight: _hpeDesignTokens.components.hpe.anchor["default"].enabled.fontWeight
+  };
+});
+var paragraphTheme = {};
+var textTheme = {};
+textSizes.forEach(function (size) {
+  var _large$hpe$text, _large$hpe$text2, _large$hpe$paragraph, _large$hpe$text3, _large$hpe$text4;
+  paragraphTheme[size] = {
+    size: (_large$hpe$text = _hpeDesignTokens.large.hpe.text) == null || (_large$hpe$text = _large$hpe$text[size]) == null ? void 0 : _large$hpe$text.fontSize,
+    height: (_large$hpe$text2 = _hpeDesignTokens.large.hpe.text) == null || (_large$hpe$text2 = _large$hpe$text2[size]) == null ? void 0 : _large$hpe$text2.lineHeight,
+    maxWidth: (_large$hpe$paragraph = _hpeDesignTokens.large.hpe.paragraph) == null || (_large$hpe$paragraph = _large$hpe$paragraph[size]) == null ? void 0 : _large$hpe$paragraph.maxWidth
+  };
+  textTheme[size] = {
+    size: (_large$hpe$text3 = _hpeDesignTokens.large.hpe.text) == null ? void 0 : _large$hpe$text3[size].fontSize,
+    height: (_large$hpe$text4 = _hpeDesignTokens.large.hpe.text) == null ? void 0 : _large$hpe$text4[size].lineHeight
+  };
+});
+var buttonKindTheme = {};
+buttonKinds.forEach(function (kind) {
+  var _components$hpe$butto, _components$hpe$butto2, _components$hpe$butto3, _components$hpe$butto4, _components$hpe$butto5, _components$hpe$butto6, _components$hpe$butto7, _components$hpe$butto8;
+  buttonKindTheme[kind] = {
+    background: (_components$hpe$butto = _hpeDesignTokens.components.hpe.button) == null ? void 0 : _components$hpe$butto[kind].enabled.background,
+    border: {
+      width: _dimensions.dimensions.borderSize[(_components$hpe$butto2 = _hpeDesignTokens.components.hpe.button.medium) == null ? void 0 : _components$hpe$butto2[kind].borderWidth] || ((_components$hpe$butto3 = _hpeDesignTokens.components.hpe.button.medium) == null ? void 0 : _components$hpe$butto3[kind].borderWidth),
+      color: (_components$hpe$butto4 = _hpeDesignTokens.components.hpe.button) == null ? void 0 : _components$hpe$butto4[kind].enabled.borderColor,
+      radius: _dimensions.dimensions.borderSize[(_components$hpe$butto5 = _hpeDesignTokens.components.hpe.button.medium) == null ? void 0 : _components$hpe$butto5[kind].borderRadius] || ((_components$hpe$butto6 = _hpeDesignTokens.components.hpe.button.medium) == null ? void 0 : _components$hpe$butto6[kind].borderRadius)
+    },
+    color: (_components$hpe$butto7 = _hpeDesignTokens.components.hpe.button) == null ? void 0 : _components$hpe$butto7[kind].enabled.textColor,
+    font: {
+      weight: (_components$hpe$butto8 = _hpeDesignTokens.components.hpe.button) == null ? void 0 : _components$hpe$butto8[kind].enabled.fontWeight
+    }
+  };
+});
+var buttonStatesTheme = {};
+buttonStates.forEach(function (state) {
+  buttonStatesTheme[state] = {};
+  buttonKinds.forEach(function (kind) {
+    var adjustedState = state;
+    if (state === 'active') {
+      var _components$hpe$butto9, _components$hpe$butto10, _components$hpe$butto11, _components$hpe$butto12, _components$hpe$butto13, _components$hpe$butto14, _components$hpe$butto15, _components$hpe$butto16;
+      adjustedState = 'selected';
+      buttonStatesTheme[state][kind] = {
+        background: {
+          color: (_components$hpe$butto9 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto9 = _components$hpe$butto9[kind]) == null ? void 0 : _components$hpe$butto9[adjustedState].enabled.background
+        },
+        border: {
+          // Q: this token isn't correct
+          color: (_components$hpe$butto10 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto10 = _components$hpe$butto10[kind]) == null ? void 0 : _components$hpe$butto10[adjustedState].enabled.borderColor
+        },
+        color: (_components$hpe$butto11 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto11 = _components$hpe$butto11[kind]) == null ? void 0 : _components$hpe$butto11[adjustedState].enabled.textColor,
+        font: {
+          weight: (_components$hpe$butto12 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto12 = _components$hpe$butto12[kind]) == null ? void 0 : _components$hpe$butto12[adjustedState].enabled.fontWeight
+        }
+      };
+      if (!('active' in buttonStatesTheme.hover)) buttonStatesTheme.hover.active = {};
+      buttonStatesTheme.hover[state][kind] = {
+        background: {
+          color: (_components$hpe$butto13 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto13 = _components$hpe$butto13[kind]) == null || (_components$hpe$butto13 = _components$hpe$butto13[adjustedState]) == null || (_components$hpe$butto13 = _components$hpe$butto13.hover) == null ? void 0 : _components$hpe$butto13.background
+        },
+        border: {
+          color: (_components$hpe$butto14 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto14 = _components$hpe$butto14[kind]) == null || (_components$hpe$butto14 = _components$hpe$butto14[adjustedState]) == null || (_components$hpe$butto14 = _components$hpe$butto14.hover) == null ? void 0 : _components$hpe$butto14.borderColor
+        },
+        color: (_components$hpe$butto15 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto15 = _components$hpe$butto15[kind]) == null || (_components$hpe$butto15 = _components$hpe$butto15[adjustedState]) == null || (_components$hpe$butto15 = _components$hpe$butto15.hover) == null ? void 0 : _components$hpe$butto15.textColor,
+        font: {
+          weight: (_components$hpe$butto16 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto16 = _components$hpe$butto16[kind]) == null || (_components$hpe$butto16 = _components$hpe$butto16[adjustedState]) == null || (_components$hpe$butto16 = _components$hpe$butto16.hover) == null ? void 0 : _components$hpe$butto16.fontWeight
+        }
+      };
+    } else if (kind === 'option') {
+      var _components$hpe$selec, _components$hpe$selec2, _components$hpe$selec3;
+      if (state === 'active') adjustedState = 'selected';
+      buttonStatesTheme[state][kind] = {
+        background: {
+          color: (_components$hpe$selec = _hpeDesignTokens.components.hpe.select.option) == null ? void 0 : _components$hpe$selec[adjustedState].enabled.background
+        },
+        border: {
+          color: (_components$hpe$selec2 = _hpeDesignTokens.components.hpe.select.option) == null ? void 0 : _components$hpe$selec2[adjustedState].borderColor
+        },
+        color: (_components$hpe$selec3 = _hpeDesignTokens.components.hpe.select.option) == null ? void 0 : _components$hpe$selec3[adjustedState].textColor
+      };
+    } else {
+      var _components$hpe$butto17, _components$hpe$butto18, _components$hpe$butto19, _components$hpe$butto20;
+      buttonStatesTheme[state][kind] = {
+        background: {
+          color: (_components$hpe$butto17 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto17 = _components$hpe$butto17[kind]) == null ? void 0 : _components$hpe$butto17[adjustedState].background
+        },
+        border: {
+          width: '',
+          color: (_components$hpe$butto18 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto18 = _components$hpe$butto18[kind]) == null ? void 0 : _components$hpe$butto18[adjustedState].borderColor
+        },
+        color: (_components$hpe$butto19 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto19 = _components$hpe$butto19[kind]) == null ? void 0 : _components$hpe$butto19[adjustedState].textColor,
+        font: {
+          weight: (_components$hpe$butto20 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto20 = _components$hpe$butto20[kind]) == null ? void 0 : _components$hpe$butto20[adjustedState].fontWeight
+        }
+      };
+    }
+  });
+});
+var buttonSizesTheme = {};
+componentSizes.forEach(function (size) {
+  var _components$hpe$butto24, _components$hpe$butto25, _components$hpe$butto26, _components$hpe$butto27, _components$hpe$butto28;
+  var kindStyles = {};
+  buttonKinds.forEach(function (kind) {
+    var _components$hpe$butto21, _components$hpe$butto22, _components$hpe$butto23;
+    kindStyles[kind] = {
+      border: {
+        radius: (_components$hpe$butto21 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto21 = _components$hpe$butto21[size]) == null ? void 0 : _components$hpe$butto21[kind].borderRadius
+      },
+      pad: {
+        vertical: (_components$hpe$butto22 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto22 = _components$hpe$butto22[size]) == null ? void 0 : _components$hpe$butto22[kind].paddingY,
+        horizontal: (_components$hpe$butto23 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto23 = _components$hpe$butto23[size]) == null ? void 0 : _components$hpe$butto23[kind].paddingX
+      }
+    };
+  });
+  buttonSizesTheme[size] = _extends({
+    border: {
+      radius: (_components$hpe$butto24 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto24 = _components$hpe$butto24[size]) == null ? void 0 : _components$hpe$butto24["default"].borderRadius
+    },
+    pad: {
+      vertical: (_components$hpe$butto25 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto25 = _components$hpe$butto25[size]) == null ? void 0 : _components$hpe$butto25["default"].paddingY,
+      horizontal: (_components$hpe$butto26 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto26 = _components$hpe$butto26[size]) == null ? void 0 : _components$hpe$butto26["default"].paddingX
+    },
+    iconOnly: {
+      pad: {
+        vertical: (_components$hpe$butto27 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto27 = _components$hpe$butto27[size]) == null ? void 0 : _components$hpe$butto27["default"].iconOnly.paddingY,
+        horizontal: (_components$hpe$butto28 = _hpeDesignTokens.components.hpe.button) == null || (_components$hpe$butto28 = _components$hpe$butto28[size]) == null ? void 0 : _components$hpe$butto28["default"].iconOnly.paddingX
+      }
+    }
+  }, kindStyles);
+});
 
 // option button kind styles. abstracted so select.emptySearchMessage
 // can reference pad value
@@ -129,7 +270,7 @@ var hpe = exports.hpe = deepFreeze({
     },
     hover: {
       background: 'background-hover',
-      color: _utils.MISSING.color // TO DO
+      color: MISSING.color // TO DO
     },
     selected: {
       background: 'background-selected-strong-enabled',
@@ -173,7 +314,7 @@ var hpe = exports.hpe = deepFreeze({
     hover: {
       textDecoration: _hpeDesignTokens.components.hpe.anchor["default"].hover.textDecoration
     },
-    size: _utils.anchorSizeTheme
+    size: anchorSizeTheme
   },
   avatar: {
     size: {
@@ -232,24 +373,24 @@ var hpe = exports.hpe = deepFreeze({
       }
     },
     // TO DO add cta-primary variant
-    'cta-primary': _extends({}, _utils.buttonKindTheme.primary, {
+    'cta-primary': _extends({}, buttonKindTheme.primary, {
       icon: /*#__PURE__*/_react["default"].createElement(_Hpe.Hpe, null),
       reverse: true,
       extend: ''
     }),
     // TO DO add cta-alternate variant
-    'cta-alternate': _extends({}, _utils.buttonKindTheme.secondary, {
+    'cta-alternate': _extends({}, buttonKindTheme.secondary, {
       icon: /*#__PURE__*/_react["default"].createElement(_Hpe.Hpe, {
         color: "icon-brand"
       }),
       reverse: true
     })
-  }, _utils.buttonKindTheme, {
+  }, buttonKindTheme, {
     option: option,
-    active: _utils.buttonStatesTheme.active,
+    active: buttonStatesTheme.active,
     disabled: _extends({
       opacity: 1
-    }, _utils.buttonStatesTheme.disabled),
+    }, buttonStatesTheme.disabled),
     selected: {
       option: {
         background: _hpeDesignTokens.components.hpe.select.option.selected.enabled.background,
@@ -261,11 +402,11 @@ var hpe = exports.hpe = deepFreeze({
       }
     },
     hover: _extends({
-      'cta-primary': _utils.buttonStatesTheme.hover.primary,
-      'cta-alternate': _extends({}, _utils.buttonStatesTheme.hover.secondary, {
+      'cta-primary': buttonStatesTheme.hover.primary,
+      'cta-alternate': _extends({}, buttonStatesTheme.hover.secondary, {
         extend: '' // TO DO can remove when merging, temp to override extend
       })
-    }, _utils.buttonStatesTheme.hover),
+    }, buttonStatesTheme.hover),
     size: _extends({
       xsmall: {
         border: {
@@ -278,7 +419,7 @@ var hpe = exports.hpe = deepFreeze({
           }
         }
       }
-    }, _utils.buttonSizesTheme)
+    }, buttonSizesTheme)
   }),
   calendar: {
     day: {
@@ -623,7 +764,7 @@ var hpe = exports.hpe = deepFreeze({
       }
     },
     dragOver: {
-      background: _utils.MISSING.color,
+      background: MISSING.color,
       border: 'none'
     },
     hover: {
@@ -1344,7 +1485,7 @@ var hpe = exports.hpe = deepFreeze({
       }
     }
   },
-  paragraph: _extends({}, _utils.paragraphTheme, {
+  paragraph: _extends({}, paragraphTheme, {
     // This block applies size-specific weights to paragraph to ensure
     // that as paragraph sizes get larger, the weight decreases.
     // This block can be removed once grommet theme structure is enhanced
@@ -1562,7 +1703,7 @@ var hpe = exports.hpe = deepFreeze({
       }
     },
     footer: {
-      extend: "\n        font-weight: " + _utils.MISSING.weight + ";\n      "
+      extend: "\n        font-weight: " + MISSING.weight + ";\n      "
     }
   },
   tag: {
@@ -1653,7 +1794,7 @@ var hpe = exports.hpe = deepFreeze({
       }
     }
   },
-  text: _utils.textTheme,
+  text: textTheme,
   textInput: {
     container: {
       extend: function extend(_ref17) {
