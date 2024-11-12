@@ -1,5 +1,27 @@
 import { dark, light, components } from 'hpe-design-tokens';
-import { flattenObject, access, MISSING } from '../../../tools/utils';
+
+const flattenObject = (obj, delimiter = '.', prefix = '') =>
+  Object.keys(obj).reduce((acc, k) => {
+    const pre = prefix.length ? `${prefix}${delimiter}` : '';
+    if (
+      typeof obj[k] === 'object' &&
+      obj[k] !== null &&
+      Object.keys(obj[k]).length > 0 &&
+      !('$value' in obj[k])
+    )
+      Object.assign(
+        acc,
+        flattenObject(
+          obj[k],
+          delimiter,
+          !['hpe', 'color'].includes(k) ? pre + k : '',
+        ),
+      );
+    else acc[pre + k] = obj[k];
+    return acc;
+  }, {});
+
+const access = (path, object) => path.split('.').reduce((o, i) => o[i], object);
 
 const colorNames = flattenObject(light, '-');
 const colorTokens = {};
@@ -12,6 +34,11 @@ Object.keys(colorNames).forEach((color) => {
     };
   }
 });
+
+const MISSING = {
+  color: 'red',
+  weight: 700,
+};
 
 export const colors = {
   // passing through all the colors from hpe-design-tokens
