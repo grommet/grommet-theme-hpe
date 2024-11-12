@@ -1,6 +1,7 @@
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import React from 'react';
 import { css } from 'styled-components';
+import { components, dark, light, large } from 'hpe-design-tokens';
 import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
 import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
@@ -15,6 +16,16 @@ import { Hpe } from 'grommet-icons/icons/Hpe';
 
 import { backgrounds } from './backgrounds';
 import { colors } from './colors';
+import { dimensions } from './dimensions';
+import {
+  anchorSizeTheme,
+  paragraphTheme,
+  textTheme,
+  buttonKindTheme,
+  buttonStatesTheme,
+  buttonSizesTheme,
+  MISSING,
+} from '../../../tools/utils';
 
 const baseSpacing = 24;
 
@@ -28,214 +39,160 @@ const deepFreeze = (obj) => {
   return Object.freeze(obj);
 };
 
-// necessary to apply a linear gradient for primary button background
-const primaryBackground = (props) => {
-  let style = '';
-  if (!props.active) {
-    style += !props.colorValue
-      ? `background:
-linear-gradient(70deg, transparent,
-  ${props.theme.global.colors['green!']} 35%, transparent 70%)
-  ${props.theme.global.colors['green!']};`
-      : `
-      color: ${
-        props.theme.global.colors['text-strong'][
-          props.theme.dark ? 'dark' : 'light'
-        ]
-      };
-    `;
-  }
-  return style;
-};
-
-// necessary to adjust the background color
-// of button to darker green to expose gradient on hover
-const primaryHoverBackground = (props) =>
-  !props.active && !props.colorValue
-    ? `background-color: ${props.theme.global.colors.green.dark};`
-    : '';
-
 // option button kind styles. abstracted so select.emptySearchMessage
 // can reference pad value
 const option = {
-  color: 'text',
+  color: components.hpe.select.option.enabled.textColor,
   border: {
-    radius: '0px',
+    radius:
+      dimensions.edgeSize[components.hpe.select.medium.option.borderRadius] ||
+      components.hpe.select.medium.option.borderRadius,
+    width:
+      dimensions.borderSize[components.hpe.select.medium.option.borderWidth] ||
+      components.hpe.select.medium.option.borderWidth,
+    color: components.hpe.select.option.enabled.borderColor,
   },
   pad: {
-    horizontal: '12px',
-    vertical: '6px',
+    horizontal: components.hpe.select.medium.option.paddingX,
+    vertical: components.hpe.select.medium.option.paddingY,
   },
   font: {
-    weight: 500,
+    weight: components.hpe.select.option.enabled.fontWeight,
   },
 };
 
 // abstracted so button and pinned list icon can reference
-const mediumIconOnlyPad = '9px';
+const mediumIconOnlyPad = {
+  vertical: components.hpe.button.medium.default.iconOnly.paddingY,
+  horizontal: components.hpe.button.medium.default.iconOnly.paddingX,
+};
 
 export const hpe = deepFreeze({
   defaultMode: 'light',
   global: {
-    backgrounds,
-    breakpoints: {
-      xsmall: {
-        value: baseSpacing * 24, // 576
-        borderSize: {
-          xsmall: '1px',
-          small: '2px',
-          medium: `${baseSpacing / 6}px`, // 4
-          large: `${baseSpacing / 4}px`, // 6
-          xlarge: `${baseSpacing / 2}px`, // 12
-        },
-        edgeSize: {
-          none: '0px',
-          hair: '1px', // for Chart
-          xxsmall: '2px',
-          xsmall: `${baseSpacing / 8}px`, // 3
-          small: `${baseSpacing / 4}px`, // 6
-          medium: `${baseSpacing / 2}px`, // 12
-          large: `${baseSpacing}px`, // 24
-          xlarge: `${baseSpacing * 2}px`, // 48
-        },
-        size: {
-          xxsmall: `${baseSpacing}px`, // 24
-          xsmall: `${baseSpacing * 2}px`, // 48
-          small: `${baseSpacing * 4}px`, // 96
-          medium: `${baseSpacing * 8}px`, // 192
-          large: `${baseSpacing * 16}px`, // 384
-          xlarge: `${baseSpacing * 32}px`, // 768
-          full: '100%',
-        },
-      },
-      small: {
-        value: baseSpacing * 32, // 768
-      },
-      medium: {
-        value: baseSpacing * 45, // 1080
-      },
-      large: {
-        value: baseSpacing * 60, // 1440
-      },
-      xlarge: {}, // anything larger than 1440,
-    },
+    backgrounds, // TO DO backgrounds
+    ...dimensions,
     colors,
     control: {
       border: {
-        radius: '6px',
+        radius: components.hpe.formField.medium.input.container.borderRadius,
+        color: components.hpe.formField.input.container.enabled.borderColor,
       },
     },
     input: {
       font: {
         height: 'inherit',
-        weight: 500,
+        weight: components.hpe.formField.medium.valueText.fontWeight,
       },
       padding: {
-        horizontal: '11px', // equivalent to 'small' when combined with 1px border
-        vertical: '5px', // equivalent to 'xsmall' when combined with 1px border
+        horizontal: components.hpe.formField.medium.input.container.paddingX,
+        vertical: components.hpe.formField.medium.input.container.paddingY,
       },
       readOnly: {
-        background: 'background-back',
+        background:
+          components.hpe.formField.input.container.readOnly.background,
         border: {
-          color: 'border-weak',
+          color: components.hpe.formField.input.container.readOnly.borderColor,
         },
       },
       extend: `
         &::-webkit-input-placeholder {
-          font-weight: 400;
-        }
-      
-        &::-moz-placeholder {
-          font-weight: 400;
-        }
-      
-        &:-ms-input-placeholder {
-          font-weight: 400;
-        }
+        font-weight: ${components.hpe.formField.medium.placeholderText.fontWeight};
+      }
+    
+      &::-moz-placeholder {
+        font-weight: ${components.hpe.formField.medium.placeholderText.fontWeight};
+      }
+    
+      &:-ms-input-placeholder {
+        font-weight: ${components.hpe.formField.medium.placeholderText.fontWeight};
+      }
       `,
     },
     font: {
-      family: "'Metric', Arial, sans-serif",
+      family: global.hpe.fontStack.primary,
       face: `
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
-               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
-               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
           font-weight: 400;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff2") format('woff2'),
-               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff") format('woff');
           font-weight: 700;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff2") format('woff2'),
-               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff") format('woff');
           font-weight: 600;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff2") format('woff2'),
-               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff") format('woff');
           font-weight: 500;
         }
         @font-face {
           font-family: "Metric";
-          src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Light.woff2") format('woff2'),
-               url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Light.woff") format('woff');
+          src: url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff2") format('woff2'),
+               url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff") format('woff');
           font-weight: 100;
         }`,
+      size: large.hpe.text.medium.fontSize,
+      height: large.hpe.text.medium.lineHeight,
     },
     focus: {
       border: undefined,
     },
     active: {
-      background: 'active-background',
+      background: 'background-active',
       color: 'active-text',
     },
     drop: {
-      background: 'background-front',
+      background: components.hpe.drop.background,
       border: {
-        radius: '4px',
+        radius:
+          dimensions.edgeSize[components.hpe.drop.borderRadius] ||
+          components.hpe.drop.borderRadius,
       },
-      margin: 'xsmall',
+      margin: components.hpe.drop.margin,
       intelligentMargin: true,
       shadowSize: 'medium',
       /* HPE Global Header/Footer Service a.k.a. HPE Common HFWS sets the header
        * at a z-index of 101. This adjustment brings Drop in alignment with Layer
        * which needs an elevated z-index to sit atop the Global header. */
-      zIndex: '110',
+      zIndex: components.hpe.drop.zIndex,
     },
     elevation: {
-      // Elevation values were derived from this Figma file.
-      // https://www.figma.com/file/eZYR3dtWdb9U90QvJ7p3T9/HPE-Color-Styles?node-id=405%3A25
-      // Naming in Figma file is strong/default/weak vs. Grommet t-shirt sizing.
-      // As defined here, default is currently mapping to medium.
       light: {
-        small: '0px 2px 4px #0000001F;',
-        medium: '0px 6px 12px #0000001F;',
-        large: '0px 12px 24px #0000003D;',
+        small: light.hpe.shadow.small,
+        medium: light.hpe.shadow.medium,
+        large: light.hpe.shadow.large,
+        'inset-selected': `inset 3px 0 ${light.hpe.color.border.selected}`,
       },
       dark: {
-        small: '0px 2px 4px #0000003D;',
-        medium: '0px 6px 12px #0000005C;',
-        large: '0px 12px 24px #0000007A;',
+        small: dark.hpe.shadow.small,
+        medium: dark.hpe.shadow.medium,
+        large: dark.hpe.shadow.large,
+        'inset-selected': `inset 3px 0 ${dark.hpe.color.border.selected}`,
       },
     },
     hover: {
-      background: 'active-background',
-      color: 'active-text',
+      background: 'background-hover',
+      color: MISSING.color, // TO DO
     },
     selected: {
-      background: 'selected-background',
-      color: 'selected-text',
+      background: 'background-selected-strong-enabled',
+      color: 'text-onSelectedStrong',
     },
   },
   accordion: {
@@ -246,11 +203,11 @@ export const hpe = deepFreeze({
       },
     },
     heading: {
-      level: 3,
+      level: 4, // NOTE: in v3 all accordions were h4
       margin: { vertical: 'medium', horizontal: 'xsmall' },
     },
     hover: {
-      background: 'background-contrast',
+      background: 'background-hover',
       heading: {
         color: undefined,
       },
@@ -263,310 +220,155 @@ export const hpe = deepFreeze({
     },
   },
   anchor: {
-    color: 'text-strong',
-    textDecoration: 'underline',
-    fontWeight: 500,
-    gap: 'xsmall',
-    icon: {
-      color: 'brand',
-    },
+    color: components.hpe.anchor.default.enabled.textColor,
+    textDecoration: components.hpe.anchor.default.enabled.textDecoration,
+    fontWeight: components.hpe.anchor.default.enabled.fontWeight,
+    gap: components.hpe.anchor.medium.default.gapX, // TO DO not size specific
     hover: {
-      textDecoration: 'underline',
+      textDecoration: components.hpe.anchor.default.hover.textDecoration,
     },
-    size: {
-      large: {
-        color: 'brand',
-        fontWeight: 700,
-        textDecoration: 'none',
-      },
-      xlarge: {
-        color: 'brand',
-        fontWeight: 700,
-        textDecoration: 'none',
-      },
-      xxlarge: {
-        color: 'brand',
-        fontWeight: 700,
-        textDecoration: 'none',
-      },
-      '3xl': {
-        color: 'brand',
-        fontWeight: 700,
-        textDecoration: 'none',
-      },
-      '4xl': {
-        color: 'brand',
-        fontWeight: 700,
-        textDecoration: 'none',
-      },
-      '5xl': {
-        color: 'brand',
-        fontWeight: 700,
-        textDecoration: 'none',
-      },
-      '6xl': {
-        color: 'brand',
-        fontWeight: 700,
-        textDecoration: 'none',
-      },
-    },
+    size: anchorSizeTheme,
   },
   avatar: {
     size: {
-      large: `${baseSpacing * 4}px`, // 96px
+      xsmall: components.hpe.element?.xsmall.minHeight,
+      small: components.hpe.element?.small.minHeight, // 24px
+      medium: components.hpe.element?.medium.minHeight, // default 48px
+      large: components.hpe.element?.large.minHeight, // 72px
+      xlarge: components.hpe.element?.xlarge.minHeight, // 96px
+      '2xl': `${baseSpacing * 5}px`, // TO DO no component size, is this a one off?
+      '3xl': `${baseSpacing * 6}px`, // TO DO no component size, is this a one off?
+      '4xl': `${baseSpacing * 7}px`, // TO DO no component size, is this a one off?
+      '5xl': `${baseSpacing * 8}px`, // TO DO no component size, is this a one off?
     },
     text: {
       size: {
-        large: 'xxlarge', // 36px
+        xsmall: 'xsmall',
+        small: 'small',
+        medium: 'medium',
+        large: 'large',
+        xlarge: 'xlarge',
+        '2xl': '3xl', // TO DO no component size, is this a one off?
+        '3xl': '4xl', // TO DO no component size, is this a one off?
+        '4xl': '5xl', // TO DO no component size, is this a one off?
+        '5xl': '6xl', // TO DO no component size, is this a one off?
       },
     },
   },
   button: {
+    intelligentPad: false,
+    color: components.hpe.button.default.enabled.textColor,
+    gap: components.hpe.button.medium.default.gapX,
     badge: {
-      align: 'container',
+      align: 'container', // TO DO this is a grommet-ism?
       container: {
         // align badge background to button label color
         background: 'text-strong',
       },
       size: {
-        medium: '18px',
+        medium: '18px', // Q: what token should be used here? no token for this at the moments
       },
       text: {
         size: {
-          medium: 'xsmall',
+          medium: 'xsmall', // TO DO how to do references for typography sizes
         },
       },
     },
+    // TO DO add cta-primary variant
     'cta-primary': {
-      background: { color: 'brand' },
-      color: 'text-primary-button',
-      font: { weight: 'bold' },
+      ...buttonKindTheme.primary,
       icon: <Hpe />,
       reverse: true,
-      extend: (props) => primaryBackground(props),
+      extend: '',
     },
+    // TO DO add cta-alternate variant
     'cta-alternate': {
-      background: 'background-cta-alternate',
-      color: 'text-strong',
-      font: {
-        weight: 'bold',
-      },
-      icon: <Hpe color="brand" />,
+      ...buttonKindTheme.secondary,
+      icon: <Hpe color="icon-brand" />,
       reverse: true,
     },
-    default: {
-      color: 'text-strong',
-      border: undefined,
-      font: {
-        weight: 600,
-      },
-    },
-    gap: 'xsmall',
-    primary: {
-      background: {
-        color: 'brand',
-      },
-      color: 'text-primary-button',
-      font: {
-        weight: 700,
-      },
-      extend: (props) => primaryBackground(props),
-    },
-    secondary: {
-      border: {
-        color: 'brand',
-        width: '2px',
-      },
-      color: 'text-strong',
-      font: {
-        weight: 600,
-      },
-    },
-    toolbar: {
-      border: {
-        radius: '6px',
-        width: '1px',
-        color: 'border',
-      },
-      color: 'text-strong',
-      font: {
-        weight: 600,
-      },
-    },
+    ...buttonKindTheme,
     option,
-    active: {
-      background: {
-        color: 'background-contrast',
-      },
-      color: 'text-strong',
-      secondary: {
-        border: {
-          color: 'transparent',
-        },
-      },
-      option: {
-        background: {
-          color: 'active-background',
-        },
-      },
+    active: buttonStatesTheme.active,
+    disabled: {
+      opacity: 1,
+      ...buttonStatesTheme.disabled,
     },
     selected: {
       option: {
-        background: 'selected-background',
-        color: 'selected-text',
+        background: components.hpe.select.option.selected.enabled.background,
+        color: components.hpe.select.option.selected.textColor,
         font: {
-          weight: 700,
+          weight: components.hpe.select.option.selected.enabled.fontWeight,
         },
+        elevation: 'inset-selected',
       },
     },
     hover: {
-      'cta-primary': {
-        extend: (props) => primaryHoverBackground(props),
-      },
+      'cta-primary': buttonStatesTheme.hover.primary,
       'cta-alternate': {
-        extend: ({ active, colorValue, theme }) => {
-          let color;
-          if (!colorValue && !active) {
-            if (theme.dark) {
-              color = 'rgba(0, 0, 0, 0.2)'; // TBD
-            } else color = 'rgba(0, 0, 0, 0.2)'; // TBD
-          }
-
-          const style = `inset 0 0 100px 100px ${color}`;
-          return `-moz-box-shadow: ${style};
-            -webkit-box-shadow: ${style};
-            box-shadow: ${style};`;
-        },
+        ...buttonStatesTheme.hover.secondary,
+        extend: '', // TO DO can remove when merging, temp to override extend
       },
-      default: {
-        background: {
-          color: 'background-contrast',
-        },
-        color: undefined,
-      },
-      option: {
-        background: 'active-background',
-        color: 'active-text',
-      },
-      primary: {
-        extend: (props) => primaryHoverBackground(props),
-      },
-      secondary: {
-        border: {
-          width: '3px',
-        },
-      },
-      toolbar: {
-        background: {
-          color: 'background-contrast',
-        },
-        color: undefined,
-      },
+      ...buttonStatesTheme.hover,
     },
-    color: 'text-strong',
     size: {
-      small: {
+      xsmall: {
         border: {
           radius: '2em',
         },
-        pad: {
-          vertical: '5px',
-          horizontal: '12px',
-        },
         iconOnly: {
-          pad: '7px',
-        },
-        toolbar: {
-          border: {
-            radius: '6px',
-          },
-        },
-      },
-      medium: {
-        border: {
-          radius: '2em',
-        },
-        pad: {
-          vertical: '6px',
-          horizontal: '18px',
-        },
-        iconOnly: {
-          pad: mediumIconOnlyPad,
-        },
-        toolbar: {
-          border: {
-            radius: '6px',
-          },
           pad: {
-            vertical: '6px',
-            horizontal: '12px',
+            vertical: '3px',
+            horizontal: '3px',
           },
         },
       },
-      large: {
-        border: {
-          radius: '2em',
-        },
-        pad: {
-          vertical: '10px',
-          horizontal: '24px',
-        },
-        iconOnly: {
-          pad: '13px',
-        },
-        toolbar: {
-          border: {
-            radius: '8px',
-          },
-          pad: {
-            vertical: '10px',
-            horizontal: '16px',
-          },
-        },
-      },
-      xlarge: {
-        border: {
-          radius: '2em',
-        },
-        pad: {
-          vertical: '21px',
-          horizontal: '30px',
-        },
-        iconOnly: {
-          pad: '24px',
-        },
-      },
-    },
-    extend: ({ hasIcon, hasLabel, sizeProp }) => {
-      // necessary so primary label is accessible on HPE green background
-      const fontSize = '19px';
-      const lineHeight = '24px';
-      let style = '';
-      const iconOnly = hasIcon && !hasLabel;
-      if ((sizeProp === 'medium' || sizeProp === undefined) && !iconOnly) {
-        style += `font-size: ${fontSize};
-        line-height: ${lineHeight};`;
-      }
-      return style;
+      ...buttonSizesTheme,
     },
   },
   calendar: {
-    // ensure color is #FFFFFF to meet color contrast requirement on HPE green
     day: {
-      extend: ({ isSelected, theme }) =>
-        isSelected && `color: ${theme.global.colors['text-primary-button']};`,
+      hover: {
+        background: 'background-hover',
+        color: 'text-strong',
+      },
+      selected: {
+        background: 'background-selected-strong-enabled',
+        color: 'text-onSelectedStrong',
+        hover: {
+          background: 'background-selected-strong-hover',
+        },
+        font: {
+          weight: global.hpe.fontWeight.medium,
+        },
+      },
+      inRange: {
+        color: 'text-onSelectedWeak',
+        hover: {
+          background: 'background-selected-weak-hover',
+        },
+        font: {
+          weight: global.hpe.fontWeight.medium,
+        },
+      },
+      extend: '',
+    },
+    range: {
+      background: 'background-selected-weak-enabled',
     },
     icons: {
       next: Next,
       previous: Previous,
     },
     small: {
+      // TO DO should we use t-shirt size element tokens here?
       fontSize: '13.6px',
       lineHeight: 1.375,
       daySize: '27.43px',
       title: {
         size: 'medium',
-        weight: 500,
+        weight: global.hpe.fontWeight.normal,
         color: 'text-strong',
       },
     },
@@ -574,9 +376,27 @@ export const hpe = deepFreeze({
       fontSize: '18px',
       lineHeight: 1.45,
       daySize: '54.86px',
+      day: {
+        round: 'full',
+      },
+      range: {
+        round: 'none',
+        start: {
+          round: {
+            corner: 'left',
+            size: 'full',
+          },
+        },
+        end: {
+          round: {
+            corner: 'right',
+            size: 'full',
+          },
+        },
+      },
       title: {
         size: 'large',
-        weight: 500,
+        weight: global.hpe.fontWeight.normal,
         color: 'text-strong',
       },
     },
@@ -586,7 +406,7 @@ export const hpe = deepFreeze({
       daySize: '109.71px',
       title: {
         size: 'xlarge',
-        weight: 500,
+        weight: global.hpe.fontWeight.normal,
         color: 'text-strong',
       },
     },
@@ -615,10 +435,11 @@ export const hpe = deepFreeze({
   checkBox: {
     hover: {
       border: {
-        color: 'border-strong',
+        color: components.hpe.checkbox.control.hover.borderColor,
+        width: components.hpe.checkbox.control.hover.borderWidth,
       },
       background: {
-        color: 'background-contrast',
+        color: 'transparent',
       },
       // HPE Design System guidance states that pad="none" should be applied on CheckBox
       // when its used outside of a FormField. We will apply this hover treatment in
@@ -628,53 +449,114 @@ export const hpe = deepFreeze({
         pad === 'none' &&
         !toggle &&
         `border: 2px solid ${
-          theme.global.colors['border-strong'][theme.dark ? 'dark' : 'light']
+          theme.global.colors[
+            components.hpe.checkbox.control.hover.borderColor
+          ][theme.dark ? 'dark' : 'light']
         };`}
-      `,
+      `, // Q: missing token for hover borderWidth? this falls into similar boat as secondary button
     },
-    color: 'background',
+    color: components.hpe.switch.control.handle.enabled.background,
     border: {
-      color: 'border',
-      width: '1px',
+      color: components.hpe.checkbox.control.enabled.borderColor,
+      width:
+        dimensions.borderSize[
+          components.hpe.checkbox.medium.control.borderWidth
+        ] || components.hpe.checkbox.medium.control.borderWidth,
     },
     check: {
-      radius: '4px',
+      radius: components.hpe.checkbox.medium.control.borderRadius,
+      thickness: components.hpe.checkbox.control.hover.borderWidth,
       extend: ({ theme, checked, indeterminate }) => `
+      margin-block: ${
+        dimensions.borderSize[components.hpe.checkbox.medium.control.marginY] ||
+        components.hpe.checkbox.medium.control.marginY
+      }px;
+      background: ${
+        theme.global.colors[
+          components.hpe.checkbox.control.enabled.background
+        ]?.[theme.dark ? 'dark' : 'light']
+      };
       background-color: ${
         checked || indeterminate
-          ? theme.global.colors['green!']
-          : theme.global.colors.background[theme.dark ? 'dark' : 'light']
+          ? theme.global.colors[
+              components.hpe.checkbox.control.selected.enabled.background
+            ]?.[theme.dark ? 'dark' : 'light']
+          : ''
       };
+      &:hover {
+        background: ${
+          checked || indeterminate
+            ? theme.global.colors[
+                components.hpe.checkbox.control.selected.hover.background
+              ]?.[theme.dark ? 'dark' : 'light']
+            : theme.global.colors[
+                components.hpe.checkbox.control.hover.background
+              ]?.[theme.dark ? 'dark' : 'light']
+        };
+      }
       ${(checked || indeterminate) && 'border: none;'}
         `,
     },
     icon: {
       extend: ({ theme }) => `stroke-width: 2px;
-      stroke: ${theme.global.colors['text-primary-button']}`,
+      stroke: ${
+        theme.global.colors[
+          components.hpe.checkbox.control.selected.enabled.iconColor
+        ]?.[theme.dark ? 'dark' : 'light']
+      }`,
     },
-    gap: 'small',
+    gap: components.hpe.checkbox.medium.gapX,
     label: {
       align: 'start',
     },
     pad: {
-      vertical: 'xsmall',
-      horizontal: 'small',
+      vertical: components.hpe.element?.medium.paddingY,
+      horizontal: components.hpe.formField.medium.input.container.paddingX,
     },
+    size: components.hpe.checkbox.medium.control.width,
     toggle: {
-      background: 'background',
-      color: 'background',
+      background: components.hpe.switch.control.track.enabled.background,
+      color: components.hpe.switch.control.handle.enabled.background,
+      size: components.hpe.switch.medium.control.track.width,
       knob: {
-        extend: ({ theme }) => `
+        extend: ({ theme, checked }) => `
            box-shadow: ${
              theme.global.elevation[theme.dark ? 'dark' : 'light'].small
            };
-           border: 1px solid ${
-             theme.global.colors.border[theme.dark ? 'dark' : 'light']
-           }
+           border: ${
+             dimensions.borderSize[
+               components.hpe.switch.medium.control.handle.borderWidth
+             ]
+           } solid ${
+             theme.global.colors[
+               components.hpe.switch.control.handle.enabled.borderColor
+             ][theme.dark ? 'dark' : 'light']
+           };
+        width: ${components.hpe.switch.medium.control.handle.width};
+        height: ${components.hpe.switch.medium.control.handle.height};
+        top: 1px; // TO DO token?
+        ${!checked ? 'left: 1px;' : ''} // TO DO token?
         `,
       },
       extend: ({ checked, theme }) => `
-        ${checked && `background-color: ${theme.global.colors['green!']};`}
+        ${
+          checked &&
+          `background-color: ${
+            theme.global.colors[
+              components.hpe.switch.control.track.selected.enabled.background
+            ]?.[theme.dark ? 'dark' : 'light']
+          };`
+        }
+         margin-block: ${
+           dimensions.borderSize[
+             components.hpe.switch.medium.control.track.marginY
+           ] || components.hpe.switch.medium.control.track.marginY
+         }px;
+         border-color: ${
+           theme.global.colors[
+             components.hpe.switch.control.track.enabled.borderColor
+           ]?.[theme.dark ? 'dark' : 'light']
+         };
       `,
     },
     // HPE Design System guidance states that pad="none" should be applied on CheckBox
@@ -688,16 +570,17 @@ export const hpe = deepFreeze({
       background-color: unset;
     }`
     }
-    font-weight: 500;
+    font-weight: ${components.hpe.checkbox.medium.label.fontWeight};
     width: auto;
   };
   `,
   },
   checkBoxGroup: {
     container: {
-      gap: 'none',
+      gap: 'none', // TO DO token ?
       margin: {
-        vertical: 'xsmall',
+        vertical:
+          components.hpe.formField.medium.input.group.container.paddingY,
       },
     },
   },
@@ -706,17 +589,34 @@ export const hpe = deepFreeze({
       kind: 'toolbar',
     },
   },
+  dateInput: {
+    container: {
+      round: components.hpe.formField.medium.input.container.borderRadius,
+    },
+  },
   dataTable: {
     body: {
+      // TO DO should there be a token?
       extend: ({ theme }) => `
         /* Margin and padding allow room for focus on table body */
         margin: ${theme.global.edgeSize.xxsmall} 0px;
         padding: 0px ${theme.global.edgeSize.xxsmall};
       `,
+      selected: {
+        background: components.hpe.dataCell.selected?.enabled?.background,
+      },
+    },
+    groupHeader: {
+      // background: undefined,
+      // border: undefined,
+      // pad: undefined,
+    },
+    groupEnd: {
+      border: { side: 'bottom', size: 'xsmall' },
     },
     header: {
       border: { side: 'bottom' },
-      color: 'text-strong',
+      color: components.hpe.headerCell.enabled.textColor,
       extend: ({ column, sort, sortable, theme }) =>
         `
           ${
@@ -724,7 +624,7 @@ export const hpe = deepFreeze({
             sort.property === column &&
             `
             background: ${
-              theme.global.colors['background-contrast'][
+              theme.global.colors['background-active'][
                 theme.dark ? 'dark' : 'light'
               ]
             }
@@ -747,44 +647,48 @@ export const hpe = deepFreeze({
           };
         `,
       font: {
-        weight: 500,
+        weight: components.hpe.headerCell.fontWeight,
       },
-      gap: 'none',
+      gap: components.hpe.headerCell.gapX,
       hover: {
         background: {
-          color: 'background-contrast',
+          color: components.hpe.headerCell.hover.background,
         },
       },
       units: {
-        color: 'text-weak',
+        color: components.hpe.headerCell.units.enabled.textColor,
       },
     },
-    // Ascending order is represented by a descending icon.
-    // Similarly, descending order is shown with an ascending icon,
-    // both signifying the respective sorting actions in line with industry standard conventions.
     icons: {
-      ascending: () => <Descending size="large" />,
-      descending: () => <Ascending size="large" />,
+      ascending: () => <Ascending height="medium" />,
+      descending: () => <Descending height="medium" />,
       contract: () => <Up height="medium" />,
       expand: () => <Down height="medium" />,
-      sortable: () => <Unsorted size="large" />,
+      sortable: () => <Unsorted height="medium" />,
     },
     pinned: {
       header: {
+        background: { opacity: 'strong' },
         extend: 'backdrop-filter: blur(12px);',
       },
       body: {
+        background: { opacity: 'strong' },
         extend: 'backdrop-filter: blur(12px);',
       },
       footer: {
+        background: { opacity: 'strong' },
         extend: 'backdrop-filter: blur(12px);',
       },
     },
     primary: {
-      weight: 500,
-      color: 'text-strong',
+      weight: components.hpe.dataCell.primary.fontWeight,
+      color: components.hpe.dataCell.primary.enabled.textColor,
     },
     resize: {
+      border: {
+        color: 'border',
+        side: 'end',
+      },
       hover: {
         border: {
           color: 'border-strong',
@@ -793,37 +697,33 @@ export const hpe = deepFreeze({
       },
     },
   },
-  dateInput: {
-    container: {
-      round: 'xsmall',
-    },
-    icon: {
-      size: 'small',
-    },
-  },
   fileInput: {
     border: {
-      size: 'xsmall',
+      color: components.hpe.formField.input.container.enabled.borderColor,
+      side: 'all',
+      style: 'solid',
+      size: components.hpe.formField.medium.input.container.borderWidth,
     },
     button: {
+      background: components.hpe.button.secondary.enabled.background,
       border: {
-        radius: '2em',
+        radius: components.hpe.button.medium.secondary.borderRadius,
       },
       pad: {
-        vertical: '6px',
-        horizontal: '12px',
+        vertical: components.hpe.button.medium.secondary.paddingY,
+        horizontal: components.hpe.button.medium.secondary.paddingX,
       },
-      color: 'text-strong',
+      color: components.hpe.button.secondary.enabled.textColor,
       font: {
-        weight: 'bold',
+        weight: components.hpe.button.secondary.enabled.fontWeight,
       },
       hover: {
-        background: 'background-contrast',
-        color: 'text-strong',
+        background: components.hpe.button.secondary.hover.background,
+        color: components.hpe.button.secondary.hover.textColor,
       },
     },
     dragOver: {
-      background: 'background-contrast',
+      background: MISSING.color,
       border: 'none',
     },
     hover: {
@@ -834,216 +734,233 @@ export const hpe = deepFreeze({
     icons: {
       remove: Close,
     },
+    label: {
+      margin: 'small',
+    },
     message: {
       color: 'placeholder',
+      margin: 'small',
     },
     pad: { horizontal: 'xsmall' },
-    extend: 'border-radius: 4px;',
+    extend: `border-radius: ${components.hpe.formField.medium.input.container.borderRadius};`,
   },
   formField: {
     content: {
       margin: { vertical: 'xsmall' },
-      pad: undefined,
+      pad: 'none',
     },
     border: {
       error: {
-        color: 'border-strong',
+        color:
+          components.hpe.formField.input.container.status.critical.borderColor,
       },
-      color: 'border',
+      color: components.hpe.formField.input.container.enabled.borderColor,
       side: 'all',
     },
     disabled: {
-      background: {
-        color: undefined,
-      },
+      background:
+        components.hpe.formField.input.group.container.disabled.background,
       border: {
-        color: 'border-weak',
+        color: components.hpe.formField.input.container.disabled.borderColor,
       },
       label: {
-        color: 'text-xweak',
+        color: components.hpe.formField.labelText.disabled.textColor,
       },
     },
     error: {
       background: {
-        color: 'validation-critical',
+        color:
+          components.hpe.formField.input.container.status.critical.background,
       },
       container: {
-        gap: 'xsmall',
+        gap: 'xsmall', // TO DO missing token
       },
-      icon: <CircleAlert size="small" />,
-      size: 'xsmall',
-      color: 'text',
+      icon: <CircleAlert size="small" color={light.hpe.color.icon.critical} />, // TO DO need to handle modes
+      size: 'xsmall', // TO DO we have a token but it's not a t-shirt size reference but fontSize, lineHeight directly
+      color: components.hpe.formField.errorText.enabled.textColor,
       margin: {
+        // TO DO missing token
         bottom: 'xsmall',
         top: 'none',
         horizontal: 'none',
       },
     },
     focus: {
+      background: components.hpe.formField.input.container.background,
       border: {
-        color: 'border-strong',
+        color: components.hpe.formField.input.container.borderColor,
       },
     },
     help: {
       size: 'xsmall',
-      color: 'text',
-      margin: 'none',
+      color: components.hpe.formField.helpText.enabled.color,
+      margin: 'none', // TO DO missing token
     },
     info: {
       size: 'xsmall',
-      color: 'text',
+      color: components.hpe.formField.infoText.enabled.color,
       margin: {
+        // TO DO missing token
         bottom: 'xsmall',
         top: 'none',
         horizontal: 'none',
       },
     },
     label: {
-      size: 'xsmall',
-      color: 'text',
+      size: 'xsmall', // TO DO how to capture this as token, currently we have "fontSize", "lineHeight", "..."
+      color: components.hpe.formField.labelText.enabled.color,
       margin: {
+        // TO DO missing token
         bottom: 'none',
         top: 'xsmall',
         horizontal: 'none',
       },
       requiredIndicator: true,
-      weight: 500,
+      weight: components.hpe.formField.medium.labelText.fontWeight,
     },
     margin: {
-      bottom: 'none',
+      bottom: 'none', // TO DO missing token
     },
-    round: '6px',
+    round: components.hpe.formField.medium.input.container.borderRadius,
+    // TO DO no tokens
     survey: {
       label: {
         margin: { bottom: 'none' },
+        size: 'medium',
       },
     },
   },
   heading: {
-    color: 'text-strong',
-    weight: 500,
+    color: 'heading',
+    weight: large.hpe.heading.xlarge.fontWeight,
     level: {
       1: {
         font: {
-          weight: 500,
+          weight: large.hpe.heading.xlarge.fontWeight,
         },
         small: {
-          size: '24px',
-          height: '24px',
+          size: large.hpe.heading.large.fontSize,
+          height: large.hpe.heading.large.lineHeight,
         },
         medium: {
-          size: '36px',
-          height: '36px',
+          size: large.hpe.heading.xlarge.fontSize,
+          height: large.hpe.heading.xlarge.lineHeight,
         },
         large: {
+          // TO DO what tokens?
           size: '48px',
           height: '48px',
         },
         xlarge: {
+          // TO DO what tokens?
           size: '60px',
           height: '60px',
         },
       },
       2: {
+        font: {
+          weight: large.hpe.heading.large.fontWeight,
+        },
         small: {
-          size: '20px',
-          height: '20px',
+          size: large.hpe.heading.medium.fontSize,
+          height: large.hpe.heading.medium.lineHeight,
         },
         medium: {
-          size: '24px',
-          height: '24px',
+          size: large.hpe.heading.large.fontSize,
+          height: large.hpe.heading.large.lineHeight,
         },
         large: {
-          size: '36px',
-          height: '36px',
+          size: large.hpe.heading.xlarge.fontSize,
+          height: large.hpe.heading.xlarge.lineHeight,
         },
         xlarge: {
+          // TO DO what tokens?
           size: '48px',
           height: '48px',
         },
       },
       3: {
         font: {
-          weight: 500,
+          weight: large.hpe.heading.medium.fontWeight,
         },
         small: {
-          size: '16px',
-          height: '16px',
+          size: large.hpe.heading.small.fontSize,
+          height: large.hpe.heading.small.lineHeight,
         },
         medium: {
-          size: '20px',
-          height: '20px',
+          size: large.hpe.heading.medium.fontSize,
+          height: large.hpe.heading.medium.lineHeight,
         },
         large: {
-          size: '24px',
-          height: '24px',
+          size: large.hpe.heading.large.fontSize,
+          height: large.hpe.heading.large.lineHeight,
         },
         xlarge: {
-          size: '36px',
-          height: '36px',
+          size: large.hpe.heading.xlarge.fontSize,
+          height: large.hpe.heading.xlarge.lineHeight,
         },
       },
       4: {
         font: {
-          weight: 500,
+          weight: large.hpe.heading.small.fontWeight,
         },
         small: {
-          size: '12px',
-          height: '12px',
+          size: large.hpe.heading.xsmall.fontSize,
+          height: large.hpe.heading.xsmall.lineHeight,
         },
         medium: {
-          size: '16px',
-          height: '16px',
+          size: large.hpe.heading.small.fontSize,
+          height: large.hpe.heading.small.lineHeight,
         },
         large: {
-          size: '20px',
-          height: '20px',
+          size: large.hpe.heading.medium.fontSize,
+          height: large.hpe.heading.medium.lineHeight,
         },
         xlarge: {
-          size: '24px',
-          height: '24px',
+          size: large.hpe.heading.large.fontSize,
+          height: large.hpe.heading.large.lineHeight,
         },
       },
       5: {
         font: {
-          weight: 600,
+          weight: large.hpe.heading.xsmall.fontWeight,
         },
         small: {
-          size: '12px',
-          height: '12px',
+          size: large.hpe.heading.xxsmall.fontSize,
+          height: large.hpe.heading.xxsmall.lineHeight,
         },
         medium: {
-          size: '12px',
-          height: '12px',
+          size: large.hpe.heading.xsmall.fontSize,
+          height: large.hpe.heading.xsmall.lineHeight,
         },
         large: {
-          size: '16px',
-          height: '16px',
+          size: large.hpe.heading.small.fontSize,
+          height: large.hpe.heading.small.lineHeight,
         },
         xlarge: {
-          size: '20px',
-          height: '20px',
+          size: large.hpe.heading.medium.fontSize,
+          height: large.hpe.heading.medium.lineHeight,
         },
       },
       6: {
         font: {
-          weight: 600,
+          weight: large.hpe.heading.xxsmall.fontWeight,
         },
         small: {
-          size: '12px',
-          height: '12px',
+          size: large.hpe.heading.xxsmall.fontSize,
+          height: large.hpe.heading.xxsmall.lineHeight,
         },
         medium: {
-          size: '12px',
-          height: '12px',
+          size: large.hpe.heading.xxsmall.fontSize,
+          height: large.hpe.heading.xxsmall.lineHeight,
         },
         large: {
-          size: '12px',
-          height: '12px',
+          size: large.hpe.heading.small.fontSize,
+          height: large.hpe.heading.small.lineHeight,
         },
         xlarge: {
-          size: '16px',
-          height: '16px',
+          size: large.hpe.heading.medium.fontSize,
+          height: large.hpe.heading.medium.lineHeight,
         },
       },
     },
@@ -1055,13 +972,13 @@ export const hpe = deepFreeze({
     extend: ({ level, size }) => {
       let fontWeight = '';
       if (level === 3 && size === 'small') {
-        fontWeight = 'font-weight: 600;';
+        fontWeight = `font-weight: ${large.hpe.heading.small.fontWeight};`;
         // undefined necessary so an h4 without size prop explicitly defined
         // still renders as weight 600
       } else if (level === 4 && ['small', 'medium', undefined].includes(size)) {
-        fontWeight = 'font-weight: 600;';
+        fontWeight = `font-weight: ${large.hpe.heading.small.fontWeight};`;
       } else if (level === 5 && size === 'xlarge') {
-        fontWeight = 'font-weight: 500;';
+        fontWeight = `font-weight: ${large.hpe.heading.small.fontWeight};`;
       }
       return fontWeight;
     },
@@ -1070,15 +987,16 @@ export const hpe = deepFreeze({
     disableScaleDown: true,
     matchSize: true,
     size: {
-      small: '16px',
-      medium: '18px',
-      large: '22px',
-      xlarge: '24px',
-      xxlarge: '36px',
+      xsmall: large.hpe.size.icon.xsmall,
+      small: large.hpe.size.icon.small,
+      medium: large.hpe.size.icon.medium,
+      large: large.hpe.size.icon.large,
+      xlarge: large.hpe.size.icon.xlarge,
+      xxlarge: large.hpe.size.icon.xxlarge,
     },
   },
   layer: {
-    background: 'background',
+    background: 'background-floating',
     border: {
       radius: 'small',
       intelligentRounding: true,
@@ -1092,12 +1010,22 @@ export const hpe = deepFreeze({
     /* HPE Global Header/Footer Service a.k.a. HPE Common HFWS sets the header
      * at a z-index of 101. This adjustment allows for Layer modals and side-drawers
      * to sit atop the Global header. */
-    zIndex: '110',
+    zIndex: '110', // TO DO no token
   },
   list: {
+    container: {
+      // any box props
+      gap: 'xsmall',
+      // extend: undefined,
+    },
     item: {
       border: undefined,
+      disabled: {
+        color: 'text-disabled',
+        cursor: 'default',
+      },
       pinned: {
+        background: 'background-active',
         icon: {
           pad: mediumIconOnlyPad,
         },
@@ -1127,28 +1055,31 @@ export const hpe = deepFreeze({
     },
     group: {
       container: {
-        pad: 'none',
+        pad: {
+          vertical: components.hpe.menu.medium.group.container.paddingY,
+        },
       },
       separator: {
-        color: 'border',
-        pad: 'none',
+        color: components.hpe.menu.group.separator.background,
+        size: components.hpe.menu.medium.group.separator.height,
+        pad: 'none', // TO DO no token
       },
     },
     icons: {
-      color: 'text-strong',
+      color: components.hpe.menu.item.enabled.iconColor,
       down: Down,
     },
     item: {
       pad: {
-        horizontal: '18px',
-        vertical: '6px',
+        horizontal: components.hpe.menu.medium.item.paddingX,
+        vertical: components.hpe.menu.medium.item.paddingY,
       },
     },
   },
   nameValuePair: {
     name: {
       color: 'text-strong',
-      weight: 500,
+      weight: global.hpe.fontWeight.medium,
     },
   },
   notification: {
@@ -1166,65 +1097,172 @@ export const hpe = deepFreeze({
       },
     },
     message: {
-      color: { dark: 'text-strong' },
+      color: 'text',
     },
     title: {
-      // any text props
       color: 'text-strong',
-      weight: 500,
+      weight: global.hpe.fontWeight.medium,
     },
     critical: {
-      background: 'validation-critical',
+      background: 'background-critical',
+      message: {
+        color: 'text-onCritical-default',
+      },
+      title: {
+        color: 'text-onCritical-strong',
+      },
       global: {
-        background: 'validation-critical',
+        background: 'background-critical',
+        message: {
+          color: 'text-onCritical-default',
+        },
+        title: {
+          color: 'text-onCritical-strong',
+        },
       },
       toast: {
         background: 'background-front',
+        message: {
+          color: 'text',
+        },
+        title: {
+          color: 'text-strong',
+        },
       },
     },
     warning: {
-      background: 'validation-warning',
+      background: 'background-warning',
+      message: {
+        color: 'text-onWarning-default',
+      },
+      title: {
+        color: 'text-onWarning-strong',
+      },
       global: {
-        background: 'validation-warning',
+        background: 'background-warning',
+        message: {
+          color: 'text-onWarning-default',
+        },
+        title: {
+          color: 'text-onWarning-strong',
+        },
       },
       toast: {
         background: 'background-front',
+        message: {
+          color: 'text',
+        },
+        title: {
+          color: 'text-strong',
+        },
       },
     },
     normal: {
-      background: 'validation-ok',
+      background: 'background-ok',
+      message: {
+        color: 'text-onOk-default',
+      },
+      title: {
+        color: 'text-onOk-strong',
+      },
       global: {
-        background: 'validation-ok',
+        background: 'background-ok',
+        message: {
+          color: 'text-onOk-default',
+        },
+        title: {
+          color: 'text-onOk-strong',
+        },
       },
       toast: {
         background: 'background-front',
+        message: {
+          color: 'text',
+        },
+        title: {
+          color: 'text-strong',
+        },
       },
     },
     unknown: {
-      background: 'background-contrast',
+      background: 'background-unknown',
+      message: {
+        color: 'text-onUnknown-default',
+      },
+      title: {
+        color: 'text-onUnknown-strong',
+      },
       global: {
-        background: 'background-contrast',
+        background: 'background-unknown',
+        message: {
+          color: 'text-onUnknown-default',
+        },
+        title: {
+          color: 'text-onUnknown-strong',
+        },
       },
       toast: {
         background: 'background-front',
+        message: {
+          color: 'text',
+        },
+        title: {
+          color: 'text-strong',
+        },
       },
     },
     info: {
-      background: 'background-contrast',
+      background: 'background-info',
+      message: {
+        color: 'text-onInfo-default',
+      },
+      title: {
+        color: 'text-onInfo-strong',
+      },
       global: {
-        background: 'background-contrast',
+        background: 'background-info',
+        message: {
+          color: 'text-onInfo-default',
+        },
+        title: {
+          color: 'text-onInfo-strong',
+        },
       },
       toast: {
         background: 'background-front',
+        message: {
+          color: 'text',
+        },
+        title: {
+          color: 'text-strong',
+        },
       },
     },
     undefined: {
-      background: 'background-contrast',
+      background: 'background-unknown',
+      message: {
+        color: 'text-onUnknown-default',
+      },
+      title: {
+        color: 'text-onUnknown-strong',
+      },
       global: {
-        background: 'background-contrast',
+        background: 'background-ok',
+        message: {
+          color: 'text-onUnknown-default',
+        },
+        title: {
+          color: 'text-onUnknown-strong',
+        },
       },
       toast: {
         background: 'background-front',
+        message: {
+          color: 'text',
+        },
+        title: {
+          color: 'text-strong',
+        },
       },
     },
   },
@@ -1270,8 +1308,11 @@ export const hpe = deepFreeze({
     responsive: {
       breakpoints: ['xsmall', 'small'],
     },
+    // title: {
+    //   size: undefined,
+    // },
     subtitle: {
-      size: 'xlarge',
+      size: 'large',
     },
     xsmall: {
       areas: [
@@ -1296,119 +1337,183 @@ export const hpe = deepFreeze({
   },
   pagination: {
     button: {
+      color: components.hpe.button.default.enabled.textColor,
       border: {
-        radius: '2em',
+        radius: components.hpe.button.medium.default.borderRadius,
       },
       font: {
-        weight: 600,
+        weight: components.hpe.button.default.enabled.fontWeight,
       },
       active: {
+        background: components.hpe.button.default.selected.enabled.background,
         border: {
-          radius: '2em',
+          radius: components.hpe.button.medium.default.borderRadius,
         },
-        color: 'text-strong',
+        color: components.hpe.button.default.selected.enabled.textColor,
         font: {
-          weight: 600,
+          weight: components.hpe.button.default.selected.enabled.fontWeight,
+        },
+      },
+      hover: {
+        background: components.hpe.button.default.hover.background,
+        border: {
+          radius: components.hpe.button.medium.default.borderRadius,
+        },
+        color: components.hpe.button.default.hover.textColor,
+        font: {
+          weight: components.hpe.button.default.hover.fontWeight,
         },
       },
       disabled: {
-        color: 'text-xweak',
+        background: components.hpe.button.default.disabled.background,
+        border: {
+          radius: components.hpe.button.medium.default.borderRadius,
+        },
+        color: components.hpe.button.default.disabled.textColor,
+        font: {
+          weight: components.hpe.button.default.disabled.fontWeight,
+        },
+      },
+      size: {
+        small: {
+          border: {
+            radius: components.hpe.button.small.default.borderRadius,
+            width:
+              dimensions.borderSize[
+                components.hpe.button.small.default.borderWidth
+              ] || components.hpe.button.small.default.borderWidth,
+          },
+          pad: {
+            vertical: '4px',
+            horizontal: '4px',
+          },
+          font: {
+            size: components.hpe.element?.small.fontSize,
+            height: components.hpe.element?.small.lineHeight,
+          },
+          height: components.hpe.element?.small.minHeight,
+          width: components.hpe.element?.small.minHeight,
+        },
+        medium: {
+          border: {
+            radius: components.hpe.button.medium.default.borderRadius,
+            width:
+              dimensions.borderSize[
+                components.hpe.button.medium.default.borderWidth
+              ] || components.hpe.button.medium.default.borderWidth,
+          },
+          pad: {
+            vertical: '4px',
+            horizontal: '4px',
+          },
+          font: {
+            size: components.hpe.element?.medium.fontSize,
+            height: components.hpe.element?.medium.lineHeight,
+          },
+          height: components.hpe.element?.medium.minHeight,
+          width: components.hpe.element?.medium.minHeight,
+        },
+        large: {
+          border: {
+            radius: components.hpe.button.large.default.borderRadius,
+            width:
+              dimensions.borderSize[
+                components.hpe.button.large.default.borderWidth
+              ] || components.hpe.button.large.default.borderWidth,
+          },
+          pad: {
+            vertical: '4px',
+            horizontal: '4px',
+          },
+          font: {
+            size: components.hpe.element?.large.fontSize,
+            height: components.hpe.element?.large.lineHeight,
+          },
+          height: components.hpe.element?.large.minHeight,
+          width: components.hpe.element?.large.minHeight,
+        },
       },
     },
   },
   paragraph: {
-    xsmall: {
-      size: '14px',
-      height: '16px',
-      maxWidth: '25em',
-    },
-    small: {
-      size: '16px',
-      height: '20px',
-      maxWidth: '25em',
-    },
-    medium: {
-      size: '18px',
-      height: '24px',
-      maxWidth: '25em',
-    },
-    large: {
-      size: '22px',
-      height: '28px',
-      maxWidth: '25em',
-    },
-    xlarge: {
-      size: '24px',
-      height: '30px',
-      maxWidth: '25em',
-    },
-    xxlarge: {
-      size: '36px',
-      height: '40px',
-      maxWidth: '25em',
-    },
+    // TO DO this is enabling more than xxlarge
+    ...paragraphTheme,
     // This block applies size-specific weights to paragraph to ensure
     // that as paragraph sizes get larger, the weight decreases.
     // This block can be removed once grommet theme structure is enhanced
     // to support size-specific weights.
     extend: ({ size }) => `
-      ${['xxlarge'].includes(size) ? 'font-weight: 300;' : ''};
+      ${
+        ['xxlarge'].includes(size)
+          ? `font-weight: ${large.hpe.text[size].fontWeight};`
+          : ''
+      };
     `,
   },
   radioButton: {
     border: {
-      color: 'border',
-      width: 'xsmall',
+      color: components.hpe.radioButton.control.enabled.borderColor,
+      width: components.hpe.radioButton.medium.control.borderWidth, // TO DO want this narrower when not checked
     },
-    check: {
-      color: 'selected-background',
-      background: {
-        color: 'background-front',
-      },
-    },
-    color: 'selected-background',
+    color: components.hpe.radioButton.control.selected.enabled.borderColor,
     container: {
       extend: ({ theme }) => `
-      font-weight: 500;
       width: auto;
-      padding: ${theme.global.edgeSize.xxsmall} ${theme.global.edgeSize.xsmall};
+      padding-inline: ${
+        components.hpe.formField.medium.input.group.item.paddingX
+      };
+      &:has(input[checked]) {
+        background: ${
+          // TO DO how to only do in FormField
+          theme.global.colors['background-selected-weak-enabled'][
+            theme.dark ? 'dark' : 'light'
+          ]
+        };
+      }
     `,
     },
-    extend: ({ theme }) => `
-      padding: ${theme.global.edgeSize.xxsmall} ${theme.global.edgeSize.xsmall};
+    extend: () => `
+      padding-block: ${components.hpe.formField.medium.input.group.item.paddingY};
     `,
-    gap: 'xsmall',
+    gap: components.hpe.radioButton.medium.gapX,
     hover: {
       background: {
-        color: 'background-contrast',
+        color: components.hpe.formField.input.group.item.hover.background,
       },
       border: {
-        color: undefined,
+        color: components.hpe.radioButton.control.hover.borderColor,
       },
+    },
+    size: components.hpe.radioButton.medium.control.height,
+    font: {
+      weight: components.hpe.radioButton.medium.label.fontWeight,
     },
     icons: {
       circle: () => (
-        <Blank color="selected-background">
-          <circle cx="12" cy="12" r="8" />
+        <Blank
+          color={components.hpe.radioButton.control.selected.enabled.iconColor}
+        >
+          <circle cx="12" cy="12" r="6" />
         </Blank>
       ),
     },
   },
   radioButtonGroup: {
     container: {
-      gap: 'none',
+      gap: 'none', // TO DO token?
       margin: {
-        vertical: 'xsmall',
+        vertical:
+          components.hpe.formField.medium.input.group.container.paddingY,
       },
     },
   },
   rangeInput: {
     thumb: {
-      color: 'brand',
+      color: 'background-primary-default',
     },
     track: {
       lower: {
-        color: 'brand',
+        color: 'background-primary-default',
       },
       upper: {
         color: 'border',
@@ -1432,7 +1537,7 @@ export const hpe = deepFreeze({
       },
     },
     icons: {
-      color: 'text',
+      color: 'icon',
       down: Down,
       margin: {
         left: 'small',
@@ -1449,7 +1554,7 @@ export const hpe = deepFreeze({
   spinner: {
     container: {
       pad: 'none',
-      color: 'brand',
+      color: 'background-primary-default',
       border: [
         { color: 'border-weak', side: 'all', size: 'medium' },
         { color: 'border-weak', side: 'right', size: 'medium' },
@@ -1457,59 +1562,79 @@ export const hpe = deepFreeze({
         { color: 'border-weak', side: 'left', size: 'medium' },
       ],
     },
+    size: {
+      xsmall: components.hpe.element?.xsmall.minHeight,
+      small: components.hpe.element?.small.minHeight,
+      medium: components.hpe.element?.medium.minHeight,
+      large: components.hpe.element?.large.minHeight,
+      xlarge: components.hpe.element?.xlarge.minHeight,
+    },
   },
   starRating: {
-    color: 'brand',
+    color: 'background-selected-strong-enabled',
   },
   tab: {
     color: 'text',
     active: {
-      background: undefined,
-      color: 'text-strong',
-      weight: 600,
+      background: 'background-selected-strong-enabled',
+      color: 'text-onSelectedStrong',
+      weight: 500,
     },
     hover: {
-      background: 'transparent',
+      background: 'background-hover',
       color: 'text',
     },
     border: {
-      side: 'bottom',
+      side: 'all',
       color: 'transparent',
-      size: 'medium',
+      size:
+        dimensions[components.hpe.element?.medium.borderWidth] ||
+        components.hpe.element?.medium.borderWidth,
       active: {
-        color: 'brand',
+        color: 'transparent',
       },
       disabled: {
         color: undefined,
       },
       hover: {
-        color: 'border-weak',
+        color: undefined,
       },
     },
     disabled: {
-      color: 'text-xweak',
+      background: 'background-disabled',
+      color: 'text-disabled',
     },
     pad: {
-      // top and bottom pad need to be defined individually, specifying
-      // "vertical" only applies to top
-      bottom: '9px',
-      top: '9px',
-      // align horizontal pad with button
-      horizontal: '18px',
+      bottom: components.hpe.element?.medium.paddingY,
+      top: components.hpe.element?.medium.paddingY,
+      horizontal: components.hpe.element?.medium?.paddingX?.wide,
     },
     margin: {
-      // bring the overall tabs border behind invidual tab borders
-      vertical: '-1px',
+      vertical: 'none',
       horizontal: 'none',
     },
+    extend: ({ theme }) => `border-radius: ${theme.global.edgeSize.xsmall};`,
   },
   tabs: {
+    gap: 'small',
     header: {
-      border: {
-        side: 'bottom',
-        size: 'xsmall',
-        color: 'border-weak',
-      },
+      border: undefined,
+      // TO DO these selectors could be improved on in future grommet theme enhancements
+      extend: ({ theme }) => `
+        border-radius: ${theme.global.edgeSize.xsmall}; 
+        & button[aria-selected="true"]:hover > div {
+          background: ${
+            theme.global.colors['background-selected-strong-hover'][
+              theme.dark ? 'dark' : 'light'
+            ]
+          };
+          color: ${
+            theme.global.colors['text-onSelectedStrong'][
+              theme.dark ? 'dark' : 'light'
+            ]
+          };
+        }
+      `,
     },
     step: {
       xsmall: 1,
@@ -1530,101 +1655,137 @@ export const hpe = deepFreeze({
       `,
     },
     body: {
+      pad: {
+        top: components.hpe.dataCell.paddingTop,
+        bottom: components.hpe.dataCell.paddingBottom,
+        horizontal: components.hpe.dataCell.paddingX,
+      },
+      border: {
+        side: 'bottom', // TO DO this causes issues on the last row with the footer border
+        color: components.hpe.dataCell.enabled.borderColor,
+      },
       extend: ({ theme }) =>
         `
           &:hover {
             button {
               background: ${
-                theme.global.colors['background-contrast'][
+                theme.global.colors['background-hover'][
                   theme.dark ? 'dark' : 'light'
                 ]
-              }
+              };
             }
           }
         `,
     },
     row: {
       hover: {
-        background: 'background-contrast',
+        background: 'background-hover',
       },
     },
     footer: {
       extend: `
-        font-weight: 500;
+        font-weight: ${MISSING.weight};
       `,
     },
   },
   tag: {
+    border: {
+      color: 'border-weak',
+    },
+    icons: {
+      remove: Close,
+    },
     pad: {
-      horizontal: 'small',
-      vertical: '5px', // 5px pad + 1px border = 6px 'xsmall'
+      horizontal: components.hpe.element?.medium?.paddingX?.default,
+      vertical: components.hpe.element?.medium.paddingY,
+    },
+    remove: {
+      kind: 'default',
     },
     value: {
-      weight: 500,
+      weight: global.hpe.fontWeight.medium,
+    },
+    round: 'xsmall',
+    size: {
+      xsmall: {
+        icon: undefined,
+        pad: {
+          vertical: components.hpe.element?.small.paddingY,
+          horizontal: components.hpe.element?.small?.paddingX?.default,
+        },
+        remove: {
+          size: 'xsmall',
+          margin: {
+            right: 'none',
+            vertical: '-1px', // account for border
+          },
+        },
+      },
+      small: {
+        icon: undefined,
+        pad: {
+          vertical: components.hpe.element?.small.paddingY,
+          horizontal: components.hpe.element?.small?.paddingX?.default,
+        },
+        remove: {
+          size: 'xsmall',
+          margin: {
+            right: '2px',
+          },
+        },
+      },
+      // TO DO tag rounding is overriding "default" rounding, do we expect this?
+      medium: {
+        icon: undefined,
+        pad: {
+          vertical: components.hpe.element?.medium.paddingY,
+          horizontal: components.hpe.element?.medium?.paddingX?.default,
+        },
+        remove: {
+          size: 'small',
+          margin: {
+            right: 'xxsmall',
+          },
+        },
+      },
+      large: {
+        icon: undefined,
+        pad: {
+          vertical: components.hpe.element?.large.paddingY,
+          horizontal: components.hpe.element?.large?.paddingX?.default,
+        },
+        remove: {
+          size: 'medium',
+          margin: {
+            right: 'xxsmall',
+          },
+        },
+      },
+      xlarge: {
+        icon: undefined,
+        pad: {
+          vertical: components.hpe.element?.xlarge.paddingY,
+          horizontal: components.hpe.element?.xlarge?.paddingX?.default,
+        },
+        remove: {
+          size: 'large',
+          margin: {
+            right: 'xsmall',
+          },
+        },
+      },
     },
   },
-  text: {
-    xsmall: {
-      size: '14px',
-      height: '16px',
-    },
-    small: {
-      size: '16px',
-      height: '20px',
-    },
-    medium: {
-      size: '18px',
-      height: '24px',
-    },
-    large: {
-      size: '22px',
-      height: '28px',
-    },
-    xlarge: {
-      size: '24px',
-      height: '30px',
-    },
-    xxlarge: {
-      size: '36px',
-      height: '40px',
-    },
-    '3xl': {
-      size: '42px',
-      height: '46px',
-    },
-    '4xl': {
-      size: '48px',
-      height: '48px',
-    },
-    '5xl': {
-      size: '72px',
-      height: '72px',
-    },
-    '6xl': {
-      size: '72px',
-      height: '72px',
-    },
-    // This block applies size-specific weights to text to ensure
-    // that as text sizes get larger, the weight decreases.
-    // This block can be removed once grommet theme structure is enhanced
-    // to support size-specific weights.
-    extend: ({ size }) => `
-      ${
-        ['xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size)
-          ? 'font-weight: 300;'
-          : ''
-      };
-    `,
-  },
+  text: textTheme,
   textInput: {
     container: {
       extend: ({ theme }) => `
         svg {
           fill: ${
-            theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
+            theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light']
           };
           stroke: ${
-            theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
+            theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light']
           };
         }
       `,
@@ -1632,7 +1793,7 @@ export const hpe = deepFreeze({
   },
   tip: {
     content: {
-      background: 'background',
+      background: 'background-floating',
       border: {
         color: 'border-weak',
       },
@@ -1642,30 +1803,28 @@ export const hpe = deepFreeze({
         vertical: 'none',
         horizontal: 'small',
       },
-      round: 'xsmall',
+      round: components.hpe.drop.borderRadius,
     },
   },
   thumbsRating: {
     like: {
-      color: 'brand',
+      color: 'background-selected-strong-enabled',
     },
     dislike: {
-      color: 'brand',
+      color: 'background-selected-strong-enabled',
     },
   },
   toggleGroup: {
     button: {
-      pad: {
-        vertical: 'xsmall',
-        horizontal: 'small',
-      },
-      iconOnly: {
-        pad: {
-          vertical: '9px',
-          horizontal: '9px',
-        },
-      },
+      kind: 'toolbar',
     },
+    container: {
+      border: false,
+    },
+    divider: false,
+  },
+  buttonGroup: {
+    gap: 'small',
   },
   // Theme-Designer only parameters
   name: 'HPE 1',

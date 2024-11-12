@@ -70,5 +70,8 @@
   "pre-commit": [
     "lint-fix",
     "prettier"
-  ]
+  ],
+  "dependencies": {
+    "hpe-design-tokens": "^0.1.0"
+  }
 }
