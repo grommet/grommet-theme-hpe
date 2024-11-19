@@ -1,7 +1,7 @@
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import React from 'react';
 import { css } from 'styled-components';
-import { components, global, dark, light, large } from 'hpe-design-tokens';
+import { components, global, dark, light, medium } from 'hpe-design-tokens';
 import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
 import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
@@ -65,13 +65,13 @@ const paragraphTheme = {};
 const textTheme = {};
 textSizes.forEach((size) => {
   paragraphTheme[size] = {
-    size: large.hpe.text?.[size]?.fontSize,
-    height: large.hpe.text?.[size]?.lineHeight,
-    maxWidth: large.hpe.paragraph?.[size]?.maxWidth,
+    size: medium.hpe.text?.[size]?.fontSize,
+    height: medium.hpe.text?.[size]?.lineHeight,
+    maxWidth: medium.hpe.paragraph?.[size]?.maxWidth,
   };
   textTheme[size] = {
-    size: large.hpe.text?.[size].fontSize,
-    height: large.hpe.text?.[size].lineHeight,
+    size: medium.hpe.text?.[size].fontSize,
+    height: medium.hpe.text?.[size].lineHeight,
   };
 });
 
@@ -307,8 +307,8 @@ export const hpe = deepFreeze({
                url("https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff") format('woff');
           font-weight: 100;
         }`,
-      size: large.hpe.text.medium.fontSize,
-      height: large.hpe.text.medium.lineHeight,
+      size: medium.hpe.text.medium.fontSize,
+      height: medium.hpe.text.medium.lineHeight,
     },
     focus: {
       border: undefined,
@@ -992,19 +992,19 @@ export const hpe = deepFreeze({
   },
   heading: {
     color: 'heading',
-    weight: large.hpe.heading.xlarge.fontWeight,
+    weight: medium.hpe.heading.xlarge.fontWeight,
     level: {
       1: {
         font: {
-          weight: large.hpe.heading.xlarge.fontWeight,
+          weight: medium.hpe.heading.xlarge.fontWeight,
         },
         small: {
-          size: large.hpe.heading.large.fontSize,
-          height: large.hpe.heading.large.lineHeight,
+          size: medium.hpe.heading.large.fontSize,
+          height: medium.hpe.heading.large.lineHeight,
         },
         medium: {
-          size: large.hpe.heading.xlarge.fontSize,
-          height: large.hpe.heading.xlarge.lineHeight,
+          size: medium.hpe.heading.xlarge.fontSize,
+          height: medium.hpe.heading.xlarge.lineHeight,
         },
         large: {
           // TO DO what tokens?
@@ -1019,19 +1019,19 @@ export const hpe = deepFreeze({
       },
       2: {
         font: {
-          weight: large.hpe.heading.large.fontWeight,
+          weight: medium.hpe.heading.large.fontWeight,
         },
         small: {
-          size: large.hpe.heading.medium.fontSize,
-          height: large.hpe.heading.medium.lineHeight,
+          size: medium.hpe.heading.medium.fontSize,
+          height: medium.hpe.heading.medium.lineHeight,
         },
         medium: {
-          size: large.hpe.heading.large.fontSize,
-          height: large.hpe.heading.large.lineHeight,
+          size: medium.hpe.heading.large.fontSize,
+          height: medium.hpe.heading.large.lineHeight,
         },
         large: {
-          size: large.hpe.heading.xlarge.fontSize,
-          height: large.hpe.heading.xlarge.lineHeight,
+          size: medium.hpe.heading.xlarge.fontSize,
+          height: medium.hpe.heading.xlarge.lineHeight,
         },
         xlarge: {
           // TO DO what tokens?
@@ -1041,86 +1041,86 @@ export const hpe = deepFreeze({
       },
       3: {
         font: {
-          weight: large.hpe.heading.medium.fontWeight,
+          weight: medium.hpe.heading.medium.fontWeight,
         },
         small: {
-          size: large.hpe.heading.small.fontSize,
-          height: large.hpe.heading.small.lineHeight,
+          size: medium.hpe.heading.small.fontSize,
+          height: medium.hpe.heading.small.lineHeight,
         },
         medium: {
-          size: large.hpe.heading.medium.fontSize,
-          height: large.hpe.heading.medium.lineHeight,
+          size: medium.hpe.heading.medium.fontSize,
+          height: medium.hpe.heading.medium.lineHeight,
         },
         large: {
-          size: large.hpe.heading.large.fontSize,
-          height: large.hpe.heading.large.lineHeight,
+          size: medium.hpe.heading.large.fontSize,
+          height: medium.hpe.heading.large.lineHeight,
         },
         xlarge: {
-          size: large.hpe.heading.xlarge.fontSize,
-          height: large.hpe.heading.xlarge.lineHeight,
+          size: medium.hpe.heading.xlarge.fontSize,
+          height: medium.hpe.heading.xlarge.lineHeight,
         },
       },
       4: {
         font: {
-          weight: large.hpe.heading.small.fontWeight,
+          weight: medium.hpe.heading.small.fontWeight,
         },
         small: {
-          size: large.hpe.heading.xsmall.fontSize,
-          height: large.hpe.heading.xsmall.lineHeight,
+          size: medium.hpe.heading.xsmall.fontSize,
+          height: medium.hpe.heading.xsmall.lineHeight,
         },
         medium: {
-          size: large.hpe.heading.small.fontSize,
-          height: large.hpe.heading.small.lineHeight,
+          size: medium.hpe.heading.small.fontSize,
+          height: medium.hpe.heading.small.lineHeight,
         },
         large: {
-          size: large.hpe.heading.medium.fontSize,
-          height: large.hpe.heading.medium.lineHeight,
+          size: medium.hpe.heading.medium.fontSize,
+          height: medium.hpe.heading.medium.lineHeight,
         },
         xlarge: {
-          size: large.hpe.heading.large.fontSize,
-          height: large.hpe.heading.large.lineHeight,
+          size: medium.hpe.heading.large.fontSize,
+          height: medium.hpe.heading.large.lineHeight,
         },
       },
       5: {
         font: {
-          weight: large.hpe.heading.xsmall.fontWeight,
+          weight: medium.hpe.heading.xsmall.fontWeight,
         },
         small: {
-          size: large.hpe.heading.xxsmall.fontSize,
-          height: large.hpe.heading.xxsmall.lineHeight,
+          size: medium.hpe.heading.xxsmall.fontSize,
+          height: medium.hpe.heading.xxsmall.lineHeight,
         },
         medium: {
-          size: large.hpe.heading.xsmall.fontSize,
-          height: large.hpe.heading.xsmall.lineHeight,
+          size: medium.hpe.heading.xsmall.fontSize,
+          height: medium.hpe.heading.xsmall.lineHeight,
         },
         large: {
-          size: large.hpe.heading.small.fontSize,
-          height: large.hpe.heading.small.lineHeight,
+          size: medium.hpe.heading.small.fontSize,
+          height: medium.hpe.heading.small.lineHeight,
         },
         xlarge: {
-          size: large.hpe.heading.medium.fontSize,
-          height: large.hpe.heading.medium.lineHeight,
+          size: medium.hpe.heading.medium.fontSize,
+          height: medium.hpe.heading.medium.lineHeight,
         },
       },
       6: {
         font: {
-          weight: large.hpe.heading.xxsmall.fontWeight,
+          weight: medium.hpe.heading.xxsmall.fontWeight,
         },
         small: {
-          size: large.hpe.heading.xxsmall.fontSize,
-          height: large.hpe.heading.xxsmall.lineHeight,
+          size: medium.hpe.heading.xxsmall.fontSize,
+          height: medium.hpe.heading.xxsmall.lineHeight,
         },
         medium: {
-          size: large.hpe.heading.xxsmall.fontSize,
-          height: large.hpe.heading.xxsmall.lineHeight,
+          size: medium.hpe.heading.xxsmall.fontSize,
+          height: medium.hpe.heading.xxsmall.lineHeight,
         },
         large: {
-          size: large.hpe.heading.small.fontSize,
-          height: large.hpe.heading.small.lineHeight,
+          size: medium.hpe.heading.small.fontSize,
+          height: medium.hpe.heading.small.lineHeight,
         },
         xlarge: {
-          size: large.hpe.heading.medium.fontSize,
-          height: large.hpe.heading.medium.lineHeight,
+          size: medium.hpe.heading.medium.fontSize,
+          height: medium.hpe.heading.medium.lineHeight,
         },
       },
     },
@@ -1132,13 +1132,13 @@ export const hpe = deepFreeze({
     extend: ({ level, size }) => {
       let fontWeight = '';
       if (level === 3 && size === 'small') {
-        fontWeight = `font-weight: ${large.hpe.heading.small.fontWeight};`;
+        fontWeight = `font-weight: ${medium.hpe.heading.small.fontWeight};`;
         // undefined necessary so an h4 without size prop explicitly defined
         // still renders as weight 600
       } else if (level === 4 && ['small', 'medium', undefined].includes(size)) {
-        fontWeight = `font-weight: ${large.hpe.heading.small.fontWeight};`;
+        fontWeight = `font-weight: ${medium.hpe.heading.small.fontWeight};`;
       } else if (level === 5 && size === 'xlarge') {
-        fontWeight = `font-weight: ${large.hpe.heading.small.fontWeight};`;
+        fontWeight = `font-weight: ${medium.hpe.heading.small.fontWeight};`;
       }
       return fontWeight;
     },
@@ -1147,12 +1147,12 @@ export const hpe = deepFreeze({
     disableScaleDown: true,
     matchSize: true,
     size: {
-      xsmall: large.hpe.size.icon.xsmall,
-      small: large.hpe.size.icon.small,
-      medium: large.hpe.size.icon.medium,
-      large: large.hpe.size.icon.large,
-      xlarge: large.hpe.size.icon.xlarge,
-      xxlarge: large.hpe.size.icon.xxlarge,
+      xsmall: medium.hpe.size.icon.xsmall,
+      small: medium.hpe.size.icon.small,
+      medium: medium.hpe.size.icon.medium,
+      large: medium.hpe.size.icon.large,
+      xlarge: medium.hpe.size.icon.xlarge,
+      xxlarge: medium.hpe.size.icon.xxlarge,
     },
   },
   layer: {
@@ -1605,7 +1605,7 @@ export const hpe = deepFreeze({
     extend: ({ size }) => `
       ${
         ['xxlarge'].includes(size)
-          ? `font-weight: ${large.hpe.text[size].fontWeight};`
+          ? `font-weight: ${medium.hpe.text[size].fontWeight};`
           : ''
       };
     `,
