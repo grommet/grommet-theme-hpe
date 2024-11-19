@@ -52,15 +52,15 @@ textSizes.forEach(function (size) {
 var paragraphTheme = {};
 var textTheme = {};
 textSizes.forEach(function (size) {
-  var _large$hpe$text, _large$hpe$text2, _large$hpe$paragraph, _large$hpe$text3, _large$hpe$text4;
+  var _medium$hpe$text, _medium$hpe$text2, _medium$hpe$paragraph, _medium$hpe$text3, _medium$hpe$text4;
   paragraphTheme[size] = {
-    size: (_large$hpe$text = _hpeDesignTokens.large.hpe.text) == null || (_large$hpe$text = _large$hpe$text[size]) == null ? void 0 : _large$hpe$text.fontSize,
-    height: (_large$hpe$text2 = _hpeDesignTokens.large.hpe.text) == null || (_large$hpe$text2 = _large$hpe$text2[size]) == null ? void 0 : _large$hpe$text2.lineHeight,
-    maxWidth: (_large$hpe$paragraph = _hpeDesignTokens.large.hpe.paragraph) == null || (_large$hpe$paragraph = _large$hpe$paragraph[size]) == null ? void 0 : _large$hpe$paragraph.maxWidth
+    size: (_medium$hpe$text = _hpeDesignTokens.medium.hpe.text) == null || (_medium$hpe$text = _medium$hpe$text[size]) == null ? void 0 : _medium$hpe$text.fontSize,
+    height: (_medium$hpe$text2 = _hpeDesignTokens.medium.hpe.text) == null || (_medium$hpe$text2 = _medium$hpe$text2[size]) == null ? void 0 : _medium$hpe$text2.lineHeight,
+    maxWidth: (_medium$hpe$paragraph = _hpeDesignTokens.medium.hpe.paragraph) == null || (_medium$hpe$paragraph = _medium$hpe$paragraph[size]) == null ? void 0 : _medium$hpe$paragraph.maxWidth
   };
   textTheme[size] = {
-    size: (_large$hpe$text3 = _hpeDesignTokens.large.hpe.text) == null ? void 0 : _large$hpe$text3[size].fontSize,
-    height: (_large$hpe$text4 = _hpeDesignTokens.large.hpe.text) == null ? void 0 : _large$hpe$text4[size].lineHeight
+    size: (_medium$hpe$text3 = _hpeDesignTokens.medium.hpe.text) == null ? void 0 : _medium$hpe$text3[size].fontSize,
+    height: (_medium$hpe$text4 = _hpeDesignTokens.medium.hpe.text) == null ? void 0 : _medium$hpe$text4[size].lineHeight
   };
 });
 var buttonKindTheme = {};
@@ -214,7 +214,7 @@ var hpe = exports.hpe = deepFreeze({
     input: {
       font: {
         height: 'inherit',
-        weight: _hpeDesignTokens.components.hpe.formField.medium.valueText.fontWeight
+        weight: _hpeDesignTokens.components.hpe.formField.medium.value.fontWeight
       },
       padding: {
         horizontal: _hpeDesignTokens.components.hpe.formField.medium.input.container.paddingX,
@@ -226,13 +226,13 @@ var hpe = exports.hpe = deepFreeze({
           color: _hpeDesignTokens.components.hpe.formField.input.container.readOnly.borderColor
         }
       },
-      extend: "\n        &::-webkit-input-placeholder {\n        font-weight: " + _hpeDesignTokens.components.hpe.formField.medium.placeholderText.fontWeight + ";\n      }\n    \n      &::-moz-placeholder {\n        font-weight: " + _hpeDesignTokens.components.hpe.formField.medium.placeholderText.fontWeight + ";\n      }\n    \n      &:-ms-input-placeholder {\n        font-weight: " + _hpeDesignTokens.components.hpe.formField.medium.placeholderText.fontWeight + ";\n      }\n      "
+      extend: "\n        &::-webkit-input-placeholder {\n        font-weight: " + _hpeDesignTokens.components.hpe.formField.medium.placeholder.fontWeight + ";\n      }\n    \n      &::-moz-placeholder {\n        font-weight: " + _hpeDesignTokens.components.hpe.formField.medium.placeholder.fontWeight + ";\n      }\n    \n      &:-ms-input-placeholder {\n        font-weight: " + _hpeDesignTokens.components.hpe.formField.medium.placeholder.fontWeight + ";\n      }\n      "
     },
     font: {
       family: _hpeDesignTokens.global.hpe.fontStack.primary,
       face: "\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff\") format('woff');\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff\") format('woff');\n          font-weight: 400;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff\") format('woff');\n          font-weight: 700;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff\") format('woff');\n          font-weight: 600;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff\") format('woff');\n          font-weight: 500;\n        }\n        @font-face {\n          font-family: \"Metric\";\n          src: url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff2\") format('woff2'),\n               url(\"https://www.hpe.com/h41225/hfws-static/fonts/metric-hpe-web/MetricHPE-Web-Light.woff\") format('woff');\n          font-weight: 100;\n        }",
-      size: _hpeDesignTokens.large.hpe.text.medium.fontSize,
-      height: _hpeDesignTokens.large.hpe.text.medium.lineHeight
+      size: _hpeDesignTokens.medium.hpe.text.medium.fontSize,
+      height: _hpeDesignTokens.medium.hpe.text.medium.lineHeight
     },
     focus: {
       border: undefined
@@ -807,7 +807,7 @@ var hpe = exports.hpe = deepFreeze({
         color: _hpeDesignTokens.components.hpe.formField.input.container.disabled.borderColor
       },
       label: {
-        color: _hpeDesignTokens.components.hpe.formField.labelText.disabled.textColor
+        color: _hpeDesignTokens.components.hpe.formField.label.disabled.textColor
       }
     },
     error: {
@@ -824,7 +824,7 @@ var hpe = exports.hpe = deepFreeze({
       // TO DO need to handle modes
       size: 'xsmall',
       // TO DO we have a token but it's not a t-shirt size reference but fontSize, lineHeight directly
-      color: _hpeDesignTokens.components.hpe.formField.errorText.enabled.textColor,
+      color: _hpeDesignTokens.components.hpe.formField.error.enabled.textColor,
       margin: {
         // TO DO missing token
         bottom: 'xsmall',
@@ -840,12 +840,12 @@ var hpe = exports.hpe = deepFreeze({
     },
     help: {
       size: 'xsmall',
-      color: _hpeDesignTokens.components.hpe.formField.helpText.enabled.color,
+      color: _hpeDesignTokens.components.hpe.formField.help.enabled.color,
       margin: 'none' // TO DO missing token
     },
     info: {
       size: 'xsmall',
-      color: _hpeDesignTokens.components.hpe.formField.infoText.enabled.color,
+      color: _hpeDesignTokens.components.hpe.formField.info.enabled.color,
       margin: {
         // TO DO missing token
         bottom: 'xsmall',
@@ -856,7 +856,7 @@ var hpe = exports.hpe = deepFreeze({
     label: {
       size: 'xsmall',
       // TO DO how to capture this as token, currently we have "fontSize", "lineHeight", "..."
-      color: _hpeDesignTokens.components.hpe.formField.labelText.enabled.color,
+      color: _hpeDesignTokens.components.hpe.formField.label.enabled.color,
       margin: {
         // TO DO missing token
         bottom: 'none',
@@ -864,7 +864,7 @@ var hpe = exports.hpe = deepFreeze({
         horizontal: 'none'
       },
       requiredIndicator: true,
-      weight: _hpeDesignTokens.components.hpe.formField.medium.labelText.fontWeight
+      weight: _hpeDesignTokens.components.hpe.formField.medium.label.fontWeight
     },
     margin: {
       bottom: 'none' // TO DO missing token
@@ -882,19 +882,19 @@ var hpe = exports.hpe = deepFreeze({
   },
   heading: {
     color: 'heading',
-    weight: _hpeDesignTokens.large.hpe.heading.xlarge.fontWeight,
+    weight: _hpeDesignTokens.medium.hpe.heading.xlarge.fontWeight,
     level: {
       1: {
         font: {
-          weight: _hpeDesignTokens.large.hpe.heading.xlarge.fontWeight
+          weight: _hpeDesignTokens.medium.hpe.heading.xlarge.fontWeight
         },
         small: {
-          size: _hpeDesignTokens.large.hpe.heading.large.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.large.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.large.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.large.lineHeight
         },
         medium: {
-          size: _hpeDesignTokens.large.hpe.heading.xlarge.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.xlarge.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.xlarge.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.xlarge.lineHeight
         },
         large: {
           // TO DO what tokens?
@@ -909,19 +909,19 @@ var hpe = exports.hpe = deepFreeze({
       },
       2: {
         font: {
-          weight: _hpeDesignTokens.large.hpe.heading.large.fontWeight
+          weight: _hpeDesignTokens.medium.hpe.heading.large.fontWeight
         },
         small: {
-          size: _hpeDesignTokens.large.hpe.heading.medium.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.medium.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.medium.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.medium.lineHeight
         },
         medium: {
-          size: _hpeDesignTokens.large.hpe.heading.large.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.large.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.large.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.large.lineHeight
         },
         large: {
-          size: _hpeDesignTokens.large.hpe.heading.xlarge.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.xlarge.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.xlarge.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.xlarge.lineHeight
         },
         xlarge: {
           // TO DO what tokens?
@@ -931,86 +931,86 @@ var hpe = exports.hpe = deepFreeze({
       },
       3: {
         font: {
-          weight: _hpeDesignTokens.large.hpe.heading.medium.fontWeight
+          weight: _hpeDesignTokens.medium.hpe.heading.medium.fontWeight
         },
         small: {
-          size: _hpeDesignTokens.large.hpe.heading.small.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.small.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.small.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.small.lineHeight
         },
         medium: {
-          size: _hpeDesignTokens.large.hpe.heading.medium.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.medium.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.medium.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.medium.lineHeight
         },
         large: {
-          size: _hpeDesignTokens.large.hpe.heading.large.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.large.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.large.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.large.lineHeight
         },
         xlarge: {
-          size: _hpeDesignTokens.large.hpe.heading.xlarge.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.xlarge.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.xlarge.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.xlarge.lineHeight
         }
       },
       4: {
         font: {
-          weight: _hpeDesignTokens.large.hpe.heading.small.fontWeight
+          weight: _hpeDesignTokens.medium.hpe.heading.small.fontWeight
         },
         small: {
-          size: _hpeDesignTokens.large.hpe.heading.xsmall.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.xsmall.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.xsmall.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.xsmall.lineHeight
         },
         medium: {
-          size: _hpeDesignTokens.large.hpe.heading.small.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.small.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.small.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.small.lineHeight
         },
         large: {
-          size: _hpeDesignTokens.large.hpe.heading.medium.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.medium.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.medium.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.medium.lineHeight
         },
         xlarge: {
-          size: _hpeDesignTokens.large.hpe.heading.large.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.large.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.large.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.large.lineHeight
         }
       },
       5: {
         font: {
-          weight: _hpeDesignTokens.large.hpe.heading.xsmall.fontWeight
+          weight: _hpeDesignTokens.medium.hpe.heading.xsmall.fontWeight
         },
         small: {
-          size: _hpeDesignTokens.large.hpe.heading.xxsmall.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.xxsmall.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.xxsmall.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.xxsmall.lineHeight
         },
         medium: {
-          size: _hpeDesignTokens.large.hpe.heading.xsmall.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.xsmall.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.xsmall.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.xsmall.lineHeight
         },
         large: {
-          size: _hpeDesignTokens.large.hpe.heading.small.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.small.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.small.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.small.lineHeight
         },
         xlarge: {
-          size: _hpeDesignTokens.large.hpe.heading.medium.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.medium.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.medium.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.medium.lineHeight
         }
       },
       6: {
         font: {
-          weight: _hpeDesignTokens.large.hpe.heading.xxsmall.fontWeight
+          weight: _hpeDesignTokens.medium.hpe.heading.xxsmall.fontWeight
         },
         small: {
-          size: _hpeDesignTokens.large.hpe.heading.xxsmall.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.xxsmall.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.xxsmall.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.xxsmall.lineHeight
         },
         medium: {
-          size: _hpeDesignTokens.large.hpe.heading.xxsmall.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.xxsmall.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.xxsmall.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.xxsmall.lineHeight
         },
         large: {
-          size: _hpeDesignTokens.large.hpe.heading.small.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.small.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.small.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.small.lineHeight
         },
         xlarge: {
-          size: _hpeDesignTokens.large.hpe.heading.medium.fontSize,
-          height: _hpeDesignTokens.large.hpe.heading.medium.lineHeight
+          size: _hpeDesignTokens.medium.hpe.heading.medium.fontSize,
+          height: _hpeDesignTokens.medium.hpe.heading.medium.lineHeight
         }
       }
     },
@@ -1024,13 +1024,13 @@ var hpe = exports.hpe = deepFreeze({
         size = _ref9.size;
       var fontWeight = '';
       if (level === 3 && size === 'small') {
-        fontWeight = "font-weight: " + _hpeDesignTokens.large.hpe.heading.small.fontWeight + ";";
+        fontWeight = "font-weight: " + _hpeDesignTokens.medium.hpe.heading.small.fontWeight + ";";
         // undefined necessary so an h4 without size prop explicitly defined
         // still renders as weight 600
       } else if (level === 4 && ['small', 'medium', undefined].includes(size)) {
-        fontWeight = "font-weight: " + _hpeDesignTokens.large.hpe.heading.small.fontWeight + ";";
+        fontWeight = "font-weight: " + _hpeDesignTokens.medium.hpe.heading.small.fontWeight + ";";
       } else if (level === 5 && size === 'xlarge') {
-        fontWeight = "font-weight: " + _hpeDesignTokens.large.hpe.heading.small.fontWeight + ";";
+        fontWeight = "font-weight: " + _hpeDesignTokens.medium.hpe.heading.small.fontWeight + ";";
       }
       return fontWeight;
     }
@@ -1039,12 +1039,12 @@ var hpe = exports.hpe = deepFreeze({
     disableScaleDown: true,
     matchSize: true,
     size: {
-      xsmall: _hpeDesignTokens.large.hpe.size.icon.xsmall,
-      small: _hpeDesignTokens.large.hpe.size.icon.small,
-      medium: _hpeDesignTokens.large.hpe.size.icon.medium,
-      large: _hpeDesignTokens.large.hpe.size.icon.large,
-      xlarge: _hpeDesignTokens.large.hpe.size.icon.xlarge,
-      xxlarge: _hpeDesignTokens.large.hpe.size.icon.xxlarge
+      xsmall: _hpeDesignTokens.medium.hpe.size.icon.xsmall,
+      small: _hpeDesignTokens.medium.hpe.size.icon.small,
+      medium: _hpeDesignTokens.medium.hpe.size.icon.medium,
+      large: _hpeDesignTokens.medium.hpe.size.icon.large,
+      xlarge: _hpeDesignTokens.medium.hpe.size.icon.xlarge,
+      xxlarge: _hpeDesignTokens.medium.hpe.size.icon.xxlarge
     }
   },
   layer: {
@@ -1492,7 +1492,7 @@ var hpe = exports.hpe = deepFreeze({
     // to support size-specific weights.
     extend: function extend(_ref11) {
       var size = _ref11.size;
-      return "\n      " + (['xxlarge'].includes(size) ? "font-weight: " + _hpeDesignTokens.large.hpe.text[size].fontWeight + ";" : '') + ";\n    ";
+      return "\n      " + (['xxlarge'].includes(size) ? "font-weight: " + _hpeDesignTokens.medium.hpe.text[size].fontWeight + ";" : '') + ";\n    ";
     }
   }),
   radioButton: {

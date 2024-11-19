@@ -5,32 +5,32 @@ exports.dimensions = void 0;
 var _hpeDesignTokens = require("hpe-design-tokens");
 var dimensions = exports.dimensions = {
   borderSize: {
-    xsmall: _hpeDesignTokens.large.hpe.borderWidth.xsmall,
-    small: _hpeDesignTokens.large.hpe.borderWidth.small,
-    medium: _hpeDesignTokens.large.hpe.borderWidth.medium,
-    "default": _hpeDesignTokens.large.hpe.borderWidth["default"],
-    large: _hpeDesignTokens.large.hpe.borderWidth.large,
-    xlarge: _hpeDesignTokens.large.hpe.borderWidth.xlarge
+    xsmall: _hpeDesignTokens.medium.hpe.borderWidth.xsmall,
+    small: _hpeDesignTokens.medium.hpe.borderWidth.small,
+    medium: _hpeDesignTokens.medium.hpe.borderWidth.medium,
+    "default": _hpeDesignTokens.medium.hpe.borderWidth["default"],
+    large: _hpeDesignTokens.medium.hpe.borderWidth.large,
+    xlarge: _hpeDesignTokens.medium.hpe.borderWidth.xlarge
   },
   edgeSize: {
-    none: _hpeDesignTokens.large.hpe.spacing.none,
-    hair: _hpeDesignTokens.large.hpe.spacing.hair,
-    xxsmall: _hpeDesignTokens.large.hpe.spacing.xxsmall,
-    xsmall: _hpeDesignTokens.large.hpe.spacing.xsmall,
-    small: _hpeDesignTokens.large.hpe.spacing.small,
-    medium: _hpeDesignTokens.large.hpe.spacing.medium,
-    large: _hpeDesignTokens.large.hpe.spacing.large,
-    xlarge: _hpeDesignTokens.large.hpe.spacing.xlarge,
+    none: _hpeDesignTokens.medium.hpe.spacing.none,
+    hair: _hpeDesignTokens.medium.hpe.spacing.hair,
+    xxsmall: _hpeDesignTokens.medium.hpe.spacing.xxsmall,
+    xsmall: _hpeDesignTokens.medium.hpe.spacing.xsmall,
+    small: _hpeDesignTokens.medium.hpe.spacing.small,
+    medium: _hpeDesignTokens.medium.hpe.spacing.medium,
+    large: _hpeDesignTokens.medium.hpe.spacing.large,
+    xlarge: _hpeDesignTokens.medium.hpe.spacing.xlarge,
     responsiveBreakpoint: 'small'
   },
   size: {
-    xxsmall: _hpeDesignTokens.large.hpe.size.content.xxsmall,
-    xsmall: _hpeDesignTokens.large.hpe.size.content.xsmall,
-    small: _hpeDesignTokens.large.hpe.size.content.small,
-    medium: _hpeDesignTokens.large.hpe.size.content.medium,
-    large: _hpeDesignTokens.large.hpe.size.content.large,
-    xlarge: _hpeDesignTokens.large.hpe.size.content.xlarge,
-    xxlarge: _hpeDesignTokens.large.hpe.size.content.xxlarge,
+    xxsmall: _hpeDesignTokens.medium.hpe.size.content.xxsmall,
+    xsmall: _hpeDesignTokens.medium.hpe.size.content.xsmall,
+    small: _hpeDesignTokens.medium.hpe.size.content.small,
+    medium: _hpeDesignTokens.medium.hpe.size.content.medium,
+    large: _hpeDesignTokens.medium.hpe.size.content.large,
+    xlarge: _hpeDesignTokens.medium.hpe.size.content.xlarge,
+    xxlarge: _hpeDesignTokens.medium.hpe.size.content.xxlarge,
     full: '100%'
   },
   breakpoints: {
