@@ -242,7 +242,7 @@ export const hpe = deepFreeze({
     input: {
       font: {
         height: 'inherit',
-        weight: components.hpe.formField.medium.valueText.fontWeight,
+        weight: components.hpe.formField.medium.value.fontWeight,
       },
       padding: {
         horizontal: components.hpe.formField.medium.input.container.paddingX,
@@ -257,15 +257,15 @@ export const hpe = deepFreeze({
       },
       extend: `
         &::-webkit-input-placeholder {
-        font-weight: ${components.hpe.formField.medium.placeholderText.fontWeight};
+        font-weight: ${components.hpe.formField.medium.placeholder.fontWeight};
       }
     
       &::-moz-placeholder {
-        font-weight: ${components.hpe.formField.medium.placeholderText.fontWeight};
+        font-weight: ${components.hpe.formField.medium.placeholder.fontWeight};
       }
     
       &:-ms-input-placeholder {
-        font-weight: ${components.hpe.formField.medium.placeholderText.fontWeight};
+        font-weight: ${components.hpe.formField.medium.placeholder.fontWeight};
       }
       `,
     },
@@ -924,7 +924,7 @@ export const hpe = deepFreeze({
         color: components.hpe.formField.input.container.disabled.borderColor,
       },
       label: {
-        color: components.hpe.formField.labelText.disabled.textColor,
+        color: components.hpe.formField.label.disabled.textColor,
       },
     },
     error: {
@@ -937,7 +937,7 @@ export const hpe = deepFreeze({
       },
       icon: <CircleAlert size="small" color={light.hpe.color.icon.critical} />, // TO DO need to handle modes
       size: 'xsmall', // TO DO we have a token but it's not a t-shirt size reference but fontSize, lineHeight directly
-      color: components.hpe.formField.errorText.enabled.textColor,
+      color: components.hpe.formField.error.enabled.textColor,
       margin: {
         // TO DO missing token
         bottom: 'xsmall',
@@ -953,12 +953,12 @@ export const hpe = deepFreeze({
     },
     help: {
       size: 'xsmall',
-      color: components.hpe.formField.helpText.enabled.color,
+      color: components.hpe.formField.help.enabled.color,
       margin: 'none', // TO DO missing token
     },
     info: {
       size: 'xsmall',
-      color: components.hpe.formField.infoText.enabled.color,
+      color: components.hpe.formField.info.enabled.color,
       margin: {
         // TO DO missing token
         bottom: 'xsmall',
@@ -968,7 +968,7 @@ export const hpe = deepFreeze({
     },
     label: {
       size: 'xsmall', // TO DO how to capture this as token, currently we have "fontSize", "lineHeight", "..."
-      color: components.hpe.formField.labelText.enabled.color,
+      color: components.hpe.formField.label.enabled.color,
       margin: {
         // TO DO missing token
         bottom: 'none',
@@ -976,7 +976,7 @@ export const hpe = deepFreeze({
         horizontal: 'none',
       },
       requiredIndicator: true,
-      weight: components.hpe.formField.medium.labelText.fontWeight,
+      weight: components.hpe.formField.medium.label.fontWeight,
     },
     margin: {
       bottom: 'none', // TO DO missing token
