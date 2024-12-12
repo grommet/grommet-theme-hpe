@@ -39,7 +39,7 @@ var colors = {
   code: hpeColors.text,
   comment: {
     dark: hpeColors.green.light,
-    light: hpeColors.green.dark
+    light: '#006750'
   },
   entity: {
     dark: hpeColors.blue.light,

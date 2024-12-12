@@ -43,7 +43,7 @@ var colors = {
   code: _colors.colors.text,
   comment: {
     dark: _colors.colors.green.light,
-    light: _colors.colors.green.dark
+    light: '#006750'
   },
   entity: {
     dark: _colors.colors.blue.light,

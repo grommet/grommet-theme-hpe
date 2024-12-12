@@ -1,9 +1,9 @@
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 import { hpe } from './hpe';
 export var isObject = function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
 };
-export var deepMerge = function deepMerge(target) {
+var _deepMerge = function deepMerge(target) {
   for (var _len = arguments.length, sources = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     sources[_key - 1] = arguments[_key];
   }
@@ -18,7 +18,7 @@ export var deepMerge = function deepMerge(target) {
           if (!output[key]) {
             output[key] = _extends({}, source[key]);
           } else {
-            output[key] = deepMerge(output[key], source[key]);
+            output[key] = _deepMerge(output[key], source[key]);
           }
         } else {
           output[key] = source[key];
@@ -28,7 +28,8 @@ export var deepMerge = function deepMerge(target) {
   });
   return output;
 };
-export var hpePop = deepMerge(hpe, {
+export { _deepMerge as deepMerge };
+export var hpePop = _deepMerge(hpe, {
   heading: {
     color: 'text-strong',
     weight: 400,
