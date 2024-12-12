@@ -135,5 +135,6 @@ export const colors = {
   focus: 'teal!',
   placeholder: 'text-weak',
   'text-primary-button': '#FFFFFF',
+  'text-primary': '#006750',
   'background-cta-alternate': '#F2F2F2',
 };
