@@ -12,71 +12,72 @@ export const colors = {
   'status-error': undefined,
   brand: 'green!',
   background: {
-    dark: '#263040',
+    dark: '#1C1C1C',
     light: '#FFFFFF',
   },
   'background-back': {
-    dark: '#263040',
-    light: '#EFEFEF',
+    dark: '#1C1C1C',
+    light: '#F7F7F7',
   },
   'background-front': {
-    dark: '#404B5C',
+    dark: '#222222',
     light: '#FFFFFF',
   },
   'background-contrast': {
-    dark: '#FFFFFF14',
+    dark: '#FFFFFF0F', // 6%
     light: '#0000000A',
   },
+  'background-layer-overlay': '#00000080',
   icon: 'text',
   text: {
-    dark: '#C0CADC',
-    light: '#444444',
+    dark: '#FFFFFF',
+    light: '#555555',
   },
   'text-strong': {
     dark: '#FFFFFF',
-    light: '#000000',
+    light: '#2E2E2E',
   },
   'text-weak': {
-    dark: '#8C98AA',
+    dark: '#FFFFFF80', // 50%
     light: '#757575',
   },
   'text-xweak': {
-    dark: '#606B7D',
+    dark: '#FFFFFF33', // 20%
     light: '#BBBBBB',
   },
   border: {
-    dark: '#7887A1',
-    light: '#999999',
+    dark: '#FFFFFF5C', // 36%
+    light: '#0000005C', // 36%
   },
   'border-strong': {
-    dark: '#AFBCD2',
-    light: '#666666',
+    dark: '#FFFFFFB8', // 72%
+    light: '#000000B8', // 72%
   },
   'border-weak': {
-    dark: '#606B7D',
-    light: '#BBBBBB',
+    dark: '#FFFFFF1F', // 12%
+    light: '#0000001F', // 12%
   },
-  control: 'green',
+  control: 'brand',
   'active-background': 'background-contrast',
   'active-text': 'text',
   'disabled-text': 'text-weak', // deprecated, use text-weak instead
-  'selected-background': 'green',
-  'selected-text': 'text-strong',
+  'selected-background': 'green!',
+  'selected-text': 'text-primary-button', // necessary to meet color contrast on HPE green background
   'status-critical': {
-    dark: '#D04F4E',
-    light: '#FC5A5A',
+    dark: '#FC5A5A',
+    light: '#EC3331',
   },
   'status-warning': {
-    dark: '#9B6310',
-    light: '#FFBC44',
+    dark: '#D36D00',
+    light: '#D36D00',
   },
   'status-ok': {
-    dark: '#008567',
-    light: '#17EBA0',
+    dark: '#17D0A6',
+    light: '#009A71',
   },
   'status-unknown': {
-    dark: '#4F5F76',
-    light: '#CCCCCC',
+    dark: '#757575',
+    light: '#8C8C8C',
   },
   'status-disabled': '#CCCCCC', // deprecated, does not support light and dark. use text-weak instead
   blue: {
@@ -116,15 +117,15 @@ export const colors = {
   'yellow!': '#FEC901',
   'validation-critical': {
     light: '#FC61613D',
-    dark: '#C54E4B5C',
+    dark: '#CC1F1A4D', // 30%
   },
   'validation-ok': {
     light: '#17EBA03D',
-    dark: '#00856759',
+    dark: '#17D0A64D',
   },
   'validation-warning': {
     light: '#FFBC443D',
-    dark: '#9B63105C',
+    dark: '#D891284D',
   },
   'graph-0': 'orange!',
   'graph-1': 'blue!',
@@ -133,4 +134,6 @@ export const colors = {
   'graph-4': 'teal!',
   focus: 'teal!',
   placeholder: 'text-weak',
+  'text-primary-button': '#FFFFFF',
+  'background-cta-alternate': '#F2F2F2',
 };
