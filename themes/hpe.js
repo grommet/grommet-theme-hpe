@@ -530,6 +530,9 @@ var hpe = exports.hpe = deepFreeze({
   calendar: {
     // ensure color is #FFFFFF to meet color contrast requirement on HPE green
     day: {
+      adjacent: {
+        color: 'text-weak'
+      },
       extend: function extend(_ref3) {
         var isSelected = _ref3.isSelected,
           theme = _ref3.theme;

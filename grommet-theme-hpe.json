@@ -563,7 +563,11 @@
     }
   },
   "calendar": {
-    "day": {},
+    "day": {
+      "adjacent": {
+        "color": "text-weak"
+      }
+    },
     "icons": {
       "next": {},
       "previous": {}
