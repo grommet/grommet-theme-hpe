@@ -13,22 +13,16 @@ if (process.env.CI) {
   del(localFolder).then(() => {
     git()
       .clone(repoURL, localFolder)
-      .then(() => git(localFolder).checkout('gh-pages'))
-      .then(() =>
-        fs.copy(
-          `${localDist}/grommet-theme-hpe.min.js`,
-          `${localFolder}/grommet-theme-hpe.min.js`,
-        ),
-      )
+      .then(() => git(localFolder).checkout('TOKENS-stable'))
+      .then(() => del([`${localFolder}/**/*`]))
+      .then(() => fs.copy(localDist, localFolder))
       .then(() => git(localFolder).add(['--all', '.']))
-      .then(() =>
-        git(localFolder).commit('grommet-theme-hpe .min.js and .json updated'),
-      )
-      .then(() => git(localFolder).push('origin', 'gh-pages'))
+      .then(() => git(localFolder).commit('TOKENS-stable updated'))
+      .then(() => git(localFolder).push('origin', 'TOKENS-stable'))
       .catch((err) => console.error('failed: ', err));
   });
 } else {
   console.warn(
-    'Skipping release. Release-gh-pages task should be executed by CI only.',
+    'Skipping release. Release:tokens-stable task should be executed by CI only.',
   );
 }
