@@ -72,20 +72,20 @@ export var colors = {
   'selected-text': 'text-primary-button',
   // necessary to meet color contrast on HPE green background
   'status-critical': {
-    dark: '#FC5A5A',
-    light: '#EC3331'
+    dark: '#D04F4E',
+    light: '#FC5A5A'
   },
   'status-warning': {
-    dark: '#D36D00',
-    light: '#D36D00'
+    dark: '#9B6310',
+    light: '#FFBC44'
   },
   'status-ok': {
-    dark: '#17D0A6',
-    light: '#009A71'
+    dark: '#008567',
+    light: '#17EBA0'
   },
   'status-unknown': {
-    dark: '#757575',
-    light: '#8C8C8C'
+    dark: '#555555',
+    light: '#CCCCCC'
   },
   'status-disabled': '#CCCCCC',
   // deprecated, does not support light and dark. use text-weak instead
