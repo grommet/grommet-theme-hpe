@@ -1411,6 +1411,24 @@ export var hpe = deepFreeze({
     }
   },
   select: {
+    clear: {
+      container: {
+        background: undefined,
+        pad: {
+          horizontal: '12px',
+          vertical: '6px'
+        },
+        hover: {
+          background: 'background-contrast'
+        }
+      },
+      text: {
+        color: 'text-strong',
+        size: '19px',
+        // align to button font size
+        weight: 600
+      }
+    },
     control: {
       extend: function extend(_ref17) {
         var disabled = _ref17.disabled;

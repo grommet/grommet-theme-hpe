@@ -1355,6 +1355,22 @@
     }
   },
   "select": {
+    "clear": {
+      "container": {
+        "pad": {
+          "horizontal": "12px",
+          "vertical": "6px"
+        },
+        "hover": {
+          "background": "background-contrast"
+        }
+      },
+      "text": {
+        "color": "text-strong",
+        "size": "19px",
+        "weight": 600
+      }
+    },
     "control": {},
     "emptySearchMessage": {
       "container": {
