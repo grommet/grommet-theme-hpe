@@ -4,11 +4,17 @@
   "plugins": ["prettier"],
   "env": {
     "node": true,
-    "es6": true
+    "es6": true,
   },
   "rules": {
     "comma-dangle": ["error", "always-multiline"],
     "import/prefer-default-export": 0,
-    "react/jsx-filename-extension": 0
-  }
+    "react/jsx-filename-extension": 0,
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": ["^hpe-design-tokens/.+"],
+      },
+    ],
+  },
 }
