@@ -48,10 +48,10 @@ const textSizes = [
   'large',
   'xlarge',
   'xxlarge',
-  '3xl',
-  '4xl',
-  '5xl',
-  '6xl',
+  '3xlarge',
+  '4xlarge',
+  '5xlarge',
+  '6xlarge',
 ];
 
 const getThemeColor = (color, theme) =>
