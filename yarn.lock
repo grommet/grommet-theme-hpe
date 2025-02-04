@@ -2662,7 +2662,7 @@ homedir-polyfill@^1.0.1:
 
 "hpe-design-tokens@https://github.com/grommet/hpe-design-system.git#design-tokens-NEXT-stable":
   version "0.8.0"
-  resolved "https://github.com/grommet/hpe-design-system.git#bb189218bd03e7aef68bc5456d5644b31ede6788"
+  resolved "https://github.com/grommet/hpe-design-system.git#631c4b40ae0ecb2f393cc05971f9289b7ea9b60a"
 
 human-signals@^2.1.0:
   version "2.1.0"
