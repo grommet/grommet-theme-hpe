@@ -2,7 +2,7 @@
 
 exports.__esModule = true;
 exports.colors = void 0;
-var _hpeDesignTokens = require("hpe-design-tokens");
+var _grommet = require("hpe-design-tokens/grommet");
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 var _flattenObject = function flattenObject(obj, delimiter, prefix) {
   if (delimiter === void 0) {
@@ -22,22 +22,20 @@ var access = function access(path, object) {
     return o[i];
   }, object);
 };
-var colorNames = _flattenObject(_hpeDesignTokens.light, '-');
-var colorTokens = {};
-Object.keys(colorNames).forEach(function (color) {
-  if (!color.includes('elevation')) {
-    var adjustedColor = color.split('-').join('.');
-    colorTokens[color] = {
-      light: access("hpe.color." + adjustedColor, _hpeDesignTokens.light),
-      dark: access("hpe.color." + adjustedColor, _hpeDesignTokens.dark)
+var flatColors = _flattenObject(_grommet.light, '-');
+var tokenColors = {};
+Object.keys(flatColors).forEach(function (color) {
+  if (!color.includes('shadow')) {
+    var _color$split = color.split('-'),
+      category = _color$split[0];
+    var flatName = color.split('-').slice(1).join('-');
+    tokenColors[color] = {
+      light: access("hpe.color." + category + (flatName ? "." + flatName : ''), _grommet.light),
+      dark: access("hpe.color." + category + (flatName ? "." + flatName : ''), _grommet.dark)
     };
   }
 });
-var MISSING = {
-  color: 'red',
-  weight: 700
-};
-var colors = exports.colors = _extends({}, colorTokens, {
+var colors = exports.colors = _extends({}, tokenColors, {
   // ---- DEPRECATED ---- //
   'accent-1': undefined,
   'accent-2': undefined,
@@ -49,159 +47,139 @@ var colors = exports.colors = _extends({}, colorTokens, {
   'neutral-4': undefined,
   'neutral-5': undefined,
   'status-error': undefined,
-  // ---- TO DO: Tokens do not exist, should they? ---- //
-  brand: MISSING.color,
-  control: MISSING.color,
-  'active-text': MISSING.color,
-  'disabled-text': MISSING.color,
-  // deprecated, use text-weak instead
-
-  'text-primary-button': _hpeDesignTokens.components.hpe.button.primary.enabled.textColor,
-  'background-cta-alternate': MISSING.color,
-  // ----------- These ones we need to map manually for backwards compatibility -----------
-  // ----------- with current color namespace ---------------
+  control: 'background-primary-strong',
+  'active-text': 'text-strong',
+  'text-primary-button': _grommet.components.hpe.button.primary.rest.textColor,
+  'background-cta-alternate': 'background-contrast',
+  brand: {
+    dark: _grommet.dark.hpe.color.decorative.brand,
+    light: _grommet.light.hpe.color.decorative.brand
+  },
   'background-layer-overlay': {
-    dark: _hpeDesignTokens.dark.hpe.color.background.screenOverlay,
-    light: _hpeDesignTokens.light.hpe.color.background.screenOverlay
+    dark: _grommet.dark.hpe.color.background.screenOverlay,
+    light: _grommet.light.hpe.color.background.screenOverlay
   },
   'active-background': {
-    dark: _hpeDesignTokens.dark.hpe.color.background.active,
-    light: _hpeDesignTokens.light.hpe.color.background.active
+    dark: _grommet.dark.hpe.color.background.active,
+    light: _grommet.light.hpe.color.background.active
   },
   background: {
-    dark: _hpeDesignTokens.dark.hpe.color.background["default"],
-    light: _hpeDesignTokens.light.hpe.color.background["default"]
+    dark: _grommet.dark.hpe.color.background["default"],
+    light: _grommet.light.hpe.color.background["default"]
   },
   text: {
-    dark: _hpeDesignTokens.dark.hpe.color.text["default"],
-    light: _hpeDesignTokens.light.hpe.color.text["default"]
+    dark: _grommet.dark.hpe.color.text["default"],
+    light: _grommet.light.hpe.color.text["default"]
   },
   border: {
-    dark: _hpeDesignTokens.dark.hpe.color.border["default"],
-    light: _hpeDesignTokens.light.hpe.color.border["default"]
+    dark: _grommet.dark.hpe.color.border["default"],
+    light: _grommet.light.hpe.color.border["default"]
   },
   blue: {
-    dark: _hpeDesignTokens.dark.hpe.color.decorative.blue,
-    light: _hpeDesignTokens.light.hpe.color.decorative.blue
+    dark: _grommet.dark.hpe.color.decorative.blue,
+    light: _grommet.light.hpe.color.decorative.blue
   },
-  'blue!': {
-    dark: _hpeDesignTokens.dark.hpe.color.decorative['blue!'],
-    light: _hpeDesignTokens.light.hpe.color.decorative['blue!']
-  },
+  'blue!': _grommet.primitives.hpe.base.color['blue-700'],
   green: {
-    dark: _hpeDesignTokens.dark.hpe.color.decorative.green,
-    light: _hpeDesignTokens.light.hpe.color.decorative.green
+    dark: _grommet.dark.hpe.color.decorative.green,
+    light: _grommet.light.hpe.color.decorative.green
   },
   'green!': {
-    dark: _hpeDesignTokens.dark.hpe.color.decorative['green!'],
-    light: _hpeDesignTokens.light.hpe.color.decorative['green!']
+    dark: _grommet.dark.hpe.color.decorative.brand,
+    light: _grommet.light.hpe.color.decorative.brand
   },
   teal: {
-    dark: _hpeDesignTokens.dark.hpe.color.decorative.teal,
-    light: _hpeDesignTokens.light.hpe.color.decorative.teal
+    dark: _grommet.dark.hpe.color.decorative.teal,
+    light: _grommet.light.hpe.color.decorative.teal
   },
-  'teal!': {
-    dark: _hpeDesignTokens.dark.hpe.color.decorative['teal!'],
-    light: _hpeDesignTokens.light.hpe.color.decorative['teal!']
-  },
+  'teal!': _grommet.primitives.hpe.base.color['teal-400'],
   purple: {
-    dark: _hpeDesignTokens.dark.hpe.color.decorative.purple,
-    light: _hpeDesignTokens.light.hpe.color.decorative.purple
+    dark: _grommet.dark.hpe.color.decorative.purple,
+    light: _grommet.light.hpe.color.decorative.purple
   },
-  'purple!': {
-    dark: _hpeDesignTokens.dark.hpe.color.decorative['purple!'],
-    light: _hpeDesignTokens.light.hpe.color.decorative['purple!']
-  },
+  'purple!': _grommet.primitives.hpe.base.color['purple-800'],
   red: {
-    dark: _hpeDesignTokens.dark.hpe.color.decorative.red,
-    light: _hpeDesignTokens.light.hpe.color.decorative.red
+    dark: _grommet.dark.hpe.color.decorative.red,
+    light: _grommet.light.hpe.color.decorative.red
   },
-  'red!': {
-    dark: _hpeDesignTokens.dark.hpe.color.decorative['red!'],
-    light: _hpeDesignTokens.light.hpe.color.decorative['red!']
-  },
+  'red!': _grommet.primitives.hpe.base.color['red-750'],
   orange: {
-    dark: _hpeDesignTokens.dark.hpe.color.decorative.orange,
-    light: _hpeDesignTokens.light.hpe.color.decorative.orange
+    dark: _grommet.dark.hpe.color.decorative.orange,
+    light: _grommet.light.hpe.color.decorative.orange
   },
-  'orange!': {
-    dark: _hpeDesignTokens.dark.hpe.color.decorative['orange!'],
-    light: _hpeDesignTokens.light.hpe.color.decorative['orange!']
-  },
+  'orange!': _grommet.primitives.hpe.base.color['orange-500'],
   yellow: {
-    dark: _hpeDesignTokens.dark.hpe.color.decorative.yellow,
-    light: _hpeDesignTokens.light.hpe.color.decorative.yellow
+    dark: _grommet.dark.hpe.color.decorative.yellow,
+    light: _grommet.light.hpe.color.decorative.yellow
   },
-  'yellow!': {
-    dark: _hpeDesignTokens.dark.hpe.color.decorative['yellow!'],
-    light: _hpeDesignTokens.light.hpe.color.decorative['yellow!']
-  },
+  'yellow!': _grommet.primitives.hpe.base.color['yellow-400'],
   'graph-0': {
-    light: _hpeDesignTokens.light.hpe.color.dataVis.categorical[10],
-    dark: _hpeDesignTokens.dark.hpe.color.dataVis.categorical[10]
+    light: _grommet.light.hpe.color.dataVis['categorical-10'],
+    dark: _grommet.dark.hpe.color.dataVis['categorical-10']
   },
   'graph-1': {
-    light: _hpeDesignTokens.light.hpe.color.dataVis.categorical[20],
-    dark: _hpeDesignTokens.dark.hpe.color.dataVis.categorical[20]
+    light: _grommet.light.hpe.color.dataVis['categorical-20'],
+    dark: _grommet.dark.hpe.color.dataVis['categorical-20']
   },
   'graph-2': {
-    light: _hpeDesignTokens.light.hpe.color.dataVis.categorical[30],
-    dark: _hpeDesignTokens.dark.hpe.color.dataVis.categorical[30]
+    light: _grommet.light.hpe.color.dataVis['categorical-30'],
+    dark: _grommet.dark.hpe.color.dataVis['categorical-30']
   },
   'graph-3': {
-    light: _hpeDesignTokens.light.hpe.color.dataVis.categorical[40],
-    dark: _hpeDesignTokens.dark.hpe.color.dataVis.categorical[40]
+    light: _grommet.light.hpe.color.dataVis['categorical-40'],
+    dark: _grommet.dark.hpe.color.dataVis['categorical-40']
   },
   'graph-4': {
-    light: _hpeDesignTokens.light.hpe.color.dataVis.categorical[50],
-    dark: _hpeDesignTokens.dark.hpe.color.dataVis.categorical[50]
+    light: _grommet.light.hpe.color.dataVis['categorical-50'],
+    dark: _grommet.dark.hpe.color.dataVis['categorical-50']
   },
   'graph-5': {
-    light: _hpeDesignTokens.light.hpe.color.dataVis.categorical[60],
-    dark: _hpeDesignTokens.dark.hpe.color.dataVis.categorical[60]
+    light: _grommet.light.hpe.color.dataVis['categorical-60'],
+    dark: _grommet.dark.hpe.color.dataVis['categorical-60']
   },
   'graph-6': {
-    light: _hpeDesignTokens.light.hpe.color.dataVis.categorical[70],
-    dark: _hpeDesignTokens.dark.hpe.color.dataVis.categorical[70]
+    light: _grommet.light.hpe.color.dataVis['categorical-70'],
+    dark: _grommet.dark.hpe.color.dataVis['categorical-70']
   },
   'status-critical': {
-    dark: _hpeDesignTokens.dark.hpe.color.icon.critical,
-    light: _hpeDesignTokens.light.hpe.color.icon.critical
+    dark: _grommet.dark.hpe.color.icon.critical,
+    light: _grommet.light.hpe.color.icon.critical
   },
   'status-warning': {
-    dark: _hpeDesignTokens.dark.hpe.color.icon.warning,
-    light: _hpeDesignTokens.light.hpe.color.icon.warning
+    dark: _grommet.dark.hpe.color.icon.warning,
+    light: _grommet.light.hpe.color.icon.warning
   },
   'status-ok': {
-    dark: _hpeDesignTokens.dark.hpe.color.icon.ok,
-    light: _hpeDesignTokens.light.hpe.color.icon.ok
+    dark: _grommet.dark.hpe.color.icon.ok,
+    light: _grommet.light.hpe.color.icon.ok
   },
   'status-unknown': {
-    dark: _hpeDesignTokens.dark.hpe.color.icon.unknown,
-    light: _hpeDesignTokens.light.hpe.color.icon.unknown
+    dark: _grommet.dark.hpe.color.icon.unknown,
+    light: _grommet.light.hpe.color.icon.unknown
   },
   'status-disabled': '#CCCCCC',
-  // deprecated, does not support light and dark. use text-disabled instead
+  // deprecated, does not support light and dark.hpe. use text-weak instead
   'validation-critical': {
-    light: _hpeDesignTokens.light.hpe.color.background.critical,
-    dark: _hpeDesignTokens.dark.hpe.color.background.critical
+    light: _grommet.light.hpe.color.background.critical,
+    dark: _grommet.dark.hpe.color.background.critical
   },
   'validation-ok': {
-    light: _hpeDesignTokens.light.hpe.color.background.ok,
-    dark: _hpeDesignTokens.dark.hpe.color.background.ok
+    light: _grommet.light.hpe.color.background.ok,
+    dark: _grommet.dark.hpe.color.background.ok
   },
   'validation-warning': {
-    light: _hpeDesignTokens.light.hpe.color.background.warning,
-    dark: _hpeDesignTokens.dark.hpe.color.background.critical
+    light: _grommet.light.hpe.color.background.warning,
+    dark: _grommet.dark.hpe.color.background.critical
   },
   icon: {
-    light: _hpeDesignTokens.light.hpe.color.icon["default"],
-    dark: _hpeDesignTokens.dark.hpe.color.icon["default"]
+    light: _grommet.light.hpe.color.icon["default"],
+    dark: _grommet.dark.hpe.color.icon["default"]
   },
   'selected-background': 'background-selected-strong-enabled',
-  'selected-text': 'text-onSelectedStrong',
+  'selected-text': 'text-onSelectedPrimaryStrong',
   placeholder: {
-    light: _hpeDesignTokens.light.hpe.color.text.placeholder,
-    dark: _hpeDesignTokens.dark.hpe.color.text.placeholder
-  }
+    light: _grommet.light.hpe.color.text.placeholder,
+    dark: _grommet.dark.hpe.color.text.placeholder
+  },
+  'disabled-text': 'text-disabled' // deprecate
 });

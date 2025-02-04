@@ -1,5 +1,5 @@
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-import { dark, light, components } from 'hpe-design-tokens';
+import { primitives, dark, light, components } from 'hpe-design-tokens/grommet';
 var _flattenObject = function flattenObject(obj, delimiter, prefix) {
   if (delimiter === void 0) {
     delimiter = '.';
@@ -18,22 +18,20 @@ var access = function access(path, object) {
     return o[i];
   }, object);
 };
-var colorNames = _flattenObject(light, '-');
-var colorTokens = {};
-Object.keys(colorNames).forEach(function (color) {
-  if (!color.includes('elevation')) {
-    var adjustedColor = color.split('-').join('.');
-    colorTokens[color] = {
-      light: access("hpe.color." + adjustedColor, light),
-      dark: access("hpe.color." + adjustedColor, dark)
+var flatColors = _flattenObject(light, '-');
+var tokenColors = {};
+Object.keys(flatColors).forEach(function (color) {
+  if (!color.includes('shadow')) {
+    var _color$split = color.split('-'),
+      category = _color$split[0];
+    var flatName = color.split('-').slice(1).join('-');
+    tokenColors[color] = {
+      light: access("hpe.color." + category + (flatName ? "." + flatName : ''), light),
+      dark: access("hpe.color." + category + (flatName ? "." + flatName : ''), dark)
     };
   }
 });
-var MISSING = {
-  color: 'red',
-  weight: 700
-};
-export var colors = _extends({}, colorTokens, {
+export var colors = _extends({}, tokenColors, {
   // ---- DEPRECATED ---- //
   'accent-1': undefined,
   'accent-2': undefined,
@@ -45,17 +43,14 @@ export var colors = _extends({}, colorTokens, {
   'neutral-4': undefined,
   'neutral-5': undefined,
   'status-error': undefined,
-  // ---- TO DO: Tokens do not exist, should they? ---- //
-  brand: MISSING.color,
-  control: MISSING.color,
-  'active-text': MISSING.color,
-  'disabled-text': MISSING.color,
-  // deprecated, use text-weak instead
-
-  'text-primary-button': components.hpe.button.primary.enabled.textColor,
-  'background-cta-alternate': MISSING.color,
-  // ----------- These ones we need to map manually for backwards compatibility -----------
-  // ----------- with current color namespace ---------------
+  control: 'background-primary-strong',
+  'active-text': 'text-strong',
+  'text-primary-button': components.hpe.button.primary.rest.textColor,
+  'background-cta-alternate': 'background-contrast',
+  brand: {
+    dark: dark.hpe.color.decorative.brand,
+    light: light.hpe.color.decorative.brand
+  },
   'background-layer-overlay': {
     dark: dark.hpe.color.background.screenOverlay,
     light: light.hpe.color.background.screenOverlay
@@ -80,85 +75,67 @@ export var colors = _extends({}, colorTokens, {
     dark: dark.hpe.color.decorative.blue,
     light: light.hpe.color.decorative.blue
   },
-  'blue!': {
-    dark: dark.hpe.color.decorative['blue!'],
-    light: light.hpe.color.decorative['blue!']
-  },
+  'blue!': primitives.hpe.base.color['blue-700'],
   green: {
     dark: dark.hpe.color.decorative.green,
     light: light.hpe.color.decorative.green
   },
   'green!': {
-    dark: dark.hpe.color.decorative['green!'],
-    light: light.hpe.color.decorative['green!']
+    dark: dark.hpe.color.decorative.brand,
+    light: light.hpe.color.decorative.brand
   },
   teal: {
     dark: dark.hpe.color.decorative.teal,
     light: light.hpe.color.decorative.teal
   },
-  'teal!': {
-    dark: dark.hpe.color.decorative['teal!'],
-    light: light.hpe.color.decorative['teal!']
-  },
+  'teal!': primitives.hpe.base.color['teal-400'],
   purple: {
     dark: dark.hpe.color.decorative.purple,
     light: light.hpe.color.decorative.purple
   },
-  'purple!': {
-    dark: dark.hpe.color.decorative['purple!'],
-    light: light.hpe.color.decorative['purple!']
-  },
+  'purple!': primitives.hpe.base.color['purple-800'],
   red: {
     dark: dark.hpe.color.decorative.red,
     light: light.hpe.color.decorative.red
   },
-  'red!': {
-    dark: dark.hpe.color.decorative['red!'],
-    light: light.hpe.color.decorative['red!']
-  },
+  'red!': primitives.hpe.base.color['red-750'],
   orange: {
     dark: dark.hpe.color.decorative.orange,
     light: light.hpe.color.decorative.orange
   },
-  'orange!': {
-    dark: dark.hpe.color.decorative['orange!'],
-    light: light.hpe.color.decorative['orange!']
-  },
+  'orange!': primitives.hpe.base.color['orange-500'],
   yellow: {
     dark: dark.hpe.color.decorative.yellow,
     light: light.hpe.color.decorative.yellow
   },
-  'yellow!': {
-    dark: dark.hpe.color.decorative['yellow!'],
-    light: light.hpe.color.decorative['yellow!']
-  },
+  'yellow!': primitives.hpe.base.color['yellow-400'],
   'graph-0': {
-    light: light.hpe.color.dataVis.categorical[10],
-    dark: dark.hpe.color.dataVis.categorical[10]
+    light: light.hpe.color.dataVis['categorical-10'],
+    dark: dark.hpe.color.dataVis['categorical-10']
   },
   'graph-1': {
-    light: light.hpe.color.dataVis.categorical[20],
-    dark: dark.hpe.color.dataVis.categorical[20]
+    light: light.hpe.color.dataVis['categorical-20'],
+    dark: dark.hpe.color.dataVis['categorical-20']
   },
   'graph-2': {
-    light: light.hpe.color.dataVis.categorical[30],
-    dark: dark.hpe.color.dataVis.categorical[30]
+    light: light.hpe.color.dataVis['categorical-30'],
+    dark: dark.hpe.color.dataVis['categorical-30']
   },
   'graph-3': {
-    light: light.hpe.color.dataVis.categorical[40],
-    dark: dark.hpe.color.dataVis.categorical[40]
+    light: light.hpe.color.dataVis['categorical-40'],
+    dark: dark.hpe.color.dataVis['categorical-40']
   },
   'graph-4': {
-    light: light.hpe.color.dataVis.categorical[50],
-    dark: dark.hpe.color.dataVis.categorical[50]
+    light: light.hpe.color.dataVis['categorical-50'],
+    dark: dark.hpe.color.dataVis['categorical-50']
   },
   'graph-5': {
-    light: light.hpe.color.dataVis.categorical[60],
-    dark: dark.hpe.color.dataVis.categorical[60]
+    light: light.hpe.color.dataVis['categorical-60'],
+    dark: dark.hpe.color.dataVis['categorical-60']
   },
   'graph-6': {
-    light: light.hpe.color.dataVis.categorical[70],
-    dark: dark.hpe.color.dataVis.categorical[70]
+    light: light.hpe.color.dataVis['categorical-70'],
+    dark: dark.hpe.color.dataVis['categorical-70']
   },
   'status-critical': {
     dark: dark.hpe.color.icon.critical,
@@ -177,7 +154,7 @@ export var colors = _extends({}, colorTokens, {
     light: light.hpe.color.icon.unknown
   },
   'status-disabled': '#CCCCCC',
-  // deprecated, does not support light and dark. use text-disabled instead
+  // deprecated, does not support light and dark.hpe. use text-weak instead
   'validation-critical': {
     light: light.hpe.color.background.critical,
     dark: dark.hpe.color.background.critical
@@ -195,9 +172,10 @@ export var colors = _extends({}, colorTokens, {
     dark: dark.hpe.color.icon["default"]
   },
   'selected-background': 'background-selected-strong-enabled',
-  'selected-text': 'text-onSelectedStrong',
+  'selected-text': 'text-onSelectedPrimaryStrong',
   placeholder: {
     light: light.hpe.color.text.placeholder,
     dark: dark.hpe.color.text.placeholder
-  }
+  },
+  'disabled-text': 'text-disabled' // deprecate
 });
