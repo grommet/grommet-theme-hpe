@@ -31,10 +31,143 @@ var deepFreeze = function deepFreeze(obj) {
 var componentSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
 var buttonKinds = ['default', 'secondary', 'primary', 'toolbar'];
 var buttonStates = ['hover', 'active', 'disabled'];
-var textSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'];
+var textSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', '3xlarge', '4xlarge', '5xlarge', '6xlarge'];
 var getThemeColor = function getThemeColor(color, theme) {
   var _theme$global$colors$;
   return ((_theme$global$colors$ = theme.global.colors[color]) == null ? void 0 : _theme$global$colors$[theme.dark ? 'dark' : 'light']) || color;
+};
+var globalSizes = {
+  borderSize: {
+    xsmall: '1px',
+    small: '2px',
+    medium: baseSpacing / 6 + "px",
+    // 4
+    large: baseSpacing / 2 + "px",
+    // 12
+    xlarge: baseSpacing + "px",
+    // 24
+    "default": '1px'
+  },
+  edgeSize: {
+    none: '0px',
+    hair: '1px',
+    // for Chart
+    xxsmall: baseSpacing / 8 + "px",
+    // 3
+    xsmall: baseSpacing / 4 + "px",
+    // 6
+    small: baseSpacing / 2 + "px",
+    // 12
+    medium: baseSpacing + "px",
+    // 24
+    large: baseSpacing * 2 + "px",
+    // 48
+    xlarge: baseSpacing * 4 + "px",
+    // 96
+    responsiveBreakpoint: 'small'
+  },
+  // same as edgeSize for backwards compatibility
+  radius: {
+    none: '0px',
+    hair: '1px',
+    // for Chart
+    xxsmall: baseSpacing / 8 + "px",
+    // 3
+    xsmall: baseSpacing / 4 + "px",
+    // 6
+    small: baseSpacing / 2 + "px",
+    // 12
+    medium: baseSpacing + "px",
+    // 24
+    large: baseSpacing * 2 + "px",
+    // 48
+    xlarge: baseSpacing * 4 + "px",
+    // 96
+    responsiveBreakpoint: 'small'
+  },
+  size: {
+    xxsmall: baseSpacing * 2 + "px",
+    // 48
+    xsmall: baseSpacing * 4 + "px",
+    // 96
+    small: baseSpacing * 8 + "px",
+    // 192
+    medium: baseSpacing * 16 + "px",
+    // 384
+    large: baseSpacing * 32 + "px",
+    // 768
+    xlarge: baseSpacing * 48 + "px",
+    // 1152
+    xxlarge: baseSpacing * 64 + "px",
+    // 1536
+    full: '100%'
+  }
+};
+var responsiveGlobalSizes = {
+  borderSize: {
+    xsmall: '1px',
+    small: '2px',
+    medium: baseSpacing / 6 + "px",
+    // 4
+    large: baseSpacing / 4 + "px",
+    // 6
+    xlarge: baseSpacing / 2 + "px",
+    // 12
+    "default": '1px'
+  },
+  edgeSize: {
+    none: '0px',
+    hair: '1px',
+    // for Chart
+    xxsmall: '2px',
+    xsmall: baseSpacing / 8 + "px",
+    // 3
+    small: baseSpacing / 4 + "px",
+    // 6
+    medium: baseSpacing / 2 + "px",
+    // 12
+    large: baseSpacing + "px",
+    // 24
+    xlarge: baseSpacing * 2 + "px" // 48
+  },
+  // same as edgeSize for backwards compatibility
+  radius: {
+    none: '0px',
+    hair: '1px',
+    // for Chart
+    xxsmall: '2px',
+    xsmall: baseSpacing / 8 + "px",
+    // 3
+    small: baseSpacing / 4 + "px",
+    // 6
+    medium: baseSpacing / 2 + "px",
+    // 12
+    large: baseSpacing + "px",
+    // 24
+    xlarge: baseSpacing * 2 + "px" // 48
+  },
+  size: {
+    xxsmall: baseSpacing + "px",
+    // 24
+    xsmall: baseSpacing * 2 + "px",
+    // 48
+    small: baseSpacing * 4 + "px",
+    // 96
+    medium: baseSpacing * 8 + "px",
+    // 192
+    large: baseSpacing * 16 + "px",
+    // 384
+    xlarge: baseSpacing * 32 + "px",
+    // 768
+    full: '100%'
+  }
+};
+var getTextSize = function getTextSize(size) {
+  if (size === '3xlarge') return '3xl';
+  if (size === '4xlarge') return '4xl';
+  if (size === '5xlarge') return '5xl';
+  if (size === '6xlarge') return '6xl';
+  return size;
 };
 var buildTheme = function buildTheme(tokens, flags) {
   var _components$hpe$eleme, _components$hpe$eleme2, _components$hpe$eleme3, _components$hpe$eleme4, _components$hpe$eleme5, _components$hpe$dataC, _components$hpe$eleme6, _components$hpe$eleme7, _components$hpe$eleme8, _components$hpe$eleme9, _components$hpe$eleme10, _components$hpe$eleme11, _components$hpe$eleme12, _components$hpe$eleme13, _components$hpe$eleme14, _components$hpe$eleme15, _components$hpe$eleme16, _components$hpe$eleme17, _components$hpe$eleme18, _components$hpe$eleme19, _components$hpe$eleme20, _components$hpe$eleme21, _components$hpe$eleme22, _components$hpe$eleme23, _components$hpe$eleme24, _components$hpe$eleme25, _components$hpe$eleme26, _components$hpe$eleme27, _components$hpe$eleme28, _components$hpe$eleme29, _components$hpe$eleme30, _components$hpe$eleme31, _components$hpe$eleme32, _components$hpe$eleme33, _components$hpe$eleme34, _components$hpe$eleme35, _components$hpe$eleme36, _components$hpe$eleme37, _components$hpe$eleme38, _components$hpe$eleme39;
@@ -49,17 +182,17 @@ var buildTheme = function buildTheme(tokens, flags) {
     components = tokens.components;
   var size = function size(breakpoint) {
     return {
-      xxsmall: flags['v6-backwards-compatibility'] ? breakpoint.hpe.container['5xsmall'] : breakpoint.hpe.container.xxsmall,
-      xsmall: flags['v6-backwards-compatibility'] ? breakpoint.hpe.container['3xsmall'] : breakpoint.hpe.container.xsmall,
-      small: flags['v6-backwards-compatibility'] ? breakpoint.hpe.container.xsmall : breakpoint.hpe.container.small,
-      medium: flags['v6-backwards-compatibility'] ? breakpoint.hpe.container.medium : breakpoint.hpe.container.medium,
-      large: flags['v6-backwards-compatibility'] ? breakpoint.hpe.container.xlarge : breakpoint.hpe.container.large,
-      xlarge: flags['v6-backwards-compatibility'] ? '1152px' : breakpoint.hpe.container.xlarge,
-      xxlarge: flags['v6-backwards-compatibility'] ? breakpoint.hpe.container['3xlarge'] : breakpoint.hpe.container.xxlarge,
+      xxsmall: breakpoint.hpe.container.xxsmall,
+      xsmall: breakpoint.hpe.container.xsmall,
+      small: breakpoint.hpe.container.small,
+      medium: breakpoint.hpe.container.medium,
+      large: breakpoint.hpe.container.large,
+      xlarge: breakpoint.hpe.container.xlarge,
+      xxlarge: breakpoint.hpe.container.xxlarge,
       full: '100%'
     };
   };
-  var dimensions = {
+  var dimensions = _extends({}, flags['v6-backwards-compatibility'] ? globalSizes : {
     borderSize: {
       xsmall: large.hpe.borderWidth.xsmall,
       small: large.hpe.borderWidth.small,
@@ -71,34 +204,35 @@ var buildTheme = function buildTheme(tokens, flags) {
     edgeSize: {
       none: large.hpe.spacing.none,
       hair: large.hpe.spacing.hair,
-      '5xsmall': flags['v6-backwards-compatibility'] ? undefined : large.hpe.spacing['5xsmall'],
-      '4xsmall': flags['v6-backwards-compatibility'] ? undefined : large.hpe.spacing['4xsmall'],
-      '3xsmall': flags['v6-backwards-compatibility'] ? undefined : large.hpe.spacing['3xsmall'],
-      xxsmall: flags['v6-backwards-compatibility'] ? large.hpe.spacing['5xsmall'] : large.hpe.spacing.xxsmall,
-      xsmall: flags['v6-backwards-compatibility'] ? large.hpe.spacing['3xsmall'] : large.hpe.spacing.xsmall,
-      small: flags['v6-backwards-compatibility'] ? large.hpe.spacing.xsmall : large.hpe.spacing.small,
+      '5xsmall': large.hpe.spacing['5xsmall'],
+      '4xsmall': large.hpe.spacing['4xsmall'],
+      '3xsmall': large.hpe.spacing['3xsmall'],
+      xxsmall: large.hpe.spacing.xxsmall,
+      xsmall: large.hpe.spacing.xsmall,
+      small: large.hpe.spacing.small,
       medium: large.hpe.spacing.medium,
-      large: flags['v6-backwards-compatibility'] ? large.hpe.spacing.xlarge : large.hpe.spacing.large,
-      xlarge: flags['v6-backwards-compatibility'] ? large.hpe.spacing['3xlarge'] : large.hpe.spacing.xlarge,
-      xxlarge: flags['v6-backwards-compatibility'] ? undefined : large.hpe.spacing.xxlarge,
-      '3xlarge': flags['v6-backwards-compatibility'] ? undefined : large.hpe.spacing['3xlarge'],
+      large: large.hpe.spacing.large,
+      xlarge: large.hpe.spacing.xlarge,
+      xxlarge: large.hpe.spacing.xxlarge,
+      '3xlarge': large.hpe.spacing['3xlarge'],
       responsiveBreakpoint: 'small'
     },
     radius: {
       none: large.hpe.radius.none,
       hair: large.hpe.radius.hair,
-      xxsmall: flags['v6-backwards-compatibility'] ? '3px' : large.hpe.radius.xxsmall,
-      xsmall: flags['v6-backwards-compatibility'] ? '6px' : large.hpe.radius.xsmall,
-      small: flags['v6-backwards-compatibility'] ? '12px' : large.hpe.radius.small,
-      medium: flags['v6-backwards-compatibility'] ? '24px' : large.hpe.radius.medium,
-      large: flags['v6-backwards-compatibility'] ? '48px' : large.hpe.radius.large,
-      xlarge: flags['v6-backwards-compatibility'] ? '96px' : large.hpe.radius.xlarge,
-      xxlarge: flags['v6-backwards-compatibility'] ? undefined : large.hpe.radius.xxlarge,
+      xxsmall: large.hpe.radius.xxsmall,
+      xsmall: large.hpe.radius.xsmall,
+      small: large.hpe.radius.small,
+      medium: large.hpe.radius.medium,
+      large: large.hpe.radius.large,
+      xlarge: large.hpe.radius.xlarge,
+      xxlarge: large.hpe.radius.xxlarge,
       responsiveBreakpoint: 'small'
     },
-    size: size(large),
+    size: size(large)
+  }, {
     breakpoints: {
-      xsmall: {
+      xsmall: _extends({}, flags['v6-backwards-compatibility'] ? responsiveGlobalSizes : {
         borderSize: {
           xsmall: small.hpe.borderWidth.xsmall,
           small: small.hpe.borderWidth.small,
@@ -121,19 +255,20 @@ var buildTheme = function buildTheme(tokens, flags) {
         radius: {
           none: small.hpe.radius.none,
           hair: small.hpe.radius.hair,
-          xxsmall: flags['v6-backwards-compatibility'] ? '1px' : small.hpe.radius.xxsmall,
-          xsmall: flags['v6-backwards-compatibility'] ? '3px' : small.hpe.radius.xsmall,
-          small: flags['v6-backwards-compatibility'] ? '6px' : small.hpe.radius.small,
-          medium: flags['v6-backwards-compatibility'] ? '12px' : small.hpe.radius.medium,
-          large: flags['v6-backwards-compatibility'] ? '24px' : small.hpe.radius.large,
-          xlarge: flags['v6-backwards-compatibility'] ? '48px' : small.hpe.radius.xlarge,
-          xxlarge: flags['v6-backwards-compatibility'] ? undefined : small.hpe.radius.xxlarge,
+          xxsmall: small.hpe.radius.xxsmall,
+          xsmall: small.hpe.radius.xsmall,
+          small: small.hpe.radius.small,
+          medium: small.hpe.radius.medium,
+          large: small.hpe.radius.large,
+          xlarge: small.hpe.radius.xlarge,
+          xxlarge: small.hpe.radius.xxlarge,
           responsiveBreakpoint: 'small'
         },
-        size: size(small),
+        size: size(small)
+      }, {
         value: parseInt(global.hpe.breakpoint.xsmall, 10)
-      },
-      small: {
+      }),
+      small: _extends({}, flags['v6-backwards-compatibility'] ? responsiveGlobalSizes : {
         borderSize: {
           xsmall: small.hpe.borderWidth.xsmall,
           small: small.hpe.borderWidth.small,
@@ -156,18 +291,19 @@ var buildTheme = function buildTheme(tokens, flags) {
         radius: {
           none: small.hpe.radius.none,
           hair: small.hpe.radius.hair,
-          xxsmall: flags['v6-backwards-compatibility'] ? '1px' : small.hpe.radius.xxsmall,
-          xsmall: flags['v6-backwards-compatibility'] ? '3px' : small.hpe.radius.xsmall,
-          small: flags['v6-backwards-compatibility'] ? '6px' : small.hpe.radius.small,
-          medium: flags['v6-backwards-compatibility'] ? '12px' : small.hpe.radius.medium,
-          large: flags['v6-backwards-compatibility'] ? '24px' : small.hpe.radius.large,
-          xlarge: flags['v6-backwards-compatibility'] ? '48px' : small.hpe.radius.xlarge,
-          xxlarge: flags['v6-backwards-compatibility'] ? undefined : small.hpe.radius.xxlarge,
+          xxsmall: small.hpe.radius.xxsmall,
+          xsmall: small.hpe.radius.xsmall,
+          small: small.hpe.radius.small,
+          medium: small.hpe.radius.medium,
+          large: small.hpe.radius.large,
+          xlarge: small.hpe.radius.xlarge,
+          xxlarge: small.hpe.radius.xxlarge,
           responsiveBreakpoint: 'small'
         },
-        size: size(small),
+        size: size(small)
+      }, {
         value: parseInt(global.hpe.breakpoint.small, 10)
-      },
+      }),
       medium: {
         value: parseInt(global.hpe.breakpoint.medium, 10)
       },
@@ -176,7 +312,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       xlarge: {}
     }
-  };
+  });
 
   // option button kind styles. abstracted so select.emptySearchMessage
   // can reference pad value
@@ -203,8 +339,9 @@ var buildTheme = function buildTheme(tokens, flags) {
   };
   var anchorSizeTheme = {};
   textSizes.forEach(function (sizeArg) {
-    var textSize = sizeArg === '6xl' ? '5xl' : sizeArg;
-    anchorSizeTheme[textSize] = {
+    var textSize = sizeArg === '6xlarge' ? '5xlarge' : sizeArg;
+    var themeSize = getTextSize(textSize);
+    anchorSizeTheme[themeSize] = {
       color: components.hpe.anchor["default"].rest.textColor,
       textDecoration: components.hpe.anchor["default"].rest.textDecoration,
       fontWeight: components.hpe.anchor["default"].rest.fontWeight,
@@ -232,16 +369,17 @@ var buildTheme = function buildTheme(tokens, flags) {
       fallback.maxWidth = (_large$hpe$text4 = large.hpe.text) == null || (_large$hpe$text4 = _large$hpe$text4[textSize]) == null ? void 0 : _large$hpe$text4.maxWidth;
       fallback.weight = (_large$hpe$text5 = large.hpe.text) == null || (_large$hpe$text5 = _large$hpe$text5[textSize]) == null ? void 0 : _large$hpe$text5.fontWeight;
     }
-    paragraphTheme[textSize] = {
+    var themeSize = getTextSize(textSize);
+    paragraphTheme[themeSize] = {
       size: ((_large$hpe$text6 = large.hpe.text) == null || (_large$hpe$text6 = _large$hpe$text6[textSize]) == null ? void 0 : _large$hpe$text6.fontSize) || fallback.size,
       height: ((_large$hpe$text7 = large.hpe.text) == null || (_large$hpe$text7 = _large$hpe$text7[textSize]) == null ? void 0 : _large$hpe$text7.lineHeight) || fallback.height,
       maxWidth: ((_large$hpe$text8 = large.hpe.text) == null || (_large$hpe$text8 = _large$hpe$text8[textSize]) == null ? void 0 : _large$hpe$text8.maxWidth) || fallback.maxWidth
     };
-    textTheme[textSize] = {
+    textTheme[themeSize] = {
       size: ((_large$hpe$text9 = large.hpe.text) == null || (_large$hpe$text9 = _large$hpe$text9[textSize]) == null ? void 0 : _large$hpe$text9.fontSize) || fallback.size,
       height: ((_large$hpe$text10 = large.hpe.text) == null || (_large$hpe$text10 = _large$hpe$text10[textSize]) == null ? void 0 : _large$hpe$text10.lineHeight) || fallback.height
     };
-    fontWeights[textSize] = ((_large$hpe$text11 = large.hpe.text) == null || (_large$hpe$text11 = _large$hpe$text11[textSize]) == null ? void 0 : _large$hpe$text11.fontWeight) || fallback.weight;
+    fontWeights[themeSize] = ((_large$hpe$text11 = large.hpe.text) == null || (_large$hpe$text11 = _large$hpe$text11[textSize]) == null ? void 0 : _large$hpe$text11.fontWeight) || fallback.weight;
   });
   textTheme.extend = function (_ref) {
     var textSize = _ref.size,
@@ -895,7 +1033,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       extend: function extend(_ref12) {
         var disabled = _ref12.disabled,
           theme = _ref12.theme;
-        return css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n      font-weight: ", ";\n      width: auto;\n      border: ", " solid ", ";\n      & input:checked + span[class*=CheckBoxToggle] > span[class*=CheckBoxKnob] {\n        left: 25px;\n      }\n      ", "\n    };\n    "])), components.hpe.checkbox["default"].medium.label.fontWeight, components.hpe.formField["default"].medium.input.container.borderWidth, getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme),
+        return css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n      font-weight: ", ";\n      width: auto;\n      border: ", " solid ", ";\n      & input:checked + span[class*=CheckBoxToggle] > span[class*=CheckBoxKnob] {\n        left: 25px;\n      }\n      ", "\n    };\n    "])), components.hpe.checkbox["default"].label.rest.fontWeight, components.hpe.formField["default"].medium.input.container.borderWidth, getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme),
         // override built in disabled opacity: 0.5 from grommet
         disabled && "opacity: 1; \n        color: " + getThemeColor(components.hpe.checkbox["default"].label.disabled.rest.textColor, theme) + ";");
       }
@@ -1841,7 +1979,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       size: components.hpe.radioButton["default"].medium.control.height,
       font: {
-        weight: components.hpe.radioButton["default"].medium.label.fontWeight
+        weight: components.hpe.radioButton["default"].label.rest.fontWeight
       },
       icons: {
         circle: function circle() {
