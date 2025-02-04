@@ -36,6 +36,132 @@ var getThemeColor = function getThemeColor(color, theme) {
   var _theme$global$colors$;
   return ((_theme$global$colors$ = theme.global.colors[color]) == null ? void 0 : _theme$global$colors$[theme.dark ? 'dark' : 'light']) || color;
 };
+var globalSizes = {
+  borderSize: {
+    xsmall: '1px',
+    small: '2px',
+    medium: baseSpacing / 6 + "px",
+    // 4
+    large: baseSpacing / 2 + "px",
+    // 12
+    xlarge: baseSpacing + "px",
+    // 24
+    "default": '1px'
+  },
+  edgeSize: {
+    none: '0px',
+    hair: '1px',
+    // for Chart
+    xxsmall: baseSpacing / 8 + "px",
+    // 3
+    xsmall: baseSpacing / 4 + "px",
+    // 6
+    small: baseSpacing / 2 + "px",
+    // 12
+    medium: baseSpacing + "px",
+    // 24
+    large: baseSpacing * 2 + "px",
+    // 48
+    xlarge: baseSpacing * 4 + "px",
+    // 96
+    responsiveBreakpoint: 'small'
+  },
+  // same as edgeSize for backwards compatibility
+  radius: {
+    none: '0px',
+    hair: '1px',
+    // for Chart
+    xxsmall: baseSpacing / 8 + "px",
+    // 3
+    xsmall: baseSpacing / 4 + "px",
+    // 6
+    small: baseSpacing / 2 + "px",
+    // 12
+    medium: baseSpacing + "px",
+    // 24
+    large: baseSpacing * 2 + "px",
+    // 48
+    xlarge: baseSpacing * 4 + "px",
+    // 96
+    responsiveBreakpoint: 'small'
+  },
+  size: {
+    xxsmall: baseSpacing * 2 + "px",
+    // 48
+    xsmall: baseSpacing * 4 + "px",
+    // 96
+    small: baseSpacing * 8 + "px",
+    // 192
+    medium: baseSpacing * 16 + "px",
+    // 384
+    large: baseSpacing * 32 + "px",
+    // 768
+    xlarge: baseSpacing * 48 + "px",
+    // 1152
+    xxlarge: baseSpacing * 64 + "px",
+    // 1536
+    full: '100%'
+  }
+};
+var responsiveGlobalSizes = {
+  borderSize: {
+    xsmall: '1px',
+    small: '2px',
+    medium: baseSpacing / 6 + "px",
+    // 4
+    large: baseSpacing / 4 + "px",
+    // 6
+    xlarge: baseSpacing / 2 + "px",
+    // 12
+    "default": '1px'
+  },
+  edgeSize: {
+    none: '0px',
+    hair: '1px',
+    // for Chart
+    xxsmall: '2px',
+    xsmall: baseSpacing / 8 + "px",
+    // 3
+    small: baseSpacing / 4 + "px",
+    // 6
+    medium: baseSpacing / 2 + "px",
+    // 12
+    large: baseSpacing + "px",
+    // 24
+    xlarge: baseSpacing * 2 + "px" // 48
+  },
+  // same as edgeSize for backwards compatibility
+  radius: {
+    none: '0px',
+    hair: '1px',
+    // for Chart
+    xxsmall: '2px',
+    xsmall: baseSpacing / 8 + "px",
+    // 3
+    small: baseSpacing / 4 + "px",
+    // 6
+    medium: baseSpacing / 2 + "px",
+    // 12
+    large: baseSpacing + "px",
+    // 24
+    xlarge: baseSpacing * 2 + "px" // 48
+  },
+  size: {
+    xxsmall: baseSpacing + "px",
+    // 24
+    xsmall: baseSpacing * 2 + "px",
+    // 48
+    small: baseSpacing * 4 + "px",
+    // 96
+    medium: baseSpacing * 8 + "px",
+    // 192
+    large: baseSpacing * 16 + "px",
+    // 384
+    xlarge: baseSpacing * 32 + "px",
+    // 768
+    full: '100%'
+  }
+};
 var getTextSize = function getTextSize(size) {
   if (size === '3xlarge') return '3xl';
   if (size === '4xlarge') return '4xl';
@@ -56,63 +182,64 @@ var buildTheme = function buildTheme(tokens, flags) {
     components = tokens.components;
   var size = function size(breakpoint) {
     return {
-      xxsmall: flags['v6-backwards-compatibility'] ? breakpoint.hpe.container['5xsmall'] : breakpoint.hpe.container.xxsmall,
-      xsmall: flags['v6-backwards-compatibility'] ? breakpoint.hpe.container['3xsmall'] : breakpoint.hpe.container.xsmall,
-      small: flags['v6-backwards-compatibility'] ? breakpoint.hpe.container.xsmall : breakpoint.hpe.container.small,
-      medium: flags['v6-backwards-compatibility'] ? breakpoint.hpe.container.medium : breakpoint.hpe.container.medium,
-      large: flags['v6-backwards-compatibility'] ? breakpoint.hpe.container.xlarge : breakpoint.hpe.container.large,
-      xlarge: flags['v6-backwards-compatibility'] ? '1152px' : breakpoint.hpe.container.xlarge,
-      xxlarge: flags['v6-backwards-compatibility'] ? breakpoint.hpe.container['3xlarge'] : breakpoint.hpe.container.xxlarge,
+      xxsmall: breakpoint.hpe.container.xxsmall,
+      xsmall: breakpoint.hpe.container.xsmall,
+      small: breakpoint.hpe.container.small,
+      medium: breakpoint.hpe.container.medium,
+      large: breakpoint.hpe.container.large,
+      xlarge: breakpoint.hpe.container.xlarge,
+      xxlarge: breakpoint.hpe.container.xxlarge,
       full: '100%'
     };
   };
-  var dimensions = {
+  var dimensions = _extends({}, flags['v6-backwards-compatibility'] ? globalSizes : {
     borderSize: {
       xsmall: large.hpe.borderWidth.xsmall,
       small: large.hpe.borderWidth.small,
       medium: large.hpe.borderWidth.medium,
       "default": large.hpe.borderWidth["default"],
-      large: flags['v6-backwards-compatibility'] ? '12px' : large.hpe.borderWidth.large,
-      xlarge: flags['v6-backwards-compatibility'] ? '24px' : large.hpe.borderWidth.xlarge
+      large: large.hpe.borderWidth.large,
+      xlarge: large.hpe.borderWidth.xlarge
     },
     edgeSize: {
       none: large.hpe.spacing.none,
       hair: large.hpe.spacing.hair,
-      '5xsmall': flags['v6-backwards-compatibility'] ? undefined : large.hpe.spacing['5xsmall'],
-      '4xsmall': flags['v6-backwards-compatibility'] ? undefined : large.hpe.spacing['4xsmall'],
-      '3xsmall': flags['v6-backwards-compatibility'] ? undefined : large.hpe.spacing['3xsmall'],
-      xxsmall: flags['v6-backwards-compatibility'] ? large.hpe.spacing['5xsmall'] : large.hpe.spacing.xxsmall,
-      xsmall: flags['v6-backwards-compatibility'] ? large.hpe.spacing['3xsmall'] : large.hpe.spacing.xsmall,
-      small: flags['v6-backwards-compatibility'] ? large.hpe.spacing.xsmall : large.hpe.spacing.small,
+      '5xsmall': large.hpe.spacing['5xsmall'],
+      '4xsmall': large.hpe.spacing['4xsmall'],
+      '3xsmall': large.hpe.spacing['3xsmall'],
+      xxsmall: large.hpe.spacing.xxsmall,
+      xsmall: large.hpe.spacing.xsmall,
+      small: large.hpe.spacing.small,
       medium: large.hpe.spacing.medium,
-      large: flags['v6-backwards-compatibility'] ? large.hpe.spacing.xlarge : large.hpe.spacing.large,
-      xlarge: flags['v6-backwards-compatibility'] ? large.hpe.spacing['3xlarge'] : large.hpe.spacing.xlarge,
-      xxlarge: flags['v6-backwards-compatibility'] ? undefined : large.hpe.spacing.xxlarge,
-      '3xlarge': flags['v6-backwards-compatibility'] ? undefined : large.hpe.spacing['3xlarge'],
+      large: large.hpe.spacing.large,
+      xlarge: large.hpe.spacing.xlarge,
+      xxlarge: large.hpe.spacing.xxlarge,
+      '3xlarge': large.hpe.spacing['3xlarge'],
       responsiveBreakpoint: 'small'
     },
     radius: {
       none: large.hpe.radius.none,
       hair: large.hpe.radius.hair,
-      xxsmall: flags['v6-backwards-compatibility'] ? '3px' : large.hpe.radius.xxsmall,
-      xsmall: flags['v6-backwards-compatibility'] ? '6px' : large.hpe.radius.xsmall,
-      small: flags['v6-backwards-compatibility'] ? '12px' : large.hpe.radius.small,
-      medium: flags['v6-backwards-compatibility'] ? '24px' : large.hpe.radius.medium,
-      large: flags['v6-backwards-compatibility'] ? '48px' : large.hpe.radius.large,
-      xlarge: flags['v6-backwards-compatibility'] ? '96px' : large.hpe.radius.xlarge,
-      xxlarge: flags['v6-backwards-compatibility'] ? undefined : large.hpe.radius.xxlarge,
+      xxsmall: large.hpe.radius.xxsmall,
+      xsmall: large.hpe.radius.xsmall,
+      small: large.hpe.radius.small,
+      medium: large.hpe.radius.medium,
+      large: large.hpe.radius.large,
+      xlarge: large.hpe.radius.xlarge,
+      xxlarge: large.hpe.radius.xxlarge,
       responsiveBreakpoint: 'small'
     },
-    size: size(large),
+    size: size(large)
+  }, {
     breakpoints: {
-      xsmall: {
+      xsmall: _extends({}, flags['v6-backwards-compatibility'] ? responsiveGlobalSizes : {
         borderSize: {
           xsmall: small.hpe.borderWidth.xsmall,
           small: small.hpe.borderWidth.small,
           medium: small.hpe.borderWidth.medium,
           "default": small.hpe.borderWidth["default"],
-          large: flags['v6-backwards-compatibility'] ? '6px' : small.hpe.borderWidth.large,
-          xlarge: flags['v6-backwards-compatibility'] ? '12px' : small.hpe.borderWidth.xlarge
+          large: small.hpe.borderWidth.large,
+          xlarge: small.hpe.borderWidth.xlarge
         },
         edgeSize: {
           none: small.hpe.spacing.none,
@@ -128,26 +255,27 @@ var buildTheme = function buildTheme(tokens, flags) {
         radius: {
           none: small.hpe.radius.none,
           hair: small.hpe.radius.hair,
-          xxsmall: flags['v6-backwards-compatibility'] ? '1px' : small.hpe.radius.xxsmall,
-          xsmall: flags['v6-backwards-compatibility'] ? '3px' : small.hpe.radius.xsmall,
-          small: flags['v6-backwards-compatibility'] ? '6px' : small.hpe.radius.small,
-          medium: flags['v6-backwards-compatibility'] ? '12px' : small.hpe.radius.medium,
-          large: flags['v6-backwards-compatibility'] ? '24px' : small.hpe.radius.large,
-          xlarge: flags['v6-backwards-compatibility'] ? '48px' : small.hpe.radius.xlarge,
-          xxlarge: flags['v6-backwards-compatibility'] ? undefined : small.hpe.radius.xxlarge,
+          xxsmall: small.hpe.radius.xxsmall,
+          xsmall: small.hpe.radius.xsmall,
+          small: small.hpe.radius.small,
+          medium: small.hpe.radius.medium,
+          large: small.hpe.radius.large,
+          xlarge: small.hpe.radius.xlarge,
+          xxlarge: small.hpe.radius.xxlarge,
           responsiveBreakpoint: 'small'
         },
-        size: size(small),
+        size: size(small)
+      }, {
         value: parseInt(global.hpe.breakpoint.xsmall, 10)
-      },
-      small: {
+      }),
+      small: _extends({}, flags['v6-backwards-compatibility'] ? responsiveGlobalSizes : {
         borderSize: {
           xsmall: small.hpe.borderWidth.xsmall,
           small: small.hpe.borderWidth.small,
           medium: small.hpe.borderWidth.medium,
           "default": small.hpe.borderWidth["default"],
-          large: flags['v6-backwards-compatibility'] ? '6px' : small.hpe.borderWidth.large,
-          xlarge: flags['v6-backwards-compatibility'] ? '12px' : small.hpe.borderWidth.xlarge
+          large: small.hpe.borderWidth.large,
+          xlarge: small.hpe.borderWidth.xlarge
         },
         edgeSize: {
           none: small.hpe.spacing.none,
@@ -163,18 +291,19 @@ var buildTheme = function buildTheme(tokens, flags) {
         radius: {
           none: small.hpe.radius.none,
           hair: small.hpe.radius.hair,
-          xxsmall: flags['v6-backwards-compatibility'] ? '1px' : small.hpe.radius.xxsmall,
-          xsmall: flags['v6-backwards-compatibility'] ? '3px' : small.hpe.radius.xsmall,
-          small: flags['v6-backwards-compatibility'] ? '6px' : small.hpe.radius.small,
-          medium: flags['v6-backwards-compatibility'] ? '12px' : small.hpe.radius.medium,
-          large: flags['v6-backwards-compatibility'] ? '24px' : small.hpe.radius.large,
-          xlarge: flags['v6-backwards-compatibility'] ? '48px' : small.hpe.radius.xlarge,
-          xxlarge: flags['v6-backwards-compatibility'] ? undefined : small.hpe.radius.xxlarge,
+          xxsmall: small.hpe.radius.xxsmall,
+          xsmall: small.hpe.radius.xsmall,
+          small: small.hpe.radius.small,
+          medium: small.hpe.radius.medium,
+          large: small.hpe.radius.large,
+          xlarge: small.hpe.radius.xlarge,
+          xxlarge: small.hpe.radius.xxlarge,
           responsiveBreakpoint: 'small'
         },
-        size: size(small),
+        size: size(small)
+      }, {
         value: parseInt(global.hpe.breakpoint.small, 10)
-      },
+      }),
       medium: {
         value: parseInt(global.hpe.breakpoint.medium, 10)
       },
@@ -183,7 +312,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       xlarge: {}
     }
-  };
+  });
 
   // option button kind styles. abstracted so select.emptySearchMessage
   // can reference pad value
