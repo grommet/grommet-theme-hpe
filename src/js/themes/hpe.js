@@ -57,6 +57,14 @@ const textSizes = [
 const getThemeColor = (color, theme) =>
   theme.global.colors[color]?.[theme.dark ? 'dark' : 'light'] || color;
 
+const getTextSize = (size) => {
+  if (size === '3xlarge') return '3xl';
+  if (size === '4xlarge') return '4xl';
+  if (size === '5xlarge') return '5xl';
+  if (size === '6xlarge') return '6xl';
+  return size;
+};
+
 const buildTheme = (tokens, flags) => {
   const {
     primitives,
@@ -101,8 +109,12 @@ const buildTheme = (tokens, flags) => {
       small: large.hpe.borderWidth.small,
       medium: large.hpe.borderWidth.medium,
       default: large.hpe.borderWidth.default,
-      large: large.hpe.borderWidth.large,
-      xlarge: large.hpe.borderWidth.xlarge,
+      large: flags['v6-backwards-compatibility']
+        ? '12px'
+        : large.hpe.borderWidth.large,
+      xlarge: flags['v6-backwards-compatibility']
+        ? '24px'
+        : large.hpe.borderWidth.xlarge,
     },
     edgeSize: {
       none: large.hpe.spacing.none,
@@ -174,8 +186,12 @@ const buildTheme = (tokens, flags) => {
           small: small.hpe.borderWidth.small,
           medium: small.hpe.borderWidth.medium,
           default: small.hpe.borderWidth.default,
-          large: small.hpe.borderWidth.large,
-          xlarge: small.hpe.borderWidth.xlarge,
+          large: flags['v6-backwards-compatibility']
+            ? '6px'
+            : small.hpe.borderWidth.large,
+          xlarge: flags['v6-backwards-compatibility']
+            ? '12px'
+            : small.hpe.borderWidth.xlarge,
         },
         edgeSize: {
           none: small.hpe.spacing.none,
@@ -223,8 +239,12 @@ const buildTheme = (tokens, flags) => {
           small: small.hpe.borderWidth.small,
           medium: small.hpe.borderWidth.medium,
           default: small.hpe.borderWidth.default,
-          large: small.hpe.borderWidth.large,
-          xlarge: small.hpe.borderWidth.xlarge,
+          large: flags['v6-backwards-compatibility']
+            ? '6px'
+            : small.hpe.borderWidth.large,
+          xlarge: flags['v6-backwards-compatibility']
+            ? '12px'
+            : small.hpe.borderWidth.xlarge,
         },
         edgeSize: {
           none: small.hpe.spacing.none,
@@ -308,8 +328,9 @@ const buildTheme = (tokens, flags) => {
 
   const anchorSizeTheme = {};
   textSizes.forEach((sizeArg) => {
-    const textSize = sizeArg === '6xl' ? '5xl' : sizeArg;
-    anchorSizeTheme[textSize] = {
+    const textSize = sizeArg === '6xlarge' ? '5xlarge' : sizeArg;
+    const themeSize = getTextSize(textSize);
+    anchorSizeTheme[themeSize] = {
       color: components.hpe.anchor.default.rest.textColor,
       textDecoration: components.hpe.anchor.default.rest.textDecoration,
       fontWeight: components.hpe.anchor.default.rest.fontWeight,
@@ -339,16 +360,17 @@ const buildTheme = (tokens, flags) => {
       fallback.maxWidth = large.hpe.text?.[textSize]?.maxWidth;
       fallback.weight = large.hpe.text?.[textSize]?.fontWeight;
     }
-    paragraphTheme[textSize] = {
+    const themeSize = getTextSize(textSize);
+    paragraphTheme[themeSize] = {
       size: large.hpe.text?.[textSize]?.fontSize || fallback.size,
       height: large.hpe.text?.[textSize]?.lineHeight || fallback.height,
       maxWidth: large.hpe.text?.[textSize]?.maxWidth || fallback.maxWidth,
     };
-    textTheme[textSize] = {
+    textTheme[themeSize] = {
       size: large.hpe.text?.[textSize]?.fontSize || fallback.size,
       height: large.hpe.text?.[textSize]?.lineHeight || fallback.height,
     };
-    fontWeights[textSize] =
+    fontWeights[themeSize] =
       large.hpe.text?.[textSize]?.fontWeight || fallback.weight;
   });
 
@@ -1216,7 +1238,7 @@ const buildTheme = (tokens, flags) => {
         },
       },
       extend: ({ disabled, theme }) => css`
-      font-weight: ${components.hpe.checkbox.default.medium.label.fontWeight};
+      font-weight: ${components.hpe.checkbox.default.label.rest.fontWeight};
       width: auto;
       border: ${
         components.hpe.formField.default.medium.input.container.borderWidth
@@ -2301,7 +2323,7 @@ const buildTheme = (tokens, flags) => {
       },
       size: components.hpe.radioButton.default.medium.control.height,
       font: {
-        weight: components.hpe.radioButton.default.medium.label.fontWeight,
+        weight: components.hpe.radioButton.default.label.rest.fontWeight,
       },
       icons: {
         circle: () => (
