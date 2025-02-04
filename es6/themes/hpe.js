@@ -31,10 +31,17 @@ var deepFreeze = function deepFreeze(obj) {
 var componentSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
 var buttonKinds = ['default', 'secondary', 'primary', 'toolbar'];
 var buttonStates = ['hover', 'active', 'disabled'];
-var textSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'];
+var textSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', '3xlarge', '4xlarge', '5xlarge', '6xlarge'];
 var getThemeColor = function getThemeColor(color, theme) {
   var _theme$global$colors$;
   return ((_theme$global$colors$ = theme.global.colors[color]) == null ? void 0 : _theme$global$colors$[theme.dark ? 'dark' : 'light']) || color;
+};
+var getTextSize = function getTextSize(size) {
+  if (size === '3xlarge') return '3xl';
+  if (size === '4xlarge') return '4xl';
+  if (size === '5xlarge') return '5xl';
+  if (size === '6xlarge') return '6xl';
+  return size;
 };
 var buildTheme = function buildTheme(tokens, flags) {
   var _components$hpe$eleme, _components$hpe$eleme2, _components$hpe$eleme3, _components$hpe$eleme4, _components$hpe$eleme5, _components$hpe$dataC, _components$hpe$eleme6, _components$hpe$eleme7, _components$hpe$eleme8, _components$hpe$eleme9, _components$hpe$eleme10, _components$hpe$eleme11, _components$hpe$eleme12, _components$hpe$eleme13, _components$hpe$eleme14, _components$hpe$eleme15, _components$hpe$eleme16, _components$hpe$eleme17, _components$hpe$eleme18, _components$hpe$eleme19, _components$hpe$eleme20, _components$hpe$eleme21, _components$hpe$eleme22, _components$hpe$eleme23, _components$hpe$eleme24, _components$hpe$eleme25, _components$hpe$eleme26, _components$hpe$eleme27, _components$hpe$eleme28, _components$hpe$eleme29, _components$hpe$eleme30, _components$hpe$eleme31, _components$hpe$eleme32, _components$hpe$eleme33, _components$hpe$eleme34, _components$hpe$eleme35, _components$hpe$eleme36, _components$hpe$eleme37, _components$hpe$eleme38, _components$hpe$eleme39;
@@ -65,8 +72,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       small: large.hpe.borderWidth.small,
       medium: large.hpe.borderWidth.medium,
       "default": large.hpe.borderWidth["default"],
-      large: large.hpe.borderWidth.large,
-      xlarge: large.hpe.borderWidth.xlarge
+      large: flags['v6-backwards-compatibility'] ? '12px' : large.hpe.borderWidth.large,
+      xlarge: flags['v6-backwards-compatibility'] ? '24px' : large.hpe.borderWidth.xlarge
     },
     edgeSize: {
       none: large.hpe.spacing.none,
@@ -104,8 +111,8 @@ var buildTheme = function buildTheme(tokens, flags) {
           small: small.hpe.borderWidth.small,
           medium: small.hpe.borderWidth.medium,
           "default": small.hpe.borderWidth["default"],
-          large: small.hpe.borderWidth.large,
-          xlarge: small.hpe.borderWidth.xlarge
+          large: flags['v6-backwards-compatibility'] ? '6px' : small.hpe.borderWidth.large,
+          xlarge: flags['v6-backwards-compatibility'] ? '12px' : small.hpe.borderWidth.xlarge
         },
         edgeSize: {
           none: small.hpe.spacing.none,
@@ -139,8 +146,8 @@ var buildTheme = function buildTheme(tokens, flags) {
           small: small.hpe.borderWidth.small,
           medium: small.hpe.borderWidth.medium,
           "default": small.hpe.borderWidth["default"],
-          large: small.hpe.borderWidth.large,
-          xlarge: small.hpe.borderWidth.xlarge
+          large: flags['v6-backwards-compatibility'] ? '6px' : small.hpe.borderWidth.large,
+          xlarge: flags['v6-backwards-compatibility'] ? '12px' : small.hpe.borderWidth.xlarge
         },
         edgeSize: {
           none: small.hpe.spacing.none,
@@ -203,8 +210,9 @@ var buildTheme = function buildTheme(tokens, flags) {
   };
   var anchorSizeTheme = {};
   textSizes.forEach(function (sizeArg) {
-    var textSize = sizeArg === '6xl' ? '5xl' : sizeArg;
-    anchorSizeTheme[textSize] = {
+    var textSize = sizeArg === '6xlarge' ? '5xlarge' : sizeArg;
+    var themeSize = getTextSize(textSize);
+    anchorSizeTheme[themeSize] = {
       color: components.hpe.anchor["default"].rest.textColor,
       textDecoration: components.hpe.anchor["default"].rest.textDecoration,
       fontWeight: components.hpe.anchor["default"].rest.fontWeight,
@@ -232,16 +240,17 @@ var buildTheme = function buildTheme(tokens, flags) {
       fallback.maxWidth = (_large$hpe$text4 = large.hpe.text) == null || (_large$hpe$text4 = _large$hpe$text4[textSize]) == null ? void 0 : _large$hpe$text4.maxWidth;
       fallback.weight = (_large$hpe$text5 = large.hpe.text) == null || (_large$hpe$text5 = _large$hpe$text5[textSize]) == null ? void 0 : _large$hpe$text5.fontWeight;
     }
-    paragraphTheme[textSize] = {
+    var themeSize = getTextSize(textSize);
+    paragraphTheme[themeSize] = {
       size: ((_large$hpe$text6 = large.hpe.text) == null || (_large$hpe$text6 = _large$hpe$text6[textSize]) == null ? void 0 : _large$hpe$text6.fontSize) || fallback.size,
       height: ((_large$hpe$text7 = large.hpe.text) == null || (_large$hpe$text7 = _large$hpe$text7[textSize]) == null ? void 0 : _large$hpe$text7.lineHeight) || fallback.height,
       maxWidth: ((_large$hpe$text8 = large.hpe.text) == null || (_large$hpe$text8 = _large$hpe$text8[textSize]) == null ? void 0 : _large$hpe$text8.maxWidth) || fallback.maxWidth
     };
-    textTheme[textSize] = {
+    textTheme[themeSize] = {
       size: ((_large$hpe$text9 = large.hpe.text) == null || (_large$hpe$text9 = _large$hpe$text9[textSize]) == null ? void 0 : _large$hpe$text9.fontSize) || fallback.size,
       height: ((_large$hpe$text10 = large.hpe.text) == null || (_large$hpe$text10 = _large$hpe$text10[textSize]) == null ? void 0 : _large$hpe$text10.lineHeight) || fallback.height
     };
-    fontWeights[textSize] = ((_large$hpe$text11 = large.hpe.text) == null || (_large$hpe$text11 = _large$hpe$text11[textSize]) == null ? void 0 : _large$hpe$text11.fontWeight) || fallback.weight;
+    fontWeights[themeSize] = ((_large$hpe$text11 = large.hpe.text) == null || (_large$hpe$text11 = _large$hpe$text11[textSize]) == null ? void 0 : _large$hpe$text11.fontWeight) || fallback.weight;
   });
   textTheme.extend = function (_ref) {
     var textSize = _ref.size,
@@ -895,7 +904,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       extend: function extend(_ref12) {
         var disabled = _ref12.disabled,
           theme = _ref12.theme;
-        return css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n      font-weight: ", ";\n      width: auto;\n      border: ", " solid ", ";\n      & input:checked + span[class*=CheckBoxToggle] > span[class*=CheckBoxKnob] {\n        left: 25px;\n      }\n      ", "\n    };\n    "])), components.hpe.checkbox["default"].medium.label.fontWeight, components.hpe.formField["default"].medium.input.container.borderWidth, getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme),
+        return css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n      font-weight: ", ";\n      width: auto;\n      border: ", " solid ", ";\n      & input:checked + span[class*=CheckBoxToggle] > span[class*=CheckBoxKnob] {\n        left: 25px;\n      }\n      ", "\n    };\n    "])), components.hpe.checkbox["default"].label.rest.fontWeight, components.hpe.formField["default"].medium.input.container.borderWidth, getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme),
         // override built in disabled opacity: 0.5 from grommet
         disabled && "opacity: 1; \n        color: " + getThemeColor(components.hpe.checkbox["default"].label.disabled.rest.textColor, theme) + ";");
       }
@@ -1841,7 +1850,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       size: components.hpe.radioButton["default"].medium.control.height,
       font: {
-        weight: components.hpe.radioButton["default"].medium.label.fontWeight
+        weight: components.hpe.radioButton["default"].label.rest.fontWeight
       },
       icons: {
         circle: function circle() {

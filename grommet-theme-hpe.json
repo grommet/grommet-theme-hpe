@@ -70,7 +70,7 @@
           "small": "1px",
           "medium": "2px",
           "default": "1px",
-          "large": "4px",
+          "large": "6px",
           "xlarge": "12px"
         },
         "edgeSize": {
@@ -113,7 +113,7 @@
           "small": "1px",
           "medium": "2px",
           "default": "1px",
-          "large": "4px",
+          "large": "6px",
           "xlarge": "12px"
         },
         "edgeSize": {
@@ -2650,7 +2650,7 @@
     },
     "size": "24px",
     "font": {
-      "weight": 500
+      "weight": 400
     },
     "icons": {}
   },
