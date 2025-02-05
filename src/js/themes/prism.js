@@ -25,7 +25,7 @@ const colors = {
   code: hpeColors.text,
   comment: {
     dark: hpeColors.green.light,
-    light: primitives.hpe.base.color.green[800],
+    light: primitives.hpe.base.color['green-800'],
   },
   entity: { dark: hpeColors.blue.light, light: hpeColors.blue.dark },
   function: {
