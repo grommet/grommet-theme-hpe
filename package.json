@@ -20,13 +20,13 @@
     "url": "https://github.com/grommet/grommet-theme-hpe.git"
   },
   "peerDependencies": {
-    "grommet": "^2.45.0",
-    "grommet-icons": "^4.12.3",
+    "grommet": "^2.45.1",
+    "grommet-icons": "^4.12.4",
     "react": "^16.13.1 || ^17.0.1 || ^18.0.0",
     "styled-components": "^5.0.0 || ^6.0.0"
   },
   "dependencies": {
-    "hpe-design-tokens": "https://github.com/grommet/hpe-design-system.git#design-tokens-NEXT-stable"
+    "hpe-design-tokens": "^1.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.1",
