@@ -1,7 +1,7 @@
 // Theme for code syntax highlighting
 // Exported theme object is consumed by ReactSyntaxHighlighter + PrismJS
 // https://github.com/react-syntax-highlighter/react-syntax-highlighter#prism
-
+import { primitives } from 'hpe-design-tokens/grommet';
 import { colors as hpeColors } from './colors';
 var colors = {
   atrule: {
@@ -39,7 +39,7 @@ var colors = {
   code: hpeColors.text,
   comment: {
     dark: hpeColors.green.light,
-    light: hpeColors.green.dark
+    light: primitives.hpe.base.color['green-800']
   },
   entity: {
     dark: hpeColors.blue.light,

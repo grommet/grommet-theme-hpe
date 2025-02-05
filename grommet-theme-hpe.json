@@ -193,6 +193,10 @@
         "light": "rgba(0, 0, 0, 0.12)",
         "dark": "rgba(0, 0, 0, 0.12)"
       },
+      "background-unknown": {
+        "light": "rgba(0, 0, 0, 0.04)",
+        "dark": "rgba(255, 255, 255, 0.06)"
+      },
       "background-warning": {
         "light": "rgba(255, 188, 68, 0.12)",
         "dark": "rgba(254, 201, 1, 0.12)"
@@ -208,10 +212,6 @@
       "background-critical": {
         "light": "rgba(252, 97, 97, 0.12)",
         "dark": "rgba(204, 31, 26, 0.3)"
-      },
-      "background-unknown": {
-        "light": "rgba(0, 0, 0, 0.04)",
-        "dark": "rgba(255, 255, 255, 0.06)"
       },
       "background-primary-strong": {
         "light": "#008567",
@@ -341,12 +341,20 @@
         "light": "#2e2e2e",
         "dark": "#ffffff"
       },
+      "text-anchor": {
+        "light": "#006750",
+        "dark": "#17d0a6"
+      },
+      "text-anchor-hover": {
+        "light": "#074b3b",
+        "dark": "#00ebb5"
+      },
       "text-onSelectedPrimaryStrong": {
         "light": "#ffffff",
         "dark": "#ffffff"
       },
       "text-onSelectedPrimary": {
-        "light": "#074b3b",
+        "light": "#2e2e2e",
         "dark": "#ffffff"
       },
       "text-onStrong": {
@@ -777,7 +785,7 @@
     }
   },
   "anchor": {
-    "color": "text-primary",
+    "color": "text-anchor",
     "textDecoration": "underline",
     "fontWeight": 500,
     "gap": "6px",
@@ -789,55 +797,55 @@
     },
     "size": {
       "xsmall": {
-        "color": "text-primary",
+        "color": "text-anchor",
         "textDecoration": "underline",
         "fontWeight": 500,
         "gap": "3px"
       },
       "small": {
-        "color": "text-primary",
+        "color": "text-anchor",
         "textDecoration": "underline",
         "fontWeight": 500,
         "gap": "6px"
       },
       "medium": {
-        "color": "text-primary",
+        "color": "text-anchor",
         "textDecoration": "underline",
         "fontWeight": 500,
         "gap": "6px"
       },
       "large": {
-        "color": "text-primary",
+        "color": "text-anchor",
         "textDecoration": "underline",
         "fontWeight": 500,
         "gap": "6px"
       },
       "xlarge": {
-        "color": "text-primary",
+        "color": "text-anchor",
         "textDecoration": "underline",
         "fontWeight": 500,
         "gap": "6px"
       },
       "xxlarge": {
-        "color": "text-primary",
+        "color": "text-anchor",
         "textDecoration": "underline",
         "fontWeight": 500,
         "gap": "6px"
       },
       "3xl": {
-        "color": "text-primary",
+        "color": "text-anchor",
         "textDecoration": "underline",
         "fontWeight": 500,
         "gap": "6px"
       },
       "4xl": {
-        "color": "text-primary",
+        "color": "text-anchor",
         "textDecoration": "underline",
         "fontWeight": 500,
         "gap": "6px"
       },
       "5xl": {
-        "color": "text-primary",
+        "color": "text-anchor",
         "textDecoration": "underline",
         "fontWeight": 500,
         "gap": "6px"
@@ -1016,7 +1024,7 @@
         "border": {
           "color": "transparent"
         },
-        "color": "text-onSelectedPrimary",
+        "color": "text-primary",
         "font": {
           "weight": 600
         }
@@ -1040,7 +1048,7 @@
         "border": {
           "color": "border-selected"
         },
-        "color": "text-onSelectedPrimary",
+        "color": "text-primary",
         "font": {
           "weight": 500
         }
@@ -1093,7 +1101,7 @@
         },
         "border": {
           "width": "",
-          "color": "border-disabled"
+          "color": "transparent"
         },
         "color": "text-disabled",
         "font": {
@@ -1211,7 +1219,7 @@
           "border": {
             "color": "transparent"
           },
-          "color": "text-onSelectedPrimary",
+          "color": "text-primary",
           "font": {
             "weight": 600
           }
@@ -1235,7 +1243,7 @@
           "border": {
             "color": "border-selected"
           },
-          "color": "text-onSelectedPrimary",
+          "color": "text-primary",
           "font": {
             "weight": 500
           }

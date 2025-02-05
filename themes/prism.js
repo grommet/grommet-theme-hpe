@@ -2,6 +2,7 @@
 
 exports.__esModule = true;
 exports.prism = void 0;
+var _grommet = require("hpe-design-tokens/grommet");
 var _colors = require("./colors");
 // Theme for code syntax highlighting
 // Exported theme object is consumed by ReactSyntaxHighlighter + PrismJS
@@ -43,7 +44,7 @@ var colors = {
   code: _colors.colors.text,
   comment: {
     dark: _colors.colors.green.light,
-    light: _colors.colors.green.dark
+    light: _grommet.primitives.hpe.base.color['green-800']
   },
   entity: {
     dark: _colors.colors.blue.light,
