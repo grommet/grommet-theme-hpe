@@ -799,19 +799,24 @@ const buildTheme = (tokens, flags) => {
         ...buttonKindTheme.primary,
         icon: <Hpe />,
         reverse: true,
-        extend: '',
       },
       'cta-alternate': {
         ...buttonKindTheme.secondary,
-        icon: <Hpe color="icon-brand" />,
+        icon: <Hpe color="brand" />,
         reverse: true,
       },
       ...buttonKindTheme,
       option,
-      active: buttonStatesTheme.active,
+      active: {
+        ...buttonStatesTheme.active,
+        'cta-primary': buttonStatesTheme.active.primary,
+        'cta-alternate': buttonStatesTheme.active.secondary,
+      },
       disabled: {
         opacity: 1,
         ...buttonStatesTheme.disabled,
+        'cta-primary': buttonStatesTheme.disabled.primary,
+        'cta-alternate': buttonStatesTheme.disabled.secondary,
       },
       selected: {
         option: {
@@ -861,6 +866,11 @@ const buildTheme = (tokens, flags) => {
         'cta-primary': buttonStatesTheme.hover.primary,
         'cta-alternate': buttonStatesTheme.hover.secondary,
         ...buttonStatesTheme.hover,
+        active: {
+          ...buttonStatesTheme.hover.active,
+          'cta-primary': buttonStatesTheme.hover.active.primary,
+          'cta-alternate': buttonStatesTheme.hover.active.secondary,
+        },
         option: {
           background: components.hpe.select.default.option.hover.background,
           border: {
