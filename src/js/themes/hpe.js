@@ -54,7 +54,9 @@ const textSizes = [
 ];
 
 const getThemeColor = (color, theme) =>
-  theme.global.colors[color]?.[theme.dark ? 'dark' : 'light'] || color;
+  typeof theme.global.colors[color] === 'string'
+    ? theme.global.colors[color]
+    : theme.global.colors[color]?.[theme.dark ? 'dark' : 'light'] || color;
 
 const globalSizes = {
   borderSize: {
@@ -917,6 +919,19 @@ const buildTheme = (tokens, flags) => {
             },
           },
         },
+      },
+      extend: ({ colorValue, theme }) => {
+        let style = '';
+        if (colorValue) {
+          // color prop is not recommended to be used, but providing
+          // a better fallback behavior for hover styles to avoid
+          // "kind" hover background from applying
+          // https://github.com/grommet/grommet/issues/7504
+          style += `
+            &:hover { background: ${getThemeColor(colorValue, theme)}; }
+          `;
+        }
+        return style;
       },
     },
     calendar: {
