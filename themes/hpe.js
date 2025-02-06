@@ -786,20 +786,7 @@ var buildTheme = function buildTheme(tokens, flags) {
             }
           }
         })
-      }),
-      extend: function extend(_ref7) {
-        var _components$hpe$butto31, _components$hpe$butto32;
-        var sizeProp = _ref7.sizeProp,
-          hasIcon = _ref7.hasIcon,
-          hasLabel = _ref7.hasLabel,
-          kind = _ref7.kind,
-          plain = _ref7.plain;
-        var style = '';
-        var iconOnly = hasIcon && !hasLabel;
-        // kind and size specific icon-only padding
-        if (!plain && iconOnly && (_components$hpe$butto31 = components.hpe.button[kind]) != null && (_components$hpe$butto31 = _components$hpe$butto31[sizeProp]) != null && (_components$hpe$butto31 = _components$hpe$butto31.iconOnly) != null && _components$hpe$butto31.paddingY && (_components$hpe$butto32 = components.hpe.button[kind]) != null && (_components$hpe$butto32 = _components$hpe$butto32[sizeProp]) != null && (_components$hpe$butto32 = _components$hpe$butto32.iconOnly) != null && _components$hpe$butto32.paddingX) style += "padding: " + components.hpe.button[kind][sizeProp].iconOnly.paddingY + " " + components.hpe.button[kind][sizeProp].iconOnly.paddingX;
-        return style;
-      }
+      })
     }),
     calendar: {
       day: {
@@ -958,10 +945,10 @@ var buildTheme = function buildTheme(tokens, flags) {
         background: {
           color: undefined
         },
-        extend: function extend(_ref8) {
-          var theme = _ref8.theme,
-            toggle = _ref8.toggle,
-            checked = _ref8.checked;
+        extend: function extend(_ref7) {
+          var theme = _ref7.theme,
+            toggle = _ref7.toggle,
+            checked = _ref7.checked;
           var borderColor;
           if (toggle) {
             borderColor = getThemeColor(components.hpe["switch"]["default"].control.track.hover.borderColor, theme);
@@ -985,11 +972,11 @@ var buildTheme = function buildTheme(tokens, flags) {
         radius: components.hpe.checkbox["default"].medium.control.borderRadius,
         thickness: '2px',
         // The stroke width of the checked icon.
-        extend: function extend(_ref9) {
-          var theme = _ref9.theme,
-            checked = _ref9.checked,
-            indeterminate = _ref9.indeterminate,
-            disabled = _ref9.disabled;
+        extend: function extend(_ref8) {
+          var theme = _ref8.theme,
+            checked = _ref8.checked,
+            indeterminate = _ref8.indeterminate,
+            disabled = _ref8.disabled;
           var background = getThemeColor(components.hpe.checkbox["default"].control.rest.background, theme);
           var hoverBackground = getThemeColor(components.hpe.checkbox["default"].control.hover.background, theme);
           var borderColor = getThemeColor(components.hpe.checkbox["default"].control.rest.borderColor, theme);
@@ -1008,8 +995,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       icon: {
-        extend: function extend(_ref10) {
-          var theme = _ref10.theme;
+        extend: function extend(_ref9) {
+          var theme = _ref9.theme;
           return "stroke-width: 2px;\n        stroke: " + getThemeColor(components.hpe.checkbox["default"].control.selected.rest.iconColor, theme);
         }
       },
@@ -1024,19 +1011,19 @@ var buildTheme = function buildTheme(tokens, flags) {
         color: components.hpe["switch"]["default"].control.handle.rest.background,
         size: components.hpe["switch"]["default"].medium.control.track.width,
         knob: {
-          extend: function extend(_ref11) {
-            var theme = _ref11.theme,
-              checked = _ref11.checked,
-              disabled = _ref11.disabled;
+          extend: function extend(_ref10) {
+            var theme = _ref10.theme,
+              checked = _ref10.checked,
+              disabled = _ref10.disabled;
             var insetHandle = dimensions.borderSize[components.hpe["switch"]["default"].medium.control.handle.borderWidth] || dimensions.borderSize[components.hpe["switch"]["default"].medium.control.handle.borderWidth];
             return "\n          box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'][components.hpe["switch"]["default"].control.handle.rest.boxShadow] + ";\n          border: " + dimensions.borderSize[components.hpe["switch"]["default"].medium.control.handle.borderWidth] + " solid " + getThemeColor(disabled ? components.hpe["switch"]["default"].control.handle.disabled.rest.borderColor : components.hpe["switch"]["default"].control.handle.rest.borderColor, theme) + ";\n          width: " + components.hpe["switch"]["default"].medium.control.handle.width + ";\n          height: " + components.hpe["switch"]["default"].medium.control.handle.height + ";\n          top: " + insetHandle + ";\n          left: " + (!checked ? insetHandle : '25px') + ";\n          ";
           }
         },
         // applies to track around handle
-        extend: function extend(_ref12) {
-          var checked = _ref12.checked,
-            theme = _ref12.theme,
-            disabled = _ref12.disabled;
+        extend: function extend(_ref11) {
+          var checked = _ref11.checked,
+            theme = _ref11.theme,
+            disabled = _ref11.disabled;
           var background;
           var hoverBackground = getThemeColor(components.hpe["switch"]["default"].control.track.hover.background, theme);
           var borderColor = getThemeColor(components.hpe["switch"]["default"].control.track.rest.borderColor, theme);
@@ -1051,9 +1038,9 @@ var buildTheme = function buildTheme(tokens, flags) {
           return "\n            border-color: " + borderColor + ";\n            background: " + background + ";\n            &:hover {\n              " + (!disabled ? "background: " + hoverBackground + ";" : '') + "\n            }\n        ";
         }
       },
-      extend: function extend(_ref13) {
-        var disabled = _ref13.disabled,
-          theme = _ref13.theme;
+      extend: function extend(_ref12) {
+        var disabled = _ref12.disabled,
+          theme = _ref12.theme;
         return (0, _styledComponents.css)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n      font-weight: ", ";\n      width: auto;\n      border: ", " solid ", ";\n      & input:checked + span[class*=CheckBoxToggle] > span[class*=CheckBoxKnob] {\n        left: 25px;\n      }\n      ", "\n    };\n    "])), components.hpe.checkbox["default"].label.rest.fontWeight, components.hpe.formField["default"].medium.input.container.borderWidth, getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme),
         // override built in disabled opacity: 0.5 from grommet
         disabled && "opacity: 1; \n        color: " + getThemeColor(components.hpe.checkbox["default"].label.disabled.rest.textColor, theme) + ";");
@@ -1081,8 +1068,8 @@ var buildTheme = function buildTheme(tokens, flags) {
     },
     dataTable: {
       body: {
-        extend: function extend(_ref14) {
-          var theme = _ref14.theme;
+        extend: function extend(_ref13) {
+          var theme = _ref13.theme;
           return "\n          /* Margin and padding allow room for focus on table body */\n          margin: " + theme.global.edgeSize.xxsmall + " 0px;\n          padding: 0px " + theme.global.edgeSize.xxsmall + ";\n        ";
         },
         selected: {
@@ -1108,11 +1095,11 @@ var buildTheme = function buildTheme(tokens, flags) {
           side: 'bottom'
         },
         color: components.hpe.headerCell["default"].rest.textColor,
-        extend: function extend(_ref15) {
-          var column = _ref15.column,
-            sort = _ref15.sort,
-            sortable = _ref15.sortable,
-            theme = _ref15.theme;
+        extend: function extend(_ref14) {
+          var column = _ref14.column,
+            sort = _ref14.sort,
+            sortable = _ref14.sortable,
+            theme = _ref14.theme;
           return "\n            " + (sort && sort.property === column && "\n              background: " + theme.global.colors['background-active'][theme.dark ? 'dark' : 'light'] + "\n            ") + ";\n            " + (sortable && sort && sort.property !== column && "\n                svg {\n                  opacity: 0;\n                }\n                &:hover {\n                  svg {\n                    opacity: 1;\n                  }\n                }\n              ") + ";\n          ";
         },
         font: {
@@ -1242,8 +1229,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       extend: "border-radius: " + components.hpe.formField["default"].medium.input.container.borderRadius + ";"
     },
     formField: {
-      extend: function extend(_ref16) {
-        var theme = _ref16.theme;
+      extend: function extend(_ref15) {
+        var theme = _ref15.theme;
         return "\n          input:disabled {\n            color: " + getThemeColor(components.hpe.formField["default"].value.disabled.rest.textColor, theme) + ";\n          }\n          [class*=\"ContentBox\"] {\n            label {\n              padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n              &:hover:not([disabled]) {\n                background: " + getThemeColor(components.hpe.formField["default"].input.container.hover.background, theme) + ";\n              }\n            }\n            [role=\"group\"], [role=\"radiogroup\"] {\n              gap: 0;\n              padding-block: " + components.hpe.formField["default"].medium.input.group.container.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.container.paddingX + ";\n              label {\n                border: " + (dimensions.borderSize[components.hpe.formField["default"].medium.input.group.item.borderWidth] || components.hpe.formField["default"].medium.input.group.item.borderWidth) + " solid " + getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme) + ";\n                padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n                padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n                border-radius: " + dimensions.edgeSize[components.hpe.formField["default"].medium.input.group.item.borderRadius] + ";\n                &:hover:not([disabled]) {\n                  background: " + getThemeColor(components.hpe.formField["default"].input.group.item.hover.background, theme) + ";\n                }\n              }\n            }\n          }\n      ";
       },
       content: {
@@ -1265,13 +1252,21 @@ var buildTheme = function buildTheme(tokens, flags) {
           vertical: components.hpe.formField["default"].medium.input.group.item.paddingY
         },
         container: {
+          extend: function extend(_ref16) {
+            var error = _ref16.error;
+            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
+          }
+        }
+      },
+      checkBoxGroup: {
+        container: {
           extend: function extend(_ref17) {
             var error = _ref17.error;
             return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
           }
         }
       },
-      checkBoxGroup: {
+      radioButtonGroup: {
         container: {
           extend: function extend(_ref18) {
             var error = _ref18.error;
@@ -1279,7 +1274,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           }
         }
       },
-      radioButtonGroup: {
+      thumbsRating: {
         container: {
           extend: function extend(_ref19) {
             var error = _ref19.error;
@@ -1287,18 +1282,10 @@ var buildTheme = function buildTheme(tokens, flags) {
           }
         }
       },
-      thumbsRating: {
+      starRating: {
         container: {
           extend: function extend(_ref20) {
             var error = _ref20.error;
-            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
-          }
-        }
-      },
-      starRating: {
-        container: {
-          extend: function extend(_ref21) {
-            var error = _ref21.error;
             return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
           }
         }
@@ -1572,8 +1559,8 @@ var buildTheme = function buildTheme(tokens, flags) {
     },
     maskedInput: {
       container: {
-        extend: function extend(_ref22) {
-          var theme = _ref22.theme;
+        extend: function extend(_ref21) {
+          var theme = _ref21.theme;
           return "\n          svg {\n            fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n            stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          }\n        ";
         }
       }
@@ -2007,8 +1994,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       color: components.hpe.radioButton["default"].control.selected.rest.borderColor,
       container: {
-        extend: function extend(_ref23) {
-          var theme = _ref23.theme;
+        extend: function extend(_ref22) {
+          var theme = _ref22.theme;
           return "\n          width: auto;\n          &:has(input[checked]) {\n            & div:has(> svg[aria-hidden=\"true\"]) {\n              background: " + getThemeColor(components.hpe.radioButton["default"].control.selected.rest.background, theme) + ";\n              border-color: " + getThemeColor(components.hpe.radioButton["default"].control.selected.rest.borderColor, theme) + ";\n            }\n          }\n          &:has(input[checked]):hover:not([disabled]) {\n              & div:has(> svg[aria-hidden=\"true\"]) {\n                background: " + getThemeColor(components.hpe.radioButton["default"].control.selected.hover.background, theme) + ";\n                border-color: " + getThemeColor(components.hpe.radioButton["default"].control.selected.hover.borderColor, theme) + ";\n              }\n          }\n          ";
         }
       },
@@ -2082,8 +2069,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       control: {
-        extend: function extend(_ref24) {
-          var disabled = _ref24.disabled;
+        extend: function extend(_ref23) {
+          var disabled = _ref23.disabled;
           return (0, _styledComponents.css)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n          ", "\n\n          &[class*=\"SelectMultiple\"] [role=\"listbox\"] {\n            padding-block: ", ";\n            padding-inline: ", ";\n            & [role='option'] {\n              border-radius: ", ";\n            }\n          }\n        "])), disabled && "\n          opacity: 0.3;\n          input {\n            cursor: default;\n          }", components.hpe.select["default"].medium.drop.paddingY, components.hpe.select["default"].medium.drop.paddingX, dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius);
         }
       },
@@ -2192,8 +2179,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         vertical: 'none',
         horizontal: 'none'
       },
-      extend: function extend(_ref25) {
-        var theme = _ref25.theme;
+      extend: function extend(_ref24) {
+        var theme = _ref24.theme;
         return "border-radius: " + theme.global.edgeSize.xsmall + ";";
       }
     },
@@ -2201,8 +2188,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       gap: 'xsmall',
       header: {
         border: undefined,
-        extend: function extend(_ref26) {
-          var theme = _ref26.theme;
+        extend: function extend(_ref25) {
+          var theme = _ref25.theme;
           return "\n          border-radius: " + theme.global.edgeSize.xsmall + "; \n          & button[aria-selected=\"true\"]:hover:not([disabled]) > div {\n            background: " + getThemeColor('background-selected-primary-strong-hover', theme) + ";\n            color: " + getThemeColor('text-onSelectedPrimaryStrong', theme) + ";\n          }\n        ";
         }
       },
@@ -2225,8 +2212,8 @@ var buildTheme = function buildTheme(tokens, flags) {
           side: 'bottom',
           color: components.hpe.dataCell["default"].rest.borderColor
         },
-        extend: function extend(_ref27) {
-          var theme = _ref27.theme;
+        extend: function extend(_ref26) {
+          var theme = _ref26.theme;
           return "\n            &:hover {\n              button {\n                background: " + theme.global.colors['background-hover'][theme.dark ? 'dark' : 'light'] + ";\n              }\n            }\n          ";
         }
       },
@@ -2329,14 +2316,14 @@ var buildTheme = function buildTheme(tokens, flags) {
     text: _extends({}, textTheme),
     textInput: {
       container: {
-        extend: function extend(_ref28) {
-          var theme = _ref28.theme;
+        extend: function extend(_ref27) {
+          var theme = _ref27.theme;
           return "\n          svg {\n            fill: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n            stroke: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n          }\n        ";
         }
       },
       suggestions: {
-        extend: function extend(_ref29) {
-          var theme = _ref29.theme;
+        extend: function extend(_ref28) {
+          var theme = _ref28.theme;
           return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"]:hover {\n            background: " + getThemeColor(components.hpe.select["default"].option.hover.background, theme) + ";\n          }\n        ";
         }
       }
@@ -2370,8 +2357,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       container: {
         border: false,
-        extend: function extend(_ref30) {
-          var theme = _ref30.theme;
+        extend: function extend(_ref29) {
+          var theme = _ref29.theme;
           return "\n        gap: " + (dimensions.edgeSize[large.hpe.spacing['5xsmall']] || large.hpe.spacing['5xsmall']) + ";\n        &:hover {\n          background: " + getThemeColor('background-hover', theme) + ";\n        }";
         }
       },
