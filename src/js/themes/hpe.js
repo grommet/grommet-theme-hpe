@@ -2647,6 +2647,12 @@ const buildTheme = (tokens, flags) => {
           font-weight: ${components.hpe.footerCell.default.fontWeight};
         `,
       },
+      extend: () => `& tbody tr:last-child td {
+        border-color: transparent;
+      }
+      & tbody tr:last-child th {
+        border-color: transparent;
+      }`,
     },
     tag: {
       border: {
