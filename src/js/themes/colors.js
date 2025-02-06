@@ -105,7 +105,7 @@ export const colors = {
     dark: dark.hpe.color.decorative.purple,
     light: light.hpe.color.decorative.purple,
   },
-  'purple!': primitives.hpe.base.color['purple-800'],
+  'purple!': '#7630EA',
   red: {
     dark: dark.hpe.color.decorative.red,
     light: light.hpe.color.decorative.red,
@@ -115,7 +115,7 @@ export const colors = {
     dark: dark.hpe.color.decorative.orange,
     light: light.hpe.color.decorative.orange,
   },
-  'orange!': primitives.hpe.base.color['orange-500'],
+  'orange!': '#FF8300',
   yellow: {
     dark: dark.hpe.color.decorative.yellow,
     light: light.hpe.color.decorative.yellow,
