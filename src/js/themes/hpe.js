@@ -1515,7 +1515,7 @@ const buildTheme = (tokens, flags) => {
                       .borderRadius
                   ]
                 };
-                &:hover {
+                &:hover:not([disabled]) {
                   background: ${getThemeColor(
                     components.hpe.formField.default.input.group.item.hover
                       .background,
