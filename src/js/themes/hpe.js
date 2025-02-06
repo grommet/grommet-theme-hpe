@@ -784,17 +784,18 @@ const buildTheme = (tokens, flags) => {
         ...buttonKindTheme.primary,
         icon: <Hpe />,
         reverse: true,
-        extend: '',
       },
       'cta-alternate': {
         ...buttonKindTheme.secondary,
-        icon: <Hpe color="icon-brand" />,
+        icon: <Hpe color="brand" />,
         reverse: true,
       },
       ...buttonKindTheme,
       option,
       active: {
         ...buttonStatesTheme.active,
+        'cta-primary': buttonStatesTheme.active.primary,
+        'cta-alternate': buttonStatesTheme.active.secondary,
         // applies when option is in focus
         extend: ({ kind, theme }) =>
           kind === 'option' &&
@@ -820,6 +821,8 @@ const buildTheme = (tokens, flags) => {
               components.hpe.select.default.option.disabled.rest.fontWeight,
           },
         },
+        'cta-primary': buttonStatesTheme.disabled.primary,
+        'cta-alternate': buttonStatesTheme.disabled.secondary,
       },
       selected: {
         option: {
@@ -871,6 +874,11 @@ const buildTheme = (tokens, flags) => {
         'cta-primary': buttonStatesTheme.hover.primary,
         'cta-alternate': buttonStatesTheme.hover.secondary,
         ...buttonStatesTheme.hover,
+        active: {
+          ...buttonStatesTheme.hover.active,
+          'cta-primary': buttonStatesTheme.hover.active.primary,
+          'cta-alternate': buttonStatesTheme.hover.active.secondary,
+        },
         option: {
           background: components.hpe.select.default.option.hover.background,
           border: {
@@ -1592,6 +1600,30 @@ const buildTheme = (tokens, flags) => {
             }; `,
         },
       },
+      thumbsRating: {
+        container: {
+          extend: ({ error }) =>
+            `border-color: ${
+              error
+                ? components.hpe.formField.default.input.group.container.error
+                    .rest.borderColor
+                : components.hpe.formField.default.input.group.container.rest
+                    .borderColor
+            }; `,
+        },
+      },
+      starRating: {
+        container: {
+          extend: ({ error }) =>
+            `border-color: ${
+              error
+                ? components.hpe.formField.default.input.group.container.error
+                    .rest.borderColor
+                : components.hpe.formField.default.input.group.container.rest
+                    .borderColor
+            }; `,
+        },
+      },
       disabled: {
         background:
           components.hpe.formField.default.input.group.container.disabled.rest
@@ -2209,6 +2241,13 @@ const buildTheme = (tokens, flags) => {
           color: components.hpe.button.default.hover.textColor,
           font: {
             weight: components.hpe.button.default.hover.fontWeight,
+          },
+          active: {
+            background: components.hpe.button.default.selected.hover.background,
+            color: components.hpe.button.default.selected.hover.textColor,
+            font: {
+              weight: components.hpe.button.default.selected.hover.fontWeight,
+            },
           },
         },
         disabled: {
