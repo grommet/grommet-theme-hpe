@@ -2236,6 +2236,9 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       footer: {
         extend: "\n          font-weight: " + components.hpe.footerCell["default"].fontWeight + ";\n        "
+      },
+      extend: function extend() {
+        return "& tbody tr:last-child td {\n        border-color: transparent;\n      }\n      & tbody tr:last-child th {\n        border-color: transparent;\n      }";
       }
     },
     tag: {
