@@ -950,9 +950,17 @@ var buildTheme = function buildTheme(tokens, flags) {
             borderColor = getThemeColor(components.hpe["switch"]["default"].control.track.hover.borderColor, theme);
           } else if (checked) {
             if (toggle) {
-              borderColor = getThemeColor(components.hpe["switch"]["default"].control.track.selected.hover.borderColor, theme);
+              borderColor = getThemeColor('transparent',
+              // incorrect token value to be updated in next minor hpe-design-tokens release
+              // components.hpe.switch.default.control.track.selected.hover
+              //   .borderColor,
+              theme);
             } else {
-              borderColor = getThemeColor(components.hpe.checkbox["default"].control.selected.hover.borderColor, theme);
+              borderColor = getThemeColor('transparent',
+              // incorrect token value to be updated in next minor hpe-design-tokens release
+              // components.hpe.checkbox.default.control.selected.hover
+              //   .borderColor,
+              theme);
             }
           }
           return css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n            ", "\n          "])), checked ? "border-color: " + borderColor + ";" : '');
@@ -978,7 +986,10 @@ var buildTheme = function buildTheme(tokens, flags) {
           var borderColor = getThemeColor(components.hpe.checkbox["default"].control.rest.borderColor, theme);
           if (checked || indeterminate) {
             background = getThemeColor(components.hpe.checkbox["default"].control.selected.rest.background, theme);
-            borderColor = getThemeColor(components.hpe.checkbox["default"].control.selected.rest.borderColor, theme);
+            borderColor = getThemeColor('transparent',
+            // incorrect token value to be updated in next minor hpe-design-tokens release
+            // components.hpe.checkbox.default.control.selected.rest.borderColor,
+            theme);
           }
           if (checked || indeterminate) {
             hoverBackground = getThemeColor(components.hpe.checkbox["default"].control.selected.hover.background, theme);
@@ -987,13 +998,14 @@ var buildTheme = function buildTheme(tokens, flags) {
             background = getThemeColor(components.hpe.checkbox["default"].control.disabled.rest.background, theme);
             borderColor = getThemeColor(components.hpe.checkbox["default"].control.disabled.rest.borderColor, theme);
           }
-          return "\n            background: " + background + ";\n            border-color: " + borderColor + ";\n            &:hover {\n              " + (!disabled ? "background: " + hoverBackground + ";" : '') + "\n            }\n            " + ((checked || indeterminate) && 'border: none;') + "\n          ";
+          return "\n            background: " + background + ";\n            border-color: " + borderColor + ";\n            &:hover {\n              " + (!disabled ? "background: " + hoverBackground + ";" : '') + "\n            }\n          ";
         }
       },
       icon: {
         extend: function extend(_ref9) {
-          var theme = _ref9.theme;
-          return "stroke-width: 2px;\n        stroke: " + getThemeColor(components.hpe.checkbox["default"].control.selected.rest.iconColor, theme);
+          var theme = _ref9.theme,
+            disabled = _ref9.disabled;
+          return "stroke-width: 2px;\n        stroke: " + getThemeColor(disabled ? components.hpe.checkbox["default"].control.disabled.rest.iconColor : components.hpe.checkbox["default"].control.selected.rest.iconColor, theme);
         }
       },
       gap: components.hpe.checkbox["default"].medium.gapX,
