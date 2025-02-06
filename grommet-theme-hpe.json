@@ -2519,6 +2519,13 @@
         "color": "text-strong",
         "font": {
           "weight": 500
+        },
+        "active": {
+          "background": "background-contrast-hover",
+          "color": "text-primary",
+          "font": {
+            "weight": 600
+          }
         }
       },
       "disabled": {

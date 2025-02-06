@@ -1902,6 +1902,13 @@ var buildTheme = function buildTheme(tokens, flags) {
           color: components.hpe.button["default"].hover.textColor,
           font: {
             weight: components.hpe.button["default"].hover.fontWeight
+          },
+          active: {
+            background: components.hpe.button["default"].selected.hover.background,
+            color: components.hpe.button["default"].selected.hover.textColor,
+            font: {
+              weight: components.hpe.button["default"].selected.hover.fontWeight
+            }
           }
         },
         disabled: {
