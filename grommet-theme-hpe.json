@@ -573,6 +573,10 @@
         "dark": "#ffffff",
         "light": "#555555"
       },
+      "text-xweak": {
+        "dark": "rgba(255, 255, 255, 0.5)",
+        "light": "#757575"
+      },
       "border": {
         "dark": "rgba(255, 255, 255, 0.36)",
         "light": "rgba(0, 0, 0, 0.36)"
@@ -599,6 +603,7 @@
         "dark": "#6633bc",
         "light": "#f740ff"
       },
+      "purple!": "#7630EA",
       "red": {
         "dark": "#a2423d",
         "light": "#fc6161"
@@ -608,6 +613,7 @@
         "dark": "#9b6310",
         "light": "#ffbc44"
       },
+      "orange!": "#FF8300",
       "yellow": {
         "dark": "#8d741c",
         "light": "#ffeb59"

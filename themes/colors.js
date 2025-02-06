@@ -71,6 +71,11 @@ var colors = exports.colors = _extends({}, tokenColors, {
     dark: _grommet.dark.hpe.color.text["default"],
     light: _grommet.light.hpe.color.text["default"]
   },
+  // deprecated, remove in next major version
+  'text-xweak': {
+    dark: _grommet.dark.hpe.color.text.weak,
+    light: _grommet.light.hpe.color.text.weak
+  },
   border: {
     dark: _grommet.dark.hpe.color.border["default"],
     light: _grommet.light.hpe.color.border["default"]
@@ -97,7 +102,7 @@ var colors = exports.colors = _extends({}, tokenColors, {
     dark: _grommet.dark.hpe.color.decorative.purple,
     light: _grommet.light.hpe.color.decorative.purple
   },
-  'purple!': _grommet.primitives.hpe.base.color['purple-800'],
+  'purple!': '#7630EA',
   red: {
     dark: _grommet.dark.hpe.color.decorative.red,
     light: _grommet.light.hpe.color.decorative.red
@@ -107,7 +112,7 @@ var colors = exports.colors = _extends({}, tokenColors, {
     dark: _grommet.dark.hpe.color.decorative.orange,
     light: _grommet.light.hpe.color.decorative.orange
   },
-  'orange!': _grommet.primitives.hpe.base.color['orange-500'],
+  'orange!': '#FF8300',
   yellow: {
     dark: _grommet.dark.hpe.color.decorative.yellow,
     light: _grommet.light.hpe.color.decorative.yellow
