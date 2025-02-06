@@ -799,7 +799,6 @@ const buildTheme = (tokens, flags) => {
         extend: ({ kind, theme }) =>
           kind === 'option' &&
           `
-          background: transparent;
           &[aria-selected="true"] { background: ${getThemeColor(
             components.hpe.select.default.option.selected.rest.background,
             theme,
