@@ -2775,7 +2775,10 @@
         "color": "background-primary-strong"
       },
       "upper": {
-        "color": "#bbbbbb"
+        "color": {
+          "light": "#e0e0e0",
+          "dark": "#616161"
+        }
       }
     }
   },

@@ -4,7 +4,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import React from 'react';
 import { css } from 'styled-components';
-import { primitives as localPrimitives, dark as localDark, light as localLight, dimension as localDimension, small as localSmall, global as localGlobal, components as localComponents } from 'hpe-design-tokens/grommet';
+import { dark as localDark, light as localLight, dimension as localDimension, small as localSmall, global as localGlobal, components as localComponents } from 'hpe-design-tokens/grommet';
 import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
 import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
@@ -171,8 +171,7 @@ var getTextSize = function getTextSize(size) {
 };
 var buildTheme = function buildTheme(tokens, flags) {
   var _components$hpe$eleme, _components$hpe$eleme2, _components$hpe$eleme3, _components$hpe$eleme4, _components$hpe$eleme5, _components$hpe$dataC, _components$hpe$eleme6, _components$hpe$eleme7, _components$hpe$eleme8, _components$hpe$eleme9, _components$hpe$eleme10, _components$hpe$eleme11, _components$hpe$eleme12, _components$hpe$eleme13, _components$hpe$eleme14, _components$hpe$eleme15, _components$hpe$eleme16, _components$hpe$eleme17, _components$hpe$eleme18, _components$hpe$eleme19, _components$hpe$eleme20, _components$hpe$eleme21, _components$hpe$eleme22, _components$hpe$eleme23, _components$hpe$eleme24, _components$hpe$eleme25, _components$hpe$eleme26, _components$hpe$eleme27, _components$hpe$eleme28, _components$hpe$eleme29, _components$hpe$eleme30, _components$hpe$eleme31, _components$hpe$eleme32, _components$hpe$eleme33, _components$hpe$eleme34, _components$hpe$eleme35, _components$hpe$eleme36, _components$hpe$eleme37, _components$hpe$eleme38, _components$hpe$eleme39;
-  var primitives = tokens.primitives,
-    light = tokens.light,
+  var light = tokens.light,
     dark = tokens.dark,
     small = tokens.small,
     large = tokens.large,
@@ -2048,7 +2047,12 @@ var buildTheme = function buildTheme(tokens, flags) {
           color: 'background-primary-strong'
         },
         upper: {
-          color: primitives.hpe.base.color['grey-500']
+          // hard-coding opaque version of 'border-weak' due to unresolved grommet bug
+          // https://github.com/grommet/grommet/issues/6739
+          color: {
+            light: '#e0e0e0',
+            dark: '#616161'
+          }
         },
         extend: function extend() {
           return "border-radius: " + large.hpe.radius.full + ";";
@@ -2380,7 +2384,6 @@ var buildTheme = function buildTheme(tokens, flags) {
   });
 };
 export var hpe = buildTheme({
-  primitives: localPrimitives,
   light: localLight,
   dark: localDark,
   small: localSmall,
