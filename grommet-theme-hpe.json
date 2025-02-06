@@ -1863,6 +1863,12 @@
     "radioButtonGroup": {
       "container": {}
     },
+    "thumbsRating": {
+      "container": {}
+    },
+    "starRating": {
+      "container": {}
+    },
     "disabled": {
       "background": "transparent",
       "border": {
