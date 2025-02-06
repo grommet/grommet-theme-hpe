@@ -710,21 +710,26 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       'cta-primary': _extends({}, buttonKindTheme.primary, {
         icon: /*#__PURE__*/React.createElement(Hpe, null),
-        reverse: true,
-        extend: ''
+        reverse: true
       }),
       'cta-alternate': _extends({}, buttonKindTheme.secondary, {
         icon: /*#__PURE__*/React.createElement(Hpe, {
-          color: "icon-brand"
+          color: "brand"
         }),
         reverse: true
       })
     }, buttonKindTheme, {
       option: option,
-      active: buttonStatesTheme.active,
+      active: _extends({}, buttonStatesTheme.active, {
+        'cta-primary': buttonStatesTheme.active.primary,
+        'cta-alternate': buttonStatesTheme.active.secondary
+      }),
       disabled: _extends({
         opacity: 1
-      }, buttonStatesTheme.disabled),
+      }, buttonStatesTheme.disabled, {
+        'cta-primary': buttonStatesTheme.disabled.primary,
+        'cta-alternate': buttonStatesTheme.disabled.secondary
+      }),
       selected: {
         option: {
           background: components.hpe.select["default"].option.selected.rest.background,
@@ -745,6 +750,10 @@ var buildTheme = function buildTheme(tokens, flags) {
         'cta-primary': buttonStatesTheme.hover.primary,
         'cta-alternate': buttonStatesTheme.hover.secondary
       }, buttonStatesTheme.hover, {
+        active: _extends({}, buttonStatesTheme.hover.active, {
+          'cta-primary': buttonStatesTheme.hover.active.primary,
+          'cta-alternate': buttonStatesTheme.hover.active.secondary
+        }),
         option: {
           background: components.hpe.select["default"].option.hover.background,
           border: {

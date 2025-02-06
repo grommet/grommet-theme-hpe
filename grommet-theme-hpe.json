@@ -915,8 +915,7 @@
         "_owner": null,
         "_store": {}
       },
-      "reverse": true,
-      "extend": ""
+      "reverse": true
     },
     "cta-alternate": {
       "background": "background-contrast",
@@ -934,7 +933,7 @@
         "key": null,
         "ref": null,
         "props": {
-          "color": "icon-brand"
+          "color": "brand"
         },
         "_owner": null,
         "_store": {}
@@ -1052,6 +1051,30 @@
         "font": {
           "weight": 500
         }
+      },
+      "cta-primary": {
+        "background": {
+          "color": "background-primary-xstrong"
+        },
+        "border": {
+          "color": "transparent"
+        },
+        "color": "text-onPrimaryStrong",
+        "font": {
+          "weight": 600
+        }
+      },
+      "cta-alternate": {
+        "background": {
+          "color": "background-selected-primary"
+        },
+        "border": {
+          "color": "transparent"
+        },
+        "color": "text-primary",
+        "font": {
+          "weight": 600
+        }
       }
     },
     "disabled": {
@@ -1098,6 +1121,32 @@
       "toolbar": {
         "background": {
           "color": "transparent"
+        },
+        "border": {
+          "width": "",
+          "color": "transparent"
+        },
+        "color": "text-disabled",
+        "font": {
+          "weight": 500
+        }
+      },
+      "cta-primary": {
+        "background": {
+          "color": "background-disabled"
+        },
+        "border": {
+          "width": "",
+          "color": "transparent"
+        },
+        "color": "text-disabled",
+        "font": {
+          "weight": 600
+        }
+      },
+      "cta-alternate": {
+        "background": {
+          "color": "background-disabled"
         },
         "border": {
           "width": "",
@@ -1246,6 +1295,30 @@
           "color": "text-primary",
           "font": {
             "weight": 500
+          }
+        },
+        "cta-primary": {
+          "background": {
+            "color": "background-primary-xstrong"
+          },
+          "border": {
+            "color": "transparent"
+          },
+          "color": "text-onPrimaryStrong",
+          "font": {
+            "weight": 600
+          }
+        },
+        "cta-alternate": {
+          "background": {
+            "color": "background-selected-primary-hover"
+          },
+          "border": {
+            "color": "transparent"
+          },
+          "color": "text-primary",
+          "font": {
+            "weight": 600
           }
         }
       },
