@@ -1323,10 +1323,10 @@ const buildTheme = (tokens, flags) => {
         },
         row: {
           extend: `&:last-child td {
-              border-color: transparent;
+              border: none;
             }
             &:last-child th {
-              border-color: transparent;
+              border: none;
             }`,
         },
       },
