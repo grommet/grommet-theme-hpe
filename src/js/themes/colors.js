@@ -79,6 +79,7 @@ export const colors = {
     dark: dark.hpe.color.text.default,
     light: light.hpe.color.text.default,
   },
+  // deprecated, remove in next major version
   'text-xweak': {
     dark: dark.hpe.color.text.weak,
     light: light.hpe.color.text.weak,
