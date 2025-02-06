@@ -3046,7 +3046,8 @@
     }
   },
   "textInput": {
-    "container": {}
+    "container": {},
+    "suggestions": {}
   },
   "tip": {
     "content": {

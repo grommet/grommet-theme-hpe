@@ -577,7 +577,10 @@ var buildTheme = function buildTheme(tokens, flags) {
         /* HPE Global Header/Footer Service a.k.a. HPE Common HFWS sets the header
          * at a z-index of 101. This adjustment brings Drop in alignment with Layer
          * which needs an elevated z-index to sit atop the Global header. */
-        zIndex: components.hpe.drop["default"].zIndex
+        zIndex: components.hpe.drop["default"].zIndex,
+        extend: function extend() {
+          return "\n          [class*=MaskedInput__ContainerBox] {\n            padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n            padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n            gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n            display: flex;\n            flex-direction: column;\n          }\n        ";
+        }
       },
       elevation: {
         // Elevation values were derived from this Figma file.
@@ -2327,6 +2330,12 @@ var buildTheme = function buildTheme(tokens, flags) {
           var theme = _ref28.theme;
           return "\n          svg {\n            fill: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n            stroke: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n          }\n        ";
         }
+      },
+      suggestions: {
+        extend: function extend(_ref29) {
+          var theme = _ref29.theme;
+          return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"]:hover {\n            background: " + getThemeColor(components.hpe.select["default"].option.hover.background, theme) + ";\n          }\n        ";
+        }
       }
     },
     tip: {
@@ -2358,8 +2367,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       container: {
         border: false,
-        extend: function extend(_ref29) {
-          var theme = _ref29.theme;
+        extend: function extend(_ref30) {
+          var theme = _ref30.theme;
           return "\n        gap: " + (dimensions.edgeSize[large.hpe.spacing['5xsmall']] || large.hpe.spacing['5xsmall']) + ";\n        &:hover {\n          background: " + getThemeColor('background-hover', theme) + ";\n        }";
         }
       },
