@@ -79,6 +79,10 @@ export const colors = {
     dark: dark.hpe.color.text.default,
     light: light.hpe.color.text.default,
   },
+  'text-xweak': {
+    dark: dark.hpe.color.text.weak,
+    light: light.hpe.color.text.weak,
+  },
   border: {
     dark: dark.hpe.color.border.default,
     light: light.hpe.color.border.default,
