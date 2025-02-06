@@ -1074,14 +1074,18 @@ const buildTheme = (tokens, flags) => {
           } else if (checked) {
             if (toggle) {
               borderColor = getThemeColor(
-                components.hpe.switch.default.control.track.selected.hover
-                  .borderColor,
+                'transparent',
+                // incorrect token value to be updated in next minor hpe-design-tokens release
+                // components.hpe.switch.default.control.track.selected.hover
+                //   .borderColor,
                 theme,
               );
             } else {
               borderColor = getThemeColor(
-                components.hpe.checkbox.default.control.selected.hover
-                  .borderColor,
+                'transparent',
+                // incorrect token value to be updated in next minor hpe-design-tokens release
+                // components.hpe.checkbox.default.control.selected.hover
+                //   .borderColor,
                 theme,
               );
             }
@@ -1121,7 +1125,9 @@ const buildTheme = (tokens, flags) => {
               theme,
             );
             borderColor = getThemeColor(
-              components.hpe.checkbox.default.control.selected.rest.borderColor,
+              'transparent',
+              // incorrect token value to be updated in next minor hpe-design-tokens release
+              // components.hpe.checkbox.default.control.selected.rest.borderColor,
               theme,
             );
           }
@@ -1147,14 +1153,15 @@ const buildTheme = (tokens, flags) => {
             &:hover {
               ${!disabled ? `background: ${hoverBackground};` : ''}
             }
-            ${(checked || indeterminate) && 'border: none;'}
           `;
         },
       },
       icon: {
-        extend: ({ theme }) => `stroke-width: 2px;
+        extend: ({ theme, disabled }) => `stroke-width: 2px;
         stroke: ${getThemeColor(
-          components.hpe.checkbox.default.control.selected.rest.iconColor,
+          disabled
+            ? components.hpe.checkbox.default.control.disabled.rest.iconColor
+            : components.hpe.checkbox.default.control.selected.rest.iconColor,
           theme,
         )}`,
       },
