@@ -1470,7 +1470,7 @@ const buildTheme = (tokens, flags) => {
                 components.hpe.formField.default.medium.input.group.item
                   .paddingX
               };
-              &:hover {
+              &:hover:not([disabled]) {
                 background: ${getThemeColor(
                   components.hpe.formField.default.input.container.hover
                     .background,
@@ -2305,7 +2305,7 @@ const buildTheme = (tokens, flags) => {
               )};
             }
           }
-          &:has(input[checked]):hover {
+          &:has(input[checked]):hover:not([disabled]) {
               & div:has(> svg[aria-hidden="true"]) {
                 background: ${getThemeColor(
                   components.hpe.radioButton.default.control.selected.hover
@@ -2389,7 +2389,7 @@ const buildTheme = (tokens, flags) => {
         },
       },
       control: {
-        extend: ({ disabled, theme }) => css`
+        extend: ({ disabled }) => css`
           ${disabled &&
           `
           opacity: 0.3;
@@ -2406,12 +2406,6 @@ const buildTheme = (tokens, flags) => {
               border-radius: ${dimensions.edgeSize[
                 components.hpe.select.default.medium.option.borderRadius
               ] || components.hpe.select.default.medium.option.borderRadius};
-              &:hover {
-                background: ${getThemeColor(
-                  components.hpe.select.default.option.hover.backgroud,
-                  theme,
-                )};
-              }
             }
           }
         `,
@@ -2538,7 +2532,7 @@ const buildTheme = (tokens, flags) => {
         border: undefined,
         extend: ({ theme }) => `
           border-radius: ${theme.global.edgeSize.xsmall}; 
-          & button[aria-selected="true"]:hover > div {
+          & button[aria-selected="true"]:hover:not([disabled]) > div {
             background: ${getThemeColor(
               'background-selected-primary-strong-hover',
               theme,
