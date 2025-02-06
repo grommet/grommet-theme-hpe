@@ -1323,10 +1323,10 @@ const buildTheme = (tokens, flags) => {
         },
         row: {
           extend: `&:last-child td {
-              border: none;
+              border-color: transparent;
             }
             &:last-child th {
-              border: none;
+              border-color: transparent;
             }`,
         },
       },
@@ -2647,6 +2647,12 @@ const buildTheme = (tokens, flags) => {
           font-weight: ${components.hpe.footerCell.default.fontWeight};
         `,
       },
+      extend: () => `& tbody tr:last-child td {
+        border-color: transparent;
+      }
+      & tbody tr:last-child th {
+        border-color: transparent;
+      }`,
     },
     tag: {
       border: {
