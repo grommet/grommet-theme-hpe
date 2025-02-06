@@ -1131,6 +1131,16 @@
           "weight": 500
         }
       },
+      "option": {
+        "background": "background-disabled",
+        "border": {
+          "color": "transparent"
+        },
+        "color": "text-disabled",
+        "font": {
+          "weight": 500
+        }
+      },
       "cta-primary": {
         "background": {
           "color": "background-disabled"
@@ -1164,6 +1174,7 @@
         "border": {
           "color": "transparent"
         },
+        "color": "text-onSelectedPrimary",
         "font": {
           "weight": 500
         }
