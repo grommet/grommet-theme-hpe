@@ -448,21 +448,6 @@ const buildTheme = (tokens, flags) => {
               components.hpe.button?.[kind]?.[adjustedState]?.hover?.fontWeight,
           },
         };
-      } else if (kind === 'option') {
-        if (state === 'active') adjustedState = 'selected';
-        buttonStatesTheme[state][kind] = {
-          background: {
-            color:
-              components.hpe.select.default.option?.[adjustedState].rest
-                .background,
-          },
-          border: {
-            color:
-              components.hpe.select.default.option?.[adjustedState].borderColor,
-          },
-          color:
-            components.hpe.select.default.option?.[adjustedState].textColor,
-        };
       } else if (state === 'disabled') {
         buttonStatesTheme[state][kind] = {
           background: {
@@ -808,10 +793,34 @@ const buildTheme = (tokens, flags) => {
       },
       ...buttonKindTheme,
       option,
-      active: buttonStatesTheme.active,
+      active: {
+        ...buttonStatesTheme.active,
+        // applies when option is in focus
+        extend: ({ kind, theme }) =>
+          kind === 'option' &&
+          `
+          background: transparent;
+          &[aria-selected="true"] { background: ${getThemeColor(
+            components.hpe.select.default.option.selected.rest.background,
+            theme,
+          )}; }`,
+      },
       disabled: {
         opacity: 1,
         ...buttonStatesTheme.disabled,
+        option: {
+          background:
+            components.hpe.select.default.option.disabled.rest.background,
+          border: {
+            color:
+              components.hpe.select.default.option.disabled.rest.borderColor,
+          },
+          color: components.hpe.select.default.option.disabled.rest.textColor,
+          font: {
+            weight:
+              components.hpe.select.default.option.disabled.rest.fontWeight,
+          },
+        },
       },
       selected: {
         option: {
@@ -821,12 +830,12 @@ const buildTheme = (tokens, flags) => {
             color:
               components.hpe.select.default.option.selected.rest.borderColor,
           },
-          color: components.hpe.select.default.option.selected.textColor,
+          color: components.hpe.select.default.option.selected.rest.textColor,
           font: {
             weight:
               components.hpe.select.default.option.selected.rest.fontWeight,
           },
-          extend: ({ theme }) =>
+          extend: ({ theme, disabled }) =>
             `
             position: relative;
             &::before {
@@ -850,7 +859,9 @@ const buildTheme = (tokens, flags) => {
               };
               left: ${components.hpe.select.default.medium.option.marker.left};
               background: ${getThemeColor(
-                components.hpe.select.default.option.marker.rest.background,
+                !disabled
+                  ? components.hpe.select.default.option.marker.rest.background
+                  : 'border-disabled',
                 theme,
               )};
             }
