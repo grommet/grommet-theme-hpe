@@ -2,7 +2,6 @@
 import React from 'react';
 import { css } from 'styled-components';
 import {
-  primitives as localPrimitives,
   dark as localDark,
   light as localLight,
   dimension as localDimension,
@@ -152,7 +151,6 @@ const getTextSize = (size) => {
 
 const buildTheme = (tokens, flags) => {
   const {
-    primitives,
     light,
     dark,
     small,
@@ -2414,7 +2412,12 @@ const buildTheme = (tokens, flags) => {
           color: 'background-primary-strong',
         },
         upper: {
-          color: primitives.hpe.base.color['grey-500'],
+          // hard-coding opaque version of 'border-weak' due to unresolved grommet bug
+          // https://github.com/grommet/grommet/issues/6739
+          color: {
+            light: '#e0e0e0',
+            dark: '#616161',
+          },
         },
         extend: () => `border-radius: ${large.hpe.radius.full};`,
       },
@@ -2814,7 +2817,6 @@ const buildTheme = (tokens, flags) => {
 
 export const hpe = buildTheme(
   {
-    primitives: localPrimitives,
     light: localLight,
     dark: localDark,
     small: localSmall,
