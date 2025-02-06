@@ -656,6 +656,15 @@ const buildTheme = (tokens, flags) => {
          * at a z-index of 101. This adjustment brings Drop in alignment with Layer
          * which needs an elevated z-index to sit atop the Global header. */
         zIndex: components.hpe.drop.default.zIndex,
+        extend: () => `
+          [class*=MaskedInput__ContainerBox] {
+            padding-block: ${components.hpe.select.default.medium.drop.paddingY};
+            padding-inline: ${components.hpe.select.default.medium.drop.paddingX};
+            gap: ${components.hpe.select.default.medium.drop.gapY};
+            display: flex;
+            flex-direction: column;
+          }
+        `,
       },
       elevation: {
         // Elevation values were derived from this Figma file.
@@ -2748,6 +2757,21 @@ const buildTheme = (tokens, flags) => {
             stroke: ${
               theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light']
             };
+          }
+        `,
+      },
+      suggestions: {
+        extend: ({ theme }) => `
+          padding-block: ${components.hpe.select.default.medium.drop.paddingY};
+          padding-inline: ${components.hpe.select.default.medium.drop.paddingX};
+          gap: ${components.hpe.select.default.medium.drop.gapY};
+          display: flex;
+          flex-direction: column;
+          [role="option"]:hover {
+            background: ${getThemeColor(
+              components.hpe.select.default.option.hover.background,
+              theme,
+            )};
           }
         `,
       },
