@@ -2445,9 +2445,6 @@ const buildTheme = (tokens, flags) => {
             horizontal: '12px',
             vertical: '6px',
           },
-          margin: {
-            horizontal: components.hpe.select.default.medium.drop.paddingX,
-          },
           hover: {
             background: 'background-hover',
           },
@@ -2457,6 +2454,32 @@ const buildTheme = (tokens, flags) => {
           color: components.hpe.button.default.rest.textColor,
           weight: components.hpe.button.default.rest.fontWeight,
         },
+      },
+      container: {
+        // Applying spacing on Select "Clear selection" button, then placing focus styles on the inner container div
+        extend: ({ theme }) =>
+          `
+          div:has(input[type="search"]) {
+            padding-bottom: 0;
+          }
+          button[aria-label*="Or, press"] {
+            padding-block: ${
+              components.hpe.select.default.medium.drop.paddingY
+            };
+            padding-inline: ${
+              components.hpe.select.default.medium.drop.paddingX
+            };
+            &:focus {
+              background: transparent;
+              > div {
+                background: ${getThemeColor(
+                  components.hpe.button.default.hover.background,
+                  theme,
+                )};
+              }
+            }
+          }
+        `,
       },
       control: {
         extend: ({ disabled }) => css`
