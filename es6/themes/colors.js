@@ -1,5 +1,38 @@
-export var colors = {
-  /* deprecated accent and neutral colors */
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import { primitives, dark, light, components } from 'hpe-design-tokens/grommet';
+var _flattenObject = function flattenObject(obj, delimiter, prefix) {
+  if (delimiter === void 0) {
+    delimiter = '.';
+  }
+  if (prefix === void 0) {
+    prefix = '';
+  }
+  return Object.keys(obj).reduce(function (acc, k) {
+    var pre = prefix.length ? "" + prefix + delimiter : '';
+    if (typeof obj[k] === 'object' && obj[k] !== null && Object.keys(obj[k]).length > 0 && !('$value' in obj[k])) Object.assign(acc, _flattenObject(obj[k], delimiter, !['hpe', 'color'].includes(k) ? pre + k : ''));else acc[pre + k] = obj[k];
+    return acc;
+  }, {});
+};
+var access = function access(path, object) {
+  return path.split('.').reduce(function (o, i) {
+    return o[i];
+  }, object);
+};
+var flatColors = _flattenObject(light, '-');
+var tokenColors = {};
+Object.keys(flatColors).forEach(function (color) {
+  if (!color.includes('shadow')) {
+    var _color$split = color.split('-'),
+      category = _color$split[0];
+    var flatName = color.split('-').slice(1).join('-');
+    tokenColors[color] = {
+      light: access("hpe.color." + category + (flatName ? "." + flatName : ''), light),
+      dark: access("hpe.color." + category + (flatName ? "." + flatName : ''), dark)
+    };
+  }
+});
+export var colors = _extends({}, tokenColors, {
+  // ---- DEPRECATED ---- //
   'accent-1': undefined,
   'accent-2': undefined,
   'accent-3': undefined,
@@ -10,139 +43,144 @@ export var colors = {
   'neutral-4': undefined,
   'neutral-5': undefined,
   'status-error': undefined,
-  brand: 'green!',
+  control: 'background-primary-strong',
+  'active-text': 'text-strong',
+  'text-primary-button': components.hpe.button.primary.rest.textColor,
+  'background-cta-alternate': 'background-contrast',
+  brand: {
+    dark: dark.hpe.color.decorative.brand,
+    light: light.hpe.color.decorative.brand
+  },
+  'background-layer-overlay': {
+    dark: dark.hpe.color.background.screenOverlay,
+    light: light.hpe.color.background.screenOverlay
+  },
+  'active-background': {
+    dark: dark.hpe.color.background.active,
+    light: light.hpe.color.background.active
+  },
   background: {
-    dark: '#1C1C1C',
-    light: '#FFFFFF'
+    dark: dark.hpe.color.background["default"],
+    light: light.hpe.color.background["default"]
   },
-  'background-back': {
-    dark: '#1C1C1C',
-    light: '#F7F7F7'
-  },
-  'background-front': {
-    dark: '#222222',
-    light: '#FFFFFF'
-  },
-  'background-contrast': {
-    dark: '#FFFFFF0F',
-    // 6%
-    light: '#0000000A'
-  },
-  'background-layer-overlay': '#00000080',
-  icon: 'text',
   text: {
-    dark: '#FFFFFF',
-    light: '#555555'
+    dark: dark.hpe.color.text["default"],
+    light: light.hpe.color.text["default"]
   },
-  'text-strong': {
-    dark: '#FFFFFF',
-    light: '#2E2E2E'
-  },
-  'text-weak': {
-    dark: '#FFFFFF80',
-    // 50%
-    light: '#757575'
-  },
+  // deprecated, remove in next major version
   'text-xweak': {
-    dark: '#FFFFFF33',
-    // 20%
-    light: '#BBBBBB'
+    dark: dark.hpe.color.text.weak,
+    light: light.hpe.color.text.weak
   },
   border: {
-    dark: '#FFFFFF5C',
-    // 36%
-    light: '#0000005C' // 36%
+    dark: dark.hpe.color.border["default"],
+    light: light.hpe.color.border["default"]
   },
-  'border-strong': {
-    dark: '#FFFFFFB8',
-    // 72%
-    light: '#000000B8' // 72%
-  },
-  'border-weak': {
-    dark: '#FFFFFF1F',
-    // 12%
-    light: '#0000001F' // 12%
-  },
-  control: 'brand',
-  'active-background': 'background-contrast',
-  'active-text': 'text',
-  'disabled-text': 'text-weak',
-  // deprecated, use text-weak instead
-  'selected-background': 'green!',
-  'selected-text': 'text-primary-button',
-  // necessary to meet color contrast on HPE green background
-  'status-critical': {
-    dark: '#D04F4E',
-    light: '#FC5A5A'
-  },
-  'status-warning': {
-    dark: '#9B6310',
-    light: '#FFBC44'
-  },
-  'status-ok': {
-    dark: '#008567',
-    light: '#17EBA0'
-  },
-  'status-unknown': {
-    dark: '#555555',
-    light: '#CCCCCC'
-  },
-  'status-disabled': '#CCCCCC',
-  // deprecated, does not support light and dark. use text-weak instead
   blue: {
-    dark: '#00567A',
-    light: '#00C8FF'
+    dark: dark.hpe.color.decorative.blue,
+    light: light.hpe.color.decorative.blue
   },
-  'blue!': '#00739D',
+  'blue!': primitives.hpe.base.color['blue-700'],
   green: {
-    dark: '#008567',
-    light: '#17EBA0'
+    dark: dark.hpe.color.decorative.green,
+    light: light.hpe.color.decorative.green
   },
-  'green!': '#01A982',
+  'green!': {
+    dark: dark.hpe.color.decorative.brand,
+    light: light.hpe.color.decorative.brand
+  },
   teal: {
-    dark: '#117B82',
-    light: '#82FFF2'
+    dark: dark.hpe.color.decorative.teal,
+    light: light.hpe.color.decorative.teal
   },
-  'teal!': '#00E8CF',
+  'teal!': primitives.hpe.base.color['teal-400'],
   purple: {
-    dark: '#6633BC',
-    light: '#F740FF'
+    dark: dark.hpe.color.decorative.purple,
+    light: light.hpe.color.decorative.purple
   },
   'purple!': '#7630EA',
   red: {
-    dark: '#A2423D',
-    light: '#FC6161'
+    dark: dark.hpe.color.decorative.red,
+    light: light.hpe.color.decorative.red
   },
-  'red!': '#C54E4B',
+  'red!': primitives.hpe.base.color['red-750'],
   orange: {
-    dark: '#9B6310',
-    light: '#FFBC44'
+    dark: dark.hpe.color.decorative.orange,
+    light: light.hpe.color.decorative.orange
   },
   'orange!': '#FF8300',
   yellow: {
-    dark: '#8D741C',
-    light: '#FFEB59'
+    dark: dark.hpe.color.decorative.yellow,
+    light: light.hpe.color.decorative.yellow
   },
-  'yellow!': '#FEC901',
+  'yellow!': primitives.hpe.base.color['yellow-400'],
+  'graph-0': {
+    light: light.hpe.color.dataVis['categorical-10'],
+    dark: dark.hpe.color.dataVis['categorical-10']
+  },
+  'graph-1': {
+    light: light.hpe.color.dataVis['categorical-20'],
+    dark: dark.hpe.color.dataVis['categorical-20']
+  },
+  'graph-2': {
+    light: light.hpe.color.dataVis['categorical-30'],
+    dark: dark.hpe.color.dataVis['categorical-30']
+  },
+  'graph-3': {
+    light: light.hpe.color.dataVis['categorical-40'],
+    dark: dark.hpe.color.dataVis['categorical-40']
+  },
+  'graph-4': {
+    light: light.hpe.color.dataVis['categorical-50'],
+    dark: dark.hpe.color.dataVis['categorical-50']
+  },
+  'graph-5': {
+    light: light.hpe.color.dataVis['categorical-60'],
+    dark: dark.hpe.color.dataVis['categorical-60']
+  },
+  'graph-6': {
+    light: light.hpe.color.dataVis['categorical-70'],
+    dark: dark.hpe.color.dataVis['categorical-70']
+  },
+  'status-critical': {
+    dark: dark.hpe.color.icon.critical,
+    light: light.hpe.color.icon.critical
+  },
+  'status-warning': {
+    dark: dark.hpe.color.icon.warning,
+    light: light.hpe.color.icon.warning
+  },
+  'status-ok': {
+    dark: dark.hpe.color.icon.ok,
+    light: light.hpe.color.icon.ok
+  },
+  'status-unknown': {
+    dark: dark.hpe.color.icon.unknown,
+    light: light.hpe.color.icon.unknown
+  },
+  'status-disabled': '#CCCCCC',
+  // deprecated, does not support light and dark.hpe. use text-weak instead
   'validation-critical': {
-    light: '#FC61613D',
-    dark: '#CC1F1A4D' // 30%
+    light: light.hpe.color.background.critical,
+    dark: dark.hpe.color.background.critical
   },
   'validation-ok': {
-    light: '#17EBA03D',
-    dark: '#17D0A64D'
+    light: light.hpe.color.background.ok,
+    dark: dark.hpe.color.background.ok
   },
   'validation-warning': {
-    light: '#FFBC443D',
-    dark: '#D891284D'
+    light: light.hpe.color.background.warning,
+    dark: dark.hpe.color.background.warning
   },
-  'graph-0': 'orange!',
-  'graph-1': 'blue!',
-  'graph-2': 'purple!',
-  'graph-3': 'yellow!',
-  'graph-4': 'teal!',
-  focus: 'teal!',
-  placeholder: 'text-weak',
-  'text-primary-button': '#FFFFFF',
-  'background-cta-alternate': '#F2F2F2'
-};
+  icon: {
+    light: light.hpe.color.icon["default"],
+    dark: dark.hpe.color.icon["default"]
+  },
+  'selected-background': 'background-selected-strong-enabled',
+  'selected-text': 'text-onSelectedPrimaryStrong',
+  placeholder: {
+    light: light.hpe.color.text.placeholder,
+    dark: dark.hpe.color.text.placeholder
+  },
+  'disabled-text': 'text-disabled' // deprecate
+});
