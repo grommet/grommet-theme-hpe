@@ -2058,12 +2058,12 @@
           "height": "2.5rem"
         },
         "large": {
-          "size": "48px",
-          "height": "48px"
+          "size": "3rem",
+          "height": "3rem"
         },
         "xlarge": {
-          "size": "60px",
-          "height": "60px"
+          "size": "3.75rem",
+          "height": "3.75rem"
         }
       },
       "2": {
@@ -2083,8 +2083,8 @@
           "height": "2.5rem"
         },
         "xlarge": {
-          "size": "48px",
-          "height": "48px"
+          "size": "3rem",
+          "height": "3rem"
         }
       },
       "3": {

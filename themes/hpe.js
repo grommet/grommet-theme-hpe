@@ -1404,8 +1404,6 @@ var buildTheme = function buildTheme(tokens, flags) {
             weight: large.hpe.heading.xlarge.fontWeight
           },
           small: {
-            // this value is off because we didn't have the same typography system before
-            // TO DO could hard code with v6 backwards compatibility flag
             size: large.hpe.heading.large.fontSize,
             height: large.hpe.heading.large.lineHeight
           },
@@ -1414,12 +1412,14 @@ var buildTheme = function buildTheme(tokens, flags) {
             height: large.hpe.heading.xlarge.lineHeight
           },
           large: {
-            size: '48px',
-            height: '48px'
+            size: '3rem',
+            // 48px size prop not recommended but values supported for backwards compatibility
+            height: '3rem' // 48px size prop not recommended but values supported for backwards compatibility
           },
           xlarge: {
-            size: '60px',
-            height: '60px'
+            size: '3.75rem',
+            // 60px size prop not recommended but values supported for backwards compatibility
+            height: '3.75rem' // 60px size prop not recommended but values supported for backwards compatibility
           }
         },
         2: {
@@ -1439,8 +1439,8 @@ var buildTheme = function buildTheme(tokens, flags) {
             height: large.hpe.heading.xlarge.lineHeight
           },
           xlarge: {
-            size: '48px',
-            height: '48px'
+            size: '3rem',
+            height: '3rem'
           }
         },
         3: {
