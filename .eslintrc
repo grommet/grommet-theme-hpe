@@ -4,7 +4,7 @@
   "plugins": ["prettier"],
   "env": {
     "node": true,
-    "es6": true,
+    "es6": true
   },
   "rules": {
     "comma-dangle": ["error", "always-multiline"],
@@ -14,8 +14,8 @@
       "error",
       {
         // currently, lint rule causes a false positive for packages that use "exports" in package.json
-        "ignore": ["^hpe-design-tokens/.+"],
-      },
-    ],
-  },
+        "ignore": ["^hpe-design-tokens/.+"]
+      }
+    ]
+  }
 }
