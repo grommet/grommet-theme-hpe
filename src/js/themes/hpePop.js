@@ -39,8 +39,8 @@ export const hpePop = deepMerge(hpe, {
           weight: 400,
         },
         small: {
-          size: '4rem', // 48px
-          height: '4rem', // 48px
+          size: '3rem', // 48px
+          height: '3rem', // 48px
         },
         medium: {
           size: '4.5rem', // 72px
@@ -61,8 +61,8 @@ export const hpePop = deepMerge(hpe, {
           height: '2.25rem', // 36px
         },
         medium: {
-          size: '4rem', // 48px
-          height: '4rem', // 48px
+          size: '3rem', // 48px
+          height: '3rem', // 48px
         },
         large: {
           size: '4.5rem', // 72px
@@ -83,8 +83,8 @@ export const hpePop = deepMerge(hpe, {
           height: '2.25rem', // 36px
         },
         large: {
-          size: '4rem', // 48px
-          height: '4rem', // 48px
+          size: '3rem', // 48px
+          height: '3rem', // 48px
         },
         xlarge: {
           size: '4.5rem', // 72px
@@ -108,8 +108,8 @@ export const hpePop = deepMerge(hpe, {
           height: '2.25rem', // 36px
         },
         xlarge: {
-          size: '4rem', // 48px
-          height: '4rem', // 48px
+          size: '3rem', // 48px
+          height: '3rem', // 48px
         },
       },
       5: {
@@ -188,7 +188,7 @@ export const hpePop = deepMerge(hpe, {
     },
     xxlarge: {
       size: '2.625rem', // 42px
-      height: '4rem', // 48px
+      height: '3rem', // 48px
     },
     extend: ({ size }) => {
       if (['large', 'xlarge', 'xxlarge'].includes(size))
@@ -226,7 +226,7 @@ export const hpePop = deepMerge(hpe, {
     xxlarge: {
       // weight needs to be modified at the size level by bumping down to 300
       size: '2.625rem', // 42px
-      height: '4rem', // 48px
+      height: '3rem', // 48px
     },
     extend: ({ size }) => {
       if (
