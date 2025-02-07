@@ -1,9 +1,9 @@
 {
   "name": "grommet-theme-hpe",
-  "version": "5.7.0",
-  "main": "index.js",
-  "module": "es6/index.js",
-  "jsnext:main": "es6/index.js",
+  "version": "5.8.0",
+  "main": "dist/index.js",
+  "module": "dist/es6/index.js",
+  "jsnext:main": "dist/es6/index.js",
   "sideEffects": false,
   "description": "Hewlett Packard Enterprise theme for grommet",
   "authors": [
