@@ -39,9 +39,9 @@ export var hpePop = _deepMerge(hpe, {
           weight: 400
         },
         small: {
-          size: '4rem',
+          size: '3rem',
           // 48px
-          height: '4rem' // 48px
+          height: '3rem' // 48px
         },
         medium: {
           size: '4.5rem',
@@ -66,9 +66,9 @@ export var hpePop = _deepMerge(hpe, {
           height: '2.25rem' // 36px
         },
         medium: {
-          size: '4rem',
+          size: '3rem',
           // 48px
-          height: '4rem' // 48px
+          height: '3rem' // 48px
         },
         large: {
           size: '4.5rem',
@@ -93,9 +93,9 @@ export var hpePop = _deepMerge(hpe, {
           height: '2.25rem' // 36px
         },
         large: {
-          size: '4rem',
+          size: '3rem',
           // 48px
-          height: '4rem' // 48px
+          height: '3rem' // 48px
         },
         xlarge: {
           size: '4.5rem',
@@ -123,9 +123,9 @@ export var hpePop = _deepMerge(hpe, {
           height: '2.25rem' // 36px
         },
         xlarge: {
-          size: '4rem',
+          size: '3rem',
           // 48px
-          height: '4rem' // 48px
+          height: '3rem' // 48px
         }
       },
       5: {
@@ -219,7 +219,7 @@ export var hpePop = _deepMerge(hpe, {
     xxlarge: {
       size: '2.625rem',
       // 42px
-      height: '4rem' // 48px
+      height: '3rem' // 48px
     },
     extend: function extend(_ref2) {
       var size = _ref2.size;
@@ -263,7 +263,7 @@ export var hpePop = _deepMerge(hpe, {
       // weight needs to be modified at the size level by bumping down to 300
       size: '2.625rem',
       // 42px
-      height: '4rem' // 48px
+      height: '3rem' // 48px
     },
     extend: function extend(_ref3) {
       var size = _ref3.size;
