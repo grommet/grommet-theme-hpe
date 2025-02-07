@@ -174,7 +174,7 @@ var colors = exports.colors = _extends({}, tokenColors, {
   },
   'validation-warning': {
     light: _grommet.light.hpe.color.background.warning,
-    dark: _grommet.dark.hpe.color.background.critical
+    dark: _grommet.dark.hpe.color.background.warning
   },
   icon: {
     light: _grommet.light.hpe.color.icon["default"],

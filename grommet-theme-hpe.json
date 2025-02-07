@@ -674,7 +674,7 @@
       },
       "validation-warning": {
         "light": "rgba(255, 188, 68, 0.12)",
-        "dark": "rgba(204, 31, 26, 0.3)"
+        "dark": "rgba(254, 201, 1, 0.12)"
       },
       "icon": {
         "light": "#555555",
