@@ -181,7 +181,7 @@ export const colors = {
   },
   'validation-warning': {
     light: light.hpe.color.background.warning,
-    dark: dark.hpe.color.background.critical,
+    dark: dark.hpe.color.background.warning,
   },
   icon: {
     light: light.hpe.color.icon.default,
