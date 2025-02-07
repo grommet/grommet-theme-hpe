@@ -39,56 +39,56 @@ export const hpePop = deepMerge(hpe, {
           weight: 400,
         },
         small: {
-          size: '48px',
-          height: '48px',
+          size: '4rem', // 48px
+          height: '4rem', // 48px
         },
         medium: {
-          size: '72px',
-          height: '72px',
+          size: '4.5rem', // 72px
+          height: '4.5rem', // 72px
         },
         large: {
-          size: '96px',
-          height: '96px',
+          size: '6rem', // 96px
+          height: '6rem', // 96px
         },
         xlarge: {
-          size: '120px',
-          height: '120px',
+          size: '7.5rem', // 120px
+          height: '7.5rem', // 120px
         },
       },
       2: {
         small: {
-          size: '36px',
-          height: '36px',
+          size: '2.25rem', // 36px
+          height: '2.25rem', // 36px
         },
         medium: {
-          size: '48px',
-          height: '48px',
+          size: '4rem', // 48px
+          height: '4rem', // 48px
         },
         large: {
-          size: '72px',
-          height: '72px',
+          size: '4.5rem', // 72px
+          height: '4.5rem', // 72px
         },
         xlarge: {
-          size: '96px',
-          height: '96px',
+          size: '6rem', // 96px
+          height: '6rem', // 96px
         },
       },
       3: {
         small: {
-          size: '24px',
-          height: '24px',
+          size: '1.5rem', // 24px
+          height: '1.5rem', // 24px
         },
         medium: {
-          size: '36px',
-          height: '36px',
+          size: '2.25rem', // 36px
+          height: '2.25rem', // 36px
         },
         large: {
-          size: '48px',
-          height: '48px',
+          size: '4rem', // 48px
+          height: '4rem', // 48px
         },
         xlarge: {
-          size: '72px',
-          height: '72px',
+          size: '4.5rem', // 72px
+          height: '4.5rem', // 72px
         },
       },
       4: {
@@ -96,20 +96,20 @@ export const hpePop = deepMerge(hpe, {
           weight: 500,
         },
         small: {
-          size: '18px',
-          height: '18px',
+          size: '1.125rem', // 18px
+          height: '1.125rem', // 18px
         },
         medium: {
-          size: '24px',
-          height: '24px',
+          size: '1.5rem', // 24px
+          height: '1.5rem', // 24px
         },
         large: {
-          size: '36px',
-          height: '36px',
+          size: '2.25rem', // 36px
+          height: '2.25rem', // 36px
         },
         xlarge: {
-          size: '48px',
-          height: '48px',
+          size: '4rem', // 48px
+          height: '4rem', // 48px
         },
       },
       5: {
@@ -117,20 +117,20 @@ export const hpePop = deepMerge(hpe, {
           weight: 500,
         },
         small: {
-          size: '16px',
-          height: '16px',
+          size: '1rem', // 16px
+          height: '1rem', // 16px
         },
         medium: {
-          size: '18px',
-          height: '18px',
+          size: '1.125rem', // 18px
+          height: '1.125rem', // 18px
         },
         large: {
-          size: '24px',
-          height: '24px',
+          size: '1.5rem', // 24px
+          height: '1.5rem', // 24px
         },
         xlarge: {
-          size: '36px',
-          height: '36px',
+          size: '2.25rem', // 36px
+          height: '2.25rem', // 36px
         },
       },
       6: {
@@ -138,20 +138,20 @@ export const hpePop = deepMerge(hpe, {
           weight: 500,
         },
         small: {
-          size: '14px',
-          height: '14px',
+          size: '0.875rem', // 14px
+          height: '0.875rem', // 14px
         },
         medium: {
-          size: '16px',
-          height: '16px',
+          size: '1rem', // 16px
+          height: '1rem', // 16px
         },
         large: {
-          size: '18px',
-          height: '18px',
+          size: '1.125rem', // 18px
+          height: '1.125rem', // 18px
         },
         xlarge: {
-          size: '24px',
-          height: '24px',
+          size: '1.5rem', // 24px
+          height: '1.5rem', // 24px
         },
       },
     },
@@ -171,24 +171,24 @@ export const hpePop = deepMerge(hpe, {
   },
   paragraph: {
     small: {
-      size: '16px',
-      height: '20px',
+      size: '1rem', // 16px
+      height: '1.25rem', // 20px
     },
     medium: {
-      size: '18px',
-      height: '22px',
+      size: '1.125rem', // 18px
+      height: '1.375rem', // 22px
     },
     large: {
-      size: '24px',
-      height: '30px',
+      size: '1.5rem', // 24px
+      height: '1.875rem', // 30px
     },
     xlarge: {
-      size: '36px',
-      height: '42px',
+      size: '2.25rem', // 36px
+      height: '2.625rem', // 42px
     },
     xxlarge: {
-      size: '42px',
-      height: '48px',
+      size: '2.625rem', // 42px
+      height: '4rem', // 48px
     },
     extend: ({ size }) => {
       if (['large', 'xlarge', 'xxlarge'].includes(size))
@@ -199,34 +199,34 @@ export const hpePop = deepMerge(hpe, {
   text: {
     xsmall: {
       // weight needs to be modified at the size level
-      size: '14px',
-      height: '18px',
+      size: '0.875rem', // 14px
+      height: '1.125rem', // 18px
     },
     small: {
       // weight needs to be modified at the size level
-      size: '16px',
-      height: '20px',
+      size: '1rem', // 16px
+      height: '1.25rem', // 20px
     },
     medium: {
       // weight needs to be modified at the size level
-      size: '18px',
-      height: '22px',
+      size: '1.125rem', // 18px
+      height: '1.375rem', // 22px
     },
     large: {
       // weight needs to be modified at the size level by bumping down to 300
-      size: '24px',
-      height: '30px',
+      size: '1.5rem', // 24px
+      height: '1.875rem', // 30px
     },
     xlarge: {
       // weight needs to be modified at the size level by bumping down to 300
-      size: '36px',
-      height: '42px',
+      size: '2.25rem', // 36px
+      height: '2.625rem', // 42px
     },
     // xxlarge is not part of Chris's type exploration
     xxlarge: {
       // weight needs to be modified at the size level by bumping down to 300
-      size: '42px',
-      height: '48px',
+      size: '2.625rem', // 42px
+      height: '4rem', // 48px
     },
     extend: ({ size }) => {
       if (
