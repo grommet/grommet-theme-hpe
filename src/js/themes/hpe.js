@@ -2444,6 +2444,9 @@ const buildTheme = (tokens, flags) => {
         // Applying spacing on Select "Clear selection" button, then placing focus styles on the inner container div
         extend: ({ theme }) =>
           `
+          div:has(input[type="search"]) {
+            padding-bottom: 0;
+          }
           button[aria-label*="Or, press"] {
             padding-block: ${
               components.hpe.select.default.medium.drop.paddingY
