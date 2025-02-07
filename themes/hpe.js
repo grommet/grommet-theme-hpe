@@ -2084,9 +2084,6 @@ var buildTheme = function buildTheme(tokens, flags) {
             horizontal: '12px',
             vertical: '6px'
           },
-          margin: {
-            horizontal: components.hpe.select["default"].medium.drop.paddingX
-          },
           hover: {
             background: 'background-hover'
           },
@@ -2097,9 +2094,16 @@ var buildTheme = function buildTheme(tokens, flags) {
           weight: components.hpe.button["default"].rest.fontWeight
         }
       },
-      control: {
+      container: {
+        // Applying spacing on Select "Clear selection" button, then placing focus styles on the inner container div
         extend: function extend(_ref24) {
-          var disabled = _ref24.disabled;
+          var theme = _ref24.theme;
+          return "\n          div:has(input[type=\"search\"]) {\n            padding-bottom: 0;\n          }\n          button[aria-label*=\"Or, press\"] {\n            padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n            padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n            &:focus {\n              background: transparent;\n              > div {\n                background: " + getThemeColor(components.hpe.button["default"].hover.background, theme) + ";\n              }\n            }\n          }\n        ";
+        }
+      },
+      control: {
+        extend: function extend(_ref25) {
+          var disabled = _ref25.disabled;
           return (0, _styledComponents.css)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n          ", "\n\n          &[class*=\"SelectMultiple\"] [role=\"listbox\"] {\n            padding-block: ", ";\n            padding-inline: ", ";\n            & [role='option'] {\n              border-radius: ", ";\n            }\n          }\n        "])), disabled && "\n          opacity: 0.3;\n          input {\n            cursor: default;\n          }", components.hpe.select["default"].medium.drop.paddingY, components.hpe.select["default"].medium.drop.paddingX, dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius);
         }
       },
@@ -2208,8 +2212,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         vertical: 'none',
         horizontal: 'none'
       },
-      extend: function extend(_ref25) {
-        var theme = _ref25.theme;
+      extend: function extend(_ref26) {
+        var theme = _ref26.theme;
         return "border-radius: " + theme.global.edgeSize.xsmall + ";";
       }
     },
@@ -2217,8 +2221,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       gap: 'xsmall',
       header: {
         border: undefined,
-        extend: function extend(_ref26) {
-          var theme = _ref26.theme;
+        extend: function extend(_ref27) {
+          var theme = _ref27.theme;
           return "\n          border-radius: " + theme.global.edgeSize.xsmall + "; \n          & button[aria-selected=\"true\"]:hover:not([disabled]) > div {\n            background: " + getThemeColor('background-selected-primary-strong-hover', theme) + ";\n            color: " + getThemeColor('text-onSelectedPrimaryStrong', theme) + ";\n          }\n        ";
         }
       },
@@ -2241,8 +2245,8 @@ var buildTheme = function buildTheme(tokens, flags) {
           side: 'bottom',
           color: components.hpe.dataCell["default"].rest.borderColor
         },
-        extend: function extend(_ref27) {
-          var theme = _ref27.theme;
+        extend: function extend(_ref28) {
+          var theme = _ref28.theme;
           return "\n            &:hover {\n              button {\n                background: " + theme.global.colors['background-hover'][theme.dark ? 'dark' : 'light'] + ";\n              }\n            }\n          ";
         }
       },
@@ -2348,14 +2352,14 @@ var buildTheme = function buildTheme(tokens, flags) {
     text: _extends({}, textTheme),
     textInput: {
       container: {
-        extend: function extend(_ref28) {
-          var theme = _ref28.theme;
+        extend: function extend(_ref29) {
+          var theme = _ref29.theme;
           return "\n          svg {\n            fill: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n            stroke: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n          }\n        ";
         }
       },
       suggestions: {
-        extend: function extend(_ref29) {
-          var theme = _ref29.theme;
+        extend: function extend(_ref30) {
+          var theme = _ref30.theme;
           return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"]:hover {\n            background: " + getThemeColor(components.hpe.select["default"].option.hover.background, theme) + ";\n          }\n        ";
         }
       }
@@ -2389,8 +2393,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       container: {
         border: false,
-        extend: function extend(_ref30) {
-          var theme = _ref30.theme;
+        extend: function extend(_ref31) {
+          var theme = _ref31.theme;
           return "\n        gap: " + (dimensions.edgeSize[large.hpe.spacing['5xsmall']] || large.hpe.spacing['5xsmall']) + ";\n        &:hover {\n          background: " + getThemeColor('background-hover', theme) + ";\n        }";
         }
       },
