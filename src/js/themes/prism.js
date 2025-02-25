@@ -8,19 +8,13 @@ const colors = {
   atrule: { dark: hpeColors.orange.light, light: hpeColors.orange.dark },
   'attr-name': { dark: hpeColors['teal!'], light: hpeColors.teal.dark },
   'attr-value': { dark: hpeColors.orange.light, light: hpeColors.orange.dark },
-  background: {
-    dark: 'black',
-    light: hpeColors['background-contrast'].light,
-  },
+  background: { dark: 'black', light: hpeColors['background-contrast'].light },
   boolean: { dark: hpeColors['teal!'], light: hpeColors.teal.dark },
   'class-name': {
     dark: hpeColors['status-critical'].light,
     light: hpeColors.red.dark,
   },
-  builtin: {
-    dark: hpeColors['teal!'],
-    light: hpeColors.teal.dark,
-  },
+  builtin: { dark: hpeColors['teal!'], light: hpeColors.teal.dark },
   char: { dark: hpeColors['teal!'], light: hpeColors.teal.dark },
   code: hpeColors.text,
   comment: {
@@ -104,86 +98,33 @@ const themeMode = (mode) => ({
     borderRadius: '0.3em',
     whiteSpace: 'normal',
   },
-  'class-name': {
-    color: colors['class-name'][mode],
-  },
-  'maybe-class-name': {
-    color: colors['maybe-class-name'][mode],
-  },
-  comment: {
-    color: colors.comment[mode],
-  },
-  function: {
-    color: colors.function[mode],
-  },
-  operator: {
-    color: colors.operator[mode],
-  },
-  string: {
-    color: colors.string[mode],
-  },
-  boolean: {
-    color: colors.boolean[mode],
-  },
-  number: {
-    color: colors.number[mode],
-  },
-  keyword: {
-    color: colors.keyword[mode],
-  },
-  selector: {
-    color: colors.selector[mode],
-  },
-  'attr-name': {
-    color: colors['attr-name'][mode],
-  },
-  char: {
-    color: colors.char[mode],
-  },
-  builtin: {
-    color: colors.builtin[mode],
-  },
-  inserted: {
-    color: colors.inserted[mode],
-  },
-  entity: {
-    color: colors.entity[mode],
-    cursor: 'help',
-  },
-  url: {
-    color: colors.url[mode],
-  },
+  'class-name': { color: colors['class-name'][mode] },
+  'maybe-class-name': { color: colors['maybe-class-name'][mode] },
+  comment: { color: colors.comment[mode] },
+  function: { color: colors.function[mode] },
+  operator: { color: colors.operator[mode] },
+  string: { color: colors.string[mode] },
+  boolean: { color: colors.boolean[mode] },
+  number: { color: colors.number[mode] },
+  keyword: { color: colors.keyword[mode] },
+  selector: { color: colors.selector[mode] },
+  'attr-name': { color: colors['attr-name'][mode] },
+  char: { color: colors.char[mode] },
+  builtin: { color: colors.builtin[mode] },
+  inserted: { color: colors.inserted[mode] },
+  entity: { color: colors.entity[mode], cursor: 'help' },
+  url: { color: colors.url[mode] },
   '.language-css .token.string': {
     color: colors['.language-css .token.string'][mode],
   },
-  '.style .token.string': {
-    color: colors['.style .token.string'][mode],
-  },
-  variable: {
-    color: colors.variable[mode],
-  },
-  atrule: {
-    color: colors.atrule[mode],
-  },
-  'attr-value': {
-    color: colors['attr-value'][mode],
-  },
-  regex: {
-    color: colors.regex[mode],
-  },
-  important: {
-    color: colors.important[mode],
-    fontWeight: 'bold',
-  },
-  bold: {
-    fontWeight: 'bold',
-  },
-  italic: {
-    fontStyle: 'italic',
-  },
+  '.style .token.string': { color: colors['.style .token.string'][mode] },
+  variable: { color: colors.variable[mode] },
+  atrule: { color: colors.atrule[mode] },
+  'attr-value': { color: colors['attr-value'][mode] },
+  regex: { color: colors.regex[mode] },
+  important: { color: colors.important[mode], fontWeight: 'bold' },
+  bold: { fontWeight: 'bold' },
+  italic: { fontStyle: 'italic' },
 });
 
-export const prism = {
-  dark: themeMode('dark'),
-  light: themeMode('light'),
-};
+export const prism = { dark: themeMode('dark'), light: themeMode('light') };
