@@ -1709,6 +1709,7 @@ const buildTheme = (tokens, flags) => {
           icon: { pad: mediumIconOnlyPad },
         },
       },
+      primaryKey: { weight: global.hpe.fontWeight.medium },
     },
     maskedInput: {
       container: {
