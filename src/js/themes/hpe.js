@@ -550,40 +550,29 @@ const buildTheme = (tokens, flags) => {
                 .borderColor,
           },
         },
-        extend: ({ disabled, theme }) => {
-          const placeholderColor = disabled
-            ? `color: ${getThemeColor(
-                components.hpe.formField.default.placeholder.disabled.rest
-                  .textColor,
-                theme,
-              )};`
-            : '';
-
-          return `
-        color: ${getThemeColor(
-          components.hpe.formField.default.value.rest.textColor,
-          theme,
-        )};
-        &::-webkit-input-placeholder {
-          ${placeholderColor}
+        extend: ({ theme }) => `
+          color: ${getThemeColor(
+            components.hpe.formField.default.value.rest.textColor,
+            theme,
+          )};
+          &::-webkit-input-placeholder {
           font-weight: ${
             components.hpe.formField.default.medium.placeholder.fontWeight
           };
         }
+      
         &::-moz-placeholder {
-          ${placeholderColor}
           font-weight: ${
             components.hpe.formField.default.medium.placeholder.fontWeight
           };
         }
+      
         &:-ms-input-placeholder {
-          ${placeholderColor}
           font-weight: ${
             components.hpe.formField.default.medium.placeholder.fontWeight
           };
         }
-      `;
-        },
+        `,
       },
       font: {
         family: global.hpe.fontStack.primary,
