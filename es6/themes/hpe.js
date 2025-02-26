@@ -1646,7 +1646,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       message: {
-        color: 'text'
+        color: 'text',
+        fill: true
       },
       title: {
         // any text props

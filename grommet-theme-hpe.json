@@ -2283,7 +2283,8 @@
       }
     },
     "message": {
-      "color": "text"
+      "color": "text",
+      "fill": true
     },
     "title": {
       "color": "text-strong",
