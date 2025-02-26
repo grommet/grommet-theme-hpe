@@ -1770,7 +1770,7 @@ const buildTheme = (tokens, flags) => {
       container: { round: 'xsmall' },
       direction: 'column',
       global: { direction: 'row', container: { round: 'none' } },
-      message: { color: 'text' },
+      message: { color: 'text', fill: true },
       title: {
         // any text props
         color: 'text-strong',
