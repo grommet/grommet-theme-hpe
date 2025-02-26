@@ -1342,12 +1342,6 @@ const buildTheme = (tokens, flags) => {
     formField: {
       extend: ({ theme }) =>
         `
-          input:disabled {
-            color: ${getThemeColor(
-              components.hpe.formField.default.value.disabled.rest.textColor,
-              theme,
-            )};
-          }
           [class*="ContentBox"] {
             label {
               padding-block: ${
