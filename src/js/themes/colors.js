@@ -162,10 +162,7 @@ export const colors = {
     dark: dark.hpe.color.icon.warning,
     light: light.hpe.color.icon.warning,
   },
-  'status-ok': {
-    dark: dark.hpe.color.icon.ok,
-    light: light.hpe.color.icon.ok,
-  },
+  'status-ok': { dark: dark.hpe.color.icon.ok, light: light.hpe.color.icon.ok },
   'status-unknown': {
     dark: dark.hpe.color.icon.unknown,
     light: light.hpe.color.icon.unknown,
