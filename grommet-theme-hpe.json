@@ -694,7 +694,7 @@
         "color": "border-default"
       },
       "disabled": {
-        "opacity": 1
+        "opacity": 0.3
       }
     },
     "input": {
@@ -2782,6 +2782,18 @@
         "color": {
           "light": "#e0e0e0",
           "dark": "#616161"
+        }
+      }
+    },
+    "disabled": {
+      "opacity": 1,
+      "track": {
+        "color": "background-disabled"
+      },
+      "thumb": {
+        "color": {
+          "light": "rgb(245, 245, 245)",
+          "dark": "rgb(44, 44, 44)"
         }
       }
     }
