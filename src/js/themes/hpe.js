@@ -976,6 +976,13 @@ const buildTheme = (tokens, flags) => {
       header: { pad: 'medium' },
       hover: { container: { elevation: 'medium' } },
     },
+    carousel: {
+      disabled: {
+        icons: {
+          color: 'icon-disabled',
+        },
+      },
+    },
     checkBox: {
       hover: {
         border: {
