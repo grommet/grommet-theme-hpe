@@ -1579,6 +1579,9 @@ var buildTheme = function buildTheme(tokens, flags) {
             pad: mediumIconOnlyPad
           }
         }
+      },
+      primaryKey: {
+        weight: global.hpe.fontWeight.medium
       }
     },
     maskedInput: {

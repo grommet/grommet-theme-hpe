@@ -2217,6 +2217,9 @@
           }
         }
       }
+    },
+    "primaryKey": {
+      "weight": 500
     }
   },
   "maskedInput": {
