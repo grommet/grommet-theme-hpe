@@ -947,6 +947,13 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       }
     },
+    carousel: {
+      disabled: {
+        icons: {
+          color: 'icon-disabled'
+        }
+      }
+    },
     checkBox: {
       hover: {
         border: {
