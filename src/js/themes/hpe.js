@@ -527,7 +527,7 @@ const buildTheme = (tokens, flags) => {
           color:
             components.hpe.formField.default.input.container.rest.borderColor,
         },
-        disabled: { opacity: 1 },
+        disabled: { opacity: 0.3 },
       },
       input: {
         font: {
@@ -1342,12 +1342,6 @@ const buildTheme = (tokens, flags) => {
     formField: {
       extend: ({ theme }) =>
         `
-          input:disabled {
-            color: ${getThemeColor(
-              components.hpe.formField.default.value.disabled.rest.textColor,
-              theme,
-            )};
-          }
           [class*="ContentBox"] {
             label {
               padding-block: ${
@@ -2095,6 +2089,15 @@ const buildTheme = (tokens, flags) => {
           color: { light: '#e0e0e0', dark: '#616161' },
         },
         extend: () => `border-radius: ${large.hpe.radius.full};`,
+      },
+      disabled: {
+        opacity: 1,
+        track: { color: 'background-disabled' },
+        thumb: {
+          // opaque version of background-front + background-disabled
+          // to avoid stacking transparencies
+          color: { light: 'rgb(245, 245, 245)', dark: 'rgb(44, 44, 44)' },
+        },
       },
     },
     select: {
