@@ -2303,18 +2303,6 @@ const buildTheme = (tokens, flags) => {
           side: 'bottom',
           color: components.hpe.dataCell.default.rest.borderColor,
         },
-        extend: ({ theme }) =>
-          `
-            &:hover {
-              button {
-                background: ${
-                  theme.global.colors['background-hover'][
-                    theme.dark ? 'dark' : 'light'
-                  ]
-                };
-              }
-            }
-          `,
       },
       row: { hover: { background: 'background-hover' } },
       footer: {
