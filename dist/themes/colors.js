@@ -146,6 +146,10 @@ var colors = exports.colors = _extends({}, tokenColors, {
     light: _grommet.light.hpe.color.dataVis['categorical-70'],
     dark: _grommet.dark.hpe.color.dataVis['categorical-70']
   },
+  'graph-7': {
+    light: _grommet.light.hpe.color.dataVis['categorical-80'],
+    dark: _grommet.dark.hpe.color.dataVis['categorical-80']
+  },
   'status-critical': {
     dark: _grommet.dark.hpe.color.icon.critical,
     light: _grommet.light.hpe.color.icon.critical

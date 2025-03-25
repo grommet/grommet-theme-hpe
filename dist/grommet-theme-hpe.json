@@ -647,6 +647,10 @@
         "light": "#01609f",
         "dark": "#1f95e4"
       },
+      "graph-7": {
+        "light": "#7800a7",
+        "dark": "#9a3ac0"
+      },
       "status-critical": {
         "dark": "#fc5a5a",
         "light": "#ec3331"
