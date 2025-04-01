@@ -1,5 +1,12 @@
 # grommet-theme-hpe
 
+## 6.1.0
+
+### Minor Changes
+
+- 4570645: - Upgraded hpe-design-tokens to next minor version. This adds `icon-onStrong` color and updates status background colors to use opaque values.
+- 083200d: - Added "graph-7" to provide full range of dataVis-categorical colors offered by hpe-design-tokens.
+
 ## 6.0.1
 
 ### Patch Changes
