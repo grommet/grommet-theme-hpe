@@ -193,25 +193,25 @@
         "light": "rgba(0, 0, 0, 0.12)",
         "dark": "rgba(0, 0, 0, 0.12)"
       },
-      "background-warning": {
-        "light": "#fff3dd",
-        "dark": "#3c361e"
-      },
       "background-ok": {
         "light": "#e3fdf4",
         "dark": "#1b5245"
-      },
-      "background-critical": {
-        "light": "#ffecec",
-        "dark": "#552120"
       },
       "background-unknown": {
         "light": "rgba(0, 0, 0, 0.04)",
         "dark": "rgba(255, 255, 255, 0.06)"
       },
+      "background-warning": {
+        "light": "#fff3dd",
+        "dark": "#3c361e"
+      },
       "background-info": {
         "light": "#e0f8ff",
         "dark": "#1e363d"
+      },
+      "background-critical": {
+        "light": "#ffecec",
+        "dark": "#552120"
       },
       "background-primary-strong": {
         "light": "#008567",
@@ -294,12 +294,12 @@
         "dark": "#ffffff"
       },
       "text-weak": {
-        "light": "#757575",
-        "dark": "rgba(255, 255, 255, 0.5)"
+        "light": "#676767",
+        "dark": "rgba(255, 255, 255, 0.61)"
       },
       "text-placeholder": {
-        "light": "#757575",
-        "dark": "rgba(255, 255, 255, 0.5)"
+        "light": "#676767",
+        "dark": "rgba(255, 255, 255, 0.61)"
       },
       "text-disabled": {
         "light": "rgba(0, 0, 0, 0.24)",
@@ -410,8 +410,8 @@
         "dark": "#ffffff"
       },
       "icon-weak": {
-        "light": "#757575",
-        "dark": "rgba(255, 255, 255, 0.5)"
+        "light": "#676767",
+        "dark": "rgba(255, 255, 255, 0.61)"
       },
       "icon-disabled": {
         "light": "rgba(0, 0, 0, 0.24)",
@@ -423,7 +423,7 @@
       },
       "icon-info": {
         "light": "#00567a",
-        "dark": "#00739d"
+        "dark": "#00c8ff"
       },
       "icon-ok": {
         "light": "#009a71",
@@ -434,8 +434,8 @@
         "dark": "#d36d00"
       },
       "icon-unknown": {
-        "light": "#8c8c8c",
-        "dark": "#555555"
+        "light": "#757575",
+        "dark": "#8c8c8c"
       },
       "icon-primary": {
         "light": "#006750",
@@ -578,8 +578,8 @@
         "light": "#555555"
       },
       "text-xweak": {
-        "dark": "rgba(255, 255, 255, 0.5)",
-        "light": "#757575"
+        "dark": "rgba(255, 255, 255, 0.61)",
+        "light": "#676767"
       },
       "border": {
         "dark": "rgba(255, 255, 255, 0.36)",
@@ -668,8 +668,8 @@
         "light": "#009a71"
       },
       "status-unknown": {
-        "dark": "#555555",
-        "light": "#8c8c8c"
+        "dark": "#8c8c8c",
+        "light": "#757575"
       },
       "status-disabled": "#CCCCCC",
       "validation-critical": {
@@ -691,8 +691,8 @@
       "selected-background": "background-selected-strong-enabled",
       "selected-text": "text-onSelectedPrimaryStrong",
       "placeholder": {
-        "light": "#757575",
-        "dark": "rgba(255, 255, 255, 0.5)"
+        "light": "#676767",
+        "dark": "rgba(255, 255, 255, 0.61)"
       },
       "disabled-text": "text-disabled"
     },
@@ -2703,52 +2703,52 @@
     "xsmall": {
       "size": "0.875rem",
       "height": "1rem",
-      "maxWidth": "25em"
+      "maxWidth": "30em"
     },
     "small": {
       "size": "1rem",
       "height": "1.25rem",
-      "maxWidth": "25em"
+      "maxWidth": "30em"
     },
     "medium": {
       "size": "1.125rem",
       "height": "1.5rem",
-      "maxWidth": "25em"
+      "maxWidth": "30em"
     },
     "large": {
       "size": "1.375rem",
       "height": "1.75rem",
-      "maxWidth": "25em"
+      "maxWidth": "30em"
     },
     "xlarge": {
       "size": "1.5rem",
       "height": "1.875rem",
-      "maxWidth": "25em"
+      "maxWidth": "30em"
     },
     "xxlarge": {
       "size": "2.25rem",
       "height": "2.5rem",
-      "maxWidth": "25em"
+      "maxWidth": "30em"
     },
     "3xl": {
       "size": "2.625rem",
       "height": "2.875rem",
-      "maxWidth": "25em"
+      "maxWidth": "30em"
     },
     "4xl": {
       "size": "3rem",
       "height": "3rem",
-      "maxWidth": "25em"
+      "maxWidth": "30em"
     },
     "5xl": {
       "size": "4.5rem",
       "height": "4.5rem",
-      "maxWidth": "25em"
+      "maxWidth": "30em"
     },
     "6xl": {
       "size": "4.5rem",
       "height": "4.5rem",
-      "maxWidth": "25em"
+      "maxWidth": "30em"
     }
   },
   "radioButton": {
