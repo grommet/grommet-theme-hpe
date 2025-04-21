@@ -4,9 +4,9 @@
 
 ### Minor Changes
 
-- bbfbb57: - Updated hpe-design-tokens dependency to ~1.2.0
+- bbfbb57: - Upgraded hpe-design-tokens to next minor version.
   - Updated paragraph max-width from `25em` to `30em` to avoid prematurely wrapping; still adheres to WCAG AAA 80 character per line recommendation.
-  - Fixes `text-weak` to meet minimum 4.5:1 contrast ratio on supported standard background colors.
+  - Fixed `text-weak` to meet minimum 4.5:1 contrast ratio on supported standard background colors.
 
 ## 6.1.0
 
