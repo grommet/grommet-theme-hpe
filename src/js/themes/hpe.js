@@ -765,14 +765,47 @@ const buildTheme = (tokens, flags) => {
         ...buttonStatesTheme.active,
         'cta-primary': buttonStatesTheme.active.primary,
         'cta-alternate': buttonStatesTheme.active.secondary,
-        // applies when option is in focus
-        extend: ({ kind, theme }) =>
-          kind === 'option' &&
-          `
-          &[aria-selected="true"] { background: ${getThemeColor(
-            components.hpe.select.default.option.selected.rest.background,
-            theme,
-          )}; }`,
+        extend: ({ kind, theme, keyboard }) => {
+          let style;
+          // applies when option is in focus
+          if (kind === 'option') {
+            style += `
+            &[aria-selected="true"] { background: ${getThemeColor(
+              components.hpe.select.default.option.selected.rest.background,
+              theme,
+            )}; }`;
+          }
+          // keyboard specific styling for TextInput and MaskedInput suggestions
+          if (keyboard) {
+            style += `
+    position: relative;
+            &::before {
+              display: block;
+              position: absolute;
+              content: '';
+              width: ${
+                components.hpe.select.default.medium.option.marker.width
+              };
+              border-top-left-radius: ${
+                components.hpe.select.default.medium.option.marker
+                  .borderTopLeftRadius
+              };
+              border-bottom-left-radius: ${
+                components.hpe.select.default.medium.option.marker
+                  .borderBottomLeftRadius
+              };
+              top: ${components.hpe.select.default.medium.option.marker.top};
+              bottom: ${
+                components.hpe.select.default.medium.option.marker.bottom
+              };
+              left: ${components.hpe.select.default.medium.option.marker.left};
+              background: ${getThemeColor('border-selected', theme)};
+            }
+      }
+    `;
+          }
+          return style;
+        },
       },
       disabled: {
         opacity: 1,
