@@ -766,7 +766,7 @@ const buildTheme = (tokens, flags) => {
         'cta-primary': buttonStatesTheme.active.primary,
         'cta-alternate': buttonStatesTheme.active.secondary,
         extend: ({ kind, theme, keyboard }) => {
-          let style;
+          let style = '';
           // applies when option is in focus
           if (kind === 'option') {
             style += `
@@ -778,7 +778,7 @@ const buildTheme = (tokens, flags) => {
           // keyboard specific styling for TextInput and MaskedInput suggestions
           if (keyboard) {
             style += `
-    position: relative;
+            position: relative;
             &::before {
               display: block;
               position: absolute;
@@ -800,9 +800,7 @@ const buildTheme = (tokens, flags) => {
               };
               left: ${components.hpe.select.default.medium.option.marker.left};
               background: ${getThemeColor('border-selected', theme)};
-            }
-      }
-    `;
+            }`;
           }
           return style;
         },
