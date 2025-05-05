@@ -1,5 +1,17 @@
 # grommet-theme-hpe
 
+## 6.3.0
+
+### Minor Changes
+
+- 06da636: - Upgraded hpe-design-tokens to next minor version.
+  - Refined `dataVis.categorical` palette to remove use of green to avoid confusion with status-based charts.
+  - Fixed `color.foreground.primary`, `color.border.selected` to meet 4.5:1 contrast ratio on standard background colors.
+
+### Patch Changes
+
+- 0a2c7fa: - Fixed accessibility bug where TextInput and MaskedInput suggestions were not receiving sufficient visual styling to meet WCAG requirements with keyboard navigation.
+
 ## 6.2.0
 
 ### Minor Changes
