@@ -717,14 +717,14 @@ var buildTheme = function buildTheme(tokens, flags) {
           var kind = _ref5.kind,
             theme = _ref5.theme,
             keyboard = _ref5.keyboard;
-          var style;
+          var style = '';
           // applies when option is in focus
           if (kind === 'option') {
             style += "\n            &[aria-selected=\"true\"] { background: " + getThemeColor(components.hpe.select["default"].option.selected.rest.background, theme) + "; }";
           }
           // keyboard specific styling for TextInput and MaskedInput suggestions
           if (keyboard) {
-            style += "\n    position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              width: " + components.hpe.select["default"].medium.option.marker.width + ";\n              border-top-left-radius: " + components.hpe.select["default"].medium.option.marker.borderTopLeftRadius + ";\n              border-bottom-left-radius: " + components.hpe.select["default"].medium.option.marker.borderBottomLeftRadius + ";\n              top: " + components.hpe.select["default"].medium.option.marker.top + ";\n              bottom: " + components.hpe.select["default"].medium.option.marker.bottom + ";\n              left: " + components.hpe.select["default"].medium.option.marker.left + ";\n              background: " + getThemeColor('border-selected', theme) + ";\n            }\n      }\n    ";
+            style += "\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              width: " + components.hpe.select["default"].medium.option.marker.width + ";\n              border-top-left-radius: " + components.hpe.select["default"].medium.option.marker.borderTopLeftRadius + ";\n              border-bottom-left-radius: " + components.hpe.select["default"].medium.option.marker.borderBottomLeftRadius + ";\n              top: " + components.hpe.select["default"].medium.option.marker.top + ";\n              bottom: " + components.hpe.select["default"].medium.option.marker.bottom + ";\n              left: " + components.hpe.select["default"].medium.option.marker.left + ";\n              background: " + getThemeColor('border-selected', theme) + ";\n            }";
           }
           return style;
         }
