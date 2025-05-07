@@ -2270,18 +2270,16 @@ const buildTheme = (tokens, flags) => {
     tab: {
       color: 'text',
       active: {
-        background: 'background-selected-primary-strong',
-        color: 'text-onSelectedPrimaryStrong',
-        weight: 500,
+        background: undefined,
+        color: 'text-primary',
+        weight: 600,
       },
-      hover: { background: 'background-hover', color: 'text' },
+      hover: { background: 'transparent', color: 'text-strong' },
       border: {
         side: 'all',
         color: 'transparent',
-        size:
-          dimensions[components.hpe.element?.medium.borderWidth] ||
-          components.hpe.element?.medium.borderWidth,
-        active: { color: 'transparent' },
+        size: components.hpe.element.medium.borderWidth,
+        active: { color: undefined },
         disabled: { color: undefined },
         hover: { color: undefined },
       },
@@ -2289,25 +2287,36 @@ const buildTheme = (tokens, flags) => {
       pad: {
         bottom: components.hpe.element?.medium.paddingY,
         top: components.hpe.element?.medium.paddingY,
-        horizontal: components.hpe.element?.medium?.paddingX?.wide,
+        horizontal: components.hpe.element?.medium?.paddingX?.narrow,
       },
       margin: { vertical: 'none', horizontal: 'none' },
-      extend: ({ theme }) => `border-radius: ${theme.global.edgeSize.xsmall};`,
+      extend: 'font-weight: 500;',
     },
     tabs: {
-      gap: 'xsmall',
+      gap: localDimension.hpe.spacing.small,
       header: {
         border: undefined,
+        // padding-bottom ensures the marker is not cut off by subsequent
+        // page elements.
         extend: ({ theme }) => `
-          border-radius: ${theme.global.edgeSize.xsmall}; 
-          & button[aria-selected="true"]:hover:not([disabled]) > div {
-            background: ${getThemeColor(
-              'background-selected-primary-strong-hover',
-              theme,
-            )};
-            color: ${getThemeColor('text-onSelectedPrimaryStrong', theme)};
-          }
-        `,
+        padding-bottom: ${localDimension.hpe.borderWidth.medium};
+        & button {
+          border-radius: ${localDimension.hpe.radius.xxsmall}; // radius on focus
+        }
+        & button[aria-selected="true"] {
+            position: relative;
+            &::before {
+              display: block;
+              position: absolute;
+              content: '';
+              height: ${localDimension.hpe.borderWidth.medium};
+              border-radius: 9999px;
+              bottom: -${localDimension.hpe.borderWidth.medium};
+              left: 0;
+              right: 0;
+              background: ${getThemeColor('border-selected', theme)};
+            }
+        }`,
       },
       step: { xsmall: 1, xlarge: 3 },
     },
