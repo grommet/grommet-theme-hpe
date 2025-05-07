@@ -2301,7 +2301,7 @@ const buildTheme = (tokens, flags) => {
         extend: ({ theme }) => `
         padding-bottom: ${localDimension.hpe.borderWidth.medium};
         & button {
-          border-radius: ${localDimension.hpe.radius.xxsmall}; // radius on focus
+          border-radius: ${localDimension.hpe.radius.xsmall}; // radius on focus
         }
         & button[aria-selected="true"] {
             position: relative;
