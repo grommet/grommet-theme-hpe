@@ -2310,7 +2310,7 @@ const buildTheme = (tokens, flags) => {
               position: absolute;
               content: '';
               height: ${localDimension.hpe.borderWidth.medium};
-              border-radius: 9999px;
+              border-radius: ${localDimension.hpe.radius.full};
               bottom: -${localDimension.hpe.borderWidth.medium};
               left: 0;
               right: 0;
