@@ -2441,7 +2441,7 @@ const buildTheme = (tokens, flags) => {
       content: {
         background: 'background-floating',
         border: { color: 'border-weak' },
-        margin: 'xxsmall',
+        margin: 'xsmall',
         elevation: 'small',
         pad: { vertical: 'none', horizontal: 'small' },
         round: components.hpe.drop.default.borderRadius,
