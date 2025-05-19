@@ -83,6 +83,16 @@ jobs:
             git config --global user.name "Grommet Community Bot"
             git config --global user.email "grommet@hpe.com"
             yarn release-tokens-stable
+  release-v2-alpha-stable:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/grommet-ci
+      - run:
+          command: |
+            git config --global user.name "Grommet Community Bot"
+            git config --global user.email "grommet@hpe.com"
+            yarn release-v2-alpha-stable
   release-gh-pages:
     <<: *defaults
     steps:
@@ -169,6 +179,14 @@ workflows:
             branches:
               only:
                 - TOKENS
+      - release-v2-alpha-stable:
+          requires:
+            - lint
+            - build
+          filters:
+            branches:
+              only:
+                - v2-alpha
       - release-gh-pages:
           requires:
             - lint
