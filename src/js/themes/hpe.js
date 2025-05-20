@@ -164,6 +164,9 @@ const buildTheme = (tokens, flags) => {
   } = tokens;
 
   const size = (breakpoint) => ({
+    '5xsmall': breakpoint.hpe.container['5xsmall'],
+    '4xsmall': breakpoint.hpe.container['4xsmall'],
+    '3xsmall': breakpoint.hpe.container['3xsmall'],
     xxsmall: breakpoint.hpe.container.xxsmall,
     xsmall: breakpoint.hpe.container.xsmall,
     small: breakpoint.hpe.container.small,
@@ -171,6 +174,7 @@ const buildTheme = (tokens, flags) => {
     large: breakpoint.hpe.container.large,
     xlarge: breakpoint.hpe.container.xlarge,
     xxlarge: breakpoint.hpe.container.xxlarge,
+    '3xlarge': breakpoint.hpe.container['3xlarge'],
     full: '100%',
   });
 
@@ -577,7 +581,7 @@ const buildTheme = (tokens, flags) => {
       font: {
         family: global.hpe.fontStack.primary,
         face: `
-          @font-face {
+        @font-face {
             font-family: "Metric";
             src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
                  url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
@@ -611,6 +615,35 @@ const buildTheme = (tokens, flags) => {
             src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Light.woff2") format('woff2'),
                  url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Light.woff") format('woff');
             font-weight: 100;
+          }
+          @font-face {
+            font-family: "Graphik";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Regular-Web.woff2") format('woff2');
+          }
+          @font-face {
+            font-family: "Graphik";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Regular-Web.woff2") format('woff2');
+            font-weight: 400;
+          }
+          @font-face {
+            font-family: "Graphik";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Bold-Web.woff2") format('woff2');
+            font-weight: 700;
+          }
+          @font-face {
+            font-family: "Graphik";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Semibold-Web.woff2") format('woff2');
+            font-weight: 600;
+          }
+          @font-face {
+            font-family: "Graphik";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Medium-Web.woff2") format('woff2');
+            font-weight: 500;
+          }
+          @font-face {
+            font-family: "Graphik";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Extralight-Web.woff2") format('woff2');
+            font-weight: 100;
           }`,
         size: large.hpe.text.medium.fontSize,
         height: large.hpe.text.medium.lineHeight,
@@ -633,7 +666,7 @@ const buildTheme = (tokens, flags) => {
         background: components.hpe.drop.default.background,
         border: {
           radius:
-            dimensions.edgeSize[components.hpe.drop.default.borderRadius] ||
+            dimensions.radius[components.hpe.drop.default.borderRadius] ||
             components.hpe.drop.default.borderRadius,
         },
         margin: components.hpe.drop.default.margin,
@@ -691,7 +724,7 @@ const buildTheme = (tokens, flags) => {
       panel: { border: { side: 'horizontal', color: 'border' } },
       heading: {
         level: 3,
-        margin: { vertical: 'medium', horizontal: 'xsmall' },
+        margin: { vertical: 'medium', horizontal: '3xsmall' },
       },
       hover: { background: 'background-hover', heading: { color: undefined } },
       border: undefined,
@@ -911,8 +944,15 @@ const buildTheme = (tokens, flags) => {
           },
         },
       },
-      extend: ({ colorValue, theme }) => {
+      extend: ({ colorValue, theme, kind }) => {
         let style = '';
+        // TO DO need to handle icon and consider a more elegant solution
+        if (kind === 'primary') {
+          style += `color: ${getThemeColor(
+            'text-onSecondaryStrong',
+            theme,
+          )} !important;`;
+        }
         if (colorValue) {
           // color prop is not recommended to be used, but providing
           // a better fallback behavior for hover styles to avoid
@@ -1000,6 +1040,7 @@ const buildTheme = (tokens, flags) => {
       container: {
         background: 'background-front',
         elevation: 'none',
+        round: 'medium',
         extend: 'transition: box-shadow 0.3s ease-in-out;',
       },
       body: { pad: 'medium' },
@@ -1237,7 +1278,7 @@ const buildTheme = (tokens, flags) => {
     `,
     },
     checkBoxGroup: {
-      container: { cssGap: true, gap: 'small', margin: 'none' },
+      container: { cssGap: true, gap: 'xsmall', margin: 'none' },
     },
     data: { button: { kind: 'toolbar' } },
     dateInput: {
@@ -1251,8 +1292,8 @@ const buildTheme = (tokens, flags) => {
       body: {
         extend: ({ theme }) => `
           /* Margin and padding allow room for focus on table body */
-          margin: ${theme.global.edgeSize.xxsmall} 0px;
-          padding: 0px ${theme.global.edgeSize.xxsmall};
+          margin: ${theme.global.edgeSize['5xsmall']} 0px;
+          padding: 0px ${theme.global.edgeSize['5xsmall']};
         `,
         selected: {
           background:
@@ -1272,7 +1313,7 @@ const buildTheme = (tokens, flags) => {
         // border: undefined,
         // pad: undefined,
       },
-      groupEnd: { border: { side: 'bottom', size: 'xsmall' } },
+      groupEnd: { border: { side: 'bottom', size: '3xsmall' } },
       header: {
         border: { side: 'bottom' },
         color: components.hpe.headerCell.default.rest.textColor,
@@ -1307,6 +1348,10 @@ const buildTheme = (tokens, flags) => {
           `,
         font: { weight: components.hpe.headerCell.default.medium.fontWeight },
         gap: components.hpe.headerCell.default.medium.gapX,
+        pad: {
+          horizontal: components.hpe.headerCell.default.medium.paddingX,
+          vertical: '3xsmall', // TO DO
+        },
         hover: {
           background: {
             color: components.hpe.headerCell.default.hover.background,
@@ -1372,9 +1417,9 @@ const buildTheme = (tokens, flags) => {
       dragOver: { background: 'background-hover', border: 'none' },
       hover: { border: { color: 'border' } },
       icons: { remove: Close },
-      label: { margin: 'small' },
-      message: { color: 'placeholder', margin: 'small' },
-      pad: { horizontal: 'xsmall' },
+      label: { margin: 'xsmall' },
+      message: { color: 'placeholder', margin: 'xsmall' },
+      pad: { horizontal: '3xsmall' },
       extend: `border-radius: ${components.hpe.formField.default.medium.input.container.borderRadius};`,
     },
     formField: {
@@ -1446,7 +1491,7 @@ const buildTheme = (tokens, flags) => {
             }
           }
       `,
-      content: { margin: { vertical: 'xsmall' }, pad: 'none' },
+      content: { margin: { vertical: '3xsmall' }, pad: 'none' },
       border: {
         error: {
           color:
@@ -1548,13 +1593,13 @@ const buildTheme = (tokens, flags) => {
             components.hpe.formField.default.input.container.error.rest
               .background,
         },
-        container: { gap: 'xsmall' },
+        container: { gap: '3xsmall' },
         icon: (
           <CircleAlert size="small" color={light.hpe.color.icon.critical} />
         ),
         size: 'xsmall',
         color: components.hpe.formField.default.error.rest.textColor,
-        margin: { bottom: 'xsmall', top: 'none', horizontal: 'none' },
+        margin: { bottom: '3xsmall', top: 'none', horizontal: 'none' },
       },
       focus: {
         containerFocus: false,
@@ -1571,12 +1616,12 @@ const buildTheme = (tokens, flags) => {
       info: {
         size: 'xsmall',
         color: components.hpe.formField.default.info.rest.color,
-        margin: { bottom: 'xsmall', top: 'none', horizontal: 'none' },
+        margin: { bottom: '3xsmall', top: 'none', horizontal: 'none' },
       },
       label: {
         size: 'xsmall',
         color: components.hpe.formField.default.label.rest.textColor,
-        margin: { bottom: 'none', top: 'xsmall', horizontal: 'none' },
+        margin: { bottom: 'none', top: '3xsmall', horizontal: 'none' },
         requiredIndicator: true,
         weight: components.hpe.formField.default.medium.label.fontWeight,
       },
@@ -1730,7 +1775,7 @@ const buildTheme = (tokens, flags) => {
     list: {
       container: {
         // any box props
-        gap: 'xsmall',
+        gap: '3xsmall',
         // extend: undefined,
       },
       item: {
@@ -1740,6 +1785,7 @@ const buildTheme = (tokens, flags) => {
           background: 'background-active',
           icon: { pad: mediumIconOnlyPad },
         },
+        pad: { horizontal: 'medium', vertical: 'xsmall' },
       },
       primaryKey: { weight: global.hpe.fontWeight.medium },
     },
@@ -1795,12 +1841,55 @@ const buildTheme = (tokens, flags) => {
         },
       },
     },
+    nameValueList: {
+      // gap: {
+      //   column: 'large',
+      //   row: 'small',
+      // },
+      // pair: {
+      //   column: {
+      //     gap: {
+      //       column: 'large',
+      //       row: 'medium',
+      //     },
+      //   },
+      // },
+      gap: {
+        column: 'xlarge',
+        row: 'xsmall',
+      },
+      pair: {
+        column: {
+          gap: {
+            column: 'xlarge',
+            row: 'medium',
+          },
+        },
+      },
+      name: {
+        width: 'small',
+      },
+      value: {
+        width: 'medium',
+      },
+    },
     nameValuePair: {
+      column: {
+        gap: '5xsmall',
+      },
       name: { color: 'text-strong', weight: global.hpe.fontWeight.medium },
+      value: {
+        // any text props
+        color: 'text',
+      },
     },
     notification: {
       close: { icon: Close },
-      container: { round: 'xsmall' },
+      container: {
+        // any box props
+        round: 'xsmall',
+        pad: { horizontal: 'xsmall', vertical: '3xsmall' },
+      },
       direction: 'column',
       global: { direction: 'row', container: { round: 'none' } },
       message: { color: 'text', fill: true },
@@ -1808,6 +1897,11 @@ const buildTheme = (tokens, flags) => {
         // any text props
         color: 'text-strong',
         weight: global.hpe.fontWeight.medium,
+      },
+      iconContainer: {
+        // any box props
+        pad: { right: 'xsmall' },
+        flex: false,
       },
       critical: {
         background: 'background-critical',
@@ -1909,29 +2003,42 @@ const buildTheme = (tokens, flags) => {
       wide: {
         width: {
           min: '336px', // 336 + 24 (margin) + 24 (margin) = 384 (e.g. 'medium')
-          max: 'xxlarge',
+          max: '3xlarge',
         },
-        xsmall: { pad: { horizontal: 'large' } },
-        xlarge: { pad: { horizontal: 'large' } },
+        xsmall: { pad: { horizontal: 'medium' } },
+        small: { pad: { horizontal: 'xlarge' } },
+        medium: { pad: { horizontal: 'large' } },
+        large: { pad: { horizontal: 'xxlarge' } },
+        xlarge: { pad: { horizontal: 'xxlarge' } },
       },
       narrow: {
         width: {
           min: '336px', // 336 + 24 (margin) + 24 (margin) = 384 (e.g. 'medium')
-          max: 'large',
+          max: 'xlarge',
         },
-        xsmall: { pad: { horizontal: 'large' } },
-        xlarge: { pad: { horizontal: 'large' } },
+        xsmall: { pad: { horizontal: 'medium' } },
+        small: { pad: { horizontal: 'xlarge' } },
+        medium: { pad: { horizontal: 'large' } },
+        large: { pad: { horizontal: 'xxlarge' } },
+        xlarge: { pad: { horizontal: 'xxlarge' } },
       },
       full: {
         width: {
           min: '336px', // 336 + 24 (margin) + 24 (margin) = 384 (e.g. 'medium')
           max: '100%',
         },
-        xsmall: { pad: { horizontal: 'large' } },
-        xlarge: { pad: { horizontal: 'large' } },
+        xsmall: { pad: { horizontal: 'medium' } },
+        small: { pad: { horizontal: 'xlarge' } },
+        medium: { pad: { horizontal: 'large' } },
+        large: { pad: { horizontal: 'xxlarge' } },
+        xlarge: { pad: { horizontal: 'xxlarge' } },
       },
     },
     pageHeader: {
+      pad: {
+        top: 'xlarge',
+        bottom: 'medium',
+      },
       responsive: { breakpoints: ['xsmall', 'small'] },
       // title: {
       //   size: undefined,
@@ -1943,9 +2050,39 @@ const buildTheme = (tokens, flags) => {
           ['title', 'actions'],
           ['subtitle', 'actions'],
         ],
-        columns: [['small', 'flex'], 'auto'],
+        columns: [['xsmall', 'flex'], 'auto'],
         rows: ['auto', 'auto', 'auto'],
-        gap: { row: 'xsmall', column: 'medium' },
+        gap: { row: '3xsmall', column: 'medium' },
+      },
+      small: {
+        areas: [
+          ['parent', 'parent'],
+          ['title', 'actions'],
+          ['subtitle', 'actions'],
+        ],
+        columns: [['xsmall', 'flex'], 'auto'],
+        rows: ['auto', 'auto', 'auto'],
+        gap: { row: '3xsmall', column: 'large' },
+      },
+      medium: {
+        areas: [
+          ['parent', 'parent'],
+          ['title', 'actions'],
+          ['subtitle', 'actions'],
+        ],
+        columns: [['medium', 'flex'], 'auto'],
+        rows: ['auto', 'auto', 'auto'],
+        gap: { row: '3xsmall', column: 'medium' },
+      },
+      large: {
+        areas: [
+          ['parent', 'parent'],
+          ['title', 'actions'],
+          ['subtitle', 'actions'],
+        ],
+        columns: [['medium', 'flex'], 'auto'],
+        rows: ['auto', 'auto', 'auto'],
+        gap: { row: '3xsmall', column: 'large' },
       },
       xlarge: {
         areas: [
@@ -1953,9 +2090,9 @@ const buildTheme = (tokens, flags) => {
           ['title', 'actions'],
           ['subtitle', 'actions'],
         ],
-        columns: [['medium', 'large'], 'auto'],
+        columns: [['medium', 'xlarge'], 'auto'],
         rows: ['auto', 'auto', 'auto'],
-        gap: { row: 'xsmall', column: 'large' },
+        gap: { row: '3xsmall', column: 'xlarge' },
       },
     },
     pagination: {
@@ -2043,6 +2180,13 @@ const buildTheme = (tokens, flags) => {
           },
         },
       },
+      controls: {
+        align: 'center',
+        direction: 'row',
+        gap: '5xsmall',
+        margin: 'none',
+        pad: 'none',
+      },
     },
     paragraph: { ...paragraphTheme },
     radioButton: {
@@ -2115,7 +2259,7 @@ const buildTheme = (tokens, flags) => {
       },
     },
     radioButtonGroup: {
-      container: { cssGap: true, gap: 'small', margin: 'none' },
+      container: { cssGap: true, gap: 'xsmall', margin: 'none' },
     },
     rangeInput: {
       thumb: { color: 'background-primary-strong' },
@@ -2204,7 +2348,7 @@ const buildTheme = (tokens, flags) => {
         color: 'icon',
         down: Down,
         margin: {
-          left: 'small',
+          left: 'xsmall',
           // setting right margin to 12px because on small
           // screens, Select responsive padding sizes down
           // which brings the icon too tight with edge of
@@ -2270,18 +2414,16 @@ const buildTheme = (tokens, flags) => {
     tab: {
       color: 'text',
       active: {
-        background: 'background-selected-primary-strong',
-        color: 'text-onSelectedPrimaryStrong',
-        weight: 500,
+        background: undefined,
+        color: 'text-primary',
+        weight: 600,
       },
-      hover: { background: 'background-hover', color: 'text' },
+      hover: { background: 'transparent', color: 'text-strong' },
       border: {
         side: 'all',
         color: 'transparent',
-        size:
-          dimensions[components.hpe.element?.medium.borderWidth] ||
-          components.hpe.element?.medium.borderWidth,
-        active: { color: 'transparent' },
+        size: components.hpe.element.medium.borderWidth,
+        active: { color: undefined },
         disabled: { color: undefined },
         hover: { color: undefined },
       },
@@ -2289,30 +2431,44 @@ const buildTheme = (tokens, flags) => {
       pad: {
         bottom: components.hpe.element?.medium.paddingY,
         top: components.hpe.element?.medium.paddingY,
-        horizontal: components.hpe.element?.medium?.paddingX?.wide,
+        horizontal: components.hpe.element?.medium?.paddingX?.narrow,
       },
       margin: { vertical: 'none', horizontal: 'none' },
-      extend: ({ theme }) => `border-radius: ${theme.global.edgeSize.xsmall};`,
+      extend: 'font-weight: 500;',
     },
     tabs: {
-      gap: 'xsmall',
+      gap: 'medium',
       header: {
         border: undefined,
-        extend: ({ theme }) => `
-          border-radius: ${theme.global.edgeSize.xsmall}; 
-          & button[aria-selected="true"]:hover:not([disabled]) > div {
-            background: ${getThemeColor(
-              'background-selected-primary-strong-hover',
-              theme,
-            )};
-            color: ${getThemeColor('text-onSelectedPrimaryStrong', theme)};
-          }
-        `,
+        // padding-bottom ensures the marker is not cut off by subsequent
+        // page elements.
+        extend: () => `
+        padding-bottom: ${localDimension.hpe.borderWidth.medium};
+        & button[aria-selected="true"] {
+            position: relative;
+            &::before {
+              display: block;
+              position: absolute;
+              content: '';
+              height: ${localDimension.hpe.borderWidth.medium};
+              border-radius: 9999px;
+              bottom: -${localDimension.hpe.borderWidth.medium};
+              left: 0;
+              right: 0;
+              background: ${light.hpe.color.border.selected};
+            }
+            }`,
       },
       step: { xsmall: 1, xlarge: 3 },
     },
     table: {
       header: {
+        // pad: {
+        //   top: components.hpe.dataCell.default.medium.paddingTop,
+        //   bottom: components.hpe.dataCell.default.medium.paddingBottom,
+        //   horizontal: components.hpe.dataCell.default.medium.paddingX,
+        // },
+        gap: components.hpe.headerCell.default.medium.gapX,
         extend: `
           > div { 
             height: 100%;
@@ -2387,7 +2543,7 @@ const buildTheme = (tokens, flags) => {
             vertical: components.hpe.element?.medium.paddingY,
             horizontal: components.hpe.element?.medium?.paddingX?.default,
           },
-          remove: { size: 'small', margin: { right: 'xxsmall' } },
+          remove: { size: 'xsmall', margin: { right: '5xsmall' } },
         },
         large: {
           icon: undefined,
@@ -2395,7 +2551,7 @@ const buildTheme = (tokens, flags) => {
             vertical: components.hpe.element?.large.paddingY,
             horizontal: components.hpe.element?.large?.paddingX?.default,
           },
-          remove: { size: 'medium', margin: { right: 'xxsmall' } },
+          remove: { size: 'medium', margin: { right: '5xsmall' } },
         },
         xlarge: {
           icon: undefined,
@@ -2403,7 +2559,7 @@ const buildTheme = (tokens, flags) => {
             vertical: components.hpe.element?.xlarge.paddingY,
             horizontal: components.hpe.element?.xlarge?.paddingX?.default,
           },
-          remove: { size: 'large', margin: { right: 'xsmall' } },
+          remove: { size: 'large', margin: { right: '3xsmall' } },
         },
       },
     },
@@ -2441,9 +2597,9 @@ const buildTheme = (tokens, flags) => {
       content: {
         background: 'background-floating',
         border: { color: 'border-weak' },
-        margin: 'xxsmall',
+        margin: '5xsmall',
         elevation: 'small',
-        pad: { vertical: 'none', horizontal: 'small' },
+        pad: { vertical: 'none', horizontal: 'xsmall' },
         round: components.hpe.drop.default.borderRadius,
       },
     },
@@ -2486,6 +2642,6 @@ export const hpe = buildTheme(
   {
     // For grommet-theme-hpe v6.0.0, maintain backwards compatibility
     // with old t-shirt sizes
-    'v6-backwards-compatibility': true,
+    'v6-backwards-compatibility': false,
   },
 );
