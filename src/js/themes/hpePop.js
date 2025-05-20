@@ -47,14 +47,16 @@ export const hpePop = deepMerge(hpe, {
           size: '5.25rem', // 84px
           height: '5.625rem', // 90px
         },
-        xlarge: {  // Heading condensed
+        xlarge: {
+          // Heading condensed
           size: '6rem', // 96px
           height: '6rem', // 96px
         },
-        xxlarge: { // Heading large condensed
+        xxlarge: {
+          // Heading large condensed
           size: '7rem', // 112px
           height: '7rem', // 112px
-        }
+        },
       },
       2: {
         small: {
@@ -69,19 +71,19 @@ export const hpePop = deepMerge(hpe, {
           size: '4.25rem', // 68px
           height: '4.625rem', // 74px
         },
-        xlarge: { // Heading condensed
+        xlarge: {
+          // Heading condensed
           size: '5.25rem', // 84px
           height: '5.625rem', // 90px
         },
-        xxlarge: { // Heading large condensed
+        xxlarge: {
+          // Heading large condensed
           size: '6rem', // 96px
           height: '6rem', // 96px
-        }
+        },
       },
       3: {
-        small: {
-   
-        },
+        small: {},
         medium: {
           size: '2.25rem', // 36px
           height: '2.625rem', // 42px
@@ -90,14 +92,16 @@ export const hpePop = deepMerge(hpe, {
           size: '3.25rem', // 52px
           height: '3.625rem', // 58px
         },
-        xlarge: { // Heading condensed
+        xlarge: {
+          // Heading condensed
           size: '4.25rem', // 68px
           height: '4.625rem', // 74px
         },
-        xxlarge: { // Heading large condensed
+        xxlarge: {
+          // Heading large condensed
           size: '5.25rem', // 84px
           height: '5.625rem', // 90px
-        }
+        },
       },
       4: {
         small: {
@@ -115,7 +119,7 @@ export const hpePop = deepMerge(hpe, {
         xlarge: {
           size: '3.25rem', // 52px
           height: '3.625rem', // 58px
-        }
+        },
       },
       5: {
         small: {
@@ -163,61 +167,75 @@ export const hpePop = deepMerge(hpe, {
     },
   },
   paragraph: {
-    xsmall: { // disclaimer
+    xsmall: {
+      // disclaimer
       size: '0.875rem', // 14px
       height: '1.25rem', // 20px
     },
-    small: { // small body
+    small: {
+      // small body
       size: '1rem', // 16px
       height: '1.5rem', // 24px
     },
-    medium: { // body
+    medium: {
+      // body
       size: '1.25rem', // 20px
       height: '1.875rem', // 30px
     },
-    large: { // large body
+    large: {
+      // large body
       size: '1.75rem', // 28px
       height: '2.375rem', // 38px
     },
-    xlarge: { // small quote
+    xlarge: {
+      // small quote
       size: '2.25rem', // 36px
       height: '2.875rem', // 46px
     },
-    xxlarge: { // quote
+    xxlarge: {
+      // quote
       size: '2.75rem', // 44px
       height: '3.375rem', // 54px
     },
-    xxxlarge: { // large quote
+    xxxlarge: {
+      // large quote
       size: '3.25rem', // 52px
       height: '3.875rem', // 62px
     },
   },
   text: {
-    xsmall: { // disclaimer
+    xsmall: {
+      // disclaimer
       size: '0.875rem', // 14px
       height: '1.25rem', // 20px
     },
-    small: { // small body
+    small: {
+      // small body
       size: '1rem', // 16px
       height: '1.5rem', // 24px
     },
-    medium: { // body
+    medium: {
+      // body
       size: '1.25rem', // 20px
       height: '1.875rem', // 30px
     },
-    large: { // large body
+    large: {
+      // large body
       size: '1.75rem', // 28px
       height: '2.375rem', // 38px
     },
-    xlarge: { // small quote
+    xlarge: {
+      // small quote
       size: '2.25rem', // 36px
       height: '2.875rem', // 46px
     },
-    xxlarge: { // quote
+    xxlarge: {
+      // quote
       size: '2.75rem', // 44px
       height: '3.375rem', // 54px
     },
-    xxxlarge: { // large quote
+    xxxlarge: {
+      // large quote
       size: '3.25rem', // 52px
       height: '3.875rem', // 62px
     },
