@@ -2473,16 +2473,16 @@ const buildTheme = (tokens, flags) => {
         // padding-bottom ensures the marker is not cut off by subsequent
         // page elements.
         extend: () => `
-        padding-bottom: ${localDimension.hpe.borderWidth.medium};
+        padding-bottom: ${large.hpe.borderWidth.medium};
         & button[aria-selected="true"] {
             position: relative;
             &::before {
               display: block;
               position: absolute;
               content: '';
-              height: ${localDimension.hpe.borderWidth.medium};
+              height: ${large.hpe.borderWidth.medium};
               border-radius: 9999px;
-              bottom: -${localDimension.hpe.borderWidth.medium};
+              bottom: -${large.hpe.borderWidth.medium};
               left: 0;
               right: 0;
               background: ${light.hpe.color.border.selected};
