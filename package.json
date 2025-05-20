@@ -68,6 +68,7 @@
     "release-next-stable": "babel-node ./tools/release-stable --branch=NEXT-stable",
     "release-audit-stable": "babel-node ./tools/release-stable --branch=AUDIT-stable",
     "release-tokens-stable": "babel-node ./tools/release-stable --branch=TOKENS-stable",
+    "release-v2-alpha-stable": "babel-node ./tools/release-stable --branch=v2-alpha-stable",
     "jsonify": "babel-node ./tools/convert-to-json > dist/grommet-theme-hpe.json",
     "release-gh-pages": "babel-node ./tools/release-gh-pages"
   },
