@@ -580,6 +580,7 @@ const buildTheme = (tokens, flags) => {
       },
       font: {
         family: global.hpe.fontStack.primary,
+        // Leaving Metric for now, but will be removed in the future
         face: `
         @font-face {
             font-family: "Metric";
@@ -643,6 +644,35 @@ const buildTheme = (tokens, flags) => {
           @font-face {
             font-family: "Graphik";
             src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Extralight-Web.woff2") format('woff2');
+            font-weight: 100;
+          }
+          @font-face {
+            font-family: "GraphikXXCondensed";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Regular-Web.woff2") format('woff2');
+          }
+          @font-face {
+            font-family: "GraphikXXCondensed";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Regular-Web.woff2") format('woff2');
+            font-weight: 400;
+          }
+          @font-face {
+            font-family: "GraphikXXCondensed";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Bold-Web.woff2") format('woff2');
+            font-weight: 700;
+          }
+          @font-face {
+            font-family: "GraphikXXCondensed";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Semibold-Web.woff2") format('woff2');
+            font-weight: 600;
+          }
+          @font-face {
+            font-family: "GraphikXXCondensed";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Medium-Web.woff2") format('woff2');
+            font-weight: 500;
+          }
+          @font-face {
+            font-family: "GraphikXXCondensed";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Extralight-Web.woff2") format('woff2');
             font-weight: 100;
           }`,
         size: large.hpe.text.medium.fontSize,
