@@ -83,7 +83,10 @@ export const hpePop = deepMerge(hpe, {
         },
       },
       3: {
-        small: {},
+        small: {
+          size: '1.75rem', // 28px
+          height: '2.125rem', // 34px
+        },
         medium: {
           size: '2.25rem', // 36px
           height: '2.625rem', // 42px
@@ -105,12 +108,12 @@ export const hpePop = deepMerge(hpe, {
       },
       4: {
         small: {
-          size: '1.125rem', // 20px
-          height: '1.125rem', // 26px
+          size: '1.25rem', // 20px
+          height: '1.625rem', // 26px
         },
         medium: {
-          size: '1.5rem', // 28px
-          height: '1.5rem', // 34px
+          size: '1.75rem', // 28px
+          height: '2.125rem', // 34px
         },
         large: {
           size: '2.25rem', // 36px
@@ -127,8 +130,8 @@ export const hpePop = deepMerge(hpe, {
           height: '1.375rem', // 22px
         },
         medium: {
-          size: '1.125rem', // 20px
-          height: '1.125rem', // 26px
+          size: '1.25rem', // 20px
+          height: '1.625rem', // 26px
         },
         large: {
           size: '1.5rem', // 28px
@@ -149,8 +152,8 @@ export const hpePop = deepMerge(hpe, {
           height: '1.375rem', // 22px
         },
         large: {
-          size: '1.125rem', // 20px
-          height: '1.125rem', // 26px
+          size: '1.25rem', // 20px
+          height: '1.625rem', // 26px
         },
         xlarge: {
           size: '2.25rem', // 36px
