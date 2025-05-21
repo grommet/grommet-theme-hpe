@@ -974,14 +974,19 @@ const buildTheme = (tokens, flags) => {
           },
         },
       },
-      extend: ({ colorValue, theme, kind }) => {
+      extend: ({ colorValue, theme, kind, disabled }) => {
         let style = '';
-        // TO DO need to handle icon and consider a more elegant solution
-        if (kind === 'primary') {
+        if (kind === 'primary' && !disabled) {
+          // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
+          // not a long term solution. Also, reliance on !important is not ideal.
           style += `color: ${getThemeColor(
             'text-onSecondaryStrong',
             theme,
           )} !important;`;
+          const iconColor = theme.dark
+            ? dark.hpe.color.icon.onSecondaryStrong
+            : light.hpe.color.icon.onSecondaryStrong;
+          style += `svg { stroke: ${iconColor}; fill: ${iconColor}; }`;
         }
         if (colorValue) {
           // color prop is not recommended to be used, but providing
@@ -989,8 +994,8 @@ const buildTheme = (tokens, flags) => {
           // "kind" hover background from applying
           // https://github.com/grommet/grommet/issues/7504
           style += `
-            &:hover { background: ${getThemeColor(colorValue, theme)}; }
-          `;
+                  &:hover { background: ${getThemeColor(colorValue, theme)}; }
+                `;
         }
         return style;
       },

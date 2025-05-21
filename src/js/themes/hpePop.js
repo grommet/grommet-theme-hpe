@@ -98,7 +98,15 @@ export const hpePop = deepMerge(hpe, {
     size: {
       ...popButtonSizes,
     },
-    extend: ({ sizeProp, hasLabel, hasIcon, kind, theme, colorValue }) => {
+    extend: ({
+      sizeProp,
+      hasLabel,
+      hasIcon,
+      kind,
+      theme,
+      colorValue,
+      disabled,
+    }) => {
       let style = '';
       if (sizeProp === 'large')
         // 24px, 28px (custom instead of "large" text size)
@@ -108,7 +116,7 @@ export const hpePop = deepMerge(hpe, {
       if (kind === 'secondary' && hasIcon && !hasLabel) {
         style += `padding: ${popButtonSizes[sizeProp].iconOnly.secondary.pad.vertical};`;
       }
-      if (kind === 'primary') {
+      if (kind === 'primary' && !disabled) {
         // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
         // not a long term solution. Also, reliance on !important is not ideal.
         style += `color: ${getThemeColor(
