@@ -2,6 +2,7 @@
 
 exports.__esModule = true;
 exports.isObject = exports.hpePop = exports.deepMerge = void 0;
+var _grommet = require("hpe-design-tokens/grommet");
 var _hpe = require("./hpe");
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 var isObject = exports.isObject = function isObject(item) {
@@ -32,7 +33,121 @@ var _deepMerge = exports.deepMerge = function deepMerge(target) {
   });
   return output;
 };
+var getThemeColor = function getThemeColor(color, theme) {
+  var _theme$global$colors$;
+  return typeof theme.global.colors[color] === 'string' ? theme.global.colors[color] : ((_theme$global$colors$ = theme.global.colors[color]) == null ? void 0 : _theme$global$colors$[theme.dark ? 'dark' : 'light']) || color;
+};
+var defaultPad = {
+  small: {
+    horizontal: '23px',
+    vertical: '15px',
+    iconOnly: '19px'
+  },
+  medium: {
+    horizontal: '35px',
+    vertical: '19px',
+    iconOnly: '21px'
+  },
+  large: {
+    horizontal: '39px',
+    vertical: '21px',
+    iconOnly: '23px'
+  }
+};
+var createButtonSizes = function createButtonSizes(size) {
+  return {
+    "default": {
+      pad: {
+        horizontal: defaultPad[size].horizontal,
+        vertical: defaultPad[size].vertical
+      }
+    },
+    secondary: {
+      pad: {
+        // adjustment needed to accommodate border
+        horizontal: parseInt(defaultPad[size].horizontal, 10) - 3 + "px",
+        vertical: parseInt(defaultPad[size].vertical, 10) - 3 + "px"
+      }
+    },
+    primary: {
+      pad: {
+        horizontal: defaultPad[size].horizontal,
+        vertical: defaultPad[size].vertical
+      }
+    },
+    toolbar: {
+      pad: {
+        horizontal: defaultPad[size].vertical,
+        vertical: defaultPad[size].vertical
+      }
+    },
+    iconOnly: {
+      pad: {
+        horizontal: defaultPad[size].iconOnly,
+        vertical: defaultPad[size].iconOnly
+      },
+      secondary: {
+        pad: {
+          // adjustment needed to accommodate border
+          horizontal: parseInt(defaultPad[size].iconOnly, 10) - 3 + "px",
+          vertical: parseInt(defaultPad[size].iconOnly, 10) - 3 + "px"
+        }
+      }
+    }
+  };
+};
+var popButtonSizes = {
+  small: createButtonSizes('small'),
+  medium: createButtonSizes('medium'),
+  large: createButtonSizes('large')
+};
 var hpePop = exports.hpePop = _deepMerge(_hpe.hpe, {
+  button: {
+    secondary: {
+      border: {
+        width: _grommet.components.hpe.button.secondary.medium.borderWidth
+      }
+    },
+    size: _extends({}, popButtonSizes),
+    extend: function extend(_ref) {
+      var sizeProp = _ref.sizeProp,
+        hasLabel = _ref.hasLabel,
+        hasIcon = _ref.hasIcon,
+        kind = _ref.kind,
+        theme = _ref.theme,
+        colorValue = _ref.colorValue;
+      var style = '';
+      if (sizeProp === 'large')
+        // 24px, 28px (custom instead of "large" text size)
+        style += 'font-size: 1.5rem; line-height: 1.75rem;';else if (sizeProp === 'medium') style += 'line-height: 1.5rem;'; // 24px (custom instead of "medium" line-height)
+      // Grommet doesn't support kind-specific iconOnly padding, so we define it here.
+      if (kind === 'secondary' && hasIcon && !hasLabel) {
+        style += "padding: " + popButtonSizes[sizeProp].iconOnly.secondary.pad.vertical + ";";
+      }
+      if (kind === 'primary') {
+        // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
+        // not a long term solution. Also, reliance on !important is not ideal.
+        style += "color: " + getThemeColor('text-onSecondaryStrong', theme) + " !important;";
+        var iconColor = theme.dark ? _grommet.dark.hpe.color.icon.onSecondaryStrong : _grommet.light.hpe.color.icon.onSecondaryStrong;
+        style += "svg { stroke: " + iconColor + "; fill: " + iconColor + "; }";
+      }
+      if (colorValue) {
+        // color prop is not recommended to be used, but providing
+        // a better fallback behavior for hover styles to avoid
+        // "kind" hover background from applying
+        // https://github.com/grommet/grommet/issues/7504
+        style += "\n          &:hover { background: " + getThemeColor(colorValue, theme) + "; }\n        ";
+      }
+      return style;
+    }
+  },
+  icon: {
+    size: {
+      small: '16px',
+      medium: '20px',
+      large: '24px'
+    }
+  },
   heading: {
     color: 'text-strong',
     weight: 500,
@@ -191,9 +306,9 @@ var hpePop = exports.hpePop = _deepMerge(_hpe.hpe, {
         }
       }
     },
-    extend: function extend(_ref) {
-      var level = _ref.level,
-        size = _ref.size;
+    extend: function extend(_ref2) {
+      var level = _ref2.level,
+        size = _ref2.size;
       var font = '';
       // Brand direction makes use of Graphik Condensed font for marquee page titles
       // Reserving H1 xlarge and xxlarge sizes for Condensed.
