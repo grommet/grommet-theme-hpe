@@ -1,3 +1,4 @@
+import { components, light, dark } from 'hpe-design-tokens/grommet';
 import { hpe } from './hpe';
 
 export const isObject = (item) =>
@@ -29,7 +30,115 @@ export const deepMerge = (target, ...sources) => {
   return output;
 };
 
+const getThemeColor = (color, theme) =>
+  typeof theme.global.colors[color] === 'string'
+    ? theme.global.colors[color]
+    : theme.global.colors[color]?.[theme.dark ? 'dark' : 'light'] || color;
+
+const defaultPad = {
+  small: { horizontal: '23px', vertical: '15px', iconOnly: '19px' },
+  medium: { horizontal: '35px', vertical: '19px', iconOnly: '21px' },
+  large: { horizontal: '39px', vertical: '21px', iconOnly: '23px' },
+};
+
+const createButtonSizes = (size) => ({
+  default: {
+    pad: {
+      horizontal: defaultPad[size].horizontal,
+      vertical: defaultPad[size].vertical,
+    },
+  },
+  secondary: {
+    pad: {
+      // adjustment needed to accommodate border
+      horizontal: `${parseInt(defaultPad[size].horizontal, 10) - 3}px`,
+      vertical: `${parseInt(defaultPad[size].vertical, 10) - 3}px`,
+    },
+  },
+  primary: {
+    pad: {
+      horizontal: defaultPad[size].horizontal,
+      vertical: defaultPad[size].vertical,
+    },
+  },
+  toolbar: {
+    pad: {
+      horizontal: defaultPad[size].vertical,
+      vertical: defaultPad[size].vertical,
+    },
+  },
+  iconOnly: {
+    pad: {
+      horizontal: defaultPad[size].iconOnly,
+      vertical: defaultPad[size].iconOnly,
+    },
+    secondary: {
+      pad: {
+        // adjustment needed to accommodate border
+        horizontal: `${parseInt(defaultPad[size].iconOnly, 10) - 3}px`,
+        vertical: `${parseInt(defaultPad[size].iconOnly, 10) - 3}px`,
+      },
+    },
+  },
+});
+
+const popButtonSizes = {
+  small: createButtonSizes('small'),
+  medium: createButtonSizes('medium'),
+  large: createButtonSizes('large'),
+};
+
 export const hpePop = deepMerge(hpe, {
+  button: {
+    secondary: {
+      border: {
+        width: components.hpe.button.secondary.medium.borderWidth,
+      },
+    },
+    size: {
+      ...popButtonSizes,
+    },
+    extend: ({ sizeProp, hasLabel, hasIcon, kind, theme, colorValue }) => {
+      let style = '';
+      if (sizeProp === 'large')
+        // 24px, 28px (custom instead of "large" text size)
+        style += 'font-size: 1.5rem; line-height: 1.75rem;';
+      else if (sizeProp === 'medium') style += 'line-height: 1.5rem;'; // 24px (custom instead of "medium" line-height)
+      // Grommet doesn't support kind-specific iconOnly padding, so we define it here.
+      if (kind === 'secondary' && hasIcon && !hasLabel) {
+        style += `padding: ${popButtonSizes[sizeProp].iconOnly.secondary.pad.vertical};`;
+      }
+      if (kind === 'primary') {
+        // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
+        // not a long term solution. Also, reliance on !important is not ideal.
+        style += `color: ${getThemeColor(
+          'text-onSecondaryStrong',
+          theme,
+        )} !important;`;
+        const iconColor = theme.dark
+          ? dark.hpe.color.icon.onSecondaryStrong
+          : light.hpe.color.icon.onSecondaryStrong;
+        style += `svg { stroke: ${iconColor}; fill: ${iconColor}; }`;
+      }
+      if (colorValue) {
+        // color prop is not recommended to be used, but providing
+        // a better fallback behavior for hover styles to avoid
+        // "kind" hover background from applying
+        // https://github.com/grommet/grommet/issues/7504
+        style += `
+          &:hover { background: ${getThemeColor(colorValue, theme)}; }
+        `;
+      }
+      return style;
+    },
+  },
+  icon: {
+    size: {
+      small: '16px',
+      medium: '20px',
+      large: '24px',
+    },
+  },
   heading: {
     color: 'text-strong',
     weight: 500,
