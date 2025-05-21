@@ -1,5 +1,5 @@
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-import { components, light, dark } from 'hpe-design-tokens/grommet';
+import { light, dark } from 'hpe-design-tokens/grommet';
 import { hpe } from './hpe';
 export var isObject = function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
@@ -102,7 +102,7 @@ export var hpePop = _deepMerge(hpe, {
   button: {
     secondary: {
       border: {
-        width: components.hpe.button.secondary.medium.borderWidth
+        width: '4px' // TO DO update root theme border width?
       }
     },
     size: _extends({}, popButtonSizes),

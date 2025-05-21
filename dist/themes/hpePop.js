@@ -105,7 +105,7 @@ var hpePop = exports.hpePop = _deepMerge(_hpe.hpe, {
   button: {
     secondary: {
       border: {
-        width: _grommet.components.hpe.button.secondary.medium.borderWidth
+        width: '4px' // TO DO update root theme border width?
       }
     },
     size: _extends({}, popButtonSizes),
