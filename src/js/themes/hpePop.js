@@ -50,6 +50,7 @@ const createButtonSizes = (size) => ({
   },
   secondary: {
     pad: {
+      // adjustment needed to accommodate border
       horizontal: `${parseInt(defaultPad[size].horizontal, 10) - 3}px`,
       vertical: `${parseInt(defaultPad[size].vertical, 10) - 3}px`,
     },
@@ -73,6 +74,7 @@ const createButtonSizes = (size) => ({
     },
     secondary: {
       pad: {
+        // adjustment needed to accommodate border
         horizontal: `${parseInt(defaultPad[size].iconOnly, 10) - 3}px`,
         vertical: `${parseInt(defaultPad[size].iconOnly, 10) - 3}px`,
       },
