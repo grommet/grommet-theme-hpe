@@ -104,12 +104,7 @@ export const hpePop = deepMerge(hpe, {
       else if (sizeProp === 'medium') style += 'line-height: 1.5rem;'; // 24px (custom instead of "medium" line-height)
       // Grommet doesn't support kind-specific iconOnly padding, so we define it here.
       if (kind === 'secondary' && hasIcon && !hasLabel) {
-        if (sizeProp === 'small')
-          style += `padding: ${popButtonSizes.small.iconOnly.secondary.pad.vertical};`;
-        else if (sizeProp === 'medium')
-          style += `padding: ${popButtonSizes.medium.iconOnly.secondary.pad.vertical};`;
-        else if (sizeProp === 'large')
-          style += `padding: ${popButtonSizes.large.iconOnly.secondary.pad.vertical};`;
+        style += `padding: ${popButtonSizes[sizeProp].iconOnly.secondary.pad.vertical};`;
       }
       if (kind === 'primary') {
         // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
