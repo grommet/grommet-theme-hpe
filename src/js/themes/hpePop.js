@@ -134,8 +134,8 @@ export const hpePop = deepMerge(hpe, {
           height: '1.625rem', // 26px
         },
         large: {
-          size: '1.5rem', // 28px
-          height: '1.5rem', // 34px
+          size: '1.75rem', // 28px
+          height: '2.125rem', // 34px
         },
         xlarge: {
           size: '2.25rem', // 36px
@@ -156,13 +156,17 @@ export const hpePop = deepMerge(hpe, {
           height: '1.625rem', // 26px
         },
         xlarge: {
-          size: '2.25rem', // 36px
-          height: '2.625rem', // 42px
+          size: '1.75rem', // 28px
+          height: '2.125rem', // 34px
         },
       },
     },
     extend: ({ level, size }) => {
       let font = '';
+      // Brand direction makes use of Graphik Condensed font for marquee page titles
+      // Reserving H1 xlarge and xxlarge sizes for Condensed.
+      // Levels 2 and 3 are included for how Grommet handles responsive typography,
+      // for example enabling an H1 xlarge to downsize to an H2 xlarge at a breakpoint.
       if ([1, 2, 3].includes(level) && ['xlarge', 'xxlarge'].includes(size)) {
         font = 'font-weight: 700; font-family: GraphikXXCondensed;';
       }
