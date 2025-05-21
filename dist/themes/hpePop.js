@@ -310,15 +310,15 @@ var hpePop = exports.hpePop = _deepMerge(_hpe.hpe, {
     extend: function extend(_ref2) {
       var level = _ref2.level,
         size = _ref2.size;
-      var font = '';
+      var fontStyle = '';
       // Brand direction makes use of Graphik Condensed font for marquee page titles
       // Reserving H1 xlarge and xxlarge sizes for Condensed.
       // Levels 2 and 3 are included for how Grommet handles responsive typography,
       // for example enabling an H1 xlarge to downsize to an H2 xlarge at a breakpoint.
       if ([1, 2, 3].includes(level) && ['xlarge', 'xxlarge'].includes(size)) {
-        font = 'font-weight: 700; font-family: GraphikXXCondensed;';
+        fontStyle = "\n          font-weight: 700; \n          font-family: GraphikXXCondensed;\n          text-transform: uppercase;\n        ";
       }
-      return font;
+      return fontStyle;
     }
   },
   paragraph: {
