@@ -958,7 +958,7 @@
       },
       "color": "text-onSecondaryStrong",
       "font": {
-        "weight": 600
+        "weight": 500
       },
       "icon": {
         "type": {},
@@ -973,7 +973,7 @@
     "cta-alternate": {
       "background": "transparent",
       "border": {
-        "width": "2px",
+        "width": "4px",
         "color": "decorative-brand",
         "radius": "9999px"
       },
@@ -1008,7 +1008,7 @@
     "secondary": {
       "background": "transparent",
       "border": {
-        "width": "2px",
+        "width": "4px",
         "color": "decorative-brand",
         "radius": "9999px"
       },
@@ -1026,7 +1026,7 @@
       },
       "color": "text-onSecondaryStrong",
       "font": {
-        "weight": 600
+        "weight": 500
       }
     },
     "toolbar": {
@@ -1090,7 +1090,7 @@
         },
         "color": "text-onPrimaryStrong",
         "font": {
-          "weight": 600
+          "weight": 500
         }
       },
       "toolbar": {
@@ -1114,7 +1114,7 @@
         },
         "color": "text-onPrimaryStrong",
         "font": {
-          "weight": 600
+          "weight": 500
         }
       },
       "cta-alternate": {
@@ -1168,7 +1168,7 @@
         },
         "color": "text-disabled",
         "font": {
-          "weight": 600
+          "weight": 500
         }
       },
       "toolbar": {
@@ -1204,7 +1204,7 @@
         },
         "color": "text-disabled",
         "font": {
-          "weight": 600
+          "weight": 500
         }
       },
       "cta-alternate": {
@@ -1244,7 +1244,7 @@
         },
         "color": "text-onPrimaryStrong",
         "font": {
-          "weight": 600
+          "weight": 500
         }
       },
       "cta-alternate": {
@@ -1296,7 +1296,7 @@
         },
         "color": "text-onPrimaryStrong",
         "font": {
-          "weight": 600
+          "weight": 500
         }
       },
       "toolbar": {
@@ -1346,7 +1346,7 @@
           },
           "color": "text-onPrimaryStrong",
           "font": {
-            "weight": 600
+            "weight": 500
           }
         },
         "toolbar": {
@@ -1370,7 +1370,7 @@
           },
           "color": "text-onPrimaryStrong",
           "font": {
-            "weight": 600
+            "weight": 500
           }
         },
         "cta-alternate": {
@@ -2236,11 +2236,11 @@
     "disableScaleDown": true,
     "matchSize": true,
     "size": {
-      "xsmall": 12,
-      "small": 14,
-      "medium": 16,
-      "large": 20,
-      "xlarge": 28,
+      "xsmall": "12px",
+      "small": "14px",
+      "medium": "16px",
+      "large": "20px",
+      "xlarge": "28px",
       "xxlarge": "36px"
     }
   },
