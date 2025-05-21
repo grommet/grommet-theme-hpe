@@ -1,4 +1,4 @@
-import { components, light, dark } from 'hpe-design-tokens/grommet';
+import { light, dark } from 'hpe-design-tokens/grommet';
 import { hpe } from './hpe';
 
 export const isObject = (item) =>
@@ -92,7 +92,7 @@ export const hpePop = deepMerge(hpe, {
   button: {
     secondary: {
       border: {
-        width: components.hpe.button.secondary.medium.borderWidth,
+        width: '4px', // TO DO update root theme border width?
       },
     },
     size: {
