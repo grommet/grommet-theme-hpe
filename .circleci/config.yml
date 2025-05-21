@@ -133,6 +133,7 @@ workflows:
                 - NEXT-stable
                 - AUDIT-stable
                 - TOKENS-stable
+                - v2-alpha-stable
                 - gh-pages
       - build:
           requires:
@@ -146,6 +147,7 @@ workflows:
                 - NEXT-stable
                 - AUDIT-stable
                 - TOKENS-stable
+                - v2-alpha-stable
                 - gh-pages
       - release-stable:
           requires:
