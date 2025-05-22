@@ -2293,15 +2293,15 @@ const buildTheme = (tokens, flags) => {
       extend: 'font-weight: 500;',
     },
     tabs: {
-      gap: localDimension.hpe.spacing.small,
+      gap: large.hpe.spacing.small,
       header: {
         border: undefined,
         // padding-bottom ensures the marker is not cut off by subsequent
         // page elements.
         extend: ({ theme }) => `
-        padding-bottom: ${localDimension.hpe.borderWidth.medium};
+        padding-bottom: ${large.hpe.borderWidth.medium};
         & button {
-          border-radius: ${localDimension.hpe.radius.xsmall}; // radius on focus
+          border-radius: ${large.hpe.radius.xsmall}; // radius on focus
         }
         & button[aria-selected="true"] {
             position: relative;
@@ -2309,9 +2309,9 @@ const buildTheme = (tokens, flags) => {
               display: block;
               position: absolute;
               content: '';
-              height: ${localDimension.hpe.borderWidth.medium};
-              border-radius: ${localDimension.hpe.radius.full};
-              bottom: -${localDimension.hpe.borderWidth.medium};
+              height: ${large.hpe.borderWidth.medium};
+              border-radius: ${large.hpe.radius.full};
+              bottom: -${large.hpe.borderWidth.medium};
               left: 0;
               right: 0;
               background: ${getThemeColor('border-selected', theme)};
