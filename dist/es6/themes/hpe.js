@@ -170,7 +170,7 @@ var getTextSize = function getTextSize(size) {
   return size;
 };
 var buildTheme = function buildTheme(tokens, flags) {
-  var _components$hpe$eleme, _components$hpe$eleme2, _components$hpe$eleme3, _components$hpe$eleme4, _components$hpe$eleme5, _components$hpe$dataC, _components$hpe$eleme6, _components$hpe$eleme7, _components$hpe$eleme8, _components$hpe$eleme9, _components$hpe$eleme10, _components$hpe$eleme11, _components$hpe$eleme12, _components$hpe$eleme13, _components$hpe$eleme14, _components$hpe$eleme15, _components$hpe$eleme16, _components$hpe$eleme17, _components$hpe$eleme18, _components$hpe$eleme19, _components$hpe$eleme20, _components$hpe$eleme21, _components$hpe$eleme22, _components$hpe$eleme23, _components$hpe$eleme24, _components$hpe$eleme25, _components$hpe$eleme26, _components$hpe$eleme27, _components$hpe$eleme28, _components$hpe$eleme29, _components$hpe$eleme30, _components$hpe$eleme31, _components$hpe$eleme32, _components$hpe$eleme33, _components$hpe$eleme34, _components$hpe$eleme35, _components$hpe$eleme36, _components$hpe$eleme37, _components$hpe$eleme38, _components$hpe$eleme39;
+  var _components$hpe$eleme, _components$hpe$eleme2, _components$hpe$eleme3, _components$hpe$eleme4, _components$hpe$eleme5, _components$hpe$dataC, _components$hpe$eleme6, _components$hpe$eleme7, _components$hpe$eleme8, _components$hpe$eleme9, _components$hpe$eleme10, _components$hpe$eleme11, _components$hpe$eleme12, _components$hpe$eleme13, _components$hpe$eleme14, _components$hpe$eleme15, _components$hpe$eleme16, _components$hpe$eleme17, _components$hpe$eleme18, _components$hpe$eleme19, _components$hpe$eleme20, _components$hpe$eleme21, _components$hpe$eleme22, _components$hpe$eleme23, _components$hpe$eleme24, _components$hpe$eleme25, _components$hpe$eleme26, _components$hpe$eleme27, _components$hpe$eleme28, _components$hpe$eleme29, _components$hpe$eleme30, _components$hpe$eleme31, _components$hpe$eleme32, _components$hpe$eleme33, _components$hpe$eleme34, _components$hpe$eleme35, _components$hpe$eleme36, _components$hpe$eleme37;
   var light = tokens.light,
     dark = tokens.dark,
     small = tokens.small,
@@ -2207,20 +2207,20 @@ var buildTheme = function buildTheme(tokens, flags) {
     tab: {
       color: 'text',
       active: {
-        background: 'background-selected-primary-strong',
-        color: 'text-onSelectedPrimaryStrong',
-        weight: 500
+        background: undefined,
+        color: 'text-primary',
+        weight: 600
       },
       hover: {
-        background: 'background-hover',
-        color: 'text'
+        background: 'transparent',
+        color: 'text-strong'
       },
       border: {
         side: 'all',
         color: 'transparent',
-        size: dimensions[(_components$hpe$eleme23 = components.hpe.element) == null ? void 0 : _components$hpe$eleme23.medium.borderWidth] || ((_components$hpe$eleme24 = components.hpe.element) == null ? void 0 : _components$hpe$eleme24.medium.borderWidth),
+        size: components.hpe.element.medium.borderWidth,
         active: {
-          color: 'transparent'
+          color: undefined
         },
         disabled: {
           color: undefined
@@ -2234,26 +2234,25 @@ var buildTheme = function buildTheme(tokens, flags) {
         color: 'text-disabled'
       },
       pad: {
-        bottom: (_components$hpe$eleme25 = components.hpe.element) == null ? void 0 : _components$hpe$eleme25.medium.paddingY,
-        top: (_components$hpe$eleme26 = components.hpe.element) == null ? void 0 : _components$hpe$eleme26.medium.paddingY,
-        horizontal: (_components$hpe$eleme27 = components.hpe.element) == null || (_components$hpe$eleme27 = _components$hpe$eleme27.medium) == null || (_components$hpe$eleme27 = _components$hpe$eleme27.paddingX) == null ? void 0 : _components$hpe$eleme27.wide
+        bottom: (_components$hpe$eleme23 = components.hpe.element) == null ? void 0 : _components$hpe$eleme23.medium.paddingY,
+        top: (_components$hpe$eleme24 = components.hpe.element) == null ? void 0 : _components$hpe$eleme24.medium.paddingY,
+        horizontal: (_components$hpe$eleme25 = components.hpe.element) == null || (_components$hpe$eleme25 = _components$hpe$eleme25.medium) == null || (_components$hpe$eleme25 = _components$hpe$eleme25.paddingX) == null ? void 0 : _components$hpe$eleme25.narrow
       },
       margin: {
         vertical: 'none',
         horizontal: 'none'
       },
-      extend: function extend(_ref26) {
-        var theme = _ref26.theme;
-        return "border-radius: " + theme.global.edgeSize.xsmall + ";";
-      }
+      extend: 'font-weight: 500;'
     },
     tabs: {
-      gap: 'xsmall',
+      gap: large.hpe.spacing.small,
       header: {
         border: undefined,
-        extend: function extend(_ref27) {
-          var theme = _ref27.theme;
-          return "\n          border-radius: " + theme.global.edgeSize.xsmall + "; \n          & button[aria-selected=\"true\"]:hover:not([disabled]) > div {\n            background: " + getThemeColor('background-selected-primary-strong-hover', theme) + ";\n            color: " + getThemeColor('text-onSelectedPrimaryStrong', theme) + ";\n          }\n        ";
+        // padding-bottom ensures the marker is not cut off by subsequent
+        // page elements.
+        extend: function extend(_ref26) {
+          var theme = _ref26.theme;
+          return "\n        padding-bottom: " + large.hpe.borderWidth.medium + ";\n        & button {\n          border-radius: " + large.hpe.radius.xsmall + "; // radius on focus\n        }\n        & button[aria-selected=\"true\"] {\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              height: " + large.hpe.borderWidth.medium + ";\n              border-radius: " + large.hpe.radius.full + ";\n              bottom: -" + large.hpe.borderWidth.medium + ";\n              left: 0;\n              right: 0;\n              background: " + getThemeColor('border-selected', theme) + ";\n            }\n        }";
         }
       },
       step: {
@@ -2296,8 +2295,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         remove: Close
       },
       pad: {
-        horizontal: (_components$hpe$eleme28 = components.hpe.element) == null || (_components$hpe$eleme28 = _components$hpe$eleme28.medium) == null || (_components$hpe$eleme28 = _components$hpe$eleme28.paddingX) == null ? void 0 : _components$hpe$eleme28["default"],
-        vertical: (_components$hpe$eleme29 = components.hpe.element) == null ? void 0 : _components$hpe$eleme29.medium.paddingY
+        horizontal: (_components$hpe$eleme26 = components.hpe.element) == null || (_components$hpe$eleme26 = _components$hpe$eleme26.medium) == null || (_components$hpe$eleme26 = _components$hpe$eleme26.paddingX) == null ? void 0 : _components$hpe$eleme26["default"],
+        vertical: (_components$hpe$eleme27 = components.hpe.element) == null ? void 0 : _components$hpe$eleme27.medium.paddingY
       },
       remove: {
         kind: 'default'
@@ -2310,8 +2309,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         xsmall: {
           icon: undefined,
           pad: {
-            vertical: (_components$hpe$eleme30 = components.hpe.element) == null ? void 0 : _components$hpe$eleme30.small.paddingY,
-            horizontal: (_components$hpe$eleme31 = components.hpe.element) == null || (_components$hpe$eleme31 = _components$hpe$eleme31.small) == null || (_components$hpe$eleme31 = _components$hpe$eleme31.paddingX) == null ? void 0 : _components$hpe$eleme31["default"]
+            vertical: (_components$hpe$eleme28 = components.hpe.element) == null ? void 0 : _components$hpe$eleme28.small.paddingY,
+            horizontal: (_components$hpe$eleme29 = components.hpe.element) == null || (_components$hpe$eleme29 = _components$hpe$eleme29.small) == null || (_components$hpe$eleme29 = _components$hpe$eleme29.paddingX) == null ? void 0 : _components$hpe$eleme29["default"]
           },
           remove: {
             size: 'xsmall',
@@ -2324,8 +2323,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         small: {
           icon: undefined,
           pad: {
-            vertical: (_components$hpe$eleme32 = components.hpe.element) == null ? void 0 : _components$hpe$eleme32.small.paddingY,
-            horizontal: (_components$hpe$eleme33 = components.hpe.element) == null || (_components$hpe$eleme33 = _components$hpe$eleme33.small) == null || (_components$hpe$eleme33 = _components$hpe$eleme33.paddingX) == null ? void 0 : _components$hpe$eleme33["default"]
+            vertical: (_components$hpe$eleme30 = components.hpe.element) == null ? void 0 : _components$hpe$eleme30.small.paddingY,
+            horizontal: (_components$hpe$eleme31 = components.hpe.element) == null || (_components$hpe$eleme31 = _components$hpe$eleme31.small) == null || (_components$hpe$eleme31 = _components$hpe$eleme31.paddingX) == null ? void 0 : _components$hpe$eleme31["default"]
           },
           remove: {
             size: 'xsmall',
@@ -2337,8 +2336,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         medium: {
           icon: undefined,
           pad: {
-            vertical: (_components$hpe$eleme34 = components.hpe.element) == null ? void 0 : _components$hpe$eleme34.medium.paddingY,
-            horizontal: (_components$hpe$eleme35 = components.hpe.element) == null || (_components$hpe$eleme35 = _components$hpe$eleme35.medium) == null || (_components$hpe$eleme35 = _components$hpe$eleme35.paddingX) == null ? void 0 : _components$hpe$eleme35["default"]
+            vertical: (_components$hpe$eleme32 = components.hpe.element) == null ? void 0 : _components$hpe$eleme32.medium.paddingY,
+            horizontal: (_components$hpe$eleme33 = components.hpe.element) == null || (_components$hpe$eleme33 = _components$hpe$eleme33.medium) == null || (_components$hpe$eleme33 = _components$hpe$eleme33.paddingX) == null ? void 0 : _components$hpe$eleme33["default"]
           },
           remove: {
             size: 'small',
@@ -2350,8 +2349,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         large: {
           icon: undefined,
           pad: {
-            vertical: (_components$hpe$eleme36 = components.hpe.element) == null ? void 0 : _components$hpe$eleme36.large.paddingY,
-            horizontal: (_components$hpe$eleme37 = components.hpe.element) == null || (_components$hpe$eleme37 = _components$hpe$eleme37.large) == null || (_components$hpe$eleme37 = _components$hpe$eleme37.paddingX) == null ? void 0 : _components$hpe$eleme37["default"]
+            vertical: (_components$hpe$eleme34 = components.hpe.element) == null ? void 0 : _components$hpe$eleme34.large.paddingY,
+            horizontal: (_components$hpe$eleme35 = components.hpe.element) == null || (_components$hpe$eleme35 = _components$hpe$eleme35.large) == null || (_components$hpe$eleme35 = _components$hpe$eleme35.paddingX) == null ? void 0 : _components$hpe$eleme35["default"]
           },
           remove: {
             size: 'medium',
@@ -2363,8 +2362,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         xlarge: {
           icon: undefined,
           pad: {
-            vertical: (_components$hpe$eleme38 = components.hpe.element) == null ? void 0 : _components$hpe$eleme38.xlarge.paddingY,
-            horizontal: (_components$hpe$eleme39 = components.hpe.element) == null || (_components$hpe$eleme39 = _components$hpe$eleme39.xlarge) == null || (_components$hpe$eleme39 = _components$hpe$eleme39.paddingX) == null ? void 0 : _components$hpe$eleme39["default"]
+            vertical: (_components$hpe$eleme36 = components.hpe.element) == null ? void 0 : _components$hpe$eleme36.xlarge.paddingY,
+            horizontal: (_components$hpe$eleme37 = components.hpe.element) == null || (_components$hpe$eleme37 = _components$hpe$eleme37.xlarge) == null || (_components$hpe$eleme37 = _components$hpe$eleme37.paddingX) == null ? void 0 : _components$hpe$eleme37["default"]
           },
           remove: {
             size: 'large',
@@ -2378,14 +2377,14 @@ var buildTheme = function buildTheme(tokens, flags) {
     text: _extends({}, textTheme),
     textInput: {
       container: {
-        extend: function extend(_ref28) {
-          var theme = _ref28.theme;
+        extend: function extend(_ref27) {
+          var theme = _ref27.theme;
           return "\n          svg {\n            fill: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n            stroke: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n          }\n        ";
         }
       },
       suggestions: {
-        extend: function extend(_ref29) {
-          var theme = _ref29.theme;
+        extend: function extend(_ref28) {
+          var theme = _ref28.theme;
           return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"]:hover {\n            background: " + getThemeColor(components.hpe.select["default"].option.hover.background, theme) + ";\n          }\n        ";
         }
       }
@@ -2419,8 +2418,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       container: {
         border: false,
-        extend: function extend(_ref30) {
-          var theme = _ref30.theme;
+        extend: function extend(_ref29) {
+          var theme = _ref29.theme;
           return "\n        gap: " + (dimensions.edgeSize[large.hpe.spacing['5xsmall']] || large.hpe.spacing['5xsmall']) + ";\n        &:hover {\n          background: " + getThemeColor('background-hover', theme) + ";\n        }";
         }
       },

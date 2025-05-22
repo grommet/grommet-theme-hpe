@@ -2895,21 +2895,18 @@
   "tab": {
     "color": "text",
     "active": {
-      "background": "background-selected-primary-strong",
-      "color": "text-onSelectedPrimaryStrong",
-      "weight": 500
+      "color": "text-primary",
+      "weight": 600
     },
     "hover": {
-      "background": "background-hover",
-      "color": "text"
+      "background": "transparent",
+      "color": "text-strong"
     },
     "border": {
       "side": "all",
       "color": "transparent",
       "size": "default",
-      "active": {
-        "color": "transparent"
-      },
+      "active": {},
       "disabled": {},
       "hover": {}
     },
@@ -2920,15 +2917,16 @@
     "pad": {
       "bottom": "5px",
       "top": "5px",
-      "horizontal": "18px"
+      "horizontal": "5px"
     },
     "margin": {
       "vertical": "none",
       "horizontal": "none"
-    }
+    },
+    "extend": "font-weight: 500;"
   },
   "tabs": {
-    "gap": "xsmall",
+    "gap": "16px",
     "header": {},
     "step": {
       "xsmall": 1,
