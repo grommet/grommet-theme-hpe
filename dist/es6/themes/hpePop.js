@@ -100,7 +100,39 @@ var popButtonSizes = {
 };
 export var hpePop = _deepMerge(hpe, {
   anchor: {
-    textDecoration: 'none'
+    textDecoration: 'none',
+    size: {
+      xsmall: {
+        textDecoration: 'none'
+      },
+      small: {
+        textDecoration: 'none'
+      },
+      medium: {
+        textDecoration: 'none'
+      },
+      large: {
+        textDecoration: 'none'
+      },
+      xlarge: {
+        textDecoration: 'none'
+      },
+      xxlarge: {
+        textDecoration: 'none'
+      },
+      '3xl': {
+        textDecoration: 'none'
+      },
+      '4xl': {
+        textDecoration: 'none'
+      },
+      '5xl': {
+        textDecoration: 'none'
+      },
+      '6xl': {
+        textDecoration: 'none'
+      }
+    }
   },
   button: {
     secondary: {
