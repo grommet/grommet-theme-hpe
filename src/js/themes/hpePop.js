@@ -89,6 +89,9 @@ const popButtonSizes = {
 };
 
 export const hpePop = deepMerge(hpe, {
+  anchor: {
+    textDecoration: 'none',
+  },
   button: {
     secondary: {
       border: {
