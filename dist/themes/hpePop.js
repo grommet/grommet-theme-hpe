@@ -102,6 +102,9 @@ var popButtonSizes = {
   large: createButtonSizes('large')
 };
 var hpePop = exports.hpePop = _deepMerge(_hpe.hpe, {
+  anchor: {
+    textDecoration: 'none'
+  },
   button: {
     secondary: {
       border: {
