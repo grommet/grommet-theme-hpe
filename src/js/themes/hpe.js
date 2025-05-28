@@ -2332,9 +2332,17 @@ const buildTheme = (tokens, flags) => {
       },
       container: {
         // Applying spacing on Select "Clear selection" button, then placing focus styles on the inner container div
+        // min-height, padding overrides needed to match t-shirt sizing of <=v6
         extend: ({ theme }) =>
           `
-          div:has(input[type="search"]) {
+          div > div:has(button) {
+            min-height: ${large.hpe.container['5xsmall']};
+            padding-block: ${components.hpe.select.default.medium.drop.paddingY};
+            padding-left: ${components.hpe.select.default.medium.drop.paddingX};
+          }
+          & > div:has(input[type="search"]) {
+            padding-inline: ${components.hpe.select.default.medium.drop.paddingX};
+            padding-top: ${components.hpe.select.default.medium.drop.paddingX};
             padding-bottom: 0;
           }
           button[aria-label*="Or, press"] {
@@ -2374,6 +2382,10 @@ const buildTheme = (tokens, flags) => {
               border-radius: ${dimensions.edgeSize[
                 components.hpe.select.default.medium.option.borderRadius
               ] || components.hpe.select.default.medium.option.borderRadius};
+              & label {
+                padding: ${components.hpe.select.default.medium.option
+                  .paddingY};
+              }
             }
           }
         `,
@@ -2421,6 +2433,9 @@ const buildTheme = (tokens, flags) => {
                   components.hpe.select.default.medium.option.borderRadius
                 ] || components.hpe.select.default.medium.option.borderRadius
               };
+              & label {
+                padding: ${components.hpe.select.default.medium.option.paddingY};
+              }
             }
           }
         `,
