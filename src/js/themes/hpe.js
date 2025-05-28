@@ -2335,7 +2335,7 @@ const buildTheme = (tokens, flags) => {
         // min-height, padding overrides needed to match t-shirt sizing of <=v6
         extend: ({ theme }) =>
           `
-          div > div:has(button) {
+          div > div:has(button), div:has(button) {
             min-height: ${large.hpe.container['5xsmall']};
             padding-block: ${components.hpe.select.default.medium.drop.paddingY};
             padding-left: ${components.hpe.select.default.medium.drop.paddingX};
