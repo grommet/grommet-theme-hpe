@@ -2287,15 +2287,16 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       container: {
         // Applying spacing on Select "Clear selection" button, then placing focus styles on the inner container div
+        // min-height, padding overrides needed to match t-shirt sizing of <=v6
         extend: function extend(_ref22) {
           var theme = _ref22.theme;
-          return "\n          div:has(input[type=\"search\"]) {\n            padding-bottom: 0;\n          }\n          button[aria-label*=\"Or, press\"] {\n            padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n            padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n            &:focus {\n              background: transparent;\n              > div {\n                background: " + getThemeColor(components.hpe.button["default"].hover.background, theme) + ";\n              }\n            }\n          }\n        ";
+          return "\n          div > div:has(button) {\n            min-height: " + large.hpe.container['5xsmall'] + ";\n            padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n            padding-left: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          }\n          & > div:has(input[type=\"search\"]) {\n            padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n            padding-top: " + components.hpe.select["default"].medium.drop.paddingX + ";\n            padding-bottom: 0;\n          }\n          button[aria-label*=\"Or, press\"] {\n            padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n            padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n            &:focus {\n              background: transparent;\n              > div {\n                background: " + getThemeColor(components.hpe.button["default"].hover.background, theme) + ";\n              }\n            }\n          }\n        ";
         }
       },
       control: {
         extend: function extend(_ref23) {
           var disabled = _ref23.disabled;
-          return (0, _styledComponents.css)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n          ", "\n\n          &[class*=\"SelectMultiple\"] [role=\"listbox\"] {\n            padding-block: ", ";\n            padding-inline: ", ";\n            & [role='option'] {\n              border-radius: ", ";\n            }\n          }\n        "])), disabled && "\n          opacity: 0.3;\n          input {\n            cursor: default;\n          }", components.hpe.select["default"].medium.drop.paddingY, components.hpe.select["default"].medium.drop.paddingX, dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius);
+          return (0, _styledComponents.css)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n          ", "\n\n          &[class*=\"SelectMultiple\"] [role=\"listbox\"] {\n            padding-block: ", ";\n            padding-inline: ", ";\n            & [role='option'] {\n              border-radius: ", ";\n              & label {\n                padding: ", ";\n              }\n            }\n          }\n        "])), disabled && "\n          opacity: 0.3;\n          input {\n            cursor: default;\n          }", components.hpe.select["default"].medium.drop.paddingY, components.hpe.select["default"].medium.drop.paddingX, dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius, components.hpe.select["default"].medium.option.paddingY);
         }
       },
       emptySearchMessage: {
@@ -2328,7 +2329,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     selectMultiple: {
       listbox: {
         extend: function extend() {
-          return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"] {\n              border-radius: " + (dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius) + ";\n            }\n          }\n        ";
+          return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"] {\n              border-radius: " + (dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius) + ";\n              & label {\n                padding: " + components.hpe.select["default"].medium.option.paddingY + ";\n              }\n            }\n          }\n        ";
         }
       }
     },
