@@ -2105,11 +2105,13 @@ const buildTheme = (tokens, flags) => {
       icons: {
         circle: () => (
           <Blank
+            preserveAspectRatio="xMidYMid meet" // Forces uniform scaling. Part of grommet code but lost when passing custom icon.
             color={
               components.hpe.radioButton.default.control.selected.rest.iconColor
             }
+            size={components.hpe.radioButton.default.medium.control.width} // width and height are identical, so choosing one.
           >
-            <circle cx="12" cy="12" r="8" />
+            <circle cx={12} cy={12} r={6} />
           </Blank>
         ),
       },
