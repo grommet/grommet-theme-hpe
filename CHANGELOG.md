@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- f3702f9: - Updated Tab styles to use underline marker instead of background fill to indicate the selected tab. This removes potential conflict in visual hierarchy with primary buttons.
+- f3702f9: - Updated Tab styles to use underline marker instead of background fill to indicate the selected tab. This removes potential conflict in visual hierarchy with primary Buttons.
 - 119f3ee: - Added React 19 to support peerDependencies.
 
 ## 6.3.0
