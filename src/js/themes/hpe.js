@@ -806,6 +806,7 @@ const buildTheme = (tokens, flags) => {
         },
       },
       disabled: {
+        ...buttonStatesTheme.disabled.default,
         opacity: 1,
         ...buttonStatesTheme.disabled,
         option: {
