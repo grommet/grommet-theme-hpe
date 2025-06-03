@@ -729,7 +729,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           return style;
         }
       }),
-      disabled: _extends({
+      disabled: _extends({}, buttonStatesTheme.disabled["default"], {
         opacity: 1
       }, buttonStatesTheme.disabled, {
         option: {

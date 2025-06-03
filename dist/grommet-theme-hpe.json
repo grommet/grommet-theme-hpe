@@ -1092,6 +1092,17 @@
       }
     },
     "disabled": {
+      "background": {
+        "color": "transparent"
+      },
+      "border": {
+        "width": "",
+        "color": "transparent"
+      },
+      "color": "text-disabled",
+      "font": {
+        "weight": 500
+      },
       "opacity": 1,
       "default": {
         "background": {
