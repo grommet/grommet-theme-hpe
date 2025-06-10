@@ -2145,7 +2145,7 @@ const buildTheme = (tokens, flags) => {
           content: '';
           width: 3px;
           height: 3px;
-          border-radius: 9999px;
+          border-radius: ${large.hpe.radius.full};
           right: 0;
           top: 50%;
           transform: translateY(-50%);
