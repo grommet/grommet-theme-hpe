@@ -2138,6 +2138,23 @@ const buildTheme = (tokens, flags) => {
           color: { light: 'rgb(245, 245, 245)', dark: 'rgb(44, 44, 44)' },
         },
       },
+      extend: ({ disabled, theme }) => `
+        &::before {
+          display: block;
+          position: absolute;
+          content: '';
+          width: 3px;
+          height: 3px;
+          border-radius: 9999px;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background: ${getThemeColor(
+            disabled ? 'background-disabled' : 'background-neutral-xstrong',
+            theme,
+          )};
+        }
+    `,
     },
     select: {
       clear: {
