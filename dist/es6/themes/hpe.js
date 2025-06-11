@@ -4,7 +4,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import React from 'react';
 import { css } from 'styled-components';
-import { dark as localDark, light as localLight, dimension as localDimension, small as localSmall, global as localGlobal, components as localComponents } from 'hpe-design-tokens/grommet';
+import { primitives as localPrimitives, dark as localDark, light as localLight, dimension as localDimension, small as localSmall, global as localGlobal, components as localComponents } from 'hpe-design-tokens/grommet';
 import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
 import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
@@ -171,7 +171,8 @@ var getTextSize = function getTextSize(size) {
 };
 var buildTheme = function buildTheme(tokens, flags) {
   var _components$hpe$eleme, _components$hpe$eleme2, _components$hpe$eleme3, _components$hpe$eleme4, _components$hpe$eleme5, _components$hpe$dataC, _components$hpe$eleme6, _components$hpe$eleme7, _components$hpe$eleme8, _components$hpe$eleme9, _components$hpe$eleme10, _components$hpe$eleme11, _components$hpe$eleme12, _components$hpe$eleme13, _components$hpe$eleme14, _components$hpe$eleme15, _components$hpe$eleme16, _components$hpe$eleme17, _components$hpe$eleme18, _components$hpe$eleme19, _components$hpe$eleme20, _components$hpe$eleme21, _components$hpe$eleme22, _components$hpe$eleme23, _components$hpe$eleme24, _components$hpe$eleme25, _components$hpe$eleme26, _components$hpe$eleme27, _components$hpe$eleme28, _components$hpe$eleme29, _components$hpe$eleme30, _components$hpe$eleme31, _components$hpe$eleme32, _components$hpe$eleme33, _components$hpe$eleme34, _components$hpe$eleme35, _components$hpe$eleme36, _components$hpe$eleme37;
-  var light = tokens.light,
+  var primitives = tokens.primitives,
+    light = tokens.light,
     dark = tokens.dark,
     small = tokens.small,
     large = tokens.large,
@@ -2104,6 +2105,13 @@ var buildTheme = function buildTheme(tokens, flags) {
             dark: 'rgb(44, 44, 44)'
           }
         }
+      },
+      // primitives.hpe.base.dimension[75] = 3px which is WCAG minimum size
+      // for visual indicator
+      extend: function extend(_ref24) {
+        var disabled = _ref24.disabled,
+          theme = _ref24.theme;
+        return "\n        &::before {\n          display: block;\n          position: absolute;\n          content: '';\n          width: " + primitives.hpe.base.dimension[75] + ";\n          height: " + primitives.hpe.base.dimension[75] + ";\n          border-radius: " + large.hpe.radius.full + ";\n          right: 0;\n          top: 50%;\n          transform: translateY(-50%);\n          background: " + getThemeColor(disabled ? 'background-disabled' : 'background-neutral-xstrong', theme) + ";\n        }\n    ";
       }
     },
     select: {
@@ -2126,14 +2134,14 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       container: {
         // Applying spacing on Select "Clear selection" button, then placing focus styles on the inner container div
-        extend: function extend(_ref24) {
-          var theme = _ref24.theme;
+        extend: function extend(_ref25) {
+          var theme = _ref25.theme;
           return "\n          div:has(input[type=\"search\"]) {\n            padding-bottom: 0;\n          }\n          button[aria-label*=\"Or, press\"] {\n            padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n            padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n            &:focus {\n              background: transparent;\n              > div {\n                background: " + getThemeColor(components.hpe.button["default"].hover.background, theme) + ";\n              }\n            }\n          }\n        ";
         }
       },
       control: {
-        extend: function extend(_ref25) {
-          var disabled = _ref25.disabled;
+        extend: function extend(_ref26) {
+          var disabled = _ref26.disabled;
           return css(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n          ", "\n\n          &[class*=\"SelectMultiple\"] [role=\"listbox\"] {\n            padding-block: ", ";\n            padding-inline: ", ";\n            & [role='option'] {\n              border-radius: ", ";\n            }\n          }\n        "])), disabled && "\n          opacity: 0.3;\n          input {\n            cursor: default;\n          }", components.hpe.select["default"].medium.drop.paddingY, components.hpe.select["default"].medium.drop.paddingX, dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius);
         }
       },
@@ -2250,8 +2258,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         border: undefined,
         // padding-bottom ensures the marker is not cut off by subsequent
         // page elements.
-        extend: function extend(_ref26) {
-          var theme = _ref26.theme;
+        extend: function extend(_ref27) {
+          var theme = _ref27.theme;
           return "\n        padding-bottom: " + large.hpe.borderWidth.medium + ";\n        & button {\n          border-radius: " + large.hpe.radius.xsmall + "; // radius on focus\n        }\n        & button[aria-selected=\"true\"] {\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              height: " + large.hpe.borderWidth.medium + ";\n              border-radius: " + large.hpe.radius.full + ";\n              bottom: -" + large.hpe.borderWidth.medium + ";\n              left: 0;\n              right: 0;\n              background: " + getThemeColor('border-selected', theme) + ";\n            }\n        }";
         }
       },
@@ -2377,14 +2385,14 @@ var buildTheme = function buildTheme(tokens, flags) {
     text: _extends({}, textTheme),
     textInput: {
       container: {
-        extend: function extend(_ref27) {
-          var theme = _ref27.theme;
+        extend: function extend(_ref28) {
+          var theme = _ref28.theme;
           return "\n          svg {\n            fill: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n            stroke: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n          }\n        ";
         }
       },
       suggestions: {
-        extend: function extend(_ref28) {
-          var theme = _ref28.theme;
+        extend: function extend(_ref29) {
+          var theme = _ref29.theme;
           return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"]:hover {\n            background: " + getThemeColor(components.hpe.select["default"].option.hover.background, theme) + ";\n          }\n        ";
         }
       }
@@ -2418,8 +2426,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       container: {
         border: false,
-        extend: function extend(_ref29) {
-          var theme = _ref29.theme;
+        extend: function extend(_ref30) {
+          var theme = _ref30.theme;
           return "\n        gap: " + (dimensions.edgeSize[large.hpe.spacing['5xsmall']] || large.hpe.spacing['5xsmall']) + ";\n        &:hover {\n          background: " + getThemeColor('background-hover', theme) + ";\n        }";
         }
       },
@@ -2433,6 +2441,7 @@ var buildTheme = function buildTheme(tokens, flags) {
   });
 };
 export var hpe = buildTheme({
+  primitives: localPrimitives,
   light: localLight,
   dark: localDark,
   small: localSmall,
