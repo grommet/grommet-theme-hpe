@@ -2,6 +2,7 @@
 import React from 'react';
 import { css } from 'styled-components';
 import {
+  primitives as localPrimitives,
   dark as localDark,
   light as localLight,
   dimension as localDimension,
@@ -153,6 +154,7 @@ const getTextSize = (size) => {
 
 const buildTheme = (tokens, flags) => {
   const {
+    primitives,
     light,
     dark,
     small,
@@ -2138,6 +2140,25 @@ const buildTheme = (tokens, flags) => {
           color: { light: 'rgb(245, 245, 245)', dark: 'rgb(44, 44, 44)' },
         },
       },
+      // primitives.hpe.base.dimension[75] = 3px which is WCAG minimum size
+      // for visual indicator
+      extend: ({ disabled, theme }) => `
+        &::before {
+          display: block;
+          position: absolute;
+          content: '';
+          width: ${primitives.hpe.base.dimension[75]};
+          height: ${primitives.hpe.base.dimension[75]};
+          border-radius: ${large.hpe.radius.full};
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background: ${getThemeColor(
+            disabled ? 'background-disabled' : 'background-neutral-xstrong',
+            theme,
+          )};
+        }
+    `,
     },
     select: {
       clear: {
@@ -2486,6 +2507,7 @@ const buildTheme = (tokens, flags) => {
 
 export const hpe = buildTheme(
   {
+    primitives: localPrimitives,
     light: localLight,
     dark: localDark,
     small: localSmall,
