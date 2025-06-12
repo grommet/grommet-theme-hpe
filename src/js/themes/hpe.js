@@ -2140,44 +2140,38 @@ const buildTheme = (tokens, flags) => {
       },
     },
     select: {
-      clear: {
-        container: {
-          background: undefined,
-          pad: { horizontal: '12px', vertical: '6px' },
-          hover: { background: 'background-hover' },
-          round: 'xsmall',
+    clear: {
+      container: {
+        pad: components.hpe.select.default.medium.drop.paddingX,
+      },
+      text: undefined,
+      button: {
+        border: {
+          radius: components.hpe.select.default.medium.option.borderRadius,
+          size: components.hpe.select.default.medium.option.borderWidth,
         },
-        text: {
-          color: components.hpe.button.default.rest.textColor,
-          weight: components.hpe.button.default.rest.fontWeight,
+        padding: {
+          horizontal: components.hpe.select.default.medium.option.paddingX,
+          vertical: components.hpe.select.default.medium.option.paddingY,
+        },
+        hover: {
+          background: components.hpe.select.default.option.hover.background,
+          color: 'text-strong',
+        },
+        color: 'text-strong',
+        font: {
+          weight: components.hpe.select.default.option.rest.fontWeight,
         },
       },
-      container: {
-        // Applying spacing on Select "Clear selection" button, then placing focus styles on the inner container div
-        extend: ({ theme }) =>
-          `
+    },
+    container: {
+      extend: () =>
+        `
           div:has(input[type="search"]) {
             padding-bottom: 0;
           }
-          button[aria-label*="Or, press"] {
-            padding-block: ${
-              components.hpe.select.default.medium.drop.paddingY
-            };
-            padding-inline: ${
-              components.hpe.select.default.medium.drop.paddingX
-            };
-            &:focus {
-              background: transparent;
-              > div {
-                background: ${getThemeColor(
-                  components.hpe.button.default.hover.background,
-                  theme,
-                )};
-              }
-            }
-          }
         `,
-      },
+    },
       control: {
         extend: ({ disabled }) => css`
           ${disabled &&
