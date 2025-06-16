@@ -1,5 +1,12 @@
 # grommet-theme-hpe
 
+## 6.4.1
+
+### Patch Changes
+
+- e6abbd6: - Fixed RangeInput styles to meet WCAG AA requirements by adding "dot" indicator at end of unselected track. This ensures that, even though the unselected track color doesn't meet 3:1 contrast ratio with background colors, there is an alternate visual indicator to define the end of the input.
+- 695c1be: - Fixed Calendar disabled day styles.
+
 ## 6.4.0
 
 ### Minor Changes
