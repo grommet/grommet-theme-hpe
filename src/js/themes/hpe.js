@@ -2141,7 +2141,7 @@ const buildTheme = (tokens, flags) => {
     },
     rangeSelector: {
       edge: {
-        size: `${primitives.hpe.base.dimension[600]}`,
+        size: `${primitives.hpe.base.dimension[600]}`, // 24px
       },
     },
     select: {
