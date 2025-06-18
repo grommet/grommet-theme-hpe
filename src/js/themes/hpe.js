@@ -10,7 +10,6 @@ import {
   components as localComponents,
   primitives as localPrimitives
 } from 'hpe-design-tokens/grommet';
-import { primitives } from 'hpe-design-tokens/grommet';
 import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
 import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
