@@ -2145,96 +2145,96 @@ const buildTheme = (tokens, flags) => {
       },
     },
     select: {
-        clear: {
-          container: {
-            background: undefined,
-            pad: { horizontal: '12px', vertical: '6px' },
-            hover: { background: 'background-hover' },
-            round: 'xsmall',
-          },
-          text: {
-            color: components.hpe.button.default.rest.textColor,
-            weight: components.hpe.button.default.rest.fontWeight,
-          },
-        },
+      clear: {
         container: {
-          // Applying spacing on Select "Clear selection" button, then placing focus styles on the inner container div
-          extend: ({ theme }) =>
-            `
-            div:has(input[type="search"]) {
-              padding-bottom: 0;
-            }
-            button[aria-label*="Or, press"] {
-              padding-block: ${
-                components.hpe.select.default.medium.drop.paddingY
-              };
-              padding-inline: ${
-                components.hpe.select.default.medium.drop.paddingX
-              };
-              &:focus {
-                background: transparent;
-                > div {
-                  background: ${getThemeColor(
-                    components.hpe.button.default.hover.background,
-                    theme,
-                  )};
-                }
-              }
-            }
-          `,
+          background: undefined,
+          pad: { horizontal: '12px', vertical: '6px' },
+          hover: { background: 'background-hover' },
+          round: 'xsmall',
         },
-        control: {
-          extend: ({ disabled }) => css`
-            ${disabled &&
-            `
-            opacity: 0.3;
-            input {
-              cursor: default;
-            }`}
-
-            &[class*="SelectMultiple"] [role="listbox"] {
-              padding-block: ${components.hpe.select.default.medium.drop
-                .paddingY};
-              padding-inline: ${components.hpe.select.default.medium.drop
-                .paddingX};
-              & [role='option'] {
-                border-radius: ${dimensions.edgeSize[
-                  components.hpe.select.default.medium.option.borderRadius
-                ] || components.hpe.select.default.medium.option.borderRadius};
-              }
-            }
-          `,
-        },
-        emptySearchMessage: { container: { pad: option.pad } },
-        icons: {
-          color: 'icon',
-          down: Down,
-          margin: {
-            left: 'small',
-            // setting right margin to 12px because on small
-            // screens, Select responsive padding sizes down
-            // which brings the icon too tight with edge of
-            // control.
-            right: '12px',
-          },
-          up: Up,
-        },
-        options: undefined,
-        listbox: {
-          // only apply paddingY to paddingTop because gap caused by Infinite Scroll
-          // adds an addition 6px on the bottom
-          extend: () => `
-            padding-top: ${components.hpe.select.default.medium.drop.paddingY};
-            padding-inline: ${components.hpe.select.default.medium.drop.paddingX};
-            display: flex;
-            flex-direction: column;
-            gap: ${components.hpe.select.default.medium.drop.gapY};
-            [role="option"] {
-              border-radius: ${components.hpe.select.default.medium.option.borderRadius};
-            }
-          `,
+        text: {
+          color: components.hpe.button.default.rest.textColor,
+          weight: components.hpe.button.default.rest.fontWeight,
         },
       },
+      container: {
+        // Applying spacing on Select "Clear selection" button, then placing focus styles on the inner container div
+        extend: ({ theme }) =>
+          `
+          div:has(input[type="search"]) {
+            padding-bottom: 0;
+          }
+          button[aria-label*="Or, press"] {
+            padding-block: ${
+              components.hpe.select.default.medium.drop.paddingY
+            };
+            padding-inline: ${
+              components.hpe.select.default.medium.drop.paddingX
+            };
+            &:focus {
+              background: transparent;
+              > div {
+                background: ${getThemeColor(
+                  components.hpe.button.default.hover.background,
+                  theme,
+                )};
+              }
+            }
+          }
+        `,
+      },
+      control: {
+        extend: ({ disabled }) => css`
+          ${disabled &&
+          `
+          opacity: 0.3;
+          input {
+            cursor: default;
+          }`}
+
+          &[class*="SelectMultiple"] [role="listbox"] {
+            padding-block: ${components.hpe.select.default.medium.drop
+              .paddingY};
+            padding-inline: ${components.hpe.select.default.medium.drop
+              .paddingX};
+            & [role='option'] {
+              border-radius: ${dimensions.edgeSize[
+                components.hpe.select.default.medium.option.borderRadius
+              ] || components.hpe.select.default.medium.option.borderRadius};
+            }
+          }
+        `,
+      },
+      emptySearchMessage: { container: { pad: option.pad } },
+      icons: {
+        color: 'icon',
+        down: Down,
+        margin: {
+          left: 'small',
+          // setting right margin to 12px because on small
+          // screens, Select responsive padding sizes down
+          // which brings the icon too tight with edge of
+          // control.
+          right: '12px',
+        },
+        up: Up,
+      },
+      options: undefined,
+      listbox: {
+        // only apply paddingY to paddingTop because gap caused by Infinite Scroll
+        // adds an addition 6px on the bottom
+        extend: () => `
+          padding-top: ${components.hpe.select.default.medium.drop.paddingY};
+          padding-inline: ${components.hpe.select.default.medium.drop.paddingX};
+          display: flex;
+          flex-direction: column;
+          gap: ${components.hpe.select.default.medium.drop.gapY};
+          [role="option"] {
+            border-radius: ${components.hpe.select.default.medium.option.borderRadius};
+          }
+        `,
+      },
+    },
     selectMultiple: {
       listbox: {
         extend: () => `
