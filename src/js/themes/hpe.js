@@ -2121,7 +2121,10 @@ const buildTheme = (tokens, flags) => {
       container: { cssGap: true, gap: 'small', margin: 'none' },
     },
     rangeInput: {
-      thumb: { color: 'background-primary-strong' },
+      thumb: {
+        color: 'background-primary-strong',
+        extend: 'border-color: transparent;', // fix for FireFox
+      },
       track: {
         lower: { color: 'background-primary-strong' },
         upper: {
@@ -2129,7 +2132,13 @@ const buildTheme = (tokens, flags) => {
           // https://github.com/grommet/grommet/issues/6739
           color: { light: '#e0e0e0', dark: '#616161' },
         },
-        extend: () => `border-radius: ${large.hpe.radius.full};`,
+        extend: ({ theme }) => `
+        border-radius: ${large.hpe.radius.full};
+        // firefox only selector, since pseudo-element
+        // isn't supported
+        @-moz-document url-prefix() {
+          border: 1px solid ${getThemeColor('border-strong', theme)};
+        }`,
       },
       disabled: {
         opacity: 1,
@@ -2140,15 +2149,15 @@ const buildTheme = (tokens, flags) => {
           color: { light: 'rgb(245, 245, 245)', dark: 'rgb(44, 44, 44)' },
         },
       },
-      // primitives.hpe.base.dimension[75] = 3px which is WCAG minimum size
-      // for visual indicator
+      // primitives.hpe.base.dimension[100] = 4px which meets WCAG minimum size
+      // for visual indicator (minimum 3px)
       extend: ({ disabled, theme }) => `
         &::before {
           display: block;
           position: absolute;
           content: '';
-          width: ${primitives.hpe.base.dimension[75]};
-          height: ${primitives.hpe.base.dimension[75]};
+          width: ${primitives.hpe.base.dimension[100]};
+          height: ${primitives.hpe.base.dimension[100]};
           border-radius: ${large.hpe.radius.full};
           right: 0;
           top: 50%;
