@@ -2078,7 +2078,8 @@ var buildTheme = function buildTheme(tokens, flags) {
     },
     rangeInput: {
       thumb: {
-        color: 'background-primary-strong'
+        color: 'background-primary-strong',
+        extend: 'border-color: transparent;' // fix for FireFox
       },
       track: {
         lower: {
@@ -2092,8 +2093,9 @@ var buildTheme = function buildTheme(tokens, flags) {
             dark: '#616161'
           }
         },
-        extend: function extend() {
-          return "border-radius: " + large.hpe.radius.full + ";";
+        extend: function extend(_ref24) {
+          var theme = _ref24.theme;
+          return "\n        border-radius: " + large.hpe.radius.full + ";\n        // firefox only selector, since pseudo-element\n        // isn't supported\n        @-moz-document url-prefix() {\n          border: 1px solid " + getThemeColor('border-strong', theme) + ";\n        }";
         }
       },
       disabled: {
@@ -2110,12 +2112,12 @@ var buildTheme = function buildTheme(tokens, flags) {
           }
         }
       },
-      // primitives.hpe.base.dimension[75] = 3px which is WCAG minimum size
-      // for visual indicator
-      extend: function extend(_ref24) {
-        var disabled = _ref24.disabled,
-          theme = _ref24.theme;
-        return "\n        &::before {\n          display: block;\n          position: absolute;\n          content: '';\n          width: " + primitives.hpe.base.dimension[75] + ";\n          height: " + primitives.hpe.base.dimension[75] + ";\n          border-radius: " + large.hpe.radius.full + ";\n          right: 0;\n          top: 50%;\n          transform: translateY(-50%);\n          background: " + getThemeColor(disabled ? 'background-disabled' : 'background-neutral-xstrong', theme) + ";\n        }\n    ";
+      // primitives.hpe.base.dimension[100] = 4px which meets WCAG minimum size
+      // for visual indicator (minimum 3px)
+      extend: function extend(_ref25) {
+        var disabled = _ref25.disabled,
+          theme = _ref25.theme;
+        return "\n        &::before {\n          display: block;\n          position: absolute;\n          content: '';\n          width: " + primitives.hpe.base.dimension[100] + ";\n          height: " + primitives.hpe.base.dimension[100] + ";\n          border-radius: " + large.hpe.radius.full + ";\n          right: 0;\n          top: 50%;\n          transform: translateY(-50%);\n          background: " + getThemeColor(disabled ? 'background-disabled' : 'background-neutral-xstrong', theme) + ";\n        }\n    ";
       }
     },
     select: {
@@ -2138,14 +2140,14 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       container: {
         // Applying spacing on Select "Clear selection" button, then placing focus styles on the inner container div
-        extend: function extend(_ref25) {
-          var theme = _ref25.theme;
+        extend: function extend(_ref26) {
+          var theme = _ref26.theme;
           return "\n          div:has(input[type=\"search\"]) {\n            padding-bottom: 0;\n          }\n          button[aria-label*=\"Or, press\"] {\n            padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n            padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n            &:focus {\n              background: transparent;\n              > div {\n                background: " + getThemeColor(components.hpe.button["default"].hover.background, theme) + ";\n              }\n            }\n          }\n        ";
         }
       },
       control: {
-        extend: function extend(_ref26) {
-          var disabled = _ref26.disabled;
+        extend: function extend(_ref27) {
+          var disabled = _ref27.disabled;
           return (0, _styledComponents.css)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n          ", "\n\n          &[class*=\"SelectMultiple\"] [role=\"listbox\"] {\n            padding-block: ", ";\n            padding-inline: ", ";\n            & [role='option'] {\n              border-radius: ", ";\n            }\n          }\n        "])), disabled && "\n          opacity: 0.3;\n          input {\n            cursor: default;\n          }", components.hpe.select["default"].medium.drop.paddingY, components.hpe.select["default"].medium.drop.paddingX, dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius);
         }
       },
@@ -2262,8 +2264,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         border: undefined,
         // padding-bottom ensures the marker is not cut off by subsequent
         // page elements.
-        extend: function extend(_ref27) {
-          var theme = _ref27.theme;
+        extend: function extend(_ref28) {
+          var theme = _ref28.theme;
           return "\n        padding-bottom: " + large.hpe.borderWidth.medium + ";\n        & button {\n          border-radius: " + large.hpe.radius.xsmall + "; // radius on focus\n        }\n        & button[aria-selected=\"true\"] {\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              height: " + large.hpe.borderWidth.medium + ";\n              border-radius: " + large.hpe.radius.full + ";\n              bottom: -" + large.hpe.borderWidth.medium + ";\n              left: 0;\n              right: 0;\n              background: " + getThemeColor('border-selected', theme) + ";\n            }\n        }";
         }
       },
@@ -2389,14 +2391,14 @@ var buildTheme = function buildTheme(tokens, flags) {
     text: _extends({}, textTheme),
     textInput: {
       container: {
-        extend: function extend(_ref28) {
-          var theme = _ref28.theme;
+        extend: function extend(_ref29) {
+          var theme = _ref29.theme;
           return "\n          svg {\n            fill: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n            stroke: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n          }\n        ";
         }
       },
       suggestions: {
-        extend: function extend(_ref29) {
-          var theme = _ref29.theme;
+        extend: function extend(_ref30) {
+          var theme = _ref30.theme;
           return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"]:hover {\n            background: " + getThemeColor(components.hpe.select["default"].option.hover.background, theme) + ";\n          }\n        ";
         }
       }
@@ -2430,8 +2432,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       container: {
         border: false,
-        extend: function extend(_ref30) {
-          var theme = _ref30.theme;
+        extend: function extend(_ref31) {
+          var theme = _ref31.theme;
           return "\n        gap: " + (dimensions.edgeSize[large.hpe.spacing['5xsmall']] || large.hpe.spacing['5xsmall']) + ";\n        &:hover {\n          background: " + getThemeColor('background-hover', theme) + ";\n        }";
         }
       },

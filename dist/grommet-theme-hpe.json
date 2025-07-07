@@ -2798,7 +2798,8 @@
   },
   "rangeInput": {
     "thumb": {
-      "color": "background-primary-strong"
+      "color": "background-primary-strong",
+      "extend": "border-color: transparent;"
     },
     "track": {
       "lower": {
