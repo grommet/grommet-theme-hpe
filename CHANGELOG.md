@@ -1,5 +1,12 @@
 # grommet-theme-hpe
 
+## 6.4.2
+
+### Patch Changes
+
+- 3e44690: - Fixed RangeInput styling for Firefox which does not support pseudo-element on input tag. In the future, we might consider rebuilding the Grommet RangeInput to accommodate the "dot" marker across all browsers. For now, applying border styling on track for FireFox to meet WCAG AA guidelines.
+  - For all other browsers (non-FireFox), increased "dot" marker from 3px to 4px to match the height of the RangeInput track.
+
 ## 6.4.1
 
 ### Patch Changes
