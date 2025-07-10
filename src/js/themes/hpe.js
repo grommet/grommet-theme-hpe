@@ -629,6 +629,23 @@ const buildTheme = (tokens, flags) => {
           size: focusBoxShadowParts[focusBoxShadowParts.length - 2],
         },
         twoColor: true,
+        inset: {
+          inset: {
+            border: undefined,
+            outline: {
+              color: global.hpe.focusIndicator.outline.color,
+              size: global.hpe.focusIndicator.outline.width,
+              offset: `-${global.hpe.focusIndicator.outline.width}`,
+            },
+            shadow: {
+              color: focusBoxShadowParts[focusBoxShadowParts.length - 1],
+              size: '4px',
+              blur: '0px',
+              inset: true,
+            },
+            twoColor: true,
+          },
+        },
       },
       active: { background: 'background-active', color: 'active-text' },
       drop: {
