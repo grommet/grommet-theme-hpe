@@ -735,7 +735,8 @@
       },
       "shadow": {
         "color": "#ffffff",
-        "size": "2px"
+        "size": "2px",
+        "blur": "0px"
       },
       "twoColor": true
     },
