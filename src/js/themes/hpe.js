@@ -627,6 +627,7 @@ const buildTheme = (tokens, flags) => {
         shadow: {
           color: focusBoxShadowParts[focusBoxShadowParts.length - 1],
           size: focusBoxShadowParts[focusBoxShadowParts.length - 2],
+          blur: '0px',
         },
         twoColor: true,
       },
