@@ -738,7 +738,21 @@
         "size": "2px",
         "blur": "0px"
       },
-      "twoColor": true
+      "twoColor": true,
+      "inset": {
+        "outline": {
+          "color": "focus",
+          "size": "2px",
+          "offset": "-2px"
+        },
+        "shadow": {
+          "color": "#ffffff",
+          "size": "4px",
+          "blur": "0px",
+          "inset": true
+        },
+        "twoColor": true
+      }
     },
     "active": {
       "background": "background-active",
