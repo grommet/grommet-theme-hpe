@@ -1,5 +1,18 @@
 # grommet-theme-hpe
 
+## 6.5.0
+
+### Minor Changes
+
+- 55b537b: - Upgraded hpe-design-tokens to next minor version.
+  - Added `color.icon.primary.hover`. In Grommet, used as `color="icon-primary-hover"`.
+  - Fixed value of `checkbox.control.indeterminate.rest.iconColor` from `color.icon.onPrimaryStrong` to `color.icon.onSelectedPrimaryStrong`. No visual change for this theme version, but fixes reference to be more scalable to future theme changes.
+- fe34cae: - Added `global.focus.inset` for cases like DataTable expand control which leverages `focusIndicator="inset"` internally. Supported when using grommet >=2.48.0.
+
+### Patch Changes
+
+- 5f82fd6: - Fixed `global.focus.shadow.blur` to be intended value of `0px` instead of `2px`.
+
 ## 6.4.2
 
 ### Patch Changes
