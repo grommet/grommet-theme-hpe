@@ -2543,6 +2543,6 @@ export const hpe = buildTheme(
   {
     // For grommet-theme-hpe v6.0.0, maintain backwards compatibility
     // with old t-shirt sizes
-    'v6-backwards-compatibility': true,
+    'v6-backwards-compatibility': false,
   },
 );
