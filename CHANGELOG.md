@@ -1,5 +1,32 @@
 # grommet-theme-hpe
 
+## 6.5.0
+
+### Minor Changes
+
+- 55b537b: - Upgraded hpe-design-tokens to next minor version.
+  - Added `color.icon.primary.hover`. In Grommet, used as `color="icon-primary-hover"`.
+  - Fixed value of `checkbox.control.indeterminate.rest.iconColor` from `color.icon.onPrimaryStrong` to `color.icon.onSelectedPrimaryStrong`. No visual change for this theme version, but fixes reference to be more scalable to future theme changes.
+- fe34cae: - Added `global.focus.inset` for cases like DataTable expand control which leverages `focusIndicator="inset"` internally. Supported when using grommet >=2.48.0.
+
+### Patch Changes
+
+- 5f82fd6: - Fixed `global.focus.shadow.blur` to be intended value of `0px` instead of `2px`.
+
+## 6.4.2
+
+### Patch Changes
+
+- 3e44690: - Fixed RangeInput styling for Firefox which does not support pseudo-element on input tag. In the future, we might consider rebuilding the Grommet RangeInput to accommodate the "dot" marker across all browsers. For now, applying border styling on track for FireFox to meet WCAG AA requirements.
+  - For all other browsers (non-FireFox), increased "dot" marker from 3px to 4px to match the height of the RangeInput track.
+
+## 6.4.1
+
+### Patch Changes
+
+- e6abbd6: - Fixed RangeInput styles to meet WCAG AA requirements by adding "dot" indicator at end of unselected track. This ensures that, even though the unselected track color doesn't meet 3:1 contrast ratio with background colors, there is an alternate visual indicator to define the end of the input.
+- 695c1be: - Fixed Calendar disabled day styles.
+
 ## 6.4.0
 
 ### Minor Changes

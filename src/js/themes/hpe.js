@@ -2,6 +2,7 @@
 import React from 'react';
 import { css } from 'styled-components';
 import {
+  primitives as localPrimitives,
   dark as localDark,
   light as localLight,
   dimension as localDimension,
@@ -153,6 +154,7 @@ const getTextSize = (size) => {
 
 const buildTheme = (tokens, flags) => {
   const {
+    primitives,
     light,
     dark,
     small,
@@ -625,8 +627,24 @@ const buildTheme = (tokens, flags) => {
         shadow: {
           color: focusBoxShadowParts[focusBoxShadowParts.length - 1],
           size: focusBoxShadowParts[focusBoxShadowParts.length - 2],
+          blur: '0px',
         },
         twoColor: true,
+        inset: {
+          border: undefined,
+          outline: {
+            color: global.hpe.focusIndicator.outline.color,
+            size: global.hpe.focusIndicator.outline.width,
+            offset: `-${global.hpe.focusIndicator.outline.width}`,
+          },
+          shadow: {
+            color: focusBoxShadowParts[focusBoxShadowParts.length - 1],
+            size: '4px',
+            blur: '0px',
+            inset: true,
+          },
+          twoColor: true,
+        },
       },
       active: { background: 'background-active', color: 'active-text' },
       drop: {
@@ -2119,7 +2137,10 @@ const buildTheme = (tokens, flags) => {
       container: { cssGap: true, gap: 'small', margin: 'none' },
     },
     rangeInput: {
-      thumb: { color: 'background-primary-strong' },
+      thumb: {
+        color: 'background-primary-strong',
+        extend: 'border-color: transparent;', // fix for FireFox
+      },
       track: {
         lower: { color: 'background-primary-strong' },
         upper: {
@@ -2127,7 +2148,13 @@ const buildTheme = (tokens, flags) => {
           // https://github.com/grommet/grommet/issues/6739
           color: { light: '#e0e0e0', dark: '#616161' },
         },
-        extend: () => `border-radius: ${large.hpe.radius.full};`,
+        extend: ({ theme }) => `
+        border-radius: ${large.hpe.radius.full};
+        // firefox only selector, since pseudo-element
+        // isn't supported
+        @-moz-document url-prefix() {
+          border: 1px solid ${getThemeColor('border-strong', theme)};
+        }`,
       },
       disabled: {
         opacity: 1,
@@ -2138,6 +2165,25 @@ const buildTheme = (tokens, flags) => {
           color: { light: 'rgb(245, 245, 245)', dark: 'rgb(44, 44, 44)' },
         },
       },
+      // primitives.hpe.base.dimension[100] = 4px which meets WCAG minimum size
+      // for visual indicator (minimum 3px)
+      extend: ({ disabled, theme }) => `
+        &::before {
+          display: block;
+          position: absolute;
+          content: '';
+          width: ${primitives.hpe.base.dimension[100]};
+          height: ${primitives.hpe.base.dimension[100]};
+          border-radius: ${large.hpe.radius.full};
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background: ${getThemeColor(
+            disabled ? 'background-disabled' : 'background-neutral-xstrong',
+            theme,
+          )};
+        }
+    `,
     },
     select: {
     clear: {
@@ -2480,6 +2526,7 @@ const buildTheme = (tokens, flags) => {
 
 export const hpe = buildTheme(
   {
+    primitives: localPrimitives,
     light: localLight,
     dark: localDark,
     small: localSmall,
@@ -2490,6 +2537,6 @@ export const hpe = buildTheme(
   {
     // For grommet-theme-hpe v6.0.0, maintain backwards compatibility
     // with old t-shirt sizes
-    'v6-backwards-compatibility': true,
+    'v6-backwards-compatibility': false,
   },
 );
