@@ -186,6 +186,9 @@ var buildTheme = function buildTheme(tokens, flags) {
     components = tokens.components;
   var size = function size(breakpoint) {
     return {
+      '5xsmall': breakpoint.hpe.container['5xsmall'],
+      '4xsmall': breakpoint.hpe.container['4xsmall'],
+      '3xsmall': breakpoint.hpe.container['3xsmall'],
       xxsmall: breakpoint.hpe.container.xxsmall,
       xsmall: breakpoint.hpe.container.xsmall,
       small: breakpoint.hpe.container.small,
@@ -193,6 +196,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       large: breakpoint.hpe.container.large,
       xlarge: breakpoint.hpe.container.xlarge,
       xxlarge: breakpoint.hpe.container.xxlarge,
+      '3xlarge': breakpoint.hpe.container['3xlarge'],
       full: '100%'
     };
   };
