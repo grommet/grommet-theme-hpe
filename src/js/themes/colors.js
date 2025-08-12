@@ -154,6 +154,10 @@ export const colors = {
     light: light.hpe.color.dataVis['categorical-70'],
     dark: dark.hpe.color.dataVis['categorical-70'],
   },
+  'graph-7': {
+    light: light.hpe.color.dataVis['categorical-80'],
+    dark: dark.hpe.color.dataVis['categorical-80'],
+  },
   'status-critical': {
     dark: dark.hpe.color.icon.critical,
     light: light.hpe.color.icon.critical,
@@ -162,10 +166,7 @@ export const colors = {
     dark: dark.hpe.color.icon.warning,
     light: light.hpe.color.icon.warning,
   },
-  'status-ok': {
-    dark: dark.hpe.color.icon.ok,
-    light: light.hpe.color.icon.ok,
-  },
+  'status-ok': { dark: dark.hpe.color.icon.ok, light: light.hpe.color.icon.ok },
   'status-unknown': {
     dark: dark.hpe.color.icon.unknown,
     light: light.hpe.color.icon.unknown,

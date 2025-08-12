@@ -35,9 +35,7 @@ export const hpePop = deepMerge(hpe, {
     weight: 400,
     level: {
       1: {
-        font: {
-          weight: 400,
-        },
+        font: { weight: 400 },
         small: {
           size: '3rem', // 48px
           height: '3rem', // 48px
@@ -92,9 +90,7 @@ export const hpePop = deepMerge(hpe, {
         },
       },
       4: {
-        font: {
-          weight: 500,
-        },
+        font: { weight: 500 },
         small: {
           size: '1.125rem', // 18px
           height: '1.125rem', // 18px
@@ -113,9 +109,7 @@ export const hpePop = deepMerge(hpe, {
         },
       },
       5: {
-        font: {
-          weight: 500,
-        },
+        font: { weight: 500 },
         small: {
           size: '1rem', // 16px
           height: '1rem', // 16px
@@ -134,9 +128,7 @@ export const hpePop = deepMerge(hpe, {
         },
       },
       6: {
-        font: {
-          weight: 500,
-        },
+        font: { weight: 500 },
         small: {
           size: '0.875rem', // 14px
           height: '0.875rem', // 14px
