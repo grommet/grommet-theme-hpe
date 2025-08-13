@@ -2076,11 +2076,14 @@ var buildTheme = function buildTheme(tokens, flags) {
       icons: {
         circle: function circle() {
           return /*#__PURE__*/React.createElement(Blank, {
-            color: components.hpe.radioButton["default"].control.selected.rest.iconColor
+            preserveAspectRatio: "xMidYMid meet" // Forces uniform scaling. Part of grommet code but lost when passing custom icon.
+            ,
+            color: components.hpe.radioButton["default"].control.selected.rest.iconColor,
+            size: components.hpe.radioButton["default"].medium.control.width // width and height are identical, so choosing one.
           }, /*#__PURE__*/React.createElement("circle", {
-            cx: "12",
-            cy: "12",
-            r: "8"
+            cx: 12,
+            cy: 12,
+            r: 6
           }));
         }
       }
