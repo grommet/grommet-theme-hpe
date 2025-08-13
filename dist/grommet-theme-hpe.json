@@ -2870,18 +2870,25 @@
   "select": {
     "clear": {
       "container": {
-        "pad": {
+        "pad": "6px"
+      },
+      "button": {
+        "border": {
+          "radius": "6px",
+          "size": "1px"
+        },
+        "padding": {
           "horizontal": "12px",
-          "vertical": "6px"
+          "vertical": "5px"
         },
         "hover": {
-          "background": "background-hover"
+          "background": "background-hover",
+          "color": "text-strong"
         },
-        "round": "xsmall"
-      },
-      "text": {
         "color": "text-strong",
-        "weight": 500
+        "font": {
+          "weight": 500
+        }
       }
     },
     "container": {},
