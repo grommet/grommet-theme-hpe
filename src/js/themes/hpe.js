@@ -9,6 +9,7 @@ import {
   small as localSmall,
   global as localGlobal,
   components as localComponents,
+  primitives as localPrimitives,
 } from 'hpe-design-tokens/grommet';
 import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
@@ -2190,6 +2191,11 @@ const buildTheme = (tokens, flags) => {
           )};
         }
     `,
+    },
+    rangeSelector: {
+      edge: {
+        size: `${localPrimitives.hpe.base.dimension[600]}`,
+      },
     },
     select: {
     clear: {
