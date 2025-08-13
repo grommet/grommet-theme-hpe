@@ -757,6 +757,11 @@ const buildTheme = (tokens, flags) => {
         },
       },
     },
+    box: {
+      border: {
+        size: '3xsmall',
+      },
+    },
     button: {
       intelligentPad: false,
       color: components.hpe.button.default.rest.textColor,
