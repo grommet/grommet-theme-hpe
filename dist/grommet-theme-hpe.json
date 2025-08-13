@@ -2867,6 +2867,11 @@
       }
     }
   },
+  "rangeSelector": {
+    "edge": {
+      "size": "24px"
+    }
+  },
   "select": {
     "clear": {
       "container": {
@@ -3152,7 +3157,7 @@
       "border": {
         "color": "border-weak"
       },
-      "margin": "xxsmall",
+      "margin": "3xsmall",
       "elevation": "small",
       "pad": {
         "vertical": "none",
