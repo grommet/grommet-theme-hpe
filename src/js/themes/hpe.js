@@ -9,7 +9,6 @@ import {
   small as localSmall,
   global as localGlobal,
   components as localComponents,
-  primitives as localPrimitives,
 } from 'hpe-design-tokens/grommet';
 import { Ascending } from 'grommet-icons/icons/Ascending';
 import { Blank } from 'grommet-icons/icons/Blank';
@@ -2194,42 +2193,42 @@ const buildTheme = (tokens, flags) => {
     },
     rangeSelector: {
       edge: {
-        size: `${localPrimitives.hpe.base.dimension[600]}`,
+        size: `${primitives.hpe.base.dimension[600]}`,
       },
     },
     select: {
-    clear: {
-      container: {
-        pad: components.hpe.select.default.medium.drop.paddingX,
-      },
-      text: undefined,
-      button: {
-        border: {
-          radius: components.hpe.select.default.medium.option.borderRadius,
-          size: components.hpe.select.default.medium.option.borderWidth,
+      clear: {
+        container: {
+          pad: components.hpe.select.default.medium.drop.paddingX,
         },
-        padding: {
-          horizontal: components.hpe.select.default.medium.option.paddingX,
-          vertical: components.hpe.select.default.medium.option.paddingY,
-        },
-        hover: {
-          background: components.hpe.select.default.option.hover.background,
+        text: undefined,
+        button: {
+          border: {
+            radius: components.hpe.select.default.medium.option.borderRadius,
+            size: components.hpe.select.default.medium.option.borderWidth,
+          },
+          padding: {
+            horizontal: components.hpe.select.default.medium.option.paddingX,
+            vertical: components.hpe.select.default.medium.option.paddingY,
+          },
+          hover: {
+            background: components.hpe.select.default.option.hover.background,
+            color: 'text-strong',
+          },
           color: 'text-strong',
-        },
-        color: 'text-strong',
-        font: {
-          weight: components.hpe.select.default.option.rest.fontWeight,
+          font: {
+            weight: components.hpe.select.default.option.rest.fontWeight,
+          },
         },
       },
-    },
-    container: {
-      extend: () =>
-        `
+      container: {
+        extend: () =>
+          `
           div:has(input[type="search"]) {
             padding-bottom: 0;
           }
         `,
-    },
+      },
       control: {
         extend: ({ disabled }) => css`
           ${disabled &&
