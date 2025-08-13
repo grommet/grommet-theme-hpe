@@ -714,8 +714,8 @@ const buildTheme = (tokens, flags) => {
       hover: { background: 'background-hover', heading: { color: undefined } },
       border: undefined,
       icons: { collapse: Up, expand: Down, color: 'text' },
-      icon: { container: { pad: 'xsmall' } },
-      label: { container: { pad: '3xsmall' } },
+      icon: { container: { pad: { horizontal: 'xsmall'} } },
+      label: { container: { pad: { horizontal: '3xsmall' } } },
     },
     anchor: {
       color: components.hpe.anchor.default.rest.textColor,
