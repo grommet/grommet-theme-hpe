@@ -2058,6 +2058,9 @@
     },
     "extend": "border-radius: 8px;"
   },
+  "footer": {
+    "gap": "medium"
+  },
   "formField": {
     "content": {
       "margin": {

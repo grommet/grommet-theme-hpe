@@ -1350,6 +1350,9 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       extend: "border-radius: " + components.hpe.formField["default"].medium.input.container.borderRadius + ";"
     },
+    footer: {
+      gap: 'medium'
+    },
     formField: {
       extend: function extend(_ref16) {
         var theme = _ref16.theme;
