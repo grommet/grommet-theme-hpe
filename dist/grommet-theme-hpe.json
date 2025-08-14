@@ -961,6 +961,11 @@
       }
     }
   },
+  "box": {
+    "border": {
+      "size": "3xsmall"
+    }
+  },
   "button": {
     "intelligentPad": false,
     "color": "text-strong",

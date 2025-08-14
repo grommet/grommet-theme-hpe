@@ -729,6 +729,11 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       }
     },
+    box: {
+      border: {
+        size: '3xsmall'
+      }
+    },
     button: _extends({
       intelligentPad: false,
       color: components.hpe.button["default"].rest.textColor,
