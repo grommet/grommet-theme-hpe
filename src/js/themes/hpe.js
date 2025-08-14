@@ -2351,6 +2351,7 @@ const buildTheme = (tokens, flags) => {
           }
         `,
       },
+      search: { pad : '3xsmall' },
     },
     selectMultiple: {
       listbox: {
