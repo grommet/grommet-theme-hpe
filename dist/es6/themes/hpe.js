@@ -2128,7 +2128,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     radioButtonGroup: {
       container: {
         cssGap: true,
-        gap: 'small',
+        gap: 'xsmall',
         margin: 'none'
       }
     },
