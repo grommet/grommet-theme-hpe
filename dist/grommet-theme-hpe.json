@@ -1888,7 +1888,7 @@
   "checkBoxGroup": {
     "container": {
       "cssGap": true,
-      "gap": "small",
+      "gap": "xsmall",
       "margin": "none"
     }
   },
@@ -2905,6 +2905,11 @@
   "rangeSelector": {
     "edge": {
       "size": "24px"
+    },
+    "label": {
+      "margin": {
+        "horizontal": "xsmall"
+      }
     }
   },
   "select": {
@@ -3024,11 +3029,25 @@
       "vertical": "none",
       "horizontal": "none"
     },
-    "extend": "font-weight: 500;"
+    "extend": "font-weight: 500;",
+    "gap": "xsmall"
   },
   "tabs": {
     "gap": "16px",
-    "header": {},
+    "header": {
+      "previousButton": {
+        "pad": {
+          "vertical": "3xsmall",
+          "horizontal": "xsmall"
+        }
+      },
+      "nextButton": {
+        "pad": {
+          "vertical": "3xsmall",
+          "horizontal": "xsmall"
+        }
+      }
+    },
     "step": {
       "xsmall": 1,
       "xlarge": 3
@@ -3217,6 +3236,12 @@
       "border": false
     },
     "divider": false
+  },
+  "toolbar": {
+    "gap": "xsmall",
+    "small": {
+      "gap": "xsmall"
+    }
   },
   "video": {
     "scrubber": {

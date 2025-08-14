@@ -1139,7 +1139,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     checkBoxGroup: {
       container: {
         cssGap: true,
-        gap: 'small',
+        gap: 'xsmall',
         margin: 'none'
       }
     },
@@ -2179,6 +2179,11 @@ var buildTheme = function buildTheme(tokens, flags) {
     rangeSelector: {
       edge: {
         size: "" + primitives.hpe.base.dimension[600]
+      },
+      label: {
+        margin: {
+          horizontal: 'xsmall'
+        }
       }
     },
     select: {
@@ -2322,7 +2327,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         vertical: 'none',
         horizontal: 'none'
       },
-      extend: 'font-weight: 500;'
+      extend: 'font-weight: 500;',
+      gap: 'xsmall'
     },
     tabs: {
       gap: large.hpe.spacing.small,
@@ -2333,6 +2339,18 @@ var buildTheme = function buildTheme(tokens, flags) {
         extend: function extend(_ref28) {
           var theme = _ref28.theme;
           return "\n        padding-bottom: " + large.hpe.borderWidth.medium + ";\n        & button {\n          border-radius: " + large.hpe.radius.xsmall + "; // radius on focus\n        }\n        & button[aria-selected=\"true\"] {\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              height: " + large.hpe.borderWidth.medium + ";\n              border-radius: " + large.hpe.radius.full + ";\n              bottom: -" + large.hpe.borderWidth.medium + ";\n              left: 0;\n              right: 0;\n              background: " + getThemeColor('border-selected', theme) + ";\n            }\n        }";
+        },
+        previousButton: {
+          pad: {
+            vertical: '3xsmall',
+            horizontal: 'xsmall'
+          }
+        },
+        nextButton: {
+          pad: {
+            vertical: '3xsmall',
+            horizontal: 'xsmall'
+          }
         }
       },
       step: {
@@ -2504,6 +2522,12 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       divider: false
+    },
+    toolbar: {
+      gap: 'xsmall',
+      small: {
+        gap: 'xsmall'
+      }
     },
     video: {
       scrubber: {
