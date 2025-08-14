@@ -1751,7 +1751,6 @@ const buildTheme = (tokens, flags) => {
         // any box props
         gap: 'xsmall',
         // extend: undefined,
-        item: { gap: 'medium'}
       },
       item: {
         border: undefined,
@@ -1760,6 +1759,7 @@ const buildTheme = (tokens, flags) => {
           background: 'background-active',
           icon: { pad: mediumIconOnlyPad },
         },
+        gap: 'medium'
       },
       primaryKey: { weight: global.hpe.fontWeight.medium },
     },
