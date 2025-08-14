@@ -2110,7 +2110,7 @@ const buildTheme = (tokens, flags) => {
         gap: { row: '3xsmall', column: 'medium' },
       },
       small: {
-        gap: { row: '3xsmall', column: 'large' },
+        gap: { row: '3xsmall', column: 'xlarge' },
       },
       medium: {
         gap: { row: '3xsmall', column: 'medium' },
