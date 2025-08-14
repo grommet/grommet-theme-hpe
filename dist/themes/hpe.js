@@ -656,7 +656,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         level: 3,
         margin: {
           vertical: 'medium',
-          horizontal: 'xsmall'
+          horizontal: '3xsmall'
         }
       },
       hover: {
@@ -1005,6 +1005,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       container: {
         background: 'background-front',
         elevation: 'none',
+        round: 'medium',
         extend: 'transition: box-shadow 0.3s ease-in-out;'
       },
       body: {
@@ -1013,7 +1014,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       footer: {
         pad: {
           horizontal: 'medium',
-          vertical: 'small'
+          vertical: 'xsmall'
         }
       },
       header: {
@@ -1243,7 +1244,10 @@ var buildTheme = function buildTheme(tokens, flags) {
           }
         },
         units: {
-          color: components.hpe.headerCell["default"].units.rest.textColor
+          color: components.hpe.headerCell["default"].units.rest.textColor,
+          margin: {
+            left: '3xsmall'
+          }
         }
       },
       icons: {
@@ -1367,14 +1371,14 @@ var buildTheme = function buildTheme(tokens, flags) {
         remove: _Close.Close
       },
       label: {
-        margin: 'small'
+        margin: 'xsmall'
       },
       message: {
         color: 'placeholder',
-        margin: 'small'
+        margin: 'xsmall'
       },
       pad: {
-        horizontal: 'xsmall'
+        horizontal: '3xsmall'
       },
       extend: "border-radius: " + components.hpe.formField["default"].medium.input.container.borderRadius + ";"
     },
@@ -1388,7 +1392,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       content: {
         margin: {
-          vertical: 'xsmall'
+          vertical: '3xsmall'
         },
         pad: 'none'
       },
@@ -1463,7 +1467,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           color: components.hpe.formField["default"].input.container.error.rest.background
         },
         container: {
-          gap: 'xsmall'
+          gap: '3xsmall'
         },
         icon: /*#__PURE__*/_react["default"].createElement(_CircleAlert.CircleAlert, {
           size: "small",
@@ -1472,7 +1476,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         size: 'xsmall',
         color: components.hpe.formField["default"].error.rest.textColor,
         margin: {
-          bottom: 'xsmall',
+          bottom: '3xsmall',
           top: 'none',
           horizontal: 'none'
         }
@@ -1494,7 +1498,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         size: 'xsmall',
         color: components.hpe.formField["default"].info.rest.color,
         margin: {
-          bottom: 'xsmall',
+          bottom: '3xsmall',
           top: 'none',
           horizontal: 'none'
         }
@@ -1504,7 +1508,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         color: components.hpe.formField["default"].label.rest.textColor,
         margin: {
           bottom: 'none',
-          top: 'xsmall',
+          top: '3xsmall',
           horizontal: 'none'
         },
         requiredIndicator: true,
@@ -1680,7 +1684,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     layer: {
       background: 'background-floating',
       border: {
-        radius: 'small',
+        radius: 'medium',
         intelligentRounding: true
       },
       container: {
@@ -1697,7 +1701,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     list: {
       container: {
         // any box props
-        gap: 'xsmall'
+        gap: '3xsmall'
         // extend: undefined,
       },
       item: {
@@ -1711,6 +1715,10 @@ var buildTheme = function buildTheme(tokens, flags) {
           icon: {
             pad: mediumIconOnlyPad
           }
+        },
+        pad: {
+          horizontal: 'medium',
+          vertical: 'xsmall'
         },
         gap: 'medium'
       },
@@ -1766,7 +1774,30 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       }
     },
+    nameValueList: {
+      gap: {
+        column: 'xlarge',
+        row: 'xsmall'
+      },
+      pair: {
+        column: {
+          gap: {
+            column: 'xlarge',
+            row: 'medium'
+          }
+        }
+      },
+      name: {
+        width: 'xsmall'
+      },
+      value: {
+        width: 'medium'
+      }
+    },
     nameValuePair: {
+      column: {
+        gap: '5xsmall'
+      },
       name: {
         color: 'text-strong',
         weight: global.hpe.fontWeight.medium
@@ -1780,14 +1811,32 @@ var buildTheme = function buildTheme(tokens, flags) {
         icon: _Close.Close
       },
       container: {
-        round: 'xsmall'
+        round: 'xsmall',
+        pad: {
+          horizontal: 'xsmall',
+          vertical: '3xsmall'
+        }
       },
       direction: 'column',
+      gap: 'xsmall',
       global: {
         direction: 'row',
         container: {
-          round: 'none'
+          round: 'none',
+          pad: {
+            horizontal: 'xlarge',
+            vertical: '3xsmall'
+          }
         }
+      },
+      iconContainer: {
+        pad: {
+          right: 'xsmall'
+        }
+      },
+      textContainer: {
+        // any box props
+        gap: 'medium'
       },
       message: {
         color: 'text',
@@ -1974,24 +2023,38 @@ var buildTheme = function buildTheme(tokens, flags) {
         margin: {
           right: '3xsmall'
         }
-      },
-      gap: 'xsmall'
+      }
     },
     page: {
       wide: {
         width: {
           min: '336px',
           // 336 + 24 (margin) + 24 (margin) = 384 (e.g. 'medium')
-          max: 'xxlarge'
+          max: '3xlarge'
         },
         xsmall: {
           pad: {
-            horizontal: 'large'
+            horizontal: 'xlarge'
+          }
+        },
+        small: {
+          pad: {
+            horizontal: 'xlarge'
+          }
+        },
+        medium: {
+          pad: {
+            horizontal: 'medium'
+          }
+        },
+        large: {
+          pad: {
+            horizontal: 'xlarge'
           }
         },
         xlarge: {
           pad: {
-            horizontal: 'large'
+            horizontal: 'xlarge'
           }
         }
       },
@@ -1999,16 +2062,31 @@ var buildTheme = function buildTheme(tokens, flags) {
         width: {
           min: '336px',
           // 336 + 24 (margin) + 24 (margin) = 384 (e.g. 'medium')
-          max: 'large'
+          max: 'xlarge'
         },
         xsmall: {
           pad: {
-            horizontal: 'large'
+            horizontal: 'xlarge'
+          }
+        },
+        small: {
+          pad: {
+            horizontal: 'xlarge'
+          }
+        },
+        medium: {
+          pad: {
+            horizontal: 'medium'
+          }
+        },
+        large: {
+          pad: {
+            horizontal: 'xlarge'
           }
         },
         xlarge: {
           pad: {
-            horizontal: 'large'
+            horizontal: 'xlarge'
           }
         }
       },
@@ -2020,18 +2098,43 @@ var buildTheme = function buildTheme(tokens, flags) {
         },
         xsmall: {
           pad: {
-            horizontal: 'large'
+            horizontal: 'xlarge'
+          }
+        },
+        small: {
+          pad: {
+            horizontal: 'xlarge'
+          }
+        },
+        medium: {
+          pad: {
+            horizontal: 'medium'
+          }
+        },
+        large: {
+          pad: {
+            horizontal: 'xlarge'
           }
         },
         xlarge: {
           pad: {
-            horizontal: 'large'
+            horizontal: 'xlarge'
           }
         }
       }
     },
     pageHeader: {
+      pad: {
+        top: 'xlarge',
+        bottom: 'medium'
+      },
       responsive: {
+        actions: {
+          // any box props
+          pad: {
+            top: 'xsmall'
+          }
+        },
         breakpoints: ['xsmall', 'small']
       },
       // title: {
@@ -2040,13 +2143,62 @@ var buildTheme = function buildTheme(tokens, flags) {
       subtitle: {
         size: 'large'
       },
+      size: {
+        small: {
+          pad: {
+            top: 'medium',
+            bottom: 'xsmall'
+          },
+          subtitle: {
+            size: 'small'
+          },
+          title: {
+            size: 'small'
+          }
+        },
+        // medium: {
+        //   // pad: undefined,
+        //   // subtitle: {},
+        //   // title: {},
+        // },
+        large: {
+          pad: {
+            top: '3xlarge',
+            bottom: 'xlarge'
+          },
+          subtitle: {
+            size: 'large'
+          },
+          title: {
+            size: 'large'
+          }
+        }
+      },
       xsmall: {
         areas: [['parent', 'parent'], ['title', 'actions'], ['subtitle', 'actions']],
         columns: [['small', 'flex'], 'auto'],
         rows: ['auto', 'auto', 'auto'],
         gap: {
-          row: 'xsmall',
+          row: '3xsmall',
           column: 'medium'
+        }
+      },
+      small: {
+        gap: {
+          row: '3xsmall',
+          column: 'xlarge'
+        }
+      },
+      medium: {
+        gap: {
+          row: '3xsmall',
+          column: 'medium'
+        }
+      },
+      large: {
+        gap: {
+          row: '3xsmall',
+          column: 'xlarge'
         }
       },
       xlarge: {
@@ -2054,8 +2206,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         columns: [['medium', 'large'], 'auto'],
         rows: ['auto', 'auto', 'auto'],
         gap: {
-          row: 'xsmall',
-          column: 'large'
+          row: '3xsmall',
+          column: 'xlarge'
         }
       }
     },
@@ -2155,6 +2307,9 @@ var buildTheme = function buildTheme(tokens, flags) {
             width: (_components$hpe$eleme17 = components.hpe.element) == null ? void 0 : _components$hpe$eleme17.large.minHeight
           }
         }
+      },
+      controls: {
+        gap: '5xsmall'
       }
     },
     paragraph: _extends({}, paragraphTheme, {
@@ -2271,6 +2426,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     select: {
       clear: {
         container: {
+          background: 'transparent',
           pad: components.hpe.select["default"].medium.drop.paddingX
         },
         text: undefined,
@@ -2313,7 +2469,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         color: 'icon',
         down: _Down.Down,
         margin: {
-          left: 'small',
+          left: 'xsmall',
           // setting right margin to 12px because on small
           // screens, Select responsive padding sizes down
           // which brings the icon too tight with edge of
@@ -2420,7 +2576,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       gap: 'xsmall'
     },
     tabs: {
-      gap: large.hpe.spacing.small,
+      gap: 'xsmall',
       header: {
         border: undefined,
         // padding-bottom ensures the marker is not cut off by subsequent
@@ -2449,6 +2605,15 @@ var buildTheme = function buildTheme(tokens, flags) {
     },
     table: {
       header: {
+        border: {
+          side: 'bottom',
+          color: components.hpe.headerCell["default"].rest.borderColor
+        },
+        pad: {
+          horizontal: components.hpe.headerCell["default"].medium.paddingX,
+          top: components.hpe.headerCell["default"].medium.paddingTop,
+          bottom: components.hpe.headerCell["default"].medium.paddingBottom
+        },
         extend: "\n          > div { \n            height: 100%;\n            justify-content: center;\n          }\n          // align onSelect checkbox to center of header cell\n          label { \n            justify-content: center;\n          }\n        "
       },
       body: {
@@ -2468,6 +2633,11 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       footer: {
+        pad: {
+          top: components.hpe.footerCell["default"].medium.paddingTop,
+          bottom: components.hpe.footerCell["default"].medium.paddingBottom,
+          horizontal: components.hpe.footerCell["default"].medium.paddingX
+        },
         extend: "\n          font-weight: " + components.hpe.footerCell["default"].fontWeight + ";\n        "
       },
       extend: function extend() {
@@ -2486,7 +2656,10 @@ var buildTheme = function buildTheme(tokens, flags) {
         vertical: (_components$hpe$eleme27 = components.hpe.element) == null ? void 0 : _components$hpe$eleme27.medium.paddingY
       },
       remove: {
-        kind: 'default'
+        kind: 'default',
+        margin: {
+          right: '3xsmall'
+        }
       },
       value: {
         weight: global.hpe.fontWeight.medium
@@ -2529,7 +2702,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           remove: {
             size: 'small',
             margin: {
-              right: 'xxsmall'
+              right: '5xsmall'
             }
           }
         },
@@ -2542,7 +2715,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           remove: {
             size: 'medium',
             margin: {
-              right: 'xxsmall'
+              right: '5xsmall'
             }
           }
         },
@@ -2555,13 +2728,19 @@ var buildTheme = function buildTheme(tokens, flags) {
           remove: {
             size: 'large',
             margin: {
-              right: 'xsmall'
+              right: '3xsmall'
             }
           }
         }
       }
     },
-    text: _extends({}, textTheme),
+    text: _extends({}, textTheme, {
+      skeleton: {
+        margin: {
+          vertical: '3xsmall'
+        }
+      }
+    }),
     textInput: {
       container: {
         extend: function extend(_ref29) {
@@ -2586,7 +2765,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         elevation: 'small',
         pad: {
           vertical: 'none',
-          horizontal: 'small'
+          horizontal: 'xsmall'
         },
         round: components.hpe.drop["default"].borderRadius
       }
@@ -2605,6 +2784,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       container: {
         border: false,
+        round: 'xsmall',
         extend: function extend(_ref31) {
           var theme = _ref31.theme;
           return "\n        gap: " + (dimensions.edgeSize[large.hpe.spacing['5xsmall']] || large.hpe.spacing['5xsmall']) + ";\n        &:hover {\n          background: " + getThemeColor('background-hover', theme) + ";\n        }";

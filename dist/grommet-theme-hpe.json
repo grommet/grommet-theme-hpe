@@ -840,7 +840,7 @@
       "level": 3,
       "margin": {
         "vertical": "medium",
-        "horizontal": "xsmall"
+        "horizontal": "3xsmall"
       }
     },
     "hover": {
@@ -1843,6 +1843,7 @@
     "container": {
       "background": "background-front",
       "elevation": "none",
+      "round": "medium",
       "extend": "transition: box-shadow 0.3s ease-in-out;"
     },
     "body": {
@@ -1851,7 +1852,7 @@
     "footer": {
       "pad": {
         "horizontal": "medium",
-        "vertical": "small"
+        "vertical": "xsmall"
       }
     },
     "header": {
@@ -1973,7 +1974,10 @@
         }
       },
       "units": {
-        "color": "text-weak"
+        "color": "text-weak",
+        "margin": {
+          "left": "3xsmall"
+        }
       }
     },
     "icons": {},
@@ -2071,14 +2075,14 @@
       "remove": {}
     },
     "label": {
-      "margin": "small"
+      "margin": "xsmall"
     },
     "message": {
       "color": "placeholder",
-      "margin": "small"
+      "margin": "xsmall"
     },
     "pad": {
-      "horizontal": "xsmall"
+      "horizontal": "3xsmall"
     },
     "extend": "border-radius: 8px;"
   },
@@ -2088,7 +2092,7 @@
   "formField": {
     "content": {
       "margin": {
-        "vertical": "xsmall"
+        "vertical": "3xsmall"
       },
       "pad": "none"
     },
@@ -2138,7 +2142,7 @@
         "color": "background-critical"
       },
       "container": {
-        "gap": "xsmall"
+        "gap": "3xsmall"
       },
       "icon": {
         "type": {},
@@ -2154,7 +2158,7 @@
       "size": "xsmall",
       "color": "text-critical",
       "margin": {
-        "bottom": "xsmall",
+        "bottom": "3xsmall",
         "top": "none",
         "horizontal": "none"
       }
@@ -2170,7 +2174,7 @@
     "info": {
       "size": "xsmall",
       "margin": {
-        "bottom": "xsmall",
+        "bottom": "3xsmall",
         "top": "none",
         "horizontal": "none"
       }
@@ -2180,7 +2184,7 @@
       "color": "text-strong",
       "margin": {
         "bottom": "none",
-        "top": "xsmall",
+        "top": "3xsmall",
         "horizontal": "none"
       },
       "requiredIndicator": true,
@@ -2350,7 +2354,7 @@
   "layer": {
     "background": "background-floating",
     "border": {
-      "radius": "small",
+      "radius": "medium",
       "intelligentRounding": true
     },
     "container": {
@@ -2363,7 +2367,7 @@
   },
   "list": {
     "container": {
-      "gap": "xsmall"
+      "gap": "3xsmall"
     },
     "item": {
       "disabled": {
@@ -2378,6 +2382,10 @@
             "horizontal": "8px"
           }
         }
+      },
+      "pad": {
+        "horizontal": "medium",
+        "vertical": "xsmall"
       },
       "gap": "medium"
     },
@@ -2428,7 +2436,30 @@
       }
     }
   },
+  "nameValueList": {
+    "gap": {
+      "column": "xlarge",
+      "row": "xsmall"
+    },
+    "pair": {
+      "column": {
+        "gap": {
+          "column": "xlarge",
+          "row": "medium"
+        }
+      }
+    },
+    "name": {
+      "width": "xsmall"
+    },
+    "value": {
+      "width": "medium"
+    }
+  },
   "nameValuePair": {
+    "column": {
+      "gap": "5xsmall"
+    },
     "name": {
       "color": "text-strong",
       "weight": 500
@@ -2442,14 +2473,31 @@
       "icon": {}
     },
     "container": {
-      "round": "xsmall"
+      "round": "xsmall",
+      "pad": {
+        "horizontal": "xsmall",
+        "vertical": "3xsmall"
+      }
     },
     "direction": "column",
+    "gap": "xsmall",
     "global": {
       "direction": "row",
       "container": {
-        "round": "none"
+        "round": "none",
+        "pad": {
+          "horizontal": "xlarge",
+          "vertical": "3xsmall"
+        }
       }
+    },
+    "iconContainer": {
+      "pad": {
+        "right": "xsmall"
+      }
+    },
+    "textContainer": {
+      "gap": "medium"
     },
     "message": {
       "color": "text",
@@ -2635,39 +2683,68 @@
       "margin": {
         "right": "3xsmall"
       }
-    },
-    "gap": "xsmall"
+    }
   },
   "page": {
     "wide": {
       "width": {
         "min": "336px",
-        "max": "xxlarge"
+        "max": "3xlarge"
       },
       "xsmall": {
         "pad": {
-          "horizontal": "large"
+          "horizontal": "xlarge"
+        }
+      },
+      "small": {
+        "pad": {
+          "horizontal": "xlarge"
+        }
+      },
+      "medium": {
+        "pad": {
+          "horizontal": "medium"
+        }
+      },
+      "large": {
+        "pad": {
+          "horizontal": "xlarge"
         }
       },
       "xlarge": {
         "pad": {
-          "horizontal": "large"
+          "horizontal": "xlarge"
         }
       }
     },
     "narrow": {
       "width": {
         "min": "336px",
-        "max": "large"
+        "max": "xlarge"
       },
       "xsmall": {
         "pad": {
-          "horizontal": "large"
+          "horizontal": "xlarge"
+        }
+      },
+      "small": {
+        "pad": {
+          "horizontal": "xlarge"
+        }
+      },
+      "medium": {
+        "pad": {
+          "horizontal": "medium"
+        }
+      },
+      "large": {
+        "pad": {
+          "horizontal": "xlarge"
         }
       },
       "xlarge": {
         "pad": {
-          "horizontal": "large"
+          "horizontal": "xlarge"
         }
       }
     },
@@ -2678,18 +2755,42 @@
       },
       "xsmall": {
         "pad": {
-          "horizontal": "large"
+          "horizontal": "xlarge"
+        }
+      },
+      "small": {
+        "pad": {
+          "horizontal": "xlarge"
+        }
+      },
+      "medium": {
+        "pad": {
+          "horizontal": "medium"
+        }
+      },
+      "large": {
+        "pad": {
+          "horizontal": "xlarge"
         }
       },
       "xlarge": {
         "pad": {
-          "horizontal": "large"
+          "horizontal": "xlarge"
         }
       }
     }
   },
   "pageHeader": {
+    "pad": {
+      "top": "xlarge",
+      "bottom": "medium"
+    },
     "responsive": {
+      "actions": {
+        "pad": {
+          "top": "xsmall"
+        }
+      },
       "breakpoints": [
         "xsmall",
         "small"
@@ -2697,6 +2798,32 @@
     },
     "subtitle": {
       "size": "large"
+    },
+    "size": {
+      "small": {
+        "pad": {
+          "top": "medium",
+          "bottom": "xsmall"
+        },
+        "subtitle": {
+          "size": "small"
+        },
+        "title": {
+          "size": "small"
+        }
+      },
+      "large": {
+        "pad": {
+          "top": "3xlarge",
+          "bottom": "xlarge"
+        },
+        "subtitle": {
+          "size": "large"
+        },
+        "title": {
+          "size": "large"
+        }
+      }
     },
     "xsmall": {
       "areas": [
@@ -2726,8 +2853,26 @@
         "auto"
       ],
       "gap": {
-        "row": "xsmall",
+        "row": "3xsmall",
         "column": "medium"
+      }
+    },
+    "small": {
+      "gap": {
+        "row": "3xsmall",
+        "column": "xlarge"
+      }
+    },
+    "medium": {
+      "gap": {
+        "row": "3xsmall",
+        "column": "medium"
+      }
+    },
+    "large": {
+      "gap": {
+        "row": "3xsmall",
+        "column": "xlarge"
       }
     },
     "xlarge": {
@@ -2758,8 +2903,8 @@
         "auto"
       ],
       "gap": {
-        "row": "xsmall",
-        "column": "large"
+        "row": "3xsmall",
+        "column": "xlarge"
       }
     }
   },
@@ -2859,6 +3004,9 @@
           "width": "48px"
         }
       }
+    },
+    "controls": {
+      "gap": "5xsmall"
     }
   },
   "paragraph": {
@@ -2992,6 +3140,7 @@
   "select": {
     "clear": {
       "container": {
+        "background": "transparent",
         "pad": "6px"
       },
       "button": {
@@ -3027,7 +3176,7 @@
       "color": "icon",
       "down": {},
       "margin": {
-        "left": "small",
+        "left": "xsmall",
         "right": "12px"
       },
       "up": {}
@@ -3117,7 +3266,7 @@
     "gap": "xsmall"
   },
   "tabs": {
-    "gap": "16px",
+    "gap": "xsmall",
     "header": {
       "previousButton": {
         "pad": {
@@ -3139,6 +3288,15 @@
   },
   "table": {
     "header": {
+      "border": {
+        "side": "bottom",
+        "color": "border-default"
+      },
+      "pad": {
+        "horizontal": "12px",
+        "top": "12px",
+        "bottom": "11px"
+      },
       "extend": "\n          > div { \n            height: 100%;\n            justify-content: center;\n          }\n          // align onSelect checkbox to center of header cell\n          label { \n            justify-content: center;\n          }\n        "
     },
     "body": {
@@ -3158,6 +3316,11 @@
       }
     },
     "footer": {
+      "pad": {
+        "top": "11px",
+        "bottom": "12px",
+        "horizontal": "12px"
+      },
       "extend": "\n          font-weight: undefined;\n        "
     }
   },
@@ -3173,7 +3336,10 @@
       "vertical": "5px"
     },
     "remove": {
-      "kind": "default"
+      "kind": "default",
+      "margin": {
+        "right": "3xsmall"
+      }
     },
     "value": {
       "weight": 500
@@ -3213,7 +3379,7 @@
         "remove": {
           "size": "small",
           "margin": {
-            "right": "xxsmall"
+            "right": "5xsmall"
           }
         }
       },
@@ -3225,7 +3391,7 @@
         "remove": {
           "size": "medium",
           "margin": {
-            "right": "xxsmall"
+            "right": "5xsmall"
           }
         }
       },
@@ -3237,7 +3403,7 @@
         "remove": {
           "size": "large",
           "margin": {
-            "right": "xsmall"
+            "right": "3xsmall"
           }
         }
       }
@@ -3283,6 +3449,11 @@
     "6xl": {
       "size": "4.5rem",
       "height": "4.5rem"
+    },
+    "skeleton": {
+      "margin": {
+        "vertical": "3xsmall"
+      }
     }
   },
   "textInput": {
@@ -3299,7 +3470,7 @@
       "elevation": "small",
       "pad": {
         "vertical": "none",
-        "horizontal": "small"
+        "horizontal": "xsmall"
       },
       "round": "xsmall"
     }
@@ -3317,7 +3488,8 @@
       "kind": "toolbar"
     },
     "container": {
-      "border": false
+      "border": false,
+      "round": "xsmall"
     },
     "divider": false
   },
