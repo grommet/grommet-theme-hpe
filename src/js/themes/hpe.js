@@ -1293,7 +1293,10 @@ const buildTheme = (tokens, flags) => {
       },
       icon: { size: 'small' },
     },
-    dataSummary: {margin: {vertical: '3xsmall'}, separator: {margin: {horizontal: 'xsmall'}}},
+    dataSummary: {
+      margin: { vertical: '3xsmall' },
+      separator: { margin: { horizontal: 'xsmall' } },
+    },
     dataTable: {
       body: {
         extend: ({ theme }) => `
@@ -1845,13 +1848,17 @@ const buildTheme = (tokens, flags) => {
     nameValuePair: {
       name: { color: 'text-strong', weight: global.hpe.fontWeight.medium },
     },
-    nav: {gap: 'medium'},
+    nav: { gap: 'medium' },
     notification: {
       close: { icon: Close },
       container: { round: 'xsmall' },
       direction: 'column',
       global: { direction: 'row', container: { round: 'none' } },
-      message: { color: 'text', fill: true, text: { margin: { right: '3xsmall' } } },
+      message: {
+        color: 'text',
+        fill: true,
+        text: { margin: { right: '3xsmall' } },
+      },
       title: {
         // any text props
         color: 'text-strong',
