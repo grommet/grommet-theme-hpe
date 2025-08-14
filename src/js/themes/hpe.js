@@ -1308,6 +1308,7 @@ const buildTheme = (tokens, flags) => {
           components.hpe.formField.default.medium.input.container.borderRadius,
       },
       icon: { size: 'small' },
+      button: { margin: 'xsmall' }
     },
     dataSummary: {
       margin: { vertical: '3xsmall' },
