@@ -2350,8 +2350,8 @@ const buildTheme = (tokens, flags) => {
     select: {
       clear: {
         container: {
+          background: 'transparent',
           pad: components.hpe.select.default.medium.drop.paddingX,
-          round: 'xsmall',
         },
         text: undefined,
         button: {
