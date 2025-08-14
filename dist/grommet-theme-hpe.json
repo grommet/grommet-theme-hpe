@@ -1766,7 +1766,12 @@
       },
       "title": {
         "size": "medium",
-        "color": "text-strong"
+        "color": "text-strong",
+        "container": {
+          "pad": {
+            "horizontal": "3xsmall"
+          }
+        }
       }
     },
     "medium": {
@@ -1793,7 +1798,12 @@
       },
       "title": {
         "size": "large",
-        "color": "text-strong"
+        "color": "text-strong",
+        "container": {
+          "pad": {
+            "horizontal": "xsmall"
+          }
+        }
       }
     },
     "large": {
@@ -1820,7 +1830,12 @@
       },
       "title": {
         "size": "xlarge",
-        "color": "text-strong"
+        "color": "text-strong",
+        "container": {
+          "pad": {
+            "horizontal": "medium"
+          }
+        }
       }
     }
   },

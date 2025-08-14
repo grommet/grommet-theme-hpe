@@ -922,7 +922,12 @@ var buildTheme = function buildTheme(tokens, flags) {
         title: {
           size: 'medium',
           weight: global.hpe.fontWeight.normal,
-          color: 'text-strong'
+          color: 'text-strong',
+          container: {
+            pad: {
+              horizontal: '3xsmall'
+            }
+          }
         }
       },
       medium: {
@@ -950,7 +955,12 @@ var buildTheme = function buildTheme(tokens, flags) {
         title: {
           size: 'large',
           weight: global.hpe.fontWeight.normal,
-          color: 'text-strong'
+          color: 'text-strong',
+          container: {
+            pad: {
+              horizontal: 'xsmall'
+            }
+          }
         }
       },
       large: {
@@ -978,7 +988,12 @@ var buildTheme = function buildTheme(tokens, flags) {
         title: {
           size: 'xlarge',
           weight: global.hpe.fontWeight.normal,
-          color: 'text-strong'
+          color: 'text-strong',
+          container: {
+            pad: {
+              horizontal: 'medium'
+            }
+          }
         }
       }
     },
