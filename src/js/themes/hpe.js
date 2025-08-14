@@ -1844,6 +1844,7 @@ const buildTheme = (tokens, flags) => {
     nameValuePair: {
       name: { color: 'text-strong', weight: global.hpe.fontWeight.medium },
     },
+    nav: {gap: 'medium'},
     notification: {
       close: { icon: Close },
       container: { round: 'xsmall' },
