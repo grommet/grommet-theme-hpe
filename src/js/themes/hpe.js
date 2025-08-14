@@ -1670,6 +1670,7 @@ const buildTheme = (tokens, flags) => {
         label: { margin: { bottom: 'none' }, size: 'medium', weight: 500 },
       },
     },
+    header: { gap: 'medium'},
     heading: {
       color: 'text-heading',
       weight: large.hpe.heading.xlarge.fontWeight,
