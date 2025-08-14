@@ -2090,7 +2090,7 @@ const buildTheme = (tokens, flags) => {
         },
       },
     },
-    paragraph: { ...paragraphTheme },
+    paragraph: { ...paragraphTheme, skeleton: { gap: '3xsmall' } },
     radioButton: {
       border: {
         color: components.hpe.radioButton.default.control.rest.borderColor,
