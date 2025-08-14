@@ -1365,6 +1365,7 @@ const buildTheme = (tokens, flags) => {
         hover: { border: { color: 'border-strong', size: 'small' } },
       },
     },
+    distribution: { gap: '3xsmall' },
     fileInput: {
       border: {
         color:
