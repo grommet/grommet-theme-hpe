@@ -2550,6 +2550,12 @@ const buildTheme = (tokens, flags) => {
       },
       divider: false,
     },
+    toolbar: {
+      gap: 'xsmall',
+      small: {
+        gap: 'xsmall',
+      },
+    },
     video: {
       scrubber: {
         thickness: 'xsmall',
