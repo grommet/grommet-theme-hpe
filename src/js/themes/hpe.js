@@ -1396,6 +1396,22 @@ const buildTheme = (tokens, flags) => {
         hover: { border: { color: 'border-strong', size: 'small' } },
       },
     },
+    dataTableColumns: {
+      tabs: {
+        pad: 'xsmall',
+      },
+      selectColumns: {
+        pad: {
+          vertical: 'xsmall',
+        },
+        gap: '3xsmall',
+      },
+      orderColumns: {
+        pad: {
+          top: 'xsmall',
+        },
+      },
+    },
     fileInput: {
       border: {
         color:
