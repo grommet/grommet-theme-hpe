@@ -1286,6 +1286,9 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       }
     },
+    distribution: {
+      gap: '3xsmall'
+    },
     dataTableColumns: {
       tabs: {
         pad: 'xsmall'
