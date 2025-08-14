@@ -2837,6 +2837,9 @@
       "size": "4.5rem",
       "height": "4.5rem",
       "maxWidth": "30em"
+    },
+    "skeleton": {
+      "gap": "3xsmall"
     }
   },
   "radioButton": {
