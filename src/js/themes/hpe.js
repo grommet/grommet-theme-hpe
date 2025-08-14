@@ -1351,7 +1351,7 @@ const buildTheme = (tokens, flags) => {
         units: {
           color: components.hpe.headerCell.default.units.rest.textColor,
           margin: {
-            left: components.hpe.headerCell.default.medium.gapX, // TO DO
+            left: '3xsmall',
           },
         },
       },
