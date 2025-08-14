@@ -1266,6 +1266,7 @@ const buildTheme = (tokens, flags) => {
       },
       icon: { size: 'small' },
     },
+    dataSummary: {margin: {vertical: '3xsmall'}, separator: {margin: {horizontal: 'xsmall'}}},
     dataTable: {
       body: {
         extend: ({ theme }) => `
