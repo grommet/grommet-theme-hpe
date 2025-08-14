@@ -1159,6 +1159,16 @@ var buildTheme = function buildTheme(tokens, flags) {
         size: 'small'
       }
     },
+    dataSummary: {
+      margin: {
+        vertical: '3xsmall'
+      },
+      separator: {
+        margin: {
+          horizontal: 'xsmall'
+        }
+      }
+    },
     dataTable: {
       body: {
         extend: function extend(_ref14) {
