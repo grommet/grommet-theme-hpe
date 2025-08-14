@@ -24,6 +24,7 @@ import { Hpe } from 'grommet-icons/icons/Hpe';
 
 import { backgrounds } from './backgrounds';
 import { colors } from './colors';
+import { container } from 'webpack';
 
 const baseSpacing = 24;
 
@@ -980,6 +981,11 @@ const buildTheme = (tokens, flags) => {
           size: 'medium',
           weight: global.hpe.fontWeight.normal,
           color: 'text-strong',
+           container: {
+            pad: {
+              horizontal: '3xsmall',
+            },
+          },
         },
       },
       medium: {
@@ -996,6 +1002,11 @@ const buildTheme = (tokens, flags) => {
           size: 'large',
           weight: global.hpe.fontWeight.normal,
           color: 'text-strong',
+           container: {
+            pad: {
+              horizontal: 'xsmall',
+            },
+          },
         },
       },
       large: {
@@ -1012,6 +1023,11 @@ const buildTheme = (tokens, flags) => {
           size: 'xlarge',
           weight: global.hpe.fontWeight.normal,
           color: 'text-strong',
+          container: {
+            pad: {
+              horizontal: 'medium',
+            },
+          },
         },
       },
     },
