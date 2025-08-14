@@ -1264,7 +1264,8 @@ const buildTheme = (tokens, flags) => {
         round:
           components.hpe.formField.default.medium.input.container.borderRadius,
       },
-      icon: { size: 'small' },
+      icon: { size: 'medium' },
+      button: { margin: 'xsmall' }
     },
     dataTable: {
       body: {
