@@ -1285,7 +1285,7 @@ const buildTheme = (tokens, flags) => {
     checkBoxGroup: {
       container: { cssGap: true, gap: 'xsmall', margin: 'none' },
     },
-    data: { button: { kind: 'toolbar' }, drop : {pad: 'xsmall'}},
+    data: { button: { kind: 'toolbar' }, drop: { pad: 'xsmall' } },
     dateInput: {
       container: {
         round:
@@ -2218,7 +2218,7 @@ const buildTheme = (tokens, flags) => {
       edge: {
         size: `${primitives.hpe.base.dimension[600]}`,
       },
-      label: {margin: {horizontal: 'xsmall'}}
+      label: { margin: { horizontal: 'xsmall' } },
     },
     select: {
       clear: {
@@ -2367,7 +2367,7 @@ const buildTheme = (tokens, flags) => {
       },
       margin: { vertical: 'none', horizontal: 'none' },
       extend: 'font-weight: 500;',
-      gap: 'xsmall'
+      gap: 'xsmall',
     },
     tabs: {
       gap: large.hpe.spacing.small,
