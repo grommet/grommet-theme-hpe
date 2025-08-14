@@ -1007,7 +1007,7 @@ const buildTheme = (tokens, flags) => {
           size: 'medium',
           weight: global.hpe.fontWeight.normal,
           color: 'text-strong',
-           container: {
+          container: {
             pad: {
               horizontal: '3xsmall',
             },
@@ -1028,7 +1028,7 @@ const buildTheme = (tokens, flags) => {
           size: 'large',
           weight: global.hpe.fontWeight.normal,
           color: 'text-strong',
-           container: {
+          container: {
             pad: {
               horizontal: 'xsmall',
             },
@@ -1308,7 +1308,7 @@ const buildTheme = (tokens, flags) => {
           components.hpe.formField.default.medium.input.container.borderRadius,
       },
       icon: { size: 'small' },
-      button: { margin: 'xsmall' }
+      button: { margin: 'xsmall' },
     },
     dataSummary: {
       margin: { vertical: '3xsmall' },
@@ -1672,7 +1672,7 @@ const buildTheme = (tokens, flags) => {
         label: { margin: { bottom: 'none' }, size: 'medium', weight: 500 },
       },
     },
-    header: { gap: 'medium'},
+    header: { gap: 'medium' },
     heading: {
       color: 'text-heading',
       weight: large.hpe.heading.xlarge.fontWeight,
@@ -1826,7 +1826,7 @@ const buildTheme = (tokens, flags) => {
           background: 'background-active',
           icon: { pad: mediumIconOnlyPad },
         },
-        gap: 'medium'
+        gap: 'medium',
       },
       primaryKey: { weight: global.hpe.fontWeight.medium },
     },
@@ -2352,7 +2352,7 @@ const buildTheme = (tokens, flags) => {
           }
         `,
       },
-      search: { pad : '3xsmall' },
+      search: { pad: '3xsmall' },
     },
     selectMultiple: {
       listbox: {
