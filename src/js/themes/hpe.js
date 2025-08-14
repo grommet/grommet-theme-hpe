@@ -1350,7 +1350,7 @@ const buildTheme = (tokens, flags) => {
         units: {
           color: components.hpe.headerCell.default.units.rest.textColor,
           margin: {
-            left: components.hpe.headerCell.default.medium.gapX, // TO DO
+            left: '3xsmall',
           },
         },
       },
@@ -2116,7 +2116,7 @@ const buildTheme = (tokens, flags) => {
         ],
         columns: [['medium', 'large'], 'auto'],
         rows: ['auto', 'auto', 'auto'],
-        gap: { row: '3xsmall', column: 'large' },
+        gap: { row: '3xsmall', column: 'xlarge' },
       },
     },
     pagination: {
@@ -2223,7 +2223,6 @@ const buildTheme = (tokens, flags) => {
       color:
         components.hpe.radioButton.default.control.selected.rest.borderColor,
       container: {
-        gap: 'xsmall',
         extend: ({ theme }) => `
           width: auto;
           &:has(input[checked]) {
