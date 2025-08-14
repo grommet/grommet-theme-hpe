@@ -2294,6 +2294,7 @@ const buildTheme = (tokens, flags) => {
         `,
       },
     },
+    sidebar: { gap: 'xlarge', pad: 'xsmall' },
     spinner: {
       container: {
         pad: 'none',
