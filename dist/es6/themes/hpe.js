@@ -1282,6 +1282,22 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       }
     },
+    dataTableColumns: {
+      tabs: {
+        pad: 'xsmall'
+      },
+      selectColumns: {
+        pad: {
+          vertical: 'xsmall'
+        },
+        gap: '3xsmall'
+      },
+      orderColumns: {
+        pad: {
+          top: 'xsmall'
+        }
+      }
+    },
     fileInput: {
       border: {
         color: components.hpe.formField["default"].input.container.rest.borderColor,
