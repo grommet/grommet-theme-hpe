@@ -2522,6 +2522,12 @@ const buildTheme = (tokens, flags) => {
       },
       divider: false,
     },
+    toolbar: {
+      gap: 'xsmall',
+      small: {
+        gap: 'xsmall',
+      },
+    },
     // Theme-Designer only parameters
     name: 'HPE 1',
     rounding: 4,
