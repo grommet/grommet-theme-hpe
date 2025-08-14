@@ -2223,7 +2223,6 @@ const buildTheme = (tokens, flags) => {
       color:
         components.hpe.radioButton.default.control.selected.rest.borderColor,
       container: {
-        gap: 'xsmall',
         extend: ({ theme }) => `
           width: auto;
           &:has(input[checked]) {
