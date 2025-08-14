@@ -1283,7 +1283,7 @@ const buildTheme = (tokens, flags) => {
     `,
     },
     checkBoxGroup: {
-      container: { cssGap: true, gap: 'small', margin: 'none' },
+      container: { cssGap: true, gap: 'xsmall', margin: 'none' },
     },
     data: { button: { kind: 'toolbar' }, drop : {pad: 'xsmall'}},
     dateInput: {
