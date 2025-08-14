@@ -1145,7 +1145,7 @@ const buildTheme = (tokens, flags) => {
           theme,
         )}`,
       },
-      gap: components.hpe.checkbox.default.medium.gapX,
+      gap: { horizontal: 'xsmall' },
       label: { align: 'start' },
       pad: 'none',
       size: components.hpe.checkbox.default.medium.control.width,
@@ -1256,7 +1256,7 @@ const buildTheme = (tokens, flags) => {
     `,
     },
     checkBoxGroup: {
-      container: { cssGap: true, gap: 'small', margin: 'none' },
+      container: { cssGap: true, gap: 'xsmall', margin: 'none' },
     },
     data: { button: { kind: 'toolbar' } },
     dateInput: {
