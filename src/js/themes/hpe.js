@@ -1068,6 +1068,7 @@ const buildTheme = (tokens, flags) => {
       header: { pad: 'medium' },
       hover: { container: { elevation: 'medium' } },
     },
+    cards: { grid: { columns: 'xsmall', gap: 'medium' } },
     carousel: {
       disabled: {
         icons: {
