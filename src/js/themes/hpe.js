@@ -1444,6 +1444,7 @@ const buildTheme = (tokens, flags) => {
       pad: { horizontal: 'xsmall' },
       extend: `border-radius: ${components.hpe.formField.default.medium.input.container.borderRadius};`,
     },
+    footer: { gap: 'medium' },
     formField: {
       extend: ({ theme }) =>
         `
