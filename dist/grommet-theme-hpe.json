@@ -2374,6 +2374,9 @@
       "weight": 500
     }
   },
+  "nav": {
+    "gap": "medium"
+  },
   "notification": {
     "close": {
       "icon": {}

@@ -1712,6 +1712,9 @@ var buildTheme = function buildTheme(tokens, flags) {
         weight: global.hpe.fontWeight.medium
       }
     },
+    nav: {
+      gap: 'medium'
+    },
     notification: {
       close: {
         icon: _Close.Close
