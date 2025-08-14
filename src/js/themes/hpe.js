@@ -2185,6 +2185,7 @@ const buildTheme = (tokens, flags) => {
         }
     `,
     },
+    rangeSelector: { label: {margin: {horizontal: 'xsmall'}}},
     select: {
       clear: {
         container: {
