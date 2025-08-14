@@ -24,7 +24,6 @@ import { Hpe } from 'grommet-icons/icons/Hpe';
 
 import { backgrounds } from './backgrounds';
 import { colors } from './colors';
-import { container } from 'webpack';
 
 const baseSpacing = 24;
 
