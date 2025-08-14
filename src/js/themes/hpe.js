@@ -166,6 +166,9 @@ const buildTheme = (tokens, flags) => {
   } = tokens;
 
   const size = (breakpoint) => ({
+    '5xsmall': breakpoint.hpe.container['5xsmall'],
+    '4xsmall': breakpoint.hpe.container['4xsmall'],
+    '3xsmall': breakpoint.hpe.container['3xsmall'],
     xxsmall: breakpoint.hpe.container.xxsmall,
     xsmall: breakpoint.hpe.container.xsmall,
     small: breakpoint.hpe.container.small,
@@ -173,6 +176,7 @@ const buildTheme = (tokens, flags) => {
     large: breakpoint.hpe.container.large,
     xlarge: breakpoint.hpe.container.xlarge,
     xxlarge: breakpoint.hpe.container.xxlarge,
+    '3xlarge': breakpoint.hpe.container['3xlarge'],
     full: '100%',
   });
 
@@ -186,7 +190,6 @@ const buildTheme = (tokens, flags) => {
             medium: large.hpe.borderWidth.medium,
             default: large.hpe.borderWidth.default,
             large: large.hpe.borderWidth.large,
-            xlarge: large.hpe.borderWidth.xlarge,
           },
           edgeSize: {
             none: large.hpe.spacing.none,
@@ -214,6 +217,7 @@ const buildTheme = (tokens, flags) => {
             large: large.hpe.radius.large,
             xlarge: large.hpe.radius.xlarge,
             xxlarge: large.hpe.radius.xxlarge,
+            full: large.hpe.radius.full,
             responsiveBreakpoint: 'small',
           },
           size: size(large),
@@ -229,17 +233,21 @@ const buildTheme = (tokens, flags) => {
                 medium: small.hpe.borderWidth.medium,
                 default: small.hpe.borderWidth.default,
                 large: small.hpe.borderWidth.large,
-                xlarge: small.hpe.borderWidth.xlarge,
               },
               edgeSize: {
                 none: small.hpe.spacing.none,
                 hair: small.hpe.spacing.hair,
+                '5xsmall': small.hpe.spacing['5xsmall'],
+                '4xsmall': small.hpe.spacing['4xsmall'],
+                '3xsmall': small.hpe.spacing['3xsmall'],
                 xxsmall: small.hpe.spacing.xxsmall,
                 xsmall: small.hpe.spacing.xsmall,
                 small: small.hpe.spacing.small,
                 medium: small.hpe.spacing.medium,
                 large: small.hpe.spacing.large,
                 xlarge: small.hpe.spacing.xlarge,
+                xxlarge: small.hpe.spacing.xxlarge,
+                '3xlarge': small.hpe.spacing['3xlarge'],
                 responsiveBreakpoint: 'small',
               },
               radius: {
@@ -252,6 +260,7 @@ const buildTheme = (tokens, flags) => {
                 large: small.hpe.radius.large,
                 xlarge: small.hpe.radius.xlarge,
                 xxlarge: small.hpe.radius.xxlarge,
+                full: small.hpe.radius.full,
                 responsiveBreakpoint: 'small',
               },
               size: size(small),
@@ -268,17 +277,21 @@ const buildTheme = (tokens, flags) => {
                 medium: small.hpe.borderWidth.medium,
                 default: small.hpe.borderWidth.default,
                 large: small.hpe.borderWidth.large,
-                xlarge: small.hpe.borderWidth.xlarge,
               },
               edgeSize: {
                 none: small.hpe.spacing.none,
                 hair: small.hpe.spacing.hair,
+                '5xsmall': small.hpe.spacing['5xsmall'],
+                '4xsmall': small.hpe.spacing['4xsmall'],
+                '3xsmall': small.hpe.spacing['3xsmall'],
                 xxsmall: small.hpe.spacing.xxsmall,
                 xsmall: small.hpe.spacing.xsmall,
                 small: small.hpe.spacing.small,
                 medium: small.hpe.spacing.medium,
                 large: small.hpe.spacing.large,
                 xlarge: small.hpe.spacing.xlarge,
+                xxlarge: small.hpe.spacing.xxlarge,
+                '3xlarge': small.hpe.spacing['3xlarge'],
                 responsiveBreakpoint: 'small',
               },
               radius: {
@@ -291,6 +304,7 @@ const buildTheme = (tokens, flags) => {
                 large: small.hpe.radius.large,
                 xlarge: small.hpe.radius.xlarge,
                 xxlarge: small.hpe.radius.xxlarge,
+                full: small.hpe.radius.full,
                 responsiveBreakpoint: 'small',
               },
               size: size(small),
@@ -379,11 +393,17 @@ const buildTheme = (tokens, flags) => {
       large.hpe.text?.[textSize]?.fontWeight || fallback.weight;
   });
 
-  textTheme.extend = ({ size: textSize, weight }) =>
-    !weight ? `font-weight: ${fontWeights[textSize]};` : '';
+  textTheme.extend = ({ size: textSize, weight }) => {
+    if (!weight) return `font-weight: ${fontWeights[textSize]};`;
+    if (weight === 'bold') return `font-weight: 500;`;
+    return '';
+  };
 
-  paragraphTheme.extend = ({ size: textSize, weight }) =>
-    !weight ? `font-weight: ${fontWeights[textSize]};` : '';
+  paragraphTheme.extend = ({ size: textSize, weight }) => {
+    if (!weight) return `font-weight: ${fontWeights[textSize]};`;
+    if (weight === 'bold') return `font-weight: 500;`;
+    return '';
+  };
 
   const buttonKindTheme = {};
   buttonKinds.forEach((kind) => {
@@ -714,6 +734,8 @@ const buildTheme = (tokens, flags) => {
       hover: { background: 'background-hover', heading: { color: undefined } },
       border: undefined,
       icons: { collapse: Up, expand: Down, color: 'text' },
+      icon: { container: { pad: { horizontal: 'xsmall' } } },
+      label: { container: { pad: { horizontal: '3xsmall' } } },
     },
     anchor: {
       color: components.hpe.anchor.default.rest.textColor,
@@ -755,6 +777,11 @@ const buildTheme = (tokens, flags) => {
           '4xl': '5xl',
           '5xl': '6xl',
         },
+      },
+    },
+    box: {
+      border: {
+        size: '3xsmall',
       },
     },
     button: {
@@ -1256,15 +1283,19 @@ const buildTheme = (tokens, flags) => {
     `,
     },
     checkBoxGroup: {
-      container: { cssGap: true, gap: 'small', margin: 'none' },
+      container: { cssGap: true, gap: 'xsmall', margin: 'none' },
     },
-    data: { button: { kind: 'toolbar' } },
+    data: { button: { kind: 'toolbar' }, drop: { pad: 'xsmall' } },
     dateInput: {
       container: {
         round:
           components.hpe.formField.default.medium.input.container.borderRadius,
       },
       icon: { size: 'small' },
+    },
+    dataSummary: {
+      margin: { vertical: '3xsmall' },
+      separator: { margin: { horizontal: 'xsmall' } },
     },
     dataTable: {
       body: {
@@ -1366,6 +1397,22 @@ const buildTheme = (tokens, flags) => {
       },
     },
     distribution: { gap: '3xsmall' },
+    dataTableColumns: {
+      tabs: {
+        pad: 'xsmall',
+      },
+      selectColumns: {
+        pad: {
+          vertical: 'xsmall',
+        },
+        gap: '3xsmall',
+      },
+      orderColumns: {
+        pad: {
+          top: 'xsmall',
+        },
+      },
+    },
     fileInput: {
       border: {
         color:
@@ -1723,7 +1770,7 @@ const buildTheme = (tokens, flags) => {
           },
         },
       },
-      extend: () => '',
+      extend: ({ weight }) => (weight === 'bold' ? 'font-weight: 500;' : ''),
     },
     icon: {
       disableScaleDown: true,
@@ -1818,12 +1865,17 @@ const buildTheme = (tokens, flags) => {
     nameValuePair: {
       name: { color: 'text-strong', weight: global.hpe.fontWeight.medium },
     },
+    nav: { gap: 'medium' },
     notification: {
       close: { icon: Close },
       container: { round: 'xsmall' },
       direction: 'column',
       global: { direction: 'row', container: { round: 'none' } },
-      message: { color: 'text', fill: true },
+      message: {
+        color: 'text',
+        fill: true,
+        text: { margin: { right: '3xsmall' } },
+      },
       title: {
         // any text props
         color: 'text-strong',
@@ -1924,6 +1976,8 @@ const buildTheme = (tokens, flags) => {
           title: { color: 'text-strong' },
         },
       },
+      actions: { margin: { right: '3xsmall' } },
+      gap: 'xsmall',
     },
     page: {
       wide: {
@@ -2064,7 +2118,7 @@ const buildTheme = (tokens, flags) => {
         },
       },
     },
-    paragraph: { ...paragraphTheme },
+    paragraph: { ...paragraphTheme, skeleton: { gap: '3xsmall' } },
     radioButton: {
       border: {
         color: components.hpe.radioButton.default.control.rest.borderColor,
@@ -2125,17 +2179,19 @@ const buildTheme = (tokens, flags) => {
       icons: {
         circle: () => (
           <Blank
+            preserveAspectRatio="xMidYMid meet" // Forces uniform scaling. Part of grommet code but lost when passing custom icon.
             color={
               components.hpe.radioButton.default.control.selected.rest.iconColor
             }
+            size={components.hpe.radioButton.default.medium.control.width} // width and height are identical, so choosing one.
           >
-            <circle cx="12" cy="12" r="8" />
+            <circle cx={12} cy={12} r={6} />
           </Blank>
         ),
       },
     },
     radioButtonGroup: {
-      container: { cssGap: true, gap: 'small', margin: 'none' },
+      container: { cssGap: true, gap: 'xsmall', margin: 'none' },
     },
     rangeInput: {
       thumb: {
@@ -2186,42 +2242,42 @@ const buildTheme = (tokens, flags) => {
         }
     `,
     },
+    rangeSelector: {
+      edge: {
+        size: `${primitives.hpe.base.dimension[600]}`,
+      },
+      label: { margin: { horizontal: 'xsmall' } },
+    },
     select: {
       clear: {
         container: {
-          background: undefined,
-          pad: { horizontal: '12px', vertical: '6px' },
-          hover: { background: 'background-hover' },
-          round: 'xsmall',
+          pad: components.hpe.select.default.medium.drop.paddingX,
         },
-        text: {
-          color: components.hpe.button.default.rest.textColor,
-          weight: components.hpe.button.default.rest.fontWeight,
+        text: undefined,
+        button: {
+          border: {
+            radius: components.hpe.select.default.medium.option.borderRadius,
+            size: components.hpe.select.default.medium.option.borderWidth,
+          },
+          padding: {
+            horizontal: components.hpe.select.default.medium.option.paddingX,
+            vertical: components.hpe.select.default.medium.option.paddingY,
+          },
+          hover: {
+            background: components.hpe.select.default.option.hover.background,
+            color: 'text-strong',
+          },
+          color: 'text-strong',
+          font: {
+            weight: components.hpe.select.default.option.rest.fontWeight,
+          },
         },
       },
       container: {
-        // Applying spacing on Select "Clear selection" button, then placing focus styles on the inner container div
-        extend: ({ theme }) =>
+        extend: () =>
           `
           div:has(input[type="search"]) {
             padding-bottom: 0;
-          }
-          button[aria-label*="Or, press"] {
-            padding-block: ${
-              components.hpe.select.default.medium.drop.paddingY
-            };
-            padding-inline: ${
-              components.hpe.select.default.medium.drop.paddingX
-            };
-            &:focus {
-              background: transparent;
-              > div {
-                background: ${getThemeColor(
-                  components.hpe.button.default.hover.background,
-                  theme,
-                )};
-              }
-            }
           }
         `,
       },
@@ -2295,6 +2351,7 @@ const buildTheme = (tokens, flags) => {
         `,
       },
     },
+    sidebar: { gap: 'xlarge', pad: 'xsmall' },
     spinner: {
       container: {
         pad: 'none',
@@ -2339,6 +2396,7 @@ const buildTheme = (tokens, flags) => {
       },
       margin: { vertical: 'none', horizontal: 'none' },
       extend: 'font-weight: 500;',
+      gap: 'xsmall',
     },
     tabs: {
       gap: large.hpe.spacing.small,
@@ -2365,6 +2423,8 @@ const buildTheme = (tokens, flags) => {
               background: ${getThemeColor('border-selected', theme)};
             }
         }`,
+        previousButton: { pad: { vertical: '3xsmall', horizontal: 'xsmall' } },
+        nextButton: { pad: { vertical: '3xsmall', horizontal: 'xsmall' } },
       },
       step: { xsmall: 1, xlarge: 3 },
     },
@@ -2498,7 +2558,7 @@ const buildTheme = (tokens, flags) => {
       content: {
         background: 'background-floating',
         border: { color: 'border-weak' },
-        margin: 'xxsmall',
+        margin: '3xsmall',
         elevation: 'small',
         pad: { vertical: 'none', horizontal: 'small' },
         round: components.hpe.drop.default.borderRadius,
@@ -2523,6 +2583,22 @@ const buildTheme = (tokens, flags) => {
       },
       divider: false,
     },
+    toolbar: {
+      gap: 'xsmall',
+      small: {
+        gap: 'xsmall',
+      },
+    },
+    video: {
+      scrubber: {
+        thickness: 'xsmall',
+      },
+      time: {
+        container: {
+          pad: { horizontal: 'xsmall' },
+        },
+      },
+    },
     // Theme-Designer only parameters
     name: 'HPE 1',
     rounding: 4,
@@ -2544,6 +2620,6 @@ export const hpe = buildTheme(
   {
     // For grommet-theme-hpe v6.0.0, maintain backwards compatibility
     // with old t-shirt sizes
-    'v6-backwards-compatibility': true,
+    'v6-backwards-compatibility': false,
   },
 );
