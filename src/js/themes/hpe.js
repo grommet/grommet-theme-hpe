@@ -2110,7 +2110,7 @@ const buildTheme = (tokens, flags) => {
           }
           `,
       },
-      gap: components.hpe.radioButton.default.medium.gapX,
+      gap: {horizontal: 'xsmall'},
       hover: {
         background: { color: 'transparent' },
         border: {
@@ -2134,7 +2134,7 @@ const buildTheme = (tokens, flags) => {
       },
     },
     radioButtonGroup: {
-      container: { cssGap: true, gap: 'small', margin: 'none' },
+      container: { cssGap: true, gap: 'xsmall', margin: 'none' },
     },
     rangeInput: {
       thumb: {
