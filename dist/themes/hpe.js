@@ -2506,6 +2506,18 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       divider: false
     },
+    video: {
+      scrubber: {
+        thickness: 'xsmall'
+      },
+      time: {
+        container: {
+          pad: {
+            horizontal: 'xsmall'
+          }
+        }
+      }
+    },
     // Theme-Designer only parameters
     name: 'HPE 1',
     rounding: 4,
