@@ -1145,7 +1145,7 @@ const buildTheme = (tokens, flags) => {
           theme,
         )}`,
       },
-      gap: { horizontal: 'xsmall' },
+      gap: components.hpe.checkbox.default.medium.gapX,
       label: { align: 'start' },
       pad: 'none',
       size: components.hpe.checkbox.default.medium.control.width,
