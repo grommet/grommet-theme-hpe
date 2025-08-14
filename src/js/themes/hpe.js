@@ -2110,7 +2110,7 @@ const buildTheme = (tokens, flags) => {
           }
           `,
       },
-      gap: {horizontal: 'xsmall'},
+      gap: components.hpe.radioButton.default.medium.gapX,
       hover: {
         background: { color: 'transparent' },
         border: {
