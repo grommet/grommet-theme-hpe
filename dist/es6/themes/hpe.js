@@ -1021,6 +1021,12 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       }
     },
+    cards: {
+      grid: {
+        columns: 'xsmall',
+        gap: 'medium'
+      }
+    },
     carousel: {
       disabled: {
         icons: {
@@ -1172,6 +1178,9 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       icon: {
         size: 'small'
+      },
+      button: {
+        margin: 'xsmall'
       }
     },
     dataSummary: {
@@ -1511,6 +1520,9 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       }
     },
+    header: {
+      gap: 'medium'
+    },
     heading: {
       color: 'text-heading',
       weight: large.hpe.heading.xlarge.fontWeight,
@@ -1695,7 +1707,8 @@ var buildTheme = function buildTheme(tokens, flags) {
           icon: {
             pad: mediumIconOnlyPad
           }
-        }
+        },
+        gap: 'medium'
       },
       primaryKey: {
         weight: global.hpe.fontWeight.medium
@@ -2312,6 +2325,9 @@ var buildTheme = function buildTheme(tokens, flags) {
         extend: function extend() {
           return "\n          padding-top: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          display: flex;\n          flex-direction: column;\n          gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n          [role=\"option\"] {\n            border-radius: " + components.hpe.select["default"].medium.option.borderRadius + ";\n          }\n        ";
         }
+      },
+      search: {
+        pad: '3xsmall'
       }
     },
     selectMultiple: {

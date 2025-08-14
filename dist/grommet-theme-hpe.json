@@ -1863,6 +1863,12 @@
       }
     }
   },
+  "cards": {
+    "grid": {
+      "columns": "xsmall",
+      "gap": "medium"
+    }
+  },
   "carousel": {
     "disabled": {
       "icons": {
@@ -1921,6 +1927,9 @@
     },
     "icon": {
       "size": "small"
+    },
+    "button": {
+      "margin": "xsmall"
     }
   },
   "dataSummary": {
@@ -2191,6 +2200,9 @@
       }
     }
   },
+  "header": {
+    "gap": "medium"
+  },
   "heading": {
     "color": "text-heading",
     "weight": 400,
@@ -2366,7 +2378,8 @@
             "horizontal": "8px"
           }
         }
-      }
+      },
+      "gap": "medium"
     },
     "primaryKey": {
       "weight": 500
@@ -3019,7 +3032,10 @@
       },
       "up": {}
     },
-    "listbox": {}
+    "listbox": {},
+    "search": {
+      "pad": "3xsmall"
+    }
   },
   "selectMultiple": {
     "listbox": {}
