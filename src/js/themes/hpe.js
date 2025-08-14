@@ -1311,7 +1311,6 @@ const buildTheme = (tokens, flags) => {
       header: {
         border: { side: 'bottom' },
         color: components.hpe.headerCell.default.rest.textColor,
-        pad: { vertical: '3xsmall' },
         extend: ({ column, sort, sortable, theme }) =>
           `
             ${
@@ -1868,6 +1867,7 @@ const buildTheme = (tokens, flags) => {
         pad: { horizontal: 'xsmall', vertical: '3xsmall' },
       },
       direction: 'column',
+      gap: 'xsmall',
       global: {
         direction: 'row',
         container: {
