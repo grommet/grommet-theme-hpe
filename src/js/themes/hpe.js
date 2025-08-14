@@ -1822,7 +1822,7 @@ const buildTheme = (tokens, flags) => {
       container: { round: 'xsmall' },
       direction: 'column',
       global: { direction: 'row', container: { round: 'none' } },
-      message: { color: 'text', fill: true },
+      message: { color: 'text', fill: true, text: { margin: { right: '3xsmall' } } },
       title: {
         // any text props
         color: 'text-strong',
@@ -1923,6 +1923,8 @@ const buildTheme = (tokens, flags) => {
           title: { color: 'text-strong' },
         },
       },
+      actions: { margin: { right: '3xsmall' } },
+      gap: 'xsmall',
     },
     page: {
       wide: {
