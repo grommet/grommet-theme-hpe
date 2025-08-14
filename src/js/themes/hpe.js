@@ -734,7 +734,7 @@ const buildTheme = (tokens, flags) => {
       hover: { background: 'background-hover', heading: { color: undefined } },
       border: undefined,
       icons: { collapse: Up, expand: Down, color: 'text' },
-      icon: { container: { pad: { horizontal: 'xsmall'} } },
+      icon: { container: { pad: { horizontal: 'xsmall' } } },
       label: { container: { pad: { horizontal: '3xsmall' } } },
     },
     anchor: {
@@ -2550,15 +2550,15 @@ const buildTheme = (tokens, flags) => {
       },
       divider: false,
     },
-    video:{
+    video: {
       scrubber: {
         thickness: 'xsmall',
       },
       time: {
         container: {
-          pad: { horizontal: 'xsmall'}
-        }
-      }
+          pad: { horizontal: 'xsmall' },
+        },
+      },
     },
     // Theme-Designer only parameters
     name: 'HPE 1',
