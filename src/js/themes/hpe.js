@@ -1751,6 +1751,7 @@ const buildTheme = (tokens, flags) => {
         // any box props
         gap: 'xsmall',
         // extend: undefined,
+        item: { gap: 'medium'}
       },
       item: {
         border: undefined,
