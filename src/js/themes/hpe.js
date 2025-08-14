@@ -2218,6 +2218,7 @@ const buildTheme = (tokens, flags) => {
       edge: {
         size: `${primitives.hpe.base.dimension[600]}`,
       },
+      label: {margin: {horizontal: 'xsmall'}}
     },
     select: {
       clear: {
