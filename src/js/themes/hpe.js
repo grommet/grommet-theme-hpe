@@ -1259,6 +1259,15 @@ const buildTheme = (tokens, flags) => {
       container: { cssGap: true, gap: 'small', margin: 'none' },
     },
     data: { button: { kind: 'toolbar' } },
+    dataFilter: {
+      rangeSelector: {
+        size: 'full',
+        round: 'xsmall',
+      },
+      selectMultiple: {
+        dropHeight: 'medium'
+      }
+    },
     dateInput: {
       container: {
         round:
