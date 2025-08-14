@@ -202,8 +202,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       small: large.hpe.borderWidth.small,
       medium: large.hpe.borderWidth.medium,
       "default": large.hpe.borderWidth["default"],
-      large: large.hpe.borderWidth.large,
-      xlarge: large.hpe.borderWidth.xlarge
+      large: large.hpe.borderWidth.large
     },
     edgeSize: {
       none: large.hpe.spacing.none,
@@ -231,6 +230,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       large: large.hpe.radius.large,
       xlarge: large.hpe.radius.xlarge,
       xxlarge: large.hpe.radius.xxlarge,
+      full: large.hpe.radius.full,
       responsiveBreakpoint: 'small'
     },
     size: size(large)
@@ -242,18 +242,22 @@ var buildTheme = function buildTheme(tokens, flags) {
           small: small.hpe.borderWidth.small,
           medium: small.hpe.borderWidth.medium,
           "default": small.hpe.borderWidth["default"],
-          large: small.hpe.borderWidth.large,
-          xlarge: small.hpe.borderWidth.xlarge
+          large: small.hpe.borderWidth.large
         },
         edgeSize: {
           none: small.hpe.spacing.none,
           hair: small.hpe.spacing.hair,
+          '5xsmall': small.hpe.spacing['5xsmall'],
+          '4xsmall': small.hpe.spacing['4xsmall'],
+          '3xsmall': small.hpe.spacing['3xsmall'],
           xxsmall: small.hpe.spacing.xxsmall,
           xsmall: small.hpe.spacing.xsmall,
           small: small.hpe.spacing.small,
           medium: small.hpe.spacing.medium,
           large: small.hpe.spacing.large,
           xlarge: small.hpe.spacing.xlarge,
+          xxlarge: small.hpe.spacing.xxlarge,
+          '3xlarge': small.hpe.spacing['3xlarge'],
           responsiveBreakpoint: 'small'
         },
         radius: {
@@ -266,6 +270,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           large: small.hpe.radius.large,
           xlarge: small.hpe.radius.xlarge,
           xxlarge: small.hpe.radius.xxlarge,
+          full: small.hpe.radius.full,
           responsiveBreakpoint: 'small'
         },
         size: size(small)
@@ -278,18 +283,22 @@ var buildTheme = function buildTheme(tokens, flags) {
           small: small.hpe.borderWidth.small,
           medium: small.hpe.borderWidth.medium,
           "default": small.hpe.borderWidth["default"],
-          large: small.hpe.borderWidth.large,
-          xlarge: small.hpe.borderWidth.xlarge
+          large: small.hpe.borderWidth.large
         },
         edgeSize: {
           none: small.hpe.spacing.none,
           hair: small.hpe.spacing.hair,
+          '5xsmall': small.hpe.spacing['5xsmall'],
+          '4xsmall': small.hpe.spacing['4xsmall'],
+          '3xsmall': small.hpe.spacing['3xsmall'],
           xxsmall: small.hpe.spacing.xxsmall,
           xsmall: small.hpe.spacing.xsmall,
           small: small.hpe.spacing.small,
           medium: small.hpe.spacing.medium,
           large: small.hpe.spacing.large,
           xlarge: small.hpe.spacing.xlarge,
+          xxlarge: small.hpe.spacing.xxlarge,
+          '3xlarge': small.hpe.spacing['3xlarge'],
           responsiveBreakpoint: 'small'
         },
         radius: {
@@ -302,6 +311,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           large: small.hpe.radius.large,
           xlarge: small.hpe.radius.xlarge,
           xxlarge: small.hpe.radius.xxlarge,
+          full: small.hpe.radius.full,
           responsiveBreakpoint: 'small'
         },
         size: size(small)

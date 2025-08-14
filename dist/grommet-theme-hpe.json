@@ -56,6 +56,7 @@
       "large": "16px",
       "xlarge": "24px",
       "xxlarge": "32px",
+      "full": "9999px",
       "responsiveBreakpoint": "small"
     },
     "size": {
@@ -84,12 +85,17 @@
         "edgeSize": {
           "none": "0px",
           "hair": "1px",
+          "5xsmall": "3px",
+          "4xsmall": "3px",
+          "3xsmall": "3px",
           "xxsmall": "4px",
           "xsmall": "6px",
           "small": "8px",
           "medium": "12px",
           "large": "16px",
           "xlarge": "24px",
+          "xxlarge": "32px",
+          "3xlarge": "48px",
           "responsiveBreakpoint": "small"
         },
         "radius": {
@@ -102,6 +108,7 @@
           "large": "12px",
           "xlarge": "16px",
           "xxlarge": "24px",
+          "full": "9999px",
           "responsiveBreakpoint": "small"
         },
         "size": {
@@ -131,12 +138,17 @@
         "edgeSize": {
           "none": "0px",
           "hair": "1px",
+          "5xsmall": "3px",
+          "4xsmall": "3px",
+          "3xsmall": "3px",
           "xxsmall": "4px",
           "xsmall": "6px",
           "small": "8px",
           "medium": "12px",
           "large": "16px",
           "xlarge": "24px",
+          "xxlarge": "32px",
+          "3xlarge": "48px",
           "responsiveBreakpoint": "small"
         },
         "radius": {
@@ -149,6 +161,7 @@
           "large": "12px",
           "xlarge": "16px",
           "xxlarge": "24px",
+          "full": "9999px",
           "responsiveBreakpoint": "small"
         },
         "size": {
