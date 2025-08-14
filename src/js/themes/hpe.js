@@ -734,6 +734,8 @@ const buildTheme = (tokens, flags) => {
       hover: { background: 'background-hover', heading: { color: undefined } },
       border: undefined,
       icons: { collapse: Up, expand: Down, color: 'text' },
+      icon: { container: { pad: { horizontal: 'xsmall' } } },
+      label: { container: { pad: { horizontal: '3xsmall' } } },
     },
     anchor: {
       color: components.hpe.anchor.default.rest.textColor,
@@ -775,6 +777,11 @@ const buildTheme = (tokens, flags) => {
           '4xl': '5xl',
           '5xl': '6xl',
         },
+      },
+    },
+    box: {
+      border: {
+        size: '3xsmall',
       },
     },
     button: {
@@ -1000,6 +1007,11 @@ const buildTheme = (tokens, flags) => {
           size: 'medium',
           weight: global.hpe.fontWeight.normal,
           color: 'text-strong',
+          container: {
+            pad: {
+              horizontal: '3xsmall',
+            },
+          },
         },
       },
       medium: {
@@ -1016,6 +1028,11 @@ const buildTheme = (tokens, flags) => {
           size: 'large',
           weight: global.hpe.fontWeight.normal,
           color: 'text-strong',
+          container: {
+            pad: {
+              horizontal: 'xsmall',
+            },
+          },
         },
       },
       large: {
@@ -1032,6 +1049,11 @@ const buildTheme = (tokens, flags) => {
           size: 'xlarge',
           weight: global.hpe.fontWeight.normal,
           color: 'text-strong',
+          container: {
+            pad: {
+              horizontal: 'medium',
+            },
+          },
         },
       },
     },
@@ -1047,11 +1069,7 @@ const buildTheme = (tokens, flags) => {
       header: { pad: 'medium' },
       hover: { container: { elevation: 'medium' } },
     },
-    cards: {
-      container: {
-        gap: '3xsmall',
-      },
-    },
+    cards: { grid: { columns: 'xsmall', gap: 'medium' } },
     carousel: {
       disabled: {
         icons: {
@@ -1284,13 +1302,18 @@ const buildTheme = (tokens, flags) => {
     checkBoxGroup: {
       container: { cssGap: true, gap: 'xsmall', margin: 'none' },
     },
-    data: { button: { kind: 'toolbar' } },
+    data: { button: { kind: 'toolbar' }, drop: { pad: 'xsmall' } },
     dateInput: {
       container: {
         round:
           components.hpe.formField.default.medium.input.container.borderRadius,
       },
       icon: { size: 'small' },
+      button: { margin: 'xsmall' },
+    },
+    dataSummary: {
+      margin: { vertical: '3xsmall' },
+      separator: { margin: { horizontal: 'xsmall' } },
     },
     dataTable: {
       body: {
@@ -1394,6 +1417,23 @@ const buildTheme = (tokens, flags) => {
         hover: { border: { color: 'border-strong', size: 'small' } },
       },
     },
+    distribution: { gap: '3xsmall' },
+    dataTableColumns: {
+      tabs: {
+        pad: 'xsmall',
+      },
+      selectColumns: {
+        pad: {
+          vertical: 'xsmall',
+        },
+        gap: '3xsmall',
+      },
+      orderColumns: {
+        pad: {
+          top: 'xsmall',
+        },
+      },
+    },
     fileInput: {
       border: {
         color:
@@ -1425,6 +1465,7 @@ const buildTheme = (tokens, flags) => {
       pad: { horizontal: '3xsmall' },
       extend: `border-radius: ${components.hpe.formField.default.medium.input.container.borderRadius};`,
     },
+    footer: { gap: 'medium' },
     formField: {
       extend: ({ theme }) =>
         `
@@ -1635,6 +1676,7 @@ const buildTheme = (tokens, flags) => {
         label: { margin: { bottom: 'none' }, size: 'medium', weight: 500 },
       },
     },
+    header: { gap: 'medium' },
     heading: {
       color: 'text-heading',
       weight: large.hpe.heading.xlarge.fontWeight,
@@ -1789,6 +1831,7 @@ const buildTheme = (tokens, flags) => {
           icon: { pad: mediumIconOnlyPad },
         },
         pad: { horizontal: 'medium', vertical: 'xsmall' },
+        gap: 'medium',
       },
       primaryKey: { weight: global.hpe.fontWeight.medium },
     },
@@ -1870,6 +1913,7 @@ const buildTheme = (tokens, flags) => {
       },
       name: { color: 'text-strong', weight: global.hpe.fontWeight.medium },
     },
+    nav: { gap: 'medium' },
     notification: {
       close: { icon: Close },
       container: {
@@ -1895,7 +1939,11 @@ const buildTheme = (tokens, flags) => {
         // any box props
         gap: 'medium',
       },
-      message: { color: 'text', fill: true },
+      message: {
+        color: 'text',
+        fill: true,
+        text: { margin: { right: '3xsmall' } },
+      },
       title: {
         // any text props
         color: 'text-strong',
@@ -1996,6 +2044,7 @@ const buildTheme = (tokens, flags) => {
           title: { color: 'text-strong' },
         },
       },
+      actions: { margin: { right: '3xsmall' } },
     },
     page: {
       wide: {
@@ -2218,7 +2267,7 @@ const buildTheme = (tokens, flags) => {
         gap: '5xsmall',
       },
     },
-    paragraph: { ...paragraphTheme },
+    paragraph: { ...paragraphTheme, skeleton: { gap: '3xsmall' } },
     radioButton: {
       border: {
         color: components.hpe.radioButton.default.control.rest.borderColor,
@@ -2346,6 +2395,7 @@ const buildTheme = (tokens, flags) => {
       edge: {
         size: `${primitives.hpe.base.dimension[600]}`,
       },
+      label: { margin: { horizontal: 'xsmall' } },
     },
     select: {
       clear: {
@@ -2432,6 +2482,7 @@ const buildTheme = (tokens, flags) => {
           }
         `,
       },
+      search: { pad: '3xsmall' },
     },
     selectMultiple: {
       listbox: {
@@ -2451,6 +2502,7 @@ const buildTheme = (tokens, flags) => {
         `,
       },
     },
+    sidebar: { gap: 'xlarge', pad: 'xsmall' },
     spinner: {
       container: {
         pad: 'none',
@@ -2495,6 +2547,7 @@ const buildTheme = (tokens, flags) => {
       },
       margin: { vertical: 'none', horizontal: 'none' },
       extend: 'font-weight: 500;',
+      gap: 'xsmall',
     },
     tabs: {
       gap: 'xsmall',
@@ -2521,6 +2574,8 @@ const buildTheme = (tokens, flags) => {
               background: ${getThemeColor('border-selected', theme)};
             }
         }`,
+        previousButton: { pad: { vertical: '3xsmall', horizontal: 'xsmall' } },
+        nextButton: { pad: { vertical: '3xsmall', horizontal: 'xsmall' } },
       },
       step: { xsmall: 1, xlarge: 3 },
     },
@@ -2698,6 +2753,22 @@ const buildTheme = (tokens, flags) => {
         }`,
       },
       divider: false,
+    },
+    toolbar: {
+      gap: 'xsmall',
+      small: {
+        gap: 'xsmall',
+      },
+    },
+    video: {
+      scrubber: {
+        thickness: 'xsmall',
+      },
+      time: {
+        container: {
+          pad: { horizontal: 'xsmall' },
+        },
+      },
     },
     // Theme-Designer only parameters
     name: 'HPE 1',
