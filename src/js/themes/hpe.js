@@ -1823,6 +1823,7 @@ const buildTheme = (tokens, flags) => {
           background: 'background-active',
           icon: { pad: mediumIconOnlyPad },
         },
+        gap: 'medium'
       },
       primaryKey: { weight: global.hpe.fontWeight.medium },
     },
