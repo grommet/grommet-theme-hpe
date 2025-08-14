@@ -851,6 +851,20 @@
       "collapse": {},
       "expand": {},
       "color": "text"
+    },
+    "icon": {
+      "container": {
+        "pad": {
+          "horizontal": "xsmall"
+        }
+      }
+    },
+    "label": {
+      "container": {
+        "pad": {
+          "horizontal": "3xsmall"
+        }
+      }
     }
   },
   "anchor": {

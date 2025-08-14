@@ -670,6 +670,20 @@ var buildTheme = function buildTheme(tokens, flags) {
         collapse: _Up.Up,
         expand: _Down.Down,
         color: 'text'
+      },
+      icon: {
+        container: {
+          pad: {
+            horizontal: 'xsmall'
+          }
+        }
+      },
+      label: {
+        container: {
+          pad: {
+            horizontal: '3xsmall'
+          }
+        }
       }
     },
     anchor: {
