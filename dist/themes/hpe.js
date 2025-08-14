@@ -1728,7 +1728,12 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       message: {
         color: 'text',
-        fill: true
+        fill: true,
+        text: {
+          margin: {
+            right: '3xsmall'
+          }
+        }
       },
       title: {
         // any text props
@@ -1901,7 +1906,13 @@ var buildTheme = function buildTheme(tokens, flags) {
             color: 'text-strong'
           }
         }
-      }
+      },
+      actions: {
+        margin: {
+          right: '3xsmall'
+        }
+      },
+      gap: 'xsmall'
     },
     page: {
       wide: {

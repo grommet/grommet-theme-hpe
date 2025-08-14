@@ -2390,7 +2390,12 @@
     },
     "message": {
       "color": "text",
-      "fill": true
+      "fill": true,
+      "text": {
+        "margin": {
+          "right": "3xsmall"
+        }
+      }
     },
     "title": {
       "color": "text-strong",
@@ -2562,7 +2567,13 @@
           "color": "text-strong"
         }
       }
-    }
+    },
+    "actions": {
+      "margin": {
+        "right": "3xsmall"
+      }
+    },
+    "gap": "xsmall"
   },
   "page": {
     "wide": {
