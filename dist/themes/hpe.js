@@ -1150,6 +1150,9 @@ var buildTheme = function buildTheme(tokens, flags) {
     data: {
       button: {
         kind: 'toolbar'
+      },
+      drop: {
+        pad: 'xsmall'
       }
     },
     dateInput: {

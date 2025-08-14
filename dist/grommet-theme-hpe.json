@@ -1895,6 +1895,9 @@
   "data": {
     "button": {
       "kind": "toolbar"
+    },
+    "drop": {
+      "pad": "xsmall"
     }
   },
   "dateInput": {
