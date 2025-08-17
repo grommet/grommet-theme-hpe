@@ -234,7 +234,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       large: large.hpe.radius.large,
       xlarge: large.hpe.radius.xlarge,
       xxlarge: large.hpe.radius.xxlarge,
-      full: large.hpe.radius.full,
+      // full: large.hpe.radius.full,
       responsiveBreakpoint: 'small'
     },
     size: size(large)
@@ -274,7 +274,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           large: small.hpe.radius.large,
           xlarge: small.hpe.radius.xlarge,
           xxlarge: small.hpe.radius.xxlarge,
-          full: small.hpe.radius.full,
+          // full: small.hpe.radius.full,
           responsiveBreakpoint: 'small'
         },
         size: size(small)
@@ -315,7 +315,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           large: small.hpe.radius.large,
           xlarge: small.hpe.radius.xlarge,
           xxlarge: small.hpe.radius.xxlarge,
-          full: small.hpe.radius.full,
+          // full: small.hpe.radius.full,
           responsiveBreakpoint: 'small'
         },
         size: size(small)

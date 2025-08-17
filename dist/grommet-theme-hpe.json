@@ -56,7 +56,6 @@
       "large": "16px",
       "xlarge": "24px",
       "xxlarge": "32px",
-      "full": "9999px",
       "responsiveBreakpoint": "small"
     },
     "size": {
@@ -108,7 +107,6 @@
           "large": "12px",
           "xlarge": "16px",
           "xxlarge": "24px",
-          "full": "9999px",
           "responsiveBreakpoint": "small"
         },
         "size": {
@@ -161,7 +159,6 @@
           "large": "12px",
           "xlarge": "16px",
           "xxlarge": "24px",
-          "full": "9999px",
           "responsiveBreakpoint": "small"
         },
         "size": {
