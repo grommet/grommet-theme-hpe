@@ -2176,7 +2176,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       xsmall: {
         areas: [['parent', 'parent'], ['title', 'actions'], ['subtitle', 'actions']],
-        columns: [['small', 'flex'], 'auto'],
+        columns: [['xsmall', 'flex'], 'auto'],
         rows: ['auto', 'auto', 'auto'],
         gap: {
           row: '3xsmall',
@@ -2184,18 +2184,27 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       small: {
+        areas: [['parent', 'parent'], ['title', 'actions'], ['subtitle', 'actions']],
+        columns: [['xsmall', 'flex'], 'auto'],
+        rows: ['auto', 'auto', 'auto'],
         gap: {
           row: '3xsmall',
           column: 'xlarge'
         }
       },
       medium: {
+        areas: [['parent', 'parent'], ['title', 'actions'], ['subtitle', 'actions']],
+        columns: [['medium', 'flex'], 'auto'],
+        rows: ['auto', 'auto', 'auto'],
         gap: {
           row: '3xsmall',
           column: 'medium'
         }
       },
       large: {
+        areas: [['parent', 'parent'], ['title', 'actions'], ['subtitle', 'actions']],
+        columns: [['medium', 'flex'], 'auto'],
+        rows: ['auto', 'auto', 'auto'],
         gap: {
           row: '3xsmall',
           column: 'xlarge'
