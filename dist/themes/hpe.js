@@ -1172,9 +1172,15 @@ var buildTheme = function buildTheme(tokens, flags) {
     data: {
       button: {
         kind: 'toolbar'
+      }
+    },
+    dataFilter: {
+      rangeSelector: {
+        size: 'full',
+        round: 'medium'
       },
-      drop: {
-        pad: 'xsmall'
+      selectMultiple: {
+        dropHeight: 'medium'
       }
     },
     dateInput: {
