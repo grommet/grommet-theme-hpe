@@ -20,7 +20,7 @@
     "url": "https://github.com/grommet/grommet-theme-hpe.git"
   },
   "peerDependencies": {
-    "grommet": "^2.45.1",
+    "grommet": "^2.47.0",
     "grommet-icons": "^4.12.4",
     "react": "^16.13.1 || ^17.0.1 || ^18.0.0 || ^19.0.0",
     "styled-components": "^5.0.0 || ^6.0.0"
@@ -59,7 +59,6 @@
     "webpack-cli": "^5.1.4"
   },
   "scripts": {
-    "prepublishOnly": "npm run build && npm run jsonify",
     "build": "webpack --mode production && cross-env babel ./src/js/ --out-dir ./dist --copy-files && cross-env BABEL_ENV=es6 babel ./src/js/ --out-dir ./dist/es6 --copy-files",
     "lint": "eslint src",
     "lint-fix": "eslint src --fix",
