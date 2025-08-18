@@ -1309,8 +1309,8 @@ const buildTheme = (tokens, flags) => {
         round: 'medium',
       },
       selectMultiple: {
-        dropHeight: 'medium'
-      }
+        dropHeight: 'medium',
+      },
     },
     dateInput: {
       container: {
