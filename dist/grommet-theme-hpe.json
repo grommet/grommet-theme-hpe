@@ -1914,6 +1914,9 @@
   "data": {
     "button": {
       "kind": "toolbar"
+    },
+    "toolbar": {
+      "gap": "medium"
     }
   },
   "dataFilter": {
@@ -1923,6 +1926,25 @@
     },
     "selectMultiple": {
       "dropHeight": "medium"
+    }
+  },
+  "dataFilters": {
+    "clearControl": {
+      "margin": {
+        "start": "xsmall"
+      }
+    },
+    "footer": {
+      "actions": {
+        "margin": {
+          "top": "medium"
+        },
+        "gap": "xsmall"
+      }
+    },
+    "pad": "medium",
+    "width": {
+      "min": "medium"
     }
   },
   "dateInput": {

@@ -1168,6 +1168,9 @@ var buildTheme = function buildTheme(tokens, flags) {
     data: {
       button: {
         kind: 'toolbar'
+      },
+      toolbar: {
+        gap: 'medium'
       }
     },
     dataFilter: {
@@ -1177,6 +1180,25 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       selectMultiple: {
         dropHeight: 'medium'
+      }
+    },
+    dataFilters: {
+      clearControl: {
+        margin: {
+          start: 'xsmall'
+        }
+      },
+      footer: {
+        actions: {
+          margin: {
+            top: 'medium'
+          },
+          gap: 'xsmall'
+        }
+      },
+      pad: 'medium',
+      width: {
+        min: 'medium'
       }
     },
     dateInput: {
