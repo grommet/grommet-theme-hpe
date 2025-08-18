@@ -1302,7 +1302,12 @@ const buildTheme = (tokens, flags) => {
     checkBoxGroup: {
       container: { cssGap: true, gap: 'xsmall', margin: 'none' },
     },
-    data: { button: { kind: 'toolbar' } },
+    data: {
+      button: { kind: 'toolbar' },
+      toolbar: {
+        gap: 'medium',
+      },
+    },
     dataFilter: {
       rangeSelector: {
         size: 'full',
@@ -1310,6 +1315,21 @@ const buildTheme = (tokens, flags) => {
       },
       selectMultiple: {
         dropHeight: 'medium',
+      },
+    },
+    dataFilters: {
+      clearControl: {
+        margin: { start: 'xsmall' },
+      },
+      footer: {
+        actions: {
+          margin: { top: 'medium' },
+          gap: 'xsmall',
+        },
+      },
+      pad: 'medium',
+      width: {
+        min: 'medium',
       },
     },
     dateInput: {
