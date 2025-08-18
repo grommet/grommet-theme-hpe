@@ -2302,6 +2302,11 @@ const buildTheme = (tokens, flags) => {
       controls: {
         gap: '5xsmall',
       },
+      step: {
+        container: {
+          gap: '3xsmall',
+        },
+      },
     },
     paragraph: { ...paragraphTheme, skeleton: { gap: '3xsmall' } },
     radioButton: {
