@@ -1256,9 +1256,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         },
         color: components.hpe.headerCell["default"].rest.textColor,
         pad: {
-          horizontal: components.hpe.headerCell["default"].medium.paddingX,
-          top: components.hpe.headerCell["default"].medium.paddingTop,
-          bottom: components.hpe.headerCell["default"].medium.paddingBottom
+          horizontal: components.hpe.headerCell["default"].medium.paddingX
         },
         extend: function extend(_ref15) {
           var column = _ref15.column,

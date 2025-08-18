@@ -1990,9 +1990,7 @@
       },
       "color": "text-strong",
       "pad": {
-        "horizontal": "12px",
-        "top": "12px",
-        "bottom": "11px"
+        "horizontal": "12px"
       },
       "font": {
         "weight": 500
