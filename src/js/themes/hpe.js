@@ -2293,6 +2293,12 @@ const buildTheme = (tokens, flags) => {
           },
         },
       },
+      container: {
+        gap: {
+          column: '3xsmall',
+          row: 'xsmall',
+        },
+      },
       controls: {
         gap: '5xsmall',
       },
