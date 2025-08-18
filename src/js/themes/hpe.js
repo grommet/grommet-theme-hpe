@@ -1536,7 +1536,7 @@ const buildTheme = (tokens, flags) => {
                     .paddingX
                 };
                 border-radius: ${
-                  dimensions.edgeSize[
+                  dimensions.radius[
                     components.hpe.formField.default.medium.input.group.item
                       .borderRadius
                   ]
