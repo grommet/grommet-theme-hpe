@@ -1302,7 +1302,16 @@ const buildTheme = (tokens, flags) => {
     checkBoxGroup: {
       container: { cssGap: true, gap: 'xsmall', margin: 'none' },
     },
-    data: { button: { kind: 'toolbar' }, drop: { pad: 'xsmall' } },
+    data: { button: { kind: 'toolbar' } },
+    dataFilter: {
+      rangeSelector: {
+        size: 'full',
+        round: 'medium',
+      },
+      selectMultiple: {
+        dropHeight: 'medium'
+      }
+    },
     dateInput: {
       container: {
         round:
