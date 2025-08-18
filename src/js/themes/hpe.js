@@ -1262,7 +1262,7 @@ const buildTheme = (tokens, flags) => {
     dataFilter: {
       rangeSelector: {
         size: 'full',
-        round: 'xsmall',
+        round: 'medium',
       },
       selectMultiple: {
         dropHeight: 'medium'
