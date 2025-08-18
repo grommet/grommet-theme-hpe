@@ -1444,6 +1444,9 @@ const buildTheme = (tokens, flags) => {
       },
     },
     fileInput: {
+      anchor: {
+        margin: 'xsmall',
+      },
       border: {
         color:
           components.hpe.formField.default.input.container.rest.borderColor,
@@ -1469,7 +1472,7 @@ const buildTheme = (tokens, flags) => {
       dragOver: { background: 'background-hover', border: 'none' },
       hover: { border: { color: 'border' } },
       icons: { remove: Close },
-      label: { margin: 'xsmall' },
+      label: { margin: 'xsmall', gap: '3xsmall' },
       message: { color: 'placeholder', margin: 'xsmall' },
       pad: { horizontal: '3xsmall' },
       extend: `border-radius: ${components.hpe.formField.default.medium.input.container.borderRadius};`,
