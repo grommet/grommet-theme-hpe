@@ -1229,6 +1229,11 @@ var buildTheme = function buildTheme(tokens, flags) {
           side: 'bottom'
         },
         color: components.hpe.headerCell["default"].rest.textColor,
+        pad: {
+          horizontal: components.hpe.headerCell["default"].medium.paddingX,
+          top: components.hpe.headerCell["default"].medium.paddingTop,
+          bottom: components.hpe.headerCell["default"].medium.paddingBottom
+        },
         extend: function extend(_ref15) {
           var column = _ref15.column,
             sort = _ref15.sort,
@@ -2634,11 +2639,6 @@ var buildTheme = function buildTheme(tokens, flags) {
         border: {
           side: 'bottom',
           color: components.hpe.headerCell["default"].rest.borderColor
-        },
-        pad: {
-          horizontal: components.hpe.headerCell["default"].medium.paddingX,
-          top: components.hpe.headerCell["default"].medium.paddingTop,
-          bottom: components.hpe.headerCell["default"].medium.paddingBottom
         },
         extend: "\n          > div { \n            height: 100%;\n            justify-content: center;\n          }\n          // align onSelect checkbox to center of header cell\n          label { \n            justify-content: center;\n          }\n        "
       },
