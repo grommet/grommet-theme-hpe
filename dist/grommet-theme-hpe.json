@@ -2041,6 +2041,9 @@
     }
   },
   "fileInput": {
+    "anchor": {
+      "margin": "xsmall"
+    },
     "border": {
       "color": "border-default",
       "side": "all",
@@ -2078,7 +2081,8 @@
       "remove": {}
     },
     "label": {
-      "margin": "xsmall"
+      "margin": "xsmall",
+      "gap": "3xsmall"
     },
     "message": {
       "color": "placeholder",

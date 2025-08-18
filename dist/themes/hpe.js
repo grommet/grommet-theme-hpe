@@ -1340,6 +1340,9 @@ var buildTheme = function buildTheme(tokens, flags) {
       }
     },
     fileInput: {
+      anchor: {
+        margin: 'xsmall'
+      },
       border: {
         color: components.hpe.formField["default"].input.container.rest.borderColor,
         side: 'all',
@@ -1377,7 +1380,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         remove: _Close.Close
       },
       label: {
-        margin: 'xsmall'
+        margin: 'xsmall',
+        gap: '3xsmall'
       },
       message: {
         color: 'placeholder',
