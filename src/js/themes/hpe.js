@@ -1353,6 +1353,11 @@ const buildTheme = (tokens, flags) => {
       header: {
         border: { side: 'bottom' },
         color: components.hpe.headerCell.default.rest.textColor,
+        pad: {
+          horizontal: components.hpe.headerCell.default.medium.paddingX,
+          top: components.hpe.headerCell.default.medium.paddingTop,
+          bottom: components.hpe.headerCell.default.medium.paddingBottom,
+        },
         extend: ({ column, sort, sortable, theme }) =>
           `
             ${
@@ -2628,11 +2633,6 @@ const buildTheme = (tokens, flags) => {
         border: {
           side: 'bottom',
           color: components.hpe.headerCell.default.rest.borderColor,
-        },
-        pad: {
-          horizontal: components.hpe.headerCell.default.medium.paddingX,
-          top: components.hpe.headerCell.default.medium.paddingTop,
-          bottom: components.hpe.headerCell.default.medium.paddingBottom,
         },
         extend: `
           > div { 
