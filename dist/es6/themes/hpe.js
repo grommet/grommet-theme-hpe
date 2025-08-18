@@ -2327,6 +2327,11 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       controls: {
         gap: '5xsmall'
+      },
+      step: {
+        container: {
+          gap: '3xsmall'
+        }
       }
     },
     paragraph: _extends({}, paragraphTheme, {
