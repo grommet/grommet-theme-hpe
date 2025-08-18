@@ -670,9 +670,7 @@ const buildTheme = (tokens, flags) => {
       drop: {
         background: components.hpe.drop.default.background,
         border: {
-          radius:
-            dimensions.edgeSize[components.hpe.drop.default.borderRadius] ||
-            components.hpe.drop.default.borderRadius,
+          radius: components.hpe.drop.default.borderRadius,
         },
         margin: components.hpe.drop.default.margin,
         intelligentMargin: true,
