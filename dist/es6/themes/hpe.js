@@ -1235,6 +1235,9 @@ var buildTheme = function buildTheme(tokens, flags) {
           extend: "&:last-child td {\n              border-color: transparent;\n            }\n            &:last-child th {\n              border-color: transparent;\n            }"
         }
       },
+      expand: {
+        size: '5xsmall'
+      },
       groupHeader: {
         // background: undefined,
         // border: undefined,
@@ -1339,6 +1342,19 @@ var buildTheme = function buildTheme(tokens, flags) {
             size: 'small'
           }
         }
+      },
+      search: {
+        pad: {
+          left: 'xsmall'
+        },
+        text: {
+          pad: {
+            horizontal: 'xsmall'
+          }
+        }
+      },
+      sort: {
+        gap: '3xsmall'
       }
     },
     distribution: {
