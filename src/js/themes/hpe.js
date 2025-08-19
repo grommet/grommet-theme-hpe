@@ -1364,6 +1364,9 @@ const buildTheme = (tokens, flags) => {
             }`,
         },
       },
+      expand: {
+        size: '5xsmall',
+      },
       groupHeader: {
         // background: undefined,
         // border: undefined,
@@ -1447,6 +1450,19 @@ const buildTheme = (tokens, flags) => {
       resize: {
         border: { color: 'border', side: 'end' },
         hover: { border: { color: 'border-strong', size: 'small' } },
+      },
+      search: {
+        pad: {
+          left: 'xsmall',
+        },
+        text: {
+          pad: {
+            horizontal: 'xsmall',
+          },
+        },
+      },
+      sort: {
+        gap: '3xsmall',
       },
     },
     distribution: { gap: '3xsmall' },
