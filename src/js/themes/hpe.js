@@ -1391,8 +1391,8 @@ const buildTheme = (tokens, flags) => {
       body: {
         extend: ({ theme }) => `
           /* Margin and padding allow room for focus on table body */
-          margin: ${theme.global.edgeSize.xxsmall} 0px;
-          padding: 0px ${theme.global.edgeSize.xxsmall};
+          margin: ${theme.global.edgeSize['5xsmall']} 0px;
+          padding: 0px ${theme.global.edgeSize['5xsmall']};
         `,
         selected: {
           background:
@@ -1421,6 +1421,8 @@ const buildTheme = (tokens, flags) => {
         color: components.hpe.headerCell.default.rest.textColor,
         pad: {
           horizontal: components.hpe.headerCell.default.medium.paddingX,
+          vertical: '3xsmall',
+          bottom: '3xsmall',
         },
         extend: ({ column, sort, sortable, theme }) =>
           `
