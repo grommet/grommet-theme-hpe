@@ -2609,9 +2609,40 @@ var buildTheme = function buildTheme(tokens, flags) {
       }
     },
     selectMultiple: {
+      help: {
+        container: {
+          pad: '3xsmall'
+        }
+      },
       listbox: {
         extend: function extend() {
           return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"] {\n              border-radius: " + (dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius) + ";\n            }\n          }\n        ";
+        }
+      },
+      option: {
+        pad: '3xsmall'
+      },
+      search: {
+        pad: '3xsmall'
+      },
+      showMore: {
+        pad: {
+          horizontal: 'xsmall',
+          bottom: 'xsmall',
+          top: '3xsmall'
+        }
+      },
+      summary: {
+        gap: 'xsmall',
+        height: {
+          min: '5xsmall'
+        },
+        pad: '3xsmall',
+        showSelectedInline: {
+          pad: {
+            left: '3xsmall',
+            vertical: '3xsmall'
+          }
         }
       }
     },
@@ -2716,6 +2747,18 @@ var buildTheme = function buildTheme(tokens, flags) {
           }
         }
       },
+      nextButton: {
+        pad: {
+          horizontal: 'xsmall',
+          vertical: '3xsmall'
+        }
+      },
+      previousButton: {
+        pad: {
+          horizontal: 'xsmall',
+          vertical: '3xsmall'
+        }
+      },
       step: {
         xsmall: 1,
         xlarge: 3
@@ -2732,7 +2775,11 @@ var buildTheme = function buildTheme(tokens, flags) {
           side: 'bottom',
           color: components.hpe.headerCell["default"].rest.borderColor
         },
-        extend: "\n          > div { \n            height: 100%;\n            justify-content: center;\n          }\n          // align onSelect checkbox to center of header cell\n          label { \n            justify-content: center;\n          }\n        "
+        extend: "\n          > div { \n            height: 100%;\n            justify-content: center;\n          }\n          // align onSelect checkbox to center of header cell\n          label { \n            justify-content: center;\n          }\n        ",
+        pad: {
+          vertical: '3xsmall',
+          horizontal: 'xsmall'
+        }
       },
       body: {
         pad: {
