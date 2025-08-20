@@ -1278,7 +1278,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       body: {
         extend: function extend(_ref14) {
           var theme = _ref14.theme;
-          return "\n          /* Margin and padding allow room for focus on table body */\n          margin: " + theme.global.edgeSize.xxsmall + " 0px;\n          padding: 0px " + theme.global.edgeSize.xxsmall + ";\n        ";
+          return "\n          /* Margin and padding allow room for focus on table body */\n          margin: " + theme.global.edgeSize['5xsmall'] + " 0px;\n          padding: 0px " + theme.global.edgeSize['5xsmall'] + ";\n        ";
         },
         selected: {
           background: (_components$hpe$dataC = components.hpe.dataCell["default"].selected) == null || (_components$hpe$dataC = _components$hpe$dataC.rest) == null ? void 0 : _components$hpe$dataC.background
@@ -1307,7 +1307,9 @@ var buildTheme = function buildTheme(tokens, flags) {
         },
         color: components.hpe.headerCell["default"].rest.textColor,
         pad: {
-          horizontal: components.hpe.headerCell["default"].medium.paddingX
+          horizontal: components.hpe.headerCell["default"].medium.paddingX,
+          vertical: '3xsmall',
+          bottom: '3xsmall'
         },
         extend: function extend(_ref15) {
           var column = _ref15.column,
