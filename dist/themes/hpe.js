@@ -701,6 +701,9 @@ var buildTheme = function buildTheme(tokens, flags) {
           return "color: " + getThemeColor(components.hpe.anchor["default"].hover.textColor, theme) + ";";
         }
       },
+      iconOnly: {
+        pad: 'xsmall'
+      },
       size: anchorSizeTheme
     },
     avatar: {
@@ -755,6 +758,9 @@ var buildTheme = function buildTheme(tokens, flags) {
             medium: 'xsmall'
           }
         }
+      },
+      busy: {
+        gap: 'xsmall'
       },
       'cta-primary': _extends({}, buttonKindTheme.primary, {
         icon: /*#__PURE__*/_react["default"].createElement(_Hpe.Hpe, null),
@@ -1039,6 +1045,11 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       }
     },
+    chart: {
+      height: 'xsmall',
+      thickness: 'medium',
+      width: 'medium'
+    },
     checkBox: {
       hover: {
         border: {
@@ -1175,6 +1186,43 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       toolbar: {
         gap: 'medium'
+      }
+    },
+    dataChart: {
+      gap: 'xsmall',
+      detail: {
+        gap: '3xsmall'
+      },
+      legend: {
+        margin: {
+          top: 'xsmall'
+        },
+        gap: 'xsmall',
+        item: {
+          gap: '3xsmall',
+          pad: {
+            horizontal: 'xsmall',
+            vertical: '3xsmall'
+          }
+        }
+      },
+      size: {
+        height: 'xsmall'
+      },
+      thickness: {
+        veryDense: 'hair',
+        dense: '3xsmall',
+        heavy: 'xsmall',
+        moderate: 'medium',
+        light: 'xlarge',
+        sparse: '3xlarge'
+      },
+      thicknessPad: {
+        xlarge: 'xlarge',
+        large: 'medium',
+        medium: 'xsmall',
+        small: '3xsmall',
+        xsmall: '5xsmall'
       }
     },
     dataFilter: {
@@ -1739,7 +1787,10 @@ var buildTheme = function buildTheme(tokens, flags) {
         intelligentRounding: true
       },
       container: {
-        elevation: 'large'
+        elevation: 'large',
+        height: {
+          min: '5xsmall'
+        }
       },
       overlay: {
         background: 'background-screenOverlay'
