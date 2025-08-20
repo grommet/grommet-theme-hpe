@@ -1077,6 +1077,11 @@ const buildTheme = (tokens, flags) => {
         },
       },
     },
+    chart: {
+      height: 'xsmall',
+      thickness: 'medium',
+      width: 'medium',
+    },
     checkBox: {
       hover: {
         border: {
@@ -1306,6 +1311,38 @@ const buildTheme = (tokens, flags) => {
       button: { kind: 'toolbar' },
       toolbar: {
         gap: 'medium',
+      },
+    },
+    dataChart: {
+      gap: 'xsmall',
+      detail: {
+        gap: '3xsmall',
+      },
+      legend: {
+        margin: { top: 'xsmall' },
+        gap: 'xsmall',
+        item: {
+          gap: '3xsmall',
+          pad: { horizontal: 'xsmall', vertical: '3xsmall' },
+        },
+      },
+      size: {
+        height: 'xsmall',
+      },
+      thickness: {
+        veryDense: 'hair',
+        dense: '3xsmall',
+        heavy: 'xsmall',
+        moderate: 'medium',
+        light: 'xlarge',
+        sparse: '3xlarge',
+      },
+      thicknessPad: {
+        xlarge: 'xlarge',
+        large: 'medium',
+        medium: 'xsmall',
+        small: '3xsmall',
+        xsmall: '5xsmall',
       },
     },
     dataFilter: {
