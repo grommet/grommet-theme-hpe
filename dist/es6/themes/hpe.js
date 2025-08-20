@@ -1304,8 +1304,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         color: components.hpe.headerCell["default"].rest.textColor,
         pad: {
           horizontal: components.hpe.headerCell["default"].medium.paddingX,
-          vertical: '3xsmall',
-          bottom: '3xsmall'
+          vertical: '3xsmall'
         },
         extend: function extend(_ref15) {
           var column = _ref15.column,

@@ -2042,8 +2042,7 @@
       "color": "text-strong",
       "pad": {
         "horizontal": "12px",
-        "vertical": "3xsmall",
-        "bottom": "3xsmall"
+        "vertical": "3xsmall"
       },
       "font": {
         "weight": 500
