@@ -3486,7 +3486,7 @@
     "gap": "xsmall"
   },
   "tabs": {
-    "gap": "xsmall",
+    "gap": "small",
     "header": {
       "previousButton": {
         "pad": {
