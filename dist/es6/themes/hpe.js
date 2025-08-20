@@ -698,7 +698,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       iconOnly: {
-        pad: '3xsmall'
+        pad: 'xsmall'
       },
       size: anchorSizeTheme
     },
