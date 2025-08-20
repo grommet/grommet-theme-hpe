@@ -751,6 +751,9 @@ const buildTheme = (tokens, flags) => {
             theme,
           )};`,
       },
+      iconOnly: {
+        pad: 'xsmall',
+      },
       size: anchorSizeTheme,
     },
     avatar: {
@@ -793,6 +796,9 @@ const buildTheme = (tokens, flags) => {
         container: { background: 'background-neutral-xstrong' },
         size: { medium: '18px' },
         text: { size: { medium: 'xsmall' } },
+      },
+      busy: {
+        gap: 'xsmall',
       },
       'cta-primary': {
         ...buttonKindTheme.primary,
@@ -1898,7 +1904,7 @@ const buildTheme = (tokens, flags) => {
     layer: {
       background: 'background-floating',
       border: { radius: 'medium', intelligentRounding: true },
-      container: { elevation: 'large' },
+      container: { elevation: 'large', height: { min: '5xsmall' } },
       overlay: { background: 'background-screenOverlay' },
       /* HPE Global Header/Footer Service a.k.a. HPE Common HFWS sets the header
        * at a z-index of 101. This adjustment allows for Layer modals and side-drawers
