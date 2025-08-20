@@ -2722,6 +2722,11 @@ var buildTheme = function buildTheme(tokens, flags) {
       }
     },
     table: {
+      caption: {
+        margin: {
+          bottom: '5xsmall'
+        }
+      },
       header: {
         border: {
           side: 'bottom',
