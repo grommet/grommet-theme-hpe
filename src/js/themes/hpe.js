@@ -1422,7 +1422,6 @@ const buildTheme = (tokens, flags) => {
         pad: {
           horizontal: components.hpe.headerCell.default.medium.paddingX,
           vertical: '3xsmall',
-          bottom: '3xsmall',
         },
         extend: ({ column, sort, sortable, theme }) =>
           `
