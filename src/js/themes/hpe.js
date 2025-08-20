@@ -2781,8 +2781,8 @@ const buildTheme = (tokens, flags) => {
       row: { hover: { background: 'background-hover' } },
       footer: {
         pad: {
-          top: components.hpe.footerCell.default.medium.paddingTop,
-          bottom: components.hpe.footerCell.default.medium.paddingBottom,
+          top: '3xsmall',
+          bottom: '3xsmall',
           horizontal: components.hpe.footerCell.default.medium.paddingX,
         },
         extend: `
