@@ -2708,7 +2708,7 @@ const buildTheme = (tokens, flags) => {
       gap: 'xsmall',
     },
     tabs: {
-      gap: 'xsmall',
+      gap: 'small',
       header: {
         border: undefined,
         // padding-bottom ensures the marker is not cut off by subsequent
