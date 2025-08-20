@@ -2706,6 +2706,9 @@ const buildTheme = (tokens, flags) => {
       step: { xsmall: 1, xlarge: 3 },
     },
     table: {
+      caption: {
+        margin: { bottom: '5xsmall' },
+      },
       header: {
         border: {
           side: 'bottom',
