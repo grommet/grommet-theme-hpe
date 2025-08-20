@@ -2611,6 +2611,11 @@ const buildTheme = (tokens, flags) => {
       search: { pad: '3xsmall' },
     },
     selectMultiple: {
+      help: {
+        container: {
+          pad: '3xsmall',
+        },
+      },
       listbox: {
         extend: () => `
           padding-block: ${components.hpe.select.default.medium.drop.paddingY};
@@ -2626,6 +2631,32 @@ const buildTheme = (tokens, flags) => {
             }
           }
         `,
+      },
+      option: {
+        pad: '3xsmall',
+      },
+      search: {
+        pad: '3xsmall',
+      },
+      showMore: {
+        pad: {
+          horizontal: 'xsmall',
+          bottom: 'xsmall',
+          top: '3xsmall',
+        },
+      },
+      summary: {
+        gap: 'xsmall',
+        height: {
+          min: '5xsmall',
+        },
+        pad: '3xsmall',
+        showSelectedInline: {
+          pad: {
+            left: '3xsmall',
+            vertical: '3xsmall',
+          },
+        },
       },
     },
     sidebar: { gap: 'xlarge', pad: 'xsmall' },
@@ -2703,6 +2734,12 @@ const buildTheme = (tokens, flags) => {
         previousButton: { pad: { vertical: '3xsmall', horizontal: 'xsmall' } },
         nextButton: { pad: { vertical: '3xsmall', horizontal: 'xsmall' } },
       },
+      nextButton: {
+        pad: { horizontal: 'xsmall', vertical: '3xsmall' },
+      },
+      previousButton: {
+        pad: { horizontal: 'xsmall', vertical: '3xsmall' },
+      },
       step: { xsmall: 1, xlarge: 3 },
     },
     table: {
@@ -2724,6 +2761,10 @@ const buildTheme = (tokens, flags) => {
             justify-content: center;
           }
         `,
+        pad: {
+          vertical: '3xsmall',
+          horizontal: 'xsmall',
+        },
       },
       body: {
         pad: {
