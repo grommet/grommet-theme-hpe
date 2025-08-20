@@ -3553,8 +3553,8 @@
     },
     "footer": {
       "pad": {
-        "top": "11px",
-        "bottom": "12px",
+        "top": "3xsmall",
+        "bottom": "3xsmall",
         "horizontal": "12px"
       },
       "extend": "\n          font-weight: undefined;\n        "
