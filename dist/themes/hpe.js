@@ -702,7 +702,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       iconOnly: {
-        pad: 'xsmall'
+        pad: '3xsmall'
       },
       size: anchorSizeTheme
     },

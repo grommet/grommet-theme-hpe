@@ -876,7 +876,7 @@
       "textDecoration": "underline"
     },
     "iconOnly": {
-      "pad": "xsmall"
+      "pad": "3xsmall"
     },
     "size": {
       "xsmall": {
