@@ -2677,6 +2677,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           size: 'medium'
         }]
       },
+      responsive: false,
       size: {
         xsmall: (_components$hpe$eleme18 = components.hpe.element) == null ? void 0 : _components$hpe$eleme18.xsmall.minHeight,
         small: (_components$hpe$eleme19 = components.hpe.element) == null ? void 0 : _components$hpe$eleme19.small.minHeight,

@@ -3440,6 +3440,7 @@
         }
       ]
     },
+    "responsive": false,
     "size": {
       "xsmall": "24px",
       "small": "28px",
