@@ -2672,6 +2672,7 @@ const buildTheme = (tokens, flags) => {
           { color: 'transparent', side: 'left', size: 'medium' },
         ],
       },
+      responsive: false,
       size: {
         xsmall: components.hpe.element?.xsmall.minHeight,
         small: components.hpe.element?.small.minHeight,
