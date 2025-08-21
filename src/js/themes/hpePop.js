@@ -88,6 +88,65 @@ const popButtonSizes = {
   large: createButtonSizes('large'),
 };
 
+const buttonStates = ['hover', 'active', 'disabled'];
+const buttonStatesTheme = {};
+
+buttonStates.forEach((state) => {
+  buttonStatesTheme[state] = {};
+
+  if (state === 'active') {
+    buttonStatesTheme[state].secondary = {
+      background: {
+        color: 'transparent',
+      },
+      border: {
+        color: 'brand',
+      },
+      color: 'text-strong',
+      font: {
+        weight: 500,
+      },
+    };
+    if (!('active' in buttonStatesTheme.hover))
+      buttonStatesTheme.hover.active = {};
+    buttonStatesTheme.hover[state].secondary = {
+      background: {
+        color: 'transparent',
+      },
+      border: {
+        color: 'brand',
+      },
+      color: 'text-strong',
+      font: {
+        weight: 500,
+      },
+    };
+  } else if (state === 'disabled') {
+    buttonStatesTheme[state].secondary = {
+      background: 'transparent',
+      border: {
+        color: 'border-disabled',
+      },
+      color: 'text-disabled',
+      font: {
+        weight: 500,
+      },
+    };
+  } else {
+    buttonStatesTheme[state].secondary = {
+      background: 'transparent',
+      border: {
+        width: '4px',
+        color: 'border-selected',
+      },
+      color: 'text-strong',
+      font: {
+        weight: 500,
+      },
+    };
+  }
+});
+
 export const hpePop = deepMerge(hpe, {
   anchor: {
     textDecoration: 'none',
@@ -126,9 +185,25 @@ export const hpePop = deepMerge(hpe, {
   },
   button: {
     secondary: {
+      background: 'transparent',
       border: {
-        width: '4px', // TO DO update root theme border width?
+        width: '4px',
+        color: 'brand',
+        radius: 'full',
       },
+      color: 'text-strong',
+      font: {
+        weight: '500',
+      },
+    },
+    active: { ...hpe.button.active, ...buttonStatesTheme.active },
+    disabled: {
+      ...hpe.button.disabled,
+      ...buttonStatesTheme.disabled,
+    },
+    hover: {
+      ...hpe.button.hover,
+      ...buttonStatesTheme.hover,
     },
     size: {
       ...popButtonSizes,
@@ -155,12 +230,12 @@ export const hpePop = deepMerge(hpe, {
         // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
         // not a long term solution. Also, reliance on !important is not ideal.
         style += `color: ${getThemeColor(
-          'text-onSecondaryStrong',
+          'text-onPrimaryStrong',
           theme,
         )} !important;`;
         const iconColor = theme.dark
-          ? dark.hpe.color.icon.onSecondaryStrong
-          : light.hpe.color.icon.onSecondaryStrong;
+          ? dark.hpe.color.icon.onPrimaryStrong
+          : light.hpe.color.icon.onPrimaryStrong;
         style += `svg { stroke: ${iconColor}; fill: ${iconColor}; }`;
       }
       if (colorValue) {
