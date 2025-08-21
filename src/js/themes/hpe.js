@@ -393,15 +393,11 @@ const buildTheme = (tokens, flags) => {
       large.hpe.text?.[textSize]?.fontWeight || fallback.weight;
   });
 
-  textTheme.extend = ({ size: textSize, weight }) => {
-    if (!weight) return `font-weight: ${fontWeights[textSize]};`;
-    return '';
-  };
+  textTheme.extend = ({ size: textSize, weight }) =>
+    !weight ? `font-weight: ${fontWeights[textSize]};` : '';
 
-  paragraphTheme.extend = ({ size: textSize, weight }) => {
-    if (!weight) return `font-weight: ${fontWeights[textSize]};`;
-    return '';
-  };
+  paragraphTheme.extend = ({ size: textSize, weight }) =>
+    !weight ? `font-weight: ${fontWeights[textSize]};` : '';
 
   const buttonKindTheme = {};
   buttonKinds.forEach((kind) => {
@@ -1419,6 +1415,7 @@ const buildTheme = (tokens, flags) => {
         color: components.hpe.headerCell.default.rest.textColor,
         pad: {
           horizontal: components.hpe.headerCell.default.medium.paddingX,
+          // TO DO revisit token value?
           vertical: '3xsmall',
         },
         extend: ({ column, sort, sortable, theme }) =>
@@ -2762,6 +2759,7 @@ const buildTheme = (tokens, flags) => {
           }
         `,
         pad: {
+          // TO DO revisit token value?
           vertical: '3xsmall',
           horizontal: 'xsmall',
         },
