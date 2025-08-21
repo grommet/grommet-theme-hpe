@@ -395,13 +395,11 @@ const buildTheme = (tokens, flags) => {
 
   textTheme.extend = ({ size: textSize, weight }) => {
     if (!weight) return `font-weight: ${fontWeights[textSize]};`;
-    if (weight === 'bold') return `font-weight: 500;`;
     return '';
   };
 
   paragraphTheme.extend = ({ size: textSize, weight }) => {
     if (!weight) return `font-weight: ${fontWeights[textSize]};`;
-    if (weight === 'bold') return `font-weight: 500;`;
     return '';
   };
 
@@ -1888,7 +1886,7 @@ const buildTheme = (tokens, flags) => {
           },
         },
       },
-      extend: ({ weight }) => (weight === 'bold' ? 'font-weight: 500;' : ''),
+      extend: () => '',
     },
     icon: {
       disableScaleDown: true,
