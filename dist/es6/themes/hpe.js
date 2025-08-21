@@ -398,14 +398,12 @@ var buildTheme = function buildTheme(tokens, flags) {
   textTheme.extend = function (_ref) {
     var textSize = _ref.size,
       weight = _ref.weight;
-    if (!weight) return "font-weight: " + fontWeights[textSize] + ";";
-    return '';
+    return !weight ? "font-weight: " + fontWeights[textSize] + ";" : '';
   };
   paragraphTheme.extend = function (_ref2) {
     var textSize = _ref2.size,
       weight = _ref2.weight;
-    if (!weight) return "font-weight: " + fontWeights[textSize] + ";";
-    return '';
+    return !weight ? "font-weight: " + fontWeights[textSize] + ";" : '';
   };
   var buttonKindTheme = {};
   buttonKinds.forEach(function (kind) {
@@ -1302,6 +1300,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         color: components.hpe.headerCell["default"].rest.textColor,
         pad: {
           horizontal: components.hpe.headerCell["default"].medium.paddingX,
+          // TO DO revisit token value?
           vertical: '3xsmall'
         },
         extend: function extend(_ref15) {
@@ -2776,6 +2775,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         },
         extend: "\n          > div { \n            height: 100%;\n            justify-content: center;\n          }\n          // align onSelect checkbox to center of header cell\n          label { \n            justify-content: center;\n          }\n        ",
         pad: {
+          // TO DO revisit token value?
           vertical: '3xsmall',
           horizontal: 'xsmall'
         }
