@@ -1186,6 +1186,54 @@ var buildTheme = function buildTheme(tokens, flags) {
     },
     dataChart: {
       gap: 'xsmall',
+      granularity: {
+        y: {
+          '5xsmall': {
+            fine: 2,
+            medium: 2
+          },
+          '4xsmall': {
+            fine: 2,
+            medium: 2
+          },
+          '3xsmall': {
+            fine: 3,
+            medium: 2
+          },
+          xxsmall: {
+            fine: 3,
+            medium: 2
+          },
+          xsmall: {
+            fine: 5,
+            medium: 3
+          },
+          small: {
+            fine: 5,
+            medium: 3
+          },
+          medium: {
+            fine: 7,
+            medium: 5
+          },
+          large: {
+            fine: 7,
+            medium: 5
+          },
+          xlarge: {
+            fine: 9,
+            medium: 5
+          },
+          xxlarge: {
+            fine: 9,
+            medium: 5
+          },
+          '3xlarge': {
+            fine: 11,
+            medium: 5
+          }
+        }
+      },
       detail: {
         gap: '3xsmall'
       },
