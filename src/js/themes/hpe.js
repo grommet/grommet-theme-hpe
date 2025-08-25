@@ -2369,6 +2369,11 @@ const buildTheme = (tokens, flags) => {
     },
     table: {
       header: {
+        pad: {
+          horizontal: components.hpe.headerCell.default.medium.paddingX,
+          top: components.hpe.headerCell.default.medium.paddingTop,
+          bottom: components.hpe.headerCell.default.medium.paddingBottom,
+        },
         extend: `
           > div { 
             height: 100%;
@@ -2393,6 +2398,11 @@ const buildTheme = (tokens, flags) => {
       },
       row: { hover: { background: 'background-hover' } },
       footer: {
+        pad: {
+          horizontal: components.hpe.footerCell.default.medium.paddingX,
+          top: components.hpe.footerCell.default.medium.paddingTop,
+          bottom: components.hpe.footerCell.default.medium.paddingBottom,
+        },
         extend: `
           font-weight: ${components.hpe.footerCell.default.fontWeight};
         `,
