@@ -1,5 +1,11 @@
 # grommet-theme-hpe
 
+## 6.5.1
+
+### Patch Changes
+
+- f0dbf80: - Fixed missing design token mapping for padding of table header and footer cells to align with hpe-design-tokens and Figma. Height of header cells changes from 36px to 48px, in alignment with body cell styling.
+
 ## 6.5.0
 
 ### Minor Changes
