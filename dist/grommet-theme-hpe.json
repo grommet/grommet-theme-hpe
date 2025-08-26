@@ -2088,10 +2088,6 @@
         "side": "bottom"
       },
       "color": "text-strong",
-      "pad": {
-        "horizontal": "12px",
-        "vertical": "3xsmall"
-      },
       "font": {
         "weight": 500
       },

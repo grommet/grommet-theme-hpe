@@ -1346,11 +1346,6 @@ var buildTheme = function buildTheme(tokens, flags) {
           side: 'bottom'
         },
         color: components.hpe.headerCell["default"].rest.textColor,
-        pad: {
-          horizontal: components.hpe.headerCell["default"].medium.paddingX,
-          // TO DO revisit token value?
-          vertical: '3xsmall'
-        },
         extend: function extend(_ref15) {
           var column = _ref15.column,
             sort = _ref15.sort,
