@@ -2958,9 +2958,9 @@ homedir-polyfill@^1.0.1:
     parse-passwd "^1.0.0"
 
 hpe-design-tokens@~1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/hpe-design-tokens/-/hpe-design-tokens-1.4.0.tgz#9979373eb190dc68f6841444dab925df1556aee0"
-  integrity sha512-8ZBgmHr6f0KEzFEidCHcXBirGubForz+sHKYL4Fb+oU+RSivu0/szKeBahNmntnTGhV2YyyPgV6OZM1IHSURcw==
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/hpe-design-tokens/-/hpe-design-tokens-1.4.1.tgz#110f72474eabbac167f4d5b771ad655f356089fa"
+  integrity sha512-qYv8LX1DSgcwWgtN7eHEh8ILSs9z1qUqOCzMcPNTC122iXUNtRb/BN8QEW7D31Q1Pa1V2JoTc5iBwzYcN3CyEw==
 
 human-id@^4.1.1:
   version "4.1.1"

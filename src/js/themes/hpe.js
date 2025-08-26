@@ -2763,6 +2763,11 @@ const buildTheme = (tokens, flags) => {
           side: 'bottom',
           color: components.hpe.headerCell.default.rest.borderColor,
         },
+        pad: {
+          horizontal: components.hpe.headerCell.default.medium.paddingX,
+          top: components.hpe.headerCell.default.medium.paddingTop,
+          bottom: components.hpe.headerCell.default.medium.paddingBottom,
+        },
         extend: `
           > div { 
             height: 100%;
@@ -2773,11 +2778,6 @@ const buildTheme = (tokens, flags) => {
             justify-content: center;
           }
         `,
-        pad: {
-          // TO DO revisit token value?
-          vertical: '3xsmall',
-          horizontal: 'xsmall',
-        },
       },
       body: {
         pad: {
@@ -2793,9 +2793,9 @@ const buildTheme = (tokens, flags) => {
       row: { hover: { background: 'background-hover' } },
       footer: {
         pad: {
-          top: '3xsmall',
-          bottom: '3xsmall',
           horizontal: components.hpe.footerCell.default.medium.paddingX,
+          top: components.hpe.footerCell.default.medium.paddingTop,
+          bottom: components.hpe.footerCell.default.medium.paddingBottom,
         },
         extend: `
           font-weight: ${components.hpe.footerCell.default.fontWeight};
