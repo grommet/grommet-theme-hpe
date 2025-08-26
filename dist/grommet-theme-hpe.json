@@ -193,6 +193,14 @@
         "light": "rgba(0, 0, 0, 0.12)",
         "dark": "rgba(0, 0, 0, 0.12)"
       },
+      "background-unknown": {
+        "light": "rgba(0, 0, 0, 0.04)",
+        "dark": "rgba(255, 255, 255, 0.06)"
+      },
+      "background-warning": {
+        "light": "#fff3dd",
+        "dark": "#3c361e"
+      },
       "background-info": {
         "light": "#e0f8ff",
         "dark": "#1e363d"
@@ -204,14 +212,6 @@
       "background-ok": {
         "light": "#e3fdf4",
         "dark": "#1b5245"
-      },
-      "background-unknown": {
-        "light": "rgba(0, 0, 0, 0.04)",
-        "dark": "rgba(255, 255, 255, 0.06)"
-      },
-      "background-warning": {
-        "light": "#fff3dd",
-        "dark": "#3c361e"
       },
       "background-primary-strong": {
         "light": "#008567",
