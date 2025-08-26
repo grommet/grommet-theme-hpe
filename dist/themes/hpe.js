@@ -2292,6 +2292,11 @@ var buildTheme = function buildTheme(tokens, flags) {
     },
     table: {
       header: {
+        pad: {
+          horizontal: components.hpe.headerCell["default"].medium.paddingX,
+          top: components.hpe.headerCell["default"].medium.paddingTop,
+          bottom: components.hpe.headerCell["default"].medium.paddingBottom
+        },
         extend: "\n          > div { \n            height: 100%;\n            justify-content: center;\n          }\n          // align onSelect checkbox to center of header cell\n          label { \n            justify-content: center;\n          }\n        "
       },
       body: {
@@ -2311,6 +2316,11 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       footer: {
+        pad: {
+          horizontal: components.hpe.footerCell["default"].medium.paddingX,
+          top: components.hpe.footerCell["default"].medium.paddingTop,
+          bottom: components.hpe.footerCell["default"].medium.paddingBottom
+        },
         extend: "\n          font-weight: " + components.hpe.footerCell["default"].fontWeight + ";\n        "
       },
       extend: function extend() {
