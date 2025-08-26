@@ -1428,11 +1428,6 @@ const buildTheme = (tokens, flags) => {
       header: {
         border: { side: 'bottom' },
         color: components.hpe.headerCell.default.rest.textColor,
-        pad: {
-          horizontal: components.hpe.headerCell.default.medium.paddingX,
-          // TO DO revisit token value?
-          vertical: '3xsmall',
-        },
         extend: ({ column, sort, sortable, theme }) =>
           `
             ${
