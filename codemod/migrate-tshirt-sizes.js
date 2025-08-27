@@ -213,7 +213,7 @@ root.find(j.MemberExpression, {
     });
   });
 
-  // Handle DataChart component size prop specifically
+  // Handle DataChart component size prop
   root.find(j.JSXElement, {
     openingElement: {
       name: { name: 'DataChart' }
