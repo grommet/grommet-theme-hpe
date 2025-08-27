@@ -5,11 +5,9 @@
 
 // are we missing any props here?
 const SPACING_PROPS = ['gap', 'margin', 'pad'];
-// “size” on Grid object and box border size, but not on other components
-// need to ask Taylor about this box border size
 const BORDER_PROPS = ['border'];
 const CONTAINER_PROPS = ['height', 'width'];
-const RADIUS_PROPS = ['round', 'radius'];
+const RADIUS_PROPS = ['round'];
 
 // each category will be taken care of
 const MAPS = {
@@ -23,6 +21,7 @@ const MAPS = {
   border: {
     xlarge: 'large',
   },
+  // columns and rows
   container: {
     xxsmall: '5xsmall',
     xsmall: '3xsmall',
@@ -40,7 +39,7 @@ const MAPS = {
 };
 
 //  pick correct map
-function getMapForProp(prop) {
+const getMapForProp = (prop) => {
   if (SPACING_PROPS.includes(prop)) return MAPS.spacing;
   if (BORDER_PROPS.includes(prop)) return MAPS.border;
   if (CONTAINER_PROPS.includes(prop)) return MAPS.container;
@@ -48,7 +47,7 @@ function getMapForProp(prop) {
   return null;
 }
 
-function replaceSize(prop, value) {
+const replaceSize = (prop, value) => {
   const map = getMapForProp(prop);
   if (!map) return value;
   
@@ -57,6 +56,19 @@ function replaceSize(prop, value) {
   // Show deprecation warnings for radius props
   if (RADIUS_PROPS.includes(prop) && (value === 'large' || value === 'xlarge')) {
     console.warn(`⚠️  DEPRECATION: radius="${value}" (${value === 'large' ? '48px' : '96px'}) is deprecated and now maps to "xxlarge" (32px). Consider reviewing this design change.`);
+  }
+  
+  // Show deprecation warnings for border props
+  if (BORDER_PROPS.includes(prop) && value === 'xlarge') {
+    console.warn(`⚠️  DEPRECATION: border="${value}" (24px) is deprecated and now maps to "large" (6px). Consider reviewing this design change.`);
+  }
+  if (BORDER_PROPS.includes(prop) && value === 'large') {
+    console.warn(`⚠️  DEPRECATION: border="${value}" (12px) is now "large" (6px). Consider reviewing this design change.`);
+  }
+  
+  // Show deprecation warnings for container props
+  if (CONTAINER_PROPS.includes(prop) && value === 'xlarge') {
+    console.warn(`⚠️  DEPRECATION: ${prop}="${value}" (1152px) is deprecated and now maps to "xxlarge" (1024px). Consider reviewing this design change.`);
   }
   
   return newValue;
@@ -153,6 +165,95 @@ root.find(j.MemberExpression, {
             }
           }
         });
+      }
+    });
+  });
+
+  // Handle components with container size mapping (Meter, TableCell)
+  ['Meter', 'TableCell'].forEach((componentName) => {
+    root.find(j.JSXElement, {
+      openingElement: {
+        name: { name: componentName }
+      }
+    }).forEach((path) => {
+      const attributes = path.node.openingElement.attributes;
+      attributes.forEach((attr, index) => {
+        if (attr.type === 'JSXAttribute' && attr.name.name === 'size') {
+          if (attr.value && attr.value.type === 'Literal' && typeof attr.value.value === 'string') {
+            const newValue = MAPS.container[attr.value.value] || attr.value.value;
+            if (newValue !== attr.value.value) {
+              attributes[index] = j.jsxAttribute(
+                j.jsxIdentifier('size'),
+                j.literal(newValue)
+              );
+            }
+          }
+        }
+      });
+    });
+  });
+
+  // Handle components with spacing size mapping (RangeSelector)
+  ['RangeSelector'].forEach((componentName) => {
+    root.find(j.JSXElement, {
+      openingElement: {
+        name: { name: componentName }
+      }
+    }).forEach((path) => {
+      const attributes = path.node.openingElement.attributes;
+      attributes.forEach((attr, index) => {
+        if (attr.type === 'JSXAttribute' && attr.name.name === 'size') {
+          if (attr.value && attr.value.type === 'Literal' && typeof attr.value.value === 'string') {
+            const newValue = MAPS.spacing[attr.value.value] || attr.value.value;
+            if (newValue !== attr.value.value) {
+              attributes[index] = j.jsxAttribute(
+                j.jsxIdentifier('size'),
+                j.literal(newValue)
+              );
+            }
+          }
+        }
+      });
+    });
+  });
+
+  // Handle DataChart component size prop specifically
+  root.find(j.JSXElement, {
+    openingElement: {
+      name: { name: 'DataChart' }
+    }
+  }).forEach((path) => {
+    const attributes = path.node.openingElement.attributes;
+    attributes.forEach((attr, index) => {
+      if (attr.type === 'JSXAttribute' && attr.name.name === 'size') {
+        if (attr.value && attr.value.type === 'Literal' && typeof attr.value.value === 'string') {
+          const newValue = MAPS.container[attr.value.value] || attr.value.value;
+          if (newValue !== attr.value.value) {
+            attributes[index] = j.jsxAttribute(
+              j.jsxIdentifier('size'),
+              j.literal(newValue)
+            );
+          }
+        }
+
+        // Handle object: <DataChart size={{ height: "small", width: "large" }} />
+        if (attr.value && attr.value.type === 'JSXExpressionContainer' && 
+            attr.value.expression.type === 'ObjectExpression') {
+          attr.value.expression.properties.forEach((propNode, propIndex) => {
+            if (propNode.value.type === 'Literal' && 
+                typeof propNode.value.value === 'string' &&
+                (propNode.key.name === 'height' || propNode.key.name === 'width')) {
+              const newValue = MAPS.container[propNode.value.value] || propNode.value.value;
+              if (newValue !== propNode.value.value) {
+                attr.value.expression.properties[propIndex] = j.property(
+                  'init',
+                  propNode.key,
+                  j.literal(newValue)
+                );
+              }
+            }
+          });
+        }
       }
     });
   });

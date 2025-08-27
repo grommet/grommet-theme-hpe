@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Codemod dispatcher CLI for grommet-theme-hpe
- * Usage: npx grommet-theme-hpe/codemod <transform> <path> [--dry]
+ * Usage: node node_modules/grommet-theme-hpe/codemod <transform> <path> [--dry]
  */
 
 const { execSync } = require('child_process');
@@ -13,7 +13,7 @@ function printHelp() {
   /* eslint-disable no-console */
   console.log(`\nGrommet Theme HPE Codemod\n`);
   console.log(
-    `Usage: npx grommet-theme-hpe/codemod <transform> <path> [options]\n`,
+    `Usage: node node_modules/grommet-theme-hpe/codemod <transform> <path> [options]\n`,
   );
   console.log(`Transforms:`);
   console.log(`  migrate-tshirt-sizes   Migrate v6 t-shirt sizes to v7`);
@@ -22,7 +22,7 @@ function printHelp() {
   console.log(`  --help     Show this help message`);
   console.log(`\nExample:`);
   console.log(
-    `  npx grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --dry\n`,
+    `  node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --dry\n`,
   );
 }
 

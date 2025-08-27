@@ -63,13 +63,13 @@ To migrate from v6 to v7 t-shirt sizes, use the built-in codemod via npx:
 
 ```sh
 # Show help
-npx grommet-theme-hpe/codemod migrate-tshirt-sizes --help
+node node_modules/grommet-theme-hpe/codemod --help
 
 # Dry run (shows changes, does not modify files)
-npx grommet-theme-hpe/codemod migrate-tshirt-sizes <your-source-folder> --dry
+node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes <your-source-folder> --dry
 
 # Apply changes
-npx grommet-theme-hpe/codemod migrate-tshirt-sizes <your-source-folder>
+node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes <your-source-folder>
 ```
 
 #### What does it do?
