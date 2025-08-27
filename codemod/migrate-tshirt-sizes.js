@@ -3,13 +3,12 @@
  * Usage: jscodeshift -t migrate-tshirt-sizes.js <path>
  */
 
-// are we missing any props here?
 const SPACING_PROPS = ['gap', 'margin', 'pad'];
 const BORDER_PROPS = ['border'];
 const CONTAINER_PROPS = ['height', 'width'];
 const RADIUS_PROPS = ['round'];
 
-// each category will be taken care of
+// maps for each category
 const MAPS = {
   spacing: {
     xxsmall: '5xsmall',
@@ -21,7 +20,6 @@ const MAPS = {
   border: {
     xlarge: 'large',
   },
-  // columns and rows
   container: {
     xxsmall: '5xsmall',
     xsmall: '3xsmall',
@@ -55,26 +53,24 @@ const replaceSize = (prop, value) => {
   
   // Show deprecation warnings for radius props
   if (RADIUS_PROPS.includes(prop) && (value === 'large' || value === 'xlarge')) {
-    console.warn(`⚠️  DEPRECATION: radius="${value}" (${value === 'large' ? '48px' : '96px'}) is deprecated and now maps to "xxlarge" (32px). Consider reviewing this design change.`);
+    console.warn(`⚠️  DEPRECATION: radius="${value}" (${value === 'large' ? '48px' : '96px'}) is deprecated and now maps to "xxlarge" (32px).`);
   }
   
   // Show deprecation warnings for border props
-  if (BORDER_PROPS.includes(prop) && value === 'xlarge') {
-    console.warn(`⚠️  DEPRECATION: border="${value}" (24px) is deprecated and now maps to "large" (6px). Consider reviewing this design change.`);
-  }
-  if (BORDER_PROPS.includes(prop) && value === 'large') {
-    console.warn(`⚠️  DEPRECATION: border="${value}" (12px) is now "large" (6px). Consider reviewing this design change.`);
+  if (BORDER_PROPS.includes(prop) && (value === 'large' || value === 'xlarge')) {
+    const oldSize = value === 'large' ? '12px' : '24px';
+    console.warn(`⚠️  DEPRECATION: border="${value}" (${oldSize}) is deprecated and now maps to "large" (6px).`);
   }
   
   // Show deprecation warnings for container props
   if (CONTAINER_PROPS.includes(prop) && value === 'xlarge') {
-    console.warn(`⚠️  DEPRECATION: ${prop}="${value}" (1152px) is deprecated and now maps to "xxlarge" (1024px). Consider reviewing this design change.`);
+    console.warn(`⚠️  DEPRECATION: ${prop}="${value}" (1152px) is deprecated and now maps to "xxlarge" (1024px).`);
   }
   
   return newValue;
 }
 
-module.exports = function transformer(file, api) {
+export default (file, api) => {
   const j = api.jscodeshift;
   const root = j(file.source);
 
