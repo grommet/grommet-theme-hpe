@@ -169,8 +169,8 @@ root.find(j.MemberExpression, {
     });
   });
 
-  // Handle components with container size mapping (Meter, TableCell)
-  ['Meter', 'TableCell'].forEach((componentName) => {
+  // Handle components with container size mapping (Meter, TableCell, Card)
+  ['Meter', 'TableCell', 'Cards'].forEach((componentName) => {
     root.find(j.JSXElement, {
       openingElement: {
         name: { name: componentName }
@@ -253,6 +253,63 @@ root.find(j.MemberExpression, {
               }
             }
           });
+        }
+      }
+    });
+  });
+
+  // Handle Grid component columns and rows prop
+  root.find(j.JSXElement, {
+    openingElement: {
+      name: { name: 'Grid' }
+    }
+  }).forEach((path) => {
+    const attributes = path.node.openingElement.attributes;
+    attributes.forEach((attr, index) => {
+      if (attr.type === 'JSXAttribute' && (attr.name.name === 'columns' || attr.name.name === 'rows')) {
+        
+        // Handle string: <Grid columns="large" /> or <Grid rows="large" />
+        if (attr.value && attr.value.type === 'Literal' && typeof attr.value.value === 'string') {
+          const newValue = MAPS.container[attr.value.value] || attr.value.value;
+          if (newValue !== attr.value.value) {
+            attributes[index] = j.jsxAttribute(
+              j.jsxIdentifier(attr.name.name),
+              j.literal(newValue)
+            );
+          }
+        }
+
+        if (attr.value && attr.value.type === 'JSXExpressionContainer') {
+          const expression = attr.value.expression;
+
+          // Handle array: <Grid columns={["small", "large"]} /> or <Grid rows={["small", "large"]} />
+          if (expression.type === 'ArrayExpression') {
+            expression.elements.forEach((element, elemIndex) => {
+              if (element && element.type === 'Literal' && typeof element.value === 'string') {
+                const newValue = MAPS.container[element.value] || element.value;
+                if (newValue !== element.value) {
+                  expression.elements[elemIndex] = j.literal(newValue);
+                }
+              }
+            });
+          }
+
+          // Handle object: <Grid columns={{ count: "fit", size: "large" }} /> or <Grid rows={{ count: "fit", size: "large" }} />
+          if (expression.type === 'ObjectExpression') {
+            expression.properties.forEach((propNode, propIndex) => {
+              if (propNode.key && propNode.key.name === 'size' &&
+                  propNode.value.type === 'Literal' && typeof propNode.value.value === 'string') {
+                const newValue = MAPS.container[propNode.value.value] || propNode.value.value;
+                if (newValue !== propNode.value.value) {
+                  expression.properties[propIndex] = j.property(
+                    'init',
+                    propNode.key,
+                    j.literal(newValue)
+                  );
+                }
+              }
+            });
+          }
         }
       }
     });
