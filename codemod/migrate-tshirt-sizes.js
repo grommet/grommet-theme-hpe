@@ -169,7 +169,7 @@ root.find(j.MemberExpression, {
     });
   });
 
-  // Handle components with container size mapping (Meter, TableCell, Card)
+  // Handle components with container size mapping (Meter, TableCell, Cards)
   ['Meter', 'TableCell', 'Cards'].forEach((componentName) => {
     root.find(j.JSXElement, {
       openingElement: {
