@@ -6,6 +6,7 @@
 
 const { execSync } = require('child_process');
 const path = require('path');
+const fs = require('fs');
 
 const args = process.argv.slice(2);
 
@@ -13,16 +14,22 @@ function printHelp() {
   /* eslint-disable no-console */
   console.log(`\nGrommet Theme HPE Codemod\n`);
   console.log(
-    `Usage: node node_modules/grommet-theme-hpe/codemod <transform> <path> [options]\n`,
+    `Usage: node node_modules/grommet-theme-hpe/codemod <transform> <path> [options]\n`
   );
   console.log(`Transforms:`);
   console.log(`  migrate-tshirt-sizes   Migrate v6 t-shirt sizes to v7`);
   console.log(`Options:`);
   console.log(`  --dry      Run in dry mode (no changes)`);
+  console.log(`  --verbose  Set verbosity level (0, 1, or 2). Default is 0`);
   console.log(`  --help     Show this help message`);
-  console.log(`\nExample:`);
+  console.log(`\nExample usage:`);
   console.log(
-    `  node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --dry\n`,
+    `  node node_modules/grommet-theme-hpe/codemod --help\n`,
+    ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/\n`,
+    ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --dry\n`,
+    ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --verbose 1 --dry\n`,
+    ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --verbose 1\n`,
+    ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --verbose 2\n`
   );
 }
 
@@ -46,12 +53,82 @@ if (!transforms[transform]) {
 }
 
 const dryFlag = dry ? '--dry' : '';
+let verboseLevel = 0;
+const verboseIndex = args.indexOf('--verbose');
+if (
+  verboseIndex !== -1 &&
+  args[verboseIndex + 1] &&
+  !isNaN(Number(args[verboseIndex + 1]))
+) {
+  verboseLevel = Number(args[verboseIndex + 1]);
+}
+const verboseFlag = `-v ${verboseLevel}`;
 
-try {
-  execSync(
-    `npx jscodeshift -t "${transforms[transform]}" ${target} ${dryFlag} --extensions=js,jsx,ts,tsx`,
-    { stdio: 'inherit' },
-  );
-} catch (err) {
-  process.exit(err.status || 1);
+function getAllFiles(dir, exts) {
+  let results = [];
+  const list = fs.readdirSync(dir);
+  list.forEach(function (file) {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+    if (stat && stat.isDirectory()) {
+      results = results.concat(getAllFiles(filePath, exts));
+    } else {
+      if (exts.includes(path.extname(filePath).toLowerCase())) {
+        results.push(filePath);
+      }
+    }
+  });
+  return results;
+}
+
+let filesToProcess = [];
+if (fs.existsSync(target) && fs.statSync(target).isDirectory()) {
+  filesToProcess = getAllFiles(target, ['.js', '.jsx', '.ts', '.tsx']);
+} else {
+  filesToProcess = [target];
+}
+
+// Batch files by extension for faster processing
+const tsFiles = filesToProcess.filter((f) => {
+  const ext = path.extname(f).toLowerCase();
+  return ext === '.ts' || ext === '.tsx';
+});
+const jsFiles = filesToProcess.filter((f) => {
+  const ext = path.extname(f).toLowerCase();
+  return ext === '.js' || ext === '.jsx';
+});
+
+let hadError = false;
+
+// ts/tsx files
+if (tsFiles.length > 0) {
+  try {
+    execSync(
+      `npx jscodeshift --parser=tsx ${dryFlag} ${verboseFlag} --extensions=ts,tsx -t "${
+        transforms[transform]
+      }" ${tsFiles.map((f) => '"' + f + '"').join(' ')}`,
+      { stdio: 'inherit' }
+    );
+  } catch (err) {
+    hadError = true;
+    console.error('Error processing TypeScript files');
+  }
+}
+
+// js/jsx files
+if (jsFiles.length > 0) {
+  try {
+    execSync(
+      `npx jscodeshift ${dryFlag} ${verboseFlag} --extensions=js,jsx -t "${
+        transforms[transform]
+      }" ${jsFiles.map((f) => '"' + f + '"').join(' ')}`,
+      { stdio: 'inherit' }
+    );
+  } catch (err) {
+    hadError = true;
+    console.error('Error processing JS/JSX files');
+  }
+}
+if (hadError) {
+  process.exit(1);
 }
