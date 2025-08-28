@@ -21,12 +21,14 @@ function printHelp() {
   console.log(`Options:`);
   console.log(`  --dry      Run in dry mode (no changes)`);
   console.log(`  --verbose  Set verbosity level (0, 1, or 2). Default is 0`);
+  console.log(`  --quote    Set quote style (single or double). Default is double`);
   console.log(`  --help     Show this help message`);
   console.log(`\nExample usage:`);
   console.log(
     `  node node_modules/grommet-theme-hpe/codemod --help\n`,
     ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/\n`,
     ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --dry\n`,
+    ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --quote single --dry\n`,
     ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --verbose 1 --dry\n`,
     ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --verbose 1\n`,
     ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --verbose 2\n`
@@ -63,6 +65,17 @@ if (
   verboseLevel = Number(args[verboseIndex + 1]);
 }
 const verboseFlag = `-v ${verboseLevel}`;
+
+// Handle --quote option
+
+let quoteFlag = 'double';
+const quoteIndex = args.indexOf('--quote');
+if (quoteIndex !== -1 && args[quoteIndex + 1]) {
+  const quoteValue = args[quoteIndex + 1];
+  if (quoteValue === 'single' || quoteValue === 'double') {
+    quoteFlag = `--quote=${quoteValue}`;
+  }
+}
 
 function getAllFiles(dir, exts) {
   let results = [];
@@ -104,7 +117,7 @@ let hadError = false;
 if (tsFiles.length > 0) {
   try {
     execSync(
-      `npx jscodeshift --parser=tsx ${dryFlag} ${verboseFlag} --extensions=ts,tsx -t "${
+      `npx jscodeshift --parser=tsx ${dryFlag} ${verboseFlag} ${quoteFlag} --extensions=ts,tsx -t "${
         transforms[transform]
       }" ${tsFiles.map((f) => '"' + f + '"').join(' ')}`,
       { stdio: 'inherit' }
@@ -119,7 +132,7 @@ if (tsFiles.length > 0) {
 if (jsFiles.length > 0) {
   try {
     execSync(
-      `npx jscodeshift ${dryFlag} ${verboseFlag} --extensions=js,jsx -t "${
+      `npx jscodeshift ${dryFlag} ${verboseFlag} ${quoteFlag} --extensions=js,jsx -t "${
         transforms[transform]
       }" ${jsFiles.map((f) => '"' + f + '"').join(' ')}`,
       { stdio: 'inherit' }

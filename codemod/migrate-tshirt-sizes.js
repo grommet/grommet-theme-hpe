@@ -90,7 +90,7 @@ const replaceSize = (prop, value) => {
   return newValue;
 };
 
-export default (file, api) => {
+export default (file, api, options) => {
   const j = api.jscodeshift;
   const root = j(file.source);
 
@@ -361,5 +361,7 @@ export default (file, api) => {
       });
     });
 
-  return root.toSource();
+  // get --quote flag from options argument
+  const quote = options.quote === 'single' ? 'single' : 'double';
+  return root.toSource({quote});
 };
