@@ -338,20 +338,31 @@ export default (file, api) => {
             // Handle object: <Grid columns={{ count: "fit", size: "large" }} /> or <Grid rows={{ count: "fit", size: "large" }} />
             if (expression.type === 'ObjectExpression') {
               expression.properties.forEach((propNode, propIndex) => {
-                if (
-                  propNode.key &&
-                  propNode.key.name === 'size' &&
-                  isStringLiteral(propNode.value)
-                ) {
-                  const newValue =
-                    MAPS.container[propNode.value.value] ||
-                    propNode.value.value;
-                  if (newValue !== propNode.value.value) {
-                    expression.properties[propIndex] = j.property(
-                      'init',
-                      propNode.key,
-                      j.stringLiteral(newValue)
-                    );
+                if (propNode.key && propNode.key.name === 'size') {
+                  if (isStringLiteral(propNode.value)) {
+                    const newValue =
+                      MAPS.container[propNode.value.value] ||
+                      propNode.value.value;
+                    if (newValue !== propNode.value.value) {
+                      expression.properties[propIndex] = j.property(
+                        'init',
+                        propNode.key,
+                        j.stringLiteral(newValue)
+                      );
+                    }
+                  }
+                  
+                  // Handle array: size: ["small", "flex"]
+                  if (propNode.value.type === 'ArrayExpression') {
+                    propNode.value.elements.forEach((element, elemIndex) => {
+                      if (element && isStringLiteral(element)) {
+                        const newValue =
+                          MAPS.container[element.value] || element.value;
+                        if (newValue !== element.value) {
+                          propNode.value.elements[elemIndex] = j.stringLiteral(newValue);
+                        }
+                      }
+                    });
                   }
                 }
               });
@@ -360,6 +371,28 @@ export default (file, api) => {
         }
       });
     });
+
+  // Handle function parameter default values (e.g., const Component = ({ pad = 'small' }) => {})
+  root.find(j.Function).forEach((path) => {
+    const params = path.node.params;
+    if (params && params.length > 0) {
+      params.forEach((param) => {
+        if (param.type === 'ObjectPattern') {
+          param.properties.forEach((prop) => {
+            if (prop.type === 'AssignmentPattern' && prop.left.type === 'Identifier') {
+              const propName = prop.left.name;
+              if (ALL_PROPS.includes(propName) && isStringLiteral(prop.right)) {
+                const newValue = replaceSize(propName, prop.right.value);
+                if (newValue !== prop.right.value) {
+                  prop.right = j.stringLiteral(newValue);
+                }
+              }
+            }
+          });
+        }
+      });
+    }
+  });
 
   return root.toSource();
 };
