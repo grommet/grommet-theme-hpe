@@ -35,6 +35,7 @@ function printHelp() {
   );
 }
 
+// Handle --help flag
 if (args.includes('--help') || args.length < 2) {
   printHelp();
   process.exit(0);
@@ -42,7 +43,6 @@ if (args.includes('--help') || args.length < 2) {
 
 const transform = args[0];
 const target = args[1];
-const dry = args.includes('--dry');
 
 const transforms = {
   'migrate-tshirt-sizes': path.join(__dirname, 'migrate-tshirt-sizes.js'),
@@ -54,7 +54,11 @@ if (!transforms[transform]) {
   process.exit(1);
 }
 
+// Handle --dry flag
+const dry = args.includes('--dry');
 const dryFlag = dry ? '--dry' : '';
+
+// Handle --verbose level flag
 let verboseLevel = 0;
 const verboseIndex = args.indexOf('--verbose');
 if (
@@ -66,8 +70,7 @@ if (
 }
 const verboseFlag = `-v ${verboseLevel}`;
 
-// Handle --quote option
-
+// Handle --quote flag
 let quoteFlag = 'double';
 const quoteIndex = args.indexOf('--quote');
 if (quoteIndex !== -1 && args[quoteIndex + 1]) {
@@ -137,6 +140,9 @@ if (jsFiles.length > 0) {
       }" ${jsFiles.map((f) => '"' + f + '"').join(' ')}`,
       { stdio: 'inherit' }
     );
+    console.log('✅  Migration to Grommet Theme HPE v7 t-shirt sizes complete!');
+    console.warn('⚠️   WARN: Review any deprecation warnings.');
+    console.warn('⚠️   WARN: Fix any other manual changes needed.');
   } catch (err) {
     hadError = true;
     console.error('Error processing JS/JSX files');
