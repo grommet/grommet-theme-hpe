@@ -125,6 +125,11 @@ if (tsFiles.length > 0) {
       }" ${tsFiles.map((f) => '"' + f + '"').join(' ')}`,
       { stdio: 'inherit' }
     );
+    if (!dry) {
+      console.log('✅  Migration to Grommet Theme HPE v7 t-shirt sizes complete!');
+      console.warn('⚠️   WARN: Review any deprecation warnings.');
+      console.warn('⚠️   WARN: Fix any other manual changes needed.');
+    }
   } catch (err) {
     hadError = true;
     console.error('Error processing TypeScript files');
@@ -140,9 +145,11 @@ if (jsFiles.length > 0) {
       }" ${jsFiles.map((f) => '"' + f + '"').join(' ')}`,
       { stdio: 'inherit' }
     );
-    console.log('✅  Migration to Grommet Theme HPE v7 t-shirt sizes complete!');
-    console.warn('⚠️   WARN: Review any deprecation warnings.');
-    console.warn('⚠️   WARN: Fix any other manual changes needed.');
+    if (!dry) {
+      console.log('✅  Migration to Grommet Theme HPE v7 t-shirt sizes complete!');
+      console.warn('⚠️   WARN: Review any deprecation warnings.');
+      console.warn('⚠️   WARN: Fix any other manual changes needed.');
+    }
   } catch (err) {
     hadError = true;
     console.error('Error processing JS/JSX files');
