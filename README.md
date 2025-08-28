@@ -55,6 +55,50 @@ The contents of `AUDIT` branch are available on `AUDIT-stable`. From your packag
 
 _NOTE: This branch should never be used in production as it is a branch meant for use as a tool to help teams maintain best practices for consuming `grommet-theme-hpe`._
 
+## Migration Guide: v6 to v7 T-shirt Size Changes
+
+### Automated Migration with Codemod
+
+To migrate from v6 to v7 t-shirt sizes, use the built-in codemod via npx:
+
+```sh
+# Show help
+npx grommet-theme-hpe/codemod migrate-tshirt-sizes --help
+
+# Dry run (shows changes, does not modify files)
+npx grommet-theme-hpe/codemod migrate-tshirt-sizes <your-source-folder> --dry
+
+# Apply changes
+npx grommet-theme-hpe/codemod migrate-tshirt-sizes <your-source-folder>
+```
+
+#### What does it do?
+
+Automatically updates t-shirt size props (e.g., `pad`, `margin`, `gap`, etc.) in JSX to the new v6 values:
+
+| v6 (Old) | v7 (New) |
+| -------- | -------- |
+| xxsmall  | 5xsmall  |
+| xsmall   | 3xsmall  |
+| small    | xsmall   |
+| medium   | medium   |
+| large    | xlarge   |
+| xlarge   | 3xlarge  |
+
+#### Manual Migration Required
+
+You must manually review and update:
+
+- Dynamic values (variables, expressions)
+- Custom logic or computed t-shirt sizes
+- Non-standard prop names or custom components
+
+Flag these for your team to review during migration.
+
+#### References
+
+- [T-shirt size changes for v7](https://github.com/grommet/hpe-design-system/issues/4487#issuecomment-2576435972)
+
 ```
 "grommet-theme-hpe": "https://github.com/grommet/grommet-theme-hpe/tarball/AUDIT-stable",
 ```
