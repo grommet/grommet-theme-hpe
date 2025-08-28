@@ -230,7 +230,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       large: large.hpe.radius.large,
       xlarge: large.hpe.radius.xlarge,
       xxlarge: large.hpe.radius.xxlarge,
-      // full: large.hpe.radius.full,
+      full: large.hpe.radius.full,
       responsiveBreakpoint: 'small'
     },
     size: size(large)
@@ -270,7 +270,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           large: small.hpe.radius.large,
           xlarge: small.hpe.radius.xlarge,
           xxlarge: small.hpe.radius.xxlarge,
-          // full: small.hpe.radius.full,
+          full: small.hpe.radius.full,
           responsiveBreakpoint: 'small'
         },
         size: size(small)
@@ -311,7 +311,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           large: small.hpe.radius.large,
           xlarge: small.hpe.radius.xlarge,
           xxlarge: small.hpe.radius.xxlarge,
-          // full: small.hpe.radius.full,
+          full: small.hpe.radius.full,
           responsiveBreakpoint: 'small'
         },
         size: size(small)
@@ -1231,7 +1231,21 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       detail: {
-        gap: '3xsmall'
+        gap: '3xsmall',
+        pad: 'xsmall'
+      },
+      halfPad: {
+        '3xlarge': 'xlarge',
+        xxlarge: 'large',
+        xlarge: 'medium',
+        large: 'small',
+        medium: 'xsmall',
+        small: 'xxsmall',
+        xsmall: '3xsmall',
+        xxsmall: '4xsmall',
+        '3xsmall': '5xsmall',
+        '4xsmall': '2px',
+        '5xsmall': 'hair'
       },
       legend: {
         margin: {
@@ -1246,6 +1260,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           }
         }
       },
+      orderedSizes: ['3xlarge', 'xxlarge', 'xlarge', 'large', 'medium', 'small', 'xsmall', 'xxsmall', '3xsmall', '4xsmall', '5xsmall'],
       size: {
         height: 'xsmall'
       },
