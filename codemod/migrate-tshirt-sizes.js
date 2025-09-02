@@ -3,7 +3,7 @@
  * Usage: node node_modules/grommet-theme-hpe/codemod <transform> <path>
  */
 
-const SPACING_PROPS = ['gap', 'margin', 'pad'];
+const SPACING_PROPS = ['gap', 'margin', 'pad', 'thickness'];
 const BORDER_PROPS = ['border'];
 const CONTAINER_PROPS = ['height', 'width'];
 const RADIUS_PROPS = ['round'];
@@ -371,6 +371,56 @@ export default (file, api, options) => {
         }
       });
     });
+
+    // Handle Chart and Meter component thickness prop
+['Chart', 'Meter'].forEach((componentName) => {
+  root
+    .find(j.JSXElement, {
+      openingElement: { name: { name: componentName } },
+    })
+    .forEach((path) => {
+      const attributes = path.node.openingElement.attributes;
+      attributes.forEach((attr, index) => {
+        if (attr.type === 'JSXAttribute' && attr.name.name === 'thickness') {
+          if (attr.value && isStringLiteral(attr.value)) {
+            const newValue =
+              MAPS.spacing[attr.value.value] || attr.value.value;
+            if (newValue !== attr.value.value) {
+              attributes[index] = j.jsxAttribute(
+                j.jsxIdentifier('thickness'),
+                j.stringLiteral(newValue)
+              );
+            }
+          }
+        }
+      });
+    });
+});
+
+// Handle Chart and Meter component thickness prop
+['Chart', 'Meter'].forEach((componentName) => {
+  root
+    .find(j.JSXElement, {
+      openingElement: { name: { name: componentName } },
+    })
+    .forEach((path) => {
+      const attributes = path.node.openingElement.attributes;
+      attributes.forEach((attr, index) => {
+        if (attr.type === 'JSXAttribute' && attr.name.name === 'thickness') {
+          if (attr.value && isStringLiteral(attr.value)) {
+            const newValue =
+              MAPS.spacing[attr.value.value] || attr.value.value;
+            if (newValue !== attr.value.value) {
+              attributes[index] = j.jsxAttribute(
+                j.jsxIdentifier('thickness'),
+                j.stringLiteral(newValue)
+              );
+            }
+          }
+        }
+      });
+    });
+});
 
   // Handle function parameter default values (e.g., const Component = ({ pad = 'small' }) => {})
   root.find(j.Function).forEach((path) => {
