@@ -42,7 +42,7 @@ const isStringLiteral = (n) =>
   ((n.type === 'Literal' && typeof n.value === 'string') ||
     n.type === 'StringLiteral');
 
-//  pick correct map
+// pick correct map
 const getMapForProp = (prop) => {
   if (SPACING_PROPS.includes(prop)) return MAPS.spacing;
   if (BORDER_PROPS.includes(prop)) return MAPS.border;
@@ -51,10 +51,9 @@ const getMapForProp = (prop) => {
   return null;
 };
 
-const replaceSize = (prop, value) => {
+const replaceSize = (prop, value, fileInfo = {}) => {
   const map = getMapForProp(prop);
   if (!map) return value;
-
   const newValue = map[value] || value;
 
   // Show deprecation warnings for radius props
@@ -63,9 +62,8 @@ const replaceSize = (prop, value) => {
     (value === 'large' || value === 'xlarge')
   ) {
     console.warn(
-      `⚠️  DEPRECATION: radius="${value}" (${
-        value === 'large' ? '48px' : '96px'
-      }) is deprecated and now maps to "xxlarge" (32px).`
+      `⚠️  DEPRECATION: radius="${value}" (${value === 'large' ? '48px' : '96px'}) is deprecated and now maps to "xxlarge" (32px).` +
+      `\n  at ${fileInfo.file}${fileInfo.line ? `:${fileInfo.line}` : ''}`
     );
   }
 
@@ -76,18 +74,110 @@ const replaceSize = (prop, value) => {
   ) {
     const oldSize = value === 'large' ? '12px' : '24px';
     console.warn(
-      `⚠️  DEPRECATION: border="${value}" (${oldSize}) is deprecated and now maps to "large" (6px).`
+      `⚠️  DEPRECATION: border="${value}" (${oldSize}) is deprecated and now maps to "large" (6px).` +
+      `\n  at ${fileInfo.file}${fileInfo.line ? `:${fileInfo.line}` : ''}`
     );
   }
 
   // Show deprecation warnings for container props
   if (CONTAINER_PROPS.includes(prop) && value === 'xlarge') {
     console.warn(
-      `⚠️  DEPRECATION: ${prop}="${value}" (1152px) is deprecated and now maps to "xxlarge" (1024px).`
+      `⚠️  DEPRECATION: ${prop}="${value}" (1152px) is deprecated and now maps to "xxlarge" (1024px).` +
+      `\n  at ${fileInfo.file}${fileInfo.line ? `:${fileInfo.line}` : ''}`
     );
   }
 
   return newValue;
+};
+
+const transformNestedObject = (objExpr, propName) => {
+  objExpr.properties.forEach((propNode) => {
+    if (!propNode.value) return;
+    if (isStringLiteral(propNode.value)) {
+      const oldValue = propNode.value.value;
+    const newValue = replaceSize(propName, oldValue, fileInfo);
+      if (newValue !== oldValue) {
+        propNode.value = j.stringLiteral(newValue);
+      }
+    } else if (propNode.value.type === 'ObjectExpression') {
+      transformNestedObject(propNode.value, propName);
+    }
+  });
+};
+
+// Refactored handlers for nested pad, margin, round
+const transformPropsWithPadMarginRound = (root, j, propNames) => {
+  propNames.forEach((propName) => {
+    root.find(j.JSXAttribute, { name: { name: propName } }).forEach((attrPath) => {
+      const propValue = attrPath.node.value;
+      if (
+        propValue &&
+        propValue.type === 'JSXExpressionContainer' &&
+        propValue.expression.type === 'ObjectExpression'
+      ) {
+        propValue.expression.properties.forEach((propNode) => {
+          // pad or margin
+          if (
+            propNode.type === 'Property' &&
+            (propNode.key.name === 'pad' || propNode.key.name === 'margin')
+          ) {
+            if (isStringLiteral(propNode.value)) {
+              const newValue = replaceSize(propNode.key.name, propNode.value.value);
+              if (newValue !== propNode.value.value) {
+                propNode.value = j.stringLiteral(newValue);
+              }
+            } else if (propNode.value.type === 'ObjectExpression') {
+              transformNestedObject(propNode.value, propNode.key.name);
+            }
+          }
+          // round
+          if (
+            propNode.type === 'Property' &&
+            propNode.key.name === 'round'
+          ) {
+            if (isStringLiteral(propNode.value)) {
+              const newValue = replaceSize('round', propNode.value.value);
+              if (newValue !== propNode.value.value) {
+                propNode.value = j.stringLiteral(newValue);
+              }
+            } else if (propNode.value.type === 'ObjectExpression') {
+              transformNestedObject(propNode.value, 'round');
+            }
+          }
+        });
+      }
+    });
+  });
+};
+
+// Dedicated handler for itemProps (pad only)
+const transformPropsWithPadOnly = (root, j, propNames) => {
+  propNames.forEach((propName) => {
+    root.find(j.JSXAttribute, { name: { name: propName } }).forEach((attrPath) => {
+      const propValue = attrPath.node.value;
+      if (
+        propValue &&
+        propValue.type === 'JSXExpressionContainer' &&
+        propValue.expression.type === 'ObjectExpression'
+      ) {
+        propValue.expression.properties.forEach((propNode) => {
+          if (
+            propNode.type === 'Property' &&
+            propNode.key.name === 'pad'
+          ) {
+            if (isStringLiteral(propNode.value)) {
+              const newValue = replaceSize('pad', propNode.value.value);
+              if (newValue !== propNode.value.value) {
+                propNode.value = j.stringLiteral(newValue);
+              }
+            } else if (propNode.value.type === 'ObjectExpression') {
+              transformNestedObject(propNode.value, 'pad');
+            }
+          }
+        });
+      }
+    });
+  });
 };
 
 export default (file, api, options) => {
@@ -108,14 +198,12 @@ export default (file, api, options) => {
       // Only transform identifiers (e.g., theme.global.edgeSize.small)
       if (prop.type === 'Identifier') {
         const oldKey = prop.name;
-        const newKey = MAPS.spacing[oldKey]; // spacing map applies here
+        const newKey = MAPS.spacing[oldKey];
         if (newKey && newKey !== oldKey) {
           if (/^\d/.test(newKey)) {
-            // starts with a number → use bracket notation
             path.node.property = j.stringLiteral(newKey);
-            path.node.computed = true; // theme.global.edgeSize['5xsmall']
+            path.node.computed = true;
           } else {
-            // safe identifier
             path.node.property = j.identifier(newKey);
             path.node.computed = false;
           }
@@ -128,14 +216,9 @@ export default (file, api, options) => {
         const newKey = MAPS.spacing[oldKey];
         if (newKey && newKey !== oldKey) {
           if (/^\d/.test(newKey)) {
-            // starts with a number → use bracket notation
-            // by setting computed to true, jscodeshift will convert to bracket notation
-            // stringLiteral ensure it's a string type
             path.node.property = j.stringLiteral(newKey);
             path.node.computed = true;
           } else {
-            // safe identifier → use dot notation
-            // ensure consistency by explicity setting computed to false
             path.node.property = j.identifier(newKey);
             path.node.computed = false;
           }
@@ -155,7 +238,7 @@ export default (file, api, options) => {
     root.find(j.JSXAttribute, { name: { name: prop } }).forEach((path) => {
       const val = path.node.value;
       if (val && isStringLiteral(val)) {
-        const newValue = replaceSize(prop, val.value);
+        const newValue = replaceSize(prop, val.value, { file: file.path, line: path.node.loc?.start.line });
         if (newValue !== val.value) {
           path.get('value').replace(j.stringLiteral(newValue));
         }
@@ -172,19 +255,7 @@ export default (file, api, options) => {
         val.type === 'JSXExpressionContainer' &&
         val.expression.type === 'ObjectExpression'
       ) {
-        val.expression.properties.forEach((propNode, index) => {
-          if (isStringLiteral(propNode.value)) {
-            const oldValue = propNode.value.value;
-            const newValue = replaceSize(prop, oldValue);
-            if (newValue !== oldValue) {
-              val.expression.properties[index] = j.property(
-                'init',
-                propNode.key,
-                j.stringLiteral(newValue)
-              );
-            }
-          }
-        });
+        transformNestedObject(val.expression, prop, { file: file.path, line: path.node.loc?.start.line });
       }
     });
   });
@@ -372,55 +443,30 @@ export default (file, api, options) => {
       });
     });
 
-    // Handle Chart and Meter component thickness prop
-['Chart', 'Meter'].forEach((componentName) => {
-  root
-    .find(j.JSXElement, {
-      openingElement: { name: { name: componentName } },
-    })
-    .forEach((path) => {
-      const attributes = path.node.openingElement.attributes;
-      attributes.forEach((attr, index) => {
-        if (attr.type === 'JSXAttribute' && attr.name.name === 'thickness') {
-          if (attr.value && isStringLiteral(attr.value)) {
-            const newValue =
-              MAPS.spacing[attr.value.value] || attr.value.value;
-            if (newValue !== attr.value.value) {
-              attributes[index] = j.jsxAttribute(
-                j.jsxIdentifier('thickness'),
-                j.stringLiteral(newValue)
-              );
+  // Handle Chart and Meter component thickness prop
+  ['Chart', 'Meter'].forEach((componentName) => {
+    root
+      .find(j.JSXElement, {
+        openingElement: { name: { name: componentName } },
+      })
+      .forEach((path) => {
+        const attributes = path.node.openingElement.attributes;
+        attributes.forEach((attr, index) => {
+          if (attr.type === 'JSXAttribute' && attr.name.name === 'thickness') {
+            if (attr.value && isStringLiteral(attr.value)) {
+              const newValue =
+                MAPS.spacing[attr.value.value] || attr.value.value;
+              if (newValue !== attr.value.value) {
+                attributes[index] = j.jsxAttribute(
+                  j.jsxIdentifier('thickness'),
+                  j.stringLiteral(newValue)
+                );
+              }
             }
           }
-        }
+        });
       });
-    });
-});
-
-// Handle Chart and Meter component thickness prop
-['Chart', 'Meter'].forEach((componentName) => {
-  root
-    .find(j.JSXElement, {
-      openingElement: { name: { name: componentName } },
-    })
-    .forEach((path) => {
-      const attributes = path.node.openingElement.attributes;
-      attributes.forEach((attr, index) => {
-        if (attr.type === 'JSXAttribute' && attr.name.name === 'thickness') {
-          if (attr.value && isStringLiteral(attr.value)) {
-            const newValue =
-              MAPS.spacing[attr.value.value] || attr.value.value;
-            if (newValue !== attr.value.value) {
-              attributes[index] = j.jsxAttribute(
-                j.jsxIdentifier('thickness'),
-                j.stringLiteral(newValue)
-              );
-            }
-          }
-        }
-      });
-    });
-});
+  });
 
   // Handle function parameter default values (e.g., const Component = ({ pad = 'small' }) => {})
   root.find(j.Function).forEach((path) => {
@@ -444,7 +490,193 @@ export default (file, api, options) => {
     }
   });
 
+  // Handle columns and rows when passed inside gridProps (e.g. <PageHeader gridProps={{ columns: { count: "fit", size: "large" } }} />)
+  root.find(j.JSXAttribute, { name: { name: 'gridProps' } }).forEach((attrPath) => {
+    const gridPropsValue = attrPath.node.value;
+    if (
+      gridPropsValue &&
+      gridPropsValue.type === 'JSXExpressionContainer' &&
+      gridPropsValue.expression.type === 'ObjectExpression'
+    ) {
+      gridPropsValue.expression.properties.forEach((gpProp) => {
+        if (
+          gpProp.type === 'Property' &&
+          (gpProp.key.name === 'columns' || gpProp.key.name === 'rows')
+        ) {
+          const colRowValue = gpProp.value;
+          // Handle string: gridProps={{ columns: "large" }}
+          if (isStringLiteral(colRowValue)) {
+            const newValue = MAPS.container[colRowValue.value] || colRowValue.value;
+            if (newValue !== colRowValue.value) {
+              gpProp.value = j.stringLiteral(newValue);
+            }
+          }
+          // Handle array: gridProps={{ columns: ["small", "large"] }}
+          else if (colRowValue.type === 'ArrayExpression') {
+            colRowValue.elements.forEach((element, elemIndex) => {
+              if (element && isStringLiteral(element)) {
+                const newValue = MAPS.container[element.value] || element.value;
+                if (newValue !== element.value) {
+                  colRowValue.elements[elemIndex] = j.stringLiteral(newValue);
+                }
+              }
+            });
+          }
+          // Handle object: gridProps={{ columns: { count: "fit", size: "large" } }}
+          else if (colRowValue.type === 'ObjectExpression') {
+            colRowValue.properties.forEach((propNode, propIndex) => {
+              if (propNode.key && propNode.key.name === 'size') {
+                if (isStringLiteral(propNode.value)) {
+                  const newValue = MAPS.container[propNode.value.value] || propNode.value.value;
+                  if (newValue !== propNode.value.value) {
+                    colRowValue.properties[propIndex] = j.property(
+                      'init',
+                      propNode.key,
+                      j.stringLiteral(newValue)
+                    );
+                  }
+                }
+                // Handle array: size: ["small", "flex"]
+                if (propNode.value.type === 'ArrayExpression') {
+                  propNode.value.elements.forEach((element, elemIndex) => {
+                    if (element && isStringLiteral(element)) {
+                      const newValue = MAPS.container[element.value] || element.value;
+                      if (newValue !== element.value) {
+                        propNode.value.elements[elemIndex] = j.stringLiteral(newValue);
+                      }
+                    }
+                  });
+                }
+              }
+            });
+          }
+        }
+      });
+    }
+  });
+
+  // Handle Diagram component connections prop for thickness
+root
+  .find(j.JSXElement, {
+    openingElement: { name: { name: 'Diagram' } },
+  })
+  .forEach((path) => {
+    const attributes = path.node.openingElement.attributes;
+    attributes.forEach((attr) => {
+      if (attr.type === 'JSXAttribute' && attr.name.name === 'connections') {
+        // <Diagram connections={[ ... ]} />
+        if (
+          attr.value &&
+          attr.value.type === 'JSXExpressionContainer' &&
+          attr.value.expression.type === 'ArrayExpression'
+        ) {
+          attr.value.expression.elements.forEach((element) => {
+            if (
+              element &&
+              element.type === 'ObjectExpression'
+            ) {
+              element.properties.forEach((propNode) => {
+                if (
+                  propNode.type === 'Property' &&
+                  propNode.key.name === 'thickness' &&
+                  isStringLiteral(propNode.value)
+                ) {
+                  const newValue = replaceSize('thickness', propNode.value.value, {
+                    file: file.path,
+                    line: propNode.value.loc?.start.line
+                  });
+                  if (newValue !== propNode.value.value) {
+                    propNode.value = j.stringLiteral(newValue);
+                  }
+                }
+              });
+            }
+          });
+        }
+      }
+    });
+  });
+
+  // Handle NameValueList nameProps and valueProps
+root
+  .find(j.JSXElement, {
+    openingElement: { name: { name: 'NameValueList' } },
+  })
+  .forEach((path) => {
+    const attributes = path.node.openingElement.attributes;
+    attributes.forEach((attr) => {
+      if (
+        attr.type === 'JSXAttribute' &&
+        (attr.name.name === 'nameProps' || attr.name.name === 'valueProps') &&
+        attr.value &&
+        attr.value.type === 'JSXExpressionContainer' &&
+        attr.value.expression.type === 'ObjectExpression'
+      ) {
+        attr.value.expression.properties.forEach((propNode) => {
+          if (
+            propNode.type === 'Property' &&
+            propNode.key.name === 'width'
+          ) {
+            if (isStringLiteral(propNode.value)) {
+              const newValue = replaceSize(
+                'width',
+                propNode.value.value,
+                { file: file.path, line: propNode.value.loc?.start.line }
+              );
+              if (newValue !== propNode.value.value) {
+                propNode.value = j.stringLiteral(newValue);
+              }
+            }
+            else if (propNode.value.type === 'ArrayExpression') {
+              propNode.value.elements.forEach((element, idx) => {
+                if (element && isStringLiteral(element)) {
+                  const newValue = replaceSize(
+                    'width',
+                    element.value,
+                    { file: file.path, line: element.loc?.start.line }
+                  );
+                  if (newValue !== element.value) {
+                    propNode.value.elements[idx] = j.stringLiteral(newValue);
+                  }
+                }
+              });
+            }
+            else if (propNode.value.type === 'ObjectExpression') {
+              propNode.value.properties.forEach((wProp) => {
+                if (
+                  wProp.type === 'Property' &&
+                  (wProp.key.name === 'min' || wProp.key.name === 'max') &&
+                  isStringLiteral(wProp.value)
+                ) {
+                  const newValue = replaceSize(
+                    'width',
+                    wProp.value.value,
+                    { file: file.path, line: wProp.value.loc?.start.line }
+                  );
+                  if (newValue !== wProp.value.value) {
+                    wProp.value = j.stringLiteral(newValue);
+                  }
+                }
+              });
+            }
+          }
+        });
+      }
+    });
+  });
+
+  // Refactored: handle dropProps, defaultItemProps, boxProp, buttonProps for pad, margin, round
+  transformPropsWithPadMarginRound(root, j, [
+    'dropProps',
+    'defaultItemProps',
+    'boxProp',
+    'buttonProps',
+  ]);
+
+  // Refactored: handle itemProps for pad only
+  transformPropsWithPadOnly(root, j, ['itemProps']);
+
   // get --quote flag from options argument
   const quote = options.quote === 'single' ? 'single' : 'double';
-  return root.toSource({quote});
+  return root.toSource({ quote });
 };
