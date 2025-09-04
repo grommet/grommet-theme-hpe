@@ -7,6 +7,7 @@ const SPACING_PROPS = ['gap', 'margin', 'pad'];
 const BORDER_PROPS = ['border'];
 const CONTAINER_PROPS = ['height', 'width'];
 const RADIUS_PROPS = ['round'];
+const OTHER_PROPS = ['nameProps', 'valueProps'];
 
 // maps for each category
 const MAPS = {
@@ -42,11 +43,65 @@ const isStringLiteral = (n) =>
   ((n.type === 'Literal' && typeof n.value === 'string') ||
     n.type === 'StringLiteral');
 
+// Recursively traverse and replace t-shirt sizes in arrays, objects, conditionals, etc.
+function deepReplaceSize(prop, node) {
+  if (!node) return node;
+  // String literal
+  if (isStringLiteral(node)) {
+    const newValue = replaceSize(prop, node.value);
+    if (newValue !== node.value) {
+      node.value = newValue;
+      node.raw = `'${newValue}'`;
+    }
+    return node;
+  }
+  // Array
+  if (node.type === 'ArrayExpression') {
+    // Use container map for columns/rows arrays
+    let arrayProp = prop;
+    if (prop === 'columns' || prop === 'rows') arrayProp = 'width';
+    node.elements = node.elements.map((el) => deepReplaceSize(arrayProp, el));
+    return node;
+  }
+  // Object
+  if (node.type === 'ObjectExpression') {
+    node.properties.forEach((p) => {
+      // Key-based mapping for container props (e.g., width, height)
+      const keyName = p.key && (p.key.name || p.key.value);
+      let valueProp = prop;
+      if (CONTAINER_PROPS.includes(keyName)) valueProp = keyName;
+      if (p.value) p.value = deepReplaceSize(valueProp, p.value);
+    });
+    return node;
+  }
+  // Conditional
+  if (node.type === 'ConditionalExpression') {
+    node.consequent = deepReplaceSize(prop, node.consequent);
+    node.alternate = deepReplaceSize(prop, node.alternate);
+    return node;
+  }
+  // Logical expression (e.g., a && 'small')
+  if (node.type === 'LogicalExpression') {
+    node.left = deepReplaceSize(prop, node.left);
+    node.right = deepReplaceSize(prop, node.right);
+    return node;
+  }
+  // MemberExpression (e.g., pad.small)
+  if (node.type === 'MemberExpression') {
+    node.object = deepReplaceSize(prop, node.object);
+    node.property = deepReplaceSize(prop, node.property);
+    return node;
+  }
+  // Identifier
+  return node;
+}
+
 //  pick correct map
 const getMapForProp = (prop) => {
   if (SPACING_PROPS.includes(prop)) return MAPS.spacing;
   if (BORDER_PROPS.includes(prop)) return MAPS.border;
-  if (CONTAINER_PROPS.includes(prop)) return MAPS.container;
+  if (CONTAINER_PROPS.includes(prop) || prop === 'columns' || prop === 'rows')
+    return MAPS.container;
   if (RADIUS_PROPS.includes(prop)) return MAPS.radius;
   return null;
 };
@@ -65,7 +120,7 @@ const replaceSize = (prop, value) => {
     console.warn(
       `⚠️  DEPRECATION: radius="${value}" (${
         value === 'large' ? '48px' : '96px'
-      }) is deprecated and now maps to "xxlarge" (32px).`
+      }) is deprecated and now maps to "xxlarge" (32px).`,
     );
   }
 
@@ -76,14 +131,14 @@ const replaceSize = (prop, value) => {
   ) {
     const oldSize = value === 'large' ? '12px' : '24px';
     console.warn(
-      `⚠️  DEPRECATION: border="${value}" (${oldSize}) is deprecated and now maps to "large" (6px).`
+      `⚠️  DEPRECATION: border="${value}" (${oldSize}) is deprecated and now maps to "large" (6px).`,
     );
   }
 
   // Show deprecation warnings for container props
   if (CONTAINER_PROPS.includes(prop) && value === 'xlarge') {
     console.warn(
-      `⚠️  DEPRECATION: ${prop}="${value}" (1152px) is deprecated and now maps to "xxlarge" (1024px).`
+      `⚠️  DEPRECATION: ${prop}="${value}" (1152px) is deprecated and now maps to "xxlarge" (1024px).`,
     );
   }
 
@@ -148,73 +203,116 @@ export default (file, api, options) => {
     ...BORDER_PROPS,
     ...CONTAINER_PROPS,
     ...RADIUS_PROPS,
+    ...OTHER_PROPS,
   ];
 
-  // Replace string literal props
+  // Replace string literal, object, array, and conditional props (deep traversal)
   ALL_PROPS.forEach((prop) => {
     root.find(j.JSXAttribute, { name: { name: prop } }).forEach((path) => {
       const val = path.node.value;
-      if (val && isStringLiteral(val)) {
-        const newValue = replaceSize(prop, val.value);
-        if (newValue !== val.value) {
-          path.get('value').replace(j.stringLiteral(newValue));
+      if (val) {
+        // String literal
+        if (isStringLiteral(val)) {
+          const newValue = replaceSize(prop, val.value);
+          if (newValue !== val.value) {
+            path.get('value').replace(j.stringLiteral(newValue));
+          }
+        }
+        // Deep traverse expression containers
+        if (val.type === 'JSXExpressionContainer') {
+          val.expression = deepReplaceSize(prop, val.expression);
         }
       }
     });
   });
 
-  // Replace object props (e.g., pad={{ horizontal: 'small', vertical: 'large' }})
-  ALL_PROPS.forEach((prop) => {
-    root.find(j.JSXAttribute, { name: { name: prop } }).forEach((path) => {
-      const val = path.node.value;
-      if (
-        val &&
-        val.type === 'JSXExpressionContainer' &&
-        val.expression.type === 'ObjectExpression'
-      ) {
-        val.expression.properties.forEach((propNode, index) => {
-          if (isStringLiteral(propNode.value)) {
-            const oldValue = propNode.value.value;
-            const newValue = replaceSize(prop, oldValue);
-            if (newValue !== oldValue) {
-              val.expression.properties[index] = j.property(
-                'init',
-                propNode.key,
-                j.stringLiteral(newValue)
-              );
-            }
-          }
-        });
-      }
-    });
+  // Replace variable assignments and array/string/object literals
+  root.find(j.VariableDeclarator).forEach((path) => {
+    const { id } = path.node;
+    const { init } = path.node;
+    // Only handle variables named after known props or common names (pad, columns, rows, etc.)
+    const varNames = [
+      ...ALL_PROPS,
+      'columns',
+      'rows',
+      'thickness',
+      'size',
+      'width',
+      'height',
+      'round',
+      'nameProps',
+      'valueProps',
+    ];
+    let prop = null;
+    if (id.type === 'Identifier' && varNames.includes(id.name)) {
+      prop = id.name;
+    }
+    // For destructured assignment: const { pad } = ...
+    if (id.type === 'ObjectPattern') {
+      id.properties.forEach((p) => {
+        if (p.key && varNames.includes(p.key.name)) {
+          prop = p.key.name;
+        }
+      });
+    }
+    if (prop && init) {
+      path.node.init = deepReplaceSize(prop, init);
+    }
+  });
+
+  // Replace assignment expressions (e.g., pad = ...)
+  root.find(j.AssignmentExpression).forEach((path) => {
+    const { left } = path.node;
+    const { right } = path.node;
+    const varNames = [
+      ...ALL_PROPS,
+      'columns',
+      'rows',
+      'thickness',
+      'size',
+      'width',
+      'height',
+      'round',
+      'nameProps',
+    ];
+    let prop = null;
+    if (left.type === 'Identifier' && varNames.includes(left.name)) {
+      prop = left.name;
+    }
+    if (prop && right) {
+      path.node.right = deepReplaceSize(prop, right);
+    }
   });
 
   // Handle components with container size mapping (Meter, TableCell, Cards)
-  ['Meter', 'TableCell', 'Cards'].forEach((componentName) => {
-    root
-      .find(j.JSXElement, {
-        openingElement: {
-          name: { name: componentName },
-        },
-      })
-      .forEach((path) => {
-        const attributes = path.node.openingElement.attributes;
-        attributes.forEach((attr, index) => {
-          if (attr.type === 'JSXAttribute' && attr.name.name === 'size') {
-            if (attr.value && isStringLiteral(attr.value)) {
-              const newValue =
-                MAPS.container[attr.value.value] || attr.value.value;
-              if (newValue !== attr.value.value) {
-                attributes[index] = j.jsxAttribute(
-                  j.jsxIdentifier('size'),
-                  j.stringLiteral(newValue)
-                );
+  //  test -> <Chart size="small" />
+  ['Meter', 'TableCell', 'Cards', 'DataCahrt', 'Chart'].forEach(
+    (componentName) => {
+      root
+        .find(j.JSXElement, {
+          openingElement: {
+            name: { name: componentName },
+          },
+        })
+        .forEach((path) => {
+          const { attributes } = path.node.openingElement;
+          attributes.forEach((attr, index) => {
+            if (attr.type === 'JSXAttribute' && attr.name.name === 'size') {
+              if (attr.value && isStringLiteral(attr.value)) {
+                const newValue =
+                  MAPS.container[attr.value.value] || attr.value.value;
+                if (newValue !== attr.value.value) {
+                  attributes[index] = j.jsxAttribute(
+                    j.jsxIdentifier('size'),
+                    j.stringLiteral(newValue),
+                  );
+                }
               }
             }
-          }
+          });
         });
-      });
-  });
+    },
+  );
 
   // Handle components with spacing size mapping (RangeSelector)
   ['RangeSelector'].forEach((componentName) => {
@@ -225,7 +323,7 @@ export default (file, api, options) => {
         },
       })
       .forEach((path) => {
-        const attributes = path.node.openingElement.attributes;
+        const { attributes } = path.node.openingElement;
         attributes.forEach((attr, index) => {
           if (attr.type === 'JSXAttribute' && attr.name.name === 'size') {
             if (attr.value && isStringLiteral(attr.value)) {
@@ -234,7 +332,7 @@ export default (file, api, options) => {
               if (newValue !== attr.value.value) {
                 attributes[index] = j.jsxAttribute(
                   j.jsxIdentifier('size'),
-                  j.stringLiteral(newValue)
+                  j.stringLiteral(newValue),
                 );
               }
             }
@@ -251,7 +349,7 @@ export default (file, api, options) => {
       },
     })
     .forEach((path) => {
-      const attributes = path.node.openingElement.attributes;
+      const { attributes } = path.node.openingElement;
       attributes.forEach((attr, index) => {
         if (attr.type === 'JSXAttribute' && attr.name.name === 'size') {
           if (attr.value && isStringLiteral(attr.value)) {
@@ -260,7 +358,7 @@ export default (file, api, options) => {
             if (newValue !== attr.value.value) {
               attributes[index] = j.jsxAttribute(
                 j.jsxIdentifier('size'),
-                j.stringLiteral(newValue)
+                j.stringLiteral(newValue),
               );
             }
           }
@@ -283,7 +381,7 @@ export default (file, api, options) => {
                   attr.value.expression.properties[propIndex] = j.property(
                     'init',
                     propNode.key,
-                    j.stringLiteral(newValue)
+                    j.stringLiteral(newValue),
                   );
                 }
               }
@@ -301,7 +399,7 @@ export default (file, api, options) => {
       },
     })
     .forEach((path) => {
-      const attributes = path.node.openingElement.attributes;
+      const { attributes } = path.node.openingElement;
       attributes.forEach((attr, index) => {
         if (
           attr.type === 'JSXAttribute' &&
@@ -314,13 +412,13 @@ export default (file, api, options) => {
             if (newValue !== attr.value.value) {
               attributes[index] = j.jsxAttribute(
                 j.jsxIdentifier(attr.name.name),
-                j.stringLiteral(newValue)
+                j.stringLiteral(newValue),
               );
             }
           }
 
           if (attr.value && attr.value.type === 'JSXExpressionContainer') {
-            const expression = attr.value.expression;
+            const { expression } = attr.value;
 
             // Handle array: <Grid columns={["small", "large"]} /> or <Grid rows={["small", "large"]} />
             if (expression.type === 'ArrayExpression') {
@@ -347,11 +445,11 @@ export default (file, api, options) => {
                       expression.properties[propIndex] = j.property(
                         'init',
                         propNode.key,
-                        j.stringLiteral(newValue)
+                        j.stringLiteral(newValue),
                       );
                     }
                   }
-                  
+
                   // Handle array: size: ["small", "flex"]
                   if (propNode.value.type === 'ArrayExpression') {
                     propNode.value.elements.forEach((element, elemIndex) => {
@@ -359,7 +457,8 @@ export default (file, api, options) => {
                         const newValue =
                           MAPS.container[element.value] || element.value;
                         if (newValue !== element.value) {
-                          propNode.value.elements[elemIndex] = j.stringLiteral(newValue);
+                          propNode.value.elements[elemIndex] =
+                            j.stringLiteral(newValue);
                         }
                       }
                     });
@@ -372,29 +471,116 @@ export default (file, api, options) => {
       });
     });
 
-  // Handle function parameter default values (e.g., const Component = ({ pad = 'small' }) => {})
-  root.find(j.Function).forEach((path) => {
-    const params = path.node.params;
-    if (params && params.length > 0) {
-      params.forEach((param) => {
-        if (param.type === 'ObjectPattern') {
-          param.properties.forEach((prop) => {
-            if (prop.type === 'AssignmentPattern' && prop.left.type === 'Identifier') {
-              const propName = prop.left.name;
-              if (ALL_PROPS.includes(propName) && isStringLiteral(prop.right)) {
-                const newValue = replaceSize(propName, prop.right.value);
-                if (newValue !== prop.right.value) {
-                  prop.right = j.stringLiteral(newValue);
-                }
+  // Handle Chart and Meter component thickness prop
+  // test -> <Meter thickness="small" />
+  ['Chart', 'Meter'].forEach((componentName) => {
+    root
+      .find(j.JSXElement, {
+        openingElement: { name: { name: componentName } },
+      })
+      .forEach((path) => {
+        const { attributes } = path.node.openingElement;
+        attributes.forEach((attr, index) => {
+          if (attr.type === 'JSXAttribute' && attr.name.name === 'thickness') {
+            if (attr.value && isStringLiteral(attr.value)) {
+              const newValue =
+                MAPS.spacing[attr.value.value] || attr.value.value;
+              if (newValue !== attr.value.value) {
+                attributes[index] = j.jsxAttribute(
+                  j.jsxIdentifier('thickness'),
+                  j.stringLiteral(newValue),
+                );
               }
             }
-          });
-        }
+          }
+        });
       });
+  });
+
+  // Transform default parameter values for both arrow and function declarations
+  root.find(j.AssignmentPattern).forEach((path) => {
+    const { left } = path.node;
+    const { right } = path.node;
+    if (
+      left.type === 'Identifier' &&
+      ALL_PROPS.includes(left.name) &&
+      isStringLiteral(right)
+    ) {
+      const newValue = replaceSize(left.name, right.value);
+      if (newValue !== right.value) {
+        path.node.right = j.stringLiteral(newValue);
+      }
+    } else if (left.type === 'Identifier' && ALL_PROPS.includes(left.name)) {
+      path.node.right = deepReplaceSize(left.name, right);
     }
   });
 
+  root
+    .find(j.CallExpression, {
+      callee: {
+        type: 'MemberExpression',
+        property: { name: 'includes' },
+      },
+    })
+    .forEach((path) => {
+      const { callee } = path.node;
+      if (callee.object.type === 'ArrayExpression') {
+        callee.object.elements = callee.object.elements.map((el) => {
+          if (el.type === 'Literal' && el.value === 'xsmall') {
+            return j.literal('3xsmall');
+          }
+          return el;
+        });
+      }
+    });
+
+  // Refactor: transform t-shirt size arrays in .includes() to use correct mapping
+  // Handles cases like: ['xsmall', 'small'].includes(size)
+  root
+    .find(j.CallExpression, {
+      callee: {
+        type: 'MemberExpression',
+        property: { name: 'includes' },
+      },
+    })
+    .forEach((path) => {
+      const obj = path.node.callee.object;
+      if (
+        obj &&
+        obj.type === 'ArrayExpression' &&
+        Array.isArray(obj.elements)
+      ) {
+        // Determine which map to use based on context (pad/gap/margin => spacing, columns/rows => container)
+        // Default to spacing for most cases
+        const parent = path.parentPath;
+        let map = MAPS.spacing;
+        // If the array is used in columns/rows context, use container map
+        if (
+          parent &&
+          parent.node &&
+          parent.node.type === 'ConditionalExpression' &&
+          parent.node.consequent &&
+          parent.node.consequent.type === 'MemberExpression' &&
+          (parent.node.consequent.property.name === 'columns' ||
+            parent.node.consequent.property.name === 'rows')
+        ) {
+          map = MAPS.container;
+        }
+        obj.elements = obj.elements.map((el) => {
+          if (isStringLiteral(el)) {
+            const newVal = map[el.value];
+            if (newVal) {
+              return el.type === 'StringLiteral'
+                ? j.stringLiteral(newVal)
+                : j.literal(newVal);
+            }
+          }
+          return el;
+        });
+      }
+    });
+
   // get --quote flag from options argument
   const quote = options.quote === 'single' ? 'single' : 'double';
-  return root.toSource({quote});
+  return root.toSource({ quote });
 };
