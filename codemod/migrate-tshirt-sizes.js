@@ -618,12 +618,13 @@ export default (file, api, options) => {
       });
     });
 
-  // Handle special prop containers
+  // Handle special prop containers - ADD 'paginate' to this list
   transformPropsWithPadMarginRound(root, j, [
     'dropProps',
     'defaultItemProps',
     'boxProp',
     'buttonProps',
+    'paginate',  
   ], file);
 
   transformPropsWithPadOnly(root, j, ['itemProps'], file);
