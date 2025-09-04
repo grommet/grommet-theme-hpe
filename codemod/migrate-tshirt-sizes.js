@@ -56,14 +56,18 @@ const replaceSize = (prop, value, fileInfo = {}) => {
   if (!map) return value;
   const newValue = map[value] || value;
 
+  const fileLocation = fileInfo.file ? ` in ${fileInfo.file}` : '';
+  const lineLocation = fileInfo.line ? ` at line ${fileInfo.line}` : '';
+
   // Show deprecation warnings for radius props
   if (
     RADIUS_PROPS.includes(prop) &&
     (value === 'large' || value === 'xlarge')
   ) {
     console.warn(
-      `⚠️  DEPRECATION: radius="${value}" (${value === 'large' ? '48px' : '96px'}) is deprecated and now maps to "xxlarge" (32px).` +
-      `\n  at ${fileInfo.file}${fileInfo.line ? `:${fileInfo.line}` : ''}`
+    `⚠️  DEPRECATION: radius="${value}" (${
+        value === 'large' ? '48px' : '96px'
+      }) is deprecated and now maps to "xxlarge" (32px)${fileLocation}${lineLocation}.`
     );
   }
 
@@ -74,39 +78,37 @@ const replaceSize = (prop, value, fileInfo = {}) => {
   ) {
     const oldSize = value === 'large' ? '12px' : '24px';
     console.warn(
-      `⚠️  DEPRECATION: border="${value}" (${oldSize}) is deprecated and now maps to "large" (6px).` +
-      `\n  at ${fileInfo.file}${fileInfo.line ? `:${fileInfo.line}` : ''}`
+      `⚠️  DEPRECATION: border="${value}" (${oldSize}) is deprecated and now maps to "large" (6px)${fileLocation}${lineLocation}.`
     );
   }
 
   // Show deprecation warnings for container props
   if (CONTAINER_PROPS.includes(prop) && value === 'xlarge') {
     console.warn(
-      `⚠️  DEPRECATION: ${prop}="${value}" (1152px) is deprecated and now maps to "xxlarge" (1024px).` +
-      `\n  at ${fileInfo.file}${fileInfo.line ? `:${fileInfo.line}` : ''}`
+      `⚠️  DEPRECATION: ${prop}="${value}" (1152px) is deprecated and now maps to "xxlarge" (1024px)${fileLocation}${lineLocation}.`
     );
   }
 
   return newValue;
 };
 
-const transformNestedObject = (objExpr, propName) => {
+const transformNestedObject = (objExpr, propName, j, fileInfo = {}) => {
   objExpr.properties.forEach((propNode) => {
     if (!propNode.value) return;
     if (isStringLiteral(propNode.value)) {
       const oldValue = propNode.value.value;
-    const newValue = replaceSize(propName, oldValue, fileInfo);
+      const newValue = replaceSize(propName, oldValue, fileInfo);
       if (newValue !== oldValue) {
         propNode.value = j.stringLiteral(newValue);
       }
     } else if (propNode.value.type === 'ObjectExpression') {
-      transformNestedObject(propNode.value, propName);
+      transformNestedObject(propNode.value, propName, j, fileInfo);
     }
   });
 };
 
 // Refactored handlers for nested pad, margin, round
-const transformPropsWithPadMarginRound = (root, j, propNames) => {
+const transformPropsWithPadMarginRound = (root, j, propNames, file) => {
   propNames.forEach((propName) => {
     root.find(j.JSXAttribute, { name: { name: propName } }).forEach((attrPath) => {
       const propValue = attrPath.node.value;
@@ -122,12 +124,12 @@ const transformPropsWithPadMarginRound = (root, j, propNames) => {
             (propNode.key.name === 'pad' || propNode.key.name === 'margin')
           ) {
             if (isStringLiteral(propNode.value)) {
-              const newValue = replaceSize(propNode.key.name, propNode.value.value);
+              const newValue = replaceSize(propNode.key.name, propNode.value.value, { file: file.path, line: propNode.loc?.start.line });
               if (newValue !== propNode.value.value) {
                 propNode.value = j.stringLiteral(newValue);
               }
             } else if (propNode.value.type === 'ObjectExpression') {
-              transformNestedObject(propNode.value, propNode.key.name);
+              transformNestedObject(propNode.value, propNode.key.name, j, { file: file.path, line: propNode.value.loc?.start.line });
             }
           }
           // round
@@ -136,12 +138,12 @@ const transformPropsWithPadMarginRound = (root, j, propNames) => {
             propNode.key.name === 'round'
           ) {
             if (isStringLiteral(propNode.value)) {
-              const newValue = replaceSize('round', propNode.value.value);
+              const newValue = replaceSize('round', propNode.value.value, { file: file.path, line: propNode.loc?.start.line });
               if (newValue !== propNode.value.value) {
                 propNode.value = j.stringLiteral(newValue);
               }
             } else if (propNode.value.type === 'ObjectExpression') {
-              transformNestedObject(propNode.value, 'round');
+              transformNestedObject(propNode.value, 'round', j, { file: file.path, line: propNode.value.loc?.start.line });
             }
           }
         });
@@ -151,7 +153,7 @@ const transformPropsWithPadMarginRound = (root, j, propNames) => {
 };
 
 // Dedicated handler for itemProps (pad only)
-const transformPropsWithPadOnly = (root, j, propNames) => {
+const transformPropsWithPadOnly = (root, j, propNames, file) => {
   propNames.forEach((propName) => {
     root.find(j.JSXAttribute, { name: { name: propName } }).forEach((attrPath) => {
       const propValue = attrPath.node.value;
@@ -166,12 +168,12 @@ const transformPropsWithPadOnly = (root, j, propNames) => {
             propNode.key.name === 'pad'
           ) {
             if (isStringLiteral(propNode.value)) {
-              const newValue = replaceSize('pad', propNode.value.value);
+              const newValue = replaceSize('pad', propNode.value.value, { file: file.path, line: propNode.loc?.start.line });
               if (newValue !== propNode.value.value) {
                 propNode.value = j.stringLiteral(newValue);
               }
             } else if (propNode.value.type === 'ObjectExpression') {
-              transformNestedObject(propNode.value, 'pad');
+              transformNestedObject(propNode.value, 'pad', j, { file: file.path, line: propNode.value.loc?.start.line });
             }
           }
         });
@@ -255,7 +257,7 @@ export default (file, api, options) => {
         val.type === 'JSXExpressionContainer' &&
         val.expression.type === 'ObjectExpression'
       ) {
-        transformNestedObject(val.expression, prop, { file: file.path, line: path.node.loc?.start.line });
+        transformNestedObject(val.expression, prop, j, { file: file.path, line: path.node.loc?.start.line });
       }
     });
   });
@@ -469,16 +471,28 @@ export default (file, api, options) => {
   });
 
   // Handle function parameter default values (e.g., const Component = ({ pad = 'small' }) => {})
-  root.find(j.Function).forEach((path) => {
+  // Handle both regular functions and arrow functions
+  const handleFunctionParams = (path) => {
     const params = path.node.params;
     if (params && params.length > 0) {
       params.forEach((param) => {
         if (param.type === 'ObjectPattern') {
           param.properties.forEach((prop) => {
-            if (prop.type === 'AssignmentPattern' && prop.left.type === 'Identifier') {
+            // Handle the correct AST structure: { pad = 'small' }
+            if (prop.type === 'Property' && prop.value.type === 'AssignmentPattern') {
+              const propName = prop.key.name;
+              if (ALL_PROPS.includes(propName) && isStringLiteral(prop.value.right)) {
+                const newValue = replaceSize(propName, prop.value.right.value, { file: file.path, line: prop.loc?.start.line });
+                if (newValue !== prop.value.right.value) {
+                  prop.value.right = j.stringLiteral(newValue);
+                }
+              }
+            }
+            // Keep the original logic for direct assignment patterns (less common)
+            else if (prop.type === 'AssignmentPattern' && prop.left.type === 'Identifier') {
               const propName = prop.left.name;
               if (ALL_PROPS.includes(propName) && isStringLiteral(prop.right)) {
-                const newValue = replaceSize(propName, prop.right.value);
+                const newValue = replaceSize(propName, prop.right.value, { file: file.path, line: prop.loc?.start.line });
                 if (newValue !== prop.right.value) {
                   prop.right = j.stringLiteral(newValue);
                 }
@@ -488,7 +502,13 @@ export default (file, api, options) => {
         }
       });
     }
-  });
+  };
+
+  // Handle regular functions
+  root.find(j.Function).forEach(handleFunctionParams);
+  
+  // Handle arrow functions
+  root.find(j.ArrowFunctionExpression).forEach(handleFunctionParams);
 
   // Handle columns and rows when passed inside gridProps (e.g. <PageHeader gridProps={{ columns: { count: "fit", size: "large" } }} />)
   root.find(j.JSXAttribute, { name: { name: 'gridProps' } }).forEach((attrPath) => {
@@ -581,10 +601,7 @@ root
                   propNode.key.name === 'thickness' &&
                   isStringLiteral(propNode.value)
                 ) {
-                  const newValue = replaceSize('thickness', propNode.value.value, {
-                    file: file.path,
-                    line: propNode.value.loc?.start.line
-                  });
+                  const newValue = replaceSize('thickness', propNode.value.value, { file: file.path, line: propNode.loc?.start.line });
                   if (newValue !== propNode.value.value) {
                     propNode.value = j.stringLiteral(newValue);
                   }
@@ -620,8 +637,7 @@ root
             if (isStringLiteral(propNode.value)) {
               const newValue = replaceSize(
                 'width',
-                propNode.value.value,
-                { file: file.path, line: propNode.value.loc?.start.line }
+                propNode.value.value 
               );
               if (newValue !== propNode.value.value) {
                 propNode.value = j.stringLiteral(newValue);
@@ -633,7 +649,6 @@ root
                   const newValue = replaceSize(
                     'width',
                     element.value,
-                    { file: file.path, line: element.loc?.start.line }
                   );
                   if (newValue !== element.value) {
                     propNode.value.elements[idx] = j.stringLiteral(newValue);
@@ -651,7 +666,6 @@ root
                   const newValue = replaceSize(
                     'width',
                     wProp.value.value,
-                    { file: file.path, line: wProp.value.loc?.start.line }
                   );
                   if (newValue !== wProp.value.value) {
                     wProp.value = j.stringLiteral(newValue);
@@ -671,10 +685,10 @@ root
     'defaultItemProps',
     'boxProp',
     'buttonProps',
-  ]);
+  ], file);
 
   // Refactored: handle itemProps for pad only
-  transformPropsWithPadOnly(root, j, ['itemProps']);
+  transformPropsWithPadOnly(root, j, ['itemProps'], file);
 
   // get --quote flag from options argument
   const quote = options.quote === 'single' ? 'single' : 'double';
