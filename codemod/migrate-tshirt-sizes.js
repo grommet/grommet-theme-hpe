@@ -291,6 +291,56 @@ const handleDataChartSize = (root, j) => {
     });
 };
 
+const handleDataChartThickness = (root, j, file) => {
+  root
+    .find(j.JSXElement, {
+      openingElement: { name: { name: 'DataChart' } },
+    })
+    .forEach((path) => {
+      const attributes = path.node.openingElement.attributes;
+      attributes.forEach((attr) => {
+        if (attr.type === 'JSXAttribute' && attr.name.name === 'chart') {
+          if (
+            attr.value &&
+            attr.value.type === 'JSXExpressionContainer' &&
+            attr.value.expression.type === 'ArrayExpression'
+          ) {
+            // Handle array of chart objects
+            attr.value.expression.elements.forEach((element) => {
+              if (element && element.type === 'ObjectExpression') {
+                element.properties.forEach((propNode) => {
+                  // Look for property array within chart objects
+                  if (
+                    propNode.type === 'Property' &&
+                    propNode.key.name === 'property' &&
+                    propNode.value.type === 'ArrayExpression'
+                  ) {
+                    // Handle array of property objects
+                    propNode.value.elements.forEach((propertyElement) => {
+                      if (propertyElement && propertyElement.type === 'ObjectExpression') {
+                        propertyElement.properties.forEach((nestedProp) => {
+                          if (
+                            nestedProp.type === 'Property' &&
+                            nestedProp.key.name === 'thickness' &&
+                            isStringLiteral(nestedProp.value)
+                          ) {
+                            const fileInfo = getFileInfo(file, nestedProp);
+                            const newValue = transformStringLiteral(j, 'thickness', nestedProp.value, fileInfo);
+                            if (newValue) nestedProp.value = newValue;
+                          }
+                        });
+                      }
+                    });
+                  }
+                });
+              }
+            });
+          }
+        }
+      });
+    });
+};
+
 // Refactored handlers for nested pad, margin, round
 const transformPropsWithPadMarginRound = (root, j, propNames, file) => {
   propNames.forEach((propName) => {
@@ -399,6 +449,46 @@ const handleFunctionParams = (root, j, file) => {
   root.find(j.ArrowFunctionExpression).forEach(processParams);
 };
 
+// Add this new handler function after the existing handlers
+const handleTernaryExpressions = (root, j, file) => {
+  const ALL_PROPS = [
+    ...SPACING_PROPS,
+    ...BORDER_PROPS,
+    ...CONTAINER_PROPS,
+    ...RADIUS_PROPS,
+  ];
+
+  ALL_PROPS.forEach((prop) => {
+    root.find(j.JSXAttribute, { name: { name: prop } }).forEach((path) => {
+      const val = path.node.value;
+      if (
+        val &&
+        val.type === 'JSXExpressionContainer' &&
+        val.expression.type === 'ConditionalExpression'
+      ) {
+        const conditional = val.expression;
+        const fileInfo = getFileInfo(file, path.node);
+
+        // Handle consequent (true case)
+        if (isStringLiteral(conditional.consequent)) {
+          const newValue = transformStringLiteral(j, prop, conditional.consequent, fileInfo);
+          if (newValue) conditional.consequent = newValue;
+        } else if (conditional.consequent.type === 'ObjectExpression') {
+          transformNestedObject(conditional.consequent, prop, j, fileInfo);
+        }
+
+        // Handle alternate (false case)
+        if (isStringLiteral(conditional.alternate)) {
+          const newValue = transformStringLiteral(j, prop, conditional.alternate, fileInfo);
+          if (newValue) conditional.alternate = newValue;
+        } else if (conditional.alternate.type === 'ObjectExpression') {
+          transformNestedObject(conditional.alternate, prop, j, fileInfo);
+        }
+      }
+    });
+  });
+};
+
 export default (file, api, options) => {
   const j = api.jscodeshift;
   const root = j(file.source);
@@ -489,9 +579,13 @@ export default (file, api, options) => {
   handleDataChartSize(root, j);
   handleGridProperties(root, j);
   handleComponentThickness(root, j, ['Chart', 'Meter']);
+  handleDataChartThickness(root, j, file); 
 
   // Handle function parameters
   handleFunctionParams(root, j, file);
+
+  // Handle ternary expressions
+  handleTernaryExpressions(root, j, file);
 
   // Handle gridProps
   root.find(j.JSXAttribute, { name: { name: 'gridProps' } }).forEach((attrPath) => {
@@ -591,13 +685,15 @@ export default (file, api, options) => {
         ) {
           attr.value.expression.properties.forEach((propNode) => {
             if (propNode.type === 'Property' && propNode.key.name === 'width') {
+              const fileInfo = getFileInfo(file, propNode);
+              
               if (isStringLiteral(propNode.value)) {
-                const newValue = replaceSize('width', propNode.value.value);
+                const newValue = replaceSize('width', propNode.value.value, fileInfo);
                 if (newValue !== propNode.value.value) {
                   propNode.value = j.stringLiteral(newValue);
                 }
               } else if (propNode.value.type === 'ArrayExpression') {
-                transformArrayElements(j, 'width', propNode.value);
+                transformArrayElements(j, 'width', propNode.value, fileInfo);
               } else if (propNode.value.type === 'ObjectExpression') {
                 propNode.value.properties.forEach((wProp) => {
                   if (
@@ -605,7 +701,8 @@ export default (file, api, options) => {
                     (wProp.key.name === 'min' || wProp.key.name === 'max') &&
                     isStringLiteral(wProp.value)
                   ) {
-                    const newValue = replaceSize('width', wProp.value.value);
+                    const wPropFileInfo = getFileInfo(file, wProp); // Add fileInfo for nested props
+                    const newValue = replaceSize('width', wProp.value.value, wPropFileInfo); // Add fileInfo
                     if (newValue !== wProp.value.value) {
                       wProp.value = j.stringLiteral(newValue);
                     }
@@ -618,7 +715,7 @@ export default (file, api, options) => {
       });
     });
 
-  // Handle special prop containers - ADD 'paginate' to this list
+  // Handle special prop containers
   transformPropsWithPadMarginRound(root, j, [
     'dropProps',
     'defaultItemProps',
