@@ -43,12 +43,13 @@ const isStringLiteral = (n) =>
   ((n.type === 'Literal' && typeof n.value === 'string') ||
     n.type === 'StringLiteral');
 
-// Recursively traverse and replace t-shirt sizes in arrays, objects, conditionals, etc.
-function deepReplaceSize(prop, node) {
+// Recursively traverse and replace t-shirt sizes in complex data structures
+// Handles arrays, objects, conditionals, logical expressions, etc.
+const deepReplaceSize = (prop, node, fileInfo) => {
   if (!node) return node;
   // String literal
   if (isStringLiteral(node)) {
-    const newValue = replaceSize(prop, node.value);
+    const newValue = replaceSize(prop, node.value, fileInfo);
     if (newValue !== node.value) {
       node.value = newValue;
       node.raw = `'${newValue}'`;
@@ -60,7 +61,9 @@ function deepReplaceSize(prop, node) {
     // Use container map for columns/rows arrays
     let arrayProp = prop;
     if (prop === 'columns' || prop === 'rows') arrayProp = 'width';
-    node.elements = node.elements.map((el) => deepReplaceSize(arrayProp, el));
+    node.elements = node.elements.map((el) =>
+      deepReplaceSize(arrayProp, el, fileInfo),
+    );
     return node;
   }
   // Object
@@ -70,33 +73,33 @@ function deepReplaceSize(prop, node) {
       const keyName = p.key && (p.key.name || p.key.value);
       let valueProp = prop;
       if (CONTAINER_PROPS.includes(keyName)) valueProp = keyName;
-      if (p.value) p.value = deepReplaceSize(valueProp, p.value);
+      if (p.value) p.value = deepReplaceSize(valueProp, p.value, fileInfo);
     });
     return node;
   }
   // Conditional
   if (node.type === 'ConditionalExpression') {
-    node.consequent = deepReplaceSize(prop, node.consequent);
-    node.alternate = deepReplaceSize(prop, node.alternate);
+    node.consequent = deepReplaceSize(prop, node.consequent, fileInfo);
+    node.alternate = deepReplaceSize(prop, node.alternate, fileInfo);
     return node;
   }
   // Logical expression (e.g., a && 'small')
   if (node.type === 'LogicalExpression') {
-    node.left = deepReplaceSize(prop, node.left);
-    node.right = deepReplaceSize(prop, node.right);
+    node.left = deepReplaceSize(prop, node.left, fileInfo);
+    node.right = deepReplaceSize(prop, node.right, fileInfo);
     return node;
   }
   // MemberExpression (e.g., pad.small)
   if (node.type === 'MemberExpression') {
-    node.object = deepReplaceSize(prop, node.object);
-    node.property = deepReplaceSize(prop, node.property);
+    node.object = deepReplaceSize(prop, node.object, fileInfo);
+    node.property = deepReplaceSize(prop, node.property, fileInfo);
     return node;
   }
   // Identifier
   return node;
-}
+};
 
-//  pick correct map
+// Determine which size mapping to use based on the prop name
 const getMapForProp = (prop) => {
   if (SPACING_PROPS.includes(prop)) return MAPS.spacing;
   if (BORDER_PROPS.includes(prop)) return MAPS.border;
@@ -106,11 +109,21 @@ const getMapForProp = (prop) => {
   return null;
 };
 
-const replaceSize = (prop, value) => {
+// Helper to get file information for error reporting
+const getFileInfo = (file, node) => ({
+  file: file.path,
+  line: node.loc ? node.loc.start.line : undefined,
+});
+
+// Replaces old size with new size and shows deprecation warnings with file location
+const replaceSize = (prop, value, fileInfo = {}) => {
   const map = getMapForProp(prop);
   if (!map) return value;
 
   const newValue = map[value] || value;
+
+  const fileLocation = fileInfo.file ? ` in ${fileInfo.file}` : '';
+  const lineLocation = fileInfo.line ? ` at line ${fileInfo.line}` : '';
 
   // Show deprecation warnings for radius props
   if (
@@ -120,7 +133,7 @@ const replaceSize = (prop, value) => {
     console.warn(
       `⚠️  DEPRECATION: radius="${value}" (${
         value === 'large' ? '48px' : '96px'
-      }) is deprecated and now maps to "xxlarge" (32px).`,
+      }) is deprecated and now maps to "xxlarge" (32px)${fileLocation}${lineLocation}.`,
     );
   }
 
@@ -131,14 +144,14 @@ const replaceSize = (prop, value) => {
   ) {
     const oldSize = value === 'large' ? '12px' : '24px';
     console.warn(
-      `⚠️  DEPRECATION: border="${value}" (${oldSize}) is deprecated and now maps to "large" (6px).`,
+      `⚠️  DEPRECATION: border="${value}" (${oldSize}) is deprecated and now maps to "large" (6px)${fileLocation}${lineLocation}.`,
     );
   }
 
   // Show deprecation warnings for container props
   if (CONTAINER_PROPS.includes(prop) && value === 'xlarge') {
     console.warn(
-      `⚠️  DEPRECATION: ${prop}="${value}" (1152px) is deprecated and now maps to "xxlarge" (1024px).`,
+      `⚠️  DEPRECATION: ${prop}="${value}" (1152px) is deprecated and now maps to "xxlarge" (1024px)${fileLocation}${lineLocation}.`,
     );
   }
 
@@ -211,16 +224,17 @@ export default (file, api, options) => {
     root.find(j.JSXAttribute, { name: { name: prop } }).forEach((path) => {
       const val = path.node.value;
       if (val) {
+        const fileInfo = getFileInfo(file, path.node);
         // String literal
         if (isStringLiteral(val)) {
-          const newValue = replaceSize(prop, val.value);
+          const newValue = replaceSize(prop, val.value, fileInfo);
           if (newValue !== val.value) {
             path.get('value').replace(j.stringLiteral(newValue));
           }
         }
         // Deep traverse expression containers
         if (val.type === 'JSXExpressionContainer') {
-          val.expression = deepReplaceSize(prop, val.expression);
+          val.expression = deepReplaceSize(prop, val.expression, fileInfo);
         }
       }
     });
@@ -256,7 +270,8 @@ export default (file, api, options) => {
       });
     }
     if (prop && init) {
-      path.node.init = deepReplaceSize(prop, init);
+      const fileInfo = getFileInfo(file, path.node);
+      path.node.init = deepReplaceSize(prop, init, fileInfo);
     }
   });
 
@@ -280,7 +295,8 @@ export default (file, api, options) => {
       prop = left.name;
     }
     if (prop && right) {
-      path.node.right = deepReplaceSize(prop, right);
+      const fileInfo = getFileInfo(file, path.node);
+      path.node.right = deepReplaceSize(prop, right, fileInfo);
     }
   });
 
@@ -506,12 +522,14 @@ export default (file, api, options) => {
       ALL_PROPS.includes(left.name) &&
       isStringLiteral(right)
     ) {
-      const newValue = replaceSize(left.name, right.value);
+      const fileInfo = getFileInfo(file, path.node);
+      const newValue = replaceSize(left.name, right.value, fileInfo);
       if (newValue !== right.value) {
         path.node.right = j.stringLiteral(newValue);
       }
     } else if (left.type === 'Identifier' && ALL_PROPS.includes(left.name)) {
-      path.node.right = deepReplaceSize(left.name, right);
+      const fileInfo = getFileInfo(file, path.node);
+      path.node.right = deepReplaceSize(left.name, right, fileInfo);
     }
   });
 
