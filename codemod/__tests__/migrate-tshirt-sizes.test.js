@@ -94,7 +94,7 @@ describe('migrate-tshirt-sizes codemod', () => {
     const input =
       "<Box pad={['xsmall', 'small'].includes(size) ? pad.small : pad}/>";
     const output = runCodemod(input);
-    expect(output).toContain("['3xsmall', 'xsmall'].includes(size)");
+    expect(output).toContain("['xsmall', 'small'].includes(size)");
   });
   it('transforms nested pad object', () => {
     const input = `const UsageExample = ({
@@ -215,5 +215,16 @@ describe('migrate-tshirt-sizes codemod', () => {
     const input = `<Box border={{ color: 'transparent', size: 'xlarge' }} />`;
     const output = runCodemod(input);
     expect(output).toContain("size: 'large'");
+  });
+  it('transforms size values in ternary with includes array using known variable', () => {
+    const input = `const pad = ['xsmall', 'small', 'medium'].includes(breakpoint)
+    ? 'small'
+    : 'large';`;
+    const output = runCodemod(input);
+    expect(output).toContain(
+      "['xsmall', 'small', 'medium'].includes(breakpoint)",
+    );
+    expect(output).toContain("? 'xsmall'");
+    expect(output).toContain(": 'xlarge'");
   });
 });

@@ -47,6 +47,7 @@ const isStringLiteral = (n) =>
 // Handles arrays, objects, conditionals, logical expressions, etc.
 const deepReplaceSize = (prop, node, fileInfo) => {
   if (!node) return node;
+
   // String literal
   if (isStringLiteral(node)) {
     const newValue = replaceSize(prop, node.value, fileInfo);
@@ -56,7 +57,6 @@ const deepReplaceSize = (prop, node, fileInfo) => {
     }
     return node;
   }
-  // Array
   if (node.type === 'ArrayExpression') {
     // Use container map for columns/rows arrays
     let arrayProp = prop;
@@ -66,6 +66,29 @@ const deepReplaceSize = (prop, node, fileInfo) => {
     );
     return node;
   }
+
+  // CallExpression - handle .includes() specially
+  if (node.type === 'CallExpression') {
+    // If this is a .includes() call, don't transform the array argument
+    if (
+      node.callee &&
+      node.callee.type === 'MemberExpression' &&
+      node.callee.property &&
+      node.callee.property.name === 'includes'
+    ) {
+      // Don't transform the array (callee.object) or the arguments
+      // Just return the node as-is
+      return node;
+    }
+    // For other call expressions, transform arguments normally
+    if (node.arguments) {
+      node.arguments = node.arguments.map((arg) =>
+        deepReplaceSize(prop, arg, fileInfo),
+      );
+    }
+    return node;
+  }
+
   // Object
   if (node.type === 'ObjectExpression') {
     node.properties.forEach((p) => {
@@ -588,71 +611,6 @@ export default (file, api, options) => {
       path.node.right = deepReplaceSize(left.name, right, fileInfo);
     }
   });
-
-  root
-    .find(j.CallExpression, {
-      callee: {
-        type: 'MemberExpression',
-        property: { name: 'includes' },
-      },
-    })
-    .forEach((path) => {
-      const { callee } = path.node;
-      if (callee.object.type === 'ArrayExpression') {
-        callee.object.elements = callee.object.elements.map((el) => {
-          if (el.type === 'Literal' && el.value === 'xsmall') {
-            return j.literal('3xsmall');
-          }
-          return el;
-        });
-      }
-    });
-
-  // Refactor: transform t-shirt size arrays in .includes() to use correct mapping
-  // Handles cases like: ['xsmall', 'small'].includes(size)
-  root
-    .find(j.CallExpression, {
-      callee: {
-        type: 'MemberExpression',
-        property: { name: 'includes' },
-      },
-    })
-    .forEach((path) => {
-      const obj = path.node.callee.object;
-      if (
-        obj &&
-        obj.type === 'ArrayExpression' &&
-        Array.isArray(obj.elements)
-      ) {
-        // Determine which map to use based on context (pad/gap/margin => spacing, columns/rows => container)
-        // Default to spacing for most cases
-        const parent = path.parentPath;
-        let map = MAPS.spacing;
-        // If the array is used in columns/rows context, use container map
-        if (
-          parent &&
-          parent.node &&
-          parent.node.type === 'ConditionalExpression' &&
-          parent.node.consequent &&
-          parent.node.consequent.type === 'MemberExpression' &&
-          (parent.node.consequent.property.name === 'columns' ||
-            parent.node.consequent.property.name === 'rows')
-        ) {
-          map = MAPS.container;
-        }
-        obj.elements = obj.elements.map((el) => {
-          if (isStringLiteral(el)) {
-            const newVal = map[el.value];
-            if (newVal) {
-              return el.type === 'StringLiteral'
-                ? j.stringLiteral(newVal)
-                : j.literal(newVal);
-            }
-          }
-          return el;
-        });
-      }
-    });
 
   // get --quote flag from options argument
   const quote = options.quote === 'single' ? 'single' : 'double';
