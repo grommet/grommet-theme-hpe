@@ -129,8 +129,8 @@ if (tsFiles.length > 0) {
       console.log(
         '✅  Migration to Grommet Theme HPE v7 t-shirt sizes complete!',
       );
-      console.warn('⚠️   WARN: Review any deprecation warnings.');
-      console.warn('⚠️   WARN: Fix any other manual changes needed.');
+      console.warn('⚠️   WARNING: Review any deprecation warnings.');
+      console.warn('⚠️   WARNING: Fix any other manual changes needed.');
     }
   } catch (err) {
     hadError = true;
