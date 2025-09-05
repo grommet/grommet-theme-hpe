@@ -603,55 +603,14 @@ export default (file, api, options) => {
             }
           }
 
+          // Handle anything more complex (arrays, objects, conditionals, etc.)
           if (attr.value && attr.value.type === 'JSXExpressionContainer') {
-            const { expression } = attr.value;
-
-            // Handle array: <Grid columns={["small", "large"]} /> or <Grid rows={["small", "large"]} />
-            if (expression.type === 'ArrayExpression') {
-              expression.elements.forEach((element, elemIndex) => {
-                if (element && isStringLiteral(element)) {
-                  const newValue =
-                    MAPS.container[element.value] || element.value;
-                  if (newValue !== element.value) {
-                    expression.elements[elemIndex] = j.stringLiteral(newValue);
-                  }
-                }
-              });
-            }
-
-            // Handle object: <Grid columns={{ count: "fit", size: "large" }} /> or <Grid rows={{ count: "fit", size: "large" }} />
-            if (expression.type === 'ObjectExpression') {
-              expression.properties.forEach((propNode, propIndex) => {
-                if (propNode.key && propNode.key.name === 'size') {
-                  if (isStringLiteral(propNode.value)) {
-                    const newValue =
-                      MAPS.container[propNode.value.value] ||
-                      propNode.value.value;
-                    if (newValue !== propNode.value.value) {
-                      expression.properties[propIndex] = j.property(
-                        'init',
-                        propNode.key,
-                        j.stringLiteral(newValue),
-                      );
-                    }
-                  }
-
-                  // Handle array: size: ["small", "flex"]
-                  if (propNode.value.type === 'ArrayExpression') {
-                    propNode.value.elements.forEach((element, elemIndex) => {
-                      if (element && isStringLiteral(element)) {
-                        const newValue =
-                          MAPS.container[element.value] || element.value;
-                        if (newValue !== element.value) {
-                          propNode.value.elements[elemIndex] =
-                            j.stringLiteral(newValue);
-                        }
-                      }
-                    });
-                  }
-                }
-              });
-            }
+            const fileInfo = getFileInfo(file, path.node);
+            attr.value.expression = deepReplaceSize(
+              attr.name.name,
+              attr.value.expression,
+              fileInfo,
+            );
           }
         }
       });

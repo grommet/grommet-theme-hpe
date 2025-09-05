@@ -284,4 +284,19 @@ describe('migrate-tshirt-sizes codemod', () => {
     const output = runCodemod(input);
     expect(output).toContain("height = 'small'");
   });
+
+  it('transforms Grid columns with conditional array/object based on breakpoint includes', () => {
+    const input = `<Grid
+    columns={
+      ['xsmall', 'small'].includes(breakpoint)
+        ? ['auto']
+        : { count: 2, size: 'small' }
+    }
+    gap='xlarge'
+  />`;
+    const output = runCodemod(input);
+    expect(output).toContain("['xsmall', 'small'].includes(breakpoint)");
+    expect(output).toContain("size: 'xsmall'");
+    expect(output).toContain("gap='3xlarge'");
+  });
 });
