@@ -14,14 +14,16 @@ function printHelp() {
   /* eslint-disable no-console */
   console.log(`\nGrommet Theme HPE Codemod\n`);
   console.log(
-    `Usage: node node_modules/grommet-theme-hpe/codemod <transform> <path> [options]\n`
+    `Usage: node node_modules/grommet-theme-hpe/codemod <transform> <path> [options]\n`,
   );
   console.log(`Transforms:`);
   console.log(`  migrate-tshirt-sizes   Migrate v6 t-shirt sizes to v7`);
   console.log(`Options:`);
   console.log(`  --dry      Run in dry mode (no changes)`);
   console.log(`  --verbose  Set verbosity level (0, 1, or 2). Default is 0`);
-  console.log(`  --quote    Set quote style (single or double). Default is double`);
+  console.log(
+    `  --quote    Set quote style (single or double). Default is double`,
+  );
   console.log(`  --help     Show this help message`);
   console.log(`\nExample usage:`);
   console.log(
@@ -31,7 +33,7 @@ function printHelp() {
     ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --quote single --dry\n`,
     ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --verbose 1 --dry\n`,
     ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --verbose 1\n`,
-    ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --verbose 2\n`
+    ` node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --verbose 2\n`,
   );
 }
 
@@ -64,7 +66,7 @@ const verboseIndex = args.indexOf('--verbose');
 if (
   verboseIndex !== -1 &&
   args[verboseIndex + 1] &&
-  !isNaN(Number(args[verboseIndex + 1]))
+  !Number.isNaN(Number(args[verboseIndex + 1]))
 ) {
   verboseLevel = Number(args[verboseIndex + 1]);
 }
@@ -83,15 +85,13 @@ if (quoteIndex !== -1 && args[quoteIndex + 1]) {
 function getAllFiles(dir, exts) {
   let results = [];
   const list = fs.readdirSync(dir);
-  list.forEach(function (file) {
+  list.forEach((file) => {
     const filePath = path.join(dir, file);
     const stat = fs.statSync(filePath);
     if (stat && stat.isDirectory()) {
       results = results.concat(getAllFiles(filePath, exts));
-    } else {
-      if (exts.includes(path.extname(filePath).toLowerCase())) {
-        results.push(filePath);
-      }
+    } else if (exts.includes(path.extname(filePath).toLowerCase())) {
+      results.push(filePath);
     }
   });
   return results;
@@ -122,11 +122,13 @@ if (tsFiles.length > 0) {
     execSync(
       `npx jscodeshift --parser=tsx ${dryFlag} ${verboseFlag} ${quoteFlag} --extensions=ts,tsx -t "${
         transforms[transform]
-      }" ${tsFiles.map((f) => '"' + f + '"').join(' ')}`,
-      { stdio: 'inherit' }
+      }" ${tsFiles.map((f) => `"${f}"`).join(' ')}`,
+      { stdio: 'inherit' },
     );
     if (!dry) {
-      console.log('✅  Migration to Grommet Theme HPE v7 t-shirt sizes complete!');
+      console.log(
+        '✅  Migration to Grommet Theme HPE v7 t-shirt sizes complete!',
+      );
       console.warn('⚠️   WARN: Review any deprecation warnings.');
       console.warn('⚠️   WARN: Fix any other manual changes needed.');
     }
@@ -142,11 +144,13 @@ if (jsFiles.length > 0) {
     execSync(
       `npx jscodeshift ${dryFlag} ${verboseFlag} ${quoteFlag} --extensions=js,jsx -t "${
         transforms[transform]
-      }" ${jsFiles.map((f) => '"' + f + '"').join(' ')}`,
-      { stdio: 'inherit' }
+      }" ${jsFiles.map((f) => `"${f}"`).join(' ')}`,
+      { stdio: 'inherit' },
     );
     if (!dry) {
-      console.log('✅  Migration to Grommet Theme HPE v7 t-shirt sizes complete!');
+      console.log(
+        '✅  Migration to Grommet Theme HPE v7 t-shirt sizes complete!',
+      );
       console.warn('⚠️   WARN: Review any deprecation warnings.');
       console.warn('⚠️   WARN: Fix any other manual changes needed.');
     }

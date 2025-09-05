@@ -3,7 +3,7 @@
  * Usage: node node_modules/grommet-theme-hpe/codemod <transform> <path>
  */
 
-const SPACING_PROPS = ['gap', 'margin', 'pad'];
+const SPACING_PROPS = ['gap', 'margin', 'pad', 'thickness'];
 const BORDER_PROPS = ['border'];
 const CONTAINER_PROPS = ['height', 'width'];
 const RADIUS_PROPS = ['round'];
@@ -247,6 +247,7 @@ export default (file, api, options) => {
     'buttonProps',
     'paginate',
     'contentProps',
+    'chart', // Add this
   ];
 
   // Replace string literal, object, array, and conditional props (deep traversal)
@@ -264,6 +265,7 @@ export default (file, api, options) => {
           'buttonProps',
           'paginate',
           'contentProps',
+          'chart', // Add this
         ].includes(prop);
 
         // String literal
@@ -277,7 +279,7 @@ export default (file, api, options) => {
         // Deep traverse expression containers
         if (val.type === 'JSXExpressionContainer') {
           if (isSpecialContainer) {
-            // For special containers, only transform nested pad, margin, round, height, width
+            // For special containers, only transform nested pad, margin, round, height, width, thickness
             if (val.expression.type === 'ObjectExpression') {
               val.expression.properties.forEach((propNode) => {
                 if (propNode.type === 'Property') {
@@ -286,9 +288,14 @@ export default (file, api, options) => {
 
                   // Only transform specific nested properties
                   if (
-                    ['pad', 'margin', 'round', 'height', 'width'].includes(
-                      keyName,
-                    )
+                    [
+                      'pad',
+                      'margin',
+                      'round',
+                      'height',
+                      'width',
+                      'thickness',
+                    ].includes(keyName)
                   ) {
                     if (isStringLiteral(propNode.value)) {
                       const newValue = replaceSize(
@@ -308,6 +315,50 @@ export default (file, api, options) => {
                       );
                     }
                   }
+                }
+              });
+            }
+            // Handle arrays within special containers (like chart prop)
+            if (val.expression.type === 'ArrayExpression') {
+              val.expression.elements.forEach((element) => {
+                if (element && element.type === 'ObjectExpression') {
+                  element.properties.forEach((propNode) => {
+                    if (propNode.type === 'Property') {
+                      const keyName =
+                        propNode.key &&
+                        (propNode.key.name || propNode.key.value);
+
+                      // Transform thickness within chart array objects
+                      if (
+                        [
+                          'pad',
+                          'margin',
+                          'round',
+                          'height',
+                          'width',
+                          'thickness',
+                        ].includes(keyName)
+                      ) {
+                        if (isStringLiteral(propNode.value)) {
+                          const newValue = replaceSize(
+                            keyName,
+                            propNode.value.value,
+                            fileInfo,
+                          );
+                          if (newValue !== propNode.value.value) {
+                            propNode.value = j.stringLiteral(newValue);
+                          }
+                        } else {
+                          // Handle complex structures
+                          propNode.value = deepReplaceSize(
+                            keyName,
+                            propNode.value,
+                            fileInfo,
+                          );
+                        }
+                      }
+                    }
+                  });
                 }
               });
             }
@@ -565,32 +616,6 @@ export default (file, api, options) => {
         }
       });
     });
-
-  // Handle Chart and Meter component thickness prop
-  // test -> <Meter thickness="small" />
-  ['Chart', 'Meter'].forEach((componentName) => {
-    root
-      .find(j.JSXElement, {
-        openingElement: { name: { name: componentName } },
-      })
-      .forEach((path) => {
-        const { attributes } = path.node.openingElement;
-        attributes.forEach((attr, index) => {
-          if (attr.type === 'JSXAttribute' && attr.name.name === 'thickness') {
-            if (attr.value && isStringLiteral(attr.value)) {
-              const newValue =
-                MAPS.spacing[attr.value.value] || attr.value.value;
-              if (newValue !== attr.value.value) {
-                attributes[index] = j.jsxAttribute(
-                  j.jsxIdentifier('thickness'),
-                  j.stringLiteral(newValue),
-                );
-              }
-            }
-          }
-        });
-      });
-  });
 
   // Transform default parameter values for both arrow and function declarations
   root.find(j.AssignmentPattern).forEach((path) => {

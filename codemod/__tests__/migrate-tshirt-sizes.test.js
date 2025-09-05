@@ -227,4 +227,15 @@ describe('migrate-tshirt-sizes codemod', () => {
     expect(output).toContain("? 'xsmall'");
     expect(output).toContain(": 'xlarge'");
   });
+  it('transforms thickness in DataChart chart prop array', () => {
+    const input = `<DataChart 
+    chart={[
+      { property: 'energy', thickness: 'xsmall' },
+      { property: 'water', thickness: 'xxsmall' }
+    ]} 
+  />`;
+    const output = runCodemod(input);
+    expect(output).toContain("thickness: '3xsmall'");
+    expect(output).toContain("thickness: '5xsmall'");
+  });
 });
