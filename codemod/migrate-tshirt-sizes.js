@@ -185,6 +185,24 @@ export default (file, api, options) => {
   const j = api.jscodeshift;
   const root = j(file.source);
 
+  // Track components imported from 'grommet-icons'
+  const grommetIconComponents = new Set();
+
+  // Find all imports from 'grommet-icons'
+  root.find(j.ImportDeclaration).forEach((path) => {
+    if (path.node.source.value === 'grommet-icons') {
+      path.node.specifiers.forEach((specifier) => {
+        if (specifier.type === 'ImportSpecifier') {
+          grommetIconComponents.add(specifier.imported.name);
+        }
+      });
+    }
+  });
+
+  // Helper function to check if a component is imported from grommet-icons
+  const isGrommetIconComponent = (elementName) =>
+    grommetIconComponents.has(elementName);
+
   // Replace theme.global.edgeSize.xxx references
   root
     .find(j.MemberExpression, {
@@ -256,6 +274,20 @@ export default (file, api, options) => {
       const val = path.node.value;
       if (val) {
         const fileInfo = getFileInfo(file, path.node);
+
+        // Check if this is a height prop on a grommet-icons component
+        const isHeightOnGrommetIcon =
+          prop === 'height' &&
+          path.parent &&
+          path.parent.value &&
+          path.parent.value.name &&
+          path.parent.value.name.name &&
+          isGrommetIconComponent(path.parent.value.name.name);
+
+        // Skip transformation for height props on grommet-icons components
+        if (isHeightOnGrommetIcon) {
+          return;
+        }
 
         // Handle special container props differently
         const isSpecialContainer = [
@@ -634,6 +666,57 @@ export default (file, api, options) => {
     } else if (left.type === 'Identifier' && ALL_PROPS.includes(left.name)) {
       const fileInfo = getFileInfo(file, path.node);
       path.node.right = deepReplaceSize(left.name, right, fileInfo);
+    }
+  });
+
+  // Transform size props within function calls (e.g., cloneElement, createElement, etc.)
+  root.find(j.CallExpression).forEach((path) => {
+    const callExpr = path.node;
+
+    // Check if this call expression has object literal arguments
+    if (callExpr.arguments && callExpr.arguments.length > 0) {
+      callExpr.arguments.forEach((arg) => {
+        // Look for object expressions that might contain size props
+        if (arg.type === 'ObjectExpression') {
+          arg.properties.forEach((prop) => {
+            if (prop.type === 'Property' || prop.type === 'ObjectProperty') {
+              const keyName = prop.key && (prop.key.name || prop.key.value);
+
+              // Transform size prop specifically (common in React elements)
+              if (keyName === 'size' && isStringLiteral(prop.value)) {
+                const fileInfo = getFileInfo(file, path.node);
+                // Use container mapping for size prop by default (most common case)
+                const newValue = replaceSize(
+                  'width',
+                  prop.value.value,
+                  fileInfo,
+                );
+                if (newValue !== prop.value.value) {
+                  prop.value = j.stringLiteral(newValue);
+                }
+              }
+
+              // Transform other known props
+              if (ALL_PROPS.includes(keyName)) {
+                const fileInfo = getFileInfo(file, path.node);
+                if (isStringLiteral(prop.value)) {
+                  const newValue = replaceSize(
+                    keyName,
+                    prop.value.value,
+                    fileInfo,
+                  );
+                  if (newValue !== prop.value.value) {
+                    prop.value = j.stringLiteral(newValue);
+                  }
+                } else {
+                  // Handle complex values (arrays, objects, conditionals)
+                  prop.value = deepReplaceSize(keyName, prop.value, fileInfo);
+                }
+              }
+            }
+          });
+        }
+      });
     }
   });
 

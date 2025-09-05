@@ -228,14 +228,44 @@ describe('migrate-tshirt-sizes codemod', () => {
     expect(output).toContain(": 'xlarge'");
   });
   it('transforms thickness in DataChart chart prop array', () => {
-    const input = `<DataChart 
+    const input = `<DataChart
     chart={[
       { property: 'energy', thickness: 'xsmall' },
       { property: 'water', thickness: 'xxsmall' }
-    ]} 
+    ]}
   />`;
     const output = runCodemod(input);
     expect(output).toContain("thickness: '3xsmall'");
     expect(output).toContain("thickness: '5xsmall'");
+  });
+
+  it('transforms tshirt sizes inside React function call like cloneElement() and so on', () => {
+    const input = `import React, { cloneElement } from 'react';
+       export const EmptyState = ({
+        icon: iconProp,
+      }) => {
+        let icon = iconProp;
+        if (iconProp && !iconProp.props.size)
+          icon = cloneElement(iconProp, { size: 'xlarge' });
+
+        return (
+          <Box gap="medium" align={align} flex={false}>
+            {icon}
+          </Box>
+        );
+      };`;
+    const output = runCodemod(input);
+    expect(output).toContain("size: 'xxlarge'");
+  });
+
+  it('No transforms for height on icons', () => {
+    const input = `import { StatusGoodSmall } from 'grommet-icons';;
+        <Box>
+          <StatusGoodSmall height = 'small' />
+          <Box height = 'xlarge' />
+          {icon}
+        </Box>`;
+    const output = runCodemod(input);
+    expect(output).toContain("height = 'small'");
   });
 });
