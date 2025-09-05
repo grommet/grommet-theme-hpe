@@ -1,11 +1,12 @@
 import { describe, it, expect } from 'vitest';
+import jscodeshift from 'jscodeshift';
 import migrateTshirtSizes from '../migrate-tshirt-sizes';
 
 // Helper to run codemod on code string
 function runCodemod(input, options = { quote: 'single' }) {
   // Simulate jscodeshift API
   const api = {
-    jscodeshift: require('jscodeshift'),
+    jscodeshift,
   };
   const file = { source: input };
   return migrateTshirtSizes(file, api, options);
@@ -132,5 +133,87 @@ describe('migrate-tshirt-sizes codemod', () => {
     const input = `<Grid columns={{ count: 'fit', size: ['small', 'flex'] }} />`;
     const output = runCodemod(input);
     expect(output).toContain("size: ['xsmall', 'flex']");
+  });
+  it('transforms pad in List defaultItemProps', () => {
+    const input = `<List
+        data={serverGroups}
+        defaultItemProps={{
+          pad: { vertical: 'small' },
+        }}
+      />`;
+    const output = runCodemod(input);
+    expect(output).toContain("pad: { vertical: 'xsmall' }");
+  });
+
+  it('transforms nested props in dropProps', () => {
+    const input = `<Select 
+        dropProps={{ 
+          pad: 'xsmall', 
+          margin: 'large',
+          round: 'small',
+          height: 'xlarge'
+        }} 
+      />`;
+    const output = runCodemod(input);
+    expect(output).toContain("pad: '3xsmall'");
+    expect(output).toContain("margin: 'xlarge'");
+    expect(output).toContain("round: 'medium'");
+    expect(output).toContain("height: 'xxlarge'");
+  });
+
+  it('transforms nested props in buttonProps', () => {
+    const input = `<Component 
+        buttonProps={{ 
+          pad: { horizontal: 'small', vertical: 'xsmall' },
+          margin: 'large'
+        }} 
+      />`;
+    const output = runCodemod(input);
+    expect(output).toContain("horizontal: 'xsmall'");
+    expect(output).toContain("vertical: '3xsmall'");
+    expect(output).toContain("margin: 'xlarge'");
+  });
+
+  it('transforms nested props in boxProp', () => {
+    const input = `<Component 
+        boxProp={{ 
+          width: 'large',
+          round: 'xlarge',
+          pad: ['small', 'medium']
+        }} 
+      />`;
+    const output = runCodemod(input);
+    expect(output).toContain("width: 'xlarge'");
+    expect(output).toContain("round: 'xxlarge'");
+    expect(output).toContain("pad: ['xsmall', 'medium']");
+  });
+
+  it('transforms nested props in paginate', () => {
+    const input = `<DataTable 
+        paginate={{ 
+          pad: 'xxsmall',
+          margin: { top: 'small', bottom: 'large' }
+        }} 
+      />`;
+    const output = runCodemod(input);
+    expect(output).toContain("pad: '5xsmall'");
+    expect(output).toContain("top: 'xsmall'");
+    expect(output).toContain("bottom: 'xlarge'");
+  });
+  it('transforms nested props in contentProps', () => {
+    const input = `<FormField
+      label="Title"
+      contentProps={{ width: 'small' }}
+      required
+      name="application-title"
+      htmlFor="application-title"
+    />`;
+    const output = runCodemod(input);
+    expect(output).toContain("width: 'xsmall'");
+  });
+  it('transforms nested size prop in border object', () => {
+    const input = `<Box border={{ color: 'transparent', size: 'xlarge' }} />`;
+    const output = runCodemod(input);
+    expect(output).toContain("size: 'large'");
   });
 });

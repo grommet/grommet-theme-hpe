@@ -217,6 +217,13 @@ export default (file, api, options) => {
     ...CONTAINER_PROPS,
     ...RADIUS_PROPS,
     ...OTHER_PROPS,
+    // Add special container props that can contain pad, margin, round, height, width
+    'dropProps',
+    'defaultItemProps',
+    'boxProp',
+    'buttonProps',
+    'paginate',
+    'contentProps',
   ];
 
   // Replace string literal, object, array, and conditional props (deep traversal)
@@ -225,16 +232,65 @@ export default (file, api, options) => {
       const val = path.node.value;
       if (val) {
         const fileInfo = getFileInfo(file, path.node);
+
+        // Handle special container props differently
+        const isSpecialContainer = [
+          'dropProps',
+          'defaultItemProps',
+          'boxProp',
+          'buttonProps',
+          'paginate',
+          'contentProps',
+        ].includes(prop);
+
         // String literal
-        if (isStringLiteral(val)) {
+        if (isStringLiteral(val) && !isSpecialContainer) {
           const newValue = replaceSize(prop, val.value, fileInfo);
           if (newValue !== val.value) {
             path.get('value').replace(j.stringLiteral(newValue));
           }
         }
+
         // Deep traverse expression containers
         if (val.type === 'JSXExpressionContainer') {
-          val.expression = deepReplaceSize(prop, val.expression, fileInfo);
+          if (isSpecialContainer) {
+            // For special containers, only transform nested pad, margin, round, height, width
+            if (val.expression.type === 'ObjectExpression') {
+              val.expression.properties.forEach((propNode) => {
+                if (propNode.type === 'Property') {
+                  const keyName =
+                    propNode.key && (propNode.key.name || propNode.key.value);
+
+                  // Only transform specific nested properties
+                  if (
+                    ['pad', 'margin', 'round', 'height', 'width'].includes(
+                      keyName,
+                    )
+                  ) {
+                    if (isStringLiteral(propNode.value)) {
+                      const newValue = replaceSize(
+                        keyName,
+                        propNode.value.value,
+                        fileInfo,
+                      );
+                      if (newValue !== propNode.value.value) {
+                        propNode.value = j.stringLiteral(newValue);
+                      }
+                    } else {
+                      // Handle complex structures (arrays, objects, conditionals)
+                      propNode.value = deepReplaceSize(
+                        keyName,
+                        propNode.value,
+                        fileInfo,
+                      );
+                    }
+                  }
+                }
+              });
+            }
+          } else {
+            val.expression = deepReplaceSize(prop, val.expression, fileInfo);
+          }
         }
       }
     });
