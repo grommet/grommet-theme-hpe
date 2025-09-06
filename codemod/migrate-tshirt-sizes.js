@@ -727,7 +727,7 @@ export default (file, api, options) => {
       // Only transform identifiers (e.g., theme.global.edgeSize.small)
       if (prop.type === 'Identifier') {
         const oldKey = prop.name;
-        const newKey = MAPS.spacing[oldKey]; // spacing map applies here
+        const newKey = MAPS.spacing[oldKey];
         if (newKey && newKey !== oldKey) {
           if (/^\d/.test(newKey)) {
             // starts with a number → use bracket notation
@@ -768,14 +768,14 @@ export default (file, api, options) => {
     ...CONTAINER_PROPS,
     ...RADIUS_PROPS,
     ...OTHER_PROPS,
-    // Add special container props that can contain pad, margin, round, height, width
+    // Add additional props that can contain pad, margin, round, height, width
     'dropProps',
     'defaultItemProps',
     'boxProp',
     'buttonProps',
     'paginate',
     'contentProps',
-    'chart', // Add this
+    'chart',
   ];
 
   // Replace string literal, object, array, and conditional props (deep traversal)
@@ -807,7 +807,7 @@ export default (file, api, options) => {
           'buttonProps',
           'paginate',
           'contentProps',
-          'chart', // Add this
+          'chart',
         ].includes(prop);
 
         // String literal
@@ -1151,10 +1151,10 @@ export default (file, api, options) => {
             if (prop.type === 'Property' || prop.type === 'ObjectProperty') {
               const keyName = prop.key && (prop.key.name || prop.key.value);
 
-              // Transform size prop specifically (common in React elements)
+              // Transform size prop specifically
               if (keyName === 'size' && isStringLiteral(prop.value)) {
                 const fileInfo = getFileInfo(file, path.node);
-                // Use container mapping for size prop by default (most common case)
+                // Use container mapping for size prop by default
                 const newValue = replaceSize(
                   'width',
                   prop.value.value,
