@@ -3,14 +3,36 @@ import jscodeshift from 'jscodeshift';
 import migrateTshirtSizes from '../migrate-tshirt-sizes';
 
 // Helper to run codemod on code string
-function runCodemod(input, options = { quote: 'single' }) {
+const runCodemod = (input, options = { quote: 'single' }) => {
   // Simulate jscodeshift API
   const api = {
     jscodeshift,
   };
   const file = { source: input };
   return migrateTshirtSizes(file, api, options);
-}
+};
+
+const runScanMode = (input) => {
+  const api = { jscodeshift };
+  const file = { source: input, path: 'test-file.js' };
+
+  // Capture console output
+  const originalWarn = console.warn;
+  const originalLog = console.log;
+  const warnings = [];
+  const logs = [];
+
+  console.warn = (msg) => warnings.push(msg);
+  console.log = (msg) => logs.push(msg);
+
+  try {
+    migrateTshirtSizes(file, api, { scan: true });
+    return { warnings, logs };
+  } finally {
+    console.warn = originalWarn;
+    console.log = originalLog;
+  }
+};
 
 describe('migrate-tshirt-sizes codemod', () => {
   it('transforms variable assignment', () => {
@@ -298,5 +320,368 @@ describe('migrate-tshirt-sizes codemod', () => {
     expect(output).toContain("['xsmall', 'small'].includes(breakpoint)");
     expect(output).toContain("size: 'xsmall'");
     expect(output).toContain("gap='3xlarge'");
+  });
+});
+
+describe('scan mode', () => {
+  it('flags const declarations with t-shirt sizes', () => {
+    const input = `
+      const padding = 'small';
+      const size = 'medium';
+      const spacing = 'large';
+    `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toContain('\n📁 test-file.js');
+    expect(warnings).toContain(
+      '  ⚠️  Line 2: const padding = "small" - may need manual review',
+    );
+    expect(warnings).toContain(
+      '  ⚠️  Line 3: const size = "medium" - may need manual review',
+    );
+    expect(warnings).toContain(
+      '  ⚠️  Line 4: const spacing = "large" - may need manual review',
+    );
+  });
+
+  it('flags object assignments with t-shirt sizes in values', () => {
+    const input = `
+      const styles = {
+        margin: 'large',
+        pad: 'small'
+      };
+    `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toContain('\n📁 test-file.js');
+    expect(warnings).toContain(
+      '  ⚠️  Line 2: const styles = { margin: "large", pad: "small" } - may need manual review',
+    );
+  });
+
+  it('flags object assignments with t-shirt sizes in keys (like columnsGap)', () => {
+    const input = `
+      const columnsGap = {
+        xsmall: 'xsmall',
+        small: 'xsmall',
+        medium: 'small',
+        large: 'medium'
+      };
+    `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toContain('\n📁 test-file.js');
+    // The warning should include both keys and values found
+    expect(
+      warnings.some(
+        (w) =>
+          w.includes('const columnsGap = {') &&
+          w.includes('xsmall:') &&
+          w.includes('small:') &&
+          w.includes('medium:') &&
+          w.includes('large:'),
+      ),
+    ).toBe(true);
+  });
+
+  it('flags array assignments with t-shirt sizes', () => {
+    const input = `
+      const sizes = ['small', 'large'];
+    `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toContain('\n📁 test-file.js');
+    expect(warnings).toContain(
+      '  ⚠️  Line 2: const sizes = ["small", "large"] - may need manual review',
+    );
+  });
+
+  it('flags nested arrays with t-shirt sizes', () => {
+    const input = `
+      const gridColumns = [
+        ['medium', 'auto'],
+        ['small', 'medium']
+      ];
+    `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toContain('\n📁 test-file.js');
+    expect(warnings).toContain(
+      '  ⚠️  Line 2: const gridColumns = ["medium", "small", "medium"] - may need manual review',
+    );
+  });
+
+  it('flags theme.global.edgeSize references', () => {
+    const input = `
+      const spacing = theme.global.edgeSize.small;
+      const margin = theme.global.edgeSize.medium;
+    `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toContain('\n📁 test-file.js');
+    expect(warnings).toContain(
+      '  ⚠️  Line 2: theme.global.edgeSize.small - may need manual review',
+    );
+    expect(warnings).toContain(
+      '  ⚠️  Line 3: theme.global.edgeSize.medium - may need manual review',
+    );
+  });
+
+  it('flags style objects with t-shirt sizes', () => {
+    const input = `
+      function Component() {
+        return <Box style={{ margin: 'large', pad: 'small' }} />;
+      }
+    `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toContain('\n📁 test-file.js');
+    expect(warnings).toContain(
+      '  ⚠️  Line 3: Object with margin: "large" - may need manual review',
+    );
+    expect(warnings).toContain(
+      '  ⚠️  Line 3: Object with pad: "small" - may need manual review',
+    );
+  });
+
+  it('does NOT flag JSX props', () => {
+    const input = `
+      function Component() {
+        return <Text size="medium" weight="bold" />;
+      }
+    `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toHaveLength(0);
+    expect(warnings).toHaveLength(0);
+  });
+
+  it('does NOT flag defaultProps', () => {
+    const input = `
+      Component.defaultProps = {
+        size: 'medium',
+        weight: 400
+      };
+    `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toHaveLength(0);
+    expect(warnings).toHaveLength(0);
+  });
+
+  it('does NOT flag random string literals', () => {
+    const input = `
+      const message = 'The size is medium';
+      const description = 'This is a small component';
+    `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toHaveLength(0);
+    expect(warnings).toHaveLength(0);
+  });
+
+  it('does NOT flag non-style objects', () => {
+    const input = `
+      const config = {
+        name: 'small',
+        type: 'medium'
+      };
+    `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toHaveLength(0);
+    expect(warnings).toHaveLength(0);
+  });
+
+  it('flags mixed object with style props and t-shirt sizes', () => {
+    const input = `
+      const boxStyles = {
+        pad: 'small',
+        background: 'white',
+        margin: 'large',
+        color: 'red'
+      };
+    `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toContain('\n📁 test-file.js');
+    expect(warnings).toContain(
+      '  ⚠️  Line 2: const boxStyles = { pad: "small", margin: "large" } - may need manual review',
+    );
+  });
+
+  it('handles multiple files worth of warnings', () => {
+    const input = `
+      const padding = 'small';
+      const columns = ['medium', 'large'];
+      const styles = { margin: 'xlarge' };
+    `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toContain('\n📁 test-file.js');
+    expect(warnings).toHaveLength(3);
+    expect(warnings).toContain(
+      '  ⚠️  Line 2: const padding = "small" - may need manual review',
+    );
+    expect(warnings).toContain(
+      '  ⚠️  Line 3: const columns = ["medium", "large"] - may need manual review',
+    );
+    expect(warnings).toContain(
+      '  ⚠️  Line 4: const styles = { margin: "xlarge" } - may need manual review',
+    );
+  });
+  it('flags object with only t-shirt size keys and values (no style props)', () => {
+    const input = `
+    const columnsGap = {
+      xsmall: 'xsmall',
+      small: 'xsmall',
+      medium: 'small',
+      large: 'medium',
+      xlarge: 'medium'
+    };
+  `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toContain('\n📁 test-file.js');
+    expect(
+      warnings.some(
+        (w) =>
+          w.includes('const columnsGap = {') &&
+          w.includes('xsmall:') &&
+          w.includes('small:') &&
+          w.includes('medium:') &&
+          w.includes('large:') &&
+          w.includes('xlarge:'),
+      ),
+    ).toBe(true);
+  });
+
+  it('flags assignment expressions with style objects', () => {
+    const input = `
+    let kindStyles = {};
+    if (kind === 'next')
+      kindStyles = {
+        container: {
+          pad: 'xsmall',
+          round: 'xsmall',
+        },
+      };
+  `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toContain('\n📁 test-file.js');
+    expect(
+      warnings.some(
+        (w) =>
+          w.includes('kindStyles = {') &&
+          w.includes('container.pad: "xsmall"') &&
+          w.includes('container.round: "xsmall"'),
+      ),
+    ).toBe(true);
+  });
+  it('flags variable declarations with conditional expressions containing t-shirt sizes', () => {
+    const input = `
+    const breakpoint = useContext(ResponsiveContext);
+    
+    const detailColumns = ['xsmall', 'small', 'medium'].includes(breakpoint) 
+      ? ['flex', 'flex'] 
+      : ['flex', 'medium'];
+      
+    const metricSize = ['xsmall', 'small', 'medium'].includes(breakpoint) 
+      ? "small" 
+      : "medium";
+      
+    const summaryRows = [["xsmall", "auto"]];
+  `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toContain('\n📁 test-file.js');
+
+    // Should flag detailColumns because of 'medium' in the array
+    expect(
+      warnings.some(
+        (w) => w.includes('const detailColumns = ') && w.includes('"medium"'),
+      ),
+    ).toBe(true);
+
+    // Should flag metricSize because of 'small' and 'medium' in ternary
+    expect(
+      warnings.some(
+        (w) =>
+          w.includes('const metricSize = ') &&
+          (w.includes('"small"') || w.includes('"medium"')),
+      ),
+    ).toBe(true);
+
+    // Should flag summaryRows because of 'xsmall' in nested array
+    expect(
+      warnings.some(
+        (w) => w.includes('const summaryRows = ') && w.includes('"xsmall"'),
+      ),
+    ).toBe(true);
+  });
+  it('flags destructuring assignments with t-shirt size default values', () => {
+    const input = `
+    const { round = !multiple ? 'full' : 'xxsmall', size = 'medium' } = indicator;
+    const { pad = 'small', margin = 'large' } = styles;
+    const { width = 'auto', height = 'xlarge' } = dimensions;
+  `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toContain('\n📁 test-file.js');
+
+    // Should flag first destructuring with conditional and direct assignment
+    expect(
+      warnings.some(
+        (w) =>
+          w.includes('const { round = "xxsmall", size = "medium" }') ||
+          (w.includes('round =') &&
+            w.includes('xxsmall') &&
+            w.includes('size =') &&
+            w.includes('medium')),
+      ),
+    ).toBe(true);
+
+    // Should flag second destructuring
+    expect(
+      warnings.some(
+        (w) =>
+          w.includes('const { pad = "small", margin = "large" }') ||
+          (w.includes('pad =') &&
+            w.includes('small') &&
+            w.includes('margin =') &&
+            w.includes('large')),
+      ),
+    ).toBe(true);
+
+    // Should flag third destructuring
+    expect(
+      warnings.some(
+        (w) =>
+          w.includes('const { height = "xlarge" }') ||
+          (w.includes('height =') && w.includes('xlarge')),
+      ),
+    ).toBe(true);
+  });
+  it('flags assignment expressions with directional style properties', () => {
+    const input = `
+    let adjustedPad;
+    if (context === 'header') {
+      adjustedPad = {
+        left: pad,
+        right: pad,
+        bottom: 'xsmall',
+        top: pad,
+      };
+    }
+  `;
+    const { warnings, logs } = runScanMode(input);
+
+    expect(logs).toContain('\n📁 test-file.js');
+    expect(
+      warnings.some(
+        (w) => w.includes('adjustedPad = {') && w.includes('bottom: "xsmall"'),
+      ),
+    ).toBe(true);
   });
 });

@@ -62,16 +62,20 @@ const replaceSize = (prop, value, fileInfo = {}) => {
   const lineLocation = fileInfo.line ? ` at line ${fileInfo.line}` : '';
 
   // Show deprecation warnings for radius props
-  if (
-    RADIUS_PROPS.includes(prop) &&
-    (value === 'large' || value === 'xlarge')
-  ) {
-    /* eslint-disable no-console */
-    console.warn(
-      `⚠️  DEPRECATION: radius="${value}" (${
-        value === 'large' ? '48px' : '96px'
-      }) is deprecated and now maps to "xxlarge" (32px)${fileLocation}${lineLocation}.`,
-    );
+  if (RADIUS_PROPS.includes(prop)) {
+    if (value === 'large' || value === 'xlarge') {
+      /* eslint-disable no-console */
+      console.warn(
+        `⚠️  DEPRECATION: radius="${value}" (${
+          value === 'large' ? '48px' : '96px'
+        }) is deprecated and now maps to "xxlarge" (32px)${fileLocation}${lineLocation}.`,
+      );
+    } else if (value === 'xxsmall') {
+      /* eslint-disable no-console */
+      console.warn(
+        `⚠️  DEPRECATION: radius="xxsmall" (3px) is deprecated and now maps to "xxsmall" (4px)${fileLocation}${lineLocation}.`,
+      );
+    }
   }
 
   // Show deprecation warnings for border props
@@ -189,9 +193,507 @@ const getFileInfo = (file, node) => ({
   line: node.loc ? node.loc.start.line : undefined,
 });
 
+// Improved scanning function - only flag variable declarations and suspicious patterns
+const scanForTshirtSizes = (file, root, j) => {
+  const tshirtSizes = [
+    'xxsmall',
+    'xsmall',
+    'small',
+    'medium',
+    'large',
+    'xlarge',
+    'xxlarge',
+    '3xsmall',
+    '4xsmall',
+    '5xsmall',
+    '3xlarge',
+  ];
+
+  let foundAny = false;
+
+  // scan for const/let/var declarations with t-shirt size values
+  root.find(j.VariableDeclarator).forEach((path) => {
+    const { id, init } = path.node;
+
+    if (!init) return;
+
+    // Check if the initial value is a t-shirt size string
+    if (isStringLiteral(init) && tshirtSizes.includes(init.value)) {
+      const varName = id.name || 'unknown';
+      const line = path.node.loc ? path.node.loc.start.line : '?';
+
+      if (!foundAny) {
+        console.log(`\n📁 ${file.path}`);
+        foundAny = true;
+      }
+
+      console.warn(
+        `  ⚠️  Line ${line}: const ${varName} = "${init.value}" - may need manual review`,
+      );
+    }
+
+    // Check for object assignments: const padding = { top: 'small', left: 'large' }
+    if (init.type === 'ObjectExpression') {
+      let hasAnyTshirtSize = false;
+      const foundSizes = [];
+
+      // Check if this object has style-related properties
+      const hasStyleProps = init.properties.some((prop) => {
+        if (prop.type === 'Property') {
+          const keyName = prop.key.name || prop.key.value;
+          return [
+            'pad',
+            'margin',
+            'gap',
+            'width',
+            'height',
+            'round',
+            'border',
+            'thickness',
+            // Add directional properties
+            'top',
+            'bottom',
+            'left',
+            'right',
+            'horizontal',
+            'vertical',
+          ].includes(keyName);
+        }
+        return false;
+      });
+
+      // Check if this object has t-shirt size keys
+      const hasTshirtSizeKeys = init.properties.some((prop) => {
+        if (prop.type === 'Property') {
+          const keyName = prop.key.name || prop.key.value;
+          return tshirtSizes.includes(keyName);
+        }
+        return false;
+      });
+
+      // Only process objects that are likely style-related:
+      // 1. Have style properties (like { pad: 'small' }), OR
+      // 2. Have t-shirt size keys (like { xsmall: 'value', small: 'value' })
+      // This excludes random objects like { name: 'small', type: 'medium' }
+      if (hasStyleProps || hasTshirtSizeKeys) {
+        init.properties.forEach((prop) => {
+          if (prop.type === 'Property') {
+            // Check if property key is a t-shirt size
+            const propKey = prop.key.name || prop.key.value;
+            if (tshirtSizes.includes(propKey)) {
+              hasAnyTshirtSize = true;
+              foundSizes.push(`${propKey}: ...`);
+            }
+
+            // Check if property value is a t-shirt size
+            if (
+              isStringLiteral(prop.value) &&
+              tshirtSizes.includes(prop.value.value)
+            ) {
+              hasAnyTshirtSize = true;
+              foundSizes.push(`${propKey}: "${prop.value.value}"`);
+            }
+          }
+        });
+      }
+
+      if (hasAnyTshirtSize) {
+        const varName = id.name || 'unknown';
+        const line = path.node.loc ? path.node.loc.start.line : '?';
+
+        if (!foundAny) {
+          console.log(`\n📁 ${file.path}`);
+          foundAny = true;
+        }
+
+        console.warn(
+          `  ⚠️  Line ${line}: const ${varName} = { ${foundSizes.join(', ')} } - may need manual review`,
+        );
+      }
+    }
+
+    // Check for array assignments: const sizes = ['small', 'large'] or nested arrays
+    if (init.type === 'ArrayExpression') {
+      let hasAnyTshirtSize = false;
+      const foundSizes = [];
+
+      const checkArrayForTshirtSizes = (elements, depth = 0) => {
+        elements.forEach((element, index) => {
+          if (isStringLiteral(element) && tshirtSizes.includes(element.value)) {
+            hasAnyTshirtSize = true;
+            foundSizes.push(`"${element.value}"`);
+          }
+          // Handle nested arrays like [['medium', 'auto'], ['small', 'medium']]
+          else if (element && element.type === 'ArrayExpression') {
+            checkArrayForTshirtSizes(element.elements, depth + 1);
+          }
+        });
+      };
+
+      checkArrayForTshirtSizes(init.elements);
+
+      if (hasAnyTshirtSize) {
+        const varName = id.name || 'unknown';
+        const line = path.node.loc ? path.node.loc.start.line : '?';
+
+        if (!foundAny) {
+          console.log(`\n📁 ${file.path}`);
+          foundAny = true;
+        }
+
+        console.warn(
+          `  ⚠️  Line ${line}: const ${varName} = [${foundSizes.join(', ')}] - may need manual review`,
+        );
+      }
+    }
+
+    // Check for conditional expressions: const size = condition ? 'small' : 'medium'
+    if (init.type === 'ConditionalExpression') {
+      let hasAnyTshirtSize = false;
+      const foundSizes = [];
+
+      const checkConditionalForTshirtSizes = (node) => {
+        if (isStringLiteral(node) && tshirtSizes.includes(node.value)) {
+          hasAnyTshirtSize = true;
+          foundSizes.push(`"${node.value}"`);
+        }
+        // Handle arrays in conditionals
+        if (node.type === 'ArrayExpression') {
+          node.elements.forEach((element) => {
+            checkConditionalForTshirtSizes(element);
+          });
+        }
+        // Handle nested conditionals
+        if (node.type === 'ConditionalExpression') {
+          checkConditionalForTshirtSizes(node.consequent);
+          checkConditionalForTshirtSizes(node.alternate);
+        }
+      };
+
+      checkConditionalForTshirtSizes(init.consequent);
+      checkConditionalForTshirtSizes(init.alternate);
+
+      if (hasAnyTshirtSize) {
+        const varName = id.name || 'unknown';
+        const line = path.node.loc ? path.node.loc.start.line : '?';
+
+        if (!foundAny) {
+          console.log(`\n📁 ${file.path}`);
+          foundAny = true;
+        }
+
+        console.warn(
+          `  ⚠️  Line ${line}: const ${varName} = [${foundSizes.join(', ')}] - may need manual review`,
+        );
+      }
+    }
+
+    // Check for destructuring with default values: const { round = 'xxsmall', size = 'medium' } = indicator;
+    if (id.type === 'ObjectPattern') {
+      let hasAnyTshirtSize = false;
+      const foundSizes = [];
+
+      const checkDestructuringForTshirtSizes = (pattern) => {
+        pattern.properties.forEach((prop) => {
+          if (prop.type === 'Property') {
+            // Handle simple destructuring: { round, size }
+            if (prop.value.type === 'Identifier') {
+              // No default value, skip
+              return;
+            }
+
+            // Handle destructuring with defaults: { round = 'xxsmall', size = 'medium' }
+            if (prop.value.type === 'AssignmentPattern') {
+              const keyName = prop.key.name || prop.key.value;
+              const defaultValue = prop.value.right;
+
+              // Check if default value is a t-shirt size string
+              if (
+                isStringLiteral(defaultValue) &&
+                tshirtSizes.includes(defaultValue.value)
+              ) {
+                hasAnyTshirtSize = true;
+                foundSizes.push(`${keyName} = "${defaultValue.value}"`);
+              }
+
+              // Check for complex default values (conditionals, etc.)
+              if (defaultValue.type === 'ConditionalExpression') {
+                const checkConditionalInDefault = (node) => {
+                  if (
+                    isStringLiteral(node) &&
+                    tshirtSizes.includes(node.value)
+                  ) {
+                    hasAnyTshirtSize = true;
+                    foundSizes.push(`${keyName} = "${node.value}"`);
+                  }
+                  if (node.type === 'ConditionalExpression') {
+                    checkConditionalInDefault(node.consequent);
+                    checkConditionalInDefault(node.alternate);
+                  }
+                };
+                checkConditionalInDefault(defaultValue);
+              }
+            }
+          }
+
+          // Handle rest patterns if needed
+          if (prop.type === 'RestElement') {
+            // Skip rest elements for now
+            return;
+          }
+        });
+      };
+
+      checkDestructuringForTshirtSizes(id);
+
+      if (hasAnyTshirtSize) {
+        const line = path.node.loc ? path.node.loc.start.line : '?';
+
+        if (!foundAny) {
+          console.log(`\n📁 ${file.path}`);
+          foundAny = true;
+        }
+
+        console.warn(
+          `  ⚠️  Line ${line}: const { ${foundSizes.join(', ')} } = ... - may need manual review`,
+        );
+      }
+    }
+  });
+
+  // scan for assignment expressions with style objects (e.g., kindStyles = { ... })
+  root.find(j.AssignmentExpression).forEach((path) => {
+    const { left, right } = path.node;
+
+    // Only check object assignments
+    if (right && right.type === 'ObjectExpression') {
+      let hasAnyTshirtSize = false;
+      const foundSizes = [];
+
+      // Check if this object has style-related properties or t-shirt size keys
+      const hasStyleProps = right.properties.some((prop) => {
+        if (prop.type === 'Property') {
+          const keyName = prop.key.name || prop.key.value;
+          return [
+            'pad',
+            'margin',
+            'gap',
+            'width',
+            'height',
+            'round',
+            'border',
+            'thickness',
+            // Add directional properties
+            'top',
+            'bottom',
+            'left',
+            'right',
+            'horizontal',
+            'vertical',
+          ].includes(keyName);
+        }
+        return false;
+      });
+
+      const hasTshirtSizeKeys = right.properties.some((prop) => {
+        if (prop.type === 'Property') {
+          const keyName = prop.key.name || prop.key.value;
+          return tshirtSizes.includes(keyName);
+        }
+        return false;
+      });
+
+      // Check nested objects for style properties (like container: { pad: 'xsmall' })
+      const hasNestedStyleProps = right.properties.some((prop) => {
+        if (
+          prop.type === 'Property' &&
+          prop.value &&
+          prop.value.type === 'ObjectExpression'
+        ) {
+          return prop.value.properties.some((nestedProp) => {
+            if (nestedProp.type === 'Property') {
+              const keyName = nestedProp.key.name || nestedProp.key.value;
+              return [
+                'pad',
+                'margin',
+                'gap',
+                'width',
+                'height',
+                'round',
+                'border',
+                'thickness',
+                'top',
+                'bottom',
+                'left',
+                'right',
+                'horizontal',
+                'vertical',
+              ].includes(keyName);
+            }
+            return false;
+          });
+        }
+        return false;
+      });
+
+      // Process if it has style-related properties or nested style properties
+      if (hasStyleProps || hasTshirtSizeKeys || hasNestedStyleProps) {
+        // Helper function to recursively check for t-shirt sizes in nested objects
+        const checkObjectForTshirtSizes = (obj, prefix = '') => {
+          obj.properties.forEach((prop) => {
+            if (prop.type === 'Property') {
+              const propKey = prop.key.name || prop.key.value;
+              const fullKey = prefix ? `${prefix}.${propKey}` : propKey;
+
+              // Check if property key is a t-shirt size
+              if (tshirtSizes.includes(propKey)) {
+                hasAnyTshirtSize = true;
+                foundSizes.push(`${fullKey}: ...`);
+              }
+
+              // Check if property value is a t-shirt size
+              if (
+                isStringLiteral(prop.value) &&
+                tshirtSizes.includes(prop.value.value)
+              ) {
+                hasAnyTshirtSize = true;
+                foundSizes.push(`${fullKey}: "${prop.value.value}"`);
+              }
+
+              // Recursively check nested objects
+              if (prop.value && prop.value.type === 'ObjectExpression') {
+                checkObjectForTshirtSizes(prop.value, fullKey);
+              }
+            }
+          });
+        };
+
+        checkObjectForTshirtSizes(right);
+      }
+
+      if (hasAnyTshirtSize) {
+        const varName = left.type === 'Identifier' ? left.name : 'unknown';
+        const line = path.node.loc ? path.node.loc.start.line : '?';
+
+        if (!foundAny) {
+          console.log(`\n📁 ${file.path}`);
+          foundAny = true;
+        }
+
+        console.warn(
+          `  ⚠️  Line ${line}: ${varName} = { ${foundSizes.join(', ')} } - may need manual review`,
+        );
+      }
+    }
+  });
+
+  // scan for theme.global.edgeSize references
+  root.find(j.MemberExpression).forEach((path) => {
+    const { node } = path;
+
+    // Check for theme.global.edgeSize.xxx pattern
+    if (
+      node.object &&
+      node.object.object &&
+      node.object.object.object &&
+      node.object.object.object.name === 'theme' &&
+      node.object.object.property &&
+      node.object.object.property.name === 'global' &&
+      node.object.property &&
+      node.object.property.name === 'edgeSize'
+    ) {
+      const sizeName = node.property.name || node.property.value;
+      if (tshirtSizes.includes(sizeName)) {
+        const line = path.node.loc ? path.node.loc.start.line : '?';
+
+        if (!foundAny) {
+          console.log(`\n📁 ${file.path}`);
+          foundAny = true;
+        }
+
+        console.warn(
+          `  ⚠️  Line ${line}: theme.global.edgeSize.${sizeName} - may need manual review`,
+        );
+      }
+    }
+  });
+
+  // scan for obvious style objects that might contain t-shirt sizes
+  // Look for objects with style-related property names
+  root.find(j.ObjectExpression).forEach((path) => {
+    const { node } = path;
+
+    // Skip if this is already handled by VariableDeclarator above
+    let isPartOfVariableDeclarator = false;
+    let isPartOfAssignmentExpression = false;
+    let current = path.parent;
+    while (current) {
+      if (current.value && current.value.type === 'VariableDeclarator') {
+        isPartOfVariableDeclarator = true;
+        break;
+      }
+      if (current.value && current.value.type === 'AssignmentExpression') {
+        isPartOfAssignmentExpression = true;
+        break;
+      }
+      current = current.parent;
+    }
+
+    if (isPartOfVariableDeclarator || isPartOfAssignmentExpression) return;
+
+    // Check if this object has style-related properties
+    const hasStyleProps = node.properties.some((prop) => {
+      if (prop.type === 'Property') {
+        const keyName = prop.key.name || prop.key.value;
+        return [
+          'pad',
+          'margin',
+          'gap',
+          'width',
+          'height',
+          'round',
+          'border',
+        ].includes(keyName);
+      }
+      return false;
+    });
+
+    // Only flag if it looks like a style object
+    if (hasStyleProps) {
+      node.properties.forEach((prop) => {
+        if (
+          prop.type === 'Property' &&
+          isStringLiteral(prop.value) &&
+          tshirtSizes.includes(prop.value.value)
+        ) {
+          const propKey = prop.key.name || prop.key.value;
+          const line = path.node.loc ? path.node.loc.start.line : '?';
+
+          if (!foundAny) {
+            console.log(`\n📁 ${file.path}`);
+            foundAny = true;
+          }
+
+          console.warn(
+            `  ⚠️  Line ${line}: Object with ${propKey}: "${prop.value.value}" - may need manual review`,
+          );
+        }
+      });
+    }
+  });
+
+  // Return original source unchanged in scan mode
+  return file.source;
+};
+
 export default (file, api, options) => {
   const j = api.jscodeshift;
   const root = j(file.source);
+
+  // Scanning mode - detect all t-shirt sizes
+  if (options.scan) {
+    return scanForTshirtSizes(file, root, j);
+  }
 
   // Track components imported from 'grommet-icons'
   const grommetIconComponents = new Set();
