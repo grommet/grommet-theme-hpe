@@ -1191,5 +1191,9 @@ export default (file, api, options) => {
 
   // get --quote flag from options argument
   const quote = options.quote === 'single' ? 'single' : 'double';
-  return root.toSource({ quote });
+
+  // detect and maintain original file's end of line sequence
+  const lineTerminator = /\r\n/.test(file.source) ? '\r\n' : '\n';
+
+  return root.toSource({ quote, lineTerminator });
 };
