@@ -19,6 +19,9 @@
     "type": "git",
     "url": "https://github.com/grommet/grommet-theme-hpe.git"
   },
+  "bin": {
+    "grommet-theme-hpe codemod": "codemod/index.js"
+  },
   "peerDependencies": {
     "grommet": "^2.47.0",
     "grommet-icons": "^4.12.4",

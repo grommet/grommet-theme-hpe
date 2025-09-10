@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Codemod dispatcher CLI for grommet-theme-hpe
- * Usage: node node_modules/grommet-theme-hpe/codemod <transform> <path> [--dry]
+ * Usage: npx grommet-theme-hpe codemod <transform> <path> [options]
  */
 
 const { execSync } = require('child_process');
@@ -27,29 +27,29 @@ function getAllFiles(dir, exts) {
 
 function printHelp() {
   /* eslint-disable no-console */
-  console.log(`\nGrommet Theme HPE Codemod\n`);
+  console.log(`\x1b[1m\x1b[32m%s\x1b[0m`, `\nGrommet Theme HPE Codemod\n`);
   console.log(
-    `Usage: node node_modules/grommet-theme-hpe/codemod <transform> <path> [options]\n`,
+    `Usage: npx grommet-theme-hpe codemod <transform> <path> [options]\n`,
   );
-  console.log(`Transforms:`);
-  console.log(`  migrate-tshirt-sizes   Migrate v6 t-shirt sizes to v7`);
-  console.log(`Options:`);
+  console.log(`\x1b[32m%s\x1b[0m`, `Transforms:`);
+  console.log(`  migrate-tshirt-sizes   Migrate v6 t-shirt sizes to v7\n`);
+  console.log(`\x1b[32m%s\x1b[0m`, `Options:`);
   console.log(`  --dry      Run in dry mode (no changes)`);
   console.log(`  --scan     Scan for t-shirt sizes without transforming`);
   console.log(`  --verbose  Set verbosity level (0, 1, or 2). Default is 0`);
   console.log(
     `  --quote    Set quote style (single or double). Default is double`,
   );
-  console.log(`  --help     Show this help message`);
-  console.log(`\nExample usage:`);
+  console.log(`  --help     Show this help message\n`);
+  console.log(`\x1b[32m%s\x1b[0m`, `Example usage:`);
   console.log(
-    `  node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --scan\n`,
-    `  node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/\n`,
-    `  node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --dry\n`,
-    `  node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --quote single --dry\n`,
-    `  node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --verbose 1 --dry\n`,
-    `  node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --verbose 1\n`,
-    `  node node_modules/grommet-theme-hpe/codemod migrate-tshirt-sizes src/ --verbose 2\n`,
+    `   npx grommet-theme-hpe codemod migrate-tshirt-sizes src/ --scan\n`,
+    `  npx grommet-theme-hpe codemod migrate-tshirt-sizes src/ --dry\n`,
+    `  npx grommet-theme-hpe codemod migrate-tshirt-sizes src/ --quote single --dry\n`,
+    `  npx grommet-theme-hpe codemod migrate-tshirt-sizes src/ --verbose 1 --dry\n`,
+    `  npx grommet-theme-hpe codemod migrate-tshirt-sizes src/ --verbose 1\n`,
+    `  npx grommet-theme-hpe codemod migrate-tshirt-sizes src/ --verbose 2\n`,
+    `  npx grommet-theme-hpe codemod migrate-tshirt-sizes src/\n`,
   );
   /* eslint-enable no-console */
 }
@@ -68,7 +68,7 @@ if (process.argv.includes('--scan')) {
   };
 
   if (!transforms[transform]) {
-    console.error(`Unknown transform: ${transform}`);
+    console.error('Unknown transform:', `\x1b[31m${transform}\x1b[0m`);
     process.exit(1);
   }
 
@@ -130,7 +130,7 @@ const transforms = {
 
 if (!transforms[transform]) {
   /* eslint-disable no-console */
-  console.error(`Unknown transform: ${transform}`);
+  console.error('Unknown transform:', `\x1b[31m${transform}\x1b[0m`);
   /* eslint-enable no-console */
   printHelp();
   process.exit(1);

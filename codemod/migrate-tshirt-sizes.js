@@ -1,6 +1,6 @@
 /**
  * Codemod for migrating t-shirt size props from v6 to v7
- * Usage: node node_modules/grommet-theme-hpe/codemod <transform> <path>
+ * Usage: npx grommet-theme-hpe codemod <transform> <path> [options]
  */
 
 /* eslint-disable no-param-reassign */
