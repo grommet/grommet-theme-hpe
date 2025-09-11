@@ -16,11 +16,10 @@
   "bugs": "https://github.com/grommet/grommet-theme-hpe/issues",
   "license": "Apache-2.0",
   "repository": {
-    "type": "git",
     "url": "https://github.com/grommet/grommet-theme-hpe.git"
   },
   "peerDependencies": {
-    "grommet": "^2.47.0",
+    "grommet": "^2.49.0",
     "grommet-icons": "^4.12.4",
     "react": "^16.13.1 || ^17.0.1 || ^18.0.0 || ^19.0.0",
     "styled-components": "^5.0.0 || ^6.0.0"
