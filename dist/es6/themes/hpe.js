@@ -730,7 +730,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     },
     box: {
       border: {
-        size: '3xsmall'
+        offset: '3xsmall'
       }
     },
     button: _extends({
