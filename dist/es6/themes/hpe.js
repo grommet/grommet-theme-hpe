@@ -182,6 +182,9 @@ var buildTheme = function buildTheme(tokens, flags) {
     components = tokens.components;
   var size = function size(breakpoint) {
     return {
+      '5xsmall': breakpoint.hpe.container['5xsmall'],
+      '4xsmall': breakpoint.hpe.container['4xsmall'],
+      '3xsmall': breakpoint.hpe.container['3xsmall'],
       xxsmall: breakpoint.hpe.container.xxsmall,
       xsmall: breakpoint.hpe.container.xsmall,
       small: breakpoint.hpe.container.small,
@@ -189,6 +192,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       large: breakpoint.hpe.container.large,
       xlarge: breakpoint.hpe.container.xlarge,
       xxlarge: breakpoint.hpe.container.xxlarge,
+      '3xlarge': breakpoint.hpe.container['3xlarge'],
       full: '100%'
     };
   };
@@ -198,8 +202,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       small: large.hpe.borderWidth.small,
       medium: large.hpe.borderWidth.medium,
       "default": large.hpe.borderWidth["default"],
-      large: large.hpe.borderWidth.large,
-      xlarge: large.hpe.borderWidth.xlarge
+      large: large.hpe.borderWidth.large
     },
     edgeSize: {
       none: large.hpe.spacing.none,
@@ -227,6 +230,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       large: large.hpe.radius.large,
       xlarge: large.hpe.radius.xlarge,
       xxlarge: large.hpe.radius.xxlarge,
+      full: large.hpe.radius.full,
       responsiveBreakpoint: 'small'
     },
     size: size(large)
@@ -238,18 +242,22 @@ var buildTheme = function buildTheme(tokens, flags) {
           small: small.hpe.borderWidth.small,
           medium: small.hpe.borderWidth.medium,
           "default": small.hpe.borderWidth["default"],
-          large: small.hpe.borderWidth.large,
-          xlarge: small.hpe.borderWidth.xlarge
+          large: small.hpe.borderWidth.large
         },
         edgeSize: {
           none: small.hpe.spacing.none,
           hair: small.hpe.spacing.hair,
+          '5xsmall': small.hpe.spacing['5xsmall'],
+          '4xsmall': small.hpe.spacing['4xsmall'],
+          '3xsmall': small.hpe.spacing['3xsmall'],
           xxsmall: small.hpe.spacing.xxsmall,
           xsmall: small.hpe.spacing.xsmall,
           small: small.hpe.spacing.small,
           medium: small.hpe.spacing.medium,
           large: small.hpe.spacing.large,
           xlarge: small.hpe.spacing.xlarge,
+          xxlarge: small.hpe.spacing.xxlarge,
+          '3xlarge': small.hpe.spacing['3xlarge'],
           responsiveBreakpoint: 'small'
         },
         radius: {
@@ -262,6 +270,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           large: small.hpe.radius.large,
           xlarge: small.hpe.radius.xlarge,
           xxlarge: small.hpe.radius.xxlarge,
+          full: small.hpe.radius.full,
           responsiveBreakpoint: 'small'
         },
         size: size(small)
@@ -274,18 +283,22 @@ var buildTheme = function buildTheme(tokens, flags) {
           small: small.hpe.borderWidth.small,
           medium: small.hpe.borderWidth.medium,
           "default": small.hpe.borderWidth["default"],
-          large: small.hpe.borderWidth.large,
-          xlarge: small.hpe.borderWidth.xlarge
+          large: small.hpe.borderWidth.large
         },
         edgeSize: {
           none: small.hpe.spacing.none,
           hair: small.hpe.spacing.hair,
+          '5xsmall': small.hpe.spacing['5xsmall'],
+          '4xsmall': small.hpe.spacing['4xsmall'],
+          '3xsmall': small.hpe.spacing['3xsmall'],
           xxsmall: small.hpe.spacing.xxsmall,
           xsmall: small.hpe.spacing.xsmall,
           small: small.hpe.spacing.small,
           medium: small.hpe.spacing.medium,
           large: small.hpe.spacing.large,
           xlarge: small.hpe.spacing.xlarge,
+          xxlarge: small.hpe.spacing.xxlarge,
+          '3xlarge': small.hpe.spacing['3xlarge'],
           responsiveBreakpoint: 'small'
         },
         radius: {
@@ -298,6 +311,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           large: small.hpe.radius.large,
           xlarge: small.hpe.radius.xlarge,
           xxlarge: small.hpe.radius.xxlarge,
+          full: small.hpe.radius.full,
           responsiveBreakpoint: 'small'
         },
         size: size(small)
@@ -585,7 +599,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       drop: {
         background: components.hpe.drop["default"].background,
         border: {
-          radius: dimensions.edgeSize[components.hpe.drop["default"].borderRadius] || components.hpe.drop["default"].borderRadius
+          radius: dimensions.radius[components.hpe.drop["default"].borderRadius] || components.hpe.drop["default"].borderRadius
         },
         margin: components.hpe.drop["default"].margin,
         intelligentMargin: true,
@@ -634,7 +648,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         level: 3,
         margin: {
           vertical: 'medium',
-          horizontal: 'xsmall'
+          horizontal: '3xsmall'
         }
       },
       hover: {
@@ -648,6 +662,20 @@ var buildTheme = function buildTheme(tokens, flags) {
         collapse: Up,
         expand: Down,
         color: 'text'
+      },
+      icon: {
+        container: {
+          pad: {
+            horizontal: 'xsmall'
+          }
+        }
+      },
+      label: {
+        container: {
+          pad: {
+            horizontal: '3xsmall'
+          }
+        }
       }
     },
     anchor: {
@@ -664,6 +692,9 @@ var buildTheme = function buildTheme(tokens, flags) {
           var theme = _ref4.theme;
           return "color: " + getThemeColor(components.hpe.anchor["default"].hover.textColor, theme) + ";";
         }
+      },
+      iconOnly: {
+        pad: 'xsmall'
       },
       size: anchorSizeTheme
     },
@@ -697,6 +728,11 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       }
     },
+    box: {
+      border: {
+        offset: '3xsmall'
+      }
+    },
     button: _extends({
       intelligentPad: false,
       color: components.hpe.button["default"].rest.textColor,
@@ -714,6 +750,9 @@ var buildTheme = function buildTheme(tokens, flags) {
             medium: 'xsmall'
           }
         }
+      },
+      busy: {
+        gap: 'xsmall'
       },
       'cta-primary': _extends({}, buttonKindTheme.primary, {
         icon: /*#__PURE__*/React.createElement(Hpe, null),
@@ -885,7 +924,12 @@ var buildTheme = function buildTheme(tokens, flags) {
         title: {
           size: 'medium',
           weight: global.hpe.fontWeight.normal,
-          color: 'text-strong'
+          color: 'text-strong',
+          container: {
+            pad: {
+              horizontal: '3xsmall'
+            }
+          }
         }
       },
       medium: {
@@ -913,7 +957,12 @@ var buildTheme = function buildTheme(tokens, flags) {
         title: {
           size: 'large',
           weight: global.hpe.fontWeight.normal,
-          color: 'text-strong'
+          color: 'text-strong',
+          container: {
+            pad: {
+              horizontal: 'xsmall'
+            }
+          }
         }
       },
       large: {
@@ -941,7 +990,12 @@ var buildTheme = function buildTheme(tokens, flags) {
         title: {
           size: 'xlarge',
           weight: global.hpe.fontWeight.normal,
-          color: 'text-strong'
+          color: 'text-strong',
+          container: {
+            pad: {
+              horizontal: 'medium'
+            }
+          }
         }
       }
     },
@@ -949,6 +1003,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       container: {
         background: 'background-front',
         elevation: 'none',
+        round: 'medium',
         extend: 'transition: box-shadow 0.3s ease-in-out;'
       },
       body: {
@@ -957,7 +1012,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       footer: {
         pad: {
           horizontal: 'medium',
-          vertical: 'small'
+          vertical: 'xsmall'
         }
       },
       header: {
@@ -969,12 +1024,23 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       }
     },
+    cards: {
+      grid: {
+        columns: 'xsmall',
+        gap: 'medium'
+      }
+    },
     carousel: {
       disabled: {
         icons: {
           color: 'icon-disabled'
         }
       }
+    },
+    chart: {
+      height: 'xsmall',
+      thickness: 'medium',
+      width: 'medium'
     },
     checkBox: {
       hover: {
@@ -1102,13 +1168,144 @@ var buildTheme = function buildTheme(tokens, flags) {
     checkBoxGroup: {
       container: {
         cssGap: true,
-        gap: 'small',
+        gap: 'xsmall',
         margin: 'none'
       }
     },
     data: {
       button: {
         kind: 'toolbar'
+      },
+      toolbar: {
+        gap: 'medium'
+      }
+    },
+    dataChart: {
+      gap: 'xsmall',
+      granularity: {
+        y: {
+          '5xsmall': {
+            fine: 2,
+            medium: 2
+          },
+          '4xsmall': {
+            fine: 2,
+            medium: 2
+          },
+          '3xsmall': {
+            fine: 3,
+            medium: 2
+          },
+          xxsmall: {
+            fine: 3,
+            medium: 2
+          },
+          xsmall: {
+            fine: 5,
+            medium: 3
+          },
+          small: {
+            fine: 5,
+            medium: 3
+          },
+          medium: {
+            fine: 7,
+            medium: 5
+          },
+          large: {
+            fine: 7,
+            medium: 5
+          },
+          xlarge: {
+            fine: 9,
+            medium: 5
+          },
+          xxlarge: {
+            fine: 9,
+            medium: 5
+          },
+          '3xlarge': {
+            fine: 11,
+            medium: 5
+          }
+        }
+      },
+      detail: {
+        gap: '3xsmall',
+        pad: 'xsmall'
+      },
+      halfPad: {
+        '3xlarge': 'xlarge',
+        xxlarge: 'large',
+        xlarge: 'medium',
+        large: 'small',
+        medium: 'xsmall',
+        small: 'xxsmall',
+        xsmall: '3xsmall',
+        xxsmall: '4xsmall',
+        '3xsmall': '5xsmall',
+        '4xsmall': '2px',
+        '5xsmall': 'hair'
+      },
+      legend: {
+        margin: {
+          top: 'xsmall'
+        },
+        gap: 'xsmall',
+        item: {
+          gap: '3xsmall',
+          pad: {
+            horizontal: 'xsmall',
+            vertical: '3xsmall'
+          }
+        }
+      },
+      orderedSizes: ['3xlarge', 'xxlarge', 'xlarge', 'large', 'medium', 'small', 'xsmall', 'xxsmall', '3xsmall', '4xsmall', '5xsmall'],
+      size: {
+        height: 'xsmall'
+      },
+      thickness: {
+        veryDense: 'hair',
+        dense: '3xsmall',
+        heavy: 'xsmall',
+        moderate: 'medium',
+        light: 'xlarge',
+        sparse: '3xlarge'
+      },
+      thicknessPad: {
+        xlarge: 'xlarge',
+        large: 'medium',
+        medium: 'xsmall',
+        small: '3xsmall',
+        xsmall: '5xsmall'
+      }
+    },
+    dataFilter: {
+      rangeSelector: {
+        size: 'full',
+        round: 'medium'
+      },
+      selectMultiple: {
+        dropHeight: 'medium'
+      }
+    },
+    dataFilters: {
+      clearControl: {
+        margin: {
+          start: 'xsmall'
+        }
+      },
+      footer: {
+        actions: {
+          margin: {
+            top: 'medium'
+          },
+          gap: 'xsmall'
+        }
+      },
+      pad: 'medium',
+      width: {
+        min: 'medium'
       }
     },
     dateInput: {
@@ -1117,13 +1314,26 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       icon: {
         size: 'small'
+      },
+      button: {
+        margin: 'xsmall'
+      }
+    },
+    dataSummary: {
+      margin: {
+        vertical: '3xsmall'
+      },
+      separator: {
+        margin: {
+          horizontal: 'xsmall'
+        }
       }
     },
     dataTable: {
       body: {
         extend: function extend(_ref14) {
           var theme = _ref14.theme;
-          return "\n          /* Margin and padding allow room for focus on table body */\n          margin: " + theme.global.edgeSize.xxsmall + " 0px;\n          padding: 0px " + theme.global.edgeSize.xxsmall + ";\n        ";
+          return "\n          /* Margin and padding allow room for focus on table body */\n          margin: " + theme.global.edgeSize['5xsmall'] + " 0px;\n          padding: 0px " + theme.global.edgeSize['5xsmall'] + ";\n        ";
         },
         selected: {
           background: (_components$hpe$dataC = components.hpe.dataCell["default"].selected) == null || (_components$hpe$dataC = _components$hpe$dataC.rest) == null ? void 0 : _components$hpe$dataC.background
@@ -1131,6 +1341,9 @@ var buildTheme = function buildTheme(tokens, flags) {
         row: {
           extend: "&:last-child td {\n              border-color: transparent;\n            }\n            &:last-child th {\n              border-color: transparent;\n            }"
         }
+      },
+      expand: {
+        size: '5xsmall'
       },
       groupHeader: {
         // background: undefined,
@@ -1165,7 +1378,10 @@ var buildTheme = function buildTheme(tokens, flags) {
           }
         },
         units: {
-          color: components.hpe.headerCell["default"].units.rest.textColor
+          color: components.hpe.headerCell["default"].units.rest.textColor,
+          margin: {
+            left: '3xsmall'
+          }
         }
       },
       icons: {
@@ -1230,9 +1446,44 @@ var buildTheme = function buildTheme(tokens, flags) {
             size: 'small'
           }
         }
+      },
+      search: {
+        pad: {
+          left: 'xsmall'
+        },
+        text: {
+          pad: {
+            horizontal: 'xsmall'
+          }
+        }
+      },
+      sort: {
+        gap: '3xsmall'
+      }
+    },
+    distribution: {
+      gap: '3xsmall'
+    },
+    dataTableColumns: {
+      tabs: {
+        pad: 'xsmall'
+      },
+      selectColumns: {
+        pad: {
+          vertical: 'xsmall'
+        },
+        gap: '3xsmall'
+      },
+      orderColumns: {
+        pad: {
+          top: 'xsmall'
+        }
       }
     },
     fileInput: {
+      anchor: {
+        margin: 'xsmall'
+      },
       border: {
         color: components.hpe.formField["default"].input.container.rest.borderColor,
         side: 'all',
@@ -1270,25 +1521,29 @@ var buildTheme = function buildTheme(tokens, flags) {
         remove: Close
       },
       label: {
-        margin: 'small'
+        margin: 'xsmall',
+        gap: '3xsmall'
       },
       message: {
         color: 'placeholder',
-        margin: 'small'
+        margin: 'xsmall'
       },
       pad: {
-        horizontal: 'xsmall'
+        horizontal: '3xsmall'
       },
       extend: "border-radius: " + components.hpe.formField["default"].medium.input.container.borderRadius + ";"
+    },
+    footer: {
+      gap: 'medium'
     },
     formField: {
       extend: function extend(_ref16) {
         var theme = _ref16.theme;
-        return "\n          [class*=\"ContentBox\"] {\n            label {\n              padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n              &:hover:not([disabled]) {\n                background: " + getThemeColor(components.hpe.formField["default"].input.container.hover.background, theme) + ";\n              }\n            }\n            [role=\"group\"], [role=\"radiogroup\"] {\n              gap: 0;\n              padding-block: " + components.hpe.formField["default"].medium.input.group.container.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.container.paddingX + ";\n              label {\n                border: " + (dimensions.borderSize[components.hpe.formField["default"].medium.input.group.item.borderWidth] || components.hpe.formField["default"].medium.input.group.item.borderWidth) + " solid " + getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme) + ";\n                padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n                padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n                border-radius: " + dimensions.edgeSize[components.hpe.formField["default"].medium.input.group.item.borderRadius] + ";\n                &:hover:not([disabled]) {\n                  background: " + getThemeColor(components.hpe.formField["default"].input.group.item.hover.background, theme) + ";\n                }\n              }\n            }\n          }\n      ";
+        return "\n          [class*=\"ContentBox\"] {\n            label {\n              padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n              &:hover:not([disabled]) {\n                background: " + getThemeColor(components.hpe.formField["default"].input.container.hover.background, theme) + ";\n              }\n            }\n            [role=\"group\"], [role=\"radiogroup\"] {\n              gap: 0;\n              padding-block: " + components.hpe.formField["default"].medium.input.group.container.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.container.paddingX + ";\n              label {\n                border: " + (dimensions.borderSize[components.hpe.formField["default"].medium.input.group.item.borderWidth] || components.hpe.formField["default"].medium.input.group.item.borderWidth) + " solid " + getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme) + ";\n                padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n                padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n                border-radius: " + dimensions.radius[components.hpe.formField["default"].medium.input.group.item.borderRadius] + ";\n                &:hover:not([disabled]) {\n                  background: " + getThemeColor(components.hpe.formField["default"].input.group.item.hover.background, theme) + ";\n                }\n              }\n            }\n          }\n      ";
       },
       content: {
         margin: {
-          vertical: 'xsmall'
+          vertical: '3xsmall'
         },
         pad: 'none'
       },
@@ -1363,7 +1618,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           color: components.hpe.formField["default"].input.container.error.rest.background
         },
         container: {
-          gap: 'xsmall'
+          gap: '3xsmall'
         },
         icon: /*#__PURE__*/React.createElement(CircleAlert, {
           size: "small",
@@ -1372,7 +1627,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         size: 'xsmall',
         color: components.hpe.formField["default"].error.rest.textColor,
         margin: {
-          bottom: 'xsmall',
+          bottom: '3xsmall',
           top: 'none',
           horizontal: 'none'
         }
@@ -1394,7 +1649,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         size: 'xsmall',
         color: components.hpe.formField["default"].info.rest.color,
         margin: {
-          bottom: 'xsmall',
+          bottom: '3xsmall',
           top: 'none',
           horizontal: 'none'
         }
@@ -1404,7 +1659,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         color: components.hpe.formField["default"].label.rest.textColor,
         margin: {
           bottom: 'none',
-          top: 'xsmall',
+          top: '3xsmall',
           horizontal: 'none'
         },
         requiredIndicator: true,
@@ -1423,6 +1678,9 @@ var buildTheme = function buildTheme(tokens, flags) {
           weight: 500
         }
       }
+    },
+    header: {
+      gap: 'medium'
     },
     heading: {
       color: 'text-heading',
@@ -1576,11 +1834,14 @@ var buildTheme = function buildTheme(tokens, flags) {
     layer: {
       background: 'background-floating',
       border: {
-        radius: 'small',
+        radius: 'medium',
         intelligentRounding: true
       },
       container: {
-        elevation: 'large'
+        elevation: 'large',
+        height: {
+          min: '5xsmall'
+        }
       },
       overlay: {
         background: 'background-screenOverlay'
@@ -1593,7 +1854,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     list: {
       container: {
         // any box props
-        gap: 'xsmall'
+        gap: '3xsmall'
         // extend: undefined,
       },
       item: {
@@ -1607,7 +1868,12 @@ var buildTheme = function buildTheme(tokens, flags) {
           icon: {
             pad: mediumIconOnlyPad
           }
-        }
+        },
+        pad: {
+          horizontal: 'medium',
+          vertical: 'xsmall'
+        },
+        gap: 'medium'
       },
       primaryKey: {
         weight: global.hpe.fontWeight.medium
@@ -1661,29 +1927,78 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       }
     },
+    nameValueList: {
+      gap: {
+        column: 'xlarge',
+        row: 'xsmall'
+      },
+      pair: {
+        column: {
+          gap: {
+            column: 'xlarge',
+            row: 'medium'
+          }
+        }
+      },
+      name: {
+        width: 'xsmall'
+      },
+      value: {
+        width: 'medium'
+      }
+    },
     nameValuePair: {
+      column: {
+        gap: '5xsmall'
+      },
       name: {
         color: 'text-strong',
         weight: global.hpe.fontWeight.medium
       }
+    },
+    nav: {
+      gap: 'medium'
     },
     notification: {
       close: {
         icon: Close
       },
       container: {
-        round: 'xsmall'
+        round: 'xsmall',
+        pad: {
+          horizontal: 'xsmall',
+          vertical: '3xsmall'
+        }
       },
       direction: 'column',
+      gap: 'xsmall',
       global: {
         direction: 'row',
         container: {
-          round: 'none'
+          round: 'none',
+          pad: {
+            horizontal: 'xlarge',
+            vertical: '3xsmall'
+          }
         }
+      },
+      iconContainer: {
+        pad: {
+          right: 'xsmall'
+        }
+      },
+      textContainer: {
+        // any box props
+        gap: 'medium'
       },
       message: {
         color: 'text',
-        fill: true
+        fill: true,
+        text: {
+          margin: {
+            right: '3xsmall'
+          }
+        }
       },
       title: {
         // any text props
@@ -1856,6 +2171,11 @@ var buildTheme = function buildTheme(tokens, flags) {
             color: 'text-strong'
           }
         }
+      },
+      actions: {
+        margin: {
+          right: '3xsmall'
+        }
       }
     },
     page: {
@@ -1863,16 +2183,31 @@ var buildTheme = function buildTheme(tokens, flags) {
         width: {
           min: '336px',
           // 336 + 24 (margin) + 24 (margin) = 384 (e.g. 'medium')
-          max: 'xxlarge'
+          max: '3xlarge'
         },
         xsmall: {
           pad: {
-            horizontal: 'large'
+            horizontal: 'xlarge'
+          }
+        },
+        small: {
+          pad: {
+            horizontal: 'xlarge'
+          }
+        },
+        medium: {
+          pad: {
+            horizontal: 'medium'
+          }
+        },
+        large: {
+          pad: {
+            horizontal: 'xlarge'
           }
         },
         xlarge: {
           pad: {
-            horizontal: 'large'
+            horizontal: 'xlarge'
           }
         }
       },
@@ -1880,16 +2215,31 @@ var buildTheme = function buildTheme(tokens, flags) {
         width: {
           min: '336px',
           // 336 + 24 (margin) + 24 (margin) = 384 (e.g. 'medium')
-          max: 'large'
+          max: 'xlarge'
         },
         xsmall: {
           pad: {
-            horizontal: 'large'
+            horizontal: 'xlarge'
+          }
+        },
+        small: {
+          pad: {
+            horizontal: 'xlarge'
+          }
+        },
+        medium: {
+          pad: {
+            horizontal: 'medium'
+          }
+        },
+        large: {
+          pad: {
+            horizontal: 'xlarge'
           }
         },
         xlarge: {
           pad: {
-            horizontal: 'large'
+            horizontal: 'xlarge'
           }
         }
       },
@@ -1901,18 +2251,43 @@ var buildTheme = function buildTheme(tokens, flags) {
         },
         xsmall: {
           pad: {
-            horizontal: 'large'
+            horizontal: 'xlarge'
+          }
+        },
+        small: {
+          pad: {
+            horizontal: 'xlarge'
+          }
+        },
+        medium: {
+          pad: {
+            horizontal: 'medium'
+          }
+        },
+        large: {
+          pad: {
+            horizontal: 'xlarge'
           }
         },
         xlarge: {
           pad: {
-            horizontal: 'large'
+            horizontal: 'xlarge'
           }
         }
       }
     },
     pageHeader: {
+      pad: {
+        top: 'xlarge',
+        bottom: 'medium'
+      },
       responsive: {
+        actions: {
+          // any box props
+          pad: {
+            top: 'xsmall'
+          }
+        },
         breakpoints: ['xsmall', 'small']
       },
       // title: {
@@ -1921,13 +2296,71 @@ var buildTheme = function buildTheme(tokens, flags) {
       subtitle: {
         size: 'large'
       },
+      size: {
+        small: {
+          pad: {
+            top: 'medium',
+            bottom: 'xsmall'
+          },
+          subtitle: {
+            size: 'small'
+          },
+          title: {
+            size: 'small'
+          }
+        },
+        // medium: {
+        //   // pad: undefined,
+        //   // subtitle: {},
+        //   // title: {},
+        // },
+        large: {
+          pad: {
+            top: '3xlarge',
+            bottom: 'xlarge'
+          },
+          subtitle: {
+            size: 'large'
+          },
+          title: {
+            size: 'large'
+          }
+        }
+      },
       xsmall: {
         areas: [['parent', 'parent'], ['title', 'actions'], ['subtitle', 'actions']],
-        columns: [['small', 'flex'], 'auto'],
+        columns: [['xsmall', 'flex'], 'auto'],
         rows: ['auto', 'auto', 'auto'],
         gap: {
-          row: 'xsmall',
+          row: '3xsmall',
           column: 'medium'
+        }
+      },
+      small: {
+        areas: [['parent', 'parent'], ['title', 'actions'], ['subtitle', 'actions']],
+        columns: [['xsmall', 'flex'], 'auto'],
+        rows: ['auto', 'auto', 'auto'],
+        gap: {
+          row: '3xsmall',
+          column: 'xlarge'
+        }
+      },
+      medium: {
+        areas: [['parent', 'parent'], ['title', 'actions'], ['subtitle', 'actions']],
+        columns: [['medium', 'flex'], 'auto'],
+        rows: ['auto', 'auto', 'auto'],
+        gap: {
+          row: '3xsmall',
+          column: 'medium'
+        }
+      },
+      large: {
+        areas: [['parent', 'parent'], ['title', 'actions'], ['subtitle', 'actions']],
+        columns: [['medium', 'flex'], 'auto'],
+        rows: ['auto', 'auto', 'auto'],
+        gap: {
+          row: '3xsmall',
+          column: 'xlarge'
         }
       },
       xlarge: {
@@ -1935,8 +2368,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         columns: [['medium', 'large'], 'auto'],
         rows: ['auto', 'auto', 'auto'],
         gap: {
-          row: 'xsmall',
-          column: 'large'
+          row: '3xsmall',
+          column: 'xlarge'
         }
       }
     },
@@ -2036,9 +2469,27 @@ var buildTheme = function buildTheme(tokens, flags) {
             width: (_components$hpe$eleme17 = components.hpe.element) == null ? void 0 : _components$hpe$eleme17.large.minHeight
           }
         }
+      },
+      container: {
+        gap: {
+          column: '3xsmall',
+          row: 'xsmall'
+        }
+      },
+      controls: {
+        gap: '5xsmall'
+      },
+      step: {
+        container: {
+          gap: '3xsmall'
+        }
       }
     },
-    paragraph: _extends({}, paragraphTheme),
+    paragraph: _extends({}, paragraphTheme, {
+      skeleton: {
+        gap: '3xsmall'
+      }
+    }),
     radioButton: {
       border: {
         color: components.hpe.radioButton["default"].control.rest.borderColor,
@@ -2072,11 +2523,14 @@ var buildTheme = function buildTheme(tokens, flags) {
       icons: {
         circle: function circle() {
           return /*#__PURE__*/React.createElement(Blank, {
-            color: components.hpe.radioButton["default"].control.selected.rest.iconColor
+            preserveAspectRatio: "xMidYMid meet" // Forces uniform scaling. Part of grommet code but lost when passing custom icon.
+            ,
+            color: components.hpe.radioButton["default"].control.selected.rest.iconColor,
+            size: components.hpe.radioButton["default"].medium.control.width // width and height are identical, so choosing one.
           }, /*#__PURE__*/React.createElement("circle", {
-            cx: "12",
-            cy: "12",
-            r: "8"
+            cx: 12,
+            cy: 12,
+            r: 6
           }));
         }
       }
@@ -2084,7 +2538,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     radioButtonGroup: {
       container: {
         cssGap: true,
-        gap: 'small',
+        gap: 'xsmall',
         margin: 'none'
       }
     },
@@ -2132,34 +2586,50 @@ var buildTheme = function buildTheme(tokens, flags) {
         return "\n        &::before {\n          display: block;\n          position: absolute;\n          content: '';\n          width: " + primitives.hpe.base.dimension[100] + ";\n          height: " + primitives.hpe.base.dimension[100] + ";\n          border-radius: " + large.hpe.radius.full + ";\n          right: 0;\n          top: 50%;\n          transform: translateY(-50%);\n          background: " + getThemeColor(disabled ? 'background-disabled' : 'background-neutral-xstrong', theme) + ";\n        }\n    ";
       }
     },
+    rangeSelector: {
+      edge: {
+        size: "" + primitives.hpe.base.dimension[600]
+      },
+      label: {
+        margin: {
+          horizontal: 'xsmall'
+        }
+      }
+    },
     select: {
       clear: {
         container: {
-          background: undefined,
-          pad: {
-            horizontal: '12px',
-            vertical: '6px'
+          background: 'transparent',
+          pad: components.hpe.select["default"].medium.drop.paddingX
+        },
+        text: undefined,
+        button: {
+          border: {
+            radius: components.hpe.select["default"].medium.option.borderRadius,
+            size: components.hpe.select["default"].medium.option.borderWidth
+          },
+          padding: {
+            horizontal: components.hpe.select["default"].medium.option.paddingX,
+            vertical: components.hpe.select["default"].medium.option.paddingY
           },
           hover: {
-            background: 'background-hover'
+            background: components.hpe.select["default"].option.hover.background,
+            color: 'text-strong'
           },
-          round: 'xsmall'
-        },
-        text: {
-          color: components.hpe.button["default"].rest.textColor,
-          weight: components.hpe.button["default"].rest.fontWeight
+          color: 'text-strong',
+          font: {
+            weight: components.hpe.select["default"].option.rest.fontWeight
+          }
         }
       },
       container: {
-        // Applying spacing on Select "Clear selection" button, then placing focus styles on the inner container div
-        extend: function extend(_ref26) {
-          var theme = _ref26.theme;
-          return "\n          div:has(input[type=\"search\"]) {\n            padding-bottom: 0;\n          }\n          button[aria-label*=\"Or, press\"] {\n            padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n            padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n            &:focus {\n              background: transparent;\n              > div {\n                background: " + getThemeColor(components.hpe.button["default"].hover.background, theme) + ";\n              }\n            }\n          }\n        ";
+        extend: function extend() {
+          return "\n          div:has(input[type=\"search\"]) {\n            padding-bottom: 0;\n          }\n        ";
         }
       },
       control: {
-        extend: function extend(_ref27) {
-          var disabled = _ref27.disabled;
+        extend: function extend(_ref26) {
+          var disabled = _ref26.disabled;
           return css(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n          ", "\n\n          &[class*=\"SelectMultiple\"] [role=\"listbox\"] {\n            padding-block: ", ";\n            padding-inline: ", ";\n            & [role='option'] {\n              border-radius: ", ";\n            }\n          }\n        "])), disabled && "\n          opacity: 0.3;\n          input {\n            cursor: default;\n          }", components.hpe.select["default"].medium.drop.paddingY, components.hpe.select["default"].medium.drop.paddingX, dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius);
         }
       },
@@ -2172,7 +2642,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         color: 'icon',
         down: Down,
         margin: {
-          left: 'small',
+          left: 'xsmall',
           // setting right margin to 12px because on small
           // screens, Select responsive padding sizes down
           // which brings the icon too tight with edge of
@@ -2188,14 +2658,52 @@ var buildTheme = function buildTheme(tokens, flags) {
         extend: function extend() {
           return "\n          padding-top: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          display: flex;\n          flex-direction: column;\n          gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n          [role=\"option\"] {\n            border-radius: " + components.hpe.select["default"].medium.option.borderRadius + ";\n          }\n        ";
         }
+      },
+      search: {
+        pad: '3xsmall'
       }
     },
     selectMultiple: {
+      help: {
+        container: {
+          pad: '3xsmall'
+        }
+      },
       listbox: {
         extend: function extend() {
           return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"] {\n              border-radius: " + (dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius) + ";\n            }\n          }\n        ";
         }
+      },
+      option: {
+        pad: '3xsmall'
+      },
+      search: {
+        pad: '3xsmall'
+      },
+      showMore: {
+        pad: {
+          horizontal: 'xsmall',
+          bottom: 'xsmall',
+          top: '3xsmall'
+        }
+      },
+      summary: {
+        gap: 'xsmall',
+        height: {
+          min: '5xsmall'
+        },
+        pad: '3xsmall',
+        showSelectedInline: {
+          pad: {
+            left: '3xsmall',
+            vertical: '3xsmall'
+          }
+        }
       }
+    },
+    sidebar: {
+      gap: 'xlarge',
+      pad: 'xsmall'
     },
     spinner: {
       container: {
@@ -2219,6 +2727,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           size: 'medium'
         }]
       },
+      responsive: false,
       size: {
         xsmall: (_components$hpe$eleme18 = components.hpe.element) == null ? void 0 : _components$hpe$eleme18.xsmall.minHeight,
         small: (_components$hpe$eleme19 = components.hpe.element) == null ? void 0 : _components$hpe$eleme19.small.minHeight,
@@ -2268,17 +2777,42 @@ var buildTheme = function buildTheme(tokens, flags) {
         vertical: 'none',
         horizontal: 'none'
       },
-      extend: 'font-weight: 500;'
+      extend: 'font-weight: 500;',
+      gap: 'xsmall'
     },
     tabs: {
-      gap: large.hpe.spacing.small,
+      gap: 'small',
       header: {
         border: undefined,
         // padding-bottom ensures the marker is not cut off by subsequent
         // page elements.
-        extend: function extend(_ref28) {
-          var theme = _ref28.theme;
+        extend: function extend(_ref27) {
+          var theme = _ref27.theme;
           return "\n        padding-bottom: " + large.hpe.borderWidth.medium + ";\n        & button {\n          border-radius: " + large.hpe.radius.xsmall + "; // radius on focus\n        }\n        & button[aria-selected=\"true\"] {\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              height: " + large.hpe.borderWidth.medium + ";\n              border-radius: " + large.hpe.radius.full + ";\n              bottom: -" + large.hpe.borderWidth.medium + ";\n              left: 0;\n              right: 0;\n              background: " + getThemeColor('border-selected', theme) + ";\n            }\n        }";
+        },
+        previousButton: {
+          pad: {
+            vertical: '3xsmall',
+            horizontal: 'xsmall'
+          }
+        },
+        nextButton: {
+          pad: {
+            vertical: '3xsmall',
+            horizontal: 'xsmall'
+          }
+        }
+      },
+      nextButton: {
+        pad: {
+          horizontal: 'xsmall',
+          vertical: '3xsmall'
+        }
+      },
+      previousButton: {
+        pad: {
+          horizontal: 'xsmall',
+          vertical: '3xsmall'
         }
       },
       step: {
@@ -2287,7 +2821,16 @@ var buildTheme = function buildTheme(tokens, flags) {
       }
     },
     table: {
+      caption: {
+        margin: {
+          bottom: '5xsmall'
+        }
+      },
       header: {
+        border: {
+          side: 'bottom',
+          color: components.hpe.headerCell["default"].rest.borderColor
+        },
         pad: {
           horizontal: components.hpe.headerCell["default"].medium.paddingX,
           top: components.hpe.headerCell["default"].medium.paddingTop,
@@ -2335,7 +2878,10 @@ var buildTheme = function buildTheme(tokens, flags) {
         vertical: (_components$hpe$eleme27 = components.hpe.element) == null ? void 0 : _components$hpe$eleme27.medium.paddingY
       },
       remove: {
-        kind: 'default'
+        kind: 'default',
+        margin: {
+          right: '3xsmall'
+        }
       },
       value: {
         weight: global.hpe.fontWeight.medium
@@ -2378,7 +2924,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           remove: {
             size: 'small',
             margin: {
-              right: 'xxsmall'
+              right: '5xsmall'
             }
           }
         },
@@ -2391,7 +2937,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           remove: {
             size: 'medium',
             margin: {
-              right: 'xxsmall'
+              right: '5xsmall'
             }
           }
         },
@@ -2404,23 +2950,29 @@ var buildTheme = function buildTheme(tokens, flags) {
           remove: {
             size: 'large',
             margin: {
-              right: 'xsmall'
+              right: '3xsmall'
             }
           }
         }
       }
     },
-    text: _extends({}, textTheme),
+    text: _extends({}, textTheme, {
+      skeleton: {
+        margin: {
+          vertical: '3xsmall'
+        }
+      }
+    }),
     textInput: {
       container: {
-        extend: function extend(_ref29) {
-          var theme = _ref29.theme;
+        extend: function extend(_ref28) {
+          var theme = _ref28.theme;
           return "\n          svg {\n            fill: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n            stroke: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n          }\n        ";
         }
       },
       suggestions: {
-        extend: function extend(_ref30) {
-          var theme = _ref30.theme;
+        extend: function extend(_ref29) {
+          var theme = _ref29.theme;
           return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"]:hover {\n            background: " + getThemeColor(components.hpe.select["default"].option.hover.background, theme) + ";\n          }\n        ";
         }
       }
@@ -2431,11 +2983,11 @@ var buildTheme = function buildTheme(tokens, flags) {
         border: {
           color: 'border-weak'
         },
-        margin: 'xxsmall',
+        margin: '3xsmall',
         elevation: 'small',
         pad: {
           vertical: 'none',
-          horizontal: 'small'
+          horizontal: 'xsmall'
         },
         round: components.hpe.drop["default"].borderRadius
       }
@@ -2454,12 +3006,31 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       container: {
         border: false,
-        extend: function extend(_ref31) {
-          var theme = _ref31.theme;
+        round: 'xsmall',
+        extend: function extend(_ref30) {
+          var theme = _ref30.theme;
           return "\n        gap: " + (dimensions.edgeSize[large.hpe.spacing['5xsmall']] || large.hpe.spacing['5xsmall']) + ";\n        &:hover {\n          background: " + getThemeColor('background-hover', theme) + ";\n        }";
         }
       },
       divider: false
+    },
+    toolbar: {
+      gap: 'xsmall',
+      small: {
+        gap: 'xsmall'
+      }
+    },
+    video: {
+      scrubber: {
+        thickness: 'xsmall'
+      },
+      time: {
+        container: {
+          pad: {
+            horizontal: 'xsmall'
+          }
+        }
+      }
     },
     // Theme-Designer only parameters
     name: 'HPE 1',
@@ -2479,5 +3050,5 @@ export var hpe = buildTheme({
 }, {
   // For grommet-theme-hpe v6.0.0, maintain backwards compatibility
   // with old t-shirt sizes
-  'v6-backwards-compatibility': true
+  'v6-backwards-compatibility': false
 });
