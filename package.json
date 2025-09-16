@@ -1,6 +1,6 @@
 {
   "name": "grommet-theme-hpe",
-  "version": "6.5.1",
+  "version": "7.0.0",
   "main": "dist/index.js",
   "module": "dist/es6/index.js",
   "jsnext:main": "dist/es6/index.js",
