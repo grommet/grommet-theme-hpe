@@ -1,5 +1,84 @@
 # grommet-theme-hpe
 
+## 7.0.0
+
+### Major Changes
+
+- 203bc52: Introduces breaking changes to t-shirt sizes.
+
+  **`pad`, `gap`, `margin` t-shirt sizes**
+  | Current | New | Value |
+  |---------|-----|-----:|
+  | hair | hair | 1px |
+  | xxsmall | 5xsmall | 3px |
+  | -- | 4xsmall (NEW) | 4px |
+  | xsmall | 3xsmall | 6px |
+  | -- | xxsmall (NEW) | 8px |
+  | small | xsmall | 12px |
+  | -- | small (NEW) | 16px |
+  | medium | medium | 24px |
+  | -- | large (NEW) | 32px |
+  | large | xlarge | 48px |
+  | -- | xxlarge (NEW) | 64px |
+  | xlarge | 3xlarge | 96px |
+
+  **`round` t-shirt sizes**
+  | Current | New | Value |
+  |---------|-----|-----:|
+  | none | none | 0px |
+  | hair | hair | 1px |
+  | xxsmall | -- | 3px |
+  | -- | xxsmall (NEW) | 4px |
+  | xsmall | xsmall | 6px |
+  | -- | small (NEW) | 8px |
+  | small | medium | 12px |
+  | -- | large (NEW) | 16px |
+  | medium | xlarge | 24px |
+  | -- | xxlarge (NEW) | 32px |
+  | large | -- | 48px |
+  | -- | -- | 64px |
+  | xlarge | -- | 96px |
+  | full | full | 9999px |
+
+  **border size t-shirt sizes**
+  | Current | New | Value |
+  |---------|-----|-----:|
+  | -- | none | 0px |
+  | xsmall | xsmall | 1px |
+  | small | small | 2px |
+  | medium | medium | 4px |
+  | -- | large | 6px |
+  | large | -- | 12px |
+  | xlarge | -- | 24px |
+  | -- | default | 1px |
+
+  **`width`, `height` t-shirt sizes**
+  | Current | New | Value |
+  |---------|-----|-----:|
+  | xxsmall | 5xsmall | 48px |
+  | -- | 4xsmall (NEW) | 64px |
+  | xsmall | 3xsmall | 96px |
+  | -- | xxsmall (NEW)| 128px |
+  | small | xsmall | 192px |
+  | -- | small (NEW) | 256px |
+  | medium | medium | 384px |
+  | -- | large | 512px |
+  | large | xlarge (NEW) | 768px |
+  | -- | xxlarge | 1024px |
+  | xlarge | -- | 1152px (value eliminated because it doesn't follow formula) |
+  | xxlarge | 3xlarge | 1536px |
+
+- 203bc52: - Improves accessibility of the RangeSelector component by increasing the interactive area of its edge controls to meet WCAG 2.1 AA success criterion 2.5.5 (Target Size).
+- 203bc52: - Fixed inconsistent focus styles in the Select component to meet WCAG 2.4.7 Focus Visible requirements.
+  Specifically, the "Clear selection" button now uses the same visible focus style as the rest of the component,
+  ensuring consistent and perceivable focus indicators for all interactive elements.
+- 203bc52: - Bumped grommet peerDependency to ^2.49.0.
+- Adjusted `tip.content.margin` to `3xsmall`.
+
+### Patch Changes
+
+- 203bc52: - Fixed RadioButton checked icon misalignment which was occurring on certain browsers, such as Safari, and window zoom levels.
+
 ## 6.5.1
 
 ### Patch Changes
