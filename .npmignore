@@ -1,1 +1,3 @@
 src
+# do not ship tests from codemod
+codemod/__tests__/

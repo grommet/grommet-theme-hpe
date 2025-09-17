@@ -19,6 +19,9 @@
     "type": "git",
     "url": "https://github.com/grommet/grommet-theme-hpe.git"
   },
+  "bin": {
+    "grommet-theme-hpe codemod": "codemod/index.js"
+  },
   "peerDependencies": {
     "grommet": "^2.49.0",
     "grommet-icons": "^4.12.4",
@@ -49,12 +52,14 @@
     "eslint-plugin-react": "^7.34.1",
     "fs-extra": "^11.2.0",
     "grommet-icons": "^4.12.1",
+    "jscodeshift": "^17.3.0",
     "pre-commit": "^1.2.2",
     "prettier": "^3.2.5",
     "pretty-quick": "^4.0.0",
     "react": "^18.3.0",
     "simple-git": "^3.24.0",
     "styled-components": "^5.3.6",
+    "vitest": "^3.2.4",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4"
   },
@@ -64,6 +69,7 @@
     "lint": "eslint src",
     "lint-fix": "eslint src --fix",
     "prettier": "pretty-quick --staged",
+    "test-codemod": "npx vitest",
     "release-stable": "babel-node ./tools/release-stable --branch=stable",
     "release-next-stable": "babel-node ./tools/release-stable --branch=NEXT-stable",
     "release-audit-stable": "babel-node ./tools/release-stable --branch=AUDIT-stable",
