@@ -10,17 +10,36 @@ import {
   global as localGlobal,
   components as localComponents,
 } from 'hpe-design-tokens/grommet';
-import { Ascending } from 'grommet-icons/icons/Ascending';
-import { Blank } from 'grommet-icons/icons/Blank';
-import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
-import { Close } from 'grommet-icons/icons/Close';
-import { Descending } from 'grommet-icons/icons/Descending';
-import { Down } from 'grommet-icons/icons/Down';
-import { Next } from 'grommet-icons/icons/Next';
-import { Previous } from 'grommet-icons/icons/Previous';
-import { Unsorted } from 'grommet-icons/icons/Unsorted';
-import { Up } from 'grommet-icons/icons/Up';
 import { Hpe } from 'grommet-icons/icons/Hpe';
+
+// imports subject to change upon finalization of hpe-icons repo
+import { Checkmark } from 'hpe-icons/grommet/icons/Checkmark';
+import { Close } from 'hpe-icons/grommet/icons/Close';
+import { Filter } from 'hpe-icons/grommet/icons/Filter';
+import { Search } from 'hpe-icons/grommet/icons/Search';
+import { Descend } from 'hpe-icons/grommet/icons/Descend';
+import { Add } from 'hpe-icons/grommet/icons/Add';
+import { Subtract } from 'hpe-icons/grommet/icons/Subtract';
+import { Lock } from 'hpe-icons/grommet/icons/Lock';
+import { Splits } from 'hpe-icons/grommet/icons/Splits';
+import { Calendar } from 'hpe-icons/grommet/icons/Calendar';
+import { Alert } from 'hpe-icons/grommet/icons/Alert';
+import { Star } from 'hpe-icons/grommet/icons/Star';
+import { StarFill } from 'hpe-icons/grommet/icons/StarFill';
+import { Left } from 'hpe-icons/grommet/icons/Left';
+import { Right } from 'hpe-icons/grommet/icons/Right';
+import { Copy } from 'hpe-icons/grommet/icons/Copy';
+import { Like } from 'hpe-icons/grommet/icons/Like';
+import { LikeFill } from 'hpe-icons/grommet/icons/LikeFill';
+import { Dislike } from 'hpe-icons/grommet/icons/Dislike';
+import { DislikeFill } from 'hpe-icons/grommet/icons/DislikeFill';
+import { Ascending } from 'hpe-icons/grommet/icons/Ascending';
+import { Blank } from 'hpe-icons/grommet/icons/Blank';
+import { Descending } from 'hpe-icons/grommet/icons/Descending';
+import { Down } from 'hpe-icons/grommet/icons/Down';
+import { Unsorted } from 'hpe-icons/grommet/icons/Unsorted';
+import { Up } from 'hpe-icons/grommet/icons/Up';
+
 
 import { backgrounds } from './backgrounds';
 import { colors } from './colors';
@@ -793,6 +812,9 @@ const buildTheme = (tokens, flags) => {
       },
       busy: {
         gap: 'xsmall',
+        icons: {
+          success: Checkmark,
+        },
       },
       'cta-primary': {
         ...buttonKindTheme.primary,
@@ -992,7 +1014,10 @@ const buildTheme = (tokens, flags) => {
         extend: '',
       },
       range: { background: 'background-selected-primary' },
-      icons: { next: Next, previous: Previous },
+      icons: { 
+        next: Right, 
+        previous: Left,
+      },
       small: {
         fontSize: '13.6px',
         lineHeight: 1.375,
@@ -1406,6 +1431,10 @@ const buildTheme = (tokens, flags) => {
           gap: 'xsmall',
         },
       },
+      icons: {
+        close: Close,
+        filter: Filter,
+      },
       pad: 'medium',
       width: {
         min: 'medium',
@@ -1416,8 +1445,21 @@ const buildTheme = (tokens, flags) => {
         round:
           components.hpe.formField.default.medium.input.container.borderRadius,
       },
-      icon: { size: 'small' },
+      icon: {
+        calendar: Calendar,
+        size: 'small',
+      },
       button: { margin: 'xsmall' },
+    },
+    dataSearch: {
+      icons: {
+        search: Search,
+      },
+    },
+    dataSort: {
+      icons: {
+        control: Descend,
+      },
     },
     dataSummary: {
       margin: { vertical: '3xsmall' },
@@ -1445,6 +1487,16 @@ const buildTheme = (tokens, flags) => {
       },
       expand: {
         size: '5xsmall',
+      },
+      icons: {
+        ascending: () => <Descending size="large" />,
+        descending: () => <Ascending size="large" />,
+        contract: () => <Up height="medium" />,
+        expand: () => <Down height="medium" />,
+        sortable: () => <Unsorted size="large" />,
+        resizeIncrease: Add,
+        resizeDecrease: Subtract,
+        search: Search,
       },
       groupHeader: {
         // background: undefined,
@@ -1498,13 +1550,6 @@ const buildTheme = (tokens, flags) => {
           },
         },
       },
-      icons: {
-        ascending: () => <Descending size="large" />,
-        descending: () => <Ascending size="large" />,
-        contract: () => <Up height="medium" />,
-        expand: () => <Down height="medium" />,
-        sortable: () => <Unsorted size="large" />,
-      },
       pinned: {
         header: {
           background: { opacity: 'strong' },
@@ -1543,6 +1588,11 @@ const buildTheme = (tokens, flags) => {
     },
     distribution: { gap: '3xsmall' },
     dataTableColumns: {
+      icons: {
+        control: Splits,
+        pinned: Lock,
+        search: Search,
+      },
       tabs: {
         pad: 'xsmall',
       },
@@ -1586,7 +1636,10 @@ const buildTheme = (tokens, flags) => {
       },
       dragOver: { background: 'background-hover', border: 'none' },
       hover: { border: { color: 'border' } },
-      icons: { remove: Close },
+      icons: {
+        error: Alert,
+        remove: Close,
+      },
       label: { margin: 'xsmall', gap: '3xsmall' },
       message: { color: 'placeholder', margin: 'xsmall' },
       pad: { horizontal: '3xsmall' },
@@ -1726,6 +1779,12 @@ const buildTheme = (tokens, flags) => {
                     .borderColor
             }; `,
         },
+        icons: {
+          like: Like,
+          likeSelected: LikeFill,
+          dislike: Dislike,
+          dislikeSelected: DislikeFill,
+        },
       },
       starRating: {
         container: {
@@ -1766,7 +1825,7 @@ const buildTheme = (tokens, flags) => {
         },
         container: { gap: '3xsmall' },
         icon: (
-          <CircleAlert size="small" color={light.hpe.color.icon.critical} />
+          <Alert size="small" color={light.hpe.color.icon.critical} />
         ),
         size: 'xsmall',
         color: components.hpe.formField.default.error.rest.textColor,
@@ -1783,6 +1842,10 @@ const buildTheme = (tokens, flags) => {
         size: 'xsmall',
         color: components.hpe.formField.default.help.rest.color,
         margin: 'none',
+      },
+      icons: {
+        selected: StarFill,
+        unselected: Star,
       },
       info: {
         size: 'xsmall',
@@ -2765,8 +2828,14 @@ const buildTheme = (tokens, flags) => {
               background: ${getThemeColor('border-selected', theme)};
             }
         }`,
-        previousButton: { pad: { vertical: '3xsmall', horizontal: 'xsmall' } },
-        nextButton: { pad: { vertical: '3xsmall', horizontal: 'xsmall' } },
+        previousButton: { 
+          icon: Left,
+          pad: { vertical: '3xsmall', horizontal: 'xsmall' }, 
+        },
+        nextButton: { 
+          icon: Right,
+          pad: { vertical: '3xsmall', horizontal: 'xsmall' }, 
+        },
       },
       nextButton: {
         pad: { horizontal: 'xsmall', vertical: '3xsmall' },
@@ -2907,6 +2976,9 @@ const buildTheme = (tokens, flags) => {
             };
           }
         `,
+      },
+      icons: {
+        copy: Copy,
       },
       suggestions: {
         extend: ({ theme }) => `
