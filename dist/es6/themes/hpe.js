@@ -2365,7 +2365,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       xlarge: {
         areas: [['parent', 'parent'], ['title', 'actions'], ['subtitle', 'actions']],
-        columns: [['medium', 'large'], 'auto'],
+        columns: [['medium', 'xlarge'], 'auto'],
         rows: ['auto', 'auto', 'auto'],
         gap: {
           row: '3xsmall',
@@ -2983,7 +2983,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         border: {
           color: 'border-weak'
         },
-        margin: '3xsmall',
+        margin: '5xsmall',
         elevation: 'small',
         pad: {
           vertical: 'none',
