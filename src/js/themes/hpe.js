@@ -2321,7 +2321,7 @@ const buildTheme = (tokens, flags) => {
           ['title', 'actions'],
           ['subtitle', 'actions'],
         ],
-        columns: [['medium', 'large'], 'auto'],
+        columns: [['medium', 'xlarge'], 'auto'],
         rows: ['auto', 'auto', 'auto'],
         gap: { row: '3xsmall', column: 'xlarge' },
       },
