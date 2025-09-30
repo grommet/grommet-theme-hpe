@@ -2321,7 +2321,7 @@ const buildTheme = (tokens, flags) => {
           ['title', 'actions'],
           ['subtitle', 'actions'],
         ],
-        columns: [['medium', 'large'], 'auto'],
+        columns: [['medium', 'xlarge'], 'auto'],
         rows: ['auto', 'auto', 'auto'],
         gap: { row: '3xsmall', column: 'xlarge' },
       },
@@ -2928,7 +2928,7 @@ const buildTheme = (tokens, flags) => {
       content: {
         background: 'background-floating',
         border: { color: 'border-weak' },
-        margin: '3xsmall',
+        margin: '5xsmall',
         elevation: 'small',
         pad: { vertical: 'none', horizontal: 'xsmall' },
         round: components.hpe.drop.default.borderRadius,
