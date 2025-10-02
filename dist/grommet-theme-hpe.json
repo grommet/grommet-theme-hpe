@@ -2169,6 +2169,9 @@
           "color": "border-strong",
           "size": "small"
         }
+      },
+      "padding": {
+        "vertical": "3xsmall"
       }
     },
     "search": {

@@ -1449,6 +1449,9 @@ var buildTheme = function buildTheme(tokens, flags) {
             color: 'border-strong',
             size: 'small'
           }
+        },
+        padding: {
+          vertical: '3xsmall'
         }
       },
       search: {
