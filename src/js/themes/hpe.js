@@ -1526,6 +1526,9 @@ const buildTheme = (tokens, flags) => {
       resize: {
         border: { color: 'border', side: 'end' },
         hover: { border: { color: 'border-strong', size: 'small' } },
+        padding: {
+          vertical: '3xsmall',
+        },
       },
       search: {
         pad: {
