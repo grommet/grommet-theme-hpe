@@ -805,7 +805,7 @@ const buildTheme = (tokens, flags) => {
     },
     box: {
       border: {
-        size: '3xsmall',
+        offset: '3xsmall',
       },
     },
     button: {
@@ -1374,6 +1374,20 @@ const buildTheme = (tokens, flags) => {
       },
       detail: {
         gap: '3xsmall',
+        pad: 'xsmall',
+      },
+      halfPad: {
+        '3xlarge': 'xlarge',
+        xxlarge: 'large',
+        xlarge: 'medium',
+        large: 'small',
+        medium: 'xsmall',
+        small: 'xxsmall',
+        xsmall: '3xsmall',
+        xxsmall: '4xsmall',
+        '3xsmall': '5xsmall',
+        '4xsmall': '2px',
+        '5xsmall': 'hair',
       },
       legend: {
         margin: { top: 'xsmall' },
@@ -1383,6 +1397,19 @@ const buildTheme = (tokens, flags) => {
           pad: { horizontal: 'xsmall', vertical: '3xsmall' },
         },
       },
+      orderedSizes: [
+        '3xlarge',
+        'xxlarge',
+        'xlarge',
+        'large',
+        'medium',
+        'small',
+        'xsmall',
+        'xxsmall',
+        '3xsmall',
+        '4xsmall',
+        '5xsmall',
+      ],
       size: {
         height: 'xsmall',
       },
@@ -1541,6 +1568,9 @@ const buildTheme = (tokens, flags) => {
       resize: {
         border: { color: 'border', side: 'end' },
         hover: { border: { color: 'border-strong', size: 'small' } },
+        padding: {
+          vertical: '3xsmall',
+        },
       },
       search: {
         pad: {
@@ -2337,7 +2367,7 @@ const buildTheme = (tokens, flags) => {
           ['title', 'actions'],
           ['subtitle', 'actions'],
         ],
-        columns: [['medium', 'large'], 'auto'],
+        columns: [['medium', 'xlarge'], 'auto'],
         rows: ['auto', 'auto', 'auto'],
         gap: { row: '3xsmall', column: 'xlarge' },
       },
@@ -2946,7 +2976,7 @@ const buildTheme = (tokens, flags) => {
       content: {
         background: 'background-floating',
         border: { color: 'border-weak' },
-        margin: '3xsmall',
+        margin: '5xsmall',
         elevation: 'small',
         pad: { vertical: 'none', horizontal: 'xsmall' },
         round: components.hpe.drop.default.borderRadius,
