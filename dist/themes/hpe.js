@@ -745,7 +745,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     },
     box: {
       border: {
-        size: '3xsmall'
+        offset: '3xsmall'
       }
     },
     button: _extends({
@@ -1252,7 +1252,21 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       detail: {
-        gap: '3xsmall'
+        gap: '3xsmall',
+        pad: 'xsmall'
+      },
+      halfPad: {
+        '3xlarge': 'xlarge',
+        xxlarge: 'large',
+        xlarge: 'medium',
+        large: 'small',
+        medium: 'xsmall',
+        small: 'xxsmall',
+        xsmall: '3xsmall',
+        xxsmall: '4xsmall',
+        '3xsmall': '5xsmall',
+        '4xsmall': '2px',
+        '5xsmall': 'hair'
       },
       legend: {
         margin: {
@@ -1267,6 +1281,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           }
         }
       },
+      orderedSizes: ['3xlarge', 'xxlarge', 'xlarge', 'large', 'medium', 'small', 'xsmall', 'xxsmall', '3xsmall', '4xsmall', '5xsmall'],
       size: {
         height: 'xsmall'
       },
@@ -1451,6 +1466,9 @@ var buildTheme = function buildTheme(tokens, flags) {
             color: 'border-strong',
             size: 'small'
           }
+        },
+        padding: {
+          vertical: '3xsmall'
         }
       },
       search: {
@@ -2346,7 +2364,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       xlarge: {
         areas: [['parent', 'parent'], ['title', 'actions'], ['subtitle', 'actions']],
-        columns: [['medium', 'large'], 'auto'],
+        columns: [['medium', 'xlarge'], 'auto'],
         rows: ['auto', 'auto', 'auto'],
         gap: {
           row: '3xsmall',
@@ -2964,7 +2982,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         border: {
           color: 'border-weak'
         },
-        margin: '3xsmall',
+        margin: '5xsmall',
         elevation: 'small',
         pad: {
           vertical: 'none',

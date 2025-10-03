@@ -971,7 +971,7 @@
   },
   "box": {
     "border": {
-      "size": "3xsmall"
+      "offset": "3xsmall"
     }
   },
   "button": {
@@ -1988,7 +1988,21 @@
       }
     },
     "detail": {
-      "gap": "3xsmall"
+      "gap": "3xsmall",
+      "pad": "xsmall"
+    },
+    "halfPad": {
+      "3xlarge": "xlarge",
+      "xxlarge": "large",
+      "xlarge": "medium",
+      "large": "small",
+      "medium": "xsmall",
+      "small": "xxsmall",
+      "xsmall": "3xsmall",
+      "xxsmall": "4xsmall",
+      "3xsmall": "5xsmall",
+      "4xsmall": "2px",
+      "5xsmall": "hair"
     },
     "legend": {
       "margin": {
@@ -2003,6 +2017,19 @@
         }
       }
     },
+    "orderedSizes": [
+      "3xlarge",
+      "xxlarge",
+      "xlarge",
+      "large",
+      "medium",
+      "small",
+      "xsmall",
+      "xxsmall",
+      "3xsmall",
+      "4xsmall",
+      "5xsmall"
+    ],
     "size": {
       "height": "xsmall"
     },
@@ -2146,6 +2173,9 @@
           "color": "border-strong",
           "size": "small"
         }
+      },
+      "padding": {
+        "vertical": "3xsmall"
       }
     },
     "search": {
@@ -3053,7 +3083,7 @@
       "columns": [
         [
           "medium",
-          "large"
+          "xlarge"
         ],
         "auto"
       ],
@@ -3686,7 +3716,7 @@
       "border": {
         "color": "border-weak"
       },
-      "margin": "3xsmall",
+      "margin": "5xsmall",
       "elevation": "small",
       "pad": {
         "vertical": "none",
