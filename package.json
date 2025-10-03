@@ -1,6 +1,6 @@
 {
   "name": "grommet-theme-hpe",
-  "version": "6.5.1",
+  "version": "7.0.2",
   "main": "dist/index.js",
   "module": "dist/es6/index.js",
   "jsnext:main": "dist/es6/index.js",
@@ -20,7 +20,7 @@
     "url": "https://github.com/grommet/grommet-theme-hpe.git"
   },
   "peerDependencies": {
-    "grommet": "^2.47.0",
+    "grommet": "^2.49.0",
     "grommet-icons": "^4.12.4",
     "react": "^16.13.1 || ^17.0.1 || ^18.0.0 || ^19.0.0",
     "styled-components": "^5.0.0 || ^6.0.0"
