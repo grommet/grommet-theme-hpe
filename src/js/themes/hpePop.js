@@ -147,19 +147,6 @@ export const hpePop = deepMerge(hpe, {
         },
       },
     },
-    extend: ({ level, size }) => {
-      let fontWeight = '';
-      if (level === 3 && size === 'small') {
-        fontWeight = 'font-weight: 500;';
-      } else if (level === 4 && ['large', 'xlarge'].includes(size)) {
-        fontWeight = 'font-weight: 400;';
-      } else if (level === 5 && size === 'xlarge') {
-        fontWeight = 'font-weight: 400;';
-      } else if (level === 6 && size === 'small') {
-        fontWeight = 'font-weight: 600;';
-      }
-      return fontWeight;
-    },
   },
   paragraph: {
     small: {
@@ -181,11 +168,6 @@ export const hpePop = deepMerge(hpe, {
     xxlarge: {
       size: '2.625rem', // 42px
       height: '3rem', // 48px
-    },
-    extend: ({ size }) => {
-      if (['large', 'xlarge', 'xxlarge'].includes(size))
-        return 'font-weight: 300;';
-      return '';
     },
   },
   text: {
@@ -219,15 +201,6 @@ export const hpePop = deepMerge(hpe, {
       // weight needs to be modified at the size level by bumping down to 300
       size: '2.625rem', // 42px
       height: '3rem', // 48px
-    },
-    extend: ({ size }) => {
-      if (
-        ['large', 'xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(
-          size,
-        )
-      )
-        return 'font-weight: 300;';
-      return '';
     },
   },
 });
