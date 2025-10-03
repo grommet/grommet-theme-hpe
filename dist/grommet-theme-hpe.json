@@ -251,11 +251,11 @@
       },
       "background-primary-strong": {
         "light": "#068667",
-        "dark": "#01a982"
+        "dark": "#05cc93"
       },
       "background-primary-strong-hover": {
         "light": "#006750",
-        "dark": "#05cc93"
+        "dark": "#00e0af"
       },
       "background-primary-xstrong": {
         "light": "#093d32",
@@ -263,11 +263,11 @@
       },
       "background-selected-primary-strong": {
         "light": "#068667",
-        "dark": "#01a982"
+        "dark": "#05cc93"
       },
       "background-selected-primary-strong-hover": {
         "light": "#006750",
-        "dark": "#05cc93"
+        "dark": "#00e0af"
       },
       "background-selected-primary": {
         "light": "#d1ffee",
@@ -443,7 +443,7 @@
       },
       "icon-default": {
         "light": "#3e4550",
-        "dark": "#ffffff"
+        "dark": "#f7f7f7"
       },
       "icon-strong": {
         "light": "#292d3a",
@@ -480,6 +480,10 @@
       "icon-primary": {
         "light": "#006750",
         "dark": "#05cc93"
+      },
+      "icon-primary-hover": {
+        "light": "#074738",
+        "dark": "#66ebcf"
       },
       "icon-onPrimaryStrong": {
         "light": "#ffffff",
@@ -542,36 +546,36 @@
         "dark": "#d4d8db"
       },
       "dataVis-categorical-10": {
-        "light": "#3c3aa1",
-        "dark": "#7372cf"
+        "light": "#0070f8",
+        "dark": "#65aef9"
       },
       "dataVis-categorical-20": {
-        "light": "#7764fc",
-        "dark": "#bd9d48"
+        "light": "#009a71",
+        "dark": "#00e0af"
       },
       "dataVis-categorical-30": {
-        "light": "#b0840d",
-        "dark": "#c0649a"
+        "light": "#7764fc",
+        "dark": "#9b84fc"
       },
       "dataVis-categorical-40": {
-        "light": "#0055da",
-        "dark": "#5c91e5"
+        "light": "#003cae",
+        "dark": "#0070f8"
       },
       "dataVis-categorical-50": {
-        "light": "#ad4089",
-        "dark": "#a68a74"
+        "light": "#cc54a4",
+        "dark": "#cc54a4"
       },
       "dataVis-categorical-60": {
         "light": "#04909d",
-        "dark": "#b889ff"
+        "dark": "#00dbe4"
       },
       "dataVis-categorical-70": {
-        "light": "#d17243",
-        "dark": "#4d8da8"
+        "light": "#6c2b7c",
+        "dark": "#c98ad4"
       },
       "dataVis-categorical-80": {
-        "light": "#6c2b7c",
-        "dark": "#855aaa"
+        "light": "#d25f4b",
+        "dark": "#e5786a"
       },
       "transparent": {
         "light": "rgba(0, 0, 0, 0)",
@@ -665,36 +669,36 @@
         "light": "rgba(0, 0, 0, 0)"
       },
       "graph-0": {
-        "light": "#3c3aa1",
-        "dark": "#7372cf"
+        "light": "#0070f8",
+        "dark": "#65aef9"
       },
       "graph-1": {
-        "light": "#7764fc",
-        "dark": "#bd9d48"
+        "light": "#009a71",
+        "dark": "#00e0af"
       },
       "graph-2": {
-        "light": "#b0840d",
-        "dark": "#c0649a"
+        "light": "#7764fc",
+        "dark": "#9b84fc"
       },
       "graph-3": {
-        "light": "#0055da",
-        "dark": "#5c91e5"
+        "light": "#003cae",
+        "dark": "#0070f8"
       },
       "graph-4": {
-        "light": "#ad4089",
-        "dark": "#a68a74"
+        "light": "#cc54a4",
+        "dark": "#cc54a4"
       },
       "graph-5": {
         "light": "#04909d",
-        "dark": "#b889ff"
+        "dark": "#00dbe4"
       },
       "graph-6": {
-        "light": "#d17243",
-        "dark": "#4d8da8"
+        "light": "#6c2b7c",
+        "dark": "#c98ad4"
       },
       "graph-7": {
-        "light": "#6c2b7c",
-        "dark": "#855aaa"
+        "light": "#d25f4b",
+        "dark": "#e5786a"
       },
       "status-critical": {
         "dark": "#fc6161",
@@ -727,7 +731,7 @@
       },
       "icon": {
         "light": "#3e4550",
-        "dark": "#ffffff"
+        "dark": "#f7f7f7"
       },
       "selected-background": "background-selected-strong-enabled",
       "selected-text": "text-onSelectedPrimaryStrong",
@@ -1130,7 +1134,7 @@
         "border": {
           "color": "transparent"
         },
-        "color": "text-onPrimaryStrong",
+        "color": "text-onStrong",
         "font": {
           "weight": 500
         }
@@ -1154,7 +1158,7 @@
         "border": {
           "color": "transparent"
         },
-        "color": "text-onPrimaryStrong",
+        "color": "text-onStrong",
         "font": {
           "weight": 500
         }

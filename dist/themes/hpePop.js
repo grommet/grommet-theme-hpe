@@ -181,21 +181,6 @@ var hpePop = exports.hpePop = _deepMerge(_hpe.hpe, {
           height: '1.5rem' // 24px
         }
       }
-    },
-    extend: function extend(_ref) {
-      var level = _ref.level,
-        size = _ref.size;
-      var fontWeight = '';
-      if (level === 3 && size === 'small') {
-        fontWeight = 'font-weight: 500;';
-      } else if (level === 4 && ['large', 'xlarge'].includes(size)) {
-        fontWeight = 'font-weight: 400;';
-      } else if (level === 5 && size === 'xlarge') {
-        fontWeight = 'font-weight: 400;';
-      } else if (level === 6 && size === 'small') {
-        fontWeight = 'font-weight: 600;';
-      }
-      return fontWeight;
     }
   },
   paragraph: {
@@ -223,11 +208,6 @@ var hpePop = exports.hpePop = _deepMerge(_hpe.hpe, {
       size: '2.625rem',
       // 42px
       height: '3rem' // 48px
-    },
-    extend: function extend(_ref2) {
-      var size = _ref2.size;
-      if (['large', 'xlarge', 'xxlarge'].includes(size)) return 'font-weight: 300;';
-      return '';
     }
   },
   text: {
@@ -267,11 +247,6 @@ var hpePop = exports.hpePop = _deepMerge(_hpe.hpe, {
       size: '2.625rem',
       // 42px
       height: '3rem' // 48px
-    },
-    extend: function extend(_ref3) {
-      var size = _ref3.size;
-      if (['large', 'xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size)) return 'font-weight: 300;';
-      return '';
     }
   }
 });
