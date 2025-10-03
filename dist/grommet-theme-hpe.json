@@ -222,7 +222,7 @@
         "dark": "rgba(255, 255, 255, 0.06)"
       },
       "background-disabled": {
-        "light": "#d4d8d8",
+        "light": "rgba(0, 0, 0, 0.04)",
         "dark": "rgba(255, 255, 255, 0.07)"
       },
       "background-screenOverlay": {
@@ -277,13 +277,13 @@
         "light": "#aafade",
         "dark": "#074738"
       },
-      "background-neutral-strong": {
-        "light": "#3e4550",
-        "dark": "#e6e8e9"
-      },
       "background-neutral-xstrong": {
         "light": "#292d3a",
         "dark": "#f7f7f7"
+      },
+      "background-neutral-xstrong-hover": {
+        "light": "#3e4550",
+        "dark": "#e6e8e9"
       },
       "border-strong": {
         "light": "#3e4550",
@@ -298,7 +298,7 @@
         "dark": "rgba(255, 255, 255, 0.12)"
       },
       "border-disabled": {
-        "light": "#d4d8db",
+        "light": "rgba(0, 0, 0, 0.12)",
         "dark": "rgba(255, 255, 255, 0.12)"
       },
       "border-selected": {
@@ -327,7 +327,7 @@
       },
       "text-default": {
         "light": "#3e4550",
-        "dark": "#f7f7f7"
+        "dark": "#e6e8e9"
       },
       "text-strong": {
         "light": "#292d3a",
@@ -342,7 +342,7 @@
         "dark": "#b1b9be"
       },
       "text-disabled": {
-        "light": "#a0a2a8",
+        "light": "rgba(0, 0, 0, 0.24)",
         "dark": "rgba(255, 255, 255, 0.24)"
       },
       "text-onPrimaryStrong": {
@@ -363,19 +363,19 @@
       },
       "text-info": {
         "light": "#3e4550",
-        "dark": "#f7f7f7"
+        "dark": "#e6e8e9"
       },
       "text-ok": {
         "light": "#3e4550",
-        "dark": "#f7f7f7"
+        "dark": "#e6e8e9"
       },
       "text-warning": {
         "light": "#3e4550",
-        "dark": "#f7f7f7"
+        "dark": "#e6e8e9"
       },
       "text-unknown": {
         "light": "#3e4550",
-        "dark": "#f7f7f7"
+        "dark": "#e6e8e9"
       },
       "text-heading": {
         "light": "#292d3a",
@@ -407,7 +407,7 @@
       },
       "text-onCritical": {
         "light": "#3e4550",
-        "dark": "#f7f7f7"
+        "dark": "#e6e8e9"
       },
       "text-onInfo-strong": {
         "light": "#292d3a",
@@ -415,7 +415,7 @@
       },
       "text-onInfo": {
         "light": "#3e4550",
-        "dark": "#f7f7f7"
+        "dark": "#e6e8e9"
       },
       "text-onOk-strong": {
         "light": "#292d3a",
@@ -423,7 +423,7 @@
       },
       "text-onOk": {
         "light": "#3e4550",
-        "dark": "#f7f7f7"
+        "dark": "#e6e8e9"
       },
       "text-onUnknown-strong": {
         "light": "#292d3a",
@@ -431,7 +431,7 @@
       },
       "text-onUnknown": {
         "light": "#3e4550",
-        "dark": "#f7f7f7"
+        "dark": "#e6e8e9"
       },
       "text-onWarning-strong": {
         "light": "#292d3a",
@@ -439,11 +439,11 @@
       },
       "text-onWarning": {
         "light": "#3e4550",
-        "dark": "#f7f7f7"
+        "dark": "#e6e8e9"
       },
       "icon-default": {
         "light": "#3e4550",
-        "dark": "#f7f7f7"
+        "dark": "#e6e8e9"
       },
       "icon-strong": {
         "light": "#292d3a",
@@ -454,7 +454,7 @@
         "dark": "#b1b9be"
       },
       "icon-disabled": {
-        "light": "#a0a2a8",
+        "light": "rgba(0, 0, 0, 0.24)",
         "dark": "rgba(255, 255, 255, 0.24)"
       },
       "icon-critical": {
@@ -513,10 +513,6 @@
         "light": "#7764fc",
         "dark": "#3c3aa1"
       },
-      "decorative-teal": {
-        "light": "rgba(0, 0, 0, 0)",
-        "dark": "rgba(0, 0, 0, 0)"
-      },
       "decorative-cyan": {
         "light": "#62e5f6",
         "dark": "#04909d"
@@ -524,18 +520,6 @@
       "decorative-blue": {
         "light": "#0070f8",
         "dark": "#003cae"
-      },
-      "decorative-red": {
-        "light": "rgba(0, 0, 0, 0)",
-        "dark": "rgba(0, 0, 0, 0)"
-      },
-      "decorative-orange": {
-        "light": "rgba(0, 0, 0, 0)",
-        "dark": "rgba(0, 0, 0, 0)"
-      },
-      "decorative-yellow": {
-        "light": "rgba(0, 0, 0, 0)",
-        "dark": "rgba(0, 0, 0, 0)"
       },
       "decorative-neutral": {
         "light": "#7d8a92",
@@ -622,7 +606,7 @@
         "light": "#ffffff"
       },
       "text": {
-        "dark": "#f7f7f7",
+        "dark": "#e6e8e9",
         "light": "#3e4550"
       },
       "text-xweak": {
@@ -646,28 +630,16 @@
         "dark": "#01a982",
         "light": "#01a982"
       },
-      "teal": {
-        "dark": "rgba(0, 0, 0, 0)",
-        "light": "rgba(0, 0, 0, 0)"
-      },
+      "teal": {},
       "purple": {
         "dark": "#3c3aa1",
         "light": "#7764fc"
       },
       "purple!": "#7630EA",
-      "red": {
-        "dark": "rgba(0, 0, 0, 0)",
-        "light": "rgba(0, 0, 0, 0)"
-      },
-      "orange": {
-        "dark": "rgba(0, 0, 0, 0)",
-        "light": "rgba(0, 0, 0, 0)"
-      },
+      "red": {},
+      "orange": {},
       "orange!": "#FF8300",
-      "yellow": {
-        "dark": "rgba(0, 0, 0, 0)",
-        "light": "rgba(0, 0, 0, 0)"
-      },
+      "yellow": {},
       "graph-0": {
         "light": "#0070f8",
         "dark": "#65aef9"
@@ -731,7 +703,7 @@
       },
       "icon": {
         "light": "#3e4550",
-        "dark": "#f7f7f7"
+        "dark": "#e6e8e9"
       },
       "selected-background": "background-selected-strong-enabled",
       "selected-text": "text-onSelectedPrimaryStrong",
@@ -760,7 +732,7 @@
         "vertical": "5px"
       },
       "readOnly": {
-        "background": "background-back",
+        "background": "background-contrast",
         "border": {
           "color": "border-weak"
         }
@@ -1293,7 +1265,7 @@
     "hover": {
       "cta-primary": {
         "background": {
-          "color": "background-neutral-strong"
+          "color": "background-neutral-xstrong-hover"
         },
         "border": {
           "width": "",
@@ -1345,7 +1317,7 @@
       },
       "primary": {
         "background": {
-          "color": "background-neutral-strong"
+          "color": "background-neutral-xstrong-hover"
         },
         "border": {
           "width": "",
@@ -1396,12 +1368,12 @@
         },
         "primary": {
           "background": {
-            "color": "background-neutral-strong"
+            "color": "background-neutral-xstrong-hover"
           },
           "border": {
             "color": "transparent"
           },
-          "color": "text-onPrimaryStrong",
+          "color": "text-onStrong",
           "font": {
             "weight": 500
           }
@@ -1420,12 +1392,12 @@
         },
         "cta-primary": {
           "background": {
-            "color": "background-neutral-strong"
+            "color": "background-neutral-xstrong-hover"
           },
           "border": {
             "color": "transparent"
           },
-          "color": "text-onPrimaryStrong",
+          "color": "text-onStrong",
           "font": {
             "weight": 500
           }
@@ -3214,52 +3186,52 @@
     "xsmall": {
       "size": "0.75rem",
       "height": "1rem",
-      "maxWidth": "30em"
+      "maxWidth": "38em"
     },
     "small": {
       "size": "0.875rem",
       "height": "1.25rem",
-      "maxWidth": "30em"
+      "maxWidth": "38em"
     },
     "medium": {
       "size": "1rem",
       "height": "1.5rem",
-      "maxWidth": "30em"
+      "maxWidth": "38em"
     },
     "large": {
       "size": "1.125rem",
       "height": "1.75rem",
-      "maxWidth": "30em"
+      "maxWidth": "38em"
     },
     "xlarge": {
       "size": "1.25rem",
       "height": "1.875rem",
-      "maxWidth": "30em"
+      "maxWidth": "38em"
     },
     "xxlarge": {
       "size": "2rem",
       "height": "2.5rem",
-      "maxWidth": "30em"
+      "maxWidth": "38em"
     },
     "3xl": {
       "size": "2.25rem",
       "height": "2.875rem",
-      "maxWidth": "30em"
+      "maxWidth": "38em"
     },
     "4xl": {
       "size": "2.625rem",
       "height": "3rem",
-      "maxWidth": "30em"
+      "maxWidth": "38em"
     },
     "5xl": {
       "size": "4rem",
       "height": "4.5rem",
-      "maxWidth": "30em"
+      "maxWidth": "38em"
     },
     "6xl": {
       "size": "4rem",
       "height": "4.5rem",
-      "maxWidth": "30em"
+      "maxWidth": "38em"
     },
     "skeleton": {
       "gap": "3xsmall"
