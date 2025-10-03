@@ -1,106 +1,52 @@
 // Theme for code syntax highlighting
 // Exported theme object is consumed by ReactSyntaxHighlighter + PrismJS
 // https://github.com/react-syntax-highlighter/react-syntax-highlighter#prism
-import { primitives, dark, light } from 'hpe-design-tokens/grommet';
+import { primitives } from 'hpe-design-tokens/grommet';
 import { colors as hpeColors } from './colors';
 
 const colors = {
-  atrule: {
-    dark: primitives.hpe.base.color['fuschia-200'],
-    light: primitives.hpe.base.color['fuschia-700'],
-  },
-  'attr-name': {
-    dark: primitives.hpe.base.color['plum-100'],
-    light: primitives.hpe.base.color['plum-600'],
-  },
-  'attr-value': {
-    dark: primitives.hpe.base.color['fuschia-200'],
-    light: primitives.hpe.base.color['fuschia-700'],
-  },
+  atrule: { dark: hpeColors.orange.light, light: hpeColors.orange.dark },
+  'attr-name': { dark: hpeColors['teal!'], light: hpeColors.teal.dark },
+  'attr-value': { dark: hpeColors.orange.light, light: hpeColors.orange.dark },
   background: { dark: 'black', light: hpeColors['background-contrast'].light },
-  boolean: {
-    dark: primitives.hpe.base.color['plum-100'],
-    light: primitives.hpe.base.color['plum-600'],
-  },
+  boolean: { dark: hpeColors['teal!'], light: hpeColors.teal.dark },
   'class-name': {
-    dark: primitives.hpe.base.color['coral-200'],
-    light: primitives.hpe.base.color['coral-500'],
+    dark: hpeColors['status-critical'].light,
+    light: hpeColors.red.dark,
   },
-  builtin: {
-    dark: primitives.hpe.base.color['plum-100'],
-    light: primitives.hpe.base.color['plum-600'],
-  },
-  char: {
-    dark: primitives.hpe.base.color['plum-100'],
-    light: primitives.hpe.base.color['plum-600'],
-  },
-  code: {
-    dark: dark.hpe.color.text.default,
-    light: light.hpe.color.text.default,
-  },
+  builtin: { dark: hpeColors['teal!'], light: hpeColors.teal.dark },
+  char: { dark: hpeColors['teal!'], light: hpeColors.teal.dark },
+  code: hpeColors.text,
   comment: {
-    dark: primitives.hpe.base.color['green-550'],
+    dark: hpeColors.green.light,
     light: primitives.hpe.base.color['green-800'],
   },
-  entity: {
-    dark: primitives.hpe.base.color['blue-200'],
-    light: primitives.hpe.base.color['blue-700'],
-  },
+  entity: { dark: hpeColors.blue.light, light: hpeColors.blue.dark },
   function: {
-    dark: primitives.hpe.base.color['coral-200'],
-    light: primitives.hpe.base.color['coral-500'],
+    dark: hpeColors['status-critical'].light,
+    light: hpeColors.red.dark,
   },
-  important: {
-    dark: primitives.hpe.base.color['fuschia-200'],
-    light: primitives.hpe.base.color['fuschia-700'],
-  },
-  inserted: {
-    dark: primitives.hpe.base.color['plum-100'],
-    light: primitives.hpe.base.color['plum-600'],
-  },
-  keyword: {
-    dark: primitives.hpe.base.color['blue-200'],
-    light: primitives.hpe.base.color['blue-700'],
-  },
+  important: { dark: hpeColors.orange.light, light: hpeColors.orange.dark },
+  inserted: { dark: hpeColors['teal!'], light: hpeColors.teal.dark },
+  keyword: { dark: hpeColors.blue.light, light: hpeColors.blue.dark },
   'maybe-class-name': {
-    dark: primitives.hpe.base.color['purple-200'],
-    light: primitives.hpe.base.color['purple-700'],
+    dark: hpeColors.purple.light,
+    light: hpeColors['purple!'],
   },
-  number: {
-    dark: primitives.hpe.base.color['plum-100'],
-    light: primitives.hpe.base.color['plum-600'],
-  },
-  operator: {
-    dark: primitives.hpe.base.color['fuschia-200'],
-    light: primitives.hpe.base.color['fuschia-700'],
-  },
-  regex: {
-    dark: primitives.hpe.base.color['fuschia-200'],
-    light: primitives.hpe.base.color['fuschia-700'],
-  },
-  selector: {
-    dark: primitives.hpe.base.color['plum-100'],
-    light: primitives.hpe.base.color['plum-600'],
-  },
-  string: {
-    dark: primitives.hpe.base.color['plum-100'],
-    light: primitives.hpe.base.color['plum-600'],
-  },
-  url: {
-    dark: primitives.hpe.base.color['blue-200'],
-    light: primitives.hpe.base.color['blue-700'],
-  },
-  variable: {
-    dark: primitives.hpe.base.color['blue-200'],
-    light: primitives.hpe.base.color['blue-700'],
-  },
+  number: { dark: hpeColors['teal!'], light: hpeColors.teal.dark },
+  operator: { dark: hpeColors.orange.light, light: hpeColors.orange.dark },
+  regex: { dark: hpeColors.orange.light, light: hpeColors.orange.dark },
+  selector: { dark: hpeColors['teal!'], light: hpeColors.teal.dark },
+  string: { dark: hpeColors['teal!'], light: hpeColors.teal.dark },
+  url: { dark: hpeColors.blue.light, light: hpeColors.blue.dark },
+  variable: { dark: hpeColors.blue.light, light: hpeColors.blue.dark },
   '.language-css .token.string': {
-    dark: primitives.hpe.base.color['blue-200'],
-    light: primitives.hpe.base.color['blue-700'],
+    dark: hpeColors.blue.light,
+    light: hpeColors.blue.dark,
   },
   '.style .token.string': {
-    dark: primitives.hpe.base.color['blue-200'],
-    light: primitives.hpe.base.color['blue-700'],
+    dark: hpeColors.blue.light,
+    light: hpeColors.blue.dark,
   },
 };
 
