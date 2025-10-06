@@ -630,16 +630,11 @@
         "dark": "#01a982",
         "light": "#01a982"
       },
-      "teal": {},
       "purple": {
         "dark": "#3c3aa1",
         "light": "#7764fc"
       },
       "purple!": "#7630EA",
-      "red": {},
-      "orange": {},
-      "orange!": "#FF8300",
-      "yellow": {},
       "graph-0": {
         "light": "#0070f8",
         "dark": "#65aef9"

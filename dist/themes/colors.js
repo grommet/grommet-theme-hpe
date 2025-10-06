@@ -93,31 +93,31 @@ var colors = exports.colors = _extends({}, tokenColors, {
     dark: _grommet.dark.hpe.color.decorative.brand,
     light: _grommet.light.hpe.color.decorative.brand
   },
-  teal: {
-    dark: _grommet.dark.hpe.color.decorative.teal,
-    light: _grommet.light.hpe.color.decorative.teal
-  },
-  'teal!': _grommet.primitives.hpe.base.color['teal-400'],
+  // teal: {
+  //   dark: dark.hpe.color.decorative.teal,
+  //   light: light.hpe.color.decorative.teal,
+  // },
+  // 'teal!': primitives.hpe.base.color['teal-400'],
   purple: {
     dark: _grommet.dark.hpe.color.decorative.purple,
     light: _grommet.light.hpe.color.decorative.purple
   },
   'purple!': '#7630EA',
-  red: {
-    dark: _grommet.dark.hpe.color.decorative.red,
-    light: _grommet.light.hpe.color.decorative.red
-  },
-  'red!': _grommet.primitives.hpe.base.color['red-750'],
-  orange: {
-    dark: _grommet.dark.hpe.color.decorative.orange,
-    light: _grommet.light.hpe.color.decorative.orange
-  },
-  'orange!': '#FF8300',
-  yellow: {
-    dark: _grommet.dark.hpe.color.decorative.yellow,
-    light: _grommet.light.hpe.color.decorative.yellow
-  },
-  'yellow!': _grommet.primitives.hpe.base.color['yellow-400'],
+  // red: {
+  //   dark: dark.hpe.color.decorative.red,
+  //   light: light.hpe.color.decorative.red,
+  // },
+  // 'red!': primitives.hpe.base.color['red-750'],
+  // orange: {
+  //   dark: dark.hpe.color.decorative.orange,
+  //   light: light.hpe.color.decorative.orange,
+  // },
+  // 'orange!': '#FF8300',
+  // yellow: {
+  //   dark: dark.hpe.color.decorative.yellow,
+  //   light: light.hpe.color.decorative.yellow,
+  // },
+  // 'yellow!': primitives.hpe.base.color['yellow-400'],
   'graph-0': {
     light: _grommet.light.hpe.color.dataVis['categorical-10'],
     dark: _grommet.dark.hpe.color.dataVis['categorical-10']
