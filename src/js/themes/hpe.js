@@ -2225,51 +2225,51 @@ const buildTheme = (tokens, flags) => {
           min: '336px', // 336 + 24 (margin) + 24 (margin) = 384 (e.g. 'medium')
           max: '3xlarge',
         },
-        xsmall: { pad: { horizontal: 'xlarge' } },
+        xsmall: { pad: { horizontal: 'xlarge', bottom: 'xlarge' } },
         small: {
-          pad: { horizontal: 'xlarge' },
+          pad: { horizontal: 'xlarge', bottom: 'xlarge' },
         },
         medium: {
-          pad: { horizontal: 'medium' },
+          pad: { horizontal: 'medium', bottom: 'xlarge' },
         },
         large: {
-          pad: { horizontal: 'xlarge' },
+          pad: { horizontal: 'xlarge', bottom: 'xlarge' },
         },
-        xlarge: { pad: { horizontal: 'xlarge' } },
+        xlarge: { pad: { horizontal: 'xlarge', bottom: 'xlarge' } },
       },
       narrow: {
         width: {
           min: '336px', // 336 + 24 (margin) + 24 (margin) = 384 (e.g. 'medium')
           max: 'xlarge',
         },
-        xsmall: { pad: { horizontal: 'xlarge' } },
+        xsmall: { pad: { horizontal: 'xlarge', bottom: 'xlarge' } },
         small: {
-          pad: { horizontal: 'xlarge' },
+          pad: { horizontal: 'xlarge', bottom: 'xlarge' },
         },
         medium: {
-          pad: { horizontal: 'medium' },
+          pad: { horizontal: 'medium', bottom: 'xlarge' },
         },
         large: {
-          pad: { horizontal: 'xlarge' },
+          pad: { horizontal: 'xlarge', bottom: 'xlarge' },
         },
-        xlarge: { pad: { horizontal: 'xlarge' } },
+        xlarge: { pad: { horizontal: 'xlarge', bottom: 'xlarge' } },
       },
       full: {
         width: {
           min: '336px', // 336 + 24 (margin) + 24 (margin) = 384 (e.g. 'medium')
           max: '100%',
         },
-        xsmall: { pad: { horizontal: 'xlarge' } },
+        xsmall: { pad: { horizontal: 'xlarge', bottom: 'xlarge' } },
         small: {
-          pad: { horizontal: 'xlarge' },
+          pad: { horizontal: 'xlarge', bottom: 'xlarge' },
         },
         medium: {
-          pad: { horizontal: 'medium' },
+          pad: { horizontal: 'medium', bottom: 'xlarge' },
         },
         large: {
-          pad: { horizontal: 'xlarge' },
+          pad: { horizontal: 'xlarge', bottom: 'xlarge' },
         },
-        xlarge: { pad: { horizontal: 'xlarge' } },
+        xlarge: { pad: { horizontal: 'xlarge', bottom: 'xlarge' } },
       },
     },
     pageHeader: {
