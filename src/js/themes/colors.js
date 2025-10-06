@@ -101,31 +101,31 @@ export const colors = {
     dark: dark.hpe.color.decorative.brand,
     light: light.hpe.color.decorative.brand,
   },
-  teal: {
-    dark: dark.hpe.color.decorative.teal,
-    light: light.hpe.color.decorative.teal,
-  },
-  'teal!': primitives.hpe.base.color['teal-400'],
+  // teal: {
+  //   dark: dark.hpe.color.decorative.teal,
+  //   light: light.hpe.color.decorative.teal,
+  // },
+  // 'teal!': primitives.hpe.base.color['teal-400'],
   purple: {
     dark: dark.hpe.color.decorative.purple,
     light: light.hpe.color.decorative.purple,
   },
   'purple!': '#7630EA',
-  red: {
-    dark: dark.hpe.color.decorative.red,
-    light: light.hpe.color.decorative.red,
-  },
-  'red!': primitives.hpe.base.color['red-750'],
-  orange: {
-    dark: dark.hpe.color.decorative.orange,
-    light: light.hpe.color.decorative.orange,
-  },
-  'orange!': '#FF8300',
-  yellow: {
-    dark: dark.hpe.color.decorative.yellow,
-    light: light.hpe.color.decorative.yellow,
-  },
-  'yellow!': primitives.hpe.base.color['yellow-400'],
+  // red: {
+  //   dark: dark.hpe.color.decorative.red,
+  //   light: light.hpe.color.decorative.red,
+  // },
+  // 'red!': primitives.hpe.base.color['red-750'],
+  // orange: {
+  //   dark: dark.hpe.color.decorative.orange,
+  //   light: light.hpe.color.decorative.orange,
+  // },
+  // 'orange!': '#FF8300',
+  // yellow: {
+  //   dark: dark.hpe.color.decorative.yellow,
+  //   light: light.hpe.color.decorative.yellow,
+  // },
+  // 'yellow!': primitives.hpe.base.color['yellow-400'],
   'graph-0': {
     light: light.hpe.color.dataVis['categorical-10'],
     dark: dark.hpe.color.dataVis['categorical-10'],
