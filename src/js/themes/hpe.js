@@ -830,6 +830,15 @@ const buildTheme = (tokens, flags) => {
         ...buttonKindTheme.secondary,
         icon: <Hpe color="brand" />,
         reverse: true,
+        extend: ({ theme }) => {
+          const brandColor = getThemeColor('brand', theme);
+          return `
+          svg { 
+            stroke: ${brandColor}; 
+            fill: ${brandColor}; 
+          }
+        `;
+        },
       },
       ...buttonKindTheme,
       option,
@@ -986,7 +995,7 @@ const buildTheme = (tokens, flags) => {
       },
       extend: ({ colorValue, theme, kind, disabled }) => {
         let style = '';
-        if (kind === 'primary' && !disabled) {
+        if ((kind === 'primary' || kind === 'cta-primary') && !disabled) {
           // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
           // not a long term solution. Also, reliance on !important is not ideal.
           style += `color: ${getThemeColor(
