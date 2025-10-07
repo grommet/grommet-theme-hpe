@@ -194,11 +194,11 @@
         "dark": "#1d1f27"
       },
       "background-back": {
-        "light": "#ffffff",
+        "light": "#f7f7f7",
         "dark": "#1d1f27"
       },
       "background-front": {
-        "light": "#f7f7f7",
+        "light": "#ffffff",
         "dark": "#292d3a"
       },
       "background-floating": {
@@ -511,15 +511,15 @@
       },
       "decorative-purple": {
         "light": "#7764fc",
-        "dark": "#3c3aa1"
+        "dark": "#7764fc"
       },
       "decorative-cyan": {
         "light": "#62e5f6",
-        "dark": "#04909d"
+        "dark": "#00a4b3"
       },
       "decorative-blue": {
         "light": "#0070f8",
-        "dark": "#003cae"
+        "dark": "#0070f8"
       },
       "decorative-neutral": {
         "light": "#7d8a92",
@@ -618,7 +618,7 @@
         "light": "#b1b9be"
       },
       "blue": {
-        "dark": "#003cae",
+        "dark": "#0070f8",
         "light": "#0070f8"
       },
       "blue!": "#0055da",
@@ -631,7 +631,7 @@
         "light": "#01a982"
       },
       "purple": {
-        "dark": "#3c3aa1",
+        "dark": "#7764fc",
         "light": "#7764fc"
       },
       "purple!": "#7630EA",
