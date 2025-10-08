@@ -409,12 +409,16 @@ var buildTheme = function buildTheme(tokens, flags) {
   textTheme.extend = function (_ref) {
     var textSize = _ref.size,
       weight = _ref.weight;
-    return !weight ? "font-weight: " + fontWeights[textSize] + ";" : '';
+    if (!weight) return "font-weight: " + fontWeights[textSize] + ";";
+    if (weight === 'bold') return "font-weight: 500;";
+    return '';
   };
   paragraphTheme.extend = function (_ref2) {
     var textSize = _ref2.size,
       weight = _ref2.weight;
-    return !weight ? "font-weight: " + fontWeights[textSize] + ";" : '';
+    if (!weight) return "font-weight: " + fontWeights[textSize] + ";";
+    if (weight === 'bold') return "font-weight: 500;";
+    return '';
   };
   var buttonKindTheme = {};
   buttonKinds.forEach(function (kind) {
@@ -1812,6 +1816,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         if (fontWeight && !weight) style += "font-weight: " + fontWeight + ";";
         if (fontSize) style += "font-size: " + fontSize + ";";
         if (lineHeight) style += "line-height: " + lineHeight + ";";
+        if (weight === 'bold') style += 'font-weight: 500;';
         if (size) {
           var responsiveSize = headingSize || headingLevelToSize[level || 1];
           style += breakpointStyle(localGlobal, "\n              font-size: " + small.hpe.heading[responsiveSize].fontSize + ";\n              line-height: " + small.hpe.heading[responsiveSize].lineHeight + ";\n              " + (!weight ? "font-weight: " + small.hpe.heading[responsiveSize].fontWeight : '') + ";\n            ", responsive);
