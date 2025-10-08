@@ -409,11 +409,17 @@ const buildTheme = (tokens, flags) => {
       large.hpe.text?.[textSize]?.fontWeight || fallback.weight;
   });
 
-  textTheme.extend = ({ size: textSize, weight }) =>
-    !weight ? `font-weight: ${fontWeights[textSize]};` : '';
+  textTheme.extend = ({ size: textSize, weight }) => {
+    if (!weight) return `font-weight: ${fontWeights[textSize]};`;
+    if (weight === 'bold') return `font-weight: 500;`;
+    return '';
+  };
 
-  paragraphTheme.extend = ({ size: textSize, weight }) =>
-    !weight ? `font-weight: ${fontWeights[textSize]};` : '';
+  paragraphTheme.extend = ({ size: textSize, weight }) => {
+    if (!weight) return `font-weight: ${fontWeights[textSize]};`;
+    if (weight === 'bold') return `font-weight: 500;`;
+    return '';
+  };
 
   const buttonKindTheme = {};
   buttonKinds.forEach((kind) => {
@@ -1958,6 +1964,7 @@ const buildTheme = (tokens, flags) => {
         if (fontWeight && !weight) style += `font-weight: ${fontWeight};`;
         if (fontSize) style += `font-size: ${fontSize};`;
         if (lineHeight) style += `line-height: ${lineHeight};`;
+        if (weight === 'bold') style += 'font-weight: 500;';
         if (size) {
           const responsiveSize = headingSize || headingLevelToSize[level || 1];
           style += breakpointStyle(
