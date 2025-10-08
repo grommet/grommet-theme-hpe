@@ -14,7 +14,7 @@
       "error",
       {
         // currently, lint rule causes a false positive for packages that use "exports" in package.json
-        "ignore": ["^hpe-design-tokens/.+"]
+        "ignore": ["^hpe-design-tokens/.+", "^@hpe-design/icons.+"]
       }
     ]
   }
