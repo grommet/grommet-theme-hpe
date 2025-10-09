@@ -1,5 +1,14 @@
 # grommet-theme-hpe
 
+## 7.0.2
+
+- Fixed t-shirt size mapping of `dataTable.resize.padding.vertical` to `3xsmall`. (https://github.com/grommet/grommet-theme-hpe/pull/538)
+
+## 7.0.1
+
+- Fixed mapping of PageHeader `xlarge` breakpoint columns size from `large` to `xlarge` to match v6 size. (https://github.com/grommet/grommet-theme-hpe/pull/536)
+- Fixed mapping of Tip `margin` from `3xsmall` to `5xsmall` to match v6 size. (https://github.com/grommet/grommet-theme-hpe/pull/536)
+
 ## 7.0.0
 
 ### Major Changes
