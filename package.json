@@ -22,7 +22,6 @@
   "peerDependencies": {
     "@hpe-design/icons-grommet": "^1.0.0",
     "grommet": "^2.50.0",
-    "grommet-icons": "^4.12.4",
     "react": "^16.13.1 || ^17.0.1 || ^18.0.0 || ^19.0.0",
     "styled-components": "^5.0.0 || ^6.0.0"
   },
@@ -78,5 +77,6 @@
   "pre-commit": [
     "lint-fix",
     "prettier"
-  ]
+  ],
+  "packageManager": "yarn@1.22.19+sha512.ff4579ab459bb25aa7c0ff75b62acebe576f6084b36aa842971cf250a5d8c6cd3bc9420b22ce63c7f93a0857bc6ef29291db39c3e7a23aab5adfd5a4dd6c5d71"
 }
