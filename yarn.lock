@@ -2962,9 +2962,10 @@ homedir-polyfill@^1.0.1:
   dependencies:
     parse-passwd "^1.0.0"
 
-"hpe-design-tokens@https://github.com/grommet/hpe-design-system/tarball/design-tokens-stable":
-  version "1.4.1"
-  resolved "https://github.com/grommet/hpe-design-system/tarball/design-tokens-stable#02fc49ca9db8d0c8fee35a5cc51ccf9adeb095db"
+hpe-design-tokens@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/hpe-design-tokens/-/hpe-design-tokens-2.0.0.tgz#b72cff51021674b624c56852d2faefea0fcaa0c2"
+  integrity sha512-rJnM3yYoBAsj5uwN45E0wobXYDkDKqfz+Hvn43QtytaeQQw6pFh0O16meatPy7KX1FCPiVnq6TWXc4RqqTJ+9w==
 
 human-id@^4.1.1:
   version "4.1.2"
