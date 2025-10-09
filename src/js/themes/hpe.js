@@ -875,20 +875,8 @@ const buildTheme = (tokens, flags) => {
       },
       'cta-alternate': {
         ...buttonKindTheme.secondary,
-        icon: <Hpe color="brand" />,
+        icon: <Hpe />,
         reverse: true,
-        // Override icon color to maintain brand color instead of inheriting
-        // hover text color. Secondary button hover sets color to 'text-strong'
-        // (white) which affects SVG icons, so we explicitly set brand color.
-        extend: ({ theme }) => {
-          const brandColor = getThemeColor('brand', theme);
-          return `
-          svg { 
-            stroke: ${brandColor}; 
-            fill: ${brandColor}; 
-          }
-        `;
-        },
       },
       ...buttonKindTheme,
       option,
