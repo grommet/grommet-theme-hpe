@@ -427,11 +427,17 @@ const buildTheme = (tokens, flags) => {
       large.hpe.text?.[textSize]?.fontWeight || fallback.weight;
   });
 
-  textTheme.extend = ({ size: textSize, weight }) =>
-    !weight ? `font-weight: ${fontWeights[textSize]};` : '';
+  textTheme.extend = ({ size: textSize, weight }) => {
+    if (!weight) return `font-weight: ${fontWeights[textSize]};`;
+    if (weight === 'bold') return `font-weight: 500;`;
+    return '';
+  };
 
-  paragraphTheme.extend = ({ size: textSize, weight }) =>
-    !weight ? `font-weight: ${fontWeights[textSize]};` : '';
+  paragraphTheme.extend = ({ size: textSize, weight }) => {
+    if (!weight) return `font-weight: ${fontWeights[textSize]};`;
+    if (weight === 'bold') return `font-weight: 500;`;
+    return '';
+  };
 
   const buttonKindTheme = {};
   buttonKinds.forEach((kind) => {
@@ -851,6 +857,18 @@ const buildTheme = (tokens, flags) => {
         ...buttonKindTheme.secondary,
         icon: <Hpe color="brand" />,
         reverse: true,
+        // Override icon color to maintain brand color instead of inheriting
+        // hover text color. Secondary button hover sets color to 'text-strong'
+        // (white) which affects SVG icons, so we explicitly set brand color.
+        extend: ({ theme }) => {
+          const brandColor = getThemeColor('brand', theme);
+          return `
+          svg { 
+            stroke: ${brandColor}; 
+            fill: ${brandColor}; 
+          }
+        `;
+        },
       },
       ...buttonKindTheme,
       option,
@@ -1007,7 +1025,7 @@ const buildTheme = (tokens, flags) => {
       },
       extend: ({ colorValue, theme, kind, disabled }) => {
         let style = '';
-        if (kind === 'primary' && !disabled) {
+        if ((kind === 'primary' || kind === 'cta-primary') && !disabled) {
           // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
           // not a long term solution. Also, reliance on !important is not ideal.
           style += `color: ${getThemeColor(
@@ -2006,6 +2024,7 @@ const buildTheme = (tokens, flags) => {
         if (fontWeight && !weight) style += `font-weight: ${fontWeight};`;
         if (fontSize) style += `font-size: ${fontSize};`;
         if (lineHeight) style += `line-height: ${lineHeight};`;
+        if (weight === 'bold') style += 'font-weight: 500;';
         if (size) {
           const responsiveSize = headingSize || headingLevelToSize[level || 1];
           style += breakpointStyle(
