@@ -960,7 +960,10 @@
       }
     },
     "busy": {
-      "gap": "xsmall"
+      "gap": "xsmall",
+      "icons": {
+        "success": {}
+      }
     },
     "cta-primary": {
       "background": "background-neutral-xstrong",
@@ -974,7 +977,6 @@
         "weight": 500
       },
       "icon": {
-        "type": {},
         "key": null,
         "ref": null,
         "props": {},
@@ -995,12 +997,9 @@
         "weight": 500
       },
       "icon": {
-        "type": {},
         "key": null,
         "ref": null,
-        "props": {
-          "color": "brand"
-        },
+        "props": {},
         "_owner": null,
         "_store": {}
       },
@@ -2039,6 +2038,10 @@
         "gap": "xsmall"
       }
     },
+    "icons": {
+      "close": {},
+      "filter": {}
+    },
     "pad": "medium",
     "width": {
       "min": "medium"
@@ -2049,10 +2052,21 @@
       "round": "8px"
     },
     "icon": {
+      "calendar": {},
       "size": "small"
     },
     "button": {
       "margin": "xsmall"
+    }
+  },
+  "dataSearch": {
+    "icons": {
+      "search": {}
+    }
+  },
+  "dataSort": {
+    "icons": {
+      "control": {}
     }
   },
   "dataSummary": {
@@ -2076,6 +2090,11 @@
     },
     "expand": {
       "size": "5xsmall"
+    },
+    "icons": {
+      "resizeIncrease": {},
+      "resizeDecrease": {},
+      "search": {}
     },
     "groupHeader": {},
     "groupEnd": {
@@ -2105,7 +2124,6 @@
         }
       }
     },
-    "icons": {},
     "pinned": {
       "header": {
         "background": {
@@ -2163,6 +2181,11 @@
     "gap": "3xsmall"
   },
   "dataTableColumns": {
+    "icons": {
+      "control": {},
+      "pinned": {},
+      "search": {}
+    },
     "tabs": {
       "pad": "xsmall"
     },
@@ -2216,6 +2239,7 @@
       }
     },
     "icons": {
+      "error": {},
       "remove": {}
     },
     "label": {
@@ -2262,7 +2286,13 @@
       "container": {}
     },
     "thumbsRating": {
-      "container": {}
+      "container": {},
+      "icons": {
+        "like": {},
+        "likeSelected": {},
+        "dislike": {},
+        "dislikeSelected": {}
+      }
     },
     "starRating": {
       "container": {}
@@ -2315,6 +2345,10 @@
     "help": {
       "size": "xsmall",
       "margin": "none"
+    },
+    "icons": {
+      "selected": {},
+      "unselected": {}
     },
     "info": {
       "size": "xsmall",
@@ -3469,12 +3503,14 @@
     "gap": "small",
     "header": {
       "previousButton": {
+        "icon": {},
         "pad": {
           "vertical": "3xsmall",
           "horizontal": "xsmall"
         }
       },
       "nextButton": {
+        "icon": {},
         "pad": {
           "vertical": "3xsmall",
           "horizontal": "xsmall"
@@ -3675,6 +3711,9 @@
   },
   "textInput": {
     "container": {},
+    "icons": {
+      "copy": {}
+    },
     "suggestions": {}
   },
   "tip": {

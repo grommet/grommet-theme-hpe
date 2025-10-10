@@ -5,23 +5,55 @@ exports.hpe = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _styledComponents = require("styled-components");
 var _grommet = require("hpe-design-tokens/grommet");
-var _Ascending = require("grommet-icons/icons/Ascending");
-var _Blank = require("grommet-icons/icons/Blank");
-var _CircleAlert = require("grommet-icons/icons/CircleAlert");
-var _Close = require("grommet-icons/icons/Close");
-var _Descending = require("grommet-icons/icons/Descending");
-var _Down = require("grommet-icons/icons/Down");
-var _Next = require("grommet-icons/icons/Next");
-var _Previous = require("grommet-icons/icons/Previous");
-var _Unsorted = require("grommet-icons/icons/Unsorted");
-var _Up = require("grommet-icons/icons/Up");
-var _Hpe = require("grommet-icons/icons/Hpe");
+var _Checkmark = require("@hpe-design/icons-grommet/icons/Checkmark");
+var _Close = require("@hpe-design/icons-grommet/icons/Close");
+var _Filter = require("@hpe-design/icons-grommet/icons/Filter");
+var _Search = require("@hpe-design/icons-grommet/icons/Search");
+var _Descend = require("@hpe-design/icons-grommet/icons/Descend");
+var _Add = require("@hpe-design/icons-grommet/icons/Add");
+var _Subtract = require("@hpe-design/icons-grommet/icons/Subtract");
+var _Lock = require("@hpe-design/icons-grommet/icons/Lock");
+var _Splits = require("@hpe-design/icons-grommet/icons/Splits");
+var _Calendar = require("@hpe-design/icons-grommet/icons/Calendar");
+var _Alert = require("@hpe-design/icons-grommet/icons/Alert");
+var _Star = require("@hpe-design/icons-grommet/icons/Star");
+var _StarFill = require("@hpe-design/icons-grommet/icons/StarFill");
+var _Left = require("@hpe-design/icons-grommet/icons/Left");
+var _Right = require("@hpe-design/icons-grommet/icons/Right");
+var _Copy = require("@hpe-design/icons-grommet/icons/Copy");
+var _Like = require("@hpe-design/icons-grommet/icons/Like");
+var _LikeFill = require("@hpe-design/icons-grommet/icons/LikeFill");
+var _Dislike = require("@hpe-design/icons-grommet/icons/Dislike");
+var _DislikeFill = require("@hpe-design/icons-grommet/icons/DislikeFill");
+var _Ascending = require("@hpe-design/icons-grommet/icons/Ascending");
+var _Blank = require("@hpe-design/icons-grommet/icons/Blank");
+var _Descending = require("@hpe-design/icons-grommet/icons/Descending");
+var _Down = require("@hpe-design/icons-grommet/icons/Down");
+var _Unsorted = require("@hpe-design/icons-grommet/icons/Unsorted");
+var _Up = require("@hpe-design/icons-grommet/icons/Up");
 var _backgrounds = require("./backgrounds");
 var _colors = require("./colors");
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5; // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _taggedTemplateLiteralLoose(e, t) { return t || (t = e.slice(0)), e.raw = t, e; }
+function Hpe() {
+  return /*#__PURE__*/_react["default"].createElement("svg", {
+    style: {
+      stroke: 'none'
+    },
+    width: "36",
+    height: "18",
+    viewBox: "0 0 48 24",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/_react["default"].createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M2 6H46V18H2V6ZM5 9H43V15H5V9Z",
+    fill: "#00C781"
+  }));
+}
 var baseSpacing = 24;
 var isObject = function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
@@ -771,35 +803,28 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       busy: {
-        gap: 'xsmall'
+        gap: 'xsmall',
+        icons: {
+          success: _Checkmark.Checkmark
+        }
       },
       'cta-primary': _extends({}, buttonKindTheme.primary, {
-        icon: /*#__PURE__*/_react["default"].createElement(_Hpe.Hpe, null),
+        icon: /*#__PURE__*/_react["default"].createElement(Hpe, null),
         reverse: true
       }),
       'cta-alternate': _extends({}, buttonKindTheme.secondary, {
-        icon: /*#__PURE__*/_react["default"].createElement(_Hpe.Hpe, {
-          color: "brand"
-        }),
-        reverse: true,
-        // Override icon color to maintain brand color instead of inheriting
-        // hover text color. Secondary button hover sets color to 'text-strong'
-        // (white) which affects SVG icons, so we explicitly set brand color.
-        extend: function extend(_ref5) {
-          var theme = _ref5.theme;
-          var brandColor = getThemeColor('brand', theme);
-          return "\n          svg { \n            stroke: " + brandColor + "; \n            fill: " + brandColor + "; \n          }\n        ";
-        }
+        icon: /*#__PURE__*/_react["default"].createElement(Hpe, null),
+        reverse: true
       })
     }, buttonKindTheme, {
       option: option,
       active: _extends({}, buttonStatesTheme.active, {
         'cta-primary': buttonStatesTheme.active.primary,
         'cta-alternate': buttonStatesTheme.active.secondary,
-        extend: function extend(_ref6) {
-          var kind = _ref6.kind,
-            theme = _ref6.theme,
-            keyboard = _ref6.keyboard;
+        extend: function extend(_ref5) {
+          var kind = _ref5.kind,
+            theme = _ref5.theme,
+            keyboard = _ref5.keyboard;
           var style = '';
           // applies when option is in focus
           if (kind === 'option') {
@@ -838,9 +863,9 @@ var buildTheme = function buildTheme(tokens, flags) {
           font: {
             weight: components.hpe.select["default"].option.selected.rest.fontWeight
           },
-          extend: function extend(_ref7) {
-            var theme = _ref7.theme,
-              disabled = _ref7.disabled;
+          extend: function extend(_ref6) {
+            var theme = _ref6.theme,
+              disabled = _ref6.disabled;
             return "\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              width: " + components.hpe.select["default"].medium.option.marker.width + ";\n              border-top-left-radius: " + components.hpe.select["default"].medium.option.marker.borderTopLeftRadius + ";\n              border-bottom-left-radius: " + components.hpe.select["default"].medium.option.marker.borderBottomLeftRadius + ";\n              top: " + components.hpe.select["default"].medium.option.marker.top + ";\n              bottom: " + components.hpe.select["default"].medium.option.marker.bottom + ";\n              left: " + components.hpe.select["default"].medium.option.marker.left + ";\n              background: " + getThemeColor(!disabled ? components.hpe.select["default"].option.marker.rest.background : 'border-disabled', theme) + ";\n            }\n          ";
           }
         }
@@ -874,11 +899,11 @@ var buildTheme = function buildTheme(tokens, flags) {
           }
         })
       }),
-      extend: function extend(_ref8) {
-        var colorValue = _ref8.colorValue,
-          theme = _ref8.theme,
-          kind = _ref8.kind,
-          disabled = _ref8.disabled;
+      extend: function extend(_ref7) {
+        var colorValue = _ref7.colorValue,
+          theme = _ref7.theme,
+          kind = _ref7.kind,
+          disabled = _ref7.disabled;
         var style = '';
         if ((kind === 'primary' || kind === 'cta-primary') && !disabled) {
           // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
@@ -926,9 +951,9 @@ var buildTheme = function buildTheme(tokens, flags) {
             weight: global.hpe.fontWeight.medium
           }
         },
-        extend: function extend(_ref9) {
-          var isSelected = _ref9.isSelected,
-            theme = _ref9.theme;
+        extend: function extend(_ref8) {
+          var isSelected = _ref8.isSelected,
+            theme = _ref8.theme;
           return (
             // grommet logic was incorrectly switching to wrong theme mode
             // so overriding in extend
@@ -940,8 +965,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         background: 'background-selected-primary'
       },
       icons: {
-        next: _Next.Next,
-        previous: _Previous.Previous
+        next: _Right.Right,
+        previous: _Left.Left
       },
       small: {
         fontSize: '13.6px',
@@ -1096,10 +1121,10 @@ var buildTheme = function buildTheme(tokens, flags) {
         background: {
           color: undefined
         },
-        extend: function extend(_ref0) {
-          var theme = _ref0.theme,
-            toggle = _ref0.toggle,
-            checked = _ref0.checked;
+        extend: function extend(_ref9) {
+          var theme = _ref9.theme,
+            toggle = _ref9.toggle,
+            checked = _ref9.checked;
           var borderColor;
           if (toggle) {
             borderColor = getThemeColor(components.hpe["switch"]["default"].control.track.hover.borderColor, theme);
@@ -1123,11 +1148,11 @@ var buildTheme = function buildTheme(tokens, flags) {
         radius: components.hpe.checkbox["default"].medium.control.borderRadius,
         thickness: '2px',
         // The stroke width of the checked icon.
-        extend: function extend(_ref1) {
-          var theme = _ref1.theme,
-            checked = _ref1.checked,
-            indeterminate = _ref1.indeterminate,
-            disabled = _ref1.disabled;
+        extend: function extend(_ref0) {
+          var theme = _ref0.theme,
+            checked = _ref0.checked,
+            indeterminate = _ref0.indeterminate,
+            disabled = _ref0.disabled;
           var background = getThemeColor(components.hpe.checkbox["default"].control.rest.background, theme);
           var hoverBackground = getThemeColor(components.hpe.checkbox["default"].control.hover.background, theme);
           var borderColor = getThemeColor(components.hpe.checkbox["default"].control.rest.borderColor, theme);
@@ -1146,9 +1171,9 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       icon: {
-        extend: function extend(_ref10) {
-          var theme = _ref10.theme,
-            disabled = _ref10.disabled;
+        extend: function extend(_ref1) {
+          var theme = _ref1.theme,
+            disabled = _ref1.disabled;
           return "stroke-width: 2px;\n        stroke: " + getThemeColor(disabled ? components.hpe.checkbox["default"].control.disabled.rest.iconColor : components.hpe.checkbox["default"].control.selected.rest.iconColor, theme);
         }
       },
@@ -1163,19 +1188,19 @@ var buildTheme = function buildTheme(tokens, flags) {
         color: components.hpe["switch"]["default"].control.handle.rest.background,
         size: components.hpe["switch"]["default"].medium.control.track.width,
         knob: {
-          extend: function extend(_ref11) {
-            var theme = _ref11.theme,
-              checked = _ref11.checked,
-              disabled = _ref11.disabled;
+          extend: function extend(_ref10) {
+            var theme = _ref10.theme,
+              checked = _ref10.checked,
+              disabled = _ref10.disabled;
             var insetHandle = dimensions.borderSize[components.hpe["switch"]["default"].medium.control.handle.borderWidth] || dimensions.borderSize[components.hpe["switch"]["default"].medium.control.handle.borderWidth];
             return "\n          box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'][components.hpe["switch"]["default"].control.handle.rest.boxShadow] + ";\n          border: " + dimensions.borderSize[components.hpe["switch"]["default"].medium.control.handle.borderWidth] + " solid " + getThemeColor(disabled ? components.hpe["switch"]["default"].control.handle.disabled.rest.borderColor : components.hpe["switch"]["default"].control.handle.rest.borderColor, theme) + ";\n          width: " + components.hpe["switch"]["default"].medium.control.handle.width + ";\n          height: " + components.hpe["switch"]["default"].medium.control.handle.height + ";\n          top: " + insetHandle + ";\n          left: " + (!checked ? insetHandle : '25px') + ";\n          ";
           }
         },
         // applies to track around handle
-        extend: function extend(_ref12) {
-          var checked = _ref12.checked,
-            theme = _ref12.theme,
-            disabled = _ref12.disabled;
+        extend: function extend(_ref11) {
+          var checked = _ref11.checked,
+            theme = _ref11.theme,
+            disabled = _ref11.disabled;
           var background;
           var hoverBackground = getThemeColor(components.hpe["switch"]["default"].control.track.hover.background, theme);
           var borderColor = getThemeColor(components.hpe["switch"]["default"].control.track.rest.borderColor, theme);
@@ -1190,9 +1215,9 @@ var buildTheme = function buildTheme(tokens, flags) {
           return "\n            border-color: " + borderColor + ";\n            background: " + background + ";\n            &:hover {\n              " + (!disabled ? "background: " + hoverBackground + ";" : '') + "\n            }\n        ";
         }
       },
-      extend: function extend(_ref13) {
-        var disabled = _ref13.disabled,
-          theme = _ref13.theme;
+      extend: function extend(_ref12) {
+        var disabled = _ref12.disabled,
+          theme = _ref12.theme;
         return (0, _styledComponents.css)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteralLoose(["\n      font-weight: ", ";\n      width: auto;\n      border: ", " solid ", ";\n      & input:checked + span[class*=CheckBoxToggle] > span[class*=CheckBoxKnob] {\n        left: 25px;\n      }\n      ", "\n    };\n    "])), components.hpe.checkbox["default"].label.rest.fontWeight, components.hpe.formField["default"].medium.input.container.borderWidth, getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme),
         // override built in disabled opacity: 0.5 from grommet
         disabled && "opacity: 1; \n        color: " + getThemeColor(components.hpe.checkbox["default"].label.disabled.rest.textColor, theme) + ";");
@@ -1336,6 +1361,10 @@ var buildTheme = function buildTheme(tokens, flags) {
           gap: 'xsmall'
         }
       },
+      icons: {
+        close: _Close.Close,
+        filter: _Filter.Filter
+      },
       pad: 'medium',
       width: {
         min: 'medium'
@@ -1346,10 +1375,21 @@ var buildTheme = function buildTheme(tokens, flags) {
         round: components.hpe.formField["default"].medium.input.container.borderRadius
       },
       icon: {
+        calendar: _Calendar.Calendar,
         size: 'small'
       },
       button: {
         margin: 'xsmall'
+      }
+    },
+    dataSearch: {
+      icons: {
+        search: _Search.Search
+      }
+    },
+    dataSort: {
+      icons: {
+        control: _Descend.Descend
       }
     },
     dataSummary: {
@@ -1364,8 +1404,8 @@ var buildTheme = function buildTheme(tokens, flags) {
     },
     dataTable: {
       body: {
-        extend: function extend(_ref14) {
-          var theme = _ref14.theme;
+        extend: function extend(_ref13) {
+          var theme = _ref13.theme;
           return "\n          /* Margin and padding allow room for focus on table body */\n          margin: " + theme.global.edgeSize['5xsmall'] + " 0px;\n          padding: 0px " + theme.global.edgeSize['5xsmall'] + ";\n        ";
         },
         selected: {
@@ -1377,45 +1417,6 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       expand: {
         size: '5xsmall'
-      },
-      groupHeader: {
-        // background: undefined,
-        // border: undefined,
-        // pad: undefined,
-      },
-      groupEnd: {
-        border: {
-          side: 'bottom',
-          size: 'xsmall'
-        }
-      },
-      header: {
-        border: {
-          side: 'bottom'
-        },
-        color: components.hpe.headerCell["default"].rest.textColor,
-        extend: function extend(_ref15) {
-          var column = _ref15.column,
-            sort = _ref15.sort,
-            sortable = _ref15.sortable,
-            theme = _ref15.theme;
-          return "\n            " + (sort && sort.property === column && "\n              background: " + theme.global.colors['background-active'][theme.dark ? 'dark' : 'light'] + "\n            ") + ";\n            " + (sortable && sort && sort.property !== column && "\n                svg {\n                  opacity: 0;\n                }\n                &:hover {\n                  svg {\n                    opacity: 1;\n                  }\n                }\n              ") + ";\n          ";
-        },
-        font: {
-          weight: components.hpe.headerCell["default"].medium.fontWeight
-        },
-        gap: components.hpe.headerCell["default"].medium.gapX,
-        hover: {
-          background: {
-            color: components.hpe.headerCell["default"].hover.background
-          }
-        },
-        units: {
-          color: components.hpe.headerCell["default"].units.rest.textColor,
-          margin: {
-            left: '3xsmall'
-          }
-        }
       },
       icons: {
         ascending: function ascending() {
@@ -1442,6 +1443,48 @@ var buildTheme = function buildTheme(tokens, flags) {
           return /*#__PURE__*/_react["default"].createElement(_Unsorted.Unsorted, {
             size: "large"
           });
+        },
+        resizeIncrease: _Add.Add,
+        resizeDecrease: _Subtract.Subtract,
+        search: _Search.Search
+      },
+      groupHeader: {
+        // background: undefined,
+        // border: undefined,
+        // pad: undefined,
+      },
+      groupEnd: {
+        border: {
+          side: 'bottom',
+          size: 'xsmall'
+        }
+      },
+      header: {
+        border: {
+          side: 'bottom'
+        },
+        color: components.hpe.headerCell["default"].rest.textColor,
+        extend: function extend(_ref14) {
+          var column = _ref14.column,
+            sort = _ref14.sort,
+            sortable = _ref14.sortable,
+            theme = _ref14.theme;
+          return "\n            " + (sort && sort.property === column && "\n              background: " + theme.global.colors['background-active'][theme.dark ? 'dark' : 'light'] + "\n            ") + ";\n            " + (sortable && sort && sort.property !== column && "\n                svg {\n                  opacity: 0;\n                }\n                &:hover {\n                  svg {\n                    opacity: 1;\n                  }\n                }\n              ") + ";\n          ";
+        },
+        font: {
+          weight: components.hpe.headerCell["default"].medium.fontWeight
+        },
+        gap: components.hpe.headerCell["default"].medium.gapX,
+        hover: {
+          background: {
+            color: components.hpe.headerCell["default"].hover.background
+          }
+        },
+        units: {
+          color: components.hpe.headerCell["default"].units.rest.textColor,
+          margin: {
+            left: '3xsmall'
+          }
         }
       },
       pinned: {
@@ -1501,6 +1544,11 @@ var buildTheme = function buildTheme(tokens, flags) {
       gap: '3xsmall'
     },
     dataTableColumns: {
+      icons: {
+        control: _Splits.Splits,
+        pinned: _Lock.Lock,
+        search: _Search.Search
+      },
       tabs: {
         pad: 'xsmall'
       },
@@ -1554,6 +1602,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       icons: {
+        error: _Alert.Alert,
         remove: _Close.Close
       },
       label: {
@@ -1573,8 +1622,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       gap: 'medium'
     },
     formField: {
-      extend: function extend(_ref16) {
-        var theme = _ref16.theme;
+      extend: function extend(_ref15) {
+        var theme = _ref15.theme;
         return "\n          [class*=\"ContentBox\"] {\n            label {\n              padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n              &:hover:not([disabled]) {\n                background: " + getThemeColor(components.hpe.formField["default"].input.container.hover.background, theme) + ";\n              }\n            }\n            [role=\"group\"], [role=\"radiogroup\"] {\n              gap: 0;\n              padding-block: " + components.hpe.formField["default"].medium.input.group.container.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.container.paddingX + ";\n              label {\n                border: " + (dimensions.borderSize[components.hpe.formField["default"].medium.input.group.item.borderWidth] || components.hpe.formField["default"].medium.input.group.item.borderWidth) + " solid " + getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme) + ";\n                padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n                padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n                border-radius: " + dimensions.radius[components.hpe.formField["default"].medium.input.group.item.borderRadius] + ";\n                &:hover:not([disabled]) {\n                  background: " + getThemeColor(components.hpe.formField["default"].input.group.item.hover.background, theme) + ";\n                }\n              }\n            }\n          }\n      ";
       },
       content: {
@@ -1596,13 +1645,21 @@ var buildTheme = function buildTheme(tokens, flags) {
           vertical: components.hpe.formField["default"].medium.input.group.item.paddingY
         },
         container: {
+          extend: function extend(_ref16) {
+            var error = _ref16.error;
+            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
+          }
+        }
+      },
+      checkBoxGroup: {
+        container: {
           extend: function extend(_ref17) {
             var error = _ref17.error;
             return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
           }
         }
       },
-      checkBoxGroup: {
+      radioButtonGroup: {
         container: {
           extend: function extend(_ref18) {
             var error = _ref18.error;
@@ -1610,26 +1667,24 @@ var buildTheme = function buildTheme(tokens, flags) {
           }
         }
       },
-      radioButtonGroup: {
+      thumbsRating: {
         container: {
           extend: function extend(_ref19) {
             var error = _ref19.error;
             return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
           }
-        }
-      },
-      thumbsRating: {
-        container: {
-          extend: function extend(_ref20) {
-            var error = _ref20.error;
-            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
-          }
+        },
+        icons: {
+          like: _Like.Like,
+          likeSelected: _LikeFill.LikeFill,
+          dislike: _Dislike.Dislike,
+          dislikeSelected: _DislikeFill.DislikeFill
         }
       },
       starRating: {
         container: {
-          extend: function extend(_ref21) {
-            var error = _ref21.error;
+          extend: function extend(_ref20) {
+            var error = _ref20.error;
             return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
           }
         }
@@ -1656,7 +1711,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         container: {
           gap: '3xsmall'
         },
-        icon: /*#__PURE__*/_react["default"].createElement(_CircleAlert.CircleAlert, {
+        icon: /*#__PURE__*/_react["default"].createElement(_Alert.Alert, {
           size: "small",
           color: light.hpe.color.icon.critical
         }),
@@ -1680,6 +1735,10 @@ var buildTheme = function buildTheme(tokens, flags) {
         size: 'xsmall',
         color: components.hpe.formField["default"].help.rest.color,
         margin: 'none'
+      },
+      icons: {
+        selected: _StarFill.StarFill,
+        unselected: _Star.Star
       },
       info: {
         size: 'xsmall',
@@ -1804,12 +1863,12 @@ var buildTheme = function buildTheme(tokens, flags) {
           xlarge: undefined
         }
       },
-      extend: function extend(_ref22) {
+      extend: function extend(_ref21) {
         var _large$hpe$heading$he, _large$hpe$heading$he2, _large$hpe$heading$he3;
-        var headingSize = _ref22.size,
-          level = _ref22.level,
-          weight = _ref22.weight,
-          responsive = _ref22.responsive;
+        var headingSize = _ref21.size,
+          level = _ref21.level,
+          weight = _ref21.weight,
+          responsive = _ref21.responsive;
         var style = '';
         var fontSize = '';
         var lineHeight = '';
@@ -1890,8 +1949,8 @@ var buildTheme = function buildTheme(tokens, flags) {
     },
     maskedInput: {
       container: {
-        extend: function extend(_ref23) {
-          var theme = _ref23.theme;
+        extend: function extend(_ref22) {
+          var theme = _ref22.theme;
           return "\n          svg {\n            fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n            stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          }\n        ";
         }
       }
@@ -2514,8 +2573,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       color: components.hpe.radioButton["default"].control.selected.rest.borderColor,
       container: {
-        extend: function extend(_ref24) {
-          var theme = _ref24.theme;
+        extend: function extend(_ref23) {
+          var theme = _ref23.theme;
           return "\n          width: auto;\n          &:has(input[checked]) {\n            & div:has(> svg[aria-hidden=\"true\"]) {\n              background: " + getThemeColor(components.hpe.radioButton["default"].control.selected.rest.background, theme) + ";\n              border-color: " + getThemeColor(components.hpe.radioButton["default"].control.selected.rest.borderColor, theme) + ";\n            }\n          }\n          &:has(input[checked]):hover:not([disabled]) {\n              & div:has(> svg[aria-hidden=\"true\"]) {\n                background: " + getThemeColor(components.hpe.radioButton["default"].control.selected.hover.background, theme) + ";\n                border-color: " + getThemeColor(components.hpe.radioButton["default"].control.selected.hover.borderColor, theme) + ";\n              }\n          }\n          ";
         }
       },
@@ -2571,8 +2630,8 @@ var buildTheme = function buildTheme(tokens, flags) {
             dark: '#616161'
           }
         },
-        extend: function extend(_ref25) {
-          var theme = _ref25.theme;
+        extend: function extend(_ref24) {
+          var theme = _ref24.theme;
           return "\n        border-radius: " + large.hpe.radius.full + ";\n        // firefox only selector, since pseudo-element\n        // isn't supported\n        @-moz-document url-prefix() {\n          border: 1px solid " + getThemeColor('border-strong', theme) + ";\n        }";
         }
       },
@@ -2592,9 +2651,9 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       // primitives.hpe.base.dimension[100] = 4px which meets WCAG minimum size
       // for visual indicator (minimum 3px)
-      extend: function extend(_ref26) {
-        var disabled = _ref26.disabled,
-          theme = _ref26.theme;
+      extend: function extend(_ref25) {
+        var disabled = _ref25.disabled,
+          theme = _ref25.theme;
         return "\n        &::before {\n          display: block;\n          position: absolute;\n          content: '';\n          width: " + primitives.hpe.base.dimension[100] + ";\n          height: " + primitives.hpe.base.dimension[100] + ";\n          border-radius: " + large.hpe.radius.full + ";\n          right: 0;\n          top: 50%;\n          transform: translateY(-50%);\n          background: " + getThemeColor(disabled ? 'background-disabled' : 'background-neutral-xstrong', theme) + ";\n        }\n    ";
       }
     },
@@ -2640,8 +2699,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       control: {
-        extend: function extend(_ref27) {
-          var disabled = _ref27.disabled;
+        extend: function extend(_ref26) {
+          var disabled = _ref26.disabled;
           return (0, _styledComponents.css)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteralLoose(["\n          ", "\n\n          &[class*=\"SelectMultiple\"] [role=\"listbox\"] {\n            padding-block: ", ";\n            padding-inline: ", ";\n            & [role='option'] {\n              border-radius: ", ";\n            }\n          }\n        "])), disabled && "\n          opacity: 0.3;\n          input {\n            cursor: default;\n          }", components.hpe.select["default"].medium.drop.paddingY, components.hpe.select["default"].medium.drop.paddingX, dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius);
         }
       },
@@ -2798,17 +2857,19 @@ var buildTheme = function buildTheme(tokens, flags) {
         border: undefined,
         // padding-bottom ensures the marker is not cut off by subsequent
         // page elements.
-        extend: function extend(_ref28) {
-          var theme = _ref28.theme;
+        extend: function extend(_ref27) {
+          var theme = _ref27.theme;
           return "\n        padding-bottom: " + large.hpe.borderWidth.medium + ";\n        & button {\n          border-radius: " + large.hpe.radius.xsmall + "; // radius on focus\n        }\n        & button[aria-selected=\"true\"] {\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              height: " + large.hpe.borderWidth.medium + ";\n              border-radius: " + large.hpe.radius.full + ";\n              bottom: -" + large.hpe.borderWidth.medium + ";\n              left: 0;\n              right: 0;\n              background: " + getThemeColor('border-selected', theme) + ";\n            }\n        }";
         },
         previousButton: {
+          icon: _Left.Left,
           pad: {
             vertical: '3xsmall',
             horizontal: 'xsmall'
           }
         },
         nextButton: {
+          icon: _Right.Right,
           pad: {
             vertical: '3xsmall',
             horizontal: 'xsmall'
@@ -2977,14 +3038,17 @@ var buildTheme = function buildTheme(tokens, flags) {
     }),
     textInput: {
       container: {
-        extend: function extend(_ref29) {
-          var theme = _ref29.theme;
+        extend: function extend(_ref28) {
+          var theme = _ref28.theme;
           return "\n          svg {\n            fill: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n            stroke: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n          }\n        ";
         }
       },
+      icons: {
+        copy: _Copy.Copy
+      },
       suggestions: {
-        extend: function extend(_ref30) {
-          var theme = _ref30.theme;
+        extend: function extend(_ref29) {
+          var theme = _ref29.theme;
           return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"]:hover {\n            background: " + getThemeColor(components.hpe.select["default"].option.hover.background, theme) + ";\n          }\n        ";
         }
       }
@@ -3019,8 +3083,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       container: {
         border: false,
         round: 'xsmall',
-        extend: function extend(_ref31) {
-          var theme = _ref31.theme;
+        extend: function extend(_ref30) {
+          var theme = _ref30.theme;
           return "\n        gap: " + (dimensions.edgeSize[large.hpe.spacing['5xsmall']] || large.hpe.spacing['5xsmall']) + ";\n        &:hover {\n          background: " + getThemeColor('background-hover', theme) + ";\n        }";
         }
       },
