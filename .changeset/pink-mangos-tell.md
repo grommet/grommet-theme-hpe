@@ -1,5 +1,5 @@
 ---
-"grommet-theme-hpe": major
+'grommet-theme-hpe': major
 ---
 
 **Breaking Change:**  
