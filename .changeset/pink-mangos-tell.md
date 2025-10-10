@@ -5,13 +5,17 @@
 **Breaking Change:**  
 Removed the following colors from the theme:
 
-- `color.decorative.red`
-- `color.decorative.red!`
-- `color.decorative.orange`
-- `color.decorative.orange!`
-- `color.decorative.yellow`
-- `color.decorative.yellow!`
-- `color.decorative.teal`
-- `color.decorative.teal!`
+- `decorative-red`
+- `red`
+- `red!`
+- `decorative-orange`
+- `orange`
+- `orange!`
+- `decorative-yellow`
+- `yellow`
+- `yellow!`
+- `decorative-teal`
+- `teal`
+- `teal!`
 
-These colors are no longer supported and should be replaced with updated theme values.
+These colors are no longer supported and should be replaced with other theme colors.
