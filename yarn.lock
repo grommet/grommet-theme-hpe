@@ -1144,7 +1144,7 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.57.1.tgz#de633db3ec2ef6a3c89e2f19038063e8a122e2c2"
   integrity sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==
 
-"@hpe-design/icons-grommet@^1.0.0":
+"@hpe-design/icons-grommet@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@hpe-design/icons-grommet/-/icons-grommet-1.0.1.tgz#17d9a34cac232b8becf171c2b0fbb1644033fcd4"
   integrity sha512-lv5SKWKiLxJCay0Ria7CfhWBuzA58YTG2rUAnvrgpKOU+87PqMoQ41fk0JMF/vjCgyY7Vz1ga7PjS3g25sRp2g==
