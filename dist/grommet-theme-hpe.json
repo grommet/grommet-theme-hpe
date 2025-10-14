@@ -746,8 +746,6 @@
         "offset": "2px"
       },
       "shadow": {
-        "color": "#ffffff",
-        "size": "2px",
         "blur": "0px"
       },
       "twoColor": true,
@@ -758,7 +756,6 @@
           "offset": "-2px"
         },
         "shadow": {
-          "color": "#ffffff",
           "size": "4px",
           "blur": "0px",
           "inset": true

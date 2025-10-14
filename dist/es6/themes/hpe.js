@@ -568,7 +568,6 @@ var buildTheme = function buildTheme(tokens, flags) {
       }
     }, kindStyles);
   });
-  var focusBoxShadowParts = global.hpe.focusIndicator.boxShadow.trim().split(' ');
   return deepFreeze({
     defaultMode: 'light',
     global: _extends({
@@ -618,8 +617,8 @@ var buildTheme = function buildTheme(tokens, flags) {
           offset: global.hpe.focusIndicator.outlineOffset
         },
         shadow: {
-          color: focusBoxShadowParts[focusBoxShadowParts.length - 1],
-          size: focusBoxShadowParts[focusBoxShadowParts.length - 2],
+          color: global.hpe.focusIndicator.boxShadow.color,
+          size: global.hpe.focusIndicator.boxShadow.spread,
           blur: '0px'
         },
         twoColor: true,
@@ -631,7 +630,7 @@ var buildTheme = function buildTheme(tokens, flags) {
             offset: "-" + global.hpe.focusIndicator.outline.width
           },
           shadow: {
-            color: focusBoxShadowParts[focusBoxShadowParts.length - 1],
+            color: global.hpe.focusIndicator.boxShadow.color,
             size: '4px',
             blur: '0px',
             inset: true
