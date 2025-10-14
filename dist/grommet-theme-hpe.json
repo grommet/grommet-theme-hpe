@@ -567,7 +567,7 @@
       },
       "focus": {
         "light": "#292d3a",
-        "dark": "#292d3a"
+        "dark": "#ffffff"
       },
       "foreground-primary": {
         "light": "#006750",
@@ -585,6 +585,7 @@
         "light": "#7d8a92",
         "dark": "#7d8a92"
       },
+      "focus-support": {},
       "control": "background-primary-strong",
       "active-text": "text-strong",
       "text-primary-button": "text-onStrong",
@@ -746,6 +747,8 @@
         "offset": "2px"
       },
       "shadow": {
+        "color": "{color.focus.support}",
+        "size": "{focusIndicator.outlineOffset}",
         "blur": "0px"
       },
       "twoColor": true,
@@ -756,6 +759,7 @@
           "offset": "-2px"
         },
         "shadow": {
+          "color": "{color.focus.support}",
           "size": "4px",
           "blur": "0px",
           "inset": true
