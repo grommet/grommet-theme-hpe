@@ -10,20 +10,58 @@ import {
   global as localGlobal,
   components as localComponents,
 } from 'hpe-design-tokens/grommet';
-import { Ascending } from 'grommet-icons/icons/Ascending';
-import { Blank } from 'grommet-icons/icons/Blank';
-import { CircleAlert } from 'grommet-icons/icons/CircleAlert';
-import { Close } from 'grommet-icons/icons/Close';
-import { Descending } from 'grommet-icons/icons/Descending';
-import { Down } from 'grommet-icons/icons/Down';
-import { Next } from 'grommet-icons/icons/Next';
-import { Previous } from 'grommet-icons/icons/Previous';
-import { Unsorted } from 'grommet-icons/icons/Unsorted';
-import { Up } from 'grommet-icons/icons/Up';
-import { Hpe } from 'grommet-icons/icons/Hpe';
+
+import { Checkmark } from '@hpe-design/icons-grommet/icons/Checkmark';
+import { Close } from '@hpe-design/icons-grommet/icons/Close';
+import { Filter } from '@hpe-design/icons-grommet/icons/Filter';
+import { Search } from '@hpe-design/icons-grommet/icons/Search';
+import { Descend } from '@hpe-design/icons-grommet/icons/Descend';
+import { Add } from '@hpe-design/icons-grommet/icons/Add';
+import { Subtract } from '@hpe-design/icons-grommet/icons/Subtract';
+import { Lock } from '@hpe-design/icons-grommet/icons/Lock';
+import { Splits } from '@hpe-design/icons-grommet/icons/Splits';
+import { Calendar } from '@hpe-design/icons-grommet/icons/Calendar';
+import { Alert } from '@hpe-design/icons-grommet/icons/Alert';
+import { Star } from '@hpe-design/icons-grommet/icons/Star';
+import { StarFill } from '@hpe-design/icons-grommet/icons/StarFill';
+import { Left } from '@hpe-design/icons-grommet/icons/Left';
+import { Right } from '@hpe-design/icons-grommet/icons/Right';
+import { Copy } from '@hpe-design/icons-grommet/icons/Copy';
+import { Like } from '@hpe-design/icons-grommet/icons/Like';
+import { LikeFill } from '@hpe-design/icons-grommet/icons/LikeFill';
+import { Dislike } from '@hpe-design/icons-grommet/icons/Dislike';
+import { DislikeFill } from '@hpe-design/icons-grommet/icons/DislikeFill';
+import { Ascending } from '@hpe-design/icons-grommet/icons/Ascending';
+import { Blank } from '@hpe-design/icons-grommet/icons/Blank';
+import { Descending } from '@hpe-design/icons-grommet/icons/Descending';
+import { Down } from '@hpe-design/icons-grommet/icons/Down';
+import { Unsorted } from '@hpe-design/icons-grommet/icons/Unsorted';
+import { Up } from '@hpe-design/icons-grommet/icons/Up';
 
 import { backgrounds } from './backgrounds';
 import { colors } from './colors';
+
+function Hpe() {
+  return (
+    <svg
+      style={{
+        stroke: 'none',
+      }}
+      width="36"
+      height="18"
+      viewBox="0 0 48 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M2 6H46V18H2V6ZM5 9H43V15H5V9Z"
+        fill="#00C781"
+      />
+    </svg>
+  );
+}
 
 const baseSpacing = 24;
 
@@ -53,6 +91,32 @@ const textSizes = [
   '5xlarge',
   '6xlarge',
 ];
+
+const headingLevelToSize = {
+  1: 'xlarge',
+  2: 'large',
+  3: 'medium',
+  4: 'small',
+  5: 'xsmall',
+  6: 'xxsmall',
+};
+
+const breakpointStyle = (global, content, responsive) => {
+  const breakpoint = global.hpe.breakpoint.small;
+  const st =
+    responsive === 'container'
+      ? css`
+          @container ${breakpoint && `(max-width: ${breakpoint})`} {
+            ${content}
+          }
+        `
+      : css`
+          @media only screen ${breakpoint && `and (max-width: ${breakpoint})`} {
+            ${content}
+          }
+        `;
+  return st.join('');
+};
 
 const getThemeColor = (color, theme) =>
   typeof theme.global.colors[color] === 'string'
@@ -153,17 +217,7 @@ const getTextSize = (size) => {
 };
 
 const buildTheme = (tokens, flags) => {
-  const {
-    primitives,
-    light,
-    dark,
-    small,
-    large,
-    elevationlight,
-    elevationdark,
-    global,
-    components,
-  } = tokens;
+  const { primitives, light, dark, small, large, global, components } = tokens;
 
   const size = (breakpoint) => ({
     '5xsmall': breakpoint.hpe.container['5xsmall'],
@@ -393,11 +447,17 @@ const buildTheme = (tokens, flags) => {
       large.hpe.text?.[textSize]?.fontWeight || fallback.weight;
   });
 
-  textTheme.extend = ({ size: textSize, weight }) =>
-    !weight ? `font-weight: ${fontWeights[textSize]};` : '';
+  textTheme.extend = ({ size: textSize, weight }) => {
+    if (!weight) return `font-weight: ${fontWeights[textSize]};`;
+    if (weight === 'bold') return `font-weight: 500;`;
+    return '';
+  };
 
-  paragraphTheme.extend = ({ size: textSize, weight }) =>
-    !weight ? `font-weight: ${fontWeights[textSize]};` : '';
+  paragraphTheme.extend = ({ size: textSize, weight }) => {
+    if (!weight) return `font-weight: ${fontWeights[textSize]};`;
+    if (weight === 'bold') return `font-weight: 500;`;
+    return '';
+  };
 
   const buttonKindTheme = {};
   buttonKinds.forEach((kind) => {
@@ -525,10 +585,6 @@ const buildTheme = (tokens, flags) => {
     };
   });
 
-  const focusBoxShadowParts = global.hpe.focusIndicator.boxShadow
-    .trim()
-    .split(' ');
-
   return deepFreeze({
     defaultMode: 'light',
     global: {
@@ -594,38 +650,61 @@ const buildTheme = (tokens, flags) => {
         family: global.hpe.fontStack.primary,
         face: `
           @font-face {
-            font-family: "Metric";
-            src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
-                 url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
+            font-family: "Graphik";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Regular-Web.woff2") format('woff2');
           }
           @font-face {
-            font-family: "Metric";
-            src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff2") format('woff2'),
-                 url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Regular.woff") format('woff');
+            font-family: "Graphik";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Regular-Web.woff2") format('woff2');
             font-weight: 400;
           }
           @font-face {
-            font-family: "Metric";
-            src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff2") format('woff2'),
-                 url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Bold.woff") format('woff');
+            font-family: "Graphik";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Bold-Web.woff2") format('woff2');
             font-weight: 700;
           }
           @font-face {
-            font-family: "Metric";
-            src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff2") format('woff2'),
-                 url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Semibold.woff") format('woff');
+            font-family: "Graphik";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Semibold-Web.woff2") format('woff2');
             font-weight: 600;
           }
           @font-face {
-            font-family: "Metric";
-            src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff2") format('woff2'),
-                 url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Medium.woff") format('woff');
+            font-family: "Graphik";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Medium-Web.woff2") format('woff2');
             font-weight: 500;
           }
           @font-face {
-            font-family: "Metric";
-            src: url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Light.woff2") format('woff2'),
-                 url("https://www.hpe.com/content/dam/hpe/fonts/metric-hpe-web/MetricHPE-Web-Light.woff") format('woff');
+            font-family: "Graphik";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Extralight-Web.woff2") format('woff2');
+            font-weight: 100;
+          }
+          @font-face {
+            font-family: "GraphikXXCondensed";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Regular-Web.woff2") format('woff2');
+          }
+          @font-face {
+            font-family: "GraphikXXCondensed";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Regular-Web.woff2") format('woff2');
+            font-weight: 400;
+          }
+          @font-face {
+            font-family: "GraphikXXCondensed";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Bold-Web.woff2") format('woff2');
+            font-weight: 700;
+          }
+          @font-face {
+            font-family: "GraphikXXCondensed";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Semibold-Web.woff2") format('woff2');
+            font-weight: 600;
+          }
+          @font-face {
+            font-family: "GraphikXXCondensed";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Medium-Web.woff2") format('woff2');
+            font-weight: 500;
+          }
+          @font-face {
+            font-family: "GraphikXXCondensed";
+            src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Extralight-Web.woff2") format('woff2');
             font-weight: 100;
           }`,
         size: large.hpe.text.medium.fontSize,
@@ -639,8 +718,8 @@ const buildTheme = (tokens, flags) => {
           offset: global.hpe.focusIndicator.outlineOffset,
         },
         shadow: {
-          color: focusBoxShadowParts[focusBoxShadowParts.length - 1],
-          size: focusBoxShadowParts[focusBoxShadowParts.length - 2],
+          color: global.hpe.focusIndicator.boxShadow.color,
+          size: global.hpe.focusIndicator.boxShadow.spread,
           blur: '0px',
         },
         twoColor: true,
@@ -652,7 +731,7 @@ const buildTheme = (tokens, flags) => {
             offset: `-${global.hpe.focusIndicator.outline.width}`,
           },
           shadow: {
-            color: focusBoxShadowParts[focusBoxShadowParts.length - 1],
+            color: global.hpe.focusIndicator.boxShadow.color,
             size: '4px',
             blur: '0px',
             inset: true,
@@ -691,26 +770,14 @@ const buildTheme = (tokens, flags) => {
         // Naming in Figma file is strong/default/weak vs. Grommet t-shirt sizing.
         // As defined here, default is currently mapping to medium.
         light: {
-          small: elevationlight
-            ? elevationlight.hpe.elevation.small
-            : light.hpe.shadow.small,
-          medium: elevationlight
-            ? elevationlight.hpe.elevation.medium
-            : light.hpe.shadow.medium,
-          large: elevationlight
-            ? elevationlight.hpe.elevation.large
-            : light.hpe.shadow.large,
+          small: light.hpe.shadow.small,
+          medium: light.hpe.shadow.medium,
+          large: light.hpe.shadow.large,
         },
         dark: {
-          small: elevationdark
-            ? elevationdark.hpe.elevation.small
-            : dark.hpe.shadow.small,
-          medium: elevationdark
-            ? elevationdark.hpe.elevation.medium
-            : dark.hpe.shadow.medium,
-          large: elevationdark
-            ? elevationdark.hpe.elevation.large
-            : dark.hpe.shadow.large,
+          small: dark.hpe.shadow.small,
+          medium: dark.hpe.shadow.medium,
+          large: dark.hpe.shadow.large,
         },
       },
       hover: { background: 'background-hover', color: 'text-default' },
@@ -793,6 +860,9 @@ const buildTheme = (tokens, flags) => {
       },
       busy: {
         gap: 'xsmall',
+        icons: {
+          success: Checkmark,
+        },
       },
       'cta-primary': {
         ...buttonKindTheme.primary,
@@ -801,7 +871,7 @@ const buildTheme = (tokens, flags) => {
       },
       'cta-alternate': {
         ...buttonKindTheme.secondary,
-        icon: <Hpe color="brand" />,
+        icon: <Hpe />,
         reverse: true,
       },
       ...buttonKindTheme,
@@ -957,8 +1027,20 @@ const buildTheme = (tokens, flags) => {
           },
         },
       },
-      extend: ({ colorValue, theme }) => {
+      extend: ({ colorValue, theme, kind, disabled }) => {
         let style = '';
+        if ((kind === 'primary' || kind === 'cta-primary') && !disabled) {
+          // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
+          // not a long term solution. Also, reliance on !important is not ideal.
+          style += `color: ${getThemeColor(
+            'text-onStrong',
+            theme,
+          )} !important;`;
+          const iconColor = theme.dark
+            ? dark.hpe.color.icon.onStrong
+            : light.hpe.color.icon.onStrong;
+          style += `svg { stroke: ${iconColor}; fill: ${iconColor}; }`;
+        }
         if (colorValue) {
           // color prop is not recommended to be used, but providing
           // a better fallback behavior for hover styles to avoid
@@ -989,10 +1071,22 @@ const buildTheme = (tokens, flags) => {
           },
           font: { weight: global.hpe.fontWeight.medium },
         },
-        extend: '',
+        extend: ({ isSelected, theme }) =>
+          // grommet logic was incorrectly switching to wrong theme mode
+          // so overriding in extend
+          isSelected
+            ? `color: ${
+                theme.global.colors['text-onSelectedPrimaryStrong'][
+                  theme.dark ? 'dark' : 'light'
+                ]
+              };`
+            : '',
       },
       range: { background: 'background-selected-primary' },
-      icons: { next: Next, previous: Previous },
+      icons: {
+        next: Right,
+        previous: Left,
+      },
       small: {
         fontSize: '13.6px',
         lineHeight: 1.375,
@@ -1103,18 +1197,14 @@ const buildTheme = (tokens, flags) => {
           } else if (checked) {
             if (toggle) {
               borderColor = getThemeColor(
-                'transparent',
-                // incorrect token value to be updated in next minor hpe-design-tokens release
-                // components.hpe.switch.default.control.track.selected.hover
-                //   .borderColor,
+                components.hpe.switch.default.control.track.selected.hover
+                  .borderColor,
                 theme,
               );
             } else {
               borderColor = getThemeColor(
-                'transparent',
-                // incorrect token value to be updated in next minor hpe-design-tokens release
-                // components.hpe.checkbox.default.control.selected.hover
-                //   .borderColor,
+                components.hpe.checkbox.default.control.selected.hover
+                  .borderColor,
                 theme,
               );
             }
@@ -1154,9 +1244,7 @@ const buildTheme = (tokens, flags) => {
               theme,
             );
             borderColor = getThemeColor(
-              'transparent',
-              // incorrect token value to be updated in next minor hpe-design-tokens release
-              // components.hpe.checkbox.default.control.selected.rest.borderColor,
+              components.hpe.checkbox.default.control.selected.rest.borderColor,
               theme,
             );
           }
@@ -1406,6 +1494,10 @@ const buildTheme = (tokens, flags) => {
           gap: 'xsmall',
         },
       },
+      icons: {
+        close: Close,
+        filter: Filter,
+      },
       pad: 'medium',
       width: {
         min: 'medium',
@@ -1416,8 +1508,21 @@ const buildTheme = (tokens, flags) => {
         round:
           components.hpe.formField.default.medium.input.container.borderRadius,
       },
-      icon: { size: 'small' },
+      icon: {
+        calendar: Calendar,
+        size: 'small',
+      },
       button: { margin: 'xsmall' },
+    },
+    dataSearch: {
+      icons: {
+        search: Search,
+      },
+    },
+    dataSort: {
+      icons: {
+        control: Descend,
+      },
     },
     dataSummary: {
       margin: { vertical: '3xsmall' },
@@ -1445,6 +1550,16 @@ const buildTheme = (tokens, flags) => {
       },
       expand: {
         size: '5xsmall',
+      },
+      icons: {
+        ascending: () => <Descending size="large" />,
+        descending: () => <Ascending size="large" />,
+        contract: () => <Up height="medium" />,
+        expand: () => <Down height="medium" />,
+        sortable: () => <Unsorted size="large" />,
+        resizeIncrease: Add,
+        resizeDecrease: Subtract,
+        search: Search,
       },
       groupHeader: {
         // background: undefined,
@@ -1498,13 +1613,6 @@ const buildTheme = (tokens, flags) => {
           },
         },
       },
-      icons: {
-        ascending: () => <Descending size="large" />,
-        descending: () => <Ascending size="large" />,
-        contract: () => <Up height="medium" />,
-        expand: () => <Down height="medium" />,
-        sortable: () => <Unsorted size="large" />,
-      },
       pinned: {
         header: {
           background: { opacity: 'strong' },
@@ -1546,6 +1654,11 @@ const buildTheme = (tokens, flags) => {
     },
     distribution: { gap: '3xsmall' },
     dataTableColumns: {
+      icons: {
+        control: Splits,
+        pinned: Lock,
+        search: Search,
+      },
       tabs: {
         pad: 'xsmall',
       },
@@ -1589,7 +1702,10 @@ const buildTheme = (tokens, flags) => {
       },
       dragOver: { background: 'background-hover', border: 'none' },
       hover: { border: { color: 'border' } },
-      icons: { remove: Close },
+      icons: {
+        error: Alert,
+        remove: Close,
+      },
       label: { margin: 'xsmall', gap: '3xsmall' },
       message: { color: 'placeholder', margin: 'xsmall' },
       pad: { horizontal: '3xsmall' },
@@ -1729,6 +1845,12 @@ const buildTheme = (tokens, flags) => {
                     .borderColor
             }; `,
         },
+        icons: {
+          like: Like,
+          likeSelected: LikeFill,
+          dislike: Dislike,
+          dislikeSelected: DislikeFill,
+        },
       },
       starRating: {
         container: {
@@ -1768,9 +1890,7 @@ const buildTheme = (tokens, flags) => {
               .background,
         },
         container: { gap: '3xsmall' },
-        icon: (
-          <CircleAlert size="small" color={light.hpe.color.icon.critical} />
-        ),
+        icon: <Alert size="small" color={light.hpe.color.icon.critical} />,
         size: 'xsmall',
         color: components.hpe.formField.default.error.rest.textColor,
         margin: { bottom: '3xsmall', top: 'none', horizontal: 'none' },
@@ -1786,6 +1906,10 @@ const buildTheme = (tokens, flags) => {
         size: 'xsmall',
         color: components.hpe.formField.default.help.rest.color,
         margin: 'none',
+      },
+      icons: {
+        selected: StarFill,
+        unselected: Star,
       },
       info: {
         size: 'xsmall',
@@ -1810,120 +1934,119 @@ const buildTheme = (tokens, flags) => {
     heading: {
       color: 'text-heading',
       weight: large.hpe.heading.xlarge.fontWeight,
+      // medium size object per level is the default styling for the level
+      // and will apply when no `size` prop is applied to heading.
+      // if size prop is applied, we will apply the standardized heading size tokens.
       level: {
         1: {
-          font: { weight: large.hpe.heading.xlarge.fontWeight },
-          small: {
-            size: large.hpe.heading.large.fontSize,
-            height: large.hpe.heading.large.lineHeight,
+          font: {
+            weight: large.hpe.heading.xlarge.fontWeight,
           },
+          xsmall: undefined,
+          small: undefined,
           medium: {
             size: large.hpe.heading.xlarge.fontSize,
             height: large.hpe.heading.xlarge.lineHeight,
           },
-          large: {
-            size: '3rem', // 48px size prop not recommended but values supported for backwards compatibility
-            height: '3rem', // 48px size prop not recommended but values supported for backwards compatibility
-          },
-          xlarge: {
-            size: '3.75rem', // 60px size prop not recommended but values supported for backwards compatibility
-            height: '3.75rem', // 60px size prop not recommended but values supported for backwards compatibility
-          },
+          large: undefined,
+          xlarge: undefined,
         },
         2: {
-          font: { weight: large.hpe.heading.large.fontWeight },
-          small: {
-            size: large.hpe.heading.medium.fontSize,
-            height: large.hpe.heading.medium.lineHeight,
+          font: {
+            weight: large.hpe.heading.large.fontWeight,
           },
+          xsmall: undefined,
+          small: undefined,
           medium: {
             size: large.hpe.heading.large.fontSize,
             height: large.hpe.heading.large.lineHeight,
           },
-          large: {
-            size: large.hpe.heading.xlarge.fontSize,
-            height: large.hpe.heading.xlarge.lineHeight,
-          },
-          xlarge: { size: '3rem', height: '3rem' },
+          large: undefined,
+          xlarge: undefined,
         },
         3: {
-          font: { weight: large.hpe.heading.medium.fontWeight },
-          small: {
-            size: large.hpe.heading.small.fontSize,
-            height: large.hpe.heading.small.lineHeight,
+          font: {
+            weight: large.hpe.heading.medium.fontWeight,
           },
+          xsmall: undefined,
+          small: undefined,
           medium: {
             size: large.hpe.heading.medium.fontSize,
             height: large.hpe.heading.medium.lineHeight,
           },
-          large: {
-            size: large.hpe.heading.large.fontSize,
-            height: large.hpe.heading.large.lineHeight,
-          },
-          xlarge: {
-            size: large.hpe.heading.xlarge.fontSize,
-            height: large.hpe.heading.xlarge.lineHeight,
-          },
+          large: undefined,
+          xlarge: undefined,
         },
         4: {
-          font: { weight: large.hpe.heading.small.fontWeight },
-          small: {
-            size: large.hpe.heading.xsmall.fontSize,
-            height: large.hpe.heading.xsmall.lineHeight,
+          font: {
+            weight: large.hpe.heading.small.fontWeight,
           },
+          xsmall: undefined,
+          small: undefined,
           medium: {
             size: large.hpe.heading.small.fontSize,
             height: large.hpe.heading.small.lineHeight,
           },
-          large: {
-            size: large.hpe.heading.medium.fontSize,
-            height: large.hpe.heading.medium.lineHeight,
-          },
-          xlarge: {
-            size: large.hpe.heading.large.fontSize,
-            height: large.hpe.heading.large.lineHeight,
-          },
+          large: undefined,
+          xlarge: undefined,
         },
         5: {
-          font: { weight: large.hpe.heading.xsmall.fontWeight },
-          small: {
-            size: large.hpe.heading.xxsmall.fontSize,
-            height: large.hpe.heading.xxsmall.lineHeight,
+          font: {
+            weight: large.hpe.heading.xsmall.fontWeight,
           },
+          xsmall: undefined,
+          small: undefined,
           medium: {
             size: large.hpe.heading.xsmall.fontSize,
             height: large.hpe.heading.xsmall.lineHeight,
           },
-          large: {
-            size: large.hpe.heading.small.fontSize,
-            height: large.hpe.heading.small.lineHeight,
-          },
-          xlarge: {
-            size: large.hpe.heading.medium.fontSize,
-            height: large.hpe.heading.medium.lineHeight,
-          },
+          large: undefined,
+          xlarge: undefined,
         },
         6: {
-          font: { weight: large.hpe.heading.xxsmall.fontWeight },
-          small: {
-            size: large.hpe.heading.xxsmall.fontSize,
-            height: large.hpe.heading.xxsmall.lineHeight,
+          font: {
+            weight: large.hpe.heading.xxsmall.fontWeight,
           },
+          xsmall: undefined,
+          small: undefined,
           medium: {
             size: large.hpe.heading.xxsmall.fontSize,
             height: large.hpe.heading.xxsmall.lineHeight,
           },
-          large: {
-            size: large.hpe.heading.small.fontSize,
-            height: large.hpe.heading.small.lineHeight,
-          },
-          xlarge: {
-            size: large.hpe.heading.medium.fontSize,
-            height: large.hpe.heading.medium.lineHeight,
-          },
+          large: undefined,
+          xlarge: undefined,
         },
       },
-      extend: () => '',
+      extend: ({ size: headingSize, level, weight, responsive }) => {
+        let style = '';
+        let fontSize = '';
+        let lineHeight = '';
+        let fontWeight = '';
+        fontSize = large.hpe.heading[headingSize]?.fontSize;
+        lineHeight = large.hpe.heading[headingSize]?.lineHeight;
+        fontWeight = large.hpe.heading[headingSize]?.fontWeight;
+        if (fontWeight && !weight) style += `font-weight: ${fontWeight};`;
+        if (fontSize) style += `font-size: ${fontSize};`;
+        if (lineHeight) style += `line-height: ${lineHeight};`;
+        if (weight === 'bold') style += 'font-weight: 500;';
+        if (size) {
+          const responsiveSize = headingSize || headingLevelToSize[level || 1];
+          style += breakpointStyle(
+            localGlobal,
+            `
+              font-size: ${small.hpe.heading[responsiveSize].fontSize};
+              line-height: ${small.hpe.heading[responsiveSize].lineHeight};
+              ${
+                !weight
+                  ? `font-weight: ${small.hpe.heading[responsiveSize].fontWeight}`
+                  : ''
+              };
+            `,
+            responsive,
+          );
+        }
+        return style;
+      },
     },
     icon: {
       disableScaleDown: true,
@@ -2016,6 +2139,9 @@ const buildTheme = (tokens, flags) => {
           vertical: components.hpe.menu.default.medium.item.paddingY,
         },
       },
+    },
+    meter: {
+      gap: '5xsmall',
     },
     nameValueList: {
       gap: {
@@ -2716,7 +2842,9 @@ const buildTheme = (tokens, flags) => {
         xlarge: components.hpe.element?.xlarge.minHeight,
       },
     },
-    starRating: { color: 'background-selected-primary-strong' },
+    starRating: {
+      color: 'background-selected-primary-strong',
+    },
     tab: {
       color: 'text',
       active: {
@@ -2768,8 +2896,14 @@ const buildTheme = (tokens, flags) => {
               background: ${getThemeColor('border-selected', theme)};
             }
         }`,
-        previousButton: { pad: { vertical: '3xsmall', horizontal: 'xsmall' } },
-        nextButton: { pad: { vertical: '3xsmall', horizontal: 'xsmall' } },
+        previousButton: {
+          icon: Left,
+          pad: { vertical: '3xsmall', horizontal: 'xsmall' },
+        },
+        nextButton: {
+          icon: Right,
+          pad: { vertical: '3xsmall', horizontal: 'xsmall' },
+        },
       },
       nextButton: {
         pad: { horizontal: 'xsmall', vertical: '3xsmall' },
@@ -2910,6 +3044,9 @@ const buildTheme = (tokens, flags) => {
             };
           }
         `,
+      },
+      icons: {
+        copy: Copy,
       },
       suggestions: {
         extend: ({ theme }) => `
