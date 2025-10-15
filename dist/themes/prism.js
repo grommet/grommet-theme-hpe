@@ -10,101 +10,104 @@ var _colors = require("./colors");
 
 var colors = {
   atrule: {
-    dark: _colors.colors.orange.light,
-    light: _colors.colors.orange.dark
+    dark: _grommet.primitives.hpe.base.color['fuschia-200'],
+    light: _grommet.primitives.hpe.base.color['fuschia-700']
   },
   'attr-name': {
-    dark: _colors.colors['teal!'],
-    light: _colors.colors.teal.dark
+    dark: _grommet.primitives.hpe.base.color['plum-100'],
+    light: _grommet.primitives.hpe.base.color['plum-600']
   },
   'attr-value': {
-    dark: _colors.colors.orange.light,
-    light: _colors.colors.orange.dark
+    dark: _grommet.primitives.hpe.base.color['fuschia-200'],
+    light: _grommet.primitives.hpe.base.color['fuschia-700']
   },
   background: {
     dark: 'black',
     light: _colors.colors['background-contrast'].light
   },
   "boolean": {
-    dark: _colors.colors['teal!'],
-    light: _colors.colors.teal.dark
+    dark: _grommet.primitives.hpe.base.color['plum-100'],
+    light: _grommet.primitives.hpe.base.color['plum-600']
   },
   'class-name': {
-    dark: _colors.colors['status-critical'].light,
-    light: _colors.colors.red.dark
+    dark: _grommet.primitives.hpe.base.color['coral-200'],
+    light: _grommet.primitives.hpe.base.color['coral-500']
   },
   builtin: {
-    dark: _colors.colors['teal!'],
-    light: _colors.colors.teal.dark
+    dark: _grommet.primitives.hpe.base.color['plum-100'],
+    light: _grommet.primitives.hpe.base.color['plum-600']
   },
   "char": {
-    dark: _colors.colors['teal!'],
-    light: _colors.colors.teal.dark
+    dark: _grommet.primitives.hpe.base.color['plum-100'],
+    light: _grommet.primitives.hpe.base.color['plum-600']
   },
-  code: _colors.colors.text,
+  code: {
+    dark: _grommet.dark.hpe.color.text["default"],
+    light: _grommet.light.hpe.color.text["default"]
+  },
   comment: {
-    dark: _colors.colors.green.light,
+    dark: _grommet.primitives.hpe.base.color['green-550'],
     light: _grommet.primitives.hpe.base.color['green-800']
   },
   entity: {
-    dark: _colors.colors.blue.light,
-    light: _colors.colors.blue.dark
+    dark: _grommet.primitives.hpe.base.color['blue-200'],
+    light: _grommet.primitives.hpe.base.color['blue-700']
   },
   "function": {
-    dark: _colors.colors['status-critical'].light,
-    light: _colors.colors.red.dark
+    dark: _grommet.primitives.hpe.base.color['coral-200'],
+    light: _grommet.primitives.hpe.base.color['coral-500']
   },
   important: {
-    dark: _colors.colors.orange.light,
-    light: _colors.colors.orange.dark
+    dark: _grommet.primitives.hpe.base.color['fuschia-200'],
+    light: _grommet.primitives.hpe.base.color['fuschia-700']
   },
   inserted: {
-    dark: _colors.colors['teal!'],
-    light: _colors.colors.teal.dark
+    dark: _grommet.primitives.hpe.base.color['plum-100'],
+    light: _grommet.primitives.hpe.base.color['plum-600']
   },
   keyword: {
-    dark: _colors.colors.blue.light,
-    light: _colors.colors.blue.dark
+    dark: _grommet.primitives.hpe.base.color['blue-200'],
+    light: _grommet.primitives.hpe.base.color['blue-700']
   },
   'maybe-class-name': {
-    dark: _colors.colors.purple.light,
-    light: _colors.colors['purple!']
+    dark: _grommet.primitives.hpe.base.color['purple-200'],
+    light: _grommet.primitives.hpe.base.color['purple-700']
   },
   number: {
-    dark: _colors.colors['teal!'],
-    light: _colors.colors.teal.dark
+    dark: _grommet.primitives.hpe.base.color['plum-100'],
+    light: _grommet.primitives.hpe.base.color['plum-600']
   },
   operator: {
-    dark: _colors.colors.orange.light,
-    light: _colors.colors.orange.dark
+    dark: _grommet.primitives.hpe.base.color['fuschia-200'],
+    light: _grommet.primitives.hpe.base.color['fuschia-700']
   },
   regex: {
-    dark: _colors.colors.orange.light,
-    light: _colors.colors.orange.dark
+    dark: _grommet.primitives.hpe.base.color['fuschia-200'],
+    light: _grommet.primitives.hpe.base.color['fuschia-700']
   },
   selector: {
-    dark: _colors.colors['teal!'],
-    light: _colors.colors.teal.dark
+    dark: _grommet.primitives.hpe.base.color['plum-100'],
+    light: _grommet.primitives.hpe.base.color['plum-600']
   },
   string: {
-    dark: _colors.colors['teal!'],
-    light: _colors.colors.teal.dark
+    dark: _grommet.primitives.hpe.base.color['plum-100'],
+    light: _grommet.primitives.hpe.base.color['plum-600']
   },
   url: {
-    dark: _colors.colors.blue.light,
-    light: _colors.colors.blue.dark
+    dark: _grommet.primitives.hpe.base.color['blue-200'],
+    light: _grommet.primitives.hpe.base.color['blue-700']
   },
   variable: {
-    dark: _colors.colors.blue.light,
-    light: _colors.colors.blue.dark
+    dark: _grommet.primitives.hpe.base.color['blue-200'],
+    light: _grommet.primitives.hpe.base.color['blue-700']
   },
   '.language-css .token.string': {
-    dark: _colors.colors.blue.light,
-    light: _colors.colors.blue.dark
+    dark: _grommet.primitives.hpe.base.color['blue-200'],
+    light: _grommet.primitives.hpe.base.color['blue-700']
   },
   '.style .token.string': {
-    dark: _colors.colors.blue.light,
-    light: _colors.colors.blue.dark
+    dark: _grommet.primitives.hpe.base.color['blue-200'],
+    light: _grommet.primitives.hpe.base.color['blue-700']
   }
 };
 

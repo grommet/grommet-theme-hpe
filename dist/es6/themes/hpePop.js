@@ -1,4 +1,5 @@
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+import { light, dark } from 'hpe-design-tokens/grommet';
 import { hpe } from './hpe';
 export var isObject = function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
@@ -29,53 +30,279 @@ var _deepMerge = function deepMerge(target) {
   return output;
 };
 export { _deepMerge as deepMerge };
+var getThemeColor = function getThemeColor(color, theme) {
+  var _theme$global$colors$;
+  return typeof theme.global.colors[color] === 'string' ? theme.global.colors[color] : ((_theme$global$colors$ = theme.global.colors[color]) == null ? void 0 : _theme$global$colors$[theme.dark ? 'dark' : 'light']) || color;
+};
+var defaultPad = {
+  small: {
+    horizontal: '23px',
+    vertical: '15px',
+    iconOnly: '19px'
+  },
+  medium: {
+    horizontal: '35px',
+    vertical: '19px',
+    iconOnly: '21px'
+  },
+  large: {
+    horizontal: '39px',
+    vertical: '21px',
+    iconOnly: '23px'
+  }
+};
+var createButtonSizes = function createButtonSizes(size) {
+  return {
+    "default": {
+      pad: {
+        horizontal: defaultPad[size].horizontal,
+        vertical: defaultPad[size].vertical
+      }
+    },
+    secondary: {
+      pad: {
+        // adjustment needed to accommodate border
+        horizontal: parseInt(defaultPad[size].horizontal, 10) - 3 + "px",
+        vertical: parseInt(defaultPad[size].vertical, 10) - 3 + "px"
+      }
+    },
+    primary: {
+      pad: {
+        horizontal: defaultPad[size].horizontal,
+        vertical: defaultPad[size].vertical
+      }
+    },
+    toolbar: {
+      pad: {
+        horizontal: defaultPad[size].vertical,
+        vertical: defaultPad[size].vertical
+      }
+    },
+    iconOnly: {
+      pad: {
+        horizontal: defaultPad[size].iconOnly,
+        vertical: defaultPad[size].iconOnly
+      },
+      secondary: {
+        pad: {
+          // adjustment needed to accommodate border
+          horizontal: parseInt(defaultPad[size].iconOnly, 10) - 3 + "px",
+          vertical: parseInt(defaultPad[size].iconOnly, 10) - 3 + "px"
+        }
+      }
+    }
+  };
+};
+var popButtonSizes = {
+  small: createButtonSizes('small'),
+  medium: createButtonSizes('medium'),
+  large: createButtonSizes('large')
+};
+var buttonStates = ['hover', 'active', 'disabled'];
+var buttonStatesTheme = {};
+buttonStates.forEach(function (state) {
+  buttonStatesTheme[state] = {};
+  if (state === 'active') {
+    buttonStatesTheme[state].secondary = {
+      background: {
+        color: 'transparent'
+      },
+      border: {
+        color: 'brand'
+      },
+      color: 'text-strong',
+      font: {
+        weight: 500
+      }
+    };
+    if (!('active' in buttonStatesTheme.hover)) buttonStatesTheme.hover.active = {};
+    buttonStatesTheme.hover[state].secondary = {
+      background: {
+        color: 'transparent'
+      },
+      border: {
+        color: 'brand'
+      },
+      color: 'text-strong',
+      font: {
+        weight: 500
+      }
+    };
+  } else if (state === 'disabled') {
+    buttonStatesTheme[state].secondary = {
+      background: 'transparent',
+      border: {
+        color: 'border-disabled'
+      },
+      color: 'text-disabled',
+      font: {
+        weight: 500
+      }
+    };
+  } else {
+    buttonStatesTheme[state].secondary = {
+      background: 'transparent',
+      border: {
+        width: '4px',
+        color: 'border-selected'
+      },
+      color: 'text-strong',
+      font: {
+        weight: 500
+      }
+    };
+  }
+});
 export var hpePop = _deepMerge(hpe, {
+  anchor: {
+    textDecoration: 'none',
+    size: {
+      xsmall: {
+        textDecoration: 'none'
+      },
+      small: {
+        textDecoration: 'none'
+      },
+      medium: {
+        textDecoration: 'none'
+      },
+      large: {
+        textDecoration: 'none'
+      },
+      xlarge: {
+        textDecoration: 'none'
+      },
+      xxlarge: {
+        textDecoration: 'none'
+      },
+      '3xl': {
+        textDecoration: 'none'
+      },
+      '4xl': {
+        textDecoration: 'none'
+      },
+      '5xl': {
+        textDecoration: 'none'
+      },
+      '6xl': {
+        textDecoration: 'none'
+      }
+    }
+  },
+  button: {
+    secondary: {
+      background: 'transparent',
+      border: {
+        width: '4px',
+        color: 'brand',
+        radius: 'full'
+      },
+      color: 'text-strong',
+      font: {
+        weight: '500'
+      }
+    },
+    active: _extends({}, hpe.button.active, buttonStatesTheme.active),
+    disabled: _extends({}, hpe.button.disabled, buttonStatesTheme.disabled),
+    hover: _extends({}, hpe.button.hover, buttonStatesTheme.hover),
+    size: _extends({}, popButtonSizes),
+    extend: function extend(_ref) {
+      var sizeProp = _ref.sizeProp,
+        hasLabel = _ref.hasLabel,
+        hasIcon = _ref.hasIcon,
+        kind = _ref.kind,
+        theme = _ref.theme,
+        colorValue = _ref.colorValue,
+        disabled = _ref.disabled;
+      var style = '';
+      if (sizeProp === 'large')
+        // 24px, 28px (custom instead of "large" text size)
+        style += 'font-size: 1.5rem; line-height: 1.75rem;';else if (sizeProp === 'medium') style += 'line-height: 1.5rem;'; // 24px (custom instead of "medium" line-height)
+      // Grommet doesn't support kind-specific iconOnly padding, so we define it here.
+      if (kind === 'secondary' && hasIcon && !hasLabel) {
+        style += "padding: " + popButtonSizes[sizeProp].iconOnly.secondary.pad.vertical + ";";
+      }
+      if (kind === 'primary' && !disabled) {
+        // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
+        // not a long term solution. Also, reliance on !important is not ideal.
+        style += "color: " + getThemeColor('text-onPrimaryStrong', theme) + " !important;";
+        var iconColor = theme.dark ? dark.hpe.color.icon.onPrimaryStrong : light.hpe.color.icon.onPrimaryStrong;
+        style += "svg { stroke: " + iconColor + "; fill: " + iconColor + "; }";
+      }
+      if (colorValue) {
+        // color prop is not recommended to be used, but providing
+        // a better fallback behavior for hover styles to avoid
+        // "kind" hover background from applying
+        // https://github.com/grommet/grommet/issues/7504
+        style += "\n          &:hover { background: " + getThemeColor(colorValue, theme) + "; }\n        ";
+      }
+      return style;
+    }
+  },
+  icon: {
+    size: {
+      small: '16px',
+      medium: '20px',
+      large: '24px'
+    }
+  },
   heading: {
     color: 'text-strong',
-    weight: 400,
+    weight: 500,
     level: {
       1: {
-        font: {
-          weight: 400
-        },
         small: {
           size: '3rem',
           // 48px
           height: '3rem' // 48px
         },
         medium: {
-          size: '4.5rem',
-          // 72px
-          height: '4.5rem' // 72px
+          size: '4.25rem',
+          // 68px
+          height: '4.625rem' // 74px
         },
         large: {
+          size: '5.25rem',
+          // 84px
+          height: '5.625rem' // 90px
+        },
+        xlarge: {
+          // Heading condensed
           size: '6rem',
           // 96px
           height: '6rem' // 96px
         },
-        xlarge: {
-          size: '7.5rem',
-          // 120px
-          height: '7.5rem' // 120px
+        xxlarge: {
+          // Heading large condensed
+          size: '7rem',
+          // 112px
+          height: '7rem' // 112px
         }
       },
       2: {
         small: {
           size: '2.25rem',
           // 36px
-          height: '2.25rem' // 36px
+          height: '2.625rem' // 42px
         },
         medium: {
-          size: '3rem',
-          // 48px
-          height: '3rem' // 48px
+          size: '3.25rem',
+          // 52px
+          height: '3.625rem' // 58px
         },
         large: {
-          size: '4.5rem',
-          // 72px
-          height: '4.5rem' // 72px
+          size: '4.25rem',
+          // 68px
+          height: '4.625rem' // 74px
         },
         xlarge: {
+          // Heading condensed
+          size: '5.25rem',
+          // 84px
+          height: '5.625rem' // 90px
+        },
+        xxlarge: {
+          // Heading large condensed
           size: '6rem',
           // 96px
           height: '6rem' // 96px
@@ -83,192 +310,200 @@ export var hpePop = _deepMerge(hpe, {
       },
       3: {
         small: {
-          size: '1.5rem',
-          // 24px
-          height: '1.5rem' // 24px
+          size: '1.75rem',
+          // 28px
+          height: '2.125rem' // 34px
         },
         medium: {
           size: '2.25rem',
           // 36px
-          height: '2.25rem' // 36px
+          height: '2.625rem' // 42px
         },
         large: {
-          size: '3rem',
-          // 48px
-          height: '3rem' // 48px
+          size: '3.25rem',
+          // 52px
+          height: '3.625rem' // 58px
         },
         xlarge: {
-          size: '4.5rem',
-          // 72px
-          height: '4.5rem' // 72px
+          // Heading condensed
+          size: '4.25rem',
+          // 68px
+          height: '4.625rem' // 74px
+        },
+        xxlarge: {
+          // Heading large condensed
+          size: '5.25rem',
+          // 84px
+          height: '5.625rem' // 90px
         }
       },
       4: {
-        font: {
-          weight: 500
-        },
         small: {
-          size: '1.125rem',
-          // 18px
-          height: '1.125rem' // 18px
+          size: '1.25rem',
+          // 20px
+          height: '1.625rem' // 26px
         },
         medium: {
-          size: '1.5rem',
-          // 24px
-          height: '1.5rem' // 24px
+          size: '1.75rem',
+          // 28px
+          height: '2.125rem' // 34px
         },
         large: {
           size: '2.25rem',
           // 36px
-          height: '2.25rem' // 36px
+          height: '2.625rem' // 42px
         },
         xlarge: {
-          size: '3rem',
-          // 48px
-          height: '3rem' // 48px
+          size: '3.25rem',
+          // 52px
+          height: '3.625rem' // 58px
         }
       },
       5: {
-        font: {
-          weight: 500
-        },
         small: {
           size: '1rem',
           // 16px
-          height: '1rem' // 16px
+          height: '1.375rem' // 22px
         },
         medium: {
-          size: '1.125rem',
-          // 18px
-          height: '1.125rem' // 18px
+          size: '1.25rem',
+          // 20px
+          height: '1.625rem' // 26px
         },
         large: {
-          size: '1.5rem',
-          // 24px
-          height: '1.5rem' // 24px
+          size: '1.75rem',
+          // 28px
+          height: '2.125rem' // 34px
         },
         xlarge: {
           size: '2.25rem',
           // 36px
-          height: '2.25rem' // 36px
+          height: '2.625rem' // 42px
         }
       },
       6: {
-        font: {
-          weight: 500
-        },
         small: {
-          size: '0.875rem',
-          // 14px
-          height: '0.875rem' // 14px
+          size: '1rem',
+          // 16px
+          height: '1.375rem' // 22px
         },
         medium: {
           size: '1rem',
           // 16px
-          height: '1rem' // 16px
+          height: '1.375rem' // 22px
         },
         large: {
-          size: '1.125rem',
-          // 18px
-          height: '1.125rem' // 18px
+          size: '1.25rem',
+          // 20px
+          height: '1.625rem' // 26px
         },
         xlarge: {
-          size: '1.5rem',
-          // 24px
-          height: '1.5rem' // 24px
+          size: '1.75rem',
+          // 28px
+          height: '2.125rem' // 34px
         }
       }
     },
-    extend: function extend(_ref) {
-      var level = _ref.level,
-        size = _ref.size;
-      var fontWeight = '';
-      if (level === 3 && size === 'small') {
-        fontWeight = 'font-weight: 500;';
-      } else if (level === 4 && ['large', 'xlarge'].includes(size)) {
-        fontWeight = 'font-weight: 400;';
-      } else if (level === 5 && size === 'xlarge') {
-        fontWeight = 'font-weight: 400;';
-      } else if (level === 6 && size === 'small') {
-        fontWeight = 'font-weight: 600;';
+    extend: function extend(_ref2) {
+      var level = _ref2.level,
+        size = _ref2.size;
+      var fontStyle = '';
+      // Brand direction makes use of Graphik Condensed font for marquee page titles
+      // Reserving H1 xlarge and xxlarge sizes for Condensed.
+      // Levels 2 and 3 are included for how Grommet handles responsive typography,
+      // for example enabling an H1 xlarge to downsize to an H2 xlarge at a breakpoint.
+      if ([1, 2, 3].includes(level) && ['xlarge', 'xxlarge'].includes(size)) {
+        fontStyle = "\n          font-weight: 700; \n          font-family: GraphikXXCondensed;\n          text-transform: uppercase;\n        ";
       }
-      return fontWeight;
+      return fontStyle;
     }
   },
   paragraph: {
-    small: {
-      size: '1rem',
-      // 16px
+    xsmall: {
+      // disclaimer
+      size: '0.875rem',
+      // 14px
       height: '1.25rem' // 20px
     },
-    medium: {
-      size: '1.125rem',
-      // 18px
-      height: '1.375rem' // 22px
+    small: {
+      // small body
+      size: '1rem',
+      // 16px
+      height: '1.5rem' // 24px
     },
-    large: {
-      size: '1.5rem',
-      // 24px
+    medium: {
+      // body
+      size: '1.25rem',
+      // 20px
       height: '1.875rem' // 30px
     },
+    large: {
+      // large body
+      size: '1.75rem',
+      // 28px
+      height: '2.375rem' // 38px
+    },
     xlarge: {
+      // small quote
       size: '2.25rem',
       // 36px
-      height: '2.625rem' // 42px
+      height: '2.875rem' // 46px
     },
     xxlarge: {
-      size: '2.625rem',
-      // 42px
-      height: '3rem' // 48px
+      // quote
+      size: '2.75rem',
+      // 44px
+      height: '3.375rem' // 54px
     },
-    extend: function extend(_ref2) {
-      var size = _ref2.size;
-      if (['large', 'xlarge', 'xxlarge'].includes(size)) return 'font-weight: 300;';
-      return '';
+    xxxlarge: {
+      // large quote
+      size: '3.25rem',
+      // 52px
+      height: '3.875rem' // 62px
     }
   },
   text: {
     xsmall: {
-      // weight needs to be modified at the size level
+      // disclaimer
       size: '0.875rem',
       // 14px
-      height: '1.125rem' // 18px
-    },
-    small: {
-      // weight needs to be modified at the size level
-      size: '1rem',
-      // 16px
       height: '1.25rem' // 20px
     },
-    medium: {
-      // weight needs to be modified at the size level
-      size: '1.125rem',
-      // 18px
-      height: '1.375rem' // 22px
+    small: {
+      // small body
+      size: '1rem',
+      // 16px
+      height: '1.5rem' // 24px
     },
-    large: {
-      // weight needs to be modified at the size level by bumping down to 300
-      size: '1.5rem',
-      // 24px
+    medium: {
+      // body
+      size: '1.25rem',
+      // 20px
       height: '1.875rem' // 30px
     },
+    large: {
+      // large body
+      size: '1.75rem',
+      // 28px
+      height: '2.375rem' // 38px
+    },
     xlarge: {
-      // weight needs to be modified at the size level by bumping down to 300
+      // small quote
       size: '2.25rem',
       // 36px
-      height: '2.625rem' // 42px
+      height: '2.875rem' // 46px
     },
-    // xxlarge is not part of Chris's type exploration
     xxlarge: {
-      // weight needs to be modified at the size level by bumping down to 300
-      size: '2.625rem',
-      // 42px
-      height: '3rem' // 48px
+      // quote
+      size: '2.75rem',
+      // 44px
+      height: '3.375rem' // 54px
     },
-    extend: function extend(_ref3) {
-      var size = _ref3.size;
-      if (['large', 'xlarge', 'xxlarge', '3xl', '4xl', '5xl', '6xl'].includes(size)) return 'font-weight: 300;';
-      return '';
+    xxxlarge: {
+      // large quote
+      size: '3.25rem',
+      // 52px
+      height: '3.875rem' // 62px
     }
   }
 });
