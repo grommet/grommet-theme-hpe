@@ -1,5 +1,52 @@
 # grommet-theme-hpe
 
+## 8.0.0
+
+### Major Changes
+
+- 9c761b7: Updated `hpe-design-tokens` dependency from `~1.4.0` to `^2.1.0` which introduces NEW look and feel.
+
+- Updated `grommet` peerDependency from `^2.49.0` to `^2.50.0`.
+
+- 9c761b7: Dropped support for `styled-components` v5.
+
+- Removed `grommet-icons` peer dependency.
+
+- Added `@hpe-design/icons-grommet` peer dependency.
+
+- Updated theme to use new icons from `@hpe-design/icons-grommet`.
+
+- 9c761b7: Removed the following colors from the theme:
+  - `decorative-red`
+  - `red`
+  - `red!`
+  - `decorative-orange`
+  - `orange`
+  - `orange!`
+  - `decorative-yellow`
+  - `yellow`
+  - `yellow!`
+  - `decorative-teal`
+  - `teal`
+  - `teal!`
+
+  These colors are no longer supported and should be replaced with other theme colors.
+
+- Added `decorative-cyan` color to the theme.
+
+- Adjusted the prism theme colors for use with code blocks syntax highlighting.
+
+- Adjusted heading font sizes so that `xxsmall`, `xsmall`, `small`, `large`, and `xlarge` stay consistent across all heading levels.
+  - `xxsmall` = 14px (exported as em)
+  - `xsmall` = 16px (exported as em)
+  - `small` = 18px (exported as em)
+  - `large` = 24px (exported as em)
+  - `xlarge` = 32px (exported as em)
+
+- Changed to new typeface, Graphik, which replaces HPE Metric.
+
+- 9c761b7: Updated Text and Heading such that passing `weight="bold"` will resolve to theme-defined weight of 500. This enables the concept of "bold" to be theme-driven. For use cases that need the font-face's true bold, numeric font-weights 800 can be used and won't be overridden.
+
 ## 7.0.2
 
 - Fixed t-shirt size mapping of `dataTable.resize.padding.vertical` to `3xsmall`. (https://github.com/grommet/grommet-theme-hpe/pull/538)
