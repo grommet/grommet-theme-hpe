@@ -2022,23 +2022,37 @@ const buildTheme = (tokens, flags) => {
         let fontSize = '';
         let lineHeight = '';
         let fontWeight = '';
-        fontSize = large.hpe.heading[headingSize]?.fontSize;
-        lineHeight = large.hpe.heading[headingSize]?.lineHeight;
-        fontWeight = large.hpe.heading[headingSize]?.fontWeight;
+
+        // Add fallback to 'medium' if headingSize doesn't exist in tokens
+        const fallbackHeadingSize =
+          headingSize && large.hpe.heading[headingSize]
+            ? headingSize
+            : 'medium';
+
+        fontSize = large.hpe.heading[fallbackHeadingSize]?.fontSize;
+        lineHeight = large.hpe.heading[fallbackHeadingSize]?.lineHeight;
+        fontWeight = large.hpe.heading[fallbackHeadingSize]?.fontWeight;
+
         if (fontWeight && !weight) style += `font-weight: ${fontWeight};`;
         if (fontSize) style += `font-size: ${fontSize};`;
         if (lineHeight) style += `line-height: ${lineHeight};`;
         if (weight === 'bold') style += 'font-weight: 500;';
         if (size) {
           const responsiveSize = headingSize || headingLevelToSize[level || 1];
+          // Add same fallback logic for responsive sizing
+          const fallbackResponsiveSize =
+            responsiveSize && small.hpe.heading[responsiveSize]
+              ? responsiveSize
+              : 'medium';
+
           style += breakpointStyle(
             localGlobal,
             `
-              font-size: ${small.hpe.heading[responsiveSize].fontSize};
-              line-height: ${small.hpe.heading[responsiveSize].lineHeight};
+              font-size: ${small.hpe.heading[fallbackResponsiveSize].fontSize};
+              line-height: ${small.hpe.heading[fallbackResponsiveSize].lineHeight};
               ${
                 !weight
-                  ? `font-weight: ${small.hpe.heading[responsiveSize].fontWeight}`
+                  ? `font-weight: ${small.hpe.heading[fallbackResponsiveSize].fontWeight}`
                   : ''
               };
             `,
