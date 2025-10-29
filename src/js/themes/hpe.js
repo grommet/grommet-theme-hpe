@@ -37,6 +37,12 @@ import { Descending } from '@hpe-design/icons-grommet/icons/Descending';
 import { Down } from '@hpe-design/icons-grommet/icons/Down';
 import { Unsorted } from '@hpe-design/icons-grommet/icons/Unsorted';
 import { Up } from '@hpe-design/icons-grommet/icons/Up';
+import { Pin } from '@hpe-design/icons-grommet/icons/Pin';
+import { StatusWarning } from '@hpe-design/icons-grommet/icons/StatusWarning';
+import { StatusGood } from '@hpe-design/icons-grommet/icons/StatusGood';
+import { StatusUnknown } from '@hpe-design/icons-grommet/icons/StatusUnknown';
+import { Info } from '@hpe-design/icons-grommet/icons/Info';
+import { StatusCritical } from '@hpe-design/icons-grommet/icons/StatusCritical';
 
 import { backgrounds } from './backgrounds';
 import { colors } from './colors';
@@ -1086,6 +1092,10 @@ const buildTheme = (tokens, flags) => {
       icons: {
         next: Right,
         previous: Left,
+        small: {
+          previous: Left,
+          next: Right,
+        },
       },
       small: {
         fontSize: '13.6px',
@@ -1165,6 +1175,11 @@ const buildTheme = (tokens, flags) => {
     },
     cards: { grid: { columns: 'xsmall', gap: 'medium' } },
     carousel: {
+      icons: {
+        current: Subtract,
+        next: Right,
+        previous: Left,
+      },
       disabled: {
         icons: {
           color: 'icon-disabled',
@@ -2087,6 +2102,11 @@ const buildTheme = (tokens, flags) => {
         gap: 'medium',
       },
       primaryKey: { weight: global.hpe.fontWeight.medium },
+      icons: {
+        down: Down,
+        up: Up,
+        pin: Pin,
+      },
     },
     maskedInput: {
       container: {
@@ -2206,6 +2226,7 @@ const buildTheme = (tokens, flags) => {
         weight: global.hpe.fontWeight.medium,
       },
       critical: {
+        icon: StatusCritical,
         background: 'background-critical',
         color: 'icon-critical',
         message: { color: 'text-onCritical' },
@@ -2222,6 +2243,7 @@ const buildTheme = (tokens, flags) => {
         },
       },
       warning: {
+        icon: StatusWarning,
         background: 'background-warning',
         color: 'icon-warning',
         message: { color: 'text-onWarning' },
@@ -2238,6 +2260,7 @@ const buildTheme = (tokens, flags) => {
         },
       },
       normal: {
+        icon: StatusGood,
         background: 'background-ok',
         color: 'icon-ok',
         message: { color: 'text-onOk' },
@@ -2254,6 +2277,7 @@ const buildTheme = (tokens, flags) => {
         },
       },
       unknown: {
+        icon: StatusUnknown,
         background: 'background-unknown',
         color: 'icon-unknown',
         message: { color: 'text-onUnknown' },
@@ -2270,6 +2294,7 @@ const buildTheme = (tokens, flags) => {
         },
       },
       info: {
+        icon: Info,
         background: 'background-info',
         color: 'icon-info',
         message: { color: 'text-onInfo' },
@@ -2286,6 +2311,7 @@ const buildTheme = (tokens, flags) => {
         },
       },
       undefined: {
+        icon: StatusUnknown,
         background: 'background-unknown',
         message: { color: 'text-onUnknown' },
         title: { color: 'text-onUnknown-strong' },
@@ -2548,6 +2574,10 @@ const buildTheme = (tokens, flags) => {
       },
       controls: {
         gap: '5xsmall',
+      },
+      icons: {
+        next: Right,
+        previous: Left,
       },
       step: {
         container: {
