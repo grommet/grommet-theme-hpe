@@ -2294,7 +2294,7 @@ const buildTheme = (tokens, flags) => {
         },
       },
       info: {
-        icon: Info,
+        icon: StatusInfo,
         background: 'background-info',
         color: 'icon-info',
         message: { color: 'text-onInfo' },
