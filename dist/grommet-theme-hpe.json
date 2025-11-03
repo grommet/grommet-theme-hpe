@@ -1717,7 +1717,11 @@
     },
     "icons": {
       "next": {},
-      "previous": {}
+      "previous": {},
+      "small": {
+        "previous": {},
+        "next": {}
+      }
     },
     "small": {
       "fontSize": "13.6px",
@@ -1848,6 +1852,11 @@
     }
   },
   "carousel": {
+    "icons": {
+      "current": {},
+      "next": {},
+      "previous": {}
+    },
     "disabled": {
       "icons": {
         "color": "icon-disabled"
@@ -2502,6 +2511,11 @@
     },
     "primaryKey": {
       "weight": 500
+    },
+    "icons": {
+      "down": {},
+      "up": {},
+      "pin": {}
     }
   },
   "maskedInput": {
@@ -2627,6 +2641,7 @@
       "weight": 500
     },
     "critical": {
+      "icon": {},
       "background": "background-critical",
       "color": "icon-critical",
       "message": {
@@ -2655,6 +2670,7 @@
       }
     },
     "warning": {
+      "icon": {},
       "background": "background-warning",
       "color": "icon-warning",
       "message": {
@@ -2683,6 +2699,7 @@
       }
     },
     "normal": {
+      "icon": {},
       "background": "background-ok",
       "color": "icon-ok",
       "message": {
@@ -2711,6 +2728,7 @@
       }
     },
     "unknown": {
+      "icon": {},
       "background": "background-unknown",
       "color": "icon-unknown",
       "message": {
@@ -2767,6 +2785,7 @@
       }
     },
     "undefined": {
+      "icon": {},
       "background": "background-unknown",
       "message": {
         "color": "text-onUnknown"
@@ -3205,6 +3224,10 @@
     },
     "controls": {
       "gap": "5xsmall"
+    },
+    "icons": {
+      "next": {},
+      "previous": {}
     },
     "step": {
       "container": {

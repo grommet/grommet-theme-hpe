@@ -31,6 +31,12 @@ import { Descending } from '@hpe-design/icons-grommet/icons/Descending';
 import { Down } from '@hpe-design/icons-grommet/icons/Down';
 import { Unsorted } from '@hpe-design/icons-grommet/icons/Unsorted';
 import { Up } from '@hpe-design/icons-grommet/icons/Up';
+import { Pin } from '@hpe-design/icons-grommet/icons/Pin';
+import { StatusWarning } from '@hpe-design/icons-grommet/icons/StatusWarning';
+import { StatusGood } from '@hpe-design/icons-grommet/icons/StatusGood';
+import { StatusUnknown } from '@hpe-design/icons-grommet/icons/StatusUnknown';
+import { StatusInfo } from '@hpe-design/icons-grommet/icons/Info';
+import { StatusCritical } from '@hpe-design/icons-grommet/icons/StatusCritical';
 import { backgrounds } from './backgrounds';
 import { colors } from './colors';
 function Hpe() {
@@ -961,7 +967,11 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       icons: {
         next: Right,
-        previous: Left
+        previous: Left,
+        small: {
+          previous: Left,
+          next: Right
+        }
       },
       small: {
         fontSize: '13.6px',
@@ -1095,6 +1105,11 @@ var buildTheme = function buildTheme(tokens, flags) {
       }
     },
     carousel: {
+      icons: {
+        current: Subtract,
+        next: Right,
+        previous: Left
+      },
       disabled: {
         icons: {
           color: 'icon-disabled'
@@ -1940,6 +1955,11 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       primaryKey: {
         weight: global.hpe.fontWeight.medium
+      },
+      icons: {
+        down: Down,
+        up: Up,
+        pin: Pin
       }
     },
     maskedInput: {
@@ -2072,6 +2092,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         weight: global.hpe.fontWeight.medium
       },
       critical: {
+        icon: StatusCritical,
         background: 'background-critical',
         color: 'icon-critical',
         message: {
@@ -2100,6 +2121,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       warning: {
+        icon: StatusWarning,
         background: 'background-warning',
         color: 'icon-warning',
         message: {
@@ -2128,6 +2150,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       normal: {
+        icon: StatusGood,
         background: 'background-ok',
         color: 'icon-ok',
         message: {
@@ -2156,6 +2179,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       unknown: {
+        icon: StatusUnknown,
         background: 'background-unknown',
         color: 'icon-unknown',
         message: {
@@ -2184,6 +2208,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       info: {
+        icon: StatusInfo,
         background: 'background-info',
         color: 'icon-info',
         message: {
@@ -2212,6 +2237,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       undefined: {
+        icon: StatusUnknown,
         background: 'background-unknown',
         message: {
           color: 'text-onUnknown'
@@ -2544,6 +2570,10 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       controls: {
         gap: '5xsmall'
+      },
+      icons: {
+        next: Right,
+        previous: Left
       },
       step: {
         container: {

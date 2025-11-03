@@ -31,6 +31,12 @@ var _Descending = require("@hpe-design/icons-grommet/icons/Descending");
 var _Down = require("@hpe-design/icons-grommet/icons/Down");
 var _Unsorted = require("@hpe-design/icons-grommet/icons/Unsorted");
 var _Up = require("@hpe-design/icons-grommet/icons/Up");
+var _Pin = require("@hpe-design/icons-grommet/icons/Pin");
+var _StatusWarning = require("@hpe-design/icons-grommet/icons/StatusWarning");
+var _StatusGood = require("@hpe-design/icons-grommet/icons/StatusGood");
+var _StatusUnknown = require("@hpe-design/icons-grommet/icons/StatusUnknown");
+var _Info = require("@hpe-design/icons-grommet/icons/Info");
+var _StatusCritical = require("@hpe-design/icons-grommet/icons/StatusCritical");
 var _backgrounds = require("./backgrounds");
 var _colors = require("./colors");
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5; // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
@@ -965,7 +971,11 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       icons: {
         next: _Right.Right,
-        previous: _Left.Left
+        previous: _Left.Left,
+        small: {
+          previous: _Left.Left,
+          next: _Right.Right
+        }
       },
       small: {
         fontSize: '13.6px',
@@ -1099,6 +1109,11 @@ var buildTheme = function buildTheme(tokens, flags) {
       }
     },
     carousel: {
+      icons: {
+        current: _Subtract.Subtract,
+        next: _Right.Right,
+        previous: _Left.Left
+      },
       disabled: {
         icons: {
           color: 'icon-disabled'
@@ -1944,6 +1959,11 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       primaryKey: {
         weight: global.hpe.fontWeight.medium
+      },
+      icons: {
+        down: _Down.Down,
+        up: _Up.Up,
+        pin: _Pin.Pin
       }
     },
     maskedInput: {
@@ -2076,6 +2096,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         weight: global.hpe.fontWeight.medium
       },
       critical: {
+        icon: _StatusCritical.StatusCritical,
         background: 'background-critical',
         color: 'icon-critical',
         message: {
@@ -2104,6 +2125,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       warning: {
+        icon: _StatusWarning.StatusWarning,
         background: 'background-warning',
         color: 'icon-warning',
         message: {
@@ -2132,6 +2154,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       normal: {
+        icon: _StatusGood.StatusGood,
         background: 'background-ok',
         color: 'icon-ok',
         message: {
@@ -2160,6 +2183,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       unknown: {
+        icon: _StatusUnknown.StatusUnknown,
         background: 'background-unknown',
         color: 'icon-unknown',
         message: {
@@ -2188,6 +2212,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       info: {
+        icon: _Info.StatusInfo,
         background: 'background-info',
         color: 'icon-info',
         message: {
@@ -2216,6 +2241,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       undefined: {
+        icon: _StatusUnknown.StatusUnknown,
         background: 'background-unknown',
         message: {
           color: 'text-onUnknown'
@@ -2548,6 +2574,10 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       controls: {
         gap: '5xsmall'
+      },
+      icons: {
+        next: _Right.Right,
+        previous: _Left.Left
       },
       step: {
         container: {
