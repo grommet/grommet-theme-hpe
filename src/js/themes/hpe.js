@@ -2036,6 +2036,8 @@ const buildTheme = (tokens, flags) => {
         if (fontWeight && !weight) style += `font-weight: ${fontWeight};`;
         if (fontSize) style += `font-size: ${fontSize};`;
         if (lineHeight) style += `line-height: ${lineHeight};`;
+        // The max desired weight in the the theme is 500, however a common convention is for
+        // implementors to choose "bold" to style text. This ensures bold resolves to the desired wieght.
         if (weight === 'bold') style += 'font-weight: 500;';
         if (size) {
           const responsiveSize = headingSize || headingLevelToSize[level || 1];
