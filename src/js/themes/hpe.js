@@ -124,6 +124,12 @@ const breakpointStyle = (global, content, responsive) => {
   return st.join('');
 };
 
+const themeDefaultSize = 'medium';
+const getHeadingSize = (breakpointTokens, size) =>
+  size && breakpointTokens.hpe.heading[size]
+    ? breakpointTokens.hpe.heading[size]
+    : breakpointTokens.hpe.heading[themeDefaultSize];
+
 const getThemeColor = (color, theme) =>
   typeof theme.global.colors[color] === 'string'
     ? theme.global.colors[color]
@@ -2034,29 +2040,29 @@ const buildTheme = (tokens, flags) => {
       },
       extend: ({ size: headingSize, level, weight, responsive }) => {
         let style = '';
-        let fontSize = '';
-        let lineHeight = '';
-        let fontWeight = '';
-        fontSize = large.hpe.heading[headingSize]?.fontSize;
-        lineHeight = large.hpe.heading[headingSize]?.lineHeight;
-        fontWeight = large.hpe.heading[headingSize]?.fontWeight;
+        const { fontSize, lineHeight, fontWeight } = getHeadingSize(
+          large,
+          headingSize,
+        );
+
         if (fontWeight && !weight) style += `font-weight: ${fontWeight};`;
         if (fontSize) style += `font-size: ${fontSize};`;
         if (lineHeight) style += `line-height: ${lineHeight};`;
+        // The max desired weight in the the theme is 500, however a common convention is for
+        // implementors to choose "bold" to style text. This ensures bold resolves to the desired wieght.
         if (weight === 'bold') style += 'font-weight: 500;';
-        if (size) {
+
+        if (responsive) {
           const responsiveSize = headingSize || headingLevelToSize[level || 1];
+          const responsiveHeadingSize = getHeadingSize(small, responsiveSize);
+
           style += breakpointStyle(
             localGlobal,
             `
-              font-size: ${small.hpe.heading[responsiveSize].fontSize};
-              line-height: ${small.hpe.heading[responsiveSize].lineHeight};
-              ${
-                !weight
-                  ? `font-weight: ${small.hpe.heading[responsiveSize].fontWeight}`
-                  : ''
-              };
-            `,
+        font-size: ${responsiveHeadingSize.fontSize};
+        line-height: ${responsiveHeadingSize.lineHeight};
+        ${!weight ? `font-weight: ${responsiveHeadingSize.fontWeight}` : ''};
+      `,
             responsive,
           );
         }
