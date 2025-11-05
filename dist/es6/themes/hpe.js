@@ -83,6 +83,10 @@ var breakpointStyle = function breakpointStyle(global, content, responsive) {
   var st = responsive === 'container' ? css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n          @container ", " {\n            ", "\n          }\n        "])), breakpoint && "(max-width: " + breakpoint + ")", content) : css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n          @media only screen ", " {\n            ", "\n          }\n        "])), breakpoint && "and (max-width: " + breakpoint + ")", content);
   return st.join('');
 };
+var themeDefaultSize = 'medium';
+var getHeadingSize = function getHeadingSize(breakpointTokens, size) {
+  return size && breakpointTokens.hpe.heading[size] ? breakpointTokens.hpe.heading[size] : breakpointTokens.hpe.heading[themeDefaultSize];
+};
 var getThemeColor = function getThemeColor(color, theme) {
   var _theme$global$colors$;
   return typeof theme.global.colors[color] === 'string' ? theme.global.colors[color] : ((_theme$global$colors$ = theme.global.colors[color]) == null ? void 0 : _theme$global$colors$[theme.dark ? 'dark' : 'light']) || color;
@@ -1874,25 +1878,25 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       extend: function extend(_ref21) {
-        var _large$hpe$heading$he, _large$hpe$heading$he2, _large$hpe$heading$he3;
         var headingSize = _ref21.size,
           level = _ref21.level,
           weight = _ref21.weight,
           responsive = _ref21.responsive;
         var style = '';
-        var fontSize = '';
-        var lineHeight = '';
-        var fontWeight = '';
-        fontSize = (_large$hpe$heading$he = large.hpe.heading[headingSize]) == null ? void 0 : _large$hpe$heading$he.fontSize;
-        lineHeight = (_large$hpe$heading$he2 = large.hpe.heading[headingSize]) == null ? void 0 : _large$hpe$heading$he2.lineHeight;
-        fontWeight = (_large$hpe$heading$he3 = large.hpe.heading[headingSize]) == null ? void 0 : _large$hpe$heading$he3.fontWeight;
+        var _getHeadingSize = getHeadingSize(large, headingSize),
+          fontSize = _getHeadingSize.fontSize,
+          lineHeight = _getHeadingSize.lineHeight,
+          fontWeight = _getHeadingSize.fontWeight;
         if (fontWeight && !weight) style += "font-weight: " + fontWeight + ";";
         if (fontSize) style += "font-size: " + fontSize + ";";
         if (lineHeight) style += "line-height: " + lineHeight + ";";
+        // The max desired weight in the the theme is 500, however a common convention is for
+        // implementors to choose "bold" to style text. This ensures bold resolves to the desired wieght.
         if (weight === 'bold') style += 'font-weight: 500;';
-        if (size) {
+        if (responsive) {
           var responsiveSize = headingSize || headingLevelToSize[level || 1];
-          style += breakpointStyle(localGlobal, "\n              font-size: " + small.hpe.heading[responsiveSize].fontSize + ";\n              line-height: " + small.hpe.heading[responsiveSize].lineHeight + ";\n              " + (!weight ? "font-weight: " + small.hpe.heading[responsiveSize].fontWeight : '') + ";\n            ", responsive);
+          var responsiveHeadingSize = getHeadingSize(small, responsiveSize);
+          style += breakpointStyle(localGlobal, "\n        font-size: " + responsiveHeadingSize.fontSize + ";\n        line-height: " + responsiveHeadingSize.lineHeight + ";\n        " + (!weight ? "font-weight: " + responsiveHeadingSize.fontWeight : '') + ";\n      ", responsive);
         }
         return style;
       }
