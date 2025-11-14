@@ -919,7 +919,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           // not a long term solution. Also, reliance on !important is not ideal.
           style += "color: " + getThemeColor('text-onStrong', theme) + " !important;";
           var iconColor = theme.dark ? dark.hpe.color.icon.onStrong : light.hpe.color.icon.onStrong;
-          style += "svg { stroke: " + iconColor + "; fill: " + iconColor + "; }";
+          style += "svg { fill: " + iconColor + "; }";
         }
         if (colorValue) {
           // color prop is not recommended to be used, but providing
