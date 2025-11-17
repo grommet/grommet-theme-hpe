@@ -2781,6 +2781,7 @@ const buildTheme = (tokens, flags) => {
       icons: {
         color: 'icon',
         down: Down,
+        search: Search,
         margin: {
           left: 'xsmall',
           // setting right margin to 12px because on small
