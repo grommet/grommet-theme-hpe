@@ -3401,6 +3401,16 @@
     "icons": {
       "color": "icon",
       "down": {},
+      "search": {
+        "type": {},
+        "key": null,
+        "ref": null,
+        "props": {
+          "aria-hidden": true
+        },
+        "_owner": null,
+        "_store": {}
+      },
       "margin": {
         "left": "xsmall",
         "right": "12px"

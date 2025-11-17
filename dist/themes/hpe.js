@@ -2745,6 +2745,9 @@ var buildTheme = function buildTheme(tokens, flags) {
       icons: {
         color: 'icon',
         down: _Down.Down,
+        search: /*#__PURE__*/_react["default"].createElement(_Search.Search, {
+          "aria-hidden": true
+        }),
         margin: {
           left: 'xsmall',
           // setting right margin to 12px because on small
