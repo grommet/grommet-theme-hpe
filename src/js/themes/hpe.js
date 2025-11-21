@@ -41,7 +41,7 @@ import { Pin } from '@hpe-design/icons-grommet/icons/Pin';
 import { StatusWarning } from '@hpe-design/icons-grommet/icons/StatusWarning';
 import { StatusGood } from '@hpe-design/icons-grommet/icons/StatusGood';
 import { StatusUnknown } from '@hpe-design/icons-grommet/icons/StatusUnknown';
-import { StatusInfo } from '@hpe-design/icons-grommet/icons/Info';
+import { Info } from '@hpe-design/icons-grommet/icons/Info';
 import { StatusCritical } from '@hpe-design/icons-grommet/icons/StatusCritical';
 
 import { backgrounds } from './backgrounds';
@@ -2300,7 +2300,7 @@ const buildTheme = (tokens, flags) => {
         },
       },
       info: {
-        icon: StatusInfo,
+        icon: Info,
         background: 'background-info',
         color: 'icon-info',
         message: { color: 'text-onInfo' },
