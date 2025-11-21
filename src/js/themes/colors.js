@@ -56,6 +56,7 @@ export const colors = {
   // Here we're passing through all the colors from hpe-design-tokens
   ...tokenColors,
   // Override specific colors to swap light and dark.hpe values
+  // See https://github.com/grommet/grommet/issues/7818
   'text-onPrimaryStrong': swapped('hpe.color.text.onPrimaryStrong'),
   'text-onSelectedPrimaryStrong': swapped(
     'hpe.color.text.onSelectedPrimaryStrong',
