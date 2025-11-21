@@ -2216,7 +2216,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       info: {
-        icon: _Info.StatusInfo,
+        icon: _Info.Info,
         background: 'background-info',
         color: 'icon-info',
         message: {

@@ -346,8 +346,8 @@
         "dark": "rgba(255, 255, 255, 0.24)"
       },
       "text-onPrimaryStrong": {
-        "light": "#ffffff",
-        "dark": "#292d3a"
+        "light": "#292d3a",
+        "dark": "#ffffff"
       },
       "text-primary": {
         "light": "#006750",
@@ -390,8 +390,8 @@
         "dark": "#00e0af"
       },
       "text-onSelectedPrimaryStrong": {
-        "light": "#ffffff",
-        "dark": "#292d3a"
+        "light": "#292d3a",
+        "dark": "#ffffff"
       },
       "text-onSelectedPrimary": {
         "light": "#292d3a",
@@ -486,12 +486,12 @@
         "dark": "#66ebcf"
       },
       "icon-onPrimaryStrong": {
-        "light": "#ffffff",
-        "dark": "#292d3a"
+        "light": "#292d3a",
+        "dark": "#ffffff"
       },
       "icon-onSelectedPrimaryStrong": {
-        "light": "#ffffff",
-        "dark": "#292d3a"
+        "light": "#292d3a",
+        "dark": "#ffffff"
       },
       "icon-onSelectedPrimary": {
         "light": "#292d3a",
@@ -2757,6 +2757,7 @@
       }
     },
     "info": {
+      "icon": {},
       "background": "background-info",
       "color": "icon-info",
       "message": {
