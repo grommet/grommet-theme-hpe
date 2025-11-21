@@ -60,6 +60,10 @@ export const colors = {
   'text-onSelectedPrimaryStrong': swapped(
     'hpe.color.text.onSelectedPrimaryStrong',
   ),
+  'icon-onPrimaryStrong': swapped('hpe.color.icon.onPrimaryStrong'),
+  'icon-onSelectedPrimaryStrong': swapped(
+    'hpe.color.icon.onSelectedPrimaryStrong',
+  ),
   // ---- DEPRECATED ---- //
   'accent-1': undefined,
   'accent-2': undefined,
