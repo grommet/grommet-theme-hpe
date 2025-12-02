@@ -2881,6 +2881,20 @@ const buildTheme = (tokens, flags) => {
     },
     starRating: {
       color: 'background-selected-primary-strong',
+      icons: {
+        selected: () => (
+          <StarFill
+            size="large"
+            color={light.hpe.color.background['selected-primary-strong']}
+          />
+        ),
+        unselected: () => (
+          <Star
+            size="large"
+            color={light.hpe.color.background['selected-primary-strong']}
+          />
+        ),
+      },
     },
     tab: {
       color: 'text',
@@ -3114,6 +3128,32 @@ const buildTheme = (tokens, flags) => {
     thumbsRating: {
       like: { color: 'background-selected-primary-strong' },
       dislike: { color: 'background-selected-primary-strong' },
+      icons: {
+        like: () => (
+          <Like
+            size="large"
+            color={light.hpe.color.background['selected-primary-strong']}
+          />
+        ),
+        likeSelected: () => (
+          <LikeFill
+            size="large"
+            color={light.hpe.color.background['selected-primary-strong']}
+          />
+        ),
+        dislike: () => (
+          <Dislike
+            size="large"
+            color={light.hpe.color.background['selected-primary-strong']}
+          />
+        ),
+        dislikeSelected: () => (
+          <DislikeFill
+            size="large"
+            color={light.hpe.color.background['selected-primary-strong']}
+          />
+        ),
+      },
     },
     toggleGroup: {
       button: { kind: 'toolbar' },
