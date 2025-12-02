@@ -2883,16 +2883,10 @@ const buildTheme = (tokens, flags) => {
       color: 'background-selected-primary-strong',
       icons: {
         selected: () => (
-          <StarFill
-            size="large"
-            color={light.hpe.color.background['selected-primary-strong']}
-          />
+          <StarFill size="xlarge" color="background-selected-primary-strong" />
         ),
         unselected: () => (
-          <Star
-            size="large"
-            color={light.hpe.color.background['selected-primary-strong']}
-          />
+          <Star size="xlarge" color="background-selected-primary-strong" />
         ),
       },
     },
@@ -3130,27 +3124,18 @@ const buildTheme = (tokens, flags) => {
       dislike: { color: 'background-selected-primary-strong' },
       icons: {
         like: () => (
-          <Like
-            size="large"
-            color={light.hpe.color.background['selected-primary-strong']}
-          />
+          <Like size="xlarge" color="background-selected-primary-strong" />
         ),
         likeSelected: () => (
-          <LikeFill
-            size="large"
-            color={light.hpe.color.background['selected-primary-strong']}
-          />
+          <LikeFill size="xlarge" color="background-selected-primary-strong" />
         ),
         dislike: () => (
-          <Dislike
-            size="large"
-            color={light.hpe.color.background['selected-primary-strong']}
-          />
+          <Dislike size="xlarge" color="background-selected-primary-strong" />
         ),
         dislikeSelected: () => (
           <DislikeFill
-            size="large"
-            color={light.hpe.color.background['selected-primary-strong']}
+            size="xlarge"
+            color="background-selected-primary-strong"
           />
         ),
       },
