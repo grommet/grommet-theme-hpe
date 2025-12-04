@@ -1866,12 +1866,6 @@ const buildTheme = (tokens, flags) => {
                     .borderColor
             }; `,
         },
-        icons: {
-          like: Like,
-          likeSelected: LikeFill,
-          dislike: Dislike,
-          dislikeSelected: DislikeFill,
-        },
       },
       starRating: {
         container: {
@@ -1927,10 +1921,6 @@ const buildTheme = (tokens, flags) => {
         size: 'xsmall',
         color: components.hpe.formField.default.help.rest.color,
         margin: 'none',
-      },
-      icons: {
-        selected: StarFill,
-        unselected: Star,
       },
       info: {
         size: 'xsmall',
