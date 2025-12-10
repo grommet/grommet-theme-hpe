@@ -619,12 +619,12 @@ const buildTheme = (tokens, flags) => {
             {
               name: 'cta-primary',
               message:
-                'The "cta-primary" button kind is deprecated. Please use "primary" instead.',
+                'The "cta-primary" button kind is deprecated and will be removed in v9. Please use "primary" instead.',
             },
             {
               name: 'cta-alternate',
               message:
-                'The "cta-alternate" button kind is deprecated. Please use "secondary" instead.',
+                'The "cta-alternate" button kind is deprecated and will be removed in v9. Please use "secondary" instead.',
             },
           ],
         },
