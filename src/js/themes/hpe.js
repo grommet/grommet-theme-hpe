@@ -2167,6 +2167,7 @@ const buildTheme = (tokens, flags) => {
       },
     },
     meter: {
+      background: 'background-contrast',
       gap: '5xsmall',
     },
     nameValueList: {
