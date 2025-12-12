@@ -613,6 +613,22 @@ const buildTheme = (tokens, flags) => {
         },
         disabled: { opacity: 0.3 },
       },
+      deprecated: {
+        button: {
+          kind: [
+            {
+              name: 'cta-primary',
+              message:
+                'The "cta-primary" button kind is deprecated and will be removed in v9. Please use "primary" instead.',
+            },
+            {
+              name: 'cta-alternate',
+              message:
+                'The "cta-alternate" button kind is deprecated and will be removed in v9. Please use "secondary" instead.',
+            },
+          ],
+        },
+      },
       input: {
         font: {
           height: 'inherit',
