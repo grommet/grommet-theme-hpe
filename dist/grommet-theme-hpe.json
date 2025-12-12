@@ -85,8 +85,8 @@
         "edgeSize": {
           "none": "0px",
           "hair": "1px",
-          "5xsmall": "3px",
-          "4xsmall": "3px",
+          "5xsmall": "2px",
+          "4xsmall": "2px",
           "3xsmall": "3px",
           "xxsmall": "4px",
           "xsmall": "6px",
@@ -138,8 +138,8 @@
         "edgeSize": {
           "none": "0px",
           "hair": "1px",
-          "5xsmall": "3px",
-          "4xsmall": "3px",
+          "5xsmall": "2px",
+          "4xsmall": "2px",
           "3xsmall": "3px",
           "xxsmall": "4px",
           "xsmall": "6px",
@@ -189,21 +189,17 @@
       "xlarge": {}
     },
     "colors": {
-      "background-default": {
-        "light": "#ffffff",
-        "dark": "#1d1f27"
+      "background-active": {
+        "light": "rgba(0, 0, 0, 0.04)",
+        "dark": "rgba(255, 255, 255, 0.06)"
+      },
+      "background-hover": {
+        "light": "rgba(0, 0, 0, 0.04)",
+        "dark": "rgba(255, 255, 255, 0.06)"
       },
       "background-back": {
         "light": "#f7f7f7",
         "dark": "#1d1f27"
-      },
-      "background-front": {
-        "light": "#ffffff",
-        "dark": "#292d3a"
-      },
-      "background-floating": {
-        "light": "#ffffff",
-        "dark": "#22252e"
       },
       "background-contrast": {
         "light": "rgba(0, 0, 0, 0.04)",
@@ -213,41 +209,41 @@
         "light": "rgba(0, 0, 0, 0.08)",
         "dark": "rgba(255, 255, 255, 0.1)"
       },
-      "background-hover": {
-        "light": "rgba(0, 0, 0, 0.04)",
-        "dark": "rgba(255, 255, 255, 0.06)"
+      "background-critical": {
+        "light": "#ffecec",
+        "dark": "#552120"
       },
-      "background-active": {
-        "light": "rgba(0, 0, 0, 0.04)",
-        "dark": "rgba(255, 255, 255, 0.06)"
+      "background-default": {
+        "light": "#ffffff",
+        "dark": "#1d1f27"
       },
       "background-disabled": {
         "light": "rgba(0, 0, 0, 0.04)",
         "dark": "rgba(255, 255, 255, 0.07)"
       },
-      "background-screenOverlay": {
-        "light": "rgba(0, 0, 0, 0.12)",
-        "dark": "rgba(0, 0, 0, 0.12)"
+      "background-floating": {
+        "light": "#ffffff",
+        "dark": "#22252e"
       },
-      "background-warning": {
-        "light": "#fff3dd",
-        "dark": "#3c361e"
-      },
-      "background-ok": {
-        "light": "#d1ffee",
-        "dark": "#093d32"
-      },
-      "background-critical": {
-        "light": "#ffecec",
-        "dark": "#552120"
-      },
-      "background-unknown": {
-        "light": "rgba(0, 0, 0, 0.04)",
-        "dark": "rgba(255, 255, 255, 0.06)"
+      "background-front": {
+        "light": "#ffffff",
+        "dark": "#292d3a"
       },
       "background-info": {
         "light": "#e3f1ff",
         "dark": "#2b3547"
+      },
+      "background-neutral-xstrong": {
+        "light": "#292d3a",
+        "dark": "#f7f7f7"
+      },
+      "background-neutral-xstrong-hover": {
+        "light": "#3e4550",
+        "dark": "#e6e8e9"
+      },
+      "background-ok": {
+        "light": "#d1ffee",
+        "dark": "#093d32"
       },
       "background-primary-strong": {
         "light": "#068667",
@@ -261,13 +257,9 @@
         "light": "#093d32",
         "dark": "#66ebcf"
       },
-      "background-selected-primary-strong": {
-        "light": "#068667",
-        "dark": "#05cc93"
-      },
-      "background-selected-primary-strong-hover": {
-        "light": "#006750",
-        "dark": "#00e0af"
+      "background-screenOverlay": {
+        "light": "rgba(0, 0, 0, 0.12)",
+        "dark": "rgba(0, 0, 0, 0.12)"
       },
       "background-selected-primary": {
         "light": "#d1ffee",
@@ -277,37 +269,33 @@
         "light": "#aafade",
         "dark": "#074738"
       },
-      "background-neutral-xstrong": {
-        "light": "#292d3a",
-        "dark": "#f7f7f7"
+      "background-selected-primary-strong": {
+        "light": "#068667",
+        "dark": "#05cc93"
       },
-      "background-neutral-xstrong-hover": {
-        "light": "#3e4550",
-        "dark": "#e6e8e9"
+      "background-selected-primary-strong-hover": {
+        "light": "#006750",
+        "dark": "#00e0af"
       },
-      "border-strong": {
-        "light": "#3e4550",
-        "dark": "rgba(255, 255, 255, 0.72)"
+      "background-unknown": {
+        "light": "rgba(0, 0, 0, 0.04)",
+        "dark": "rgba(255, 255, 255, 0.06)"
+      },
+      "background-warning": {
+        "light": "#fff3dd",
+        "dark": "#3c361e"
+      },
+      "border-critical": {
+        "light": "#cc1f1a",
+        "dark": "#fc6161"
       },
       "border-default": {
         "light": "#b1b9be",
         "dark": "rgba(255, 255, 255, 0.36)"
       },
-      "border-weak": {
-        "light": "#d4d8db",
-        "dark": "rgba(255, 255, 255, 0.12)"
-      },
       "border-disabled": {
         "light": "rgba(0, 0, 0, 0.12)",
         "dark": "rgba(255, 255, 255, 0.12)"
-      },
-      "border-selected": {
-        "light": "#006750",
-        "dark": "#05cc93"
-      },
-      "border-critical": {
-        "light": "#cc1f1a",
-        "dark": "#fc6161"
       },
       "border-info": {
         "light": "#b1b9be",
@@ -317,217 +305,25 @@
         "light": "#b1b9be",
         "dark": "rgba(255, 255, 255, 0.36)"
       },
-      "border-warning": {
-        "light": "#b1b9be",
-        "dark": "rgba(255, 255, 255, 0.36)"
+      "border-selected": {
+        "light": "#006750",
+        "dark": "#05cc93"
+      },
+      "border-strong": {
+        "light": "#3e4550",
+        "dark": "rgba(255, 255, 255, 0.72)"
       },
       "border-unknown": {
         "light": "#b1b9be",
         "dark": "rgba(255, 255, 255, 0.36)"
       },
-      "text-default": {
-        "light": "#3e4550",
-        "dark": "#e6e8e9"
+      "border-warning": {
+        "light": "#b1b9be",
+        "dark": "rgba(255, 255, 255, 0.36)"
       },
-      "text-strong": {
-        "light": "#292d3a",
-        "dark": "#ffffff"
-      },
-      "text-weak": {
-        "light": "#606a70",
-        "dark": "#b1b9be"
-      },
-      "text-placeholder": {
-        "light": "#606a70",
-        "dark": "#b1b9be"
-      },
-      "text-disabled": {
-        "light": "rgba(0, 0, 0, 0.24)",
-        "dark": "rgba(255, 255, 255, 0.24)"
-      },
-      "text-onPrimaryStrong": {
-        "light": "#292d3a",
-        "dark": "#ffffff"
-      },
-      "text-primary": {
-        "light": "#006750",
-        "dark": "#05cc93"
-      },
-      "text-primary-hover": {
-        "light": "#074738",
-        "dark": "#00e0af"
-      },
-      "text-critical": {
-        "light": "#cc1f1a",
-        "dark": "#ff7b7b"
-      },
-      "text-info": {
-        "light": "#3e4550",
-        "dark": "#e6e8e9"
-      },
-      "text-ok": {
-        "light": "#3e4550",
-        "dark": "#e6e8e9"
-      },
-      "text-warning": {
-        "light": "#3e4550",
-        "dark": "#e6e8e9"
-      },
-      "text-unknown": {
-        "light": "#3e4550",
-        "dark": "#e6e8e9"
-      },
-      "text-heading": {
-        "light": "#292d3a",
-        "dark": "#ffffff"
-      },
-      "text-anchor": {
-        "light": "#006750",
-        "dark": "#05cc93"
-      },
-      "text-anchor-hover": {
-        "light": "#074738",
-        "dark": "#00e0af"
-      },
-      "text-onSelectedPrimaryStrong": {
-        "light": "#292d3a",
-        "dark": "#ffffff"
-      },
-      "text-onSelectedPrimary": {
-        "light": "#292d3a",
-        "dark": "#ffffff"
-      },
-      "text-onStrong": {
-        "light": "#ffffff",
-        "dark": "#292d3a"
-      },
-      "text-onCritical-strong": {
-        "light": "#292d3a",
-        "dark": "#ffffff"
-      },
-      "text-onCritical": {
-        "light": "#3e4550",
-        "dark": "#e6e8e9"
-      },
-      "text-onInfo-strong": {
-        "light": "#292d3a",
-        "dark": "#ffffff"
-      },
-      "text-onInfo": {
-        "light": "#3e4550",
-        "dark": "#e6e8e9"
-      },
-      "text-onOk-strong": {
-        "light": "#292d3a",
-        "dark": "#ffffff"
-      },
-      "text-onOk": {
-        "light": "#3e4550",
-        "dark": "#e6e8e9"
-      },
-      "text-onUnknown-strong": {
-        "light": "#292d3a",
-        "dark": "#ffffff"
-      },
-      "text-onUnknown": {
-        "light": "#3e4550",
-        "dark": "#e6e8e9"
-      },
-      "text-onWarning-strong": {
-        "light": "#292d3a",
-        "dark": "#ffffff"
-      },
-      "text-onWarning": {
-        "light": "#3e4550",
-        "dark": "#e6e8e9"
-      },
-      "icon-default": {
-        "light": "#3e4550",
-        "dark": "#e6e8e9"
-      },
-      "icon-strong": {
-        "light": "#292d3a",
-        "dark": "#ffffff"
-      },
-      "icon-weak": {
-        "light": "#606a70",
-        "dark": "#b1b9be"
-      },
-      "icon-disabled": {
-        "light": "rgba(0, 0, 0, 0.24)",
-        "dark": "rgba(255, 255, 255, 0.24)"
-      },
-      "icon-critical": {
-        "light": "#ec3331",
-        "dark": "#fc6161"
-      },
-      "icon-info": {
-        "light": "#0055da",
-        "dark": "#65aef9"
-      },
-      "icon-ok": {
-        "light": "#009a71",
-        "dark": "#05cc93"
-      },
-      "icon-warning": {
-        "light": "#d36d00",
-        "dark": "#ec8c25"
-      },
-      "icon-unknown": {
-        "light": "#606a70",
-        "dark": "#7d8a92"
-      },
-      "icon-primary": {
-        "light": "#006750",
-        "dark": "#05cc93"
-      },
-      "icon-primary-hover": {
-        "light": "#074738",
-        "dark": "#66ebcf"
-      },
-      "icon-onPrimaryStrong": {
-        "light": "#292d3a",
-        "dark": "#ffffff"
-      },
-      "icon-onSelectedPrimaryStrong": {
-        "light": "#292d3a",
-        "dark": "#ffffff"
-      },
-      "icon-onSelectedPrimary": {
-        "light": "#292d3a",
-        "dark": "#ffffff"
-      },
-      "icon-onStrong": {
-        "light": "#ffffff",
-        "dark": "#292d3a"
-      },
-      "decorative-brand": {
-        "light": "#01a982",
-        "dark": "#01a982"
-      },
-      "decorative-green": {
-        "light": "#05cc93",
-        "dark": "#068667"
-      },
-      "decorative-purple": {
-        "light": "#7764fc",
-        "dark": "#7764fc"
-      },
-      "decorative-cyan": {
-        "light": "#62e5f6",
-        "dark": "#00a4b3"
-      },
-      "decorative-blue": {
-        "light": "#0070f8",
-        "dark": "#0070f8"
-      },
-      "decorative-neutral": {
-        "light": "#7d8a92",
-        "dark": "#b1b9be"
-      },
-      "decorative-neutral-hover": {
-        "light": "#606a70",
-        "dark": "#d4d8db"
+      "border-weak": {
+        "light": "#d4d8db",
+        "dark": "rgba(255, 255, 255, 0.12)"
       },
       "dataVis-categorical-10": {
         "light": "#0070f8",
@@ -561,31 +357,234 @@
         "light": "#d25f4b",
         "dark": "#e5786a"
       },
-      "transparent": {
-        "light": "rgba(0, 0, 0, 0)",
-        "dark": "rgba(0, 0, 0, 0)"
+      "decorative-blue": {
+        "light": "#0070f8",
+        "dark": "#0070f8"
       },
-      "focus": {
-        "light": "#292d3a",
-        "dark": "#ffffff"
+      "decorative-brand": {
+        "light": "#01a982",
+        "dark": "#01a982"
       },
-      "foreground-primary": {
-        "light": "#006750",
-        "dark": "#05cc93"
+      "decorative-cyan": {
+        "light": "#62e5f6",
+        "dark": "#00a4b3"
+      },
+      "decorative-green": {
+        "light": "#05cc93",
+        "dark": "#068667"
+      },
+      "decorative-neutral": {
+        "light": "#7d8a92",
+        "dark": "#b1b9be"
+      },
+      "decorative-neutral-hover": {
+        "light": "#606a70",
+        "dark": "#d4d8db"
+      },
+      "decorative-purple": {
+        "light": "#7764fc",
+        "dark": "#7764fc"
       },
       "foreground-critical": {
         "light": "#ec3331",
         "dark": "#fc6161"
       },
-      "foreground-warning": {
-        "light": "#d36d00",
-        "dark": "#ec8c25"
+      "foreground-ok": {
+        "light": "#009a71",
+        "dark": "#05cc93"
+      },
+      "foreground-primary": {
+        "light": "#006750",
+        "dark": "#05cc93"
       },
       "foreground-unknown": {
         "light": "#7d8a92",
         "dark": "#7d8a92"
       },
-      "focus-support": {},
+      "foreground-warning": {
+        "light": "#d36d00",
+        "dark": "#ec8c25"
+      },
+      "icon-critical": {
+        "light": "#ec3331",
+        "dark": "#fc6161"
+      },
+      "icon-default": {
+        "light": "#3e4550",
+        "dark": "#e6e8e9"
+      },
+      "icon-disabled": {
+        "light": "rgba(0, 0, 0, 0.24)",
+        "dark": "rgba(255, 255, 255, 0.24)"
+      },
+      "icon-info": {
+        "light": "#0055da",
+        "dark": "#65aef9"
+      },
+      "icon-ok": {
+        "light": "#009a71",
+        "dark": "#05cc93"
+      },
+      "icon-onPrimaryStrong": {
+        "light": "#292d3a",
+        "dark": "#ffffff"
+      },
+      "icon-onSelectedPrimary": {
+        "light": "#292d3a",
+        "dark": "#ffffff"
+      },
+      "icon-onSelectedPrimaryStrong": {
+        "light": "#292d3a",
+        "dark": "#ffffff"
+      },
+      "icon-onStrong": {
+        "light": "#ffffff",
+        "dark": "#292d3a"
+      },
+      "icon-primary": {
+        "light": "#006750",
+        "dark": "#05cc93"
+      },
+      "icon-primary-hover": {
+        "light": "#074738",
+        "dark": "#66ebcf"
+      },
+      "icon-strong": {
+        "light": "#292d3a",
+        "dark": "#ffffff"
+      },
+      "icon-unknown": {
+        "light": "#606a70",
+        "dark": "#7d8a92"
+      },
+      "icon-warning": {
+        "light": "#d36d00",
+        "dark": "#ec8c25"
+      },
+      "icon-weak": {
+        "light": "#606a70",
+        "dark": "#b1b9be"
+      },
+      "text-anchor": {
+        "light": "#006750",
+        "dark": "#05cc93"
+      },
+      "text-anchor-hover": {
+        "light": "#074738",
+        "dark": "#00e0af"
+      },
+      "text-critical": {
+        "light": "#cc1f1a",
+        "dark": "#ff7b7b"
+      },
+      "text-default": {
+        "light": "#3e4550",
+        "dark": "#e6e8e9"
+      },
+      "text-disabled": {
+        "light": "rgba(0, 0, 0, 0.24)",
+        "dark": "rgba(255, 255, 255, 0.24)"
+      },
+      "text-heading": {
+        "light": "#292d3a",
+        "dark": "#ffffff"
+      },
+      "text-info": {
+        "light": "#3e4550",
+        "dark": "#e6e8e9"
+      },
+      "text-ok": {
+        "light": "#3e4550",
+        "dark": "#e6e8e9"
+      },
+      "text-onCritical": {
+        "light": "#3e4550",
+        "dark": "#e6e8e9"
+      },
+      "text-onCritical-strong": {
+        "light": "#292d3a",
+        "dark": "#ffffff"
+      },
+      "text-onInfo": {
+        "light": "#3e4550",
+        "dark": "#e6e8e9"
+      },
+      "text-onInfo-strong": {
+        "light": "#292d3a",
+        "dark": "#ffffff"
+      },
+      "text-onOk": {
+        "light": "#3e4550",
+        "dark": "#e6e8e9"
+      },
+      "text-onOk-strong": {
+        "light": "#292d3a",
+        "dark": "#ffffff"
+      },
+      "text-onPrimaryStrong": {
+        "light": "#292d3a",
+        "dark": "#ffffff"
+      },
+      "text-onSelectedPrimary": {
+        "light": "#292d3a",
+        "dark": "#ffffff"
+      },
+      "text-onSelectedPrimaryStrong": {
+        "light": "#292d3a",
+        "dark": "#ffffff"
+      },
+      "text-onStrong": {
+        "light": "#ffffff",
+        "dark": "#292d3a"
+      },
+      "text-onUnknown": {
+        "light": "#3e4550",
+        "dark": "#e6e8e9"
+      },
+      "text-onUnknown-strong": {
+        "light": "#292d3a",
+        "dark": "#ffffff"
+      },
+      "text-onWarning": {
+        "light": "#3e4550",
+        "dark": "#e6e8e9"
+      },
+      "text-onWarning-strong": {
+        "light": "#292d3a",
+        "dark": "#ffffff"
+      },
+      "text-placeholder": {
+        "light": "#606a70",
+        "dark": "#b1b9be"
+      },
+      "text-primary": {
+        "light": "#006750",
+        "dark": "#05cc93"
+      },
+      "text-primary-hover": {
+        "light": "#074738",
+        "dark": "#00e0af"
+      },
+      "text-strong": {
+        "light": "#292d3a",
+        "dark": "#ffffff"
+      },
+      "text-unknown": {
+        "light": "#3e4550",
+        "dark": "#e6e8e9"
+      },
+      "text-warning": {
+        "light": "#3e4550",
+        "dark": "#e6e8e9"
+      },
+      "text-weak": {
+        "light": "#606a70",
+        "dark": "#b1b9be"
+      },
+      "transparent": {
+        "light": "rgba(0, 0, 0, 0)",
+        "dark": "rgba(0, 0, 0, 0)"
+      },
       "control": "background-primary-strong",
       "active-text": "text-strong",
       "text-primary-button": "text-onStrong",
@@ -735,7 +734,7 @@
       }
     },
     "font": {
-      "family": "'Graphik', Arial, sans-serif",
+      "family": "'HPE Graphik', Arial, sans-serif",
       "face": "\n          @font-face {\n            font-family: \"Graphik\";\n            src: url(\"https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Regular-Web.woff2\") format('woff2');\n          }\n          @font-face {\n            font-family: \"Graphik\";\n            src: url(\"https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Regular-Web.woff2\") format('woff2');\n            font-weight: 400;\n          }\n          @font-face {\n            font-family: \"Graphik\";\n            src: url(\"https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Bold-Web.woff2\") format('woff2');\n            font-weight: 700;\n          }\n          @font-face {\n            font-family: \"Graphik\";\n            src: url(\"https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Semibold-Web.woff2\") format('woff2');\n            font-weight: 600;\n          }\n          @font-face {\n            font-family: \"Graphik\";\n            src: url(\"https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Medium-Web.woff2\") format('woff2');\n            font-weight: 500;\n          }\n          @font-face {\n            font-family: \"Graphik\";\n            src: url(\"https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Extralight-Web.woff2\") format('woff2');\n            font-weight: 100;\n          }\n          @font-face {\n            font-family: \"GraphikXXCondensed\";\n            src: url(\"https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Regular-Web.woff2\") format('woff2');\n          }\n          @font-face {\n            font-family: \"GraphikXXCondensed\";\n            src: url(\"https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Regular-Web.woff2\") format('woff2');\n            font-weight: 400;\n          }\n          @font-face {\n            font-family: \"GraphikXXCondensed\";\n            src: url(\"https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Bold-Web.woff2\") format('woff2');\n            font-weight: 700;\n          }\n          @font-face {\n            font-family: \"GraphikXXCondensed\";\n            src: url(\"https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Semibold-Web.woff2\") format('woff2');\n            font-weight: 600;\n          }\n          @font-face {\n            font-family: \"GraphikXXCondensed\";\n            src: url(\"https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Medium-Web.woff2\") format('woff2');\n            font-weight: 500;\n          }\n          @font-face {\n            font-family: \"GraphikXXCondensed\";\n            src: url(\"https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphikXXCondensed-Extralight-Web.woff2\") format('woff2');\n            font-weight: 100;\n          }",
       "size": "1rem",
       "height": "1.5rem"
@@ -747,7 +746,7 @@
         "offset": "2px"
       },
       "shadow": {
-        "color": "{color.focus.support}",
+        "color": "{color.focus.support.DEFAULT.REST}",
         "size": "{focusIndicator.outlineOffset}",
         "blur": "0px"
       },
@@ -759,7 +758,7 @@
           "offset": "-2px"
         },
         "shadow": {
-          "color": "{color.focus.support}",
+          "color": "{color.focus.support.DEFAULT.REST}",
           "size": "4px",
           "blur": "0px",
           "inset": true
