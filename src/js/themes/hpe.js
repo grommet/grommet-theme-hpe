@@ -699,6 +699,20 @@ const buildTheme = (tokens, flags) => {
             message: backgroundDeprecationMessage('purple-magenta-yellow'),
           },
         ],
+        button: {
+          kind: [
+            {
+              name: 'cta-primary',
+              message:
+                'The "cta-primary" button kind is deprecated and will be removed in v9. Please use "primary" instead.',
+            },
+            {
+              name: 'cta-alternate',
+              message:
+                'The "cta-alternate" button kind is deprecated and will be removed in v9. Please use "secondary" instead.',
+            },
+          ],
+        },
       },
       input: {
         font: {
@@ -1953,12 +1967,6 @@ const buildTheme = (tokens, flags) => {
                     .borderColor
             }; `,
         },
-        icons: {
-          like: Like,
-          likeSelected: LikeFill,
-          dislike: Dislike,
-          dislikeSelected: DislikeFill,
-        },
       },
       starRating: {
         container: {
@@ -2014,10 +2022,6 @@ const buildTheme = (tokens, flags) => {
         size: 'xsmall',
         color: components.hpe.formField.default.help.rest.color,
         margin: 'none',
-      },
-      icons: {
-        selected: StarFill,
-        unselected: Star,
       },
       info: {
         size: 'xsmall',
@@ -2254,6 +2258,7 @@ const buildTheme = (tokens, flags) => {
       },
     },
     meter: {
+      background: 'background-contrast',
       gap: '5xsmall',
     },
     nameValueList: {
@@ -2968,6 +2973,10 @@ const buildTheme = (tokens, flags) => {
     },
     starRating: {
       color: 'background-selected-primary-strong',
+      icons: {
+        selected: StarFill,
+        unselected: Star,
+      },
     },
     tab: {
       color: 'text',
@@ -3201,6 +3210,12 @@ const buildTheme = (tokens, flags) => {
     thumbsRating: {
       like: { color: 'background-selected-primary-strong' },
       dislike: { color: 'background-selected-primary-strong' },
+      icons: {
+        dislike: Dislike,
+        dislikeSelected: DislikeFill,
+        like: Like,
+        likeSelected: LikeFill,
+      },
     },
     toggleGroup: {
       button: { kind: 'toolbar' },
