@@ -1691,12 +1691,6 @@ var buildTheme = function buildTheme(tokens, flags) {
             var error = _ref19.error;
             return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
           }
-        },
-        icons: {
-          like: _Like.Like,
-          likeSelected: _LikeFill.LikeFill,
-          dislike: _Dislike.Dislike,
-          dislikeSelected: _DislikeFill.DislikeFill
         }
       },
       starRating: {
@@ -1753,10 +1747,6 @@ var buildTheme = function buildTheme(tokens, flags) {
         size: 'xsmall',
         color: components.hpe.formField["default"].help.rest.color,
         margin: 'none'
-      },
-      icons: {
-        selected: _StarFill.StarFill,
-        unselected: _Star.Star
       },
       info: {
         size: 'xsmall',
@@ -2844,7 +2834,11 @@ var buildTheme = function buildTheme(tokens, flags) {
       }
     },
     starRating: {
-      color: 'background-selected-primary-strong'
+      color: 'background-selected-primary-strong',
+      icons: {
+        selected: _StarFill.StarFill,
+        unselected: _Star.Star
+      }
     },
     tab: {
       color: 'text',
@@ -3110,6 +3104,12 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       dislike: {
         color: 'background-selected-primary-strong'
+      },
+      icons: {
+        dislike: _Dislike.Dislike,
+        dislikeSelected: _DislikeFill.DislikeFill,
+        like: _Like.Like,
+        likeSelected: _LikeFill.LikeFill
       }
     },
     toggleGroup: {

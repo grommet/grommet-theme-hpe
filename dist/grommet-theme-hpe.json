@@ -2295,13 +2295,7 @@
       "container": {}
     },
     "thumbsRating": {
-      "container": {},
-      "icons": {
-        "like": {},
-        "likeSelected": {},
-        "dislike": {},
-        "dislikeSelected": {}
-      }
+      "container": {}
     },
     "starRating": {
       "container": {}
@@ -2354,10 +2348,6 @@
     "help": {
       "size": "xsmall",
       "margin": "none"
-    },
-    "icons": {
-      "selected": {},
-      "unselected": {}
     },
     "info": {
       "size": "xsmall",
@@ -3497,7 +3487,11 @@
     }
   },
   "starRating": {
-    "color": "background-selected-primary-strong"
+    "color": "background-selected-primary-strong",
+    "icons": {
+      "selected": {},
+      "unselected": {}
+    }
   },
   "tab": {
     "color": "text",
@@ -3771,6 +3765,12 @@
     },
     "dislike": {
       "color": "background-selected-primary-strong"
+    },
+    "icons": {
+      "dislike": {},
+      "dislikeSelected": {},
+      "like": {},
+      "likeSelected": {}
     }
   },
   "toggleGroup": {

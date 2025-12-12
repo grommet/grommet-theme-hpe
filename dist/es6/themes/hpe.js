@@ -1687,12 +1687,6 @@ var buildTheme = function buildTheme(tokens, flags) {
             var error = _ref19.error;
             return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
           }
-        },
-        icons: {
-          like: Like,
-          likeSelected: LikeFill,
-          dislike: Dislike,
-          dislikeSelected: DislikeFill
         }
       },
       starRating: {
@@ -1749,10 +1743,6 @@ var buildTheme = function buildTheme(tokens, flags) {
         size: 'xsmall',
         color: components.hpe.formField["default"].help.rest.color,
         margin: 'none'
-      },
-      icons: {
-        selected: StarFill,
-        unselected: Star
       },
       info: {
         size: 'xsmall',
@@ -2840,7 +2830,11 @@ var buildTheme = function buildTheme(tokens, flags) {
       }
     },
     starRating: {
-      color: 'background-selected-primary-strong'
+      color: 'background-selected-primary-strong',
+      icons: {
+        selected: StarFill,
+        unselected: Star
+      }
     },
     tab: {
       color: 'text',
@@ -3106,6 +3100,12 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       dislike: {
         color: 'background-selected-primary-strong'
+      },
+      icons: {
+        dislike: Dislike,
+        dislikeSelected: DislikeFill,
+        like: Like,
+        likeSelected: LikeFill
       }
     },
     toggleGroup: {
