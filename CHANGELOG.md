@@ -1,5 +1,49 @@
 # grommet-theme-hpe
 
+## 8.1.0
+
+### General:
+
+- Added a fallback for Heading `size` if a size is passed that doesn’t exist. https://github.com/grommet/grommet-theme-hpe/pull/556
+
+- Fixed instances where icons were falling back to grommet-icons instead of using the new icon set from `@hpe-design/icons-grommet`. https://github.com/grommet/grommet-theme-hpe/pull/557, https://github.com/grommet/grommet-theme-hpe/pull/562, and https://github.com/grommet/grommet-theme-hpe/pull/568
+
+- Fixed an icon issue in the `primary` button where the icon received a white outline around it. https://github.com/grommet/grommet-theme-hpe/pull/560
+
+- Fixed an issue with `text-onPrimaryStrong`, `text-onSelectedPrimaryStrong`, `icon-onPrimaryStrong`, and `icon-onSelectedPrimaryStrong` getting the opposite light/dark values. https://github.com/grommet/grommet-theme-hpe/pull/563.
+
+- Updated hpe-design-tokens dependency to v2.2.0. This adds a new color, `foreground-ok` to the theme. https://github.com/grommet/grommet-theme-hpe/pull/569
+
+- Updated Meter `background` to background-contrast color. https://github.com/grommet/grommet-theme-hpe/pull/565
+
+### Deprecated:
+
+These items are no longer recommended for use and will be removed in v9 of the theme.
+
+- CTA button kinds. https://github.com/grommet/grommet-theme-hpe/pull/567
+
+- The following backgrounds: https://github.com/grommet/grommet-theme-hpe/pull/566
+  - datawave-green-1
+  - datawave-green-2
+  - datawave-multi-1
+  - datawave-multi-2
+  - datawave-multi-3
+  - datawave-multi-4
+  - datawave-multi-5
+  - datawave-multi-6
+  - datawave-white-1
+  - datawave-white-2
+  - datawave-white-3
+  - datawave-white-4
+  - light-shadow-1
+  - light-shadow-2
+  - light-shadow-3
+  - light-shadow-4
+  - orange-yellow
+  - purple-blue
+  - purple-blue-yellow
+  - purple-magenta-yellow
+
 ## 8.0.0
 
 ### Major Changes
