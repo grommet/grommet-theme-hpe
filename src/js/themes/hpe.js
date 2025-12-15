@@ -598,7 +598,7 @@ const buildTheme = (tokens, flags) => {
   });
 
   const backgroundDeprecationMessage = (background) =>
-    `The background "${background}" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds in the HPE Brand Library.`;
+    `The background "${background}" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery).`;
 
   return deepFreeze({
     defaultMode: 'light',
