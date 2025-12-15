@@ -578,6 +578,9 @@ var buildTheme = function buildTheme(tokens, flags) {
       }
     }, kindStyles);
   });
+  var backgroundDeprecationMessage = function backgroundDeprecationMessage(background) {
+    return "The background \"" + background + "\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery).";
+  };
   return deepFreeze({
     defaultMode: 'light',
     global: _extends({
@@ -594,6 +597,67 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       deprecated: {
+        backgrounds: [{
+          name: 'datawave-green-1',
+          message: backgroundDeprecationMessage('datawave-green-1')
+        }, {
+          name: 'datawave-green-2',
+          message: backgroundDeprecationMessage('datawave-green-2')
+        }, {
+          name: 'datawave-multi-1',
+          message: backgroundDeprecationMessage('datawave-multi-1')
+        }, {
+          name: 'datawave-multi-2',
+          message: backgroundDeprecationMessage('datawave-multi-2')
+        }, {
+          name: 'datawave-multi-3',
+          message: backgroundDeprecationMessage('datawave-multi-3')
+        }, {
+          name: 'datawave-multi-4',
+          message: backgroundDeprecationMessage('datawave-multi-4')
+        }, {
+          name: 'datawave-multi-5',
+          message: backgroundDeprecationMessage('datawave-multi-5')
+        }, {
+          name: 'datawave-multi-6',
+          message: backgroundDeprecationMessage('datawave-multi-6')
+        }, {
+          name: 'datawave-white-1',
+          message: backgroundDeprecationMessage('datawave-white-1')
+        }, {
+          name: 'datawave-white-2',
+          message: backgroundDeprecationMessage('datawave-white-2')
+        }, {
+          name: 'datawave-white-3',
+          message: backgroundDeprecationMessage('datawave-white-3')
+        }, {
+          name: 'datawave-white-4',
+          message: backgroundDeprecationMessage('datawave-white-4')
+        }, {
+          name: 'light-shadow-1',
+          message: backgroundDeprecationMessage('light-shadow-1')
+        }, {
+          name: 'light-shadow-2',
+          message: backgroundDeprecationMessage('light-shadow-2')
+        }, {
+          name: 'light-shadow-3',
+          message: backgroundDeprecationMessage('light-shadow-3')
+        }, {
+          name: 'light-shadow-4',
+          message: backgroundDeprecationMessage('light-shadow-4')
+        }, {
+          name: 'orange-yellow',
+          message: backgroundDeprecationMessage('orange-yellow')
+        }, {
+          name: 'purple-blue',
+          message: backgroundDeprecationMessage('purple-blue')
+        }, {
+          name: 'purple-blue-yellow',
+          message: backgroundDeprecationMessage('purple-blue-yellow')
+        }, {
+          name: 'purple-magenta-yellow',
+          message: backgroundDeprecationMessage('purple-magenta-yellow')
+        }],
         button: {
           kind: [{
             name: 'cta-primary',
