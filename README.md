@@ -8,7 +8,7 @@ Hewlett Packard Enterprise design system theme.
   $ yarn add grommet-theme-hpe @hpe-design/icons-grommet
 ```
 
-Note `@hpe-design/icons-grommet` is a peer dependency of grommet-theme-hpe and must be installed explicitly.
+`@hpe-design/icons-grommet` is a peer dependency of grommet-theme-hpe and must be installed explicitly.
 
 _NOTE: To install `grommet-theme-hpe` from a branch, use the `yarn` package
 manager, since `npm install` fails to install from a branch name. `npm install`
