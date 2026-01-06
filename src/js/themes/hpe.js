@@ -1396,16 +1396,14 @@ const buildTheme = (tokens, flags) => {
       },
       icon: {
         extend: ({ theme, disabled }) => {
-          const selectedIconColor = theme.dark
-            ? dark.hpe.color.icon.onSelectedPrimaryStrong
-            : light.hpe.color.icon.onSelectedPrimaryStrong;
+          const themeToUse = disabled ? theme : { ...theme, dark: !theme.dark };
           return `stroke-width: 2px;
-          stroke: ${getThemeColor(
-            disabled
-              ? components.hpe.checkbox.default.control.disabled.rest.iconColor
-              : selectedIconColor,
-            theme,
-          )}`;
+      stroke: ${getThemeColor(
+        disabled
+          ? components.hpe.checkbox.default.control.disabled.rest.iconColor
+          : components.hpe.checkbox.default.control.selected.rest.iconColor,
+        themeToUse,
+      )}`;
         },
       },
       gap: components.hpe.checkbox.default.medium.gapX,
