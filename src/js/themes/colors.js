@@ -39,7 +39,10 @@ const tokenColors = {};
 Object.keys(flatColors).forEach((color) => {
   if (!color.includes('shadow')) {
     const [category] = color.split('-');
-    const flatName = color.split('-').slice(1).join('-');
+    let flatName;
+    if (color !== 'focus-support') {
+      flatName = color.split('-').slice(1).join('-');
+    }
     tokenColors[color] = {
       light: access(
         `hpe.color.${category}${flatName ? `.${flatName}` : ''}`,
