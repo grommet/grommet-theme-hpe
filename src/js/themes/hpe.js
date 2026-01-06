@@ -10,7 +10,6 @@ import {
   global as localGlobal,
   components as localComponents,
 } from 'hpe-design-tokens/grommet';
-
 import { Checkmark } from '@hpe-design/icons-grommet/icons/Checkmark';
 import { Close } from '@hpe-design/icons-grommet/icons/Close';
 import { Filter } from '@hpe-design/icons-grommet/icons/Filter';
@@ -1396,13 +1395,18 @@ const buildTheme = (tokens, flags) => {
         },
       },
       icon: {
-        extend: ({ theme, disabled }) => `stroke-width: 2px;
-        stroke: ${getThemeColor(
-          disabled
-            ? components.hpe.checkbox.default.control.disabled.rest.iconColor
-            : components.hpe.checkbox.default.control.selected.rest.iconColor,
-          theme,
-        )}`,
+        extend: ({ theme, disabled }) => {
+          const selectedIconColor = theme.dark
+            ? dark.hpe.color.icon.onSelectedPrimaryStrong
+            : light.hpe.color.icon.onSelectedPrimaryStrong;
+          return `stroke-width: 2px;
+          stroke: ${getThemeColor(
+            disabled
+              ? components.hpe.checkbox.default.control.disabled.rest.iconColor
+              : selectedIconColor,
+            theme,
+          )}`;
+        },
       },
       gap: components.hpe.checkbox.default.medium.gapX,
       label: { align: 'start' },
