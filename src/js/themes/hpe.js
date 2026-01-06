@@ -1397,6 +1397,10 @@ const buildTheme = (tokens, flags) => {
       },
       icon: {
         extend: ({ theme, disabled }) => {
+          // Reverse the theme mode for selected state because the
+          // icon-onSelectedPrimaryStrong color token was intentionally swapped
+          // (light/dark values reversed) in the color definitions. This reversal
+          // "un-swaps" the token to display the correct icon color in both modes.
           const themeToUse = disabled ? theme : { ...theme, dark: !theme.dark };
           return `stroke-width: 2px;
       stroke: ${getThemeColor(
