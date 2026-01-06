@@ -10,6 +10,7 @@ import {
   global as localGlobal,
   components as localComponents,
 } from 'hpe-design-tokens/grommet';
+
 import { Checkmark } from '@hpe-design/icons-grommet/icons/Checkmark';
 import { Close } from '@hpe-design/icons-grommet/icons/Close';
 import { Filter } from '@hpe-design/icons-grommet/icons/Filter';
