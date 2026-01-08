@@ -40,6 +40,9 @@ Object.keys(flatColors).forEach((color) => {
   if (!color.includes('shadow')) {
     const [category] = color.split('-');
     let flatName;
+    // special case for 'focus-support' because it follows a different
+    // naming pattern than other token colors. The change ensures that
+    // focus-support is correctly added to the colors array
     if (color !== 'focus-support') {
       flatName = color.split('-').slice(1).join('-');
     }
