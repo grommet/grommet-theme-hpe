@@ -25,7 +25,7 @@
     "styled-components": "^6.0.0"
   },
   "dependencies": {
-    "@hpe-design/icons-grommet": "^1.0.1",
+    "@hpe-design/icons-grommet": "^1.1.0",
     "hpe-design-tokens": "^2.2.0"
   },
   "devDependencies": {
