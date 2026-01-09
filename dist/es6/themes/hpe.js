@@ -1263,7 +1263,15 @@ var buildTheme = function buildTheme(tokens, flags) {
         extend: function extend(_ref1) {
           var theme = _ref1.theme,
             disabled = _ref1.disabled;
-          return "stroke-width: 2px;\n        stroke: " + getThemeColor(disabled ? components.hpe.checkbox["default"].control.disabled.rest.iconColor : components.hpe.checkbox["default"].control.selected.rest.iconColor, theme);
+          // Grommet normally applies a "smart" background/foreground pairing that
+          // selects foreground colors based on the background (light/dark) to keep
+          // text and icons readable. Because the "icon-onSelectedPrimaryStrong" token's
+          // light/dark values are intentionally swapped in our tokens, invert
+          // theme.dark here so the token is resolved exactly as authored.
+          var themeToUse = disabled ? theme : _extends({}, theme, {
+            dark: !theme.dark
+          });
+          return "stroke-width: 2px;\n      stroke: " + getThemeColor(disabled ? components.hpe.checkbox["default"].control.disabled.rest.iconColor : components.hpe.checkbox["default"].control.selected.rest.iconColor, themeToUse);
         }
       },
       gap: components.hpe.checkbox["default"].medium.gapX,
