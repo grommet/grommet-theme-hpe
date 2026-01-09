@@ -1397,10 +1397,11 @@ const buildTheme = (tokens, flags) => {
       },
       icon: {
         extend: ({ theme, disabled }) => {
-          // Reverse the theme mode for selected state because the
-          // icon-onSelectedPrimaryStrong color token was intentionally swapped
-          // (light/dark values reversed) in the color definitions. This reversal
-          // "un-swaps" the token to display the correct icon color in both modes.
+          // Grommet normally applies a "smart" background/foreground pairing that
+          // selects foreground colors based on the background (light/dark) to keep
+          // text and icons readable. Because the "icon-onSelectedPrimaryStrong" token's
+          // light/dark values are intentionally swapped in our tokens, invert
+          // theme.dark here so the token is resolved exactly as authored.
           const themeToUse = disabled ? theme : { ...theme, dark: !theme.dark };
           return `stroke-width: 2px;
       stroke: ${getThemeColor(
