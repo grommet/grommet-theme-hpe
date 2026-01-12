@@ -38,24 +38,28 @@ const flatColors = flattenObject(light, '-');
 const tokenColors = {};
 Object.keys(flatColors).forEach((color) => {
   if (!color.includes('shadow')) {
-    const [category] = color.split('-');
-    let flatName;
-    // special case for 'focus-support' because it follows a different
-    // naming pattern than other token colors. The change ensures that
-    // focus-support is correctly added to the colors array
-    if (color !== 'focus-support') {
-      flatName = color.split('-').slice(1).join('-');
+    if (color === 'focus-support') {
+      // special case for 'focus-support' because it follows a different
+      // naming pattern than other token colors. The change ensures that
+      // focus-support is correctly added to the colors array
+      tokenColors[color] = {
+        light: light.hpe.color['focus-support'],
+        dark: dark.hpe.color['focus-support'],
+      };
+    } else {
+      const [category] = color.split('-');
+      const flatName = color.split('-').slice(1).join('-');
+      tokenColors[color] = {
+        light: access(
+          `hpe.color.${category}${flatName ? `.${flatName}` : ''}`,
+          light,
+        ),
+        dark: access(
+          `hpe.color.${category}${flatName ? `.${flatName}` : ''}`,
+          dark,
+        ),
+      };
     }
-    tokenColors[color] = {
-      light: access(
-        `hpe.color.${category}${flatName ? `.${flatName}` : ''}`,
-        light,
-      ),
-      dark: access(
-        `hpe.color.${category}${flatName ? `.${flatName}` : ''}`,
-        dark,
-      ),
-    };
   }
 });
 export const colors = {
