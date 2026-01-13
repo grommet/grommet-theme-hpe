@@ -832,7 +832,7 @@ const buildTheme = (tokens, flags) => {
         },
         shadow: {
           color: 'focus-support',
-          size: global.hpe.focusIndicator.boxShadow.spread,
+          size: '2px',
           blur: '0px',
         },
         twoColor: true,
