@@ -1073,6 +1073,7 @@
         "weight": 500
       },
       "icon": {
+        "type": {},
         "key": null,
         "ref": null,
         "props": {},
@@ -1093,6 +1094,7 @@
         "weight": 500
       },
       "icon": {
+        "type": {},
         "key": null,
         "ref": null,
         "props": {},

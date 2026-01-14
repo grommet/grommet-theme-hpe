@@ -7,6 +7,7 @@ var _styledComponents = require("styled-components");
 var _grommet = require("hpe-design-tokens/grommet");
 var _Checkmark = require("@hpe-design/icons-grommet/icons/Checkmark");
 var _Close = require("@hpe-design/icons-grommet/icons/Close");
+var _Element = require("@hpe-design/icons-grommet/icons/Element");
 var _Filter = require("@hpe-design/icons-grommet/icons/Filter");
 var _Search = require("@hpe-design/icons-grommet/icons/Search");
 var _Descend = require("@hpe-design/icons-grommet/icons/Descend");
@@ -43,23 +44,6 @@ var _templateObject, _templateObject2, _templateObject3, _templateObject4, _temp
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _taggedTemplateLiteralLoose(e, t) { return t || (t = e.slice(0)), e.raw = t, e; }
-function Hpe() {
-  return /*#__PURE__*/_react["default"].createElement("svg", {
-    style: {
-      stroke: 'none'
-    },
-    width: "36",
-    height: "18",
-    viewBox: "0 0 48 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/_react["default"].createElement("path", {
-    fillRule: "evenodd",
-    clipRule: "evenodd",
-    d: "M2 6H46V18H2V6ZM5 9H43V15H5V9Z",
-    fill: "#00C781"
-  }));
-}
 var baseSpacing = 24;
 var isObject = function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
@@ -893,11 +877,11 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       'cta-primary': _extends({}, buttonKindTheme.primary, {
-        icon: /*#__PURE__*/_react["default"].createElement(Hpe, null),
+        icon: /*#__PURE__*/_react["default"].createElement(_Element.Element, null),
         reverse: true
       }),
       'cta-alternate': _extends({}, buttonKindTheme.secondary, {
-        icon: /*#__PURE__*/_react["default"].createElement(Hpe, null),
+        icon: /*#__PURE__*/_react["default"].createElement(_Element.Element, null),
         reverse: true
       })
     }, buttonKindTheme, {

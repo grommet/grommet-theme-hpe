@@ -7,6 +7,7 @@ import { css } from 'styled-components';
 import { primitives as localPrimitives, dark as localDark, light as localLight, dimension as localDimension, small as localSmall, global as localGlobal, components as localComponents } from 'hpe-design-tokens/grommet';
 import { Checkmark } from '@hpe-design/icons-grommet/icons/Checkmark';
 import { Close } from '@hpe-design/icons-grommet/icons/Close';
+import { Element } from '@hpe-design/icons-grommet/icons/Element';
 import { Filter } from '@hpe-design/icons-grommet/icons/Filter';
 import { Search } from '@hpe-design/icons-grommet/icons/Search';
 import { Descend } from '@hpe-design/icons-grommet/icons/Descend';
@@ -39,23 +40,6 @@ import { Info } from '@hpe-design/icons-grommet/icons/Info';
 import { StatusCritical } from '@hpe-design/icons-grommet/icons/StatusCritical';
 import { backgrounds } from './backgrounds';
 import { colors } from './colors';
-function Hpe() {
-  return /*#__PURE__*/React.createElement("svg", {
-    style: {
-      stroke: 'none'
-    },
-    width: "36",
-    height: "18",
-    viewBox: "0 0 48 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, /*#__PURE__*/React.createElement("path", {
-    fillRule: "evenodd",
-    clipRule: "evenodd",
-    d: "M2 6H46V18H2V6ZM5 9H43V15H5V9Z",
-    fill: "#00C781"
-  }));
-}
 var baseSpacing = 24;
 var isObject = function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
@@ -889,11 +873,11 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       'cta-primary': _extends({}, buttonKindTheme.primary, {
-        icon: /*#__PURE__*/React.createElement(Hpe, null),
+        icon: /*#__PURE__*/React.createElement(Element, null),
         reverse: true
       }),
       'cta-alternate': _extends({}, buttonKindTheme.secondary, {
-        icon: /*#__PURE__*/React.createElement(Hpe, null),
+        icon: /*#__PURE__*/React.createElement(Element, null),
         reverse: true
       })
     }, buttonKindTheme, {
