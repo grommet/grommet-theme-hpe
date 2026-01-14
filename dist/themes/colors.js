@@ -37,13 +37,23 @@ var flatColors = _flattenObject(_grommet.light, '-');
 var tokenColors = {};
 Object.keys(flatColors).forEach(function (color) {
   if (!color.includes('shadow')) {
-    var _color$split = color.split('-'),
-      category = _color$split[0];
-    var flatName = color.split('-').slice(1).join('-');
-    tokenColors[color] = {
-      light: access("hpe.color." + category + (flatName ? "." + flatName : ''), _grommet.light),
-      dark: access("hpe.color." + category + (flatName ? "." + flatName : ''), _grommet.dark)
-    };
+    if (color === 'focus-support') {
+      // special case for 'focus-support' because it follows a different
+      // naming pattern than other token colors. The change ensures that
+      // focus-support is correctly added to the colors array
+      tokenColors[color] = {
+        light: _grommet.light.hpe.color['focus-support'],
+        dark: _grommet.dark.hpe.color['focus-support']
+      };
+    } else {
+      var _color$split = color.split('-'),
+        category = _color$split[0];
+      var flatName = color.split('-').slice(1).join('-');
+      tokenColors[color] = {
+        light: access("hpe.color." + category + (flatName ? "." + flatName : ''), _grommet.light),
+        dark: access("hpe.color." + category + (flatName ? "." + flatName : ''), _grommet.dark)
+      };
+    }
   }
 });
 var colors = exports.colors = _extends({}, tokenColors, {

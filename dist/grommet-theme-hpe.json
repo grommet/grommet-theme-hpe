@@ -842,8 +842,8 @@
         "offset": "2px"
       },
       "shadow": {
-        "color": "{color.focus.support.DEFAULT.REST}",
-        "size": "{focusIndicator.outlineOffset}",
+        "color": "focus-support",
+        "size": "2px",
         "blur": "0px"
       },
       "twoColor": true,
@@ -854,7 +854,7 @@
           "offset": "-2px"
         },
         "shadow": {
-          "color": "{color.focus.support.DEFAULT.REST}",
+          "color": "focus-support",
           "size": "4px",
           "blur": "0px",
           "inset": true
