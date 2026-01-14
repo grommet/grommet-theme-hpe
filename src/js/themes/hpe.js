@@ -810,8 +810,8 @@ const buildTheme = (tokens, flags) => {
           offset: global.hpe.focusIndicator.outlineOffset,
         },
         shadow: {
-          color: global.hpe.focusIndicator.boxShadow.color,
-          size: global.hpe.focusIndicator.boxShadow.spread,
+          color: 'focus-support',
+          size: '2px',
           blur: '0px',
         },
         twoColor: true,
@@ -823,7 +823,7 @@ const buildTheme = (tokens, flags) => {
             offset: `-${global.hpe.focusIndicator.outline.width}`,
           },
           shadow: {
-            color: global.hpe.focusIndicator.boxShadow.color,
+            color: 'focus-support',
             size: '4px',
             blur: '0px',
             inset: true,
