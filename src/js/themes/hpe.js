@@ -13,6 +13,7 @@ import {
 
 import { Checkmark } from '@hpe-design/icons-grommet/icons/Checkmark';
 import { Close } from '@hpe-design/icons-grommet/icons/Close';
+import { Element } from '@hpe-design/icons-grommet/icons/Element';
 import { Filter } from '@hpe-design/icons-grommet/icons/Filter';
 import { Search } from '@hpe-design/icons-grommet/icons/Search';
 import { Descend } from '@hpe-design/icons-grommet/icons/Descend';
@@ -46,28 +47,6 @@ import { StatusCritical } from '@hpe-design/icons-grommet/icons/StatusCritical';
 
 import { backgrounds } from './backgrounds';
 import { colors } from './colors';
-
-function Hpe() {
-  return (
-    <svg
-      style={{
-        stroke: 'none',
-      }}
-      width="36"
-      height="18"
-      viewBox="0 0 48 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M2 6H46V18H2V6ZM5 9H43V15H5V9Z"
-        fill="#00C781"
-      />
-    </svg>
-  );
-}
 
 const baseSpacing = 24;
 
@@ -979,12 +958,12 @@ const buildTheme = (tokens, flags) => {
       },
       'cta-primary': {
         ...buttonKindTheme.primary,
-        icon: <Hpe />,
+        icon: <Element />,
         reverse: true,
       },
       'cta-alternate': {
         ...buttonKindTheme.secondary,
-        icon: <Hpe />,
+        icon: <Element />,
         reverse: true,
       },
       ...buttonKindTheme,
