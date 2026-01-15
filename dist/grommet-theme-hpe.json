@@ -385,6 +385,10 @@
         "light": "#7764fc",
         "dark": "#7764fc"
       },
+      "focus": {
+        "light": "#292d3a",
+        "dark": "#ffffff"
+      },
       "foreground-critical": {
         "light": "#ec3331",
         "dark": "#fc6161"
@@ -584,6 +588,10 @@
       "transparent": {
         "light": "rgba(0, 0, 0, 0)",
         "dark": "rgba(0, 0, 0, 0)"
+      },
+      "focus-support": {
+        "light": "#ffffff",
+        "dark": "#292d3a"
       },
       "control": "background-primary-strong",
       "active-text": "text-strong",
