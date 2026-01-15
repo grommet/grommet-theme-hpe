@@ -1,6 +1,6 @@
 {
   "name": "grommet-theme-hpe",
-  "version": "8.1.0",
+  "version": "8.1.1",
   "main": "dist/index.js",
   "module": "dist/es6/index.js",
   "jsnext:main": "dist/es6/index.js",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@hpe-design/icons-grommet": "^1.1.0",
-    "hpe-design-tokens": "^2.2.0"
+    "hpe-design-tokens": "^2.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.1",

@@ -1,5 +1,15 @@
 # grommet-theme-hpe
 
+## 8.1.1
+
+- Moved `@hpe-design/icons-grommet` from a peerDependency to a direct dependency. https://github.com/grommet/grommet-theme-hpe/pull/577
+
+- Fixed the CheckBox checkmark icon to use `icon-onSelectedPrimaryStrong`. https://github.com/grommet/grommet-theme-hpe/pull/573
+
+- Fixed the `focusIndicator` to use the correct colors. https://github.com/grommet/grommet-theme-hpe/pull/574
+
+- Bumped `hpe-design-tokens` dependency to 2.2.1.
+
 ## 8.1.0
 
 ### General:
