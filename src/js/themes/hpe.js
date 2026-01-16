@@ -1797,10 +1797,10 @@ const buildTheme = (tokens, flags) => {
       },
       button: {
         background: components.hpe.button.secondary.rest.background,
-        border: { radius: components.hpe.button.default.medium.borderRadius },
+        border: { radius: components.hpe.button.secondary.medium.borderRadius },
         pad: {
-          vertical: components.hpe.button.default.medium.paddingY,
-          horizontal: components.hpe.button.default.medium.paddingX,
+          vertical: components.hpe.button.secondary.medium.paddingY,
+          horizontal: components.hpe.button.secondary.medium.paddingX,
         },
         color: components.hpe.button.secondary.rest.textColor,
         font: { weight: components.hpe.button.secondary.rest.fontWeight },
