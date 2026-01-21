@@ -846,7 +846,22 @@ const buildTheme = (tokens, flags) => {
          * at a z-index of 101. This adjustment brings Drop in alignment with Layer
          * which needs an elevated z-index to sit atop the Global header. */
         zIndex: components.hpe.drop.default.zIndex,
-        extend: () => `
+        // in storybook, a bug was noted where some global styling is overriding
+        // the drop box-shadow when the drop container receives focus onOpen
+        // this ensures the box-shadow remains visible.
+        // https://github.com/grommet/hpe-design-system/issues/4873
+        extend: (props) => `
+          &:focus:not(:focus-visible) {
+            ${
+              props.elevation
+                ? `box-shadow: ${
+                    props.theme.global.elevation[
+                      props.theme.dark ? 'dark' : 'light'
+                    ][props.elevation]
+                  };`
+                : ''
+            }
+          }
           [class*=MaskedInput__ContainerBox] {
             padding-block: ${components.hpe.select.default.medium.drop.paddingY};
             padding-inline: ${components.hpe.select.default.medium.drop.paddingX};
