@@ -577,7 +577,23 @@ const buildTheme = (tokens, flags) => {
   });
 
   const backgroundDeprecationMessage = (background) =>
-    `The background "${background}" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery).`;
+    `The background "${background}" is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery).`;
+
+  const colorRemovedDeprecationMessageWithAlt = (color, alternative) =>
+    `The color "${color}" is deprecated and will be removed in v10. Please use "${alternative}" instead.`;
+
+  const colorUndefinedDeprecationMessageWithAlt = (
+    color,
+    alternative,
+    future,
+  ) =>
+    `The color '${color}' is deprecated and ${future ? "will be set to 'undefined' in v10" : "it's value is set to 'undefined'"}. Please use '${alternative}' instead.`;
+
+  const colorRemovedDeprecationMessage = (color) =>
+    `The color "${color}" is deprecated and will be removed in v10. Please use reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color?q=color) for a list of available colors.`;
+
+  const colorUndefinedDeprecationMessage = (color, future) =>
+    `The color "${color}" is deprecated and ${future ? "will be set to 'undefined' in v10" : "it's value is set to 'undefined'"}. Please use reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color?q=color) for a list of available colors.`;
 
   return deepFreeze({
     defaultMode: 'light',
@@ -683,15 +699,140 @@ const buildTheme = (tokens, flags) => {
             {
               name: 'cta-primary',
               message:
-                'The "cta-primary" button kind is deprecated and will be removed in v9. Please use "primary" instead.',
+                'The "cta-primary" button kind is deprecated and will be removed in v10. Please use "primary" instead.',
             },
             {
               name: 'cta-alternate',
               message:
-                'The "cta-alternate" button kind is deprecated and will be removed in v9. Please use "secondary" instead.',
+                'The "cta-alternate" button kind is deprecated and will be removed in v10. Please use "secondary" instead.',
             },
           ],
         },
+        colors: [
+          {
+            name: 'accent-1',
+            message: colorUndefinedDeprecationMessage('accent-1'),
+          },
+          {
+            name: 'accent-2',
+            message: colorUndefinedDeprecationMessage('accent-2'),
+          },
+          {
+            name: 'accent-3',
+            message: colorUndefinedDeprecationMessage('accent-3'),
+          },
+          {
+            name: 'accent-4',
+            message: colorUndefinedDeprecationMessage('accent-4'),
+          },
+          {
+            name: 'neutral-1',
+            message: colorUndefinedDeprecationMessage('neutral-1'),
+          },
+          {
+            name: 'neutral-2',
+            message: colorUndefinedDeprecationMessage('neutral-2'),
+          },
+          {
+            name: 'neutral-3',
+            message: colorUndefinedDeprecationMessage('neutral-3'),
+          },
+          {
+            name: 'neutral-4',
+            message: colorUndefinedDeprecationMessage('neutral-4'),
+          },
+          {
+            name: 'neutral-5',
+            message: colorUndefinedDeprecationMessage('neutral-5'),
+          },
+          {
+            name: 'status-error',
+            message: colorUndefinedDeprecationMessage('status-error'),
+          },
+          {
+            name: 'graph-0',
+            message: colorUndefinedDeprecationMessageWithAlt(
+              'graph-0',
+              'dataVis-categorical-10',
+              true,
+            ),
+          },
+          {
+            name: 'graph-1',
+            message: colorUndefinedDeprecationMessageWithAlt(
+              'graph-1',
+              'dataVis-categorical-20',
+              true,
+            ),
+          },
+          {
+            name: 'graph-2',
+            message: colorUndefinedDeprecationMessageWithAlt(
+              'graph-2',
+              'dataVis-categorical-30',
+              true,
+            ),
+          },
+          {
+            name: 'graph-3',
+            message: colorUndefinedDeprecationMessageWithAlt(
+              'graph-3',
+              'dataVis-categorical-40',
+              true,
+            ),
+          },
+          {
+            name: 'graph-4',
+            message: colorUndefinedDeprecationMessageWithAlt(
+              'graph-4',
+              'dataVis-categorical-50',
+              true,
+            ),
+          },
+          {
+            name: 'graph-5',
+            message: colorUndefinedDeprecationMessageWithAlt(
+              'graph-5',
+              'dataVis-categorical-60',
+              true,
+            ),
+          },
+          {
+            name: 'graph-6',
+            message: colorUndefinedDeprecationMessageWithAlt(
+              'graph-6',
+              'dataVis-categorical-70',
+              true,
+            ),
+          },
+          {
+            name: 'graph-7',
+            message: colorUndefinedDeprecationMessageWithAlt(
+              'graph-7',
+              'dataVis-categorical-80',
+              true,
+            ),
+          },
+          {
+            name: 'status-disabled',
+            message: colorUndefinedDeprecationMessageWithAlt(
+              'status-disabled',
+              'text-weak',
+              true,
+            ),
+          },
+          {
+            name: 'disabled-text',
+            message: colorRemovedDeprecationMessageWithAlt(
+              'disabled-text',
+              'text-disabled',
+            ),
+          },
+          {
+            name: 'background-cta-alternate',
+            message: colorRemovedDeprecationMessage('background-cta-alternate'),
+          },
+        ],
       },
       input: {
         font: {
