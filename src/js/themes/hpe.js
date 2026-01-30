@@ -587,13 +587,13 @@ const buildTheme = (tokens, flags) => {
     alternative,
     future,
   ) =>
-    `The color '${color}' is deprecated and ${future ? "will be set to 'undefined' in v10" : "it's value is set to 'undefined'"}. Please use '${alternative}' instead.`;
+    `The color '${color}' is deprecated and ${future ? "will be set to 'undefined' in v10" : "its value is set to 'undefined'"}. Please use '${alternative}' instead.`;
 
   const colorRemovedDeprecationMessage = (color) =>
-    `The color "${color}" is deprecated and will be removed in v10. Please use reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color?q=color) for a list of available colors.`;
+    `The color "${color}" is deprecated and will be removed in v10. Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color?q=color) for a list of available colors.`;
 
   const colorUndefinedDeprecationMessage = (color, future) =>
-    `The color "${color}" is deprecated and ${future ? "will be set to 'undefined' in v10" : "it's value is set to 'undefined'"}. Please use reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color?q=color) for a list of available colors.`;
+    `The color "${color}" is deprecated and ${future ? "will be set to 'undefined' in v10" : "its value is set to 'undefined'"}. Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color?q=color) for a list of available colors.`;
 
   return deepFreeze({
     defaultMode: 'light',

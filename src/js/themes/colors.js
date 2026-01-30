@@ -162,7 +162,8 @@ export const colors = {
     dark: dark.hpe.color.text.placeholder,
   },
   // ---- DEPRECATED ---- //
-  // Need to keep these as undefined to avoid falling back to Grommet defaults
+  // Need to keep these deprecated keys (using undefined or aliases)
+  // to avoid falling back to Grommet defaults
   'accent-1': undefined,
   'accent-2': undefined,
   'accent-3': undefined,
