@@ -576,24 +576,17 @@ const buildTheme = (tokens, flags) => {
     };
   });
 
+  const referenceColorDocumentationMessage =
+    'Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color?q=color) for a list of available colors';
+
   const backgroundDeprecationMessage = (background) =>
-    `The background "${background}" is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery).`;
+    `The background '${background}' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery).`;
 
-  const colorRemovedDeprecationMessageWithAlt = (color, alternative) =>
-    `The color "${color}" is deprecated and will be removed in v10. Please use "${alternative}" instead.`;
+  const colorRemovedDeprecationMessage = (color, alt) =>
+    `The color '${color}' is deprecated and will be removed in v10. ${alt ? `Please use '${alt}' instead` : referenceColorDocumentationMessage}.`;
 
-  const colorUndefinedDeprecationMessageWithAlt = (
-    color,
-    alternative,
-    future,
-  ) =>
-    `The color '${color}' is deprecated and ${future ? "will be set to 'undefined' in v10" : "its value is set to 'undefined'"}. Please use '${alternative}' instead.`;
-
-  const colorRemovedDeprecationMessage = (color) =>
-    `The color "${color}" is deprecated and will be removed in v10. Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color?q=color) for a list of available colors.`;
-
-  const colorUndefinedDeprecationMessage = (color, future) =>
-    `The color "${color}" is deprecated and ${future ? "will be set to 'undefined' in v10" : "its value is set to 'undefined'"}. Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color?q=color) for a list of available colors.`;
+  const colorUndefinedDeprecationMessage = (color, future, alt) =>
+    `The color '${color}' is deprecated and ${future ? "will be set to 'undefined' in v10" : "its value is set to 'undefined'"}. ${alt ? `Please use '${alt}' instead` : referenceColorDocumentationMessage}.`;
 
   return deepFreeze({
     defaultMode: 'light',
@@ -751,7 +744,7 @@ const buildTheme = (tokens, flags) => {
           },
           {
             name: 'graph-0',
-            message: colorUndefinedDeprecationMessageWithAlt(
+            message: colorUndefinedDeprecationMessage(
               'graph-0',
               'dataVis-categorical-10',
               true,
@@ -759,71 +752,71 @@ const buildTheme = (tokens, flags) => {
           },
           {
             name: 'graph-1',
-            message: colorUndefinedDeprecationMessageWithAlt(
+            message: colorUndefinedDeprecationMessage(
               'graph-1',
-              'dataVis-categorical-20',
               true,
+              'dataVis-categorical-20',
             ),
           },
           {
             name: 'graph-2',
-            message: colorUndefinedDeprecationMessageWithAlt(
+            message: colorUndefinedDeprecationMessage(
               'graph-2',
-              'dataVis-categorical-30',
               true,
+              'dataVis-categorical-30',
             ),
           },
           {
             name: 'graph-3',
-            message: colorUndefinedDeprecationMessageWithAlt(
+            message: colorUndefinedDeprecationMessage(
               'graph-3',
-              'dataVis-categorical-40',
               true,
+              'dataVis-categorical-40',
             ),
           },
           {
             name: 'graph-4',
-            message: colorUndefinedDeprecationMessageWithAlt(
+            message: colorUndefinedDeprecationMessage(
               'graph-4',
-              'dataVis-categorical-50',
               true,
+              'dataVis-categorical-50',
             ),
           },
           {
             name: 'graph-5',
-            message: colorUndefinedDeprecationMessageWithAlt(
+            message: colorUndefinedDeprecationMessage(
               'graph-5',
-              'dataVis-categorical-60',
               true,
+              'dataVis-categorical-60',
             ),
           },
           {
             name: 'graph-6',
-            message: colorUndefinedDeprecationMessageWithAlt(
+            message: colorUndefinedDeprecationMessage(
               'graph-6',
-              'dataVis-categorical-70',
               true,
+              'dataVis-categorical-70',
             ),
           },
           {
             name: 'graph-7',
-            message: colorUndefinedDeprecationMessageWithAlt(
+            message: colorUndefinedDeprecationMessage(
               'graph-7',
-              'dataVis-categorical-80',
               true,
+              'dataVis-categorical-80',
             ),
           },
           {
             name: 'status-disabled',
-            message: colorUndefinedDeprecationMessageWithAlt(
+            message: colorUndefinedDeprecationMessage(
               'status-disabled',
-              'text-weak',
               true,
+              'text-weak',
             ),
           },
           {
             name: 'disabled-text',
-            message: colorRemovedDeprecationMessageWithAlt(
+            message: colorRemovedDeprecationMessage(
               'disabled-text',
               'text-disabled',
             ),
