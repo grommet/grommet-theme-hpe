@@ -588,6 +588,88 @@ const buildTheme = (tokens, flags) => {
   const colorUndefinedDeprecationMessage = (color, future, alt) =>
     `The color '${color}' is deprecated and ${future ? "will be set to 'undefined' in v10" : "its value is set to 'undefined'"}. ${alt ? `Please use '${alt}' instead` : referenceColorDocumentationMessage}.`;
 
+  const deprecationEntry = (name, message) => ({ name, message });
+
+  // Deprecated backgrounds
+  const deprecatedBackgrounds = [
+    'datawave-green-1',
+    'datawave-green-2',
+    'datawave-multi-1',
+    'datawave-multi-2',
+    'datawave-multi-3',
+    'datawave-multi-4',
+    'datawave-multi-5',
+    'datawave-multi-6',
+    'datawave-white-1',
+    'datawave-white-2',
+    'datawave-white-3',
+    'datawave-white-4',
+    'light-shadow-1',
+    'light-shadow-2',
+    'light-shadow-3',
+    'light-shadow-4',
+    'orange-yellow',
+    'purple-blue',
+    'purple-blue-yellow',
+    'purple-magenta-yellow',
+  ].map((name) => deprecationEntry(name, backgroundDeprecationMessage(name)));
+
+  // Deprecated button kinds
+  const deprecatedButtonKinds = [
+    { name: 'cta-primary', alt: 'primary' },
+    { name: 'cta-alternate', alt: 'secondary' },
+  ].map(({ name, alt }) =>
+    deprecationEntry(
+      name,
+      `The "${name}" button kind is deprecated and will be removed in v10. Please use "${alt}" instead.`,
+    ),
+  );
+
+  // Deprecated colors
+  const deprecatedColors = [
+    // Undefined without alternative
+    ...[
+      'accent-1',
+      'accent-2',
+      'accent-3',
+      'accent-4',
+      'neutral-1',
+      'neutral-2',
+      'neutral-3',
+      'neutral-4',
+      'neutral-5',
+      'status-error',
+    ].map((name) =>
+      deprecationEntry(name, colorUndefinedDeprecationMessage(name)),
+    ),
+    // Undefined (future) with alternative - graph colors
+    ...[0, 1, 2, 3, 4, 5, 6, 7].map((i) =>
+      deprecationEntry(
+        `graph-${i}`,
+        colorUndefinedDeprecationMessage(
+          `graph-${i}`,
+          true,
+          `dataVis-categorical-${(i + 1) * 10}`,
+        ),
+      ),
+    ),
+    // Undefined (future) with alternative - other
+    deprecationEntry(
+      'status-disabled',
+      colorUndefinedDeprecationMessage('status-disabled', true, 'text-weak'),
+    ),
+    // Removed with alternative
+    deprecationEntry(
+      'disabled-text',
+      colorRemovedDeprecationMessage('disabled-text', 'text-disabled'),
+    ),
+    // Removed without alternative
+    deprecationEntry(
+      'background-cta-alternate',
+      colorRemovedDeprecationMessage('background-cta-alternate'),
+    ),
+  ];
+
   return deepFreeze({
     defaultMode: 'light',
     global: {
@@ -605,227 +687,11 @@ const buildTheme = (tokens, flags) => {
         disabled: { opacity: 0.3 },
       },
       deprecated: {
-        backgrounds: [
-          {
-            name: 'datawave-green-1',
-            message: backgroundDeprecationMessage('datawave-green-1'),
-          },
-          {
-            name: 'datawave-green-2',
-            message: backgroundDeprecationMessage('datawave-green-2'),
-          },
-          {
-            name: 'datawave-multi-1',
-            message: backgroundDeprecationMessage('datawave-multi-1'),
-          },
-          {
-            name: 'datawave-multi-2',
-            message: backgroundDeprecationMessage('datawave-multi-2'),
-          },
-          {
-            name: 'datawave-multi-3',
-            message: backgroundDeprecationMessage('datawave-multi-3'),
-          },
-          {
-            name: 'datawave-multi-4',
-            message: backgroundDeprecationMessage('datawave-multi-4'),
-          },
-          {
-            name: 'datawave-multi-5',
-            message: backgroundDeprecationMessage('datawave-multi-5'),
-          },
-          {
-            name: 'datawave-multi-6',
-            message: backgroundDeprecationMessage('datawave-multi-6'),
-          },
-          {
-            name: 'datawave-white-1',
-            message: backgroundDeprecationMessage('datawave-white-1'),
-          },
-          {
-            name: 'datawave-white-2',
-            message: backgroundDeprecationMessage('datawave-white-2'),
-          },
-          {
-            name: 'datawave-white-3',
-            message: backgroundDeprecationMessage('datawave-white-3'),
-          },
-          {
-            name: 'datawave-white-4',
-            message: backgroundDeprecationMessage('datawave-white-4'),
-          },
-          {
-            name: 'light-shadow-1',
-            message: backgroundDeprecationMessage('light-shadow-1'),
-          },
-          {
-            name: 'light-shadow-2',
-            message: backgroundDeprecationMessage('light-shadow-2'),
-          },
-          {
-            name: 'light-shadow-3',
-            message: backgroundDeprecationMessage('light-shadow-3'),
-          },
-          {
-            name: 'light-shadow-4',
-            message: backgroundDeprecationMessage('light-shadow-4'),
-          },
-          {
-            name: 'orange-yellow',
-            message: backgroundDeprecationMessage('orange-yellow'),
-          },
-          {
-            name: 'purple-blue',
-            message: backgroundDeprecationMessage('purple-blue'),
-          },
-          {
-            name: 'purple-blue-yellow',
-            message: backgroundDeprecationMessage('purple-blue-yellow'),
-          },
-          {
-            name: 'purple-magenta-yellow',
-            message: backgroundDeprecationMessage('purple-magenta-yellow'),
-          },
-        ],
+        backgrounds: deprecatedBackgrounds,
         button: {
-          kind: [
-            {
-              name: 'cta-primary',
-              message:
-                'The "cta-primary" button kind is deprecated and will be removed in v10. Please use "primary" instead.',
-            },
-            {
-              name: 'cta-alternate',
-              message:
-                'The "cta-alternate" button kind is deprecated and will be removed in v10. Please use "secondary" instead.',
-            },
-          ],
+          kind: deprecatedButtonKinds,
         },
-        colors: [
-          {
-            name: 'accent-1',
-            message: colorUndefinedDeprecationMessage('accent-1'),
-          },
-          {
-            name: 'accent-2',
-            message: colorUndefinedDeprecationMessage('accent-2'),
-          },
-          {
-            name: 'accent-3',
-            message: colorUndefinedDeprecationMessage('accent-3'),
-          },
-          {
-            name: 'accent-4',
-            message: colorUndefinedDeprecationMessage('accent-4'),
-          },
-          {
-            name: 'neutral-1',
-            message: colorUndefinedDeprecationMessage('neutral-1'),
-          },
-          {
-            name: 'neutral-2',
-            message: colorUndefinedDeprecationMessage('neutral-2'),
-          },
-          {
-            name: 'neutral-3',
-            message: colorUndefinedDeprecationMessage('neutral-3'),
-          },
-          {
-            name: 'neutral-4',
-            message: colorUndefinedDeprecationMessage('neutral-4'),
-          },
-          {
-            name: 'neutral-5',
-            message: colorUndefinedDeprecationMessage('neutral-5'),
-          },
-          {
-            name: 'status-error',
-            message: colorUndefinedDeprecationMessage('status-error'),
-          },
-          {
-            name: 'graph-0',
-            message: colorUndefinedDeprecationMessage(
-              'graph-0',
-              'dataVis-categorical-10',
-              true,
-            ),
-          },
-          {
-            name: 'graph-1',
-            message: colorUndefinedDeprecationMessage(
-              'graph-1',
-              true,
-              'dataVis-categorical-20',
-            ),
-          },
-          {
-            name: 'graph-2',
-            message: colorUndefinedDeprecationMessage(
-              'graph-2',
-              true,
-              'dataVis-categorical-30',
-            ),
-          },
-          {
-            name: 'graph-3',
-            message: colorUndefinedDeprecationMessage(
-              'graph-3',
-              true,
-              'dataVis-categorical-40',
-            ),
-          },
-          {
-            name: 'graph-4',
-            message: colorUndefinedDeprecationMessage(
-              'graph-4',
-              true,
-              'dataVis-categorical-50',
-            ),
-          },
-          {
-            name: 'graph-5',
-            message: colorUndefinedDeprecationMessage(
-              'graph-5',
-              true,
-              'dataVis-categorical-60',
-            ),
-          },
-          {
-            name: 'graph-6',
-            message: colorUndefinedDeprecationMessage(
-              'graph-6',
-              true,
-              'dataVis-categorical-70',
-            ),
-          },
-          {
-            name: 'graph-7',
-            message: colorUndefinedDeprecationMessage(
-              'graph-7',
-              true,
-              'dataVis-categorical-80',
-            ),
-          },
-          {
-            name: 'status-disabled',
-            message: colorUndefinedDeprecationMessage(
-              'status-disabled',
-              true,
-              'text-weak',
-            ),
-          },
-          {
-            name: 'disabled-text',
-            message: colorRemovedDeprecationMessage(
-              'disabled-text',
-              'text-disabled',
-            ),
-          },
-          {
-            name: 'background-cta-alternate',
-            message: colorRemovedDeprecationMessage('background-cta-alternate'),
-          },
-        ],
+        colors: deprecatedColors,
       },
       input: {
         font: {
