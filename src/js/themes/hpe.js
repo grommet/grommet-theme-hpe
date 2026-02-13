@@ -831,18 +831,6 @@ const buildTheme = (tokens, flags) => {
           twoColor: true,
         },
       },
-      graph: {
-        colors: [
-          'dataVis-categorical-10',
-          'dataVis-categorical-20',
-          'dataVis-categorical-30',
-          'dataVis-categorical-40',
-          'dataVis-categorical-50',
-          'dataVis-categorical-60',
-          'dataVis-categorical-70',
-          'dataVis-categorical-80',
-        ],
-      },
       active: { background: 'background-active', color: 'active-text' },
       drop: {
         background: components.hpe.drop.default.background,
@@ -1524,6 +1512,16 @@ const buildTheme = (tokens, flags) => {
       },
     },
     dataChart: {
+      colors: [
+        'dataVis-categorical-10',
+        'dataVis-categorical-20',
+        'dataVis-categorical-30',
+        'dataVis-categorical-40',
+        'dataVis-categorical-50',
+        'dataVis-categorical-60',
+        'dataVis-categorical-70',
+        'dataVis-categorical-80',
+      ],
       gap: 'xsmall',
       granularity: {
         y: {
@@ -2263,6 +2261,16 @@ const buildTheme = (tokens, flags) => {
     meter: {
       background: 'background-contrast',
       color: 'dataVis-categorical-10',
+      colors: [
+        'dataVis-categorical-10',
+        'dataVis-categorical-20',
+        'dataVis-categorical-30',
+        'dataVis-categorical-40',
+        'dataVis-categorical-50',
+        'dataVis-categorical-60',
+        'dataVis-categorical-70',
+        'dataVis-categorical-80',
+      ],
       gap: '5xsmall',
     },
     nameValueList: {
