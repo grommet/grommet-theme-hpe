@@ -579,6 +579,15 @@ const buildTheme = (tokens, flags) => {
   const backgroundDeprecationMessage = (background) =>
     `The background "${background}" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery).`;
 
+  // Figure out what name is being used for the Graphik font in the family list.
+  // Since we're going to map the font-faces to Graphik font files we specifically
+  // look for something containing "Graphik"
+  const family =
+    global.hpe.fontStack.primary
+      .split(',')
+      .map((s) => s.trim().replace(/['"]/g, ''))
+      .find((f) => f.includes('Graphik')) || 'HPE Graphik';
+
   return deepFreeze({
     defaultMode: 'light',
     global: {
@@ -742,31 +751,31 @@ const buildTheme = (tokens, flags) => {
         family: global.hpe.fontStack.primary,
         face: `
           @font-face {
-            font-family: "Graphik";
+            font-family: "${family}";
             src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Regular-Web.woff2") format('woff2');
           }
           @font-face {
-            font-family: "Graphik";
+            font-family: "${family}";
             src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Regular-Web.woff2") format('woff2');
             font-weight: 400;
           }
           @font-face {
-            font-family: "Graphik";
+            font-family: "${family}";
             src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Bold-Web.woff2") format('woff2');
             font-weight: 700;
           }
           @font-face {
-            font-family: "Graphik";
+            font-family: "${family}";
             src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Semibold-Web.woff2") format('woff2');
             font-weight: 600;
           }
           @font-face {
-            font-family: "Graphik";
+            font-family: "${family}";
             src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Medium-Web.woff2") format('woff2');
             font-weight: 500;
           }
           @font-face {
-            font-family: "Graphik";
+            font-family: "${family}";
             src: url("https://www.hpe.com/content/dam/hpe/fonts/graphik/HPEGraphik-Extralight-Web.woff2") format('woff2');
             font-weight: 100;
           }
