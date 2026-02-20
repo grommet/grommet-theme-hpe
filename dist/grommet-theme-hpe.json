@@ -596,7 +596,6 @@
       "control": "background-primary-strong",
       "active-text": "text-strong",
       "text-primary-button": "text-onStrong",
-      "background-cta-alternate": "background-contrast",
       "brand": {
         "dark": "#01a982",
         "light": "#01a982"
@@ -643,6 +642,46 @@
         "light": "#7764fc"
       },
       "purple!": "#7630EA",
+      "status-critical": {
+        "dark": "#fc6161",
+        "light": "#ec3331"
+      },
+      "status-warning": {
+        "dark": "#ec8c25",
+        "light": "#d36d00"
+      },
+      "status-ok": {
+        "dark": "#05cc93",
+        "light": "#009a71"
+      },
+      "status-unknown": {
+        "dark": "#7d8a92",
+        "light": "#606a70"
+      },
+      "validation-critical": {
+        "light": "#ffecec",
+        "dark": "#552120"
+      },
+      "validation-ok": {
+        "light": "#d1ffee",
+        "dark": "#093d32"
+      },
+      "validation-warning": {
+        "light": "#fff3dd",
+        "dark": "#3c361e"
+      },
+      "icon": {
+        "light": "#3e4550",
+        "dark": "#e6e8e9"
+      },
+      "selected-background": "background-selected-strong-enabled",
+      "selected-text": "text-onSelectedPrimaryStrong",
+      "placeholder": {
+        "light": "#606a70",
+        "dark": "#b1b9be"
+      },
+      "background-cta-alternate": "background-contrast",
+      "disabled-text": "text-disabled",
       "graph-0": {
         "light": "#0070f8",
         "dark": "#65aef9"
@@ -675,46 +714,7 @@
         "light": "#d25f4b",
         "dark": "#e5786a"
       },
-      "status-critical": {
-        "dark": "#fc6161",
-        "light": "#ec3331"
-      },
-      "status-warning": {
-        "dark": "#ec8c25",
-        "light": "#d36d00"
-      },
-      "status-ok": {
-        "dark": "#05cc93",
-        "light": "#009a71"
-      },
-      "status-unknown": {
-        "dark": "#7d8a92",
-        "light": "#606a70"
-      },
-      "status-disabled": "#CCCCCC",
-      "validation-critical": {
-        "light": "#ffecec",
-        "dark": "#552120"
-      },
-      "validation-ok": {
-        "light": "#d1ffee",
-        "dark": "#093d32"
-      },
-      "validation-warning": {
-        "light": "#fff3dd",
-        "dark": "#3c361e"
-      },
-      "icon": {
-        "light": "#3e4550",
-        "dark": "#e6e8e9"
-      },
-      "selected-background": "background-selected-strong-enabled",
-      "selected-text": "text-onSelectedPrimaryStrong",
-      "placeholder": {
-        "light": "#606a70",
-        "dark": "#b1b9be"
-      },
-      "disabled-text": "text-disabled"
+      "status-disabled": "#CCCCCC"
     },
     "control": {
       "border": {
@@ -729,97 +729,183 @@
       "backgrounds": [
         {
           "name": "datawave-green-1",
-          "message": "The background \"datawave-green-1\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'datawave-green-1' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "datawave-green-2",
-          "message": "The background \"datawave-green-2\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'datawave-green-2' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "datawave-multi-1",
-          "message": "The background \"datawave-multi-1\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'datawave-multi-1' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "datawave-multi-2",
-          "message": "The background \"datawave-multi-2\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'datawave-multi-2' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "datawave-multi-3",
-          "message": "The background \"datawave-multi-3\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'datawave-multi-3' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "datawave-multi-4",
-          "message": "The background \"datawave-multi-4\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'datawave-multi-4' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "datawave-multi-5",
-          "message": "The background \"datawave-multi-5\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'datawave-multi-5' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "datawave-multi-6",
-          "message": "The background \"datawave-multi-6\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'datawave-multi-6' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "datawave-white-1",
-          "message": "The background \"datawave-white-1\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'datawave-white-1' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "datawave-white-2",
-          "message": "The background \"datawave-white-2\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'datawave-white-2' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "datawave-white-3",
-          "message": "The background \"datawave-white-3\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'datawave-white-3' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "datawave-white-4",
-          "message": "The background \"datawave-white-4\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'datawave-white-4' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "light-shadow-1",
-          "message": "The background \"light-shadow-1\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'light-shadow-1' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "light-shadow-2",
-          "message": "The background \"light-shadow-2\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'light-shadow-2' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "light-shadow-3",
-          "message": "The background \"light-shadow-3\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'light-shadow-3' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "light-shadow-4",
-          "message": "The background \"light-shadow-4\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'light-shadow-4' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "orange-yellow",
-          "message": "The background \"orange-yellow\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'orange-yellow' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "purple-blue",
-          "message": "The background \"purple-blue\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'purple-blue' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "purple-blue-yellow",
-          "message": "The background \"purple-blue-yellow\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'purple-blue-yellow' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         },
         {
           "name": "purple-magenta-yellow",
-          "message": "The background \"purple-magenta-yellow\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
+          "message": "The background 'purple-magenta-yellow' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery)."
         }
       ],
       "button": {
         "kind": [
           {
             "name": "cta-primary",
-            "message": "The \"cta-primary\" button kind is deprecated and will be removed in v9. Please use \"primary\" instead."
+            "message": "The \"cta-primary\" button kind is deprecated and will be removed in v10. Please use \"primary\" instead."
           },
           {
             "name": "cta-alternate",
-            "message": "The \"cta-alternate\" button kind is deprecated and will be removed in v9. Please use \"secondary\" instead."
+            "message": "The \"cta-alternate\" button kind is deprecated and will be removed in v10. Please use \"secondary\" instead."
           }
         ]
-      }
+      },
+      "colors": [
+        {
+          "name": "accent-1",
+          "message": "The color 'accent-1' is deprecated and its value is set to 'undefined'. Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors."
+        },
+        {
+          "name": "accent-2",
+          "message": "The color 'accent-2' is deprecated and its value is set to 'undefined'. Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors."
+        },
+        {
+          "name": "accent-3",
+          "message": "The color 'accent-3' is deprecated and its value is set to 'undefined'. Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors."
+        },
+        {
+          "name": "accent-4",
+          "message": "The color 'accent-4' is deprecated and its value is set to 'undefined'. Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors."
+        },
+        {
+          "name": "neutral-1",
+          "message": "The color 'neutral-1' is deprecated and its value is set to 'undefined'. Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors."
+        },
+        {
+          "name": "neutral-2",
+          "message": "The color 'neutral-2' is deprecated and its value is set to 'undefined'. Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors."
+        },
+        {
+          "name": "neutral-3",
+          "message": "The color 'neutral-3' is deprecated and its value is set to 'undefined'. Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors."
+        },
+        {
+          "name": "neutral-4",
+          "message": "The color 'neutral-4' is deprecated and its value is set to 'undefined'. Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors."
+        },
+        {
+          "name": "neutral-5",
+          "message": "The color 'neutral-5' is deprecated and its value is set to 'undefined'. Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors."
+        },
+        {
+          "name": "status-error",
+          "message": "The color 'status-error' is deprecated and its value is set to 'undefined'. Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors."
+        },
+        {
+          "name": "graph-0",
+          "message": "The color 'graph-0' is deprecated and will be set to 'undefined' in v10. Please use 'dataVis-categorical-10' instead."
+        },
+        {
+          "name": "graph-1",
+          "message": "The color 'graph-1' is deprecated and will be set to 'undefined' in v10. Please use 'dataVis-categorical-20' instead."
+        },
+        {
+          "name": "graph-2",
+          "message": "The color 'graph-2' is deprecated and will be set to 'undefined' in v10. Please use 'dataVis-categorical-30' instead."
+        },
+        {
+          "name": "graph-3",
+          "message": "The color 'graph-3' is deprecated and will be set to 'undefined' in v10. Please use 'dataVis-categorical-40' instead."
+        },
+        {
+          "name": "graph-4",
+          "message": "The color 'graph-4' is deprecated and will be set to 'undefined' in v10. Please use 'dataVis-categorical-50' instead."
+        },
+        {
+          "name": "graph-5",
+          "message": "The color 'graph-5' is deprecated and will be set to 'undefined' in v10. Please use 'dataVis-categorical-60' instead."
+        },
+        {
+          "name": "graph-6",
+          "message": "The color 'graph-6' is deprecated and will be set to 'undefined' in v10. Please use 'dataVis-categorical-70' instead."
+        },
+        {
+          "name": "graph-7",
+          "message": "The color 'graph-7' is deprecated and will be set to 'undefined' in v10. Please use 'dataVis-categorical-80' instead."
+        },
+        {
+          "name": "status-disabled",
+          "message": "The color 'status-disabled' is deprecated and will be set to 'undefined' in v10. Please use 'text-weak' instead."
+        },
+        {
+          "name": "disabled-text",
+          "message": "The color 'disabled-text' is deprecated and will be removed in v10. Please use 'text-disabled' instead."
+        },
+        {
+          "name": "background-cta-alternate",
+          "message": "The color 'background-cta-alternate' is deprecated and will be removed in v10. Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors."
+        }
+      ]
     },
     "input": {
       "font": {
@@ -1969,6 +2055,7 @@
     }
   },
   "chart": {
+    "color": "dataVis-categorical-10",
     "height": "xsmall",
     "thickness": "medium",
     "width": "medium"
@@ -2019,6 +2106,16 @@
     }
   },
   "dataChart": {
+    "colors": [
+      "dataVis-categorical-10",
+      "dataVis-categorical-20",
+      "dataVis-categorical-30",
+      "dataVis-categorical-40",
+      "dataVis-categorical-50",
+      "dataVis-categorical-60",
+      "dataVis-categorical-70",
+      "dataVis-categorical-80"
+    ],
     "gap": "xsmall",
     "granularity": {
       "y": {
@@ -2290,6 +2387,11 @@
     },
     "sort": {
       "gap": "3xsmall"
+    }
+  },
+  "diagram": {
+    "line": {
+      "color": "dataVis-categorical-10"
     }
   },
   "distribution": {
@@ -2658,6 +2760,17 @@
   },
   "meter": {
     "background": "background-contrast",
+    "color": "dataVis-categorical-10",
+    "colors": [
+      "dataVis-categorical-10",
+      "dataVis-categorical-20",
+      "dataVis-categorical-30",
+      "dataVis-categorical-40",
+      "dataVis-categorical-50",
+      "dataVis-categorical-60",
+      "dataVis-categorical-70",
+      "dataVis-categorical-80"
+    ],
     "gap": "5xsmall"
   },
   "nameValueList": {

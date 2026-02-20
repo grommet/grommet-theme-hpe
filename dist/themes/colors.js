@@ -63,21 +63,9 @@ var colors = exports.colors = _extends({}, tokenColors, {
   'text-onSelectedPrimaryStrong': swapped('hpe.color.text.onSelectedPrimaryStrong'),
   'icon-onPrimaryStrong': swapped('hpe.color.icon.onPrimaryStrong'),
   'icon-onSelectedPrimaryStrong': swapped('hpe.color.icon.onSelectedPrimaryStrong'),
-  // ---- DEPRECATED ---- //
-  'accent-1': undefined,
-  'accent-2': undefined,
-  'accent-3': undefined,
-  'accent-4': undefined,
-  'neutral-1': undefined,
-  'neutral-2': undefined,
-  'neutral-3': undefined,
-  'neutral-4': undefined,
-  'neutral-5': undefined,
-  'status-error': undefined,
   control: 'background-primary-strong',
   'active-text': 'text-strong',
   'text-primary-button': _grommet.components.hpe.button.primary.rest.textColor,
-  'background-cta-alternate': 'background-contrast',
   brand: {
     dark: _grommet.dark.hpe.color.decorative.brand,
     light: _grommet.light.hpe.color.decorative.brand
@@ -98,7 +86,8 @@ var colors = exports.colors = _extends({}, tokenColors, {
     dark: _grommet.dark.hpe.color.text["default"],
     light: _grommet.light.hpe.color.text["default"]
   },
-  // deprecated, remove in next major version
+  // wanted to deprecate text-xweak but namespace is used
+  // in grommet code
   'text-xweak': {
     dark: _grommet.dark.hpe.color.text.weak,
     light: _grommet.light.hpe.color.text.weak
@@ -120,31 +109,65 @@ var colors = exports.colors = _extends({}, tokenColors, {
     dark: _grommet.dark.hpe.color.decorative.brand,
     light: _grommet.light.hpe.color.decorative.brand
   },
-  // teal: {
-  //   dark: dark.hpe.color.decorative.teal,
-  //   light: light.hpe.color.decorative.teal,
-  // },
-  // 'teal!': primitives.hpe.base.color['teal-400'],
   purple: {
     dark: _grommet.dark.hpe.color.decorative.purple,
     light: _grommet.light.hpe.color.decorative.purple
   },
   'purple!': '#7630EA',
-  // red: {
-  //   dark: dark.hpe.color.decorative.red,
-  //   light: light.hpe.color.decorative.red,
-  // },
-  // 'red!': primitives.hpe.base.color['red-750'],
-  // orange: {
-  //   dark: dark.hpe.color.decorative.orange,
-  //   light: light.hpe.color.decorative.orange,
-  // },
-  // 'orange!': '#FF8300',
-  // yellow: {
-  //   dark: dark.hpe.color.decorative.yellow,
-  //   light: light.hpe.color.decorative.yellow,
-  // },
-  // 'yellow!': primitives.hpe.base.color['yellow-400'],
+  'status-critical': {
+    dark: _grommet.dark.hpe.color.icon.critical,
+    light: _grommet.light.hpe.color.icon.critical
+  },
+  'status-warning': {
+    dark: _grommet.dark.hpe.color.icon.warning,
+    light: _grommet.light.hpe.color.icon.warning
+  },
+  'status-ok': {
+    dark: _grommet.dark.hpe.color.icon.ok,
+    light: _grommet.light.hpe.color.icon.ok
+  },
+  'status-unknown': {
+    dark: _grommet.dark.hpe.color.icon.unknown,
+    light: _grommet.light.hpe.color.icon.unknown
+  },
+  'validation-critical': {
+    light: _grommet.light.hpe.color.background.critical,
+    dark: _grommet.dark.hpe.color.background.critical
+  },
+  'validation-ok': {
+    light: _grommet.light.hpe.color.background.ok,
+    dark: _grommet.dark.hpe.color.background.ok
+  },
+  'validation-warning': {
+    light: _grommet.light.hpe.color.background.warning,
+    dark: _grommet.dark.hpe.color.background.warning
+  },
+  icon: {
+    light: _grommet.light.hpe.color.icon["default"],
+    dark: _grommet.dark.hpe.color.icon["default"]
+  },
+  'selected-background': 'background-selected-strong-enabled',
+  'selected-text': 'text-onSelectedPrimaryStrong',
+  placeholder: {
+    light: _grommet.light.hpe.color.text.placeholder,
+    dark: _grommet.dark.hpe.color.text.placeholder
+  },
+  // ---- DEPRECATED ---- //
+  // Need to keep these deprecated keys (using undefined or aliases)
+  // to avoid falling back to Grommet defaults
+  'accent-1': undefined,
+  'accent-2': undefined,
+  'accent-3': undefined,
+  'accent-4': undefined,
+  'neutral-1': undefined,
+  'neutral-2': undefined,
+  'neutral-3': undefined,
+  'neutral-4': undefined,
+  'neutral-5': undefined,
+  'status-error': undefined,
+  'background-cta-alternate': 'background-contrast',
+  'disabled-text': 'text-disabled',
+  // In v10 change graph colors to undefined to avoid falling back to Grommet defaults
   'graph-0': {
     light: _grommet.light.hpe.color.dataVis['categorical-10'],
     dark: _grommet.dark.hpe.color.dataVis['categorical-10']
@@ -177,45 +200,6 @@ var colors = exports.colors = _extends({}, tokenColors, {
     light: _grommet.light.hpe.color.dataVis['categorical-80'],
     dark: _grommet.dark.hpe.color.dataVis['categorical-80']
   },
-  'status-critical': {
-    dark: _grommet.dark.hpe.color.icon.critical,
-    light: _grommet.light.hpe.color.icon.critical
-  },
-  'status-warning': {
-    dark: _grommet.dark.hpe.color.icon.warning,
-    light: _grommet.light.hpe.color.icon.warning
-  },
-  'status-ok': {
-    dark: _grommet.dark.hpe.color.icon.ok,
-    light: _grommet.light.hpe.color.icon.ok
-  },
-  'status-unknown': {
-    dark: _grommet.dark.hpe.color.icon.unknown,
-    light: _grommet.light.hpe.color.icon.unknown
-  },
-  'status-disabled': '#CCCCCC',
-  // deprecated, does not support light and dark.hpe. use text-weak instead
-  'validation-critical': {
-    light: _grommet.light.hpe.color.background.critical,
-    dark: _grommet.dark.hpe.color.background.critical
-  },
-  'validation-ok': {
-    light: _grommet.light.hpe.color.background.ok,
-    dark: _grommet.dark.hpe.color.background.ok
-  },
-  'validation-warning': {
-    light: _grommet.light.hpe.color.background.warning,
-    dark: _grommet.dark.hpe.color.background.warning
-  },
-  icon: {
-    light: _grommet.light.hpe.color.icon["default"],
-    dark: _grommet.dark.hpe.color.icon["default"]
-  },
-  'selected-background': 'background-selected-strong-enabled',
-  'selected-text': 'text-onSelectedPrimaryStrong',
-  placeholder: {
-    light: _grommet.light.hpe.color.text.placeholder,
-    dark: _grommet.dark.hpe.color.text.placeholder
-  },
-  'disabled-text': 'text-disabled' // deprecate
+  'status-disabled': '#CCCCCC' // deprecated, does not support light and dark.hpe. use text-weak instead
+  // -------------------- //
 });

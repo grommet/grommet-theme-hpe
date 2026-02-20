@@ -566,9 +566,53 @@ var buildTheme = function buildTheme(tokens, flags) {
       }
     }, kindStyles);
   });
+  var referenceColorDocumentationMessage = 'Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors';
   var backgroundDeprecationMessage = function backgroundDeprecationMessage(background) {
-    return "The background \"" + background + "\" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery).";
+    return "The background '" + background + "' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery).";
   };
+  var colorRemovedDeprecationMessage = function colorRemovedDeprecationMessage(color, alt) {
+    return "The color '" + color + "' is deprecated and will be removed in v10. " + (alt ? "Please use '" + alt + "' instead" : referenceColorDocumentationMessage) + ".";
+  };
+  var colorUndefinedDeprecationMessage = function colorUndefinedDeprecationMessage(color, future, alt) {
+    return "The color '" + color + "' is deprecated and " + (future ? "will be set to 'undefined' in v10" : "its value is set to 'undefined'") + ". " + (alt ? "Please use '" + alt + "' instead" : referenceColorDocumentationMessage) + ".";
+  };
+  var deprecationEntry = function deprecationEntry(name, message) {
+    return {
+      name: name,
+      message: message
+    };
+  };
+
+  // Deprecated backgrounds
+  var deprecatedBackgrounds = ['datawave-green-1', 'datawave-green-2', 'datawave-multi-1', 'datawave-multi-2', 'datawave-multi-3', 'datawave-multi-4', 'datawave-multi-5', 'datawave-multi-6', 'datawave-white-1', 'datawave-white-2', 'datawave-white-3', 'datawave-white-4', 'light-shadow-1', 'light-shadow-2', 'light-shadow-3', 'light-shadow-4', 'orange-yellow', 'purple-blue', 'purple-blue-yellow', 'purple-magenta-yellow'].map(function (name) {
+    return deprecationEntry(name, backgroundDeprecationMessage(name));
+  });
+
+  // Deprecated button kinds
+  var deprecatedButtonKinds = [{
+    name: 'cta-primary',
+    alt: 'primary'
+  }, {
+    name: 'cta-alternate',
+    alt: 'secondary'
+  }].map(function (_ref3) {
+    var name = _ref3.name,
+      alt = _ref3.alt;
+    return deprecationEntry(name, "The \"" + name + "\" button kind is deprecated and will be removed in v10. Please use \"" + alt + "\" instead.");
+  });
+
+  // Deprecated colors
+  var deprecatedColors = [].concat(['accent-1', 'accent-2', 'accent-3', 'accent-4', 'neutral-1', 'neutral-2', 'neutral-3', 'neutral-4', 'neutral-5', 'status-error'].map(function (name) {
+    return deprecationEntry(name, colorUndefinedDeprecationMessage(name));
+  }), [0, 1, 2, 3, 4, 5, 6, 7].map(function (i) {
+    return deprecationEntry("graph-" + i, colorUndefinedDeprecationMessage("graph-" + i, true, "dataVis-categorical-" + (i + 1) * 10));
+  }), [
+  // Undefined (future) with alternative - other
+  deprecationEntry('status-disabled', colorUndefinedDeprecationMessage('status-disabled', true, 'text-weak')),
+  // Removed with alternative
+  deprecationEntry('disabled-text', colorRemovedDeprecationMessage('disabled-text', 'text-disabled')),
+  // Removed without alternative
+  deprecationEntry('background-cta-alternate', colorRemovedDeprecationMessage('background-cta-alternate'))]);
 
   // Figure out what name is being used for the Graphik font in the family list.
   // Since we're going to map the font-faces to Graphik font files we specifically
@@ -594,76 +638,11 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       deprecated: {
-        backgrounds: [{
-          name: 'datawave-green-1',
-          message: backgroundDeprecationMessage('datawave-green-1')
-        }, {
-          name: 'datawave-green-2',
-          message: backgroundDeprecationMessage('datawave-green-2')
-        }, {
-          name: 'datawave-multi-1',
-          message: backgroundDeprecationMessage('datawave-multi-1')
-        }, {
-          name: 'datawave-multi-2',
-          message: backgroundDeprecationMessage('datawave-multi-2')
-        }, {
-          name: 'datawave-multi-3',
-          message: backgroundDeprecationMessage('datawave-multi-3')
-        }, {
-          name: 'datawave-multi-4',
-          message: backgroundDeprecationMessage('datawave-multi-4')
-        }, {
-          name: 'datawave-multi-5',
-          message: backgroundDeprecationMessage('datawave-multi-5')
-        }, {
-          name: 'datawave-multi-6',
-          message: backgroundDeprecationMessage('datawave-multi-6')
-        }, {
-          name: 'datawave-white-1',
-          message: backgroundDeprecationMessage('datawave-white-1')
-        }, {
-          name: 'datawave-white-2',
-          message: backgroundDeprecationMessage('datawave-white-2')
-        }, {
-          name: 'datawave-white-3',
-          message: backgroundDeprecationMessage('datawave-white-3')
-        }, {
-          name: 'datawave-white-4',
-          message: backgroundDeprecationMessage('datawave-white-4')
-        }, {
-          name: 'light-shadow-1',
-          message: backgroundDeprecationMessage('light-shadow-1')
-        }, {
-          name: 'light-shadow-2',
-          message: backgroundDeprecationMessage('light-shadow-2')
-        }, {
-          name: 'light-shadow-3',
-          message: backgroundDeprecationMessage('light-shadow-3')
-        }, {
-          name: 'light-shadow-4',
-          message: backgroundDeprecationMessage('light-shadow-4')
-        }, {
-          name: 'orange-yellow',
-          message: backgroundDeprecationMessage('orange-yellow')
-        }, {
-          name: 'purple-blue',
-          message: backgroundDeprecationMessage('purple-blue')
-        }, {
-          name: 'purple-blue-yellow',
-          message: backgroundDeprecationMessage('purple-blue-yellow')
-        }, {
-          name: 'purple-magenta-yellow',
-          message: backgroundDeprecationMessage('purple-magenta-yellow')
-        }],
+        backgrounds: deprecatedBackgrounds,
         button: {
-          kind: [{
-            name: 'cta-primary',
-            message: 'The "cta-primary" button kind is deprecated and will be removed in v9. Please use "primary" instead.'
-          }, {
-            name: 'cta-alternate',
-            message: 'The "cta-alternate" button kind is deprecated and will be removed in v9. Please use "secondary" instead.'
-          }]
-        }
+          kind: deprecatedButtonKinds
+        },
+        colors: deprecatedColors
       },
       input: {
         font: {
@@ -680,8 +659,8 @@ var buildTheme = function buildTheme(tokens, flags) {
             color: components.hpe.formField["default"].input.container.readOnly.rest.borderColor
           }
         },
-        extend: function extend(_ref3) {
-          var theme = _ref3.theme;
+        extend: function extend(_ref4) {
+          var theme = _ref4.theme;
           return "\n          color: " + getThemeColor(components.hpe.formField["default"].value.rest.textColor, theme) + ";\n          &::-webkit-input-placeholder {\n          font-weight: " + components.hpe.formField["default"].medium.placeholder.fontWeight + ";\n        }\n      \n        &::-moz-placeholder {\n          font-weight: " + components.hpe.formField["default"].medium.placeholder.fontWeight + ";\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: " + components.hpe.formField["default"].medium.placeholder.fontWeight + ";\n        }\n        ";
         }
       },
@@ -816,8 +795,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       hover: {
         textDecoration: components.hpe.anchor["default"].hover.textDecoration,
-        extend: function extend(_ref4) {
-          var theme = _ref4.theme;
+        extend: function extend(_ref5) {
+          var theme = _ref5.theme;
           return "color: " + getThemeColor(components.hpe.anchor["default"].hover.textColor, theme) + ";";
         }
       },
@@ -898,10 +877,10 @@ var buildTheme = function buildTheme(tokens, flags) {
       active: _extends({}, buttonStatesTheme.active, {
         'cta-primary': buttonStatesTheme.active.primary,
         'cta-alternate': buttonStatesTheme.active.secondary,
-        extend: function extend(_ref5) {
-          var kind = _ref5.kind,
-            theme = _ref5.theme,
-            keyboard = _ref5.keyboard;
+        extend: function extend(_ref6) {
+          var kind = _ref6.kind,
+            theme = _ref6.theme,
+            keyboard = _ref6.keyboard;
           var style = '';
           // applies when option is in focus
           if (kind === 'option') {
@@ -940,9 +919,9 @@ var buildTheme = function buildTheme(tokens, flags) {
           font: {
             weight: components.hpe.select["default"].option.selected.rest.fontWeight
           },
-          extend: function extend(_ref6) {
-            var theme = _ref6.theme,
-              disabled = _ref6.disabled;
+          extend: function extend(_ref7) {
+            var theme = _ref7.theme,
+              disabled = _ref7.disabled;
             return "\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              width: " + components.hpe.select["default"].medium.option.marker.width + ";\n              border-top-left-radius: " + components.hpe.select["default"].medium.option.marker.borderTopLeftRadius + ";\n              border-bottom-left-radius: " + components.hpe.select["default"].medium.option.marker.borderBottomLeftRadius + ";\n              top: " + components.hpe.select["default"].medium.option.marker.top + ";\n              bottom: " + components.hpe.select["default"].medium.option.marker.bottom + ";\n              left: " + components.hpe.select["default"].medium.option.marker.left + ";\n              background: " + getThemeColor(!disabled ? components.hpe.select["default"].option.marker.rest.background : 'border-disabled', theme) + ";\n            }\n          ";
           }
         }
@@ -976,11 +955,11 @@ var buildTheme = function buildTheme(tokens, flags) {
           }
         })
       }),
-      extend: function extend(_ref7) {
-        var colorValue = _ref7.colorValue,
-          theme = _ref7.theme,
-          kind = _ref7.kind,
-          disabled = _ref7.disabled;
+      extend: function extend(_ref8) {
+        var colorValue = _ref8.colorValue,
+          theme = _ref8.theme,
+          kind = _ref8.kind,
+          disabled = _ref8.disabled;
         var style = '';
         if ((kind === 'primary' || kind === 'cta-primary') && !disabled) {
           // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
@@ -1028,9 +1007,9 @@ var buildTheme = function buildTheme(tokens, flags) {
             weight: global.hpe.fontWeight.medium
           }
         },
-        extend: function extend(_ref8) {
-          var isSelected = _ref8.isSelected,
-            theme = _ref8.theme;
+        extend: function extend(_ref9) {
+          var isSelected = _ref9.isSelected,
+            theme = _ref9.theme;
           return (
             // grommet logic was incorrectly switching to wrong theme mode
             // so overriding in extend
@@ -1193,6 +1172,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       }
     },
     chart: {
+      color: 'dataVis-categorical-10',
       height: 'xsmall',
       thickness: 'medium',
       width: 'medium'
@@ -1207,10 +1187,10 @@ var buildTheme = function buildTheme(tokens, flags) {
         background: {
           color: undefined
         },
-        extend: function extend(_ref9) {
-          var theme = _ref9.theme,
-            toggle = _ref9.toggle,
-            checked = _ref9.checked;
+        extend: function extend(_ref0) {
+          var theme = _ref0.theme,
+            toggle = _ref0.toggle,
+            checked = _ref0.checked;
           var borderColor;
           if (toggle) {
             borderColor = getThemeColor(components.hpe["switch"]["default"].control.track.hover.borderColor, theme);
@@ -1234,11 +1214,11 @@ var buildTheme = function buildTheme(tokens, flags) {
         radius: components.hpe.checkbox["default"].medium.control.borderRadius,
         thickness: '2px',
         // The stroke width of the checked icon.
-        extend: function extend(_ref0) {
-          var theme = _ref0.theme,
-            checked = _ref0.checked,
-            indeterminate = _ref0.indeterminate,
-            disabled = _ref0.disabled;
+        extend: function extend(_ref1) {
+          var theme = _ref1.theme,
+            checked = _ref1.checked,
+            indeterminate = _ref1.indeterminate,
+            disabled = _ref1.disabled;
           var background = getThemeColor(components.hpe.checkbox["default"].control.rest.background, theme);
           var hoverBackground = getThemeColor(components.hpe.checkbox["default"].control.hover.background, theme);
           var borderColor = getThemeColor(components.hpe.checkbox["default"].control.rest.borderColor, theme);
@@ -1257,9 +1237,9 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       icon: {
-        extend: function extend(_ref1) {
-          var theme = _ref1.theme,
-            disabled = _ref1.disabled;
+        extend: function extend(_ref10) {
+          var theme = _ref10.theme,
+            disabled = _ref10.disabled;
           // Grommet normally applies a "smart" background/foreground pairing that
           // selects foreground colors based on the background (light/dark) to keep
           // text and icons readable. Because the "icon-onSelectedPrimaryStrong" token's
@@ -1282,19 +1262,19 @@ var buildTheme = function buildTheme(tokens, flags) {
         color: components.hpe["switch"]["default"].control.handle.rest.background,
         size: components.hpe["switch"]["default"].medium.control.track.width,
         knob: {
-          extend: function extend(_ref10) {
-            var theme = _ref10.theme,
-              checked = _ref10.checked,
-              disabled = _ref10.disabled;
+          extend: function extend(_ref11) {
+            var theme = _ref11.theme,
+              checked = _ref11.checked,
+              disabled = _ref11.disabled;
             var insetHandle = dimensions.borderSize[components.hpe["switch"]["default"].medium.control.handle.borderWidth] || dimensions.borderSize[components.hpe["switch"]["default"].medium.control.handle.borderWidth];
             return "\n          box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'][components.hpe["switch"]["default"].control.handle.rest.boxShadow] + ";\n          border: " + dimensions.borderSize[components.hpe["switch"]["default"].medium.control.handle.borderWidth] + " solid " + getThemeColor(disabled ? components.hpe["switch"]["default"].control.handle.disabled.rest.borderColor : components.hpe["switch"]["default"].control.handle.rest.borderColor, theme) + ";\n          width: " + components.hpe["switch"]["default"].medium.control.handle.width + ";\n          height: " + components.hpe["switch"]["default"].medium.control.handle.height + ";\n          top: " + insetHandle + ";\n          left: " + (!checked ? insetHandle : '25px') + ";\n          ";
           }
         },
         // applies to track around handle
-        extend: function extend(_ref11) {
-          var checked = _ref11.checked,
-            theme = _ref11.theme,
-            disabled = _ref11.disabled;
+        extend: function extend(_ref12) {
+          var checked = _ref12.checked,
+            theme = _ref12.theme,
+            disabled = _ref12.disabled;
           var background;
           var hoverBackground = getThemeColor(components.hpe["switch"]["default"].control.track.hover.background, theme);
           var borderColor = getThemeColor(components.hpe["switch"]["default"].control.track.rest.borderColor, theme);
@@ -1309,9 +1289,9 @@ var buildTheme = function buildTheme(tokens, flags) {
           return "\n            border-color: " + borderColor + ";\n            background: " + background + ";\n            &:hover {\n              " + (!disabled ? "background: " + hoverBackground + ";" : '') + "\n            }\n        ";
         }
       },
-      extend: function extend(_ref12) {
-        var disabled = _ref12.disabled,
-          theme = _ref12.theme;
+      extend: function extend(_ref13) {
+        var disabled = _ref13.disabled,
+          theme = _ref13.theme;
         return (0, _styledComponents.css)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteralLoose(["\n      font-weight: ", ";\n      width: auto;\n      border: ", " solid ", ";\n      & input:checked + span[class*=CheckBoxToggle] > span[class*=CheckBoxKnob] {\n        left: 25px;\n      }\n      ", "\n    };\n    "])), components.hpe.checkbox["default"].label.rest.fontWeight, components.hpe.formField["default"].medium.input.container.borderWidth, getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme),
         // override built in disabled opacity: 0.5 from grommet
         disabled && "opacity: 1; \n        color: " + getThemeColor(components.hpe.checkbox["default"].label.disabled.rest.textColor, theme) + ";");
@@ -1333,6 +1313,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       }
     },
     dataChart: {
+      colors: ['dataVis-categorical-10', 'dataVis-categorical-20', 'dataVis-categorical-30', 'dataVis-categorical-40', 'dataVis-categorical-50', 'dataVis-categorical-60', 'dataVis-categorical-70', 'dataVis-categorical-80'],
       gap: 'xsmall',
       granularity: {
         y: {
@@ -1498,8 +1479,8 @@ var buildTheme = function buildTheme(tokens, flags) {
     },
     dataTable: {
       body: {
-        extend: function extend(_ref13) {
-          var theme = _ref13.theme;
+        extend: function extend(_ref14) {
+          var theme = _ref14.theme;
           return "\n          /* Margin and padding allow room for focus on table body */\n          margin: " + theme.global.edgeSize['5xsmall'] + " 0px;\n          padding: 0px " + theme.global.edgeSize['5xsmall'] + ";\n        ";
         },
         selected: {
@@ -1558,11 +1539,11 @@ var buildTheme = function buildTheme(tokens, flags) {
           side: 'bottom'
         },
         color: components.hpe.headerCell["default"].rest.textColor,
-        extend: function extend(_ref14) {
-          var column = _ref14.column,
-            sort = _ref14.sort,
-            sortable = _ref14.sortable,
-            theme = _ref14.theme;
+        extend: function extend(_ref15) {
+          var column = _ref15.column,
+            sort = _ref15.sort,
+            sortable = _ref15.sortable,
+            theme = _ref15.theme;
           return "\n            " + (sort && sort.property === column && "\n              background: " + theme.global.colors['background-active'][theme.dark ? 'dark' : 'light'] + "\n            ") + ";\n            " + (sortable && sort && sort.property !== column && "\n                svg {\n                  opacity: 0;\n                }\n                &:hover {\n                  svg {\n                    opacity: 1;\n                  }\n                }\n              ") + ";\n          ";
         },
         font: {
@@ -1632,6 +1613,11 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       sort: {
         gap: '3xsmall'
+      }
+    },
+    diagram: {
+      line: {
+        color: 'dataVis-categorical-10'
       }
     },
     distribution: {
@@ -1716,8 +1702,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       gap: 'medium'
     },
     formField: {
-      extend: function extend(_ref15) {
-        var theme = _ref15.theme;
+      extend: function extend(_ref16) {
+        var theme = _ref16.theme;
         return "\n          [class*=\"ContentBox\"] {\n            label {\n              padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n              &:hover:not([disabled]) {\n                background: " + getThemeColor(components.hpe.formField["default"].input.container.hover.background, theme) + ";\n              }\n            }\n            [role=\"group\"], [role=\"radiogroup\"] {\n              gap: 0;\n              padding-block: " + components.hpe.formField["default"].medium.input.group.container.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.container.paddingX + ";\n              label {\n                border: " + (dimensions.borderSize[components.hpe.formField["default"].medium.input.group.item.borderWidth] || components.hpe.formField["default"].medium.input.group.item.borderWidth) + " solid " + getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme) + ";\n                padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n                padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n                border-radius: " + dimensions.radius[components.hpe.formField["default"].medium.input.group.item.borderRadius] + ";\n                &:hover:not([disabled]) {\n                  background: " + getThemeColor(components.hpe.formField["default"].input.group.item.hover.background, theme) + ";\n                }\n              }\n            }\n          }\n      ";
       },
       content: {
@@ -1739,21 +1725,13 @@ var buildTheme = function buildTheme(tokens, flags) {
           vertical: components.hpe.formField["default"].medium.input.group.item.paddingY
         },
         container: {
-          extend: function extend(_ref16) {
-            var error = _ref16.error;
-            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
-          }
-        }
-      },
-      checkBoxGroup: {
-        container: {
           extend: function extend(_ref17) {
             var error = _ref17.error;
             return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
           }
         }
       },
-      radioButtonGroup: {
+      checkBoxGroup: {
         container: {
           extend: function extend(_ref18) {
             var error = _ref18.error;
@@ -1761,7 +1739,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           }
         }
       },
-      thumbsRating: {
+      radioButtonGroup: {
         container: {
           extend: function extend(_ref19) {
             var error = _ref19.error;
@@ -1769,10 +1747,18 @@ var buildTheme = function buildTheme(tokens, flags) {
           }
         }
       },
-      starRating: {
+      thumbsRating: {
         container: {
           extend: function extend(_ref20) {
             var error = _ref20.error;
+            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
+          }
+        }
+      },
+      starRating: {
+        container: {
+          extend: function extend(_ref21) {
+            var error = _ref21.error;
             return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
           }
         }
@@ -1947,11 +1933,11 @@ var buildTheme = function buildTheme(tokens, flags) {
           xlarge: undefined
         }
       },
-      extend: function extend(_ref21) {
-        var headingSize = _ref21.size,
-          level = _ref21.level,
-          weight = _ref21.weight,
-          responsive = _ref21.responsive;
+      extend: function extend(_ref22) {
+        var headingSize = _ref22.size,
+          level = _ref22.level,
+          weight = _ref22.weight,
+          responsive = _ref22.responsive;
         var style = '';
         var _getHeadingSize = getHeadingSize(large, headingSize),
           fontSize = _getHeadingSize.fontSize,
@@ -2038,8 +2024,8 @@ var buildTheme = function buildTheme(tokens, flags) {
     },
     maskedInput: {
       container: {
-        extend: function extend(_ref22) {
-          var theme = _ref22.theme;
+        extend: function extend(_ref23) {
+          var theme = _ref23.theme;
           return "\n          svg {\n            fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n            stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          }\n        ";
         }
       }
@@ -2086,6 +2072,8 @@ var buildTheme = function buildTheme(tokens, flags) {
     },
     meter: {
       background: 'background-contrast',
+      color: 'dataVis-categorical-10',
+      colors: ['dataVis-categorical-10', 'dataVis-categorical-20', 'dataVis-categorical-30', 'dataVis-categorical-40', 'dataVis-categorical-50', 'dataVis-categorical-60', 'dataVis-categorical-70', 'dataVis-categorical-80'],
       gap: '5xsmall'
     },
     nameValueList: {
@@ -2673,8 +2661,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       color: components.hpe.radioButton["default"].control.selected.rest.borderColor,
       container: {
-        extend: function extend(_ref23) {
-          var theme = _ref23.theme;
+        extend: function extend(_ref24) {
+          var theme = _ref24.theme;
           return "\n          width: auto;\n          &:has(input[checked]) {\n            & div:has(> svg[aria-hidden=\"true\"]) {\n              background: " + getThemeColor(components.hpe.radioButton["default"].control.selected.rest.background, theme) + ";\n              border-color: " + getThemeColor(components.hpe.radioButton["default"].control.selected.rest.borderColor, theme) + ";\n            }\n          }\n          &:has(input[checked]):hover:not([disabled]) {\n              & div:has(> svg[aria-hidden=\"true\"]) {\n                background: " + getThemeColor(components.hpe.radioButton["default"].control.selected.hover.background, theme) + ";\n                border-color: " + getThemeColor(components.hpe.radioButton["default"].control.selected.hover.borderColor, theme) + ";\n              }\n          }\n          ";
         }
       },
@@ -2730,8 +2718,8 @@ var buildTheme = function buildTheme(tokens, flags) {
             dark: '#616161'
           }
         },
-        extend: function extend(_ref24) {
-          var theme = _ref24.theme;
+        extend: function extend(_ref25) {
+          var theme = _ref25.theme;
           return "\n        border-radius: " + large.hpe.radius.full + ";\n        // firefox only selector, since pseudo-element\n        // isn't supported\n        @-moz-document url-prefix() {\n          border: 1px solid " + getThemeColor('border-strong', theme) + ";\n        }";
         }
       },
@@ -2751,9 +2739,9 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       // primitives.hpe.base.dimension[100] = 4px which meets WCAG minimum size
       // for visual indicator (minimum 3px)
-      extend: function extend(_ref25) {
-        var disabled = _ref25.disabled,
-          theme = _ref25.theme;
+      extend: function extend(_ref26) {
+        var disabled = _ref26.disabled,
+          theme = _ref26.theme;
         return "\n        &::before {\n          display: block;\n          position: absolute;\n          content: '';\n          width: " + primitives.hpe.base.dimension[100] + ";\n          height: " + primitives.hpe.base.dimension[100] + ";\n          border-radius: " + large.hpe.radius.full + ";\n          right: 0;\n          top: 50%;\n          transform: translateY(-50%);\n          background: " + getThemeColor(disabled ? 'background-disabled' : 'background-neutral-xstrong', theme) + ";\n        }\n    ";
       }
     },
@@ -2799,8 +2787,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       control: {
-        extend: function extend(_ref26) {
-          var disabled = _ref26.disabled;
+        extend: function extend(_ref27) {
+          var disabled = _ref27.disabled;
           return (0, _styledComponents.css)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteralLoose(["\n          ", "\n\n          &[class*=\"SelectMultiple\"] [role=\"listbox\"] {\n            padding-block: ", ";\n            padding-inline: ", ";\n            & [role='option'] {\n              border-radius: ", ";\n            }\n          }\n        "])), disabled && "\n          opacity: 0.3;\n          input {\n            cursor: default;\n          }", components.hpe.select["default"].medium.drop.paddingY, components.hpe.select["default"].medium.drop.paddingX, dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius);
         }
       },
@@ -2964,8 +2952,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         border: undefined,
         // padding-bottom ensures the marker is not cut off by subsequent
         // page elements.
-        extend: function extend(_ref27) {
-          var theme = _ref27.theme;
+        extend: function extend(_ref28) {
+          var theme = _ref28.theme;
           return "\n        padding-bottom: " + large.hpe.borderWidth.medium + ";\n        & button {\n          border-radius: " + large.hpe.radius.xsmall + "; // radius on focus\n        }\n        & button[aria-selected=\"true\"] {\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              height: " + large.hpe.borderWidth.medium + ";\n              border-radius: " + large.hpe.radius.full + ";\n              bottom: -" + large.hpe.borderWidth.medium + ";\n              left: 0;\n              right: 0;\n              background: " + getThemeColor('border-selected', theme) + ";\n            }\n        }";
         },
         previousButton: {
@@ -3145,8 +3133,8 @@ var buildTheme = function buildTheme(tokens, flags) {
     }),
     textInput: {
       container: {
-        extend: function extend(_ref28) {
-          var theme = _ref28.theme;
+        extend: function extend(_ref29) {
+          var theme = _ref29.theme;
           return "\n          svg {\n            fill: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n            stroke: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n          }\n        ";
         }
       },
@@ -3154,8 +3142,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         copy: _Copy.Copy
       },
       suggestions: {
-        extend: function extend(_ref29) {
-          var theme = _ref29.theme;
+        extend: function extend(_ref30) {
+          var theme = _ref30.theme;
           return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"]:hover {\n            background: " + getThemeColor(components.hpe.select["default"].option.hover.background, theme) + ";\n          }\n        ";
         }
       }
@@ -3196,8 +3184,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       container: {
         border: false,
         round: 'xsmall',
-        extend: function extend(_ref30) {
-          var theme = _ref30.theme;
+        extend: function extend(_ref31) {
+          var theme = _ref31.theme;
           return "\n        gap: " + (dimensions.edgeSize[large.hpe.spacing['5xsmall']] || large.hpe.spacing['5xsmall']) + ";\n        &:hover {\n          background: " + getThemeColor('background-hover', theme) + ";\n        }";
         }
       },
