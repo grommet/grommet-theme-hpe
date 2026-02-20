@@ -576,8 +576,99 @@ const buildTheme = (tokens, flags) => {
     };
   });
 
+  const referenceColorDocumentationMessage =
+    'Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors';
+
   const backgroundDeprecationMessage = (background) =>
-    `The background "${background}" is deprecated and will be removed in v9 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery).`;
+    `The background '${background}' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery).`;
+
+  const colorRemovedDeprecationMessage = (color, alt) =>
+    `The color '${color}' is deprecated and will be removed in v10. ${alt ? `Please use '${alt}' instead` : referenceColorDocumentationMessage}.`;
+
+  const colorUndefinedDeprecationMessage = (color, future, alt) =>
+    `The color '${color}' is deprecated and ${future ? "will be set to 'undefined' in v10" : "its value is set to 'undefined'"}. ${alt ? `Please use '${alt}' instead` : referenceColorDocumentationMessage}.`;
+
+  const deprecationEntry = (name, message) => ({ name, message });
+
+  // Deprecated backgrounds
+  const deprecatedBackgrounds = [
+    'datawave-green-1',
+    'datawave-green-2',
+    'datawave-multi-1',
+    'datawave-multi-2',
+    'datawave-multi-3',
+    'datawave-multi-4',
+    'datawave-multi-5',
+    'datawave-multi-6',
+    'datawave-white-1',
+    'datawave-white-2',
+    'datawave-white-3',
+    'datawave-white-4',
+    'light-shadow-1',
+    'light-shadow-2',
+    'light-shadow-3',
+    'light-shadow-4',
+    'orange-yellow',
+    'purple-blue',
+    'purple-blue-yellow',
+    'purple-magenta-yellow',
+  ].map((name) => deprecationEntry(name, backgroundDeprecationMessage(name)));
+
+  // Deprecated button kinds
+  const deprecatedButtonKinds = [
+    { name: 'cta-primary', alt: 'primary' },
+    { name: 'cta-alternate', alt: 'secondary' },
+  ].map(({ name, alt }) =>
+    deprecationEntry(
+      name,
+      `The "${name}" button kind is deprecated and will be removed in v10. Please use "${alt}" instead.`,
+    ),
+  );
+
+  // Deprecated colors
+  const deprecatedColors = [
+    // Undefined without alternative
+    ...[
+      'accent-1',
+      'accent-2',
+      'accent-3',
+      'accent-4',
+      'neutral-1',
+      'neutral-2',
+      'neutral-3',
+      'neutral-4',
+      'neutral-5',
+      'status-error',
+    ].map((name) =>
+      deprecationEntry(name, colorUndefinedDeprecationMessage(name)),
+    ),
+    // Undefined (future) with alternative - graph colors
+    ...[0, 1, 2, 3, 4, 5, 6, 7].map((i) =>
+      deprecationEntry(
+        `graph-${i}`,
+        colorUndefinedDeprecationMessage(
+          `graph-${i}`,
+          true,
+          `dataVis-categorical-${(i + 1) * 10}`,
+        ),
+      ),
+    ),
+    // Undefined (future) with alternative - other
+    deprecationEntry(
+      'status-disabled',
+      colorUndefinedDeprecationMessage('status-disabled', true, 'text-weak'),
+    ),
+    // Removed with alternative
+    deprecationEntry(
+      'disabled-text',
+      colorRemovedDeprecationMessage('disabled-text', 'text-disabled'),
+    ),
+    // Removed without alternative
+    deprecationEntry(
+      'background-cta-alternate',
+      colorRemovedDeprecationMessage('background-cta-alternate'),
+    ),
+  ];
 
   // Figure out what name is being used for the Graphik font in the family list.
   // Since we're going to map the font-faces to Graphik font files we specifically
@@ -605,102 +696,11 @@ const buildTheme = (tokens, flags) => {
         disabled: { opacity: 0.3 },
       },
       deprecated: {
-        backgrounds: [
-          {
-            name: 'datawave-green-1',
-            message: backgroundDeprecationMessage('datawave-green-1'),
-          },
-          {
-            name: 'datawave-green-2',
-            message: backgroundDeprecationMessage('datawave-green-2'),
-          },
-          {
-            name: 'datawave-multi-1',
-            message: backgroundDeprecationMessage('datawave-multi-1'),
-          },
-          {
-            name: 'datawave-multi-2',
-            message: backgroundDeprecationMessage('datawave-multi-2'),
-          },
-          {
-            name: 'datawave-multi-3',
-            message: backgroundDeprecationMessage('datawave-multi-3'),
-          },
-          {
-            name: 'datawave-multi-4',
-            message: backgroundDeprecationMessage('datawave-multi-4'),
-          },
-          {
-            name: 'datawave-multi-5',
-            message: backgroundDeprecationMessage('datawave-multi-5'),
-          },
-          {
-            name: 'datawave-multi-6',
-            message: backgroundDeprecationMessage('datawave-multi-6'),
-          },
-          {
-            name: 'datawave-white-1',
-            message: backgroundDeprecationMessage('datawave-white-1'),
-          },
-          {
-            name: 'datawave-white-2',
-            message: backgroundDeprecationMessage('datawave-white-2'),
-          },
-          {
-            name: 'datawave-white-3',
-            message: backgroundDeprecationMessage('datawave-white-3'),
-          },
-          {
-            name: 'datawave-white-4',
-            message: backgroundDeprecationMessage('datawave-white-4'),
-          },
-          {
-            name: 'light-shadow-1',
-            message: backgroundDeprecationMessage('light-shadow-1'),
-          },
-          {
-            name: 'light-shadow-2',
-            message: backgroundDeprecationMessage('light-shadow-2'),
-          },
-          {
-            name: 'light-shadow-3',
-            message: backgroundDeprecationMessage('light-shadow-3'),
-          },
-          {
-            name: 'light-shadow-4',
-            message: backgroundDeprecationMessage('light-shadow-4'),
-          },
-          {
-            name: 'orange-yellow',
-            message: backgroundDeprecationMessage('orange-yellow'),
-          },
-          {
-            name: 'purple-blue',
-            message: backgroundDeprecationMessage('purple-blue'),
-          },
-          {
-            name: 'purple-blue-yellow',
-            message: backgroundDeprecationMessage('purple-blue-yellow'),
-          },
-          {
-            name: 'purple-magenta-yellow',
-            message: backgroundDeprecationMessage('purple-magenta-yellow'),
-          },
-        ],
+        backgrounds: deprecatedBackgrounds,
         button: {
-          kind: [
-            {
-              name: 'cta-primary',
-              message:
-                'The "cta-primary" button kind is deprecated and will be removed in v9. Please use "primary" instead.',
-            },
-            {
-              name: 'cta-alternate',
-              message:
-                'The "cta-alternate" button kind is deprecated and will be removed in v9. Please use "secondary" instead.',
-            },
-          ],
+          kind: deprecatedButtonKinds,
         },
+        colors: deprecatedColors,
       },
       input: {
         font: {
@@ -1282,6 +1282,7 @@ const buildTheme = (tokens, flags) => {
       },
     },
     chart: {
+      color: 'dataVis-categorical-10',
       height: 'xsmall',
       thickness: 'medium',
       width: 'medium',
@@ -1520,6 +1521,16 @@ const buildTheme = (tokens, flags) => {
       },
     },
     dataChart: {
+      colors: [
+        'dataVis-categorical-10',
+        'dataVis-categorical-20',
+        'dataVis-categorical-30',
+        'dataVis-categorical-40',
+        'dataVis-categorical-50',
+        'dataVis-categorical-60',
+        'dataVis-categorical-70',
+        'dataVis-categorical-80',
+      ],
       gap: 'xsmall',
       granularity: {
         y: {
@@ -1769,6 +1780,9 @@ const buildTheme = (tokens, flags) => {
       sort: {
         gap: '3xsmall',
       },
+    },
+    diagram: {
+      line: { color: 'dataVis-categorical-10' },
     },
     distribution: { gap: '3xsmall' },
     dataTableColumns: {
@@ -2255,6 +2269,17 @@ const buildTheme = (tokens, flags) => {
     },
     meter: {
       background: 'background-contrast',
+      color: 'dataVis-categorical-10',
+      colors: [
+        'dataVis-categorical-10',
+        'dataVis-categorical-20',
+        'dataVis-categorical-30',
+        'dataVis-categorical-40',
+        'dataVis-categorical-50',
+        'dataVis-categorical-60',
+        'dataVis-categorical-70',
+        'dataVis-categorical-80',
+      ],
       gap: '5xsmall',
     },
     nameValueList: {
