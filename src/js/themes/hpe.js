@@ -577,7 +577,7 @@ const buildTheme = (tokens, flags) => {
   });
 
   const referenceColorDocumentationMessage =
-    'Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color?q=color) for a list of available colors';
+    'Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors';
 
   const backgroundDeprecationMessage = (background) =>
     `The background '${background}' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery).`;
