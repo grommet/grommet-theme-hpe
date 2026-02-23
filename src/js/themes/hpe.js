@@ -1128,9 +1128,13 @@ const buildTheme = (tokens, flags) => {
           },
         },
       },
-      extend: ({ colorValue, theme, kind, disabled }) => {
+      extend: ({ colorValue, theme, kind, disabled, active }) => {
         let style = '';
-        if ((kind === 'primary' || kind === 'cta-primary') && !disabled) {
+        if (
+          (kind === 'primary' || kind === 'cta-primary') &&
+          !disabled &&
+          !active
+        ) {
           // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
           // not a long term solution. Also, reliance on !important is not ideal.
           style += `color: ${getThemeColor(
