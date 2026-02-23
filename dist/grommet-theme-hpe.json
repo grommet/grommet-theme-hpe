@@ -410,7 +410,7 @@
         "dark": "#ec8c25"
       },
       "icon-critical": {
-        "light": "#ec3331",
+        "light": "#cc1f1a",
         "dark": "#fc6161"
       },
       "icon-default": {
@@ -644,7 +644,7 @@
       "purple!": "#7630EA",
       "status-critical": {
         "dark": "#fc6161",
-        "light": "#ec3331"
+        "light": "#cc1f1a"
       },
       "status-warning": {
         "dark": "#ec8c25",
@@ -1287,12 +1287,12 @@
       },
       "primary": {
         "background": {
-          "color": "background-neutral-xstrong"
+          "color": "background-contrast"
         },
         "border": {
           "color": "transparent"
         },
-        "color": "text-onStrong",
+        "color": "text-strong",
         "font": {
           "weight": 500
         }
@@ -1311,12 +1311,12 @@
       },
       "cta-primary": {
         "background": {
-          "color": "background-neutral-xstrong"
+          "color": "background-contrast"
         },
         "border": {
           "color": "transparent"
         },
-        "color": "text-onStrong",
+        "color": "text-strong",
         "font": {
           "weight": 500
         }
@@ -1554,12 +1554,12 @@
         },
         "primary": {
           "background": {
-            "color": "background-neutral-xstrong-hover"
+            "color": "background-contrast-hover"
           },
           "border": {
             "color": "transparent"
           },
-          "color": "text-onStrong",
+          "color": "text-strong",
           "font": {
             "weight": 500
           }
@@ -1578,12 +1578,12 @@
         },
         "cta-primary": {
           "background": {
-            "color": "background-neutral-xstrong-hover"
+            "color": "background-contrast-hover"
           },
           "border": {
             "color": "transparent"
           },
-          "color": "text-onStrong",
+          "color": "text-strong",
           "font": {
             "weight": 500
           }
@@ -2536,7 +2536,7 @@
         "ref": null,
         "props": {
           "size": "small",
-          "color": "#ec3331"
+          "color": "#cc1f1a"
         },
         "_owner": null,
         "_store": {}
