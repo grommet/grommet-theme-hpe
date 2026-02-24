@@ -1,5 +1,57 @@
 # grommet-theme-hpe
 
+## 8.1.2
+
+- Fixed font-family to reference the correct name "HPE Graphik" instead of "Graphik". https://github.com/grommet/grommet-theme-hpe/pull/583
+
+- Marked some items as deprecated. https://github.com/grommet/grommet-theme-hpe/pull/582
+  - Deprecated the following backgrounds:
+    - 'datawave-green-1'
+    - 'datawave-multi-1'
+    - 'datawave-multi-2'
+    - 'datawave-green-2'
+    - 'datawave-multi-3'
+    - 'datawave-multi-4'
+    - 'datawave-multi-5'
+    - 'datawave-multi-6'
+    - 'datawave-white-1'
+    - 'datawave-white-2'
+    - 'datawave-white-3'
+    - 'datawave-white-4'
+    - 'light-shadow-1'
+    - 'light-shadow-2'
+    - 'light-shadow-3'
+    - 'light-shadow-4'
+    - 'orange-yellow'
+    - 'purple-blue'
+    - 'purple-blue-yellow'
+    - 'purple-magenta-yellow'
+
+  - Deprecated the following colors:
+    - 'accent-1'
+    - 'accent-2'
+    - 'accent-3'
+    - 'accent-4'
+    - 'neutral-1'
+    - 'neutral-2'
+    - 'neutral-3'
+    - 'neutral-4'
+    - 'neutral-5'
+    - 'status-error'
+    - 'graph-0'
+    - 'graph-1'
+    - 'graph-2'
+    - 'graph-3'
+    - 'graph-4'
+    - 'graph-5'
+    - 'graph-6'
+    - 'graph-7'
+    - 'status-disabled'
+    - 'disabled-text'
+    - 'background-cta-alternate'
+
+- Updated hpe-design-tokens dependency to v2.2.2. https://github.com/grommet/grommet-theme-hpe/pull/586
+
 ## 8.1.1
 
 - Moved `@hpe-design/icons-grommet` from a peerDependency to a direct dependency. https://github.com/grommet/grommet-theme-hpe/pull/577
