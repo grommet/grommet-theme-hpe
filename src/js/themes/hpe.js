@@ -2263,7 +2263,11 @@ const buildTheme = (tokens, flags) => {
       icons: {
         color: components.hpe.menu.default.item.rest.iconColor,
         down: Down,
+        disabled: {
+          opacity: 0.3,
+        },
       },
+
       item: {
         pad: {
           horizontal: components.hpe.menu.default.medium.item.paddingX,
