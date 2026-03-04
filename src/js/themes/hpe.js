@@ -2271,7 +2271,7 @@ const buildTheme = (tokens, flags) => {
         },
       },
       disabled: {
-        icon: {
+        icons: {
           color: components.hpe.menu.default.item.disabled.rest.iconColor,
         },
       },
