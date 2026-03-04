@@ -2267,7 +2267,6 @@ const buildTheme = (tokens, flags) => {
           opacity: 0.3,
         },
       },
-
       item: {
         pad: {
           horizontal: components.hpe.menu.default.medium.item.paddingX,
