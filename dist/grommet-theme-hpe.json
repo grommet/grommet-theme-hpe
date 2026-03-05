@@ -2756,6 +2756,11 @@
         "horizontal": "18px",
         "vertical": "5px"
       }
+    },
+    "disabled": {
+      "icons": {
+        "color": "icon-disabled"
+      }
     }
   },
   "meter": {

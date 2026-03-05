@@ -2069,6 +2069,11 @@ var buildTheme = function buildTheme(tokens, flags) {
           horizontal: components.hpe.menu["default"].medium.item.paddingX,
           vertical: components.hpe.menu["default"].medium.item.paddingY
         }
+      },
+      disabled: {
+        icons: {
+          color: components.hpe.menu["default"].item.disabled.rest.iconColor
+        }
       }
     },
     meter: {
