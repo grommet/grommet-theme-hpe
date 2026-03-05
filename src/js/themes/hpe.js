@@ -2270,6 +2270,11 @@ const buildTheme = (tokens, flags) => {
           vertical: components.hpe.menu.default.medium.item.paddingY,
         },
       },
+      disabled: {
+        icons: {
+          color: components.hpe.menu.default.item.disabled.rest.iconColor,
+        },
+      },
     },
     meter: {
       background: 'background-contrast',
