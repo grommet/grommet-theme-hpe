@@ -2775,6 +2775,11 @@ const buildTheme = (tokens, flags) => {
         circle: ({ theme }) => (
           <Blank
             preserveAspectRatio="xMidYMid meet" // Forces uniform scaling. Part of grommet code but lost when passing custom icon.
+            // Grommet normally applies a "smart" background/foreground pairing that
+            // selects foreground colors based on the background (light/dark) to keep
+            // text and icons readable. Because the "icon-onSelectedPrimaryStrong" token's
+            // light/dark values are intentionally swapped in our tokens, invert
+            // theme.dark here so the token is resolved exactly as authored.
             color={getThemeColor(
               components.hpe.radioButton.default.control.selected.rest
                 .iconColor,
