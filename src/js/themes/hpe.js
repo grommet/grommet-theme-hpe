@@ -2786,22 +2786,6 @@ const buildTheme = (tokens, flags) => {
           </Blank>
         ),
       },
-      // icon: {
-      //   extend: ({ theme }) => {
-      //     // Grommet normally applies a "smart" background/foreground pairing that
-      //     // selects foreground colors based on the background (light/dark) to keep
-      //     // text and icons readable. Because the "icon-onSelectedPrimaryStrong" token's
-      //     // light/dark values are intentionally swapped in our tokens, invert
-      //     // theme.dark here so the token is resolved exactly as authored.
-      //     const themeToUse = { ...theme, dark: !theme.dark };
-      //     // return `
-      //     // stroke: ${getThemeColor(
-      //     //   components.hpe.radioButton.default.control.selected.rest.iconColor,
-      //     //   themeToUse,
-      //     // )}`;
-      //     return `stroke: 'pink';`;
-      //   },
-      // },
     },
     radioButtonGroup: {
       container: { cssGap: true, gap: 'xsmall', margin: 'none' },
