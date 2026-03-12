@@ -1,17 +1,17 @@
-// (C) Copyright 2020-2024 Hewlett Packard Enterprise Development LP
+// (C) Copyright 2024 Hewlett Packard Enterprise Development LP
 import {
   primitives as localPrimitives,
   dark as localDark,
   light as localLight,
-  dimensionDefault as localDimension,
-  dimensionDefaultSmall as localSmall,
+  dimensionCompact as localDimension,
+  dimensionCompactSmall as localSmall,
   global as localGlobal,
   components as localComponents,
 } from 'hpe-design-tokens/grommet';
 
 import { buildTheme } from '../utils/buildTheme';
 
-export const hpe = buildTheme(
+export const hpeCompact = buildTheme(
   {
     primitives: localPrimitives,
     light: localLight,
