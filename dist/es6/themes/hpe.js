@@ -2682,11 +2682,19 @@ var buildTheme = function buildTheme(tokens, flags) {
         weight: components.hpe.radioButton["default"].label.rest.fontWeight
       },
       icons: {
-        circle: function circle() {
+        circle: function circle(_ref25) {
+          var theme = _ref25.theme;
           return /*#__PURE__*/React.createElement(Blank, {
             preserveAspectRatio: "xMidYMid meet" // Forces uniform scaling. Part of grommet code but lost when passing custom icon.
+            // Grommet normally applies a "smart" background/foreground pairing that
+            // selects foreground colors based on the background (light/dark) to keep
+            // text and icons readable. Because the "icon-onSelectedPrimaryStrong" token's
+            // light/dark values are intentionally swapped in our tokens, invert
+            // theme.dark here so the token is resolved exactly as authored.
             ,
-            color: components.hpe.radioButton["default"].control.selected.rest.iconColor,
+            color: getThemeColor(components.hpe.radioButton["default"].control.selected.rest.iconColor, _extends({}, theme, {
+              dark: !theme.dark
+            })),
             size: components.hpe.radioButton["default"].medium.control.width // width and height are identical, so choosing one.
           }, /*#__PURE__*/React.createElement("circle", {
             cx: 12,
@@ -2720,8 +2728,8 @@ var buildTheme = function buildTheme(tokens, flags) {
             dark: '#616161'
           }
         },
-        extend: function extend(_ref25) {
-          var theme = _ref25.theme;
+        extend: function extend(_ref26) {
+          var theme = _ref26.theme;
           return "\n        border-radius: " + large.hpe.radius.full + ";\n        // firefox only selector, since pseudo-element\n        // isn't supported\n        @-moz-document url-prefix() {\n          border: 1px solid " + getThemeColor('border-strong', theme) + ";\n        }";
         }
       },
@@ -2741,9 +2749,9 @@ var buildTheme = function buildTheme(tokens, flags) {
       },
       // primitives.hpe.base.dimension[100] = 4px which meets WCAG minimum size
       // for visual indicator (minimum 3px)
-      extend: function extend(_ref26) {
-        var disabled = _ref26.disabled,
-          theme = _ref26.theme;
+      extend: function extend(_ref27) {
+        var disabled = _ref27.disabled,
+          theme = _ref27.theme;
         return "\n        &::before {\n          display: block;\n          position: absolute;\n          content: '';\n          width: " + primitives.hpe.base.dimension[100] + ";\n          height: " + primitives.hpe.base.dimension[100] + ";\n          border-radius: " + large.hpe.radius.full + ";\n          right: 0;\n          top: 50%;\n          transform: translateY(-50%);\n          background: " + getThemeColor(disabled ? 'background-disabled' : 'background-neutral-xstrong', theme) + ";\n        }\n    ";
       }
     },
@@ -2789,8 +2797,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         }
       },
       control: {
-        extend: function extend(_ref27) {
-          var disabled = _ref27.disabled;
+        extend: function extend(_ref28) {
+          var disabled = _ref28.disabled;
           return css(_templateObject5 || (_templateObject5 = _taggedTemplateLiteralLoose(["\n          ", "\n\n          &[class*=\"SelectMultiple\"] [role=\"listbox\"] {\n            padding-block: ", ";\n            padding-inline: ", ";\n            & [role='option'] {\n              border-radius: ", ";\n            }\n          }\n        "])), disabled && "\n          opacity: 0.3;\n          input {\n            cursor: default;\n          }", components.hpe.select["default"].medium.drop.paddingY, components.hpe.select["default"].medium.drop.paddingX, dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius);
         }
       },
@@ -2954,8 +2962,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         border: undefined,
         // padding-bottom ensures the marker is not cut off by subsequent
         // page elements.
-        extend: function extend(_ref28) {
-          var theme = _ref28.theme;
+        extend: function extend(_ref29) {
+          var theme = _ref29.theme;
           return "\n        padding-bottom: " + large.hpe.borderWidth.medium + ";\n        & button {\n          border-radius: " + large.hpe.radius.xsmall + "; // radius on focus\n        }\n        & button[aria-selected=\"true\"] {\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              height: " + large.hpe.borderWidth.medium + ";\n              border-radius: " + large.hpe.radius.full + ";\n              bottom: -" + large.hpe.borderWidth.medium + ";\n              left: 0;\n              right: 0;\n              background: " + getThemeColor('border-selected', theme) + ";\n            }\n        }";
         },
         previousButton: {
@@ -3135,8 +3143,8 @@ var buildTheme = function buildTheme(tokens, flags) {
     }),
     textInput: {
       container: {
-        extend: function extend(_ref29) {
-          var theme = _ref29.theme;
+        extend: function extend(_ref30) {
+          var theme = _ref30.theme;
           return "\n          svg {\n            fill: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n            stroke: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n          }\n        ";
         }
       },
@@ -3144,8 +3152,8 @@ var buildTheme = function buildTheme(tokens, flags) {
         copy: Copy
       },
       suggestions: {
-        extend: function extend(_ref30) {
-          var theme = _ref30.theme;
+        extend: function extend(_ref31) {
+          var theme = _ref31.theme;
           return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"]:hover {\n            background: " + getThemeColor(components.hpe.select["default"].option.hover.background, theme) + ";\n          }\n        ";
         }
       }
@@ -3186,8 +3194,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       container: {
         border: false,
         round: 'xsmall',
-        extend: function extend(_ref31) {
-          var theme = _ref31.theme;
+        extend: function extend(_ref32) {
+          var theme = _ref32.theme;
           return "\n        gap: " + (dimensions.edgeSize[large.hpe.spacing['5xsmall']] || large.hpe.spacing['5xsmall']) + ";\n        &:hover {\n          background: " + getThemeColor('background-hover', theme) + ";\n        }";
         }
       },
