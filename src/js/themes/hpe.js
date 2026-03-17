@@ -103,11 +103,12 @@ const breakpointStyle = (global, content, responsive) => {
   return st.join('');
 };
 
-const themeDefaultSize = 'medium';
-const getHeadingSize = (breakpointTokens, size) =>
-  size && breakpointTokens.hpe.heading[size]
-    ? breakpointTokens.hpe.heading[size]
-    : breakpointTokens.hpe.heading[themeDefaultSize];
+const getHeadingSize = (breakpointTokens, size, level) => {
+  const fallbackSize = headingLevelToSize[level || 1];
+  const resolvedSize =
+    size && breakpointTokens.hpe.heading[size] ? size : fallbackSize;
+  return breakpointTokens.hpe.heading[resolvedSize];
+};
 
 const getThemeColor = (color, theme) =>
   typeof theme.global.colors[color] === 'string'
@@ -2145,14 +2146,16 @@ const buildTheme = (tokens, flags) => {
       },
       extend: ({ size: headingSize, level, weight, responsive }) => {
         let style = '';
-        const { fontSize, lineHeight, fontWeight } = getHeadingSize(
-          large,
-          headingSize,
-        );
+        // Only apply token-based sizing when a valid size prop was explicitly passed.
+        // When no size is given, the level[1..6].medium mapping controls sizing instead.
+        if (headingSize && large.hpe.heading[headingSize]) {
+          const { fontSize, lineHeight, fontWeight } =
+            large.hpe.heading[headingSize];
 
-        if (fontWeight && !weight) style += `font-weight: ${fontWeight};`;
-        if (fontSize) style += `font-size: ${fontSize};`;
-        if (lineHeight) style += `line-height: ${lineHeight};`;
+          if (fontWeight && !weight) style += `font-weight: ${fontWeight};`;
+          if (fontSize) style += `font-size: ${fontSize};`;
+          if (lineHeight) style += `line-height: ${lineHeight};`;
+        }
         // The max desired weight in the the theme is 500, however a common convention is for
         // implementors to choose "bold" to style text. This ensures bold resolves to the desired wieght.
         if (weight === 'bold') style += 'font-weight: 500;';
