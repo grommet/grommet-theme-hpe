@@ -103,9 +103,8 @@ const breakpointStyle = (global, content, responsive) => {
   return st.join('');
 };
 
-const themeDefaultSize = 'medium';
 const getHeadingSize = (breakpointTokens, size, level) => {
-  const fallbackSize = headingLevelToSize[level || 1] || themeDefaultSize;
+  const fallbackSize = headingLevelToSize[level || 1];
   const resolvedSize =
     size && breakpointTokens.hpe.heading[size] ? size : fallbackSize;
   return breakpointTokens.hpe.heading[resolvedSize];
