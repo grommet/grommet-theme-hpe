@@ -1,5 +1,17 @@
 # grommet-theme-hpe
 
+## 8.1.3
+
+- Fixed the icon color from Menu when it is disabled. (https://github.com/grommet/grommet-theme-hpe/pull/588)
+- Fixed the icon color of RadioButton. (https://github.com/grommet/grommet-theme-hpe/pull/590)
+- Fixed an issue with Heading sizes. (https://github.com/grommet/grommet-theme-hpe/pull/592)
+- Updated hpe-design-tokens dependency to v2.2.3. (https://github.com/grommet/grommet-theme-hpe/pull/593)
+  - Button (Primary, Secondary, Default) “active/selected” state. Updated Button variants to use a shared styling model: neutral text and a green border.
+
+  - Adjusted FormField group item horizontal padding.
+
+  - Changed Heading xxsmall size on small screens.
+
 ## 8.1.2
 
 - Fixed font-family to reference the correct name "HPE Graphik" instead of "Graphik". https://github.com/grommet/grommet-theme-hpe/pull/583
