@@ -1,5 +1,9 @@
 # grommet-theme-hpe
 
+## 8.1.4
+
+- Fixed Pagination selected button styling to visually match the “active/selected” state.
+
 ## 8.1.3
 
 - Fixed the icon color from Menu when it is disabled. (https://github.com/grommet/grommet-theme-hpe/pull/588)
