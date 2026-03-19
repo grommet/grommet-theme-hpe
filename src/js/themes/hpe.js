@@ -2619,7 +2619,11 @@ const buildTheme = (tokens, flags) => {
         font: { weight: components.hpe.button.default.rest.fontWeight },
         active: {
           background: components.hpe.button.default.selected.rest.background,
-          border: { radius: components.hpe.button.default.medium.borderRadius },
+          border: {
+            radius: components.hpe.button.default.medium.borderRadius,
+            color: components.hpe.button.default.selected.rest.borderColor,
+            width: components.hpe.button.default.small.borderWidth,
+          },
           color: components.hpe.button.default.selected.rest.textColor,
           font: {
             weight: components.hpe.button.default.selected.rest.fontWeight,
