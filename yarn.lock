@@ -2944,8 +2944,10 @@ homedir-polyfill@^1.0.1:
   dependencies:
     parse-passwd "^1.0.0"
 
-"hpe-design-tokens@file:.yalc/hpe-design-tokens":
-  version "2.2.2"
+hpe-design-tokens@2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/hpe-design-tokens/-/hpe-design-tokens-2.2.3.tgz#03db08054aad345e1d425d0b980ca769fe101413"
+  integrity sha512-a2wQ9kPl5+8cufKMTnFtPa7tYm2p20ZVSXZPryxDT0qkHs0kqKTokzYkDObSuea+ohzC1Gjj7HabmKSlG/xLcg==
 
 human-id@^4.1.1:
   version "4.1.2"
