@@ -3346,7 +3346,9 @@
       "active": {
         "background": "transparent",
         "border": {
-          "radius": "9999px"
+          "radius": "9999px",
+          "color": "border-selected",
+          "width": "1px"
         },
         "color": "text-strong",
         "font": {
