@@ -2,7 +2,7 @@
 
 ## 8.1.4
 
-- Fixed Pagination selected button styling to visually match the “active/selected” state.
+- Fixed Pagination selected button styling to visually match the “active/selected” state of other buttons. (https://github.com/grommet/grommet-theme-hpe/pull/595)
 
 ## 8.1.3
 
