@@ -2622,7 +2622,7 @@ const buildTheme = (tokens, flags) => {
           border: {
             radius: components.hpe.button.default.medium.borderRadius,
             color: components.hpe.button.default.selected.rest.borderColor,
-            width: components.hpe.button.default.small.borderWidth,
+            width: components.hpe.button.default.medium.borderWidth,
           },
           color: components.hpe.button.default.selected.rest.textColor,
           font: {
