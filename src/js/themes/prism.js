@@ -111,6 +111,7 @@ const themeMode = (mode) => ({
   'code[class*="language-"]': {
     color: colors.code[mode],
     background: 'none',
+    fontFamily: "'Fira Mono', monospace",
     textAlign: 'left',
     whiteSpace: 'pre',
     wordSpacing: 'normal',
@@ -128,6 +129,7 @@ const themeMode = (mode) => ({
   'pre[class*="language-"]': {
     color: colors.code[mode],
     background: colors.background[mode],
+    fontFamily: "'Fira Mono', monospace",
     textAlign: 'left',
     whiteSpace: 'pre',
     wordSpacing: 'normal',
