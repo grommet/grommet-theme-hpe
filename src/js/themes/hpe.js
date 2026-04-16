@@ -115,49 +115,49 @@ const getThemeColor = (color, theme) =>
     ? theme.global.colors[color]
     : theme.global.colors[color]?.[theme.dark ? 'dark' : 'light'] || color;
 
-const globalSizes = {
+const globalSizes = (dimension, global) => ({
   borderSize: {
-    xsmall: '1px',
-    small: '2px',
-    medium: `${baseSpacing / 6}px`, // 4
-    large: `${baseSpacing / 2}px`, // 12
-    xlarge: `${baseSpacing}px`, // 24
-    default: '1px',
+    xsmall: dimension.hpe.borderWidth.xsmall, // 1px
+    small: dimension.hpe.borderWidth.small, // 2px
+    medium: dimension.hpe.borderWidth.medium, // 4px
+    large: dimension.hpe.borderWidth.large * 2, // 12px
+    xlarge: dimension.hpe.borderWidth.large * 4, // 24px
+    default: dimension.hpe.borderWidth.default, // 1px
   },
   edgeSize: {
-    none: '0px',
-    hair: '1px', // for Chart
-    xxsmall: `${baseSpacing / 8}px`, // 3
-    xsmall: `${baseSpacing / 4}px`, // 6
-    small: `${baseSpacing / 2}px`, // 12
-    medium: `${baseSpacing}px`, // 24
-    large: `${baseSpacing * 2}px`, // 48
-    xlarge: `${baseSpacing * 4}px`, // 96
-    responsiveBreakpoint: 'small',
+    none: dimension.hpe.radius.none, // 0px
+    hair: dimension.hpe.radius.hair, // 1px
+    xxsmall: dimension.hpe.radius.xxsmall * 0.75, // 3px
+    xsmall: dimension.hpe.radius.xsmall, // 6px
+    small: dimension.hpe.radius.small * 1.5, // 12px
+    medium: dimension.hpe.radius.medium * 2, // 24px
+    large: dimension.hpe.radius.large * 3, // 16px
+    xlarge: dimension.hpe.radius.xlarge * 4, // 96px
+    responsiveBreakpoint: global.hpe.breakpoint.small, // 768px
   },
   // same as edgeSize for backwards compatibility
   radius: {
-    none: '0px',
-    hair: '1px', // for Chart
-    xxsmall: `${baseSpacing / 8}px`, // 3
-    xsmall: `${baseSpacing / 4}px`, // 6
-    small: `${baseSpacing / 2}px`, // 12
-    medium: `${baseSpacing}px`, // 24
-    large: `${baseSpacing * 2}px`, // 48
-    xlarge: `${baseSpacing * 4}px`, // 96
-    responsiveBreakpoint: 'small',
+    none: dimension.hpe.radius.none, // 0px
+    hair: dimension.hpe.radius.hair, // 1px
+    xxsmall: dimension.hpe.radius.xxsmall * 0.75, // 3px
+    xsmall: dimension.hpe.radius.xsmall, // 6px
+    small: dimension.hpe.radius.small * 1.5, // 12px
+    medium: dimension.hpe.radius.medium * 2, // 24px
+    large: dimension.hpe.radius.large * 3, // 16px
+    xlarge: dimension.hpe.radius.xlarge * 4, // 96
+    responsiveBreakpoint: global.hpe.breakpoint.small, // 768px
   },
   size: {
-    xxsmall: `${baseSpacing * 2}px`, // 48
-    xsmall: `${baseSpacing * 4}px`, // 96
-    small: `${baseSpacing * 8}px`, // 192
-    medium: `${baseSpacing * 16}px`, // 384
-    large: `${baseSpacing * 32}px`, // 768
-    xlarge: `${baseSpacing * 48}px`, // 1152
-    xxlarge: `${baseSpacing * 64}px`, // 1536
+    xxsmall: dimension.hpe.container['5xsmall'], // 48px
+    xsmall: dimension.hpe.container['3xsmall'], // 96px
+    small: dimension.hpe.container.xsmall, // 192px
+    medium: dimension.hpe.container.medium, // 384px
+    large: dimension.hpe.container.xlarge, // 768px
+    xlarge: dimension.hpe.container.xxlarge, // 1024px
+    xxlarge: dimension.hpe.container['3xlarge'], // 1536px
     full: '100%',
   },
-};
+});
 
 const responsiveGlobalSizes = {
   borderSize: {
