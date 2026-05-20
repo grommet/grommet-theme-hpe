@@ -1316,7 +1316,7 @@ const buildTheme = (tokens, flags) => {
             if (toggle) {
               borderColor = getThemeColor(
                 components.hpe.switch.default.control.track.selected.hover
-                  .borderColxor,
+                  .borderColor,
                 theme,
               );
             } else {
