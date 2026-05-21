@@ -1013,9 +1013,11 @@ var buildTheme = function buildTheme(tokens, flags) {
           var isSelected = _ref9.isSelected,
             theme = _ref9.theme;
           return (
-            // grommet logic was incorrectly switching to wrong theme mode
-            // so overriding in extend
-            isSelected ? "color: " + theme.global.colors['text-onSelectedPrimaryStrong'][theme.dark ? 'dark' : 'light'] + ";" : ''
+            // The "text-onSelectedPrimaryStrong" token has its light/dark values
+            // intentionally swapped (see colors.js swapped()). Invert theme.dark
+            // here to "un-swap" and resolve the correct color, matching the
+            // same pattern used for the checkbox checkmark (PR #573).
+            isSelected ? "color: " + theme.global.colors['text-onSelectedPrimaryStrong'][theme.dark ? 'light' : 'dark'] + ";" : ''
           );
         }
       },
