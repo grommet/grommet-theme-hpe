@@ -10,9 +10,9 @@ import {
 import { buildTheme } from '../../themes/hpe';
 
 describe('Pure utility functions', () => {
-  // We need access to the utility functions for testing.
-  // Since they are not exported, we'll test them through buildTheme behavior
-  // and indirectly verify they work correctly.
+  // Utility helpers are exported from src/js/themes/utils.js.
+  // Prefer calling helpers directly for unit tests; use buildTheme() only
+  // when validating integration behavior.
 
   const tokens = {
     primitives: localPrimitives,
