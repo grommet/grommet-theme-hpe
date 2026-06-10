@@ -15,7 +15,7 @@ describe('Pure utility functions', () => {
 
     it('should return false for arrays, null, and primitives', () => {
       expect(isObject([])).toBe(false);
-      expect(isObject(null)).toBe(null);
+      expect(isObject(null)).toBe(false);
       expect(isObject('text')).toBe(false);
       expect(isObject(123)).toBe(false);
     });
