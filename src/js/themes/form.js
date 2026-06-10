@@ -6,7 +6,22 @@ import { getThemeColor } from './utils';
 export const buildFormTheme = (tokens, context) => {
   const { primitives, light, large, components } = tokens;
   const { dimensions, option } = context;
-  const { Alert, Blank, Calendar, Close, Down, Search, Up } = context.icons;
+  const {
+    Alert,
+    Blank,
+    Calendar,
+    Close,
+    Copy,
+    Dislike,
+    DislikeFill,
+    Down,
+    Like,
+    LikeFill,
+    Search,
+    Star,
+    StarFill,
+    Up,
+  } = context.icons;
 
   return {
     checkBox: {
@@ -568,6 +583,20 @@ export const buildFormTheme = (tokens, context) => {
     radioButtonGroup: {
       container: { cssGap: true, gap: 'xsmall', margin: 'none' },
     },
+    maskedInput: {
+      container: {
+        extend: ({ theme }) => `
+          svg {
+            fill: ${
+              theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
+            };
+            stroke: ${
+              theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
+            };
+          }
+        `,
+      },
+    },
     rangeInput: {
       thumb: {
         color: 'background-primary-strong',
@@ -746,6 +775,55 @@ export const buildFormTheme = (tokens, context) => {
             vertical: '3xsmall',
           },
         },
+      },
+    },
+    starRating: {
+      color: 'background-selected-primary-strong',
+      icons: {
+        selected: StarFill,
+        unselected: Star,
+      },
+    },
+    textInput: {
+      container: {
+        extend: ({ theme }) => `
+          svg {
+            fill: ${
+              theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light']
+            };
+            stroke: ${
+              theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light']
+            };
+          }
+        `,
+      },
+      icons: {
+        copy: Copy,
+      },
+      suggestions: {
+        extend: ({ theme }) => `
+          padding-block: ${components.hpe.select.default.medium.drop.paddingY};
+          padding-inline: ${components.hpe.select.default.medium.drop.paddingX};
+          gap: ${components.hpe.select.default.medium.drop.gapY};
+          display: flex;
+          flex-direction: column;
+          [role="option"]:hover {
+            background: ${getThemeColor(
+              components.hpe.select.default.option.hover.background,
+              theme,
+            )};
+          }
+        `,
+      },
+    },
+    thumbsRating: {
+      like: { color: 'background-selected-primary-strong' },
+      dislike: { color: 'background-selected-primary-strong' },
+      icons: {
+        dislike: Dislike,
+        dislikeSelected: DislikeFill,
+        like: Like,
+        likeSelected: LikeFill,
       },
     },
   };

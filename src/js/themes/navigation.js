@@ -239,5 +239,31 @@ export const buildNavigationTheme = (tokens, context) => {
       },
       step: { xsmall: 1, xlarge: 3 },
     },
+    tip: {
+      content: {
+        background: 'background-floating',
+        border: { color: 'border-weak' },
+        margin: '5xsmall',
+        elevation: 'small',
+        pad: { vertical: 'none', horizontal: 'xsmall' },
+        round: components.hpe.drop.default.borderRadius,
+      },
+    },
+    toggleGroup: {
+      button: { kind: 'toolbar' },
+      container: {
+        border: false,
+        round: 'xsmall',
+        extend: ({ theme }) => `
+        gap: ${
+          dimensions.edgeSize[large.hpe.spacing['5xsmall']] ||
+          large.hpe.spacing['5xsmall']
+        };
+        &:hover {
+          background: ${getThemeColor('background-hover', theme)};
+        }`,
+      },
+      divider: false,
+    },
   };
 };

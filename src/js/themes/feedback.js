@@ -176,15 +176,5 @@ export const buildFeedbackTheme = (tokens, icons) => {
         xlarge: components.hpe.element?.xlarge.minHeight,
       },
     },
-    tip: {
-      content: {
-        background: 'background-floating',
-        border: { color: 'border-weak' },
-        margin: '5xsmall',
-        elevation: 'small',
-        pad: { vertical: 'none', horizontal: 'xsmall' },
-        round: components.hpe.drop.default.borderRadius,
-      },
-    },
   };
 };

@@ -292,5 +292,11 @@ export const buildDataTheme = (tokens, context) => {
         },
       },
     },
+    toolbar: {
+      gap: 'xsmall',
+      small: {
+        gap: 'xsmall',
+      },
+    },
   };
 };

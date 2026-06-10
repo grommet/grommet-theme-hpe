@@ -1,10 +1,6 @@
-import { getThemeColor } from './utils';
-
 export const buildMiscTheme = (tokens, context) => {
   const { components, global, large } = tokens;
-  const { dimensions } = context;
-  const { Close, Copy, Dislike, DislikeFill, Like, LikeFill, Star, StarFill } =
-    context.icons;
+  const { Close } = context.icons;
 
   return {
     box: {
@@ -30,20 +26,6 @@ export const buildMiscTheme = (tokens, context) => {
         xxlarge: large.hpe.icon.xxlarge.size,
       },
     },
-    maskedInput: {
-      container: {
-        extend: ({ theme }) => `
-          svg {
-            fill: ${
-              theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
-            };
-            stroke: ${
-              theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
-            };
-          }
-        `,
-      },
-    },
     meter: {
       background: 'background-contrast',
       color: 'dataVis-categorical-10',
@@ -58,13 +40,6 @@ export const buildMiscTheme = (tokens, context) => {
         'dataVis-categorical-80',
       ],
       gap: '5xsmall',
-    },
-    starRating: {
-      color: 'background-selected-primary-strong',
-      icons: {
-        selected: StarFill,
-        unselected: Star,
-      },
     },
     tag: {
       border: { color: 'border-weak' },
@@ -123,70 +98,6 @@ export const buildMiscTheme = (tokens, context) => {
           },
           remove: { size: 'large', margin: { right: '3xsmall' } },
         },
-      },
-    },
-    textInput: {
-      container: {
-        extend: ({ theme }) => `
-          svg {
-            fill: ${
-              theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light']
-            };
-            stroke: ${
-              theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light']
-            };
-          }
-        `,
-      },
-      icons: {
-        copy: Copy,
-      },
-      suggestions: {
-        extend: ({ theme }) => `
-          padding-block: ${components.hpe.select.default.medium.drop.paddingY};
-          padding-inline: ${components.hpe.select.default.medium.drop.paddingX};
-          gap: ${components.hpe.select.default.medium.drop.gapY};
-          display: flex;
-          flex-direction: column;
-          [role="option"]:hover {
-            background: ${getThemeColor(
-              components.hpe.select.default.option.hover.background,
-              theme,
-            )};
-          }
-        `,
-      },
-    },
-    thumbsRating: {
-      like: { color: 'background-selected-primary-strong' },
-      dislike: { color: 'background-selected-primary-strong' },
-      icons: {
-        dislike: Dislike,
-        dislikeSelected: DislikeFill,
-        like: Like,
-        likeSelected: LikeFill,
-      },
-    },
-    toggleGroup: {
-      button: { kind: 'toolbar' },
-      container: {
-        border: false,
-        round: 'xsmall',
-        extend: ({ theme }) => `
-        gap: ${
-          dimensions.edgeSize[large.hpe.spacing['5xsmall']] ||
-          large.hpe.spacing['5xsmall']
-        };
-        &:hover {
-          background: ${getThemeColor('background-hover', theme)};
-        }`,
-      },
-      divider: false,
-    },
-    toolbar: {
-      gap: 'xsmall',
-      small: {
-        gap: 'xsmall',
       },
     },
   };
