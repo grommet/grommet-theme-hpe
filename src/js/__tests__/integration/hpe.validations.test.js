@@ -37,8 +37,9 @@ describe('Deprecation Entry Tests', () => {
 
     it('should have disabled-text as deprecated', () => {
       const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
-      expect(theme.global.deprecated.colors).toBeDefined();
-      expect(Array.isArray(theme.global.deprecated.colors)).toBe(true);
+      expect(
+        theme.global.deprecated.colors.some(({ name }) => name === 'disabled-text'),
+      ).toBe(true);
     });
   });
 
