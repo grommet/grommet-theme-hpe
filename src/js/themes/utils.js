@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 const baseSpacing = 24;
 
 const isObject = (item) =>
-  item && typeof item === 'object' && !Array.isArray(item);
+  !!item && typeof item === 'object' && !Array.isArray(item);
 
 const deepFreeze = (obj) => {
   Object.keys(obj).forEach(
