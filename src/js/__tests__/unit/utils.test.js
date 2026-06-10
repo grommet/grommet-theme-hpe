@@ -58,7 +58,11 @@ describe('Pure utility functions', () => {
       // or throw in strict mode. Either way, the value should not change.
       const originalValue = theme.global?.focus?.border?.color;
       if (originalValue !== undefined) {
-        theme.global.focus.border.color = 'modified';
+        try {
+          theme.global.focus.border.color = 'modified';
+        } catch (e) {
+          // ignore TypeError in strict mode
+        }
         expect(theme.global.focus.border.color).toBe(originalValue);
       }
     });
