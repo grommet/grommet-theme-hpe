@@ -2,7 +2,7 @@
 
 ## Background
 
-`src/js/themes/hpe.js` is a ~3,340-line monolith. Utility helpers, token-processing logic, and theme definitions for 60+ Grommet components are all interleaved inside a single `buildTheme()` function. The project has no test infrastructure.
+`src/js/themes/hpe.js` is a ~3,340-line monolith. Utility helpers, token-processing logic, and theme definitions for 60+ Grommet components are all interleaved inside a single `buildTheme()` function. The project historically had no test infrastructure.
 
 These two issues compound each other: it is difficult to make changes confidently when there is nothing to catch regressions, and the file's size makes it hard to locate the right place to make a change. The goal of this plan is to establish test coverage first, then use those tests as a safety net for a structural refactor.
 
