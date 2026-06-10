@@ -3303,6 +3303,8 @@ const buildTheme = (tokens, flags) => {
   });
 };
 
+export { buildTheme };
+
 export const hpe = buildTheme(
   {
     primitives: localPrimitives,
