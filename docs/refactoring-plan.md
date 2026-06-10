@@ -14,8 +14,8 @@ These two issues compound each other: it is difficult to make changes confidentl
 
 Before beginning this work:
 
-1. Run `npm test` to verify baseline — it will fail because test infrastructure does not exist yet. This is expected.
-2. Complete Phase 1 setup and confirm `npm test` runs without errors (before writing any test code).
+1. Run `npm test` to verify the test harness and current suite pass.
+2. Before writing additional tests, confirm `npm test` runs without errors.
 3. All tests should be written and passing before any refactoring begins (Phase 2 must be 100% complete before starting Phase 3).
 4. After each extraction step in Phase 3, run `npm test` and `npm run build` before proceeding to the next step.
 
