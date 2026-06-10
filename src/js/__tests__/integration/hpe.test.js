@@ -201,7 +201,7 @@ describe('Flag Behavior Tests', () => {
         'v6-backwards-compatibility': true,
       });
       expect(themeWithFlag.global.edgeSize).toBeDefined();
-      // With backwards compatibility, edgeSize should use globalSizes
+      expect(themeWithFlag.global.edgeSize['5xsmall']).toBeUndefined();
       expect(themeWithFlag.global.edgeSize.medium).toBe('24px');
     });
 
