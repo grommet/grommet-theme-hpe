@@ -53,11 +53,7 @@ module.exports = {
 
 **Token Fixtures Import Path:**
 
-The local token fixtures (`localPrimitives`, `localLight`, `localDark`, `localSmall`, `localDimension`, `localGlobal`, `localComponents`) are currently defined in `src/js/themes/hpe.js` itself. To avoid circular imports when testing, extract these to a separate file:
-
-- Create `src/js/themes/testFixtures.js` (or similar)
-- Export all local token constants from this file
-- Import them in `hpe.js` and in test files as needed
+The token fixtures (`localPrimitives`, `localLight`, `localDark`, `localSmall`, `localDimension`, `localGlobal`, `localComponents`) are imported from `hpe-design-tokens/grommet` (see `src/js/themes/hpe.js`). If test scenarios require custom fixtures, place them in a dedicated test-only module to avoid circular dependencies.
 
 **Files affected:** `package.json`, `jest.config.js` (new), optionally `src/js/themes/testFixtures.js` (new)
 
