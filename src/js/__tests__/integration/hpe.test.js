@@ -192,8 +192,8 @@ describe('Flag Behavior Tests', () => {
         'v6-backwards-compatibility': false,
       });
       expect(themeWithoutFlag.global.edgeSize).toBeDefined();
-      // edgeSize should have token-based values
-      expect(themeWithoutFlag.global.edgeSize.medium).toBeDefined();
+      // Token-based dimensions include the additional t-shirt sizes.
+      expect(themeWithoutFlag.global.edgeSize['5xsmall']).toBeDefined();
     });
 
     it('should use globalSizes edgeSize when flag is true', () => {
