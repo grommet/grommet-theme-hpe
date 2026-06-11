@@ -233,12 +233,10 @@ describe('Flag Behavior Tests', () => {
     });
 
     it('should have comprehensive theme structure', () => {
-      // The hpe export is the built theme object
-      expect(hpe.global).toBeDefined();
-      expect(hpe.button).toBeDefined();
-      expect(hpe.text).toBeDefined();
-      // Verify we can access theme properties
-      expect(Object.keys(hpe).length).toBeGreaterThan(0);
+      // Smoke-check deeper nested paths on the shipped default export.
+      expect(hpe.global.colors['text-strong']).toBeDefined();
+      expect(hpe.button.primary).toBeDefined();
+      expect(hpe.button.primary.background).toBeDefined();
     });
 
     it('should use v6-backwards-compatibility: false by default', () => {
