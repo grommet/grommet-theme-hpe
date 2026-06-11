@@ -52,7 +52,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "pre-commit": "^1.2.2",
+    "husky": "^9.1.7",
     "prettier": "^3.2.5",
     "pretty-quick": "^4.0.0",
     "react": "^18.3.0",
@@ -63,6 +63,7 @@
     "webpack-cli": "^5.1.4"
   },
   "scripts": {
+    "prepare": "husky",
     "test": "jest",
     "prepublishOnly": "npm run build && npm run jsonify",
     "build": "webpack --mode production && cross-env babel ./src/js/ --out-dir ./dist --copy-files && cross-env BABEL_ENV=es6 babel ./src/js/ --out-dir ./dist/es6 --copy-files",
@@ -77,9 +78,5 @@
     "release-hpe-design-tokens-v2-stable": "babel-node ./tools/release-stable --branch=hpe-design-tokens-v2-stable",
     "jsonify": "babel-node ./tools/convert-to-json > dist/grommet-theme-hpe.json",
     "release-gh-pages": "babel-node ./tools/release-gh-pages"
-  },
-  "pre-commit": [
-    "lint-fix",
-    "prettier"
-  ]
+  }
 }
