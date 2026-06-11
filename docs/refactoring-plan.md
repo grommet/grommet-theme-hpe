@@ -14,10 +14,10 @@ These two issues compound each other: it is difficult to make changes confidentl
 
 Before beginning this work:
 
-1. Run `npm test` to verify the test harness and current suite pass.
-2. Before writing additional tests, confirm `npm test` runs without errors.
+1. Run `yarn test` to verify the test harness and current suite pass.
+2. Before writing additional tests, confirm `yarn test` runs without errors.
 3. All tests should be written and passing before any refactoring begins (Phase 2 must be 100% complete before starting Phase 3).
-4. After each extraction step in Phase 3, run `npm test` and `npm run build` before proceeding to the next step.
+4. After each extraction step in Phase 3, run `yarn test` and `yarn run build` before proceeding to the next step.
 
 ---
 
@@ -31,7 +31,21 @@ Before writing any tests, the tooling needs to be in place.
 2. Create `jest.config.js` at the project root, pointing at `src/`, configuring the jsdom environment, and wiring up the Babel transform.
 3. Add `"test": "jest"` to the `scripts` block in `package.json`.
 
-**Important:** After setup, all tests should import `buildTheme` directly (not the pre-built `hpe` export) so that each test scenario can provide custom tokens and flag combinations independently.
+**Important:** After setup, tests should mostly use import `buildTheme` directly (not the pre-built `hpe` export) so that each test scenario can provide custom tokens and flag combinations independently. The pre-built `hpe` export should be used for tests validating what consumers get when importing the package default theme.
+
+1. Use buildTheme when the test is about theme generation behavior
+
+- Custom tokens
+- Different flag combinations
+- Shape/value logic produced by the builder
+- Regression checks that should be independent of module-level defaults
+
+2. Use hpe when the test is about published default export contract
+
+- The export exists and can be imported
+- It is frozen/immutable
+- It was built with the intended default tokens and default flags
+- Public consumer-facing smoke checks
 
 **Jest Configuration Example:**
 
