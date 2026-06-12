@@ -37,11 +37,14 @@ export const buildTypography = (tokens, options = {}) => {
   };
 
   textSizes.forEach((textSize) => {
-    if (
-      parseInt(large.hpe.text?.[textSize]?.fontSize.replace('rem', ''), 10) >
-      parseInt(fallback.size.replace('rem', ''), 10)
-    ) {
-      fallback.size = large.hpe.text?.[textSize]?.fontSize;
+    const fontSize = large.hpe.text?.[textSize]?.fontSize;
+    const fontSizeValue = fontSize
+      ? parseFloat(fontSize.replace('rem', ''))
+      : 0;
+    const fallbackValue = parseFloat(fallback.size.replace('rem', '')) || 0;
+
+    if (fontSizeValue > fallbackValue) {
+      fallback.size = fontSize;
       fallback.height = large.hpe.text?.[textSize]?.lineHeight;
       fallback.maxWidth = large.hpe.text?.[textSize]?.maxWidth;
       fallback.weight = large.hpe.text?.[textSize]?.fontWeight;
