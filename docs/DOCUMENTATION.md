@@ -12,6 +12,7 @@ It publishes theme objects and supporting exports that downstream applications c
 - `src/js/__tests__/`: Test suites (integration and unit).
 - `dist/`: Build output (CommonJS, ES modules, JSON artifact, bundled browser file).
 - `tools/`: Release and conversion scripts used by package scripts.
+- `.husky/`: Git hook scripts managed by Husky.
 - `docs/`: Project documentation and planning notes.
 
 ## Top-Level Files and Roles
@@ -24,6 +25,8 @@ It publishes theme objects and supporting exports that downstream applications c
 - `README.md`: Public usage information for consumers.
 - `CHANGELOG.md`: Versioned release notes.
 - `LICENSE`: License terms.
+- `.husky/pre-commit`: Runs fast local checks on commit (`lint-fix` and staged Prettier).
+- `.husky/pre-push`: Runs the stronger pre-push gate (`lint` and `npm test -- --bail`).
 
 ## Source Layout (`src/js`)
 
@@ -128,6 +131,8 @@ The `jsonify` script generates:
 - `yarn build`: Build bundle and transpiled distributions.
 - `yarn jsonify`: Generate theme JSON artifact.
 - `yarn prepublishOnly`: Build + JSON generation pre-publish check.
+- Git commits are gated by Husky via `.husky/pre-commit`.
+- Git pushes are gated by Husky via `.husky/pre-push`.
 
 ## Maintenance Notes
 

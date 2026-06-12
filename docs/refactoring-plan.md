@@ -34,15 +34,18 @@ Before writing any tests, the tooling needs to be in place.
 **Important:** After setup, tests should mostly use import `buildTheme` directly (not the pre-built `hpe` export) so that each test scenario can provide custom tokens and flag combinations independently. The pre-built `hpe` export should be used for tests validating what consumers get when importing the package default theme.
 
 1. Use buildTheme when the test is about theme generation behavior
-  - Custom tokens
-  - Different flag combinations
-  - Shape/value logic produced by the builder
-  - Regression checks that should be independent of module-level defaults
+
+- Custom tokens
+- Different flag combinations
+- Shape/value logic produced by the builder
+- Regression checks that should be independent of module-level defaults
+
 2. Use hpe when the test is about published default export contract
-  - The export exists and can be imported
-  - It is frozen/immutable
-  - It was built with the intended default tokens and default flags
-  - Public consumer-facing smoke checks
+
+- The export exists and can be imported
+- It is frozen/immutable
+- It was built with the intended default tokens and default flags
+- Public consumer-facing smoke checks
 
 **Jest Configuration Example:**
 
