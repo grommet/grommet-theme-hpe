@@ -20,47 +20,46 @@ describe('Structural and Contract Tests', () => {
     components: localComponents,
   };
 
+  let theme;
+  
+  beforeAll(() => {
+    theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
+  });
+
   describe('Critical property paths', () => {
     it('should have global.colors object', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       expect(theme.global).toBeDefined();
       expect(theme.global.colors).toBeDefined();
       expect(typeof theme.global.colors).toBe('object');
     });
 
     it('should have global.focus definition', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       expect(theme.global.focus).toBeDefined();
       expect(typeof theme.global.focus).toBe('object');
     });
 
     it('should have global.edgeSize definition', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       expect(theme.global.edgeSize).toBeDefined();
       expect(typeof theme.global.edgeSize).toBe('object');
     });
 
     it('should have global.font definition', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       expect(theme.global.font).toBeDefined();
       expect(typeof theme.global.font).toBe('object');
     });
 
     it('should have global.breakpoints definition', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       expect(theme.global.breakpoints).toBeDefined();
       expect(typeof theme.global.breakpoints).toBe('object');
     });
 
     it('should have button.primary definition', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       expect(theme.button).toBeDefined();
       expect(theme.button.primary).toBeDefined();
       expect(typeof theme.button.primary).toBe('object');
     });
 
     it('should have text and heading definitions', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       expect(theme.text).toBeDefined();
       expect(theme.heading).toBeDefined();
       expect(typeof theme.text).toBe('object');
@@ -68,7 +67,6 @@ describe('Structural and Contract Tests', () => {
     });
 
     it('should have form field definitions', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       expect(theme.formField).toBeDefined();
       expect(typeof theme.formField).toBe('object');
     });
@@ -76,17 +74,14 @@ describe('Structural and Contract Tests', () => {
 
   describe('Color definitions', () => {
     it('should have text-strong color defined', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       expect(theme.global.colors['text-strong']).toBeDefined();
     });
 
     it('should have focus color defined', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       expect(theme.global.colors.focus).toBeDefined();
     });
 
     it('should have all required color keys', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       const requiredColors = [
         'text',
         'text-strong',
@@ -102,7 +97,6 @@ describe('Structural and Contract Tests', () => {
 
   describe('Breakpoint definitions', () => {
     it('should have all required breakpoints', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       const requiredBreakpoints = [
         'xsmall',
         'small',
@@ -117,7 +111,6 @@ describe('Structural and Contract Tests', () => {
     });
 
     it('should have breakpoint properties', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       const breakpoints = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
       breakpoints.forEach((bp) => {
         expect(theme.global.breakpoints[bp]).toBeDefined();
@@ -132,7 +125,6 @@ describe('Structural and Contract Tests', () => {
 
   describe('Spacing and sizing', () => {
     it('should have all edgeSize values', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       const requiredSizes = [
         'none',
         'hair',
@@ -149,7 +141,6 @@ describe('Structural and Contract Tests', () => {
     });
 
     it('should have borderSize values defined', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       // Check that borderSize object exists and has at least some values
       expect(theme.global.borderSize).toBeDefined();
       expect(typeof theme.global.borderSize).toBe('object');
@@ -160,14 +151,12 @@ describe('Structural and Contract Tests', () => {
 
   describe('Deprecated entries', () => {
     it('should have deprecated colors list', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       expect(theme.global.deprecated).toBeDefined();
       expect(theme.global.deprecated.colors).toBeDefined();
       expect(Array.isArray(theme.global.deprecated.colors)).toBe(true);
     });
 
     it('should have deprecated button kinds list', () => {
-      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       expect(theme.global.deprecated.button).toBeDefined();
       expect(theme.global.deprecated.button.kind).toBeDefined();
       expect(Array.isArray(theme.global.deprecated.button.kind)).toBe(true);
