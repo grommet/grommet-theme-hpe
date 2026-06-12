@@ -26,7 +26,7 @@ It publishes theme objects and supporting exports that downstream applications c
 - `CHANGELOG.md`: Versioned release notes.
 - `LICENSE`: License terms.
 - `.husky/pre-commit`: Runs fast local checks on commit (`lint-fix` and staged Prettier).
-- `.husky/pre-push`: Runs the stronger pre-push gate (`lint` and `npm test -- --bail`).
+- `.husky/pre-push`: Runs the stronger pre-push gate (`lint` and `yarn test -- --bail`).
 
 ## Source Layout (`src/js`)
 
@@ -52,6 +52,71 @@ Public export surface for theme-related modules.
 
 Primary HPE theme definition and assembly logic.
 Distinctive purpose: this is the canonical theme implementation that combines token mappings, component styles, deprecations, and global theme settings.
+
+### `src/js/themes/global.js`
+
+Global theme assembly builder.
+Distinctive purpose: centralizes global settings (focus, drop, elevation, input/font defaults, and deprecations wiring).
+
+### `src/js/themes/deprecations.js`
+
+Deprecation message and list builder.
+Distinctive purpose: defines deprecated backgrounds/colors/button kinds and user-facing guidance.
+
+### `src/js/themes/fonts.js`
+
+Font helper utilities.
+Distinctive purpose: computes Graphik family aliasing and generates `@font-face` declarations.
+
+### `src/js/themes/dimensions.js`
+
+Dimension and breakpoint builder.
+Distinctive purpose: computes border, edge, radius, size, and breakpoint mappings from tokens and flags.
+
+### `src/js/themes/typography.js`
+
+Typography builder.
+Distinctive purpose: assembles anchor, text, paragraph, and heading theme structures.
+
+### `src/js/themes/button.js`
+
+Button theme builder.
+Distinctive purpose: constructs button kinds, states, sizes, and option behavior primitives.
+
+### `src/js/themes/form.js`
+
+Form family builder.
+Distinctive purpose: assembles field/input/select/range/rating-related component themes.
+
+### `src/js/themes/data.js`
+
+Data family builder.
+Distinctive purpose: assembles data table/chart/filter/search/sort/summary and toolbar themes.
+
+### `src/js/themes/feedback.js`
+
+Feedback family builder.
+Distinctive purpose: assembles notification, spinner, and layer themes.
+
+### `src/js/themes/navigation.js`
+
+Navigation family builder.
+Distinctive purpose: assembles tabs, menu, pagination, sidebar, nav, tip, and toggle group themes.
+
+### `src/js/themes/content.js`
+
+Content family builder.
+Distinctive purpose: assembles card/list/table/calendar/chart/carousel/avatar themes.
+
+### `src/js/themes/misc.js`
+
+Miscellaneous family builder.
+Distinctive purpose: assembles shared component themes such as box, header/footer, diagram, distribution, icon, meter, and tag.
+
+### `src/js/themes/layout.js`
+
+Layout family builder.
+Distinctive purpose: assembles page, pageHeader, video, and nameValuePair themes.
 
 ### `src/js/themes/utils.js`
 
@@ -94,11 +159,29 @@ Type declarations for theme exports.
   Value validation and deprecation-focused assertions.
   Distinctive purpose: checks critical resolved values and compatibility/deprecation expectations.
 
+- `hpe.flags.test.js`:
+  Feature-flag behavior assertions.
+  Distinctive purpose: verifies `v6-backwards-compatibility` behavior and default exported-theme flag expectations.
+
+- `hpe.snapshots.test.js`:
+  Snapshot regression coverage for logical theme groups.
+  Distinctive purpose: surfaces broad structural/value drift in reviewed snapshot diffs.
+
+- `deprecations.test.js`:
+  Deprecation entry assertions.
+  Distinctive purpose: validates deprecated keys and warning-metadata contract for compatibility tooling.
+
 ### Unit Tests (`src/js/__tests__/unit`)
 
 - `utils.test.js`:
   Pure function tests for `themes/utils.js`.
   Distinctive purpose: validates helper behavior in isolation from full theme assembly.
+
+### Snapshots (`src/js/__tests__/integration/__snapshots__`)
+
+- `hpe.snapshots.test.js.snap`:
+  Jest-generated snapshot artifact.
+  Distinctive purpose: committed baseline for snapshot regression review.
 
 ## Build and Artifact Flow
 
@@ -119,7 +202,7 @@ The `jsonify` script generates:
 
 ## Tooling and Scripts (`tools`)
 
-- `convert-to-json.js`: Converts theme export to JSON (`npm run jsonify`).
+- `convert-to-json.js`: Converts theme export to JSON (`yarn jsonify`).
 - `release-stable.js`: Stable release automation entry.
 - `release-gh-pages.js`: GitHub Pages release/deploy support.
 - `grommet-babel-preset-env.js`: Babel-related helper config.

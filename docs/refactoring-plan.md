@@ -285,7 +285,9 @@ After all extractions, `hpe.js` becomes a thin orchestrator:
 3. Calls each `build*` function to assemble the final theme object
 4. Passes the assembled object to `deepFreeze` and exports it as `hpe`
 
-The file should be in the range of 100–150 lines.
+The file-size target (100–150 lines) is aspirational. In practice, preserving
+public API parity and keeping key composition logic readable can justify a
+larger orchestrator file.
 
 ---
 
@@ -311,7 +313,7 @@ Estimated effort assuming a team familiar with Jest and the codebase:
 
 ## Command Reference
 
-Throughout this plan, use `yarn` or `npm` interchangeably. Both work identically:
+This plan uses yarn-first wording. npm equivalents are included for reference:
 
 | Task                    | Yarn                      | npm                      |
 | ----------------------- | ------------------------- | ------------------------ |
@@ -384,7 +386,10 @@ Before merging the refactor:
 
 ### Remaining TODOs
 
-- Complete Step 6 closeout: either further slim `src/js/themes/hpe.js` or explicitly document and accept the current orchestrator size/design.
+- None for the current refactor scope.
+- Step 6 closeout (Option B) is complete: current orchestrator design is
+  accepted as the refactor endpoint, with verified lint/test/build/jsonify
+  parity and baseline artifact equivalence.
 
 ---
 
