@@ -17,5 +17,13 @@
         "ignore": ["^hpe-design-tokens/.+", "^@hpe-design/icons.+"]
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/__tests__/**/*.js", "**/*.test.js"],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
 }
