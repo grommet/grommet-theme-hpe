@@ -126,11 +126,11 @@ The `jsonify` script generates:
 
 ## Common Development Commands
 
-- `npm run lint`: Lint source and test files.
-- `npm test`: Run Jest test suite.
-- `npm run build`: Build bundle and transpiled distributions.
-- `npm run jsonify`: Generate theme JSON artifact.
-- `npm run prepublishOnly`: Build + JSON generation pre-publish check.
+- `yarn lint`: Lint source and test files.
+- `yarn test`: Run Jest test suite.
+- `yarn build`: Build bundle and transpiled distributions.
+- `yarn jsonify`: Generate theme JSON artifact.
+- `yarn prepublishOnly`: Build + JSON generation pre-publish check.
 - Git commits are gated by Husky via `.husky/pre-commit`.
 - Git pushes are gated by Husky via `.husky/pre-push`.
 

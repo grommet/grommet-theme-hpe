@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 set -e
 
-npm run lint
-npm test -- --bail
+yarn lint
+yarn test -- --bail
