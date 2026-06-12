@@ -31,16 +31,16 @@ Before writing any tests, the tooling needs to be in place.
 2. Create `jest.config.js` at the project root, pointing at `src/`, configuring the jsdom environment, and wiring up the Babel transform.
 3. Add `"test": "jest"` to the `scripts` block in `package.json`.
 
-**Important:** After setup, tests should mostly use import `buildTheme` directly (not the pre-built `hpe` export) so that each test scenario can provide custom tokens and flag combinations independently. The pre-built `hpe` export should be used for tests validating what consumers get when importing the package default theme.
+**Important:** After setup, tests should mostly import `buildTheme` directly (not the pre-built `hpe` export) so each test scenario can provide custom tokens and flag combinations independently. The pre-built `hpe` export should be used only for tests validating what consumers get when importing the package default theme.
 
-1. Use buildTheme when the test is about theme generation behavior
+Use `buildTheme` when the test is about theme generation behavior:
 
 - Custom tokens
 - Different flag combinations
 - Shape/value logic produced by the builder
 - Regression checks that should be independent of module-level defaults
 
-2. Use hpe when the test is about published default export contract
+Use `hpe` when the test is about published default export contract:
 
 - The export exists and can be imported
 - It is frozen/immutable
@@ -198,7 +198,7 @@ __tests__/
 
 ## Phase 3 — Structural Refactor
 
-Each extraction step below should be followed immediately by a `npm test` run before the next step begins. If tests fail, fix the issue before proceeding.
+Each extraction step below should be followed immediately by a `yarn test` run before the next step begins. If tests fail, fix the issue before proceeding.
 
 The public API (`export const hpe`) and `buildTheme` signature are not changed.
 
@@ -335,7 +335,7 @@ When `hpe-design-tokens` is updated:
 1. Run tests to identify which value-validation tests fail
 2. Update those tests with the new expected values
 3. Verify snapshots have changed appropriately
-4. Run `npm run jsonify` and review the output for regressions
+4. Run `yarn jsonify` and review the output for regressions
 
 ### Adding New Components
 
@@ -344,7 +344,7 @@ When a new Grommet component is added to the theme:
 1. Add its theme definition to the appropriate file (e.g., `form.js`, `navigation.js`, `misc.js`)
 2. Add a snapshot test in the corresponding snapshot test file
 3. Add any needed structural/contract tests
-4. Run `npm test` and `npm run build` before committing
+4. Run `yarn test` and `yarn build` before committing
 
 ### Identifying "Golden" Tests
 
@@ -356,15 +356,31 @@ As the test suite matures, document which tests are "golden" (rarely change) vs.
 
 Before merging the refactor:
 
-- [ ] Phase 1 setup complete: `npm test` runs without errors (before test code is written)
-- [ ] Phase 2 complete: All test files written and `npm test` passes 100%
-- [ ] Each Phase 3 step completed: After each extraction, `npm test` passes
+- [x] Phase 1 setup complete: `yarn test` runs without errors (before test code is written)
+- [x] Phase 2 complete: All test files written and `yarn test` passes 100%
+- [x] Each Phase 3 step completed: After each extraction, `yarn test` passes
 - [ ] Phase 3 final verification:
-  - [ ] `npm test` passes with no failures or unexpected snapshot updates
-  - [ ] `npm run build` completes without errors
-  - [ ] `npm run jsonify` output before the refactor, diffed against output after, shows **no differences**
+  - [x] `yarn test` passes with no failures or unexpected snapshot updates
+  - [x] `yarn build` completes without errors
+  - [ ] `yarn jsonify` output before the refactor, diffed against output after, shows **no differences**
   - [ ] **Bundle size verification:** Run `ls -lh dist/index.js dist/es6/index.js` before and after refactor; sizes should match
-  - [ ] `npm run lint` passes
+  - [x] `yarn lint` passes
+
+---
+
+## Current Progress Snapshot (2026-06-12)
+
+### Completed
+
+- Test infrastructure is in place (`jest`, `babel-jest`, `jest-environment-jsdom`, and `jest.config.js`).
+- Phase 2 test suite is present and passing (integration snapshots/flags/deprecations/validations/structural tests plus unit utils tests).
+- Phase 3 extraction steps are implemented with extracted modules for dimensions, typography, button, form, data, feedback, navigation, content, misc, and layout.
+- Verification commands currently pass: `yarn lint`, `yarn test --runInBand`, `yarn build`, and `yarn jsonify`.
+
+### Remaining TODOs
+
+- Complete Step 6 closeout: either further slim `src/js/themes/hpe.js` or explicitly document and accept the current orchestrator size/design.
+- Run and record explicit before/after checks for JSON parity and bundle size comparison from a pinned baseline build.
 
 ---
 
