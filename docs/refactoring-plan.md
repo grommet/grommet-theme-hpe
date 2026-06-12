@@ -359,11 +359,11 @@ Before merging the refactor:
 - [x] Phase 1 setup complete: `yarn test` runs without errors (before test code is written)
 - [x] Phase 2 complete: All test files written and `yarn test` passes 100%
 - [x] Each Phase 3 step completed: After each extraction, `yarn test` passes
-- [ ] Phase 3 final verification:
+- [x] Phase 3 final verification:
   - [x] `yarn test` passes with no failures or unexpected snapshot updates
   - [x] `yarn build` completes without errors
-  - [ ] `yarn jsonify` output before the refactor, diffed against output after, shows **no differences**
-  - [ ] **Bundle size verification:** Run `ls -lh dist/index.js dist/es6/index.js` before and after refactor; sizes should match
+  - [x] `yarn jsonify` output before the refactor, diffed against output after, shows **no differences**
+  - [x] **Bundle size verification:** Run `ls -lh dist/index.js dist/es6/index.js` before and after refactor; sizes should match
   - [x] `yarn lint` passes
 
 ---
@@ -376,11 +376,15 @@ Before merging the refactor:
 - Phase 2 test suite is present and passing (integration snapshots/flags/deprecations/validations/structural tests plus unit utils tests).
 - Phase 3 extraction steps are implemented with extracted modules for dimensions, typography, button, form, data, feedback, navigation, content, misc, and layout.
 - Verification commands currently pass: `yarn lint`, `yarn test --runInBand`, `yarn build`, and `yarn jsonify`.
+- Pinned baseline comparison against `origin/master` (`ba1283c`) matches exactly:
+  - `dist/grommet-theme-hpe.json` hash: `69b38e9a85e0ddaa353cba5bf328a63039895b81`
+  - `dist/index.js` hash: `495db5007c4705dcee37dc367096a9eb92d2307c`
+  - `dist/es6/index.js` hash: `c7efb191b0051e047c134f36da68085d97dcafa2`
+  - Bundle sizes: `dist/index.js` = `277B`, `dist/es6/index.js` = `95B`
 
 ### Remaining TODOs
 
 - Complete Step 6 closeout: either further slim `src/js/themes/hpe.js` or explicitly document and accept the current orchestrator size/design.
-- Run and record explicit before/after checks for JSON parity and bundle size comparison from a pinned baseline build.
 
 ---
 
