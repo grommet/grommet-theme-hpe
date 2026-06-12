@@ -148,9 +148,10 @@ export const buildFormTheme = (tokens, context) => {
         size: components.hpe.switch.default.medium.control.track.width,
         knob: {
           extend: ({ theme, checked, disabled }) => {
-            const borderWidth =
-              components.hpe.switch.default.medium.control.handle.borderWidth;
-            const insetHandle = dimensions.borderSize[borderWidth] || borderWidth;
+            const { borderWidth } =
+              components.hpe.switch.default.medium.control.handle;
+            const insetHandle =
+              dimensions.borderSize[borderWidth] || borderWidth;
 
             return `
           box-shadow: ${
@@ -158,11 +159,7 @@ export const buildFormTheme = (tokens, context) => {
               components.hpe.switch.default.control.handle.rest.boxShadow
             ]
           };
-          border: ${
-            dimensions.borderSize[
-              components.hpe.switch.default.medium.control.handle.borderWidth
-            ]
-          } solid ${getThemeColor(
+          border: ${dimensions.borderSize[borderWidth]} solid ${getThemeColor(
             disabled
               ? components.hpe.switch.default.control.handle.disabled.rest
                   .borderColor
