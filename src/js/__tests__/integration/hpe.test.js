@@ -121,11 +121,11 @@ describe('Structural and Contract Tests', () => {
       const breakpoints = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
       breakpoints.forEach((bp) => {
         expect(theme.global.breakpoints[bp]).toBeDefined();
-        // Check if value exists, otherwise check for the object itself
-        expect(
-          theme.global.breakpoints[bp].value !== undefined ||
-            typeof theme.global.breakpoints[bp] === 'object',
-        ).toBe(true);
+        // value is optional (xlarge omits it), but must be a number when present
+        const { value } = theme.global.breakpoints[bp];
+        if (value !== undefined) {
+          expect(typeof value).toBe('number');
+        }
       });
     });
   });
@@ -241,8 +241,8 @@ describe('Flag Behavior Tests', () => {
 
     it('should use v6-backwards-compatibility: false by default', () => {
       // The exported hpe should use the default flag value (false)
-      // Verify by checking edgeSize values
-      expect(hpe.global.edgeSize.medium).toBe('24px');
+      // Verify by checking a flag-specific edgeSize key.
+      expect(hpe.global.edgeSize['5xsmall']).toBeDefined();
     });
   });
 });
