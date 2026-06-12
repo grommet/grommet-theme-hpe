@@ -1,6 +1,6 @@
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5;
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+var _templateObject, _templateObject2, _templateObject3;
 function _taggedTemplateLiteralLoose(e, t) { return t || (t = e.slice(0)), e.raw = t, e; }
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import React from 'react';
 import { css } from 'styled-components';
@@ -38,44 +38,11 @@ import { StatusGood } from '@hpe-design/icons-grommet/icons/StatusGood';
 import { StatusUnknown } from '@hpe-design/icons-grommet/icons/StatusUnknown';
 import { Info } from '@hpe-design/icons-grommet/icons/Info';
 import { StatusCritical } from '@hpe-design/icons-grommet/icons/StatusCritical';
+import { baseSpacing,
+// isObject,
+deepFreeze, componentSizes, buttonKinds, buttonStates, textSizes, headingLevelToSize, breakpointStyle, getHeadingSize, getThemeColor, getTextSize } from './utils';
 import { backgrounds } from './backgrounds';
 import { colors } from './colors';
-var baseSpacing = 24;
-var isObject = function isObject(item) {
-  return item && typeof item === 'object' && !Array.isArray(item);
-};
-var deepFreeze = function deepFreeze(obj) {
-  Object.keys(obj).forEach(function (key) {
-    return key && isObject(obj[key]) && Object.freeze(obj[key]);
-  });
-  return Object.freeze(obj);
-};
-var componentSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
-var buttonKinds = ['default', 'secondary', 'primary', 'toolbar'];
-var buttonStates = ['hover', 'active', 'disabled'];
-var textSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', '3xlarge', '4xlarge', '5xlarge', '6xlarge'];
-var headingLevelToSize = {
-  1: 'xlarge',
-  2: 'large',
-  3: 'medium',
-  4: 'small',
-  5: 'xsmall',
-  6: 'xxsmall'
-};
-var breakpointStyle = function breakpointStyle(global, content, responsive) {
-  var breakpoint = global.hpe.breakpoint.small;
-  var st = responsive === 'container' ? css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n          @container ", " {\n            ", "\n          }\n        "])), breakpoint && "(max-width: " + breakpoint + ")", content) : css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n          @media only screen ", " {\n            ", "\n          }\n        "])), breakpoint && "and (max-width: " + breakpoint + ")", content);
-  return st.join('');
-};
-var getHeadingSize = function getHeadingSize(breakpointTokens, size, level) {
-  var fallbackSize = headingLevelToSize[level || 1];
-  var resolvedSize = size && breakpointTokens.hpe.heading[size] ? size : fallbackSize;
-  return breakpointTokens.hpe.heading[resolvedSize];
-};
-var getThemeColor = function getThemeColor(color, theme) {
-  var _theme$global$colors$;
-  return typeof theme.global.colors[color] === 'string' ? theme.global.colors[color] : ((_theme$global$colors$ = theme.global.colors[color]) == null ? void 0 : _theme$global$colors$[theme.dark ? 'dark' : 'light']) || color;
-};
 var globalSizes = {
   borderSize: {
     xsmall: '1px',
@@ -201,13 +168,6 @@ var responsiveGlobalSizes = {
     // 768
     full: '100%'
   }
-};
-var getTextSize = function getTextSize(size) {
-  if (size === '3xlarge') return '3xl';
-  if (size === '4xlarge') return '4xl';
-  if (size === '5xlarge') return '5xl';
-  if (size === '6xlarge') return '6xl';
-  return size;
 };
 var buildTheme = function buildTheme(tokens, flags) {
   var _components$hpe$eleme, _components$hpe$eleme2, _components$hpe$eleme3, _components$hpe$eleme4, _components$hpe$eleme5, _components$hpe$dataC, _components$hpe$eleme6, _components$hpe$eleme7, _components$hpe$eleme8, _components$hpe$eleme9, _components$hpe$eleme0, _components$hpe$eleme1, _components$hpe$eleme10, _components$hpe$eleme11, _components$hpe$eleme12, _components$hpe$eleme13, _components$hpe$eleme14, _components$hpe$eleme15, _components$hpe$eleme16, _components$hpe$eleme17, _components$hpe$eleme18, _components$hpe$eleme19, _components$hpe$eleme20, _components$hpe$eleme21, _components$hpe$eleme22, _components$hpe$eleme23, _components$hpe$eleme24, _components$hpe$eleme25, _components$hpe$eleme26, _components$hpe$eleme27, _components$hpe$eleme28, _components$hpe$eleme29, _components$hpe$eleme30, _components$hpe$eleme31, _components$hpe$eleme32, _components$hpe$eleme33, _components$hpe$eleme34, _components$hpe$eleme35;
@@ -1201,7 +1161,7 @@ var buildTheme = function buildTheme(tokens, flags) {
               borderColor = getThemeColor(components.hpe.checkbox["default"].control.selected.hover.borderColor, theme);
             }
           }
-          return css(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n            ", "\n          "])), checked ? "border-color: " + borderColor + ";" : '');
+          return css(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n            ", "\n          "])), checked ? "border-color: " + borderColor + ";" : '');
         }
       },
       color: components.hpe["switch"]["default"].control.handle.rest.background,
@@ -1292,7 +1252,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       extend: function extend(_ref13) {
         var disabled = _ref13.disabled,
           theme = _ref13.theme;
-        return css(_templateObject4 || (_templateObject4 = _taggedTemplateLiteralLoose(["\n      font-weight: ", ";\n      width: auto;\n      border: ", " solid ", ";\n      & input:checked + span[class*=CheckBoxToggle] > span[class*=CheckBoxKnob] {\n        left: 25px;\n      }\n      ", "\n    };\n    "])), components.hpe.checkbox["default"].label.rest.fontWeight, components.hpe.formField["default"].medium.input.container.borderWidth, getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme),
+        return css(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n      font-weight: ", ";\n      width: auto;\n      border: ", " solid ", ";\n      & input:checked + span[class*=CheckBoxToggle] > span[class*=CheckBoxKnob] {\n        left: 25px;\n      }\n      ", "\n    };\n    "])), components.hpe.checkbox["default"].label.rest.fontWeight, components.hpe.formField["default"].medium.input.container.borderWidth, getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme),
         // override built in disabled opacity: 0.5 from grommet
         disabled && "opacity: 1; \n        color: " + getThemeColor(components.hpe.checkbox["default"].label.disabled.rest.textColor, theme) + ";");
       }
@@ -2808,7 +2768,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       control: {
         extend: function extend(_ref28) {
           var disabled = _ref28.disabled;
-          return css(_templateObject5 || (_templateObject5 = _taggedTemplateLiteralLoose(["\n          ", "\n\n          &[class*=\"SelectMultiple\"] [role=\"listbox\"] {\n            padding-block: ", ";\n            padding-inline: ", ";\n            & [role='option'] {\n              border-radius: ", ";\n            }\n          }\n        "])), disabled && "\n          opacity: 0.3;\n          input {\n            cursor: default;\n          }", components.hpe.select["default"].medium.drop.paddingY, components.hpe.select["default"].medium.drop.paddingX, dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius);
+          return css(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n          ", "\n\n          &[class*=\"SelectMultiple\"] [role=\"listbox\"] {\n            padding-block: ", ";\n            padding-inline: ", ";\n            & [role='option'] {\n              border-radius: ", ";\n            }\n          }\n        "])), disabled && "\n          opacity: 0.3;\n          input {\n            cursor: default;\n          }", components.hpe.select["default"].medium.drop.paddingY, components.hpe.select["default"].medium.drop.paddingX, dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius);
         }
       },
       emptySearchMessage: {
@@ -3235,6 +3195,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     spacing: 24
   });
 };
+export { buildTheme };
 export var hpe = buildTheme({
   primitives: localPrimitives,
   light: localLight,

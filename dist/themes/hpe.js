@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.hpe = void 0;
+exports.hpe = exports.buildTheme = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _styledComponents = require("styled-components");
 var _grommet = require("hpe-design-tokens/grommet");
@@ -38,57 +38,22 @@ var _StatusGood = require("@hpe-design/icons-grommet/icons/StatusGood");
 var _StatusUnknown = require("@hpe-design/icons-grommet/icons/StatusUnknown");
 var _Info = require("@hpe-design/icons-grommet/icons/Info");
 var _StatusCritical = require("@hpe-design/icons-grommet/icons/StatusCritical");
+var _utils = require("./utils");
 var _backgrounds = require("./backgrounds");
 var _colors = require("./colors");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5; // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
+var _templateObject, _templateObject2, _templateObject3;
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _taggedTemplateLiteralLoose(e, t) { return t || (t = e.slice(0)), e.raw = t, e; }
-var baseSpacing = 24;
-var isObject = function isObject(item) {
-  return item && typeof item === 'object' && !Array.isArray(item);
-};
-var deepFreeze = function deepFreeze(obj) {
-  Object.keys(obj).forEach(function (key) {
-    return key && isObject(obj[key]) && Object.freeze(obj[key]);
-  });
-  return Object.freeze(obj);
-};
-var componentSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
-var buttonKinds = ['default', 'secondary', 'primary', 'toolbar'];
-var buttonStates = ['hover', 'active', 'disabled'];
-var textSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', '3xlarge', '4xlarge', '5xlarge', '6xlarge'];
-var headingLevelToSize = {
-  1: 'xlarge',
-  2: 'large',
-  3: 'medium',
-  4: 'small',
-  5: 'xsmall',
-  6: 'xxsmall'
-};
-var breakpointStyle = function breakpointStyle(global, content, responsive) {
-  var breakpoint = global.hpe.breakpoint.small;
-  var st = responsive === 'container' ? (0, _styledComponents.css)(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n          @container ", " {\n            ", "\n          }\n        "])), breakpoint && "(max-width: " + breakpoint + ")", content) : (0, _styledComponents.css)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n          @media only screen ", " {\n            ", "\n          }\n        "])), breakpoint && "and (max-width: " + breakpoint + ")", content);
-  return st.join('');
-};
-var getHeadingSize = function getHeadingSize(breakpointTokens, size, level) {
-  var fallbackSize = headingLevelToSize[level || 1];
-  var resolvedSize = size && breakpointTokens.hpe.heading[size] ? size : fallbackSize;
-  return breakpointTokens.hpe.heading[resolvedSize];
-};
-var getThemeColor = function getThemeColor(color, theme) {
-  var _theme$global$colors$;
-  return typeof theme.global.colors[color] === 'string' ? theme.global.colors[color] : ((_theme$global$colors$ = theme.global.colors[color]) == null ? void 0 : _theme$global$colors$[theme.dark ? 'dark' : 'light']) || color;
-};
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); } // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 var globalSizes = {
   borderSize: {
     xsmall: '1px',
     small: '2px',
-    medium: baseSpacing / 6 + "px",
+    medium: _utils.baseSpacing / 6 + "px",
     // 4
-    large: baseSpacing / 2 + "px",
+    large: _utils.baseSpacing / 2 + "px",
     // 12
-    xlarge: baseSpacing + "px",
+    xlarge: _utils.baseSpacing + "px",
     // 24
     "default": '1px'
   },
@@ -96,17 +61,17 @@ var globalSizes = {
     none: '0px',
     hair: '1px',
     // for Chart
-    xxsmall: baseSpacing / 8 + "px",
+    xxsmall: _utils.baseSpacing / 8 + "px",
     // 3
-    xsmall: baseSpacing / 4 + "px",
+    xsmall: _utils.baseSpacing / 4 + "px",
     // 6
-    small: baseSpacing / 2 + "px",
+    small: _utils.baseSpacing / 2 + "px",
     // 12
-    medium: baseSpacing + "px",
+    medium: _utils.baseSpacing + "px",
     // 24
-    large: baseSpacing * 2 + "px",
+    large: _utils.baseSpacing * 2 + "px",
     // 48
-    xlarge: baseSpacing * 4 + "px",
+    xlarge: _utils.baseSpacing * 4 + "px",
     // 96
     responsiveBreakpoint: 'small'
   },
@@ -115,34 +80,34 @@ var globalSizes = {
     none: '0px',
     hair: '1px',
     // for Chart
-    xxsmall: baseSpacing / 8 + "px",
+    xxsmall: _utils.baseSpacing / 8 + "px",
     // 3
-    xsmall: baseSpacing / 4 + "px",
+    xsmall: _utils.baseSpacing / 4 + "px",
     // 6
-    small: baseSpacing / 2 + "px",
+    small: _utils.baseSpacing / 2 + "px",
     // 12
-    medium: baseSpacing + "px",
+    medium: _utils.baseSpacing + "px",
     // 24
-    large: baseSpacing * 2 + "px",
+    large: _utils.baseSpacing * 2 + "px",
     // 48
-    xlarge: baseSpacing * 4 + "px",
+    xlarge: _utils.baseSpacing * 4 + "px",
     // 96
     responsiveBreakpoint: 'small'
   },
   size: {
-    xxsmall: baseSpacing * 2 + "px",
+    xxsmall: _utils.baseSpacing * 2 + "px",
     // 48
-    xsmall: baseSpacing * 4 + "px",
+    xsmall: _utils.baseSpacing * 4 + "px",
     // 96
-    small: baseSpacing * 8 + "px",
+    small: _utils.baseSpacing * 8 + "px",
     // 192
-    medium: baseSpacing * 16 + "px",
+    medium: _utils.baseSpacing * 16 + "px",
     // 384
-    large: baseSpacing * 32 + "px",
+    large: _utils.baseSpacing * 32 + "px",
     // 768
-    xlarge: baseSpacing * 48 + "px",
+    xlarge: _utils.baseSpacing * 48 + "px",
     // 1152
-    xxlarge: baseSpacing * 64 + "px",
+    xxlarge: _utils.baseSpacing * 64 + "px",
     // 1536
     full: '100%'
   }
@@ -151,11 +116,11 @@ var responsiveGlobalSizes = {
   borderSize: {
     xsmall: '1px',
     small: '2px',
-    medium: baseSpacing / 6 + "px",
+    medium: _utils.baseSpacing / 6 + "px",
     // 4
-    large: baseSpacing / 4 + "px",
+    large: _utils.baseSpacing / 4 + "px",
     // 6
-    xlarge: baseSpacing / 2 + "px",
+    xlarge: _utils.baseSpacing / 2 + "px",
     // 12
     "default": '1px'
   },
@@ -164,15 +129,15 @@ var responsiveGlobalSizes = {
     hair: '1px',
     // for Chart
     xxsmall: '2px',
-    xsmall: baseSpacing / 8 + "px",
+    xsmall: _utils.baseSpacing / 8 + "px",
     // 3
-    small: baseSpacing / 4 + "px",
+    small: _utils.baseSpacing / 4 + "px",
     // 6
-    medium: baseSpacing / 2 + "px",
+    medium: _utils.baseSpacing / 2 + "px",
     // 12
-    large: baseSpacing + "px",
+    large: _utils.baseSpacing + "px",
     // 24
-    xlarge: baseSpacing * 2 + "px" // 48
+    xlarge: _utils.baseSpacing * 2 + "px" // 48
   },
   // same as edgeSize for backwards compatibility
   radius: {
@@ -180,40 +145,33 @@ var responsiveGlobalSizes = {
     hair: '1px',
     // for Chart
     xxsmall: '2px',
-    xsmall: baseSpacing / 8 + "px",
+    xsmall: _utils.baseSpacing / 8 + "px",
     // 3
-    small: baseSpacing / 4 + "px",
+    small: _utils.baseSpacing / 4 + "px",
     // 6
-    medium: baseSpacing / 2 + "px",
+    medium: _utils.baseSpacing / 2 + "px",
     // 12
-    large: baseSpacing + "px",
+    large: _utils.baseSpacing + "px",
     // 24
-    xlarge: baseSpacing * 2 + "px" // 48
+    xlarge: _utils.baseSpacing * 2 + "px" // 48
   },
   size: {
-    xxsmall: baseSpacing + "px",
+    xxsmall: _utils.baseSpacing + "px",
     // 24
-    xsmall: baseSpacing * 2 + "px",
+    xsmall: _utils.baseSpacing * 2 + "px",
     // 48
-    small: baseSpacing * 4 + "px",
+    small: _utils.baseSpacing * 4 + "px",
     // 96
-    medium: baseSpacing * 8 + "px",
+    medium: _utils.baseSpacing * 8 + "px",
     // 192
-    large: baseSpacing * 16 + "px",
+    large: _utils.baseSpacing * 16 + "px",
     // 384
-    xlarge: baseSpacing * 32 + "px",
+    xlarge: _utils.baseSpacing * 32 + "px",
     // 768
     full: '100%'
   }
 };
-var getTextSize = function getTextSize(size) {
-  if (size === '3xlarge') return '3xl';
-  if (size === '4xlarge') return '4xl';
-  if (size === '5xlarge') return '5xl';
-  if (size === '6xlarge') return '6xl';
-  return size;
-};
-var buildTheme = function buildTheme(tokens, flags) {
+var buildTheme = exports.buildTheme = function buildTheme(tokens, flags) {
   var _components$hpe$eleme, _components$hpe$eleme2, _components$hpe$eleme3, _components$hpe$eleme4, _components$hpe$eleme5, _components$hpe$dataC, _components$hpe$eleme6, _components$hpe$eleme7, _components$hpe$eleme8, _components$hpe$eleme9, _components$hpe$eleme0, _components$hpe$eleme1, _components$hpe$eleme10, _components$hpe$eleme11, _components$hpe$eleme12, _components$hpe$eleme13, _components$hpe$eleme14, _components$hpe$eleme15, _components$hpe$eleme16, _components$hpe$eleme17, _components$hpe$eleme18, _components$hpe$eleme19, _components$hpe$eleme20, _components$hpe$eleme21, _components$hpe$eleme22, _components$hpe$eleme23, _components$hpe$eleme24, _components$hpe$eleme25, _components$hpe$eleme26, _components$hpe$eleme27, _components$hpe$eleme28, _components$hpe$eleme29, _components$hpe$eleme30, _components$hpe$eleme31, _components$hpe$eleme32, _components$hpe$eleme33, _components$hpe$eleme34, _components$hpe$eleme35;
   var primitives = tokens.primitives,
     light = tokens.light,
@@ -394,9 +352,9 @@ var buildTheme = function buildTheme(tokens, flags) {
     horizontal: components.hpe.button["default"].medium.iconOnly.paddingY
   };
   var anchorSizeTheme = {};
-  textSizes.forEach(function (sizeArg) {
+  _utils.textSizes.forEach(function (sizeArg) {
     var textSize = sizeArg === '6xlarge' ? '5xlarge' : sizeArg;
-    var themeSize = getTextSize(textSize);
+    var themeSize = (0, _utils.getTextSize)(textSize);
     anchorSizeTheme[themeSize] = {
       color: components.hpe.anchor["default"].rest.textColor,
       textDecoration: components.hpe.anchor["default"].rest.textDecoration,
@@ -416,7 +374,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     maxWidth: '0rem',
     weight: 0
   };
-  textSizes.forEach(function (textSize) {
+  _utils.textSizes.forEach(function (textSize) {
     var _large$hpe$text, _large$hpe$text6, _large$hpe$text7, _large$hpe$text8, _large$hpe$text9, _large$hpe$text0, _large$hpe$text1;
     if (parseInt((_large$hpe$text = large.hpe.text) == null || (_large$hpe$text = _large$hpe$text[textSize]) == null ? void 0 : _large$hpe$text.fontSize.replace('rem', ''), 10) > parseInt(fallback.size.replace('rem', ''), 10)) {
       var _large$hpe$text2, _large$hpe$text3, _large$hpe$text4, _large$hpe$text5;
@@ -425,7 +383,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       fallback.maxWidth = (_large$hpe$text4 = large.hpe.text) == null || (_large$hpe$text4 = _large$hpe$text4[textSize]) == null ? void 0 : _large$hpe$text4.maxWidth;
       fallback.weight = (_large$hpe$text5 = large.hpe.text) == null || (_large$hpe$text5 = _large$hpe$text5[textSize]) == null ? void 0 : _large$hpe$text5.fontWeight;
     }
-    var themeSize = getTextSize(textSize);
+    var themeSize = (0, _utils.getTextSize)(textSize);
     paragraphTheme[themeSize] = {
       size: ((_large$hpe$text6 = large.hpe.text) == null || (_large$hpe$text6 = _large$hpe$text6[textSize]) == null ? void 0 : _large$hpe$text6.fontSize) || fallback.size,
       height: ((_large$hpe$text7 = large.hpe.text) == null || (_large$hpe$text7 = _large$hpe$text7[textSize]) == null ? void 0 : _large$hpe$text7.lineHeight) || fallback.height,
@@ -452,7 +410,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     return '';
   };
   var buttonKindTheme = {};
-  buttonKinds.forEach(function (kind) {
+  _utils.buttonKinds.forEach(function (kind) {
     var _components$hpe$butto, _components$hpe$butto2, _components$hpe$butto3, _components$hpe$butto4, _components$hpe$butto5, _components$hpe$butto6;
     var borderWidth = (_components$hpe$butto = components.hpe.button[kind]) == null ? void 0 : _components$hpe$butto.medium.borderWidth;
     var borderRadius = (_components$hpe$butto2 = components.hpe.button[kind]) == null ? void 0 : _components$hpe$butto2.medium.borderRadius;
@@ -470,9 +428,9 @@ var buildTheme = function buildTheme(tokens, flags) {
     };
   });
   var buttonStatesTheme = {};
-  buttonStates.forEach(function (state) {
+  _utils.buttonStates.forEach(function (state) {
     buttonStatesTheme[state] = {};
-    buttonKinds.forEach(function (kind) {
+    _utils.buttonKinds.forEach(function (kind) {
       var adjustedState = state;
       if (state === 'active') {
         var _components$hpe$butto7, _components$hpe$butto8, _components$hpe$butto9, _components$hpe$butto0, _components$hpe$butto1, _components$hpe$butto10, _components$hpe$butto11, _components$hpe$butto12;
@@ -536,10 +494,10 @@ var buildTheme = function buildTheme(tokens, flags) {
     });
   });
   var buttonSizesTheme = {};
-  componentSizes.forEach(function (buttonSize) {
+  _utils.componentSizes.forEach(function (buttonSize) {
     var _components$hpe$butto24, _components$hpe$butto25, _components$hpe$butto26, _components$hpe$butto27, _components$hpe$butto28;
     var kindStyles = {};
-    buttonKinds.forEach(function (kind) {
+    _utils.buttonKinds.forEach(function (kind) {
       var _components$hpe$butto21, _components$hpe$butto22, _components$hpe$butto23;
       kindStyles[kind] = {
         border: {
@@ -623,7 +581,7 @@ var buildTheme = function buildTheme(tokens, flags) {
   }).find(function (f) {
     return f.includes('Graphik');
   }) || 'HPE Graphik';
-  return deepFreeze({
+  return (0, _utils.deepFreeze)({
     defaultMode: 'light',
     global: _extends({
       backgrounds: _backgrounds.backgrounds
@@ -662,7 +620,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         },
         extend: function extend(_ref4) {
           var theme = _ref4.theme;
-          return "\n          color: " + getThemeColor(components.hpe.formField["default"].value.rest.textColor, theme) + ";\n          &::-webkit-input-placeholder {\n          font-weight: " + components.hpe.formField["default"].medium.placeholder.fontWeight + ";\n        }\n      \n        &::-moz-placeholder {\n          font-weight: " + components.hpe.formField["default"].medium.placeholder.fontWeight + ";\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: " + components.hpe.formField["default"].medium.placeholder.fontWeight + ";\n        }\n        ";
+          return "\n          color: " + (0, _utils.getThemeColor)(components.hpe.formField["default"].value.rest.textColor, theme) + ";\n          &::-webkit-input-placeholder {\n          font-weight: " + components.hpe.formField["default"].medium.placeholder.fontWeight + ";\n        }\n      \n        &::-moz-placeholder {\n          font-weight: " + components.hpe.formField["default"].medium.placeholder.fontWeight + ";\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: " + components.hpe.formField["default"].medium.placeholder.fontWeight + ";\n        }\n        ";
         }
       },
       font: {
@@ -798,7 +756,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         textDecoration: components.hpe.anchor["default"].hover.textDecoration,
         extend: function extend(_ref5) {
           var theme = _ref5.theme;
-          return "color: " + getThemeColor(components.hpe.anchor["default"].hover.textColor, theme) + ";";
+          return "color: " + (0, _utils.getThemeColor)(components.hpe.anchor["default"].hover.textColor, theme) + ";";
         }
       },
       iconOnly: {
@@ -817,10 +775,10 @@ var buildTheme = function buildTheme(tokens, flags) {
         // 72px
         xlarge: (_components$hpe$eleme5 = components.hpe.element) == null ? void 0 : _components$hpe$eleme5.xlarge.minHeight,
         // 96px
-        '2xl': baseSpacing * 5 + "px",
-        '3xl': baseSpacing * 6 + "px",
-        '4xl': baseSpacing * 7 + "px",
-        '5xl': baseSpacing * 8 + "px"
+        '2xl': _utils.baseSpacing * 5 + "px",
+        '3xl': _utils.baseSpacing * 6 + "px",
+        '4xl': _utils.baseSpacing * 7 + "px",
+        '5xl': _utils.baseSpacing * 8 + "px"
       },
       text: {
         size: {
@@ -885,11 +843,11 @@ var buildTheme = function buildTheme(tokens, flags) {
           var style = '';
           // applies when option is in focus
           if (kind === 'option') {
-            style += "\n            &[aria-selected=\"true\"] { background: " + getThemeColor(components.hpe.select["default"].option.selected.rest.background, theme) + "; }";
+            style += "\n            &[aria-selected=\"true\"] { background: " + (0, _utils.getThemeColor)(components.hpe.select["default"].option.selected.rest.background, theme) + "; }";
           }
           // keyboard specific styling for TextInput and MaskedInput suggestions
           if (keyboard) {
-            style += "\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              width: " + components.hpe.select["default"].medium.option.marker.width + ";\n              border-top-left-radius: " + components.hpe.select["default"].medium.option.marker.borderTopLeftRadius + ";\n              border-bottom-left-radius: " + components.hpe.select["default"].medium.option.marker.borderBottomLeftRadius + ";\n              top: " + components.hpe.select["default"].medium.option.marker.top + ";\n              bottom: " + components.hpe.select["default"].medium.option.marker.bottom + ";\n              left: " + components.hpe.select["default"].medium.option.marker.left + ";\n              background: " + getThemeColor('border-selected', theme) + ";\n            }";
+            style += "\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              width: " + components.hpe.select["default"].medium.option.marker.width + ";\n              border-top-left-radius: " + components.hpe.select["default"].medium.option.marker.borderTopLeftRadius + ";\n              border-bottom-left-radius: " + components.hpe.select["default"].medium.option.marker.borderBottomLeftRadius + ";\n              top: " + components.hpe.select["default"].medium.option.marker.top + ";\n              bottom: " + components.hpe.select["default"].medium.option.marker.bottom + ";\n              left: " + components.hpe.select["default"].medium.option.marker.left + ";\n              background: " + (0, _utils.getThemeColor)('border-selected', theme) + ";\n            }";
           }
           return style;
         }
@@ -923,7 +881,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           extend: function extend(_ref7) {
             var theme = _ref7.theme,
               disabled = _ref7.disabled;
-            return "\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              width: " + components.hpe.select["default"].medium.option.marker.width + ";\n              border-top-left-radius: " + components.hpe.select["default"].medium.option.marker.borderTopLeftRadius + ";\n              border-bottom-left-radius: " + components.hpe.select["default"].medium.option.marker.borderBottomLeftRadius + ";\n              top: " + components.hpe.select["default"].medium.option.marker.top + ";\n              bottom: " + components.hpe.select["default"].medium.option.marker.bottom + ";\n              left: " + components.hpe.select["default"].medium.option.marker.left + ";\n              background: " + getThemeColor(!disabled ? components.hpe.select["default"].option.marker.rest.background : 'border-disabled', theme) + ";\n            }\n          ";
+            return "\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              width: " + components.hpe.select["default"].medium.option.marker.width + ";\n              border-top-left-radius: " + components.hpe.select["default"].medium.option.marker.borderTopLeftRadius + ";\n              border-bottom-left-radius: " + components.hpe.select["default"].medium.option.marker.borderBottomLeftRadius + ";\n              top: " + components.hpe.select["default"].medium.option.marker.top + ";\n              bottom: " + components.hpe.select["default"].medium.option.marker.bottom + ";\n              left: " + components.hpe.select["default"].medium.option.marker.left + ";\n              background: " + (0, _utils.getThemeColor)(!disabled ? components.hpe.select["default"].option.marker.rest.background : 'border-disabled', theme) + ";\n            }\n          ";
           }
         }
       },
@@ -942,7 +900,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           },
           color: components.hpe.select["default"].option.hover.textColor,
           extend: function extend(props) {
-            return props['aria-selected'] && "\n           background: " + getThemeColor(components.hpe.select["default"].option.selected.hover.background, props.theme) + ";\n          color: " + getThemeColor(components.hpe.select["default"].option.selected.hover.textColor, props.theme) + "\n          ";
+            return props['aria-selected'] && "\n           background: " + (0, _utils.getThemeColor)(components.hpe.select["default"].option.selected.hover.background, props.theme) + ";\n          color: " + (0, _utils.getThemeColor)(components.hpe.select["default"].option.selected.hover.textColor, props.theme) + "\n          ";
           }
         }
       }),
@@ -966,7 +924,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         if ((kind === 'primary' || kind === 'cta-primary') && !disabled && !active) {
           // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
           // not a long term solution. Also, reliance on !important is not ideal.
-          style += "color: " + getThemeColor('text-onStrong', theme) + " !important;";
+          style += "color: " + (0, _utils.getThemeColor)('text-onStrong', theme) + " !important;";
           var iconColor = theme.dark ? dark.hpe.color.icon.onStrong : light.hpe.color.icon.onStrong;
           style += "svg { fill: " + iconColor + "; }";
         }
@@ -975,7 +933,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           // a better fallback behavior for hover styles to avoid
           // "kind" hover background from applying
           // https://github.com/grommet/grommet/issues/7504
-          style += "\n            &:hover { background: " + getThemeColor(colorValue, theme) + "; }\n          ";
+          style += "\n            &:hover { background: " + (0, _utils.getThemeColor)(colorValue, theme) + "; }\n          ";
         }
         return style;
       }
@@ -1197,15 +1155,15 @@ var buildTheme = function buildTheme(tokens, flags) {
             checked = _ref0.checked;
           var borderColor;
           if (toggle) {
-            borderColor = getThemeColor(components.hpe["switch"]["default"].control.track.hover.borderColor, theme);
+            borderColor = (0, _utils.getThemeColor)(components.hpe["switch"]["default"].control.track.hover.borderColor, theme);
           } else if (checked) {
             if (toggle) {
-              borderColor = getThemeColor(components.hpe["switch"]["default"].control.track.selected.hover.borderColor, theme);
+              borderColor = (0, _utils.getThemeColor)(components.hpe["switch"]["default"].control.track.selected.hover.borderColor, theme);
             } else {
-              borderColor = getThemeColor(components.hpe.checkbox["default"].control.selected.hover.borderColor, theme);
+              borderColor = (0, _utils.getThemeColor)(components.hpe.checkbox["default"].control.selected.hover.borderColor, theme);
             }
           }
-          return (0, _styledComponents.css)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n            ", "\n          "])), checked ? "border-color: " + borderColor + ";" : '');
+          return (0, _styledComponents.css)(_templateObject || (_templateObject = _taggedTemplateLiteralLoose(["\n            ", "\n          "])), checked ? "border-color: " + borderColor + ";" : '');
         }
       },
       color: components.hpe["switch"]["default"].control.handle.rest.background,
@@ -1223,19 +1181,19 @@ var buildTheme = function buildTheme(tokens, flags) {
             checked = _ref1.checked,
             indeterminate = _ref1.indeterminate,
             disabled = _ref1.disabled;
-          var background = getThemeColor(components.hpe.checkbox["default"].control.rest.background, theme);
-          var hoverBackground = getThemeColor(components.hpe.checkbox["default"].control.hover.background, theme);
-          var borderColor = getThemeColor(components.hpe.checkbox["default"].control.rest.borderColor, theme);
+          var background = (0, _utils.getThemeColor)(components.hpe.checkbox["default"].control.rest.background, theme);
+          var hoverBackground = (0, _utils.getThemeColor)(components.hpe.checkbox["default"].control.hover.background, theme);
+          var borderColor = (0, _utils.getThemeColor)(components.hpe.checkbox["default"].control.rest.borderColor, theme);
           if (checked || indeterminate) {
-            background = getThemeColor(components.hpe.checkbox["default"].control.selected.rest.background, theme);
-            borderColor = getThemeColor(components.hpe.checkbox["default"].control.selected.rest.borderColor, theme);
+            background = (0, _utils.getThemeColor)(components.hpe.checkbox["default"].control.selected.rest.background, theme);
+            borderColor = (0, _utils.getThemeColor)(components.hpe.checkbox["default"].control.selected.rest.borderColor, theme);
           }
           if (checked || indeterminate) {
-            hoverBackground = getThemeColor(components.hpe.checkbox["default"].control.selected.hover.background, theme);
+            hoverBackground = (0, _utils.getThemeColor)(components.hpe.checkbox["default"].control.selected.hover.background, theme);
           }
           if (disabled) {
-            background = getThemeColor(components.hpe.checkbox["default"].control.disabled.rest.background, theme);
-            borderColor = getThemeColor(components.hpe.checkbox["default"].control.disabled.rest.borderColor, theme);
+            background = (0, _utils.getThemeColor)(components.hpe.checkbox["default"].control.disabled.rest.background, theme);
+            borderColor = (0, _utils.getThemeColor)(components.hpe.checkbox["default"].control.disabled.rest.borderColor, theme);
           }
           return "\n            background: " + background + ";\n            border-color: " + borderColor + ";\n            &:hover {\n              " + (!disabled ? "background: " + hoverBackground + ";" : '') + "\n            }\n          ";
         }
@@ -1252,7 +1210,7 @@ var buildTheme = function buildTheme(tokens, flags) {
           var themeToUse = disabled ? theme : _extends({}, theme, {
             dark: !theme.dark
           });
-          return "stroke-width: 2px;\n      stroke: " + getThemeColor(disabled ? components.hpe.checkbox["default"].control.disabled.rest.iconColor : components.hpe.checkbox["default"].control.selected.rest.iconColor, themeToUse);
+          return "stroke-width: 2px;\n      stroke: " + (0, _utils.getThemeColor)(disabled ? components.hpe.checkbox["default"].control.disabled.rest.iconColor : components.hpe.checkbox["default"].control.selected.rest.iconColor, themeToUse);
         }
       },
       gap: components.hpe.checkbox["default"].medium.gapX,
@@ -1271,7 +1229,7 @@ var buildTheme = function buildTheme(tokens, flags) {
               checked = _ref11.checked,
               disabled = _ref11.disabled;
             var insetHandle = dimensions.borderSize[components.hpe["switch"]["default"].medium.control.handle.borderWidth] || dimensions.borderSize[components.hpe["switch"]["default"].medium.control.handle.borderWidth];
-            return "\n          box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'][components.hpe["switch"]["default"].control.handle.rest.boxShadow] + ";\n          border: " + dimensions.borderSize[components.hpe["switch"]["default"].medium.control.handle.borderWidth] + " solid " + getThemeColor(disabled ? components.hpe["switch"]["default"].control.handle.disabled.rest.borderColor : components.hpe["switch"]["default"].control.handle.rest.borderColor, theme) + ";\n          width: " + components.hpe["switch"]["default"].medium.control.handle.width + ";\n          height: " + components.hpe["switch"]["default"].medium.control.handle.height + ";\n          top: " + insetHandle + ";\n          left: " + (!checked ? insetHandle : '25px') + ";\n          ";
+            return "\n          box-shadow: " + theme.global.elevation[theme.dark ? 'dark' : 'light'][components.hpe["switch"]["default"].control.handle.rest.boxShadow] + ";\n          border: " + dimensions.borderSize[components.hpe["switch"]["default"].medium.control.handle.borderWidth] + " solid " + (0, _utils.getThemeColor)(disabled ? components.hpe["switch"]["default"].control.handle.disabled.rest.borderColor : components.hpe["switch"]["default"].control.handle.rest.borderColor, theme) + ";\n          width: " + components.hpe["switch"]["default"].medium.control.handle.width + ";\n          height: " + components.hpe["switch"]["default"].medium.control.handle.height + ";\n          top: " + insetHandle + ";\n          left: " + (!checked ? insetHandle : '25px') + ";\n          ";
           }
         },
         // applies to track around handle
@@ -1280,15 +1238,15 @@ var buildTheme = function buildTheme(tokens, flags) {
             theme = _ref12.theme,
             disabled = _ref12.disabled;
           var background;
-          var hoverBackground = getThemeColor(components.hpe["switch"]["default"].control.track.hover.background, theme);
-          var borderColor = getThemeColor(components.hpe["switch"]["default"].control.track.rest.borderColor, theme);
+          var hoverBackground = (0, _utils.getThemeColor)(components.hpe["switch"]["default"].control.track.hover.background, theme);
+          var borderColor = (0, _utils.getThemeColor)(components.hpe["switch"]["default"].control.track.rest.borderColor, theme);
           if (checked) {
-            background = getThemeColor(components.hpe["switch"]["default"].control.track.selected.rest.background, theme);
-            hoverBackground = getThemeColor(components.hpe["switch"]["default"].control.track.selected.hover.background, theme);
+            background = (0, _utils.getThemeColor)(components.hpe["switch"]["default"].control.track.selected.rest.background, theme);
+            hoverBackground = (0, _utils.getThemeColor)(components.hpe["switch"]["default"].control.track.selected.hover.background, theme);
           }
           if (disabled) {
-            background = getThemeColor(components.hpe["switch"]["default"].control.track.disabled.rest.background, theme);
-            borderColor = getThemeColor(components.hpe["switch"]["default"].control.handle.disabled.rest.borderColor, theme);
+            background = (0, _utils.getThemeColor)(components.hpe["switch"]["default"].control.track.disabled.rest.background, theme);
+            borderColor = (0, _utils.getThemeColor)(components.hpe["switch"]["default"].control.handle.disabled.rest.borderColor, theme);
           }
           return "\n            border-color: " + borderColor + ";\n            background: " + background + ";\n            &:hover {\n              " + (!disabled ? "background: " + hoverBackground + ";" : '') + "\n            }\n        ";
         }
@@ -1296,9 +1254,9 @@ var buildTheme = function buildTheme(tokens, flags) {
       extend: function extend(_ref13) {
         var disabled = _ref13.disabled,
           theme = _ref13.theme;
-        return (0, _styledComponents.css)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteralLoose(["\n      font-weight: ", ";\n      width: auto;\n      border: ", " solid ", ";\n      & input:checked + span[class*=CheckBoxToggle] > span[class*=CheckBoxKnob] {\n        left: 25px;\n      }\n      ", "\n    };\n    "])), components.hpe.checkbox["default"].label.rest.fontWeight, components.hpe.formField["default"].medium.input.container.borderWidth, getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme),
+        return (0, _styledComponents.css)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteralLoose(["\n      font-weight: ", ";\n      width: auto;\n      border: ", " solid ", ";\n      & input:checked + span[class*=CheckBoxToggle] > span[class*=CheckBoxKnob] {\n        left: 25px;\n      }\n      ", "\n    };\n    "])), components.hpe.checkbox["default"].label.rest.fontWeight, components.hpe.formField["default"].medium.input.container.borderWidth, (0, _utils.getThemeColor)(components.hpe.formField["default"].input.group.item.rest.borderColor, theme),
         // override built in disabled opacity: 0.5 from grommet
-        disabled && "opacity: 1; \n        color: " + getThemeColor(components.hpe.checkbox["default"].label.disabled.rest.textColor, theme) + ";");
+        disabled && "opacity: 1; \n        color: " + (0, _utils.getThemeColor)(components.hpe.checkbox["default"].label.disabled.rest.textColor, theme) + ";");
       }
     },
     checkBoxGroup: {
@@ -1708,7 +1666,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     formField: {
       extend: function extend(_ref16) {
         var theme = _ref16.theme;
-        return "\n          [class*=\"ContentBox\"] {\n            label {\n              padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n              &:hover:not([disabled]) {\n                background: " + getThemeColor(components.hpe.formField["default"].input.container.hover.background, theme) + ";\n              }\n            }\n            [role=\"group\"], [role=\"radiogroup\"] {\n              gap: 0;\n              padding-block: " + components.hpe.formField["default"].medium.input.group.container.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.container.paddingX + ";\n              label {\n                border: " + (dimensions.borderSize[components.hpe.formField["default"].medium.input.group.item.borderWidth] || components.hpe.formField["default"].medium.input.group.item.borderWidth) + " solid " + getThemeColor(components.hpe.formField["default"].input.group.item.rest.borderColor, theme) + ";\n                padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n                padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n                border-radius: " + dimensions.radius[components.hpe.formField["default"].medium.input.group.item.borderRadius] + ";\n                &:hover:not([disabled]) {\n                  background: " + getThemeColor(components.hpe.formField["default"].input.group.item.hover.background, theme) + ";\n                }\n              }\n            }\n          }\n      ";
+        return "\n          [class*=\"ContentBox\"] {\n            label {\n              padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n              &:hover:not([disabled]) {\n                background: " + (0, _utils.getThemeColor)(components.hpe.formField["default"].input.container.hover.background, theme) + ";\n              }\n            }\n            [role=\"group\"], [role=\"radiogroup\"] {\n              gap: 0;\n              padding-block: " + components.hpe.formField["default"].medium.input.group.container.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.container.paddingX + ";\n              label {\n                border: " + (dimensions.borderSize[components.hpe.formField["default"].medium.input.group.item.borderWidth] || components.hpe.formField["default"].medium.input.group.item.borderWidth) + " solid " + (0, _utils.getThemeColor)(components.hpe.formField["default"].input.group.item.rest.borderColor, theme) + ";\n                padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n                padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n                border-radius: " + dimensions.radius[components.hpe.formField["default"].medium.input.group.item.borderRadius] + ";\n                &:hover:not([disabled]) {\n                  background: " + (0, _utils.getThemeColor)(components.hpe.formField["default"].input.group.item.hover.background, theme) + ";\n                }\n              }\n            }\n          }\n      ";
       },
       content: {
         margin: {
@@ -1958,9 +1916,9 @@ var buildTheme = function buildTheme(tokens, flags) {
         // implementors to choose "bold" to style text. This ensures bold resolves to the desired wieght.
         if (weight === 'bold') style += 'font-weight: 500;';
         if (responsive) {
-          var responsiveSize = headingSize || headingLevelToSize[level || 1];
-          var responsiveHeadingSize = getHeadingSize(small, responsiveSize);
-          style += breakpointStyle(_grommet.global, "\n        font-size: " + responsiveHeadingSize.fontSize + ";\n        line-height: " + responsiveHeadingSize.lineHeight + ";\n        " + (!weight ? "font-weight: " + responsiveHeadingSize.fontWeight : '') + ";\n      ", responsive);
+          var responsiveSize = headingSize || _utils.headingLevelToSize[level || 1];
+          var responsiveHeadingSize = (0, _utils.getHeadingSize)(small, responsiveSize);
+          style += (0, _utils.breakpointStyle)(_grommet.global, "\n        font-size: " + responsiveHeadingSize.fontSize + ";\n        line-height: " + responsiveHeadingSize.lineHeight + ";\n        " + (!weight ? "font-weight: " + responsiveHeadingSize.fontWeight : '') + ";\n      ", responsive);
         }
         return style;
       }
@@ -2678,7 +2636,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       container: {
         extend: function extend(_ref24) {
           var theme = _ref24.theme;
-          return "\n          width: auto;\n          &:has(input[checked]) {\n            & div:has(> svg[aria-hidden=\"true\"]) {\n              background: " + getThemeColor(components.hpe.radioButton["default"].control.selected.rest.background, theme) + ";\n              border-color: " + getThemeColor(components.hpe.radioButton["default"].control.selected.rest.borderColor, theme) + ";\n            }\n          }\n          &:has(input[checked]):hover:not([disabled]) {\n              & div:has(> svg[aria-hidden=\"true\"]) {\n                background: " + getThemeColor(components.hpe.radioButton["default"].control.selected.hover.background, theme) + ";\n                border-color: " + getThemeColor(components.hpe.radioButton["default"].control.selected.hover.borderColor, theme) + ";\n              }\n          }\n          ";
+          return "\n          width: auto;\n          &:has(input[checked]) {\n            & div:has(> svg[aria-hidden=\"true\"]) {\n              background: " + (0, _utils.getThemeColor)(components.hpe.radioButton["default"].control.selected.rest.background, theme) + ";\n              border-color: " + (0, _utils.getThemeColor)(components.hpe.radioButton["default"].control.selected.rest.borderColor, theme) + ";\n            }\n          }\n          &:has(input[checked]):hover:not([disabled]) {\n              & div:has(> svg[aria-hidden=\"true\"]) {\n                background: " + (0, _utils.getThemeColor)(components.hpe.radioButton["default"].control.selected.hover.background, theme) + ";\n                border-color: " + (0, _utils.getThemeColor)(components.hpe.radioButton["default"].control.selected.hover.borderColor, theme) + ";\n              }\n          }\n          ";
         }
       },
       gap: components.hpe.radioButton["default"].medium.gapX,
@@ -2705,7 +2663,7 @@ var buildTheme = function buildTheme(tokens, flags) {
             // light/dark values are intentionally swapped in our tokens, invert
             // theme.dark here so the token is resolved exactly as authored.
             ,
-            color: getThemeColor(components.hpe.radioButton["default"].control.selected.rest.iconColor, _extends({}, theme, {
+            color: (0, _utils.getThemeColor)(components.hpe.radioButton["default"].control.selected.rest.iconColor, _extends({}, theme, {
               dark: !theme.dark
             })),
             size: components.hpe.radioButton["default"].medium.control.width // width and height are identical, so choosing one.
@@ -2743,7 +2701,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         },
         extend: function extend(_ref26) {
           var theme = _ref26.theme;
-          return "\n        border-radius: " + large.hpe.radius.full + ";\n        // firefox only selector, since pseudo-element\n        // isn't supported\n        @-moz-document url-prefix() {\n          border: 1px solid " + getThemeColor('border-strong', theme) + ";\n        }";
+          return "\n        border-radius: " + large.hpe.radius.full + ";\n        // firefox only selector, since pseudo-element\n        // isn't supported\n        @-moz-document url-prefix() {\n          border: 1px solid " + (0, _utils.getThemeColor)('border-strong', theme) + ";\n        }";
         }
       },
       disabled: {
@@ -2765,7 +2723,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       extend: function extend(_ref27) {
         var disabled = _ref27.disabled,
           theme = _ref27.theme;
-        return "\n        &::before {\n          display: block;\n          position: absolute;\n          content: '';\n          width: " + primitives.hpe.base.dimension[100] + ";\n          height: " + primitives.hpe.base.dimension[100] + ";\n          border-radius: " + large.hpe.radius.full + ";\n          right: 0;\n          top: 50%;\n          transform: translateY(-50%);\n          background: " + getThemeColor(disabled ? 'background-disabled' : 'background-neutral-xstrong', theme) + ";\n        }\n    ";
+        return "\n        &::before {\n          display: block;\n          position: absolute;\n          content: '';\n          width: " + primitives.hpe.base.dimension[100] + ";\n          height: " + primitives.hpe.base.dimension[100] + ";\n          border-radius: " + large.hpe.radius.full + ";\n          right: 0;\n          top: 50%;\n          transform: translateY(-50%);\n          background: " + (0, _utils.getThemeColor)(disabled ? 'background-disabled' : 'background-neutral-xstrong', theme) + ";\n        }\n    ";
       }
     },
     rangeSelector: {
@@ -2812,7 +2770,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       control: {
         extend: function extend(_ref28) {
           var disabled = _ref28.disabled;
-          return (0, _styledComponents.css)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteralLoose(["\n          ", "\n\n          &[class*=\"SelectMultiple\"] [role=\"listbox\"] {\n            padding-block: ", ";\n            padding-inline: ", ";\n            & [role='option'] {\n              border-radius: ", ";\n            }\n          }\n        "])), disabled && "\n          opacity: 0.3;\n          input {\n            cursor: default;\n          }", components.hpe.select["default"].medium.drop.paddingY, components.hpe.select["default"].medium.drop.paddingX, dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius);
+          return (0, _styledComponents.css)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteralLoose(["\n          ", "\n\n          &[class*=\"SelectMultiple\"] [role=\"listbox\"] {\n            padding-block: ", ";\n            padding-inline: ", ";\n            & [role='option'] {\n              border-radius: ", ";\n            }\n          }\n        "])), disabled && "\n          opacity: 0.3;\n          input {\n            cursor: default;\n          }", components.hpe.select["default"].medium.drop.paddingY, components.hpe.select["default"].medium.drop.paddingX, dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius);
         }
       },
       emptySearchMessage: {
@@ -2977,7 +2935,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         // page elements.
         extend: function extend(_ref29) {
           var theme = _ref29.theme;
-          return "\n        padding-bottom: " + large.hpe.borderWidth.medium + ";\n        & button {\n          border-radius: " + large.hpe.radius.xsmall + "; // radius on focus\n        }\n        & button[aria-selected=\"true\"] {\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              height: " + large.hpe.borderWidth.medium + ";\n              border-radius: " + large.hpe.radius.full + ";\n              bottom: -" + large.hpe.borderWidth.medium + ";\n              left: 0;\n              right: 0;\n              background: " + getThemeColor('border-selected', theme) + ";\n            }\n        }";
+          return "\n        padding-bottom: " + large.hpe.borderWidth.medium + ";\n        & button {\n          border-radius: " + large.hpe.radius.xsmall + "; // radius on focus\n        }\n        & button[aria-selected=\"true\"] {\n            position: relative;\n            &::before {\n              display: block;\n              position: absolute;\n              content: '';\n              height: " + large.hpe.borderWidth.medium + ";\n              border-radius: " + large.hpe.radius.full + ";\n              bottom: -" + large.hpe.borderWidth.medium + ";\n              left: 0;\n              right: 0;\n              background: " + (0, _utils.getThemeColor)('border-selected', theme) + ";\n            }\n        }";
         },
         previousButton: {
           icon: _Left.Left,
@@ -3167,7 +3125,7 @@ var buildTheme = function buildTheme(tokens, flags) {
       suggestions: {
         extend: function extend(_ref31) {
           var theme = _ref31.theme;
-          return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"]:hover {\n            background: " + getThemeColor(components.hpe.select["default"].option.hover.background, theme) + ";\n          }\n        ";
+          return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"]:hover {\n            background: " + (0, _utils.getThemeColor)(components.hpe.select["default"].option.hover.background, theme) + ";\n          }\n        ";
         }
       }
     },
@@ -3209,7 +3167,7 @@ var buildTheme = function buildTheme(tokens, flags) {
         round: 'xsmall',
         extend: function extend(_ref32) {
           var theme = _ref32.theme;
-          return "\n        gap: " + (dimensions.edgeSize[large.hpe.spacing['5xsmall']] || large.hpe.spacing['5xsmall']) + ";\n        &:hover {\n          background: " + getThemeColor('background-hover', theme) + ";\n        }";
+          return "\n        gap: " + (dimensions.edgeSize[large.hpe.spacing['5xsmall']] || large.hpe.spacing['5xsmall']) + ";\n        &:hover {\n          background: " + (0, _utils.getThemeColor)('background-hover', theme) + ";\n        }";
         }
       },
       divider: false

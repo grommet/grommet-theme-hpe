@@ -1,6 +1,6 @@
 'use client';
 
-export * from './hpe';
+export { hpe } from './hpe';
 export * from './hpePop';
 export * from './backgrounds';
 export * from './colors';
