@@ -171,8 +171,8 @@ export const buildTypography = (tokens, options = {}) => {
         if (fontSize) style += `font-size: ${fontSize};`;
         if (lineHeight) style += `line-height: ${lineHeight};`;
       }
-      // The max desired weight in the the theme is 500, however a common convention is for
-      // implementors to choose "bold" to style text. This ensures bold resolves to the desired wieght.
+      // The max desired weight in the theme is 500; however, a common convention is for
+      // implementers to choose "bold" to style text. This ensures "bold" resolves to the desired weight.
       if (weight === 'bold') style += 'font-weight: 500;';
 
       if (responsive) {
