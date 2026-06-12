@@ -36,29 +36,24 @@ export const buildFormTheme = (tokens, context) => {
         // applies to container around control and label
         background: { color: undefined },
         extend: ({ theme, toggle, checked }) => {
-          let borderColor;
-          if (toggle) {
-            borderColor = getThemeColor(
-              components.hpe.switch.default.control.track.hover.borderColor,
-              theme,
-            );
-          } else if (checked) {
-            if (toggle) {
-              borderColor = getThemeColor(
+          if (!checked) {
+            return css``;
+          }
+
+          const borderColor = toggle
+            ? getThemeColor(
                 components.hpe.switch.default.control.track.selected.hover
                   .borderColor,
                 theme,
-              );
-            } else {
-              borderColor = getThemeColor(
+              )
+            : getThemeColor(
                 components.hpe.checkbox.default.control.selected.hover
                   .borderColor,
                 theme,
               );
-            }
-          }
+
           return css`
-            ${checked ? `border-color: ${borderColor};` : ''}
+            border-color: ${borderColor};
           `;
         },
       },
