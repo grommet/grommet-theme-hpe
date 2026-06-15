@@ -2690,6 +2690,22 @@ exports[`Theme snapshot groups matches global snapshot 1`] = `
       "shadowSize": "medium",
       "zIndex": 110,
     },
+    "edgeSize": {
+      "3xlarge": "96px",
+      "3xsmall": "6px",
+      "4xsmall": "4px",
+      "5xsmall": "3px",
+      "hair": "1px",
+      "large": "32px",
+      "medium": "24px",
+      "none": "0px",
+      "responsiveBreakpoint": "small",
+      "small": "16px",
+      "xlarge": "48px",
+      "xsmall": "12px",
+      "xxlarge": "64px",
+      "xxsmall": "8px",
+    },
     "elevation": {
       "dark": {
         "large": "0px 12px 24px 0px rgba(0, 0, 0, 0.48) ",
@@ -2795,7 +2811,6 @@ exports[`Theme snapshot groups matches global snapshot 1`] = `
       "height": "1.5rem",
       "size": "1rem",
     },
-    "spacing": undefined,
   },
 }
 `;
