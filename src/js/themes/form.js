@@ -213,28 +213,31 @@ export const buildFormTheme = (tokens, context) => {
         },
       },
       extend: ({ disabled, theme }) => css`
-      font-weight: ${components.hpe.checkbox.default.label.rest.fontWeight};
-      width: auto;
-      border: ${
-        components.hpe.formField.default.medium.input.container.borderWidth
-      } solid ${getThemeColor(
-        components.hpe.formField.default.input.group.item.rest.borderColor,
-        theme,
-      )};
-      & input:checked + span[class*=CheckBoxToggle] > span[class*=CheckBoxKnob] {
-        left: 25px;
-      }
-      ${
-        // override built in disabled opacity: 0.5 from grommet
-        disabled &&
-        `opacity: 1;
+        font-weight: ${components.hpe.checkbox.default.label.rest.fontWeight};
+        width: auto;
+        border: ${components.hpe.formField.default.medium.input.container
+            .borderWidth}
+          solid
+          ${getThemeColor(
+            components.hpe.formField.default.input.group.item.rest.borderColor,
+            theme,
+          )};
+        &
+          input:checked
+          + span[class*='CheckBoxToggle']
+          > span[class*='CheckBoxKnob'] {
+          left: 25px;
+        }
+        ${
+          // override built in disabled opacity: 0.5 from grommet
+          disabled &&
+          `opacity: 1;
         color: ${getThemeColor(
           components.hpe.checkbox.default.label.disabled.rest.textColor,
           theme,
         )};`
-      }
-    };
-    `,
+        }
+      `,
     },
     checkBoxGroup: {
       container: { cssGap: true, gap: 'xsmall', margin: 'none' },
