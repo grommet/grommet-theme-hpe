@@ -154,7 +154,7 @@ export const buildFormTheme = (tokens, context) => {
               components.hpe.switch.default.control.handle.rest.boxShadow
             ]
           };
-          border: ${dimensions.borderSize[borderWidth]} solid ${getThemeColor(
+          border: ${dimensions.borderSize[borderWidth] || borderWidth} solid ${getThemeColor(
             disabled
               ? components.hpe.switch.default.control.handle.disabled.rest
                   .borderColor
