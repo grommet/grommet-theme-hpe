@@ -27,10 +27,11 @@ describe('Theme snapshot groups', () => {
       global: {
         colors: theme.global.colors,
         font: theme.global.font,
-        spacing: theme.global.spacing,
+        edgeSize: theme.global.edgeSize,
         focus: theme.global.focus,
         drop: theme.global.drop,
         elevation: theme.global.elevation,
+      }
       },
     }).toMatchSnapshot();
   });
