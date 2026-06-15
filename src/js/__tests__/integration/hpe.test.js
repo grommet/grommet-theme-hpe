@@ -121,6 +121,32 @@ describe('Structural and Contract Tests', () => {
         }
       });
     });
+
+    it('should use caller-provided global breakpoint for responsive heading styles', () => {
+      const customTokens = {
+        ...tokens,
+        global: {
+          ...tokens.global,
+          hpe: {
+            ...tokens.global.hpe,
+            breakpoint: {
+              ...tokens.global.hpe.breakpoint,
+              small: '1234px',
+            },
+          },
+        },
+      };
+
+      const customTheme = buildTheme(customTokens, {
+        'v6-backwards-compatibility': false,
+      });
+      const responsiveStyle = customTheme.heading.extend({
+        level: 1,
+        responsive: true,
+      });
+
+      expect(responsiveStyle).toContain('(max-width: 1234px)');
+    });
   });
 
   describe('Spacing and sizing', () => {

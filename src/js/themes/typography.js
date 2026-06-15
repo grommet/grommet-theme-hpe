@@ -7,9 +7,8 @@ import {
   textSizes,
 } from './utils';
 
-export const buildTypography = (tokens, options = {}) => {
-  const { small, large, components } = tokens;
-  const { localGlobal } = options;
+export const buildTypography = (tokens) => {
+  const { small, large, components, global } = tokens;
 
   const anchorSizeTheme = {};
   textSizes.forEach((sizeArg) => {
@@ -183,7 +182,7 @@ export const buildTypography = (tokens, options = {}) => {
         const responsiveHeadingSize = getHeadingSize(small, responsiveSize);
 
         style += breakpointStyle(
-          localGlobal,
+          global,
           `
         font-size: ${responsiveHeadingSize.fontSize};
         line-height: ${responsiveHeadingSize.lineHeight};

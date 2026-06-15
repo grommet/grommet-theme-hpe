@@ -66,7 +66,7 @@ const buildTheme = (tokens, flags) => {
 
   const dimensions = buildDimensions(tokens, flags);
 
-  const typography = buildTypography(tokens, { localGlobal });
+  const typography = buildTypography(tokens);
   const {
     option,
     mediumIconOnlyPad,
