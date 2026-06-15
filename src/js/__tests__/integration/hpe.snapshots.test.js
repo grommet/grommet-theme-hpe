@@ -31,7 +31,6 @@ describe('Theme snapshot groups', () => {
         focus: theme.global.focus,
         drop: theme.global.drop,
         elevation: theme.global.elevation,
-      }
       },
     }).toMatchSnapshot();
   });
