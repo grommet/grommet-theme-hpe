@@ -382,7 +382,7 @@ Before merging the refactor:
   - `dist/grommet-theme-hpe.json` hash: `69b38e9a85e0ddaa353cba5bf328a63039895b81`
   - `dist/index.js` hash: `495db5007c4705dcee37dc367096a9eb92d2307c`
   - `dist/es6/index.js` hash: `c7efb191b0051e047c134f36da68085d97dcafa2`
-  - Bundle sizes: `dist/index.js` = `277B`, `dist/es6/index.js` = `95B`
+  - Bundle sizes: `dist/index.js` and `dist/es6/index.js` match the baseline (`ls -lh` output).
 
 ### Remaining TODOs
 
