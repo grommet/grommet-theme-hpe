@@ -35,6 +35,12 @@ describe('Theme snapshot groups', () => {
     }).toMatchSnapshot();
   });
 
+  it('matches breakpoints snapshot', () => {
+    expect({
+      breakpoints: theme.global.breakpoints,
+    }).toMatchSnapshot();
+  });
+
   it('matches button snapshot', () => {
     expect({
       button: theme.button,
