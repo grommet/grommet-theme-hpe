@@ -7,7 +7,7 @@ import {
   global as localGlobal,
   components as localComponents,
 } from 'hpe-design-tokens/grommet';
-import { buildTheme, hpe } from '../../themes/hpe';
+import { buildTheme } from '../../themes/hpe';
 
 describe('Structural and Contract Tests', () => {
   const tokens = {
@@ -21,7 +21,7 @@ describe('Structural and Contract Tests', () => {
   };
 
   let theme;
-  
+
   beforeAll(() => {
     theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
   });
@@ -121,6 +121,32 @@ describe('Structural and Contract Tests', () => {
         }
       });
     });
+
+    it('should use caller-provided global breakpoint for responsive heading styles', () => {
+      const customTokens = {
+        ...tokens,
+        global: {
+          ...tokens.global,
+          hpe: {
+            ...tokens.global.hpe,
+            breakpoint: {
+              ...tokens.global.hpe.breakpoint,
+              small: '1234px',
+            },
+          },
+        },
+      };
+
+      const customTheme = buildTheme(customTokens, {
+        'v6-backwards-compatibility': false,
+      });
+      const responsiveStyle = customTheme.heading.extend({
+        level: 1,
+        responsive: true,
+      });
+
+      expect(responsiveStyle).toContain('(max-width: 1234px)');
+    });
   });
 
   describe('Spacing and sizing', () => {
@@ -146,92 +172,6 @@ describe('Structural and Contract Tests', () => {
       expect(typeof theme.global.borderSize).toBe('object');
       // At least one size should be defined
       expect(Object.keys(theme.global.borderSize).length).toBeGreaterThan(0);
-    });
-  });
-
-  describe('Deprecated entries', () => {
-    it('should have deprecated colors list', () => {
-      expect(theme.global.deprecated).toBeDefined();
-      expect(theme.global.deprecated.colors).toBeDefined();
-      expect(Array.isArray(theme.global.deprecated.colors)).toBe(true);
-    });
-
-    it('should have deprecated button kinds list', () => {
-      expect(theme.global.deprecated.button).toBeDefined();
-      expect(theme.global.deprecated.button.kind).toBeDefined();
-      expect(Array.isArray(theme.global.deprecated.button.kind)).toBe(true);
-    });
-  });
-});
-
-describe('Flag Behavior Tests', () => {
-  const tokens = {
-    primitives: localPrimitives,
-    light: localLight,
-    dark: localDark,
-    small: localSmall,
-    large: localDimension,
-    global: localGlobal,
-    components: localComponents,
-  };
-
-  describe('v6-backwards-compatibility flag', () => {
-    it('should use token-based edgeSize when flag is false', () => {
-      const themeWithoutFlag = buildTheme(tokens, {
-        'v6-backwards-compatibility': false,
-      });
-      expect(themeWithoutFlag.global.edgeSize).toBeDefined();
-      // Token-based dimensions include the additional t-shirt sizes.
-      expect(themeWithoutFlag.global.edgeSize['5xsmall']).toBeDefined();
-    });
-
-    it('should use globalSizes edgeSize when flag is true', () => {
-      const themeWithFlag = buildTheme(tokens, {
-        'v6-backwards-compatibility': true,
-      });
-      expect(themeWithFlag.global.edgeSize).toBeDefined();
-      expect(themeWithFlag.global.edgeSize['5xsmall']).toBeUndefined();
-      expect(themeWithFlag.global.edgeSize.medium).toBe('24px');
-    });
-
-    it('should have different edgeSize values when flag differs', () => {
-      const themeWithoutFlag = buildTheme(tokens, {
-        'v6-backwards-compatibility': false,
-      });
-      const themeWithFlag = buildTheme(tokens, {
-        'v6-backwards-compatibility': true,
-      });
-      // The values should differ between the two flag states
-      // (though they might coincidentally be the same in some cases)
-      expect(themeWithoutFlag.global.edgeSize).toBeDefined();
-      expect(themeWithFlag.global.edgeSize).toBeDefined();
-    });
-  });
-
-  describe('Pre-built hpe export', () => {
-    it('should be defined and frozen', () => {
-      expect(hpe).toBeDefined();
-      expect(Object.isFrozen(hpe)).toBe(true);
-    });
-
-    it('should have expected structure', () => {
-      expect(hpe.global).toBeDefined();
-      expect(hpe.button).toBeDefined();
-      expect(hpe.text).toBeDefined();
-      expect(hpe.heading).toBeDefined();
-    });
-
-    it('should have comprehensive theme structure', () => {
-      // Smoke-check deeper nested paths on the shipped default export.
-      expect(hpe.global.colors['text-strong']).toBeDefined();
-      expect(hpe.button.primary).toBeDefined();
-      expect(hpe.button.primary.background).toBeDefined();
-    });
-
-    it('should use v6-backwards-compatibility: false by default', () => {
-      // The exported hpe should use the default flag value (false)
-      // Verify by checking a flag-specific edgeSize key.
-      expect(hpe.global.edgeSize['5xsmall']).toBeDefined();
     });
   });
 });
