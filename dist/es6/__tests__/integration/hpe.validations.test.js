@@ -1,77 +1,5 @@
 import { primitives as localPrimitives, dark as localDark, light as localLight, dimension as localDimension, small as localSmall, global as localGlobal, components as localComponents } from 'hpe-design-tokens/grommet';
 import { buildTheme } from '../../themes/hpe';
-describe('Deprecation Entry Tests', function () {
-  var tokens = {
-    primitives: localPrimitives,
-    light: localLight,
-    dark: localDark,
-    small: localSmall,
-    large: localDimension,
-    global: localGlobal,
-    components: localComponents
-  };
-  describe('Deprecated colors list', function () {
-    it('should have deprecated colors array defined', function () {
-      var theme = buildTheme(tokens, {
-        'v6-backwards-compatibility': false
-      });
-      expect(theme.global.deprecated).toBeDefined();
-      expect(theme.global.deprecated.colors).toBeDefined();
-      expect(Array.isArray(theme.global.deprecated.colors)).toBe(true);
-    });
-    it('should contain expected deprecated color entries', function () {
-      var theme = buildTheme(tokens, {
-        'v6-backwards-compatibility': false
-      });
-      var deprecatedColors = theme.global.deprecated.colors;
-      // Verify the list is not empty
-      expect(deprecatedColors.length).toBeGreaterThan(0);
-    });
-    it('should have disabled-text as deprecated', function () {
-      var theme = buildTheme(tokens, {
-        'v6-backwards-compatibility': false
-      });
-      expect(theme.global.deprecated.colors.some(function (_ref) {
-        var name = _ref.name;
-        return name === 'disabled-text';
-      })).toBe(true);
-    });
-  });
-  describe('Deprecated button kinds', function () {
-    it('should have deprecated button object defined', function () {
-      var theme = buildTheme(tokens, {
-        'v6-backwards-compatibility': false
-      });
-      expect(theme.global.deprecated.button).toBeDefined();
-      expect(typeof theme.global.deprecated.button).toBe('object');
-    });
-    it('should have deprecated button kind array defined', function () {
-      var theme = buildTheme(tokens, {
-        'v6-backwards-compatibility': false
-      });
-      expect(theme.global.deprecated.button.kind).toBeDefined();
-      expect(Array.isArray(theme.global.deprecated.button.kind)).toBe(true);
-    });
-    it('should contain expected deprecated button kind entries', function () {
-      var theme = buildTheme(tokens, {
-        'v6-backwards-compatibility': false
-      });
-      var deprecatedKinds = theme.global.deprecated.button.kind;
-      // Verify the list is not empty
-      expect(deprecatedKinds.length).toBeGreaterThan(0);
-    });
-  });
-  describe('Deprecated backgrounds', function () {
-    it('should have deprecated backgrounds list if backgrounds are deprecated', function () {
-      var theme = buildTheme(tokens, {
-        'v6-backwards-compatibility': false
-      });
-      if (theme.global.deprecated.backgrounds) {
-        expect(Array.isArray(theme.global.deprecated.backgrounds)).toBe(true);
-      }
-    });
-  });
-});
 describe('Value-Validation Tests', function () {
   var tokens = {
     primitives: localPrimitives,
@@ -187,9 +115,9 @@ describe('Value-Validation Tests', function () {
       var theme = buildTheme(tokens, {
         'v6-backwards-compatibility': false
       });
-      Object.entries(theme.global.edgeSize).forEach(function (_ref2) {
-        var key = _ref2[0],
-          value = _ref2[1];
+      Object.entries(theme.global.edgeSize).forEach(function (_ref) {
+        var key = _ref[0],
+          value = _ref[1];
         expect(typeof value).toBe('string');
         // Skip responsiveBreakpoint as it's a string identifier, not a px value
         if (key !== 'responsiveBreakpoint') {

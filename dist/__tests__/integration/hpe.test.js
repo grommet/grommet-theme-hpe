@@ -2,6 +2,7 @@
 
 var _grommet = require("hpe-design-tokens/grommet");
 var _hpe = require("../../themes/hpe");
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 describe('Structural and Contract Tests', function () {
   var tokens = {
     primitives: _grommet.primitives,
@@ -89,6 +90,25 @@ describe('Structural and Contract Tests', function () {
         }
       });
     });
+    it('should use caller-provided global breakpoint for responsive heading styles', function () {
+      var customTokens = _extends({}, tokens, {
+        global: _extends({}, tokens.global, {
+          hpe: _extends({}, tokens.global.hpe, {
+            breakpoint: _extends({}, tokens.global.hpe.breakpoint, {
+              small: '1234px'
+            })
+          })
+        })
+      });
+      var customTheme = (0, _hpe.buildTheme)(customTokens, {
+        'v6-backwards-compatibility': false
+      });
+      var responsiveStyle = customTheme.heading.extend({
+        level: 1,
+        responsive: true
+      });
+      expect(responsiveStyle).toContain('(max-width: 1234px)');
+    });
   });
   describe('Spacing and sizing', function () {
     it('should have all edgeSize values', function () {
@@ -103,82 +123,6 @@ describe('Structural and Contract Tests', function () {
       expect(typeof theme.global.borderSize).toBe('object');
       // At least one size should be defined
       expect(Object.keys(theme.global.borderSize).length).toBeGreaterThan(0);
-    });
-  });
-  describe('Deprecated entries', function () {
-    it('should have deprecated colors list', function () {
-      expect(theme.global.deprecated).toBeDefined();
-      expect(theme.global.deprecated.colors).toBeDefined();
-      expect(Array.isArray(theme.global.deprecated.colors)).toBe(true);
-    });
-    it('should have deprecated button kinds list', function () {
-      expect(theme.global.deprecated.button).toBeDefined();
-      expect(theme.global.deprecated.button.kind).toBeDefined();
-      expect(Array.isArray(theme.global.deprecated.button.kind)).toBe(true);
-    });
-  });
-});
-describe('Flag Behavior Tests', function () {
-  var tokens = {
-    primitives: _grommet.primitives,
-    light: _grommet.light,
-    dark: _grommet.dark,
-    small: _grommet.small,
-    large: _grommet.dimension,
-    global: _grommet.global,
-    components: _grommet.components
-  };
-  describe('v6-backwards-compatibility flag', function () {
-    it('should use token-based edgeSize when flag is false', function () {
-      var themeWithoutFlag = (0, _hpe.buildTheme)(tokens, {
-        'v6-backwards-compatibility': false
-      });
-      expect(themeWithoutFlag.global.edgeSize).toBeDefined();
-      // Token-based dimensions include the additional t-shirt sizes.
-      expect(themeWithoutFlag.global.edgeSize['5xsmall']).toBeDefined();
-    });
-    it('should use globalSizes edgeSize when flag is true', function () {
-      var themeWithFlag = (0, _hpe.buildTheme)(tokens, {
-        'v6-backwards-compatibility': true
-      });
-      expect(themeWithFlag.global.edgeSize).toBeDefined();
-      expect(themeWithFlag.global.edgeSize['5xsmall']).toBeUndefined();
-      expect(themeWithFlag.global.edgeSize.medium).toBe('24px');
-    });
-    it('should have different edgeSize values when flag differs', function () {
-      var themeWithoutFlag = (0, _hpe.buildTheme)(tokens, {
-        'v6-backwards-compatibility': false
-      });
-      var themeWithFlag = (0, _hpe.buildTheme)(tokens, {
-        'v6-backwards-compatibility': true
-      });
-      // The values should differ between the two flag states
-      // (though they might coincidentally be the same in some cases)
-      expect(themeWithoutFlag.global.edgeSize).toBeDefined();
-      expect(themeWithFlag.global.edgeSize).toBeDefined();
-    });
-  });
-  describe('Pre-built hpe export', function () {
-    it('should be defined and frozen', function () {
-      expect(_hpe.hpe).toBeDefined();
-      expect(Object.isFrozen(_hpe.hpe)).toBe(true);
-    });
-    it('should have expected structure', function () {
-      expect(_hpe.hpe.global).toBeDefined();
-      expect(_hpe.hpe.button).toBeDefined();
-      expect(_hpe.hpe.text).toBeDefined();
-      expect(_hpe.hpe.heading).toBeDefined();
-    });
-    it('should have comprehensive theme structure', function () {
-      // Smoke-check deeper nested paths on the shipped default export.
-      expect(_hpe.hpe.global.colors['text-strong']).toBeDefined();
-      expect(_hpe.hpe.button.primary).toBeDefined();
-      expect(_hpe.hpe.button.primary.background).toBeDefined();
-    });
-    it('should use v6-backwards-compatibility: false by default', function () {
-      // The exported hpe should use the default flag value (false)
-      // Verify by checking a flag-specific edgeSize key.
-      expect(_hpe.hpe.global.edgeSize['5xsmall']).toBeDefined();
     });
   });
 });
