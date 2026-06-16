@@ -25,10 +25,17 @@ describe('Deprecation entries', () => {
   it('contains expected deprecated color entries', () => {
     const names = theme.global.deprecated.colors.map((entry) => entry.name);
 
-    expect(names).toContain('disabled-text');
-    expect(names).toContain('background-cta-alternate');
-    expect(names).toContain('graph-0');
-    expect(names).toContain('graph-7');
+    expect(names).toEqual(
+      expect.arrayContaining([
+        'accent-1',
+        'neutral-1',
+        'status-error',
+        'graph-0',
+        'graph-7',
+        'disabled-text',
+        'background-cta-alternate',
+      ]),
+    );
   });
 
   it('contains expected deprecated button kinds', () => {
