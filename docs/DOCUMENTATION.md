@@ -42,110 +42,76 @@ Type declaration entrypoint for TypeScript consumers.
 
 Migration support logic for v2 transition scenarios.
 
+## Theme Builder API
+
+### `buildTheme(tokens, flags)` (`src/js/themes/hpe.js`)
+
+Builds the full HPE Grommet theme object from design tokens and feature flags.
+
+Note: `buildTheme` is exported for advanced customization scenarios and is not part of the public API. Consumers should use the prebuilt `hpe` export. Maintainers and/or contributors may need to generate a theme from custom token inputs (e.g., for testing future token versions) or explicitly control compatibility flags.
+
+- Signature: `buildTheme(tokens, flags)`
+- Defined in: `src/js/themes/hpe.js`
+- Exported from module: `src/js/themes/hpe.js` (`export { buildTheme }`)
+- Return value: deeply frozen theme object (`Object.isFrozen(result) === true`)
+
+#### Parameters
+
+- `tokens` (required): token bundle consumed by theme builders. Expected shape includes:
+  - `primitives`
+  - `light`
+  - `dark`
+  - `small`
+  - `large`
+  - `global`
+  - `components`
+- `flags` (required): feature-flag object for compatibility behavior.
+  - Supported flag: `'v6-backwards-compatibility'` (boolean)
+
+#### Behavior Notes
+
+- Composes the final theme by combining foundational builders (`global`, `dimensions`, `typography`, `colors`, `backgrounds`, `deprecations`, `fonts`) and family/component builders (`button`, `form`, `data`, `feedback`, `navigation`, `content`, `misc`, `layout`).
+- Adds theme-designer metadata (`name`, `rounding`, `scale`, `spacing`) to the returned object.
+- Flag impact:
+  - When `'v6-backwards-compatibility'` is `false`, edge sizes come from token-based sizing (modern behavior).
+  - When `'v6-backwards-compatibility'` is `true`, edge sizes use legacy global size mappings.
+- The exported prebuilt `hpe` theme is created by calling `buildTheme(...)` with `'v6-backwards-compatibility': false`.
+
+#### Example
+
+```js
+import { buildTheme } from './themes/hpe';
+
+const theme = buildTheme(tokens, {
+  'v6-backwards-compatibility': false,
+});
+```
+
 ## Theme Modules (`src/js/themes`)
 
-### `src/js/themes/index.js`
-
-Public export surface for theme-related modules.
-
-### `src/js/themes/hpe.js`
-
-Primary HPE theme definition and assembly logic.
-Distinctive purpose: this is the canonical theme implementation that combines token mappings, component styles, deprecations, and global theme settings.
-
-### `src/js/themes/global.js`
-
-Global theme assembly builder.
-Distinctive purpose: centralizes global settings (focus, drop, elevation, input/font defaults, and deprecations wiring).
-
-### `src/js/themes/deprecations.js`
-
-Deprecation message and list builder.
-Distinctive purpose: defines deprecated backgrounds/colors/button kinds and user-facing guidance.
-
-### `src/js/themes/fonts.js`
-
-Font helper utilities.
-Distinctive purpose: computes Graphik family aliasing and generates `@font-face` declarations.
-
-### `src/js/themes/dimensions.js`
-
-Dimension and breakpoint builder.
-Distinctive purpose: computes border, edge, radius, size, and breakpoint mappings from tokens and flags.
-
-### `src/js/themes/typography.js`
-
-Typography builder.
-Distinctive purpose: assembles anchor, text, paragraph, and heading theme structures.
-
-### `src/js/themes/button.js`
-
-Button theme builder.
-Distinctive purpose: constructs button kinds, states, sizes, and option behavior primitives.
-
-### `src/js/themes/form.js`
-
-Form family builder.
-Distinctive purpose: assembles field/input/select/range/rating-related component themes.
-
-### `src/js/themes/data.js`
-
-Data family builder.
-Distinctive purpose: assembles data table/chart/filter/search/sort/summary and toolbar themes.
-
-### `src/js/themes/feedback.js`
-
-Feedback family builder.
-Distinctive purpose: assembles notification, spinner, and layer themes.
-
-### `src/js/themes/navigation.js`
-
-Navigation family builder.
-Distinctive purpose: assembles tabs, menu, pagination, sidebar, nav, tip, and toggle group themes.
-
-### `src/js/themes/content.js`
-
-Content family builder.
-Distinctive purpose: assembles card/list/table/calendar/chart/carousel/avatar themes.
-
-### `src/js/themes/misc.js`
-
-Miscellaneous family builder.
-Distinctive purpose: assembles shared component themes such as box, header/footer, diagram, distribution, icon, meter, and tag.
-
-### `src/js/themes/layout.js`
-
-Layout family builder.
-Distinctive purpose: assembles page, pageHeader, video, and nameValuePair themes.
-
-### `src/js/themes/utils.js`
-
-Shared helper utilities (for example object freezing and token resolution helpers).
-Distinctive purpose: common logic used by theme code and unit-tested directly.
-
-### `src/js/themes/colors.js`
-
-Color token mapping and color aliases.
-Distinctive purpose: central place for color behavior and compatibility mappings.
-
-### `src/js/themes/backgrounds.js`
-
-Background token mapping and background presets.
-Distinctive purpose: dedicated source of background theme values.
-
-### `src/js/themes/prism.js`
-
-Prism syntax-highlighting theme definitions.
-Distinctive purpose: code-block syntax color styling separate from base component theming.
-
-### `src/js/themes/hpePop.js`
-
-Alternative/variant HPE theme export.
-Distinctive purpose: variant theme configuration maintained separately from the core `hpe` theme.
-
-### `src/js/themes/index.d.ts`
-
-Type declarations for theme exports.
+| Module                          | Role                                                                                | Purpose                                                                                                                             |
+| ------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `src/js/themes/index.js`        | Public export surface for theme-related modules.                                    |                                                                                                                                     |
+| `src/js/themes/index.d.ts`      | Type declarations for theme exports.                                                |                                                                                                                                     |
+| `src/js/themes/hpe.js`          | Primary HPE theme definition and assembly logic.                                    | This is the canonical theme implementation that combines token mappings, component styles, deprecations, and global theme settings. |
+| `src/js/themes/hpePop.js`       | Alternative/variant HPE theme export.                                               | Variant theme configuration maintained separately from the core `hpe` theme.                                                        |
+| `src/js/themes/global.js`       | Global theme assembly builder.                                                      | Centralizes global settings (focus, drop, elevation, input/font defaults, and deprecations wiring).                                 |
+| `src/js/themes/deprecations.js` | Deprecation message and list builder.                                               | Defines deprecated backgrounds/colors/button kinds and user-facing guidance.                                                        |
+| `src/js/themes/colors.js`       | Color token mapping and color aliases.                                              | Central place for color behavior and compatibility mappings.                                                                        |
+| `src/js/themes/backgrounds.js`  | Background token mapping and background presets.                                    | Dedicated source of background theme values.                                                                                        |
+| `src/js/themes/fonts.js`        | Font helper utilities.                                                              | Computes Graphik family aliasing and generates `@font-face` declarations.                                                           |
+| `src/js/themes/dimensions.js`   | Dimension and breakpoint builder.                                                   | Computes border, edge, radius, size, and breakpoint mappings from tokens and flags.                                                 |
+| `src/js/themes/utils.js`        | Shared helper utilities (for example object freezing and token resolution helpers). | Common logic used by theme code and unit-tested directly.                                                                           |
+| `src/js/themes/typography.js`   | Typography builder.                                                                 | Assembles anchor, text, paragraph, and heading theme structures.                                                                    |
+| `src/js/themes/button.js`       | Button theme builder.                                                               | Constructs button kinds, states, sizes, and option behavior primitives.                                                             |
+| `src/js/themes/form.js`         | Form family builder.                                                                | Assembles field/input/select/range/rating-related component themes.                                                                 |
+| `src/js/themes/data.js`         | Data family builder.                                                                | Assembles data table/chart/filter/search/sort/summary and toolbar themes.                                                           |
+| `src/js/themes/feedback.js`     | Feedback family builder.                                                            | Assembles notification, spinner, and layer themes.                                                                                  |
+| `src/js/themes/navigation.js`   | Navigation family builder.                                                          | Assembles tabs, menu, pagination, sidebar, nav, tip, and toggle group themes.                                                       |
+| `src/js/themes/content.js`      | Content family builder.                                                             | Assembles card/list/table/calendar/chart/carousel/avatar themes.                                                                    |
+| `src/js/themes/misc.js`         | Miscellaneous family builder.                                                       | Assembles shared component themes such as box, header/footer, diagram, distribution, icon, meter, and tag.                          |
+| `src/js/themes/layout.js`       | Layout family builder.                                                              | Assembles page, pageHeader, video, and nameValuePair themes.                                                                        |
+| `src/js/themes/prism.js`        | Prism syntax-highlighting theme definitions.                                        | Code-block syntax color styling separate from base component theming.                                                               |
 
 ## Test Layout (`src/js/__tests__`)
 

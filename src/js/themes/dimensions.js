@@ -1,5 +1,8 @@
 import { baseSpacing } from './utils';
 
+// static global sizes for backwards compatibility with v6 theme. Dimension tokens
+// were introduced in v7 as the new spacing system was introduced, requiring
+// consumers to remap t-shirt sizes for layout parity.
 const globalSizes = {
   borderSize: {
     xsmall: '1px',
@@ -44,6 +47,9 @@ const globalSizes = {
   },
 };
 
+// static responsive global sizes for backwards compatibility with v6 theme.
+// Dimension tokens were introduced in v7 as the new spacing system was introduced,
+// requiring consumers to remap t-shirt sizes for layout parity.
 const responsiveGlobalSizes = {
   borderSize: {
     xsmall: '1px',
