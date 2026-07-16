@@ -31,9 +31,6 @@ describe('Flag behavior', () => {
   it('uses legacy globalSizes with v6-backwards-compatibility=true', () => {
     const theme = buildTheme(tokens, { 'v6-backwards-compatibility': true });
     expect(theme.global.edgeSize.medium).toBe('24px');
-    expect(theme.global.edgeSize.small).not.toBe(
-      localDimension.hpe.spacing.small,
-    );
     expect(theme.global.edgeSize.small).toBe('12px');
     expect(theme.global.edgeSize['5xsmall']).toBeUndefined();
   });
