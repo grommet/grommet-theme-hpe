@@ -3,5 +3,5 @@
 export { hpe } from './hpe';
 export * from './hpePop';
 export * from './backgrounds';
-export * from './colors';
+export { colors } from './colors';
 export * from './prism';
