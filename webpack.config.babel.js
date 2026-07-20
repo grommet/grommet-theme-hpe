@@ -1,4 +1,6 @@
 import path from 'path';
+import webpack from 'webpack';
+import { version } from './package.json';
 
 export default {
   entry: './src/js/index.js',
@@ -12,6 +14,11 @@ export default {
     react: 'React',
     'styled-components': 'styled',
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.npm_package_version': JSON.stringify(version),
+    }),
+  ],
   resolve: {
     extensions: ['.js', '.json'],
   },

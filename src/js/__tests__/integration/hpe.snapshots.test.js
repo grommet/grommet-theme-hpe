@@ -115,4 +115,18 @@ describe('Theme snapshot groups', () => {
       avatar: theme.avatar,
     }).toMatchSnapshot();
   });
+
+  it('matches theme metadata snapshot', () => {
+    expect({
+      name: theme.name,
+      rounding: theme.rounding,
+      scale: theme.scale,
+      spacing: theme.spacing,
+      version: theme.version,
+    }).toMatchSnapshot();
+  });
+
+  it('matches top-level theme shape', () => {
+    expect(Object.keys(theme).sort()).toMatchSnapshot();
+  });
 });

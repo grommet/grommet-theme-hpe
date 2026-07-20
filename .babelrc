@@ -1,3 +1,4 @@
 {
-  "presets": ["./tools/grommet-babel-preset-env", "@babel/preset-react"]
+  "presets": ["./tools/grommet-babel-preset-env", "@babel/preset-react"],
+  "plugins": ["transform-inline-environment-variables"]
 }

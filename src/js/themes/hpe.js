@@ -436,6 +436,7 @@ const buildTheme = (tokens, flags) => {
     rounding: 4,
     scale: 1.1,
     spacing: 24,
+    version: process.env.npm_package_version,
   });
 };
 
