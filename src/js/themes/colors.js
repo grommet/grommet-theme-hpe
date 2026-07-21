@@ -1,4 +1,9 @@
-import { primitives, dark, light, components } from 'hpe-design-tokens/grommet';
+import {
+  primitives as localPrimitives,
+  dark as localDark,
+  light as localLight,
+  components as localComponents,
+} from 'hpe-design-tokens/grommet';
 
 const flattenObject = (obj, delimiter = '.', prefix = '') =>
   Object.keys(obj).reduce((acc, k) => {
@@ -24,9 +29,9 @@ const flattenObject = (obj, delimiter = '.', prefix = '') =>
 // Utility to access nested object properties via dot-notation string path
 // and swap light/dark theme values.
 const access = (path, object) => path.split('.').reduce((o, i) => o[i], object);
-const swapped = (path) => {
-  const lightValue = access(`${path}`, dark);
-  const darkValue = access(`${path}`, light);
+const swapped = (path, darkTheme, lightTheme) => {
+  const lightValue = access(`${path}`, darkTheme);
+  const darkValue = access(`${path}`, lightTheme);
 
   return {
     light: lightValue,
@@ -34,181 +39,209 @@ const swapped = (path) => {
   };
 };
 
-const flatColors = flattenObject(light, '-');
-const tokenColors = {};
-Object.keys(flatColors).forEach((color) => {
-  if (!color.includes('shadow')) {
-    if (color === 'focus-support') {
-      // special case for 'focus-support' because it follows a different
-      // naming pattern than other token colors. The change ensures that
-      // focus-support is correctly added to the colors array
-      tokenColors[color] = {
-        light: light.hpe.color['focus-support'],
-        dark: dark.hpe.color['focus-support'],
-      };
-    } else {
-      const [category] = color.split('-');
-      const flatName = color.split('-').slice(1).join('-');
-      tokenColors[color] = {
-        light: access(
-          `hpe.color.${category}${flatName ? `.${flatName}` : ''}`,
-          light,
-        ),
-        dark: access(
-          `hpe.color.${category}${flatName ? `.${flatName}` : ''}`,
-          dark,
-        ),
-      };
+export const buildColors = (tokens) => {
+  const { primitives, dark, light, components } = tokens;
+
+  const flatColors = flattenObject(light, '-');
+  const tokenColors = {};
+  Object.keys(flatColors).forEach((color) => {
+    if (!color.includes('shadow')) {
+      if (color === 'focus-support') {
+        // special case for 'focus-support' because it follows a different
+        // naming pattern than other token colors. The change ensures that
+        // focus-support is correctly added to the colors array
+        tokenColors[color] = {
+          light: light.hpe.color['focus-support'],
+          dark: dark.hpe.color['focus-support'],
+        };
+      } else {
+        const [category] = color.split('-');
+        const flatName = color.split('-').slice(1).join('-');
+        tokenColors[color] = {
+          light: access(
+            `hpe.color.${category}${flatName ? `.${flatName}` : ''}`,
+            light,
+          ),
+          dark: access(
+            `hpe.color.${category}${flatName ? `.${flatName}` : ''}`,
+            dark,
+          ),
+        };
+      }
     }
-  }
-});
-export const colors = {
-  // Here we're passing through all the colors from hpe-design-tokens
-  ...tokenColors,
-  // Override specific colors to swap light and dark.hpe values
-  // See https://github.com/grommet/grommet/issues/7818
-  'text-onPrimaryStrong': swapped('hpe.color.text.onPrimaryStrong'),
-  'text-onSelectedPrimaryStrong': swapped(
-    'hpe.color.text.onSelectedPrimaryStrong',
-  ),
-  'icon-onPrimaryStrong': swapped('hpe.color.icon.onPrimaryStrong'),
-  'icon-onSelectedPrimaryStrong': swapped(
-    'hpe.color.icon.onSelectedPrimaryStrong',
-  ),
-  control: 'background-primary-strong',
-  'active-text': 'text-strong',
-  'text-primary-button': components.hpe.button.primary.rest.textColor,
-  brand: {
-    dark: dark.hpe.color.decorative.brand,
-    light: light.hpe.color.decorative.brand,
-  },
-  'background-layer-overlay': {
-    dark: dark.hpe.color.background.screenOverlay,
-    light: light.hpe.color.background.screenOverlay,
-  },
-  'active-background': {
-    dark: dark.hpe.color.background.active,
-    light: light.hpe.color.background.active,
-  },
-  background: {
-    dark: dark.hpe.color.background.default,
-    light: light.hpe.color.background.default,
-  },
-  text: {
-    dark: dark.hpe.color.text.default,
-    light: light.hpe.color.text.default,
-  },
-  // wanted to deprecate text-xweak but namespace is used
-  // in grommet code
-  'text-xweak': {
-    dark: dark.hpe.color.text.weak,
-    light: light.hpe.color.text.weak,
-  },
-  border: {
-    dark: dark.hpe.color.border.default,
-    light: light.hpe.color.border.default,
-  },
-  blue: {
-    dark: dark.hpe.color.decorative.blue,
-    light: light.hpe.color.decorative.blue,
-  },
-  'blue!': primitives.hpe.base.color['blue-700'],
-  green: {
-    dark: dark.hpe.color.decorative.green,
-    light: light.hpe.color.decorative.green,
-  },
-  'green!': {
-    dark: dark.hpe.color.decorative.brand,
-    light: light.hpe.color.decorative.brand,
-  },
-  purple: {
-    dark: dark.hpe.color.decorative.purple,
-    light: light.hpe.color.decorative.purple,
-  },
-  'purple!': '#7630EA',
-  'status-critical': {
-    dark: dark.hpe.color.icon.critical,
-    light: light.hpe.color.icon.critical,
-  },
-  'status-warning': {
-    dark: dark.hpe.color.icon.warning,
-    light: light.hpe.color.icon.warning,
-  },
-  'status-ok': { dark: dark.hpe.color.icon.ok, light: light.hpe.color.icon.ok },
-  'status-unknown': {
-    dark: dark.hpe.color.icon.unknown,
-    light: light.hpe.color.icon.unknown,
-  },
-  'validation-critical': {
-    light: light.hpe.color.background.critical,
-    dark: dark.hpe.color.background.critical,
-  },
-  'validation-ok': {
-    light: light.hpe.color.background.ok,
-    dark: dark.hpe.color.background.ok,
-  },
-  'validation-warning': {
-    light: light.hpe.color.background.warning,
-    dark: dark.hpe.color.background.warning,
-  },
-  icon: {
-    light: light.hpe.color.icon.default,
-    dark: dark.hpe.color.icon.default,
-  },
-  'selected-background': 'background-selected-strong-enabled',
-  'selected-text': 'text-onSelectedPrimaryStrong',
-  placeholder: {
-    light: light.hpe.color.text.placeholder,
-    dark: dark.hpe.color.text.placeholder,
-  },
-  // ---- DEPRECATED ---- //
-  // Need to keep these deprecated keys (using undefined or aliases)
-  // to avoid falling back to Grommet defaults
-  'accent-1': undefined,
-  'accent-2': undefined,
-  'accent-3': undefined,
-  'accent-4': undefined,
-  'neutral-1': undefined,
-  'neutral-2': undefined,
-  'neutral-3': undefined,
-  'neutral-4': undefined,
-  'neutral-5': undefined,
-  'status-error': undefined,
-  'background-cta-alternate': 'background-contrast',
-  'disabled-text': 'text-disabled',
-  // In v10 change graph colors to undefined to avoid falling back to Grommet defaults
-  'graph-0': {
-    light: light.hpe.color.dataVis['categorical-10'],
-    dark: dark.hpe.color.dataVis['categorical-10'],
-  },
-  'graph-1': {
-    light: light.hpe.color.dataVis['categorical-20'],
-    dark: dark.hpe.color.dataVis['categorical-20'],
-  },
-  'graph-2': {
-    light: light.hpe.color.dataVis['categorical-30'],
-    dark: dark.hpe.color.dataVis['categorical-30'],
-  },
-  'graph-3': {
-    light: light.hpe.color.dataVis['categorical-40'],
-    dark: dark.hpe.color.dataVis['categorical-40'],
-  },
-  'graph-4': {
-    light: light.hpe.color.dataVis['categorical-50'],
-    dark: dark.hpe.color.dataVis['categorical-50'],
-  },
-  'graph-5': {
-    light: light.hpe.color.dataVis['categorical-60'],
-    dark: dark.hpe.color.dataVis['categorical-60'],
-  },
-  'graph-6': {
-    light: light.hpe.color.dataVis['categorical-70'],
-    dark: dark.hpe.color.dataVis['categorical-70'],
-  },
-  'graph-7': {
-    light: light.hpe.color.dataVis['categorical-80'],
-    dark: dark.hpe.color.dataVis['categorical-80'],
-  },
-  'status-disabled': '#CCCCCC', // deprecated, does not support light and dark.hpe. use text-weak instead
-  // -------------------- //
+  });
+
+  return {
+    // Here we're passing through all the colors from hpe-design-tokens
+    ...tokenColors,
+    // Override specific colors to swap light and dark.hpe values
+    // See https://github.com/grommet/grommet/issues/7818
+    'text-onPrimaryStrong': swapped(
+      'hpe.color.text.onPrimaryStrong',
+      dark,
+      light,
+    ),
+    'text-onSelectedPrimaryStrong': swapped(
+      'hpe.color.text.onSelectedPrimaryStrong',
+      dark,
+      light,
+    ),
+    'icon-onPrimaryStrong': swapped(
+      'hpe.color.icon.onPrimaryStrong',
+      dark,
+      light,
+    ),
+    'icon-onSelectedPrimaryStrong': swapped(
+      'hpe.color.icon.onSelectedPrimaryStrong',
+      dark,
+      light,
+    ),
+    control: 'background-primary-strong',
+    'active-text': 'text-strong',
+    'text-primary-button': components.hpe.button.primary.rest.textColor,
+    brand: {
+      dark: dark.hpe.color.decorative.brand,
+      light: light.hpe.color.decorative.brand,
+    },
+    'background-layer-overlay': {
+      dark: dark.hpe.color.background.screenOverlay,
+      light: light.hpe.color.background.screenOverlay,
+    },
+    'active-background': {
+      dark: dark.hpe.color.background.active,
+      light: light.hpe.color.background.active,
+    },
+    background: {
+      dark: dark.hpe.color.background.default,
+      light: light.hpe.color.background.default,
+    },
+    text: {
+      dark: dark.hpe.color.text.default,
+      light: light.hpe.color.text.default,
+    },
+    // wanted to deprecate text-xweak but namespace is used
+    // in grommet code
+    'text-xweak': {
+      dark: dark.hpe.color.text.weak,
+      light: light.hpe.color.text.weak,
+    },
+    border: {
+      dark: dark.hpe.color.border.default,
+      light: light.hpe.color.border.default,
+    },
+    blue: {
+      dark: dark.hpe.color.decorative.blue,
+      light: light.hpe.color.decorative.blue,
+    },
+    'blue!': primitives.hpe.base.color['blue-700'],
+    green: {
+      dark: dark.hpe.color.decorative.green,
+      light: light.hpe.color.decorative.green,
+    },
+    'green!': {
+      dark: dark.hpe.color.decorative.brand,
+      light: light.hpe.color.decorative.brand,
+    },
+    purple: {
+      dark: dark.hpe.color.decorative.purple,
+      light: light.hpe.color.decorative.purple,
+    },
+    'purple!': '#7630EA',
+    'status-critical': {
+      dark: dark.hpe.color.icon.critical,
+      light: light.hpe.color.icon.critical,
+    },
+    'status-warning': {
+      dark: dark.hpe.color.icon.warning,
+      light: light.hpe.color.icon.warning,
+    },
+    'status-ok': {
+      dark: dark.hpe.color.icon.ok,
+      light: light.hpe.color.icon.ok,
+    },
+    'status-unknown': {
+      dark: dark.hpe.color.icon.unknown,
+      light: light.hpe.color.icon.unknown,
+    },
+    'validation-critical': {
+      light: light.hpe.color.background.critical,
+      dark: dark.hpe.color.background.critical,
+    },
+    'validation-ok': {
+      light: light.hpe.color.background.ok,
+      dark: dark.hpe.color.background.ok,
+    },
+    'validation-warning': {
+      light: light.hpe.color.background.warning,
+      dark: dark.hpe.color.background.warning,
+    },
+    icon: {
+      light: light.hpe.color.icon.default,
+      dark: dark.hpe.color.icon.default,
+    },
+    'selected-background': 'background-selected-strong-enabled',
+    'selected-text': 'text-onSelectedPrimaryStrong',
+    placeholder: {
+      light: light.hpe.color.text.placeholder,
+      dark: dark.hpe.color.text.placeholder,
+    },
+    // ---- DEPRECATED ---- //
+    // Need to keep these deprecated keys (using undefined or aliases)
+    // to avoid falling back to Grommet defaults
+    'accent-1': undefined,
+    'accent-2': undefined,
+    'accent-3': undefined,
+    'accent-4': undefined,
+    'neutral-1': undefined,
+    'neutral-2': undefined,
+    'neutral-3': undefined,
+    'neutral-4': undefined,
+    'neutral-5': undefined,
+    'status-error': undefined,
+    'background-cta-alternate': 'background-contrast',
+    'disabled-text': 'text-disabled',
+    // In v10 change graph colors to undefined to avoid falling back to Grommet defaults
+    'graph-0': {
+      light: light.hpe.color.dataVis['categorical-10'],
+      dark: dark.hpe.color.dataVis['categorical-10'],
+    },
+    'graph-1': {
+      light: light.hpe.color.dataVis['categorical-20'],
+      dark: dark.hpe.color.dataVis['categorical-20'],
+    },
+    'graph-2': {
+      light: light.hpe.color.dataVis['categorical-30'],
+      dark: dark.hpe.color.dataVis['categorical-30'],
+    },
+    'graph-3': {
+      light: light.hpe.color.dataVis['categorical-40'],
+      dark: dark.hpe.color.dataVis['categorical-40'],
+    },
+    'graph-4': {
+      light: light.hpe.color.dataVis['categorical-50'],
+      dark: dark.hpe.color.dataVis['categorical-50'],
+    },
+    'graph-5': {
+      light: light.hpe.color.dataVis['categorical-60'],
+      dark: dark.hpe.color.dataVis['categorical-60'],
+    },
+    'graph-6': {
+      light: light.hpe.color.dataVis['categorical-70'],
+      dark: dark.hpe.color.dataVis['categorical-70'],
+    },
+    'graph-7': {
+      light: light.hpe.color.dataVis['categorical-80'],
+      dark: dark.hpe.color.dataVis['categorical-80'],
+    },
+    'status-disabled': '#CCCCCC', // deprecated, does not support light and dark.hpe. use text-weak instead
+    // -------------------- //
+  };
 };
+
+// Preserve the public prebuilt colors export using the package default tokens.
+export const colors = buildColors({
+  primitives: localPrimitives,
+  dark: localDark,
+  light: localLight,
+  components: localComponents,
+});
