@@ -415,6 +415,7 @@ const buildTheme = (tokens, flags) => {
     sidebar: navigationTheme.sidebar,
     spinner: feedbackTheme.spinner,
     starRating: formTheme.starRating,
+    stepper: miscTheme.stepper,
     tab: navigationTheme.tab,
     tabs: navigationTheme.tabs,
     table: contentTheme.table,

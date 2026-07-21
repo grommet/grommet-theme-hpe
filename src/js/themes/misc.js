@@ -1,6 +1,6 @@
 export const buildMiscTheme = (tokens, context) => {
   const { components, global, large } = tokens;
-  const { Close } = context.icons;
+  const { Close, CircleFill, Checkmark, StatusCritical } = context.icons;
 
   return {
     box: {
@@ -40,6 +40,153 @@ export const buildMiscTheme = (tokens, context) => {
         'dataVis-categorical-80',
       ],
       gap: '5xsmall',
+    },
+    stepper: {
+      description: {
+        color: 'text-default',
+      },
+      pending: {
+        indicator: {
+          border: 'icon-weak',
+          substep: {
+            iconSize: 'xsmall',
+          },
+          hover: {
+            border: 'icon-strong',
+          },
+        },
+        label: {
+          color: 'text-default',
+          hover: {
+            color: 'text-strong',
+          },
+        },
+        connector: {
+          color: 'border-default',
+        },
+      },
+      current: {
+        indicator: {
+          icon: CircleFill,
+          background: 'background-selected-primary-strong',
+          color: 'icon-onStrong',
+          border: 'transparent',
+          substep: {
+            iconSize: 'xsmall',
+          },
+          hover: {
+            background: 'background-selected-primary-strong-hover',
+            border: 'transparent',
+          },
+        },
+        label: {
+          color: 'text-primary',
+        },
+      },
+      currentCompleted: {
+        indicator: {
+          icon: Checkmark,
+          background: 'background-selected-primary-strong',
+          color: 'icon-onStrong',
+          border: 'transparent',
+          substep: {
+            iconSize: 'xsmall',
+          },
+          hover: {
+            background: 'background-selected-primary-strong-hover',
+            border: 'transparent',
+          },
+        },
+        label: {
+          color: 'text-primary',
+        },
+      },
+      completed: {
+        indicator: {
+          icon: Checkmark,
+          color: 'icon-primary',
+          border: 'icon-primary',
+          substep: {
+            iconSize: 'xsmall',
+          },
+          hover: {
+            border: 'icon-primary',
+          },
+        },
+        label: {
+          color: 'text-primary',
+        },
+        connector: {
+          color: 'foreground-primary',
+        },
+      },
+      error: {
+        indicator: {
+          icon: StatusCritical,
+          border: 'icon-critical',
+          color: 'icon-critical',
+          substep: {
+            iconSize: 'xsmall',
+          },
+          hover: {
+            border: 'icon-critical',
+            color: 'icon-critical',
+          },
+        },
+        label: {
+          color: 'text-critical',
+        },
+        connector: {
+          color: 'border-critical',
+        },
+        helperText: {
+          color: 'text-critical',
+        },
+      },
+      currentError: {
+        indicator: {
+          icon: StatusCritical,
+          border: 'transparent',
+          background: 'icon-critical',
+          color: 'icon-onStrong',
+          substep: {
+            iconSize: 'xsmall',
+          },
+          hover: {
+            background: 'icon-critical',
+            border: 'transparent',
+            color: 'icon-onStrong',
+          },
+        },
+        label: {
+          color: 'text-critical',
+        },
+        connector: {
+          color: 'border-critical',
+        },
+        helperText: {
+          color: 'text-critical',
+        },
+      },
+      disabled: {
+        indicator: {
+          border: 'icon-disabled',
+          background: 'transparent',
+          hover: {
+            border: 'icon-disabled',
+            background: 'transparent',
+          },
+        },
+        label: {
+          color: 'text-default',
+        },
+        connector: {
+          color: 'border-disabled',
+        },
+        helperText: {
+          color: 'text-default',
+        },
+      },
     },
     tag: {
       border: { color: 'border-weak' },
