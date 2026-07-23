@@ -1,6 +1,19 @@
 export const buildMiscTheme = (tokens, context) => {
-  const { components, global, large } = tokens;
+  const { components, global, large, light, dark } = tokens;
   const { Close, CircleFill, Checkmark, StatusCritical } = context.icons;
+
+  // `icon-onSelectedPrimaryStrong` in theme.global.colors (colors.js) has its
+  // light/dark values intentionally swapped to compensate for Grommet's
+  // background-driven smart color pairing (see colors.js `swapped()`).
+  // Stepper's indicator.color is resolved via normalizeColor(color, theme),
+  // which just picks light/dark off of theme.dark with no smart pairing, so
+  // using the semantic token name here would render the swapped/wrong color.
+  // Pulling the raw values directly from the token files gives us the color
+  // exactly as authored.
+  const iconOnSelectedPrimaryStrong = {
+    light: light.hpe.color.icon.onSelectedPrimaryStrong,
+    dark: dark.hpe.color.icon.onSelectedPrimaryStrong,
+  };
 
   return {
     box: {
@@ -69,7 +82,7 @@ export const buildMiscTheme = (tokens, context) => {
         indicator: {
           icon: CircleFill,
           background: 'background-selected-primary-strong',
-          color: 'icon-onStrong',
+          color: iconOnSelectedPrimaryStrong,
           border: 'transparent',
           substep: {
             iconSize: 'xsmall',
@@ -87,7 +100,7 @@ export const buildMiscTheme = (tokens, context) => {
         indicator: {
           icon: Checkmark,
           background: 'background-selected-primary-strong',
-          color: 'icon-onStrong',
+          color: iconOnSelectedPrimaryStrong,
           border: 'transparent',
           substep: {
             iconSize: 'xsmall',
