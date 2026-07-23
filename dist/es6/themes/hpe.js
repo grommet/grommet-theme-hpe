@@ -37,7 +37,6 @@ import { Info } from '@hpe-design/icons-grommet/icons/Info';
 import { StatusCritical } from '@hpe-design/icons-grommet/icons/StatusCritical';
 import { baseSpacing, deepFreeze, getThemeColor } from './utils';
 import { backgrounds } from './backgrounds';
-import { colors } from './colors';
 import { buildDimensions } from './dimensions';
 import { buildTypography } from './typography';
 import { buildButtonTheme } from './button';
@@ -51,11 +50,13 @@ import { buildLayoutTheme } from './layout';
 import { buildDeprecations } from './deprecations';
 import { getGraphikFamily, getGraphikFontFaces } from './fonts';
 import { buildGlobalTheme } from './global';
+import { buildColors } from './colors';
 var buildTheme = function buildTheme(tokens, flags) {
   var light = tokens.light,
     dark = tokens.dark,
     global = tokens.global,
     components = tokens.components;
+  var colors = buildColors(tokens);
   var dimensions = buildDimensions(tokens, flags);
   var typography = buildTypography(tokens);
   var _buildButtonTheme = buildButtonTheme(tokens, dimensions),

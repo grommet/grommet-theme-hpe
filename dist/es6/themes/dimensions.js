@@ -1,5 +1,9 @@
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 import { baseSpacing } from './utils';
+
+// static global sizes for backwards compatibility with v6 theme. Dimension tokens
+// were introduced in v7 as the new spacing system was introduced, requiring
+// consumers to remap t-shirt sizes for layout parity.
 var globalSizes = {
   borderSize: {
     xsmall: '1px',
@@ -67,6 +71,10 @@ var globalSizes = {
     full: '100%'
   }
 };
+
+// static responsive global sizes for backwards compatibility with v6 theme.
+// Dimension tokens were introduced in v7 as the new spacing system was introduced,
+// requiring consumers to remap t-shirt sizes for layout parity.
 var responsiveGlobalSizes = {
   borderSize: {
     xsmall: '1px',

@@ -39,7 +39,6 @@ var _Info = require("@hpe-design/icons-grommet/icons/Info");
 var _StatusCritical = require("@hpe-design/icons-grommet/icons/StatusCritical");
 var _utils = require("./utils");
 var _backgrounds = require("./backgrounds");
-var _colors = require("./colors");
 var _dimensions = require("./dimensions");
 var _typography = require("./typography");
 var _button = require("./button");
@@ -53,6 +52,7 @@ var _layout = require("./layout");
 var _deprecations = require("./deprecations");
 var _fonts = require("./fonts");
 var _global = require("./global");
+var _colors = require("./colors");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); } // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 var buildTheme = exports.buildTheme = function buildTheme(tokens, flags) {
@@ -60,6 +60,7 @@ var buildTheme = exports.buildTheme = function buildTheme(tokens, flags) {
     dark = tokens.dark,
     global = tokens.global,
     components = tokens.components;
+  var colors = (0, _colors.buildColors)(tokens);
   var dimensions = (0, _dimensions.buildDimensions)(tokens, flags);
   var typography = (0, _typography.buildTypography)(tokens);
   var _buildButtonTheme = (0, _button.buildButtonTheme)(tokens, dimensions),
@@ -146,7 +147,7 @@ var buildTheme = exports.buildTheme = function buildTheme(tokens, flags) {
     defaultMode: 'light',
     global: (0, _global.buildGlobalTheme)(tokens, {
       backgrounds: _backgrounds.backgrounds,
-      colors: _colors.colors,
+      colors: colors,
       dimensions: dimensions,
       deprecations: deprecations,
       getThemeColor: _utils.getThemeColor,

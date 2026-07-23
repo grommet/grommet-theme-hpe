@@ -3,9 +3,11 @@
 
 exports.__esModule = true;
 var _exportNames = {
-  hpe: true
+  hpe: true,
+  colors: true,
+  prism: true
 };
-exports.hpe = void 0;
+exports.prism = exports.hpe = exports.colors = void 0;
 var _hpe = require("./hpe");
 exports.hpe = _hpe.hpe;
 var _hpePop = require("./hpePop");
@@ -23,16 +25,6 @@ Object.keys(_backgrounds).forEach(function (key) {
   exports[key] = _backgrounds[key];
 });
 var _colors = require("./colors");
-Object.keys(_colors).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  if (key in exports && exports[key] === _colors[key]) return;
-  exports[key] = _colors[key];
-});
+exports.colors = _colors.colors;
 var _prism = require("./prism");
-Object.keys(_prism).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  if (key in exports && exports[key] === _prism[key]) return;
-  exports[key] = _prism[key];
-});
+exports.prism = _prism.prism;

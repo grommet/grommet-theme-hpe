@@ -1,123 +1,129 @@
 "use strict";
 
 exports.__esModule = true;
-exports.prism = void 0;
+exports.prism = exports.buildPrism = void 0;
 var _grommet = require("hpe-design-tokens/grommet");
 var _colors = require("./colors");
 // Theme for code syntax highlighting
 // Exported theme object is consumed by ReactSyntaxHighlighter + PrismJS
 // https://github.com/react-syntax-highlighter/react-syntax-highlighter#prism
 
-var colors = {
-  atrule: {
-    dark: _grommet.primitives.hpe.base.color['fuschia-200'],
-    light: _grommet.primitives.hpe.base.color['fuschia-700']
-  },
-  'attr-name': {
-    dark: _grommet.primitives.hpe.base.color['plum-100'],
-    light: _grommet.primitives.hpe.base.color['plum-600']
-  },
-  'attr-value': {
-    dark: _grommet.primitives.hpe.base.color['fuschia-200'],
-    light: _grommet.primitives.hpe.base.color['fuschia-700']
-  },
-  background: {
-    dark: 'black',
-    light: _colors.colors['background-contrast'].light
-  },
-  "boolean": {
-    dark: _grommet.primitives.hpe.base.color['plum-100'],
-    light: _grommet.primitives.hpe.base.color['plum-600']
-  },
-  'class-name': {
-    dark: _grommet.primitives.hpe.base.color['coral-200'],
-    light: _grommet.primitives.hpe.base.color['coral-500']
-  },
-  builtin: {
-    dark: _grommet.primitives.hpe.base.color['plum-100'],
-    light: _grommet.primitives.hpe.base.color['plum-600']
-  },
-  "char": {
-    dark: _grommet.primitives.hpe.base.color['plum-100'],
-    light: _grommet.primitives.hpe.base.color['plum-600']
-  },
-  code: {
-    dark: _grommet.dark.hpe.color.text["default"],
-    light: _grommet.light.hpe.color.text["default"]
-  },
-  comment: {
-    dark: _grommet.primitives.hpe.base.color['green-550'],
-    light: _grommet.primitives.hpe.base.color['green-800']
-  },
-  entity: {
-    dark: _grommet.primitives.hpe.base.color['blue-200'],
-    light: _grommet.primitives.hpe.base.color['blue-700']
-  },
-  "function": {
-    dark: _grommet.primitives.hpe.base.color['coral-200'],
-    light: _grommet.primitives.hpe.base.color['coral-500']
-  },
-  important: {
-    dark: _grommet.primitives.hpe.base.color['fuschia-200'],
-    light: _grommet.primitives.hpe.base.color['fuschia-700']
-  },
-  inserted: {
-    dark: _grommet.primitives.hpe.base.color['plum-100'],
-    light: _grommet.primitives.hpe.base.color['plum-600']
-  },
-  keyword: {
-    dark: _grommet.primitives.hpe.base.color['blue-200'],
-    light: _grommet.primitives.hpe.base.color['blue-700']
-  },
-  'maybe-class-name': {
-    dark: _grommet.primitives.hpe.base.color['purple-200'],
-    light: _grommet.primitives.hpe.base.color['purple-700']
-  },
-  number: {
-    dark: _grommet.primitives.hpe.base.color['plum-100'],
-    light: _grommet.primitives.hpe.base.color['plum-600']
-  },
-  operator: {
-    dark: _grommet.primitives.hpe.base.color['fuschia-200'],
-    light: _grommet.primitives.hpe.base.color['fuschia-700']
-  },
-  regex: {
-    dark: _grommet.primitives.hpe.base.color['fuschia-200'],
-    light: _grommet.primitives.hpe.base.color['fuschia-700']
-  },
-  selector: {
-    dark: _grommet.primitives.hpe.base.color['plum-100'],
-    light: _grommet.primitives.hpe.base.color['plum-600']
-  },
-  string: {
-    dark: _grommet.primitives.hpe.base.color['plum-100'],
-    light: _grommet.primitives.hpe.base.color['plum-600']
-  },
-  url: {
-    dark: _grommet.primitives.hpe.base.color['blue-200'],
-    light: _grommet.primitives.hpe.base.color['blue-700']
-  },
-  variable: {
-    dark: _grommet.primitives.hpe.base.color['blue-200'],
-    light: _grommet.primitives.hpe.base.color['blue-700']
-  },
-  '.language-css .token.string': {
-    dark: _grommet.primitives.hpe.base.color['blue-200'],
-    light: _grommet.primitives.hpe.base.color['blue-700']
-  },
-  '.style .token.string': {
-    dark: _grommet.primitives.hpe.base.color['blue-200'],
-    light: _grommet.primitives.hpe.base.color['blue-700']
-  }
+var createPrismColors = function createPrismColors(tokens) {
+  var primitives = tokens.primitives,
+    dark = tokens.dark,
+    light = tokens.light;
+  var hpeColors = (0, _colors.buildColors)(tokens);
+  return {
+    atrule: {
+      dark: primitives.hpe.base.color['fuschia-200'],
+      light: primitives.hpe.base.color['fuschia-700']
+    },
+    'attr-name': {
+      dark: primitives.hpe.base.color['plum-100'],
+      light: primitives.hpe.base.color['plum-600']
+    },
+    'attr-value': {
+      dark: primitives.hpe.base.color['fuschia-200'],
+      light: primitives.hpe.base.color['fuschia-700']
+    },
+    background: {
+      dark: 'black',
+      light: hpeColors['background-contrast'].light
+    },
+    "boolean": {
+      dark: primitives.hpe.base.color['plum-100'],
+      light: primitives.hpe.base.color['plum-600']
+    },
+    'class-name': {
+      dark: primitives.hpe.base.color['coral-200'],
+      light: primitives.hpe.base.color['coral-500']
+    },
+    builtin: {
+      dark: primitives.hpe.base.color['plum-100'],
+      light: primitives.hpe.base.color['plum-600']
+    },
+    "char": {
+      dark: primitives.hpe.base.color['plum-100'],
+      light: primitives.hpe.base.color['plum-600']
+    },
+    code: {
+      dark: dark.hpe.color.text["default"],
+      light: light.hpe.color.text["default"]
+    },
+    comment: {
+      dark: primitives.hpe.base.color['green-550'],
+      light: primitives.hpe.base.color['green-800']
+    },
+    entity: {
+      dark: primitives.hpe.base.color['blue-200'],
+      light: primitives.hpe.base.color['blue-700']
+    },
+    "function": {
+      dark: primitives.hpe.base.color['coral-200'],
+      light: primitives.hpe.base.color['coral-500']
+    },
+    important: {
+      dark: primitives.hpe.base.color['fuschia-200'],
+      light: primitives.hpe.base.color['fuschia-700']
+    },
+    inserted: {
+      dark: primitives.hpe.base.color['plum-100'],
+      light: primitives.hpe.base.color['plum-600']
+    },
+    keyword: {
+      dark: primitives.hpe.base.color['blue-200'],
+      light: primitives.hpe.base.color['blue-700']
+    },
+    'maybe-class-name': {
+      dark: primitives.hpe.base.color['purple-200'],
+      light: primitives.hpe.base.color['purple-700']
+    },
+    number: {
+      dark: primitives.hpe.base.color['plum-100'],
+      light: primitives.hpe.base.color['plum-600']
+    },
+    operator: {
+      dark: primitives.hpe.base.color['fuschia-200'],
+      light: primitives.hpe.base.color['fuschia-700']
+    },
+    regex: {
+      dark: primitives.hpe.base.color['fuschia-200'],
+      light: primitives.hpe.base.color['fuschia-700']
+    },
+    selector: {
+      dark: primitives.hpe.base.color['plum-100'],
+      light: primitives.hpe.base.color['plum-600']
+    },
+    string: {
+      dark: primitives.hpe.base.color['plum-100'],
+      light: primitives.hpe.base.color['plum-600']
+    },
+    url: {
+      dark: primitives.hpe.base.color['blue-200'],
+      light: primitives.hpe.base.color['blue-700']
+    },
+    variable: {
+      dark: primitives.hpe.base.color['blue-200'],
+      light: primitives.hpe.base.color['blue-700']
+    },
+    '.language-css .token.string': {
+      dark: primitives.hpe.base.color['blue-200'],
+      light: primitives.hpe.base.color['blue-700']
+    },
+    '.style .token.string': {
+      dark: primitives.hpe.base.color['blue-200'],
+      light: primitives.hpe.base.color['blue-700']
+    }
+  };
 };
 
 // PrismJs + ReactSyntaxHighlighter implementation references:
 // https://github.com/react-syntax-highlighter/react-syntax-highlighter/blob/master/src/styles/prism/a11y-dark.js
 // Prism selectors: https://github.com/PrismJS/prism/blob/master/themes/prism.css
-var themeMode = function themeMode(mode) {
+var themeMode = function themeMode(mode, prismColors) {
   return {
     'code[class*="language-"]': {
-      color: colors.code[mode],
+      color: prismColors.code[mode],
       background: 'none',
       fontFamily: "'Fira Mono', monospace",
       textAlign: 'left',
@@ -135,8 +141,8 @@ var themeMode = function themeMode(mode) {
       hyphens: 'none'
     },
     'pre[class*="language-"]': {
-      color: colors.code[mode],
-      background: colors.background[mode],
+      color: prismColors.code[mode],
+      background: prismColors.background[mode],
       fontFamily: "'Fira Mono', monospace",
       textAlign: 'left',
       whiteSpace: 'pre',
@@ -157,80 +163,80 @@ var themeMode = function themeMode(mode) {
       borderRadius: '0.3em'
     },
     ':not(pre) > code[class*="language-"]': {
-      background: colors.background[mode],
+      background: prismColors.background[mode],
       padding: '0.1em',
       borderRadius: '0.3em',
       whiteSpace: 'normal'
     },
     'class-name': {
-      color: colors['class-name'][mode]
+      color: prismColors['class-name'][mode]
     },
     'maybe-class-name': {
-      color: colors['maybe-class-name'][mode]
+      color: prismColors['maybe-class-name'][mode]
     },
     comment: {
-      color: colors.comment[mode]
+      color: prismColors.comment[mode]
     },
     "function": {
-      color: colors["function"][mode]
+      color: prismColors["function"][mode]
     },
     operator: {
-      color: colors.operator[mode]
+      color: prismColors.operator[mode]
     },
     string: {
-      color: colors.string[mode]
+      color: prismColors.string[mode]
     },
     "boolean": {
-      color: colors["boolean"][mode]
+      color: prismColors["boolean"][mode]
     },
     number: {
-      color: colors.number[mode]
+      color: prismColors.number[mode]
     },
     keyword: {
-      color: colors.keyword[mode]
+      color: prismColors.keyword[mode]
     },
     selector: {
-      color: colors.selector[mode]
+      color: prismColors.selector[mode]
     },
     'attr-name': {
-      color: colors['attr-name'][mode]
+      color: prismColors['attr-name'][mode]
     },
     "char": {
-      color: colors["char"][mode]
+      color: prismColors["char"][mode]
     },
     builtin: {
-      color: colors.builtin[mode]
+      color: prismColors.builtin[mode]
     },
     inserted: {
-      color: colors.inserted[mode]
+      color: prismColors.inserted[mode]
     },
     entity: {
-      color: colors.entity[mode],
+      color: prismColors.entity[mode],
       cursor: 'help'
     },
     url: {
-      color: colors.url[mode]
+      color: prismColors.url[mode]
     },
     '.language-css .token.string': {
-      color: colors['.language-css .token.string'][mode]
+      color: prismColors['.language-css .token.string'][mode]
     },
     '.style .token.string': {
-      color: colors['.style .token.string'][mode]
+      color: prismColors['.style .token.string'][mode]
     },
     variable: {
-      color: colors.variable[mode]
+      color: prismColors.variable[mode]
     },
     atrule: {
-      color: colors.atrule[mode]
+      color: prismColors.atrule[mode]
     },
     'attr-value': {
-      color: colors['attr-value'][mode]
+      color: prismColors['attr-value'][mode]
     },
     regex: {
-      color: colors.regex[mode]
+      color: prismColors.regex[mode]
     },
     important: {
-      color: colors.important[mode],
+      color: prismColors.important[mode],
       fontWeight: 'bold'
     },
     bold: {
@@ -241,7 +247,16 @@ var themeMode = function themeMode(mode) {
     }
   };
 };
-var prism = exports.prism = {
-  dark: themeMode('dark'),
-  light: themeMode('light')
+var buildPrism = exports.buildPrism = function buildPrism(tokens) {
+  var prismColors = createPrismColors(tokens);
+  return {
+    dark: themeMode('dark', prismColors),
+    light: themeMode('light', prismColors)
+  };
 };
+var prism = exports.prism = buildPrism({
+  primitives: _grommet.primitives,
+  dark: _grommet.dark,
+  light: _grommet.light,
+  components: _grommet.components
+});

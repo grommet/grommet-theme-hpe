@@ -16,6 +16,7 @@ describe('Flag behavior', function () {
       'v6-backwards-compatibility': false
     });
     expect(theme.global.edgeSize.medium).toBe('24px');
+    expect(theme.global.edgeSize.small).toBe(localDimension.hpe.spacing.small);
     expect(theme.global.edgeSize['5xsmall']).toBeDefined();
   });
   it('uses legacy globalSizes with v6-backwards-compatibility=true', function () {
@@ -23,6 +24,7 @@ describe('Flag behavior', function () {
       'v6-backwards-compatibility': true
     });
     expect(theme.global.edgeSize.medium).toBe('24px');
+    expect(theme.global.edgeSize.small).toBe('12px');
     expect(theme.global.edgeSize['5xsmall']).toBeUndefined();
   });
   it('changes edgeSize shape between false and true modes', function () {
