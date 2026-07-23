@@ -427,6 +427,7 @@ const buildTheme = (tokens, flags) => {
       },
     },
     textInput: formTheme.textInput,
+    timeInput: formTheme.timeInput,
     tip: navigationTheme.tip,
     thumbsRating: formTheme.thumbsRating,
     toggleGroup: navigationTheme.toggleGroup,
