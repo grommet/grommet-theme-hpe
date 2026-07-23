@@ -89,6 +89,7 @@ export const buildMiscTheme = (tokens, context) => {
           },
           hover: {
             background: 'background-selected-primary-strong-hover',
+            color: iconOnSelectedPrimaryStrong,
             border: 'transparent',
           },
         },
@@ -107,6 +108,7 @@ export const buildMiscTheme = (tokens, context) => {
           },
           hover: {
             background: 'background-selected-primary-strong-hover',
+            color: iconOnSelectedPrimaryStrong,
             border: 'transparent',
           },
         },
