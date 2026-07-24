@@ -3,7 +3,7 @@ version: 2.1
 defaults: &defaults
   working_directory: ~/grommet-ci
   docker:
-    - image: cimg/node:20.10
+    - image: cimg/node:22.23.1
 
 jobs:
   checkout:
