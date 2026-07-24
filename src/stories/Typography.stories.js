@@ -33,7 +33,11 @@ const Template = () => (
     <Paragraph margin="none">
       Paragraph body text should reflect the generated type scale, font family,
       and line height.
-      <Anchor href="#" margin={{ left: 'xsmall' }}>
+      <Anchor
+        href="#"
+        margin={{ left: 'xsmall' }}
+        onClick={(event) => event.preventDefault()}
+      >
         Link styles are themed too.
       </Anchor>
     </Paragraph>
