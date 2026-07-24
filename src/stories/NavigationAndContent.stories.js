@@ -36,7 +36,9 @@ const Template = () => (
           label="Actions"
           items={[{ label: 'Create' }, { label: 'Edit' }, { label: 'Archive' }]}
         />
-        <Anchor href="#">Quick link</Anchor>
+        <Anchor href="#" onClick={(event) => event.preventDefault()}>
+          Quick link
+        </Anchor>
       </Box>
 
       <Tabs>
