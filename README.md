@@ -27,6 +27,22 @@ import { hpe } from 'grommet-theme-hpe';
 <Grommet theme={hpe} />
 ```
 
+## Storybook
+
+Use Storybook to visually validate updates to the generated theme object and component styling.
+
+```
+npm run storybook
+```
+
+Build a static Storybook site:
+
+```
+npm run build-storybook
+```
+
+Storybook is development-only and is excluded from the published npm package.
+
 ## stable
 
 The `stable` branch includes all changes that have been merged to `master`. This branch can be used to experiment with changes that will be included in the next release. From your package.json point to stable.
