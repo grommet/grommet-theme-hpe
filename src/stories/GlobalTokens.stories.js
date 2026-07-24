@@ -33,7 +33,9 @@ const ColorSwatches = () => {
             <Box pad="xsmall">
               <Text size="xsmall">{token}</Text>
               <Text size="xsmall" color="text-weak">
-                {String(theme.global.colors[token])}
+                {typeof theme.global.colors[token] === 'string'
+                  ? theme.global.colors[token]
+                  : `${theme.global.colors[token].light} / ${theme.global.colors[token].dark}`}
               </Text>
             </Box>
           </Box>
