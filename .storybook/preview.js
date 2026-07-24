@@ -29,9 +29,10 @@ const storyThemes = {
 const withTheme = (Story, context) => {
   const theme =
     storyThemes[context.globals.themeVariant] || storyThemes.default;
+  const themeMode = context.globals.colorMode || 'light';
 
   return (
-    <Grommet full theme={theme}>
+    <Grommet full theme={theme} themeMode={themeMode}>
       <Box pad="medium" background="background">
         <Story />
       </Box>
@@ -42,6 +43,18 @@ const withTheme = (Story, context) => {
 export const decorators = [withTheme];
 
 export const globalTypes = {
+  colorMode: {
+    name: 'Color mode',
+    description: 'Switch between light and dark theme modes',
+    defaultValue: 'light',
+    toolbar: {
+      icon: 'mirror',
+      items: [
+        { value: 'light', title: 'Light' },
+        { value: 'dark', title: 'Dark' },
+      ],
+    },
+  },
   themeVariant: {
     name: 'Theme variant',
     description: 'Switch generated theme variants',
