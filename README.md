@@ -32,7 +32,7 @@ import { hpe } from 'grommet-theme-hpe';
 Use Storybook to visually validate updates to the generated theme object and component styling.
 
 ```
-npm run storybook
+yarn storybook
 ```
 
 Build a static Storybook site:
