@@ -1,6 +1,5 @@
 import React from 'react';
-import { Box, Heading, Paragraph, Text } from 'grommet';
-import { ThemeContext } from 'styled-components';
+import { Box, Heading, Paragraph, Text, ThemeContext } from 'grommet';
 
 const ColorSwatches = () => {
   const theme = React.useContext(ThemeContext);
