@@ -1,1 +1,5 @@
 src
+.storybook
+storybook-static
+src/stories
+**/*.stories.js

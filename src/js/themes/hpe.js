@@ -46,7 +46,6 @@ import { StatusCritical } from '@hpe-design/icons-grommet/icons/StatusCritical';
 import { baseSpacing, deepFreeze, getThemeColor } from './utils';
 
 import { backgrounds } from './backgrounds';
-import { colors } from './colors';
 import { buildDimensions } from './dimensions';
 import { buildTypography } from './typography';
 import { buildButtonTheme } from './button';
@@ -60,9 +59,11 @@ import { buildLayoutTheme } from './layout';
 import { buildDeprecations } from './deprecations';
 import { getGraphikFamily, getGraphikFontFaces } from './fonts';
 import { buildGlobalTheme } from './global';
+import { buildColors } from './colors';
 
 const buildTheme = (tokens, flags) => {
   const { light, dark, global, components } = tokens;
+  const colors = buildColors(tokens);
 
   const dimensions = buildDimensions(tokens, flags);
 

@@ -3,7 +3,7 @@ version: 2.1
 defaults: &defaults
   working_directory: ~/grommet-ci
   docker:
-    - image: cimg/node:18.13.0
+    - image: cimg/node:22.23.1
 
 jobs:
   checkout:
@@ -23,6 +23,20 @@ jobs:
           root: ~/grommet-ci
           paths:
             - ./
+  test-react:
+    <<: *defaults
+    parameters:
+      react_version:
+        type: string
+    steps:
+      - attach_workspace:
+          at: ~/grommet-ci
+      - run:
+          name: Set React << parameters.react_version >>
+          command: npm install --no-save react@<< parameters.react_version >> react-dom@<< parameters.react_version >>
+      - run:
+          name: Run compatibility tests
+          command: yarn test -- --testPathIgnorePatterns=hpe.snapshots.test.js
   lint:
     <<: *defaults
     steps:
@@ -131,6 +145,26 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - test-react:
+          matrix:
+            parameters:
+              react_version:
+                - '18.3.1'
+                - '19.2.0'
+          requires:
+            - checkout
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore:
+                - stable
+                - NEXT-stable
+                - AUDIT-stable
+                - TOKENS-stable
+                - v2-alpha-stable
+                - hpe-design-tokens-v2-stable
+                - gh-pages
       - lint:
           requires:
             - checkout
