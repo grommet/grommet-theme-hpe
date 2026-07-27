@@ -43,7 +43,7 @@ const renderCheckbox = (
 
   const checkbox = (
     <StoryCheckBox
-      a11yTitle={`${applicationState.label} ${interactiveState.label}`}
+      aria-label={`${applicationState.label} ${interactiveState.label}`}
       focus={interactiveState.state !== 'rest'}
       focusIndicator={interactiveState.state === 'focus'}
       label={undefined}
@@ -52,11 +52,7 @@ const renderCheckbox = (
   );
 
   if (applicationState.state === 'error') {
-    return (
-      <FormField error="Error">
-        <Box>{checkbox}</Box>
-      </FormField>
-    );
+    return <FormField error="Error">{checkbox}</FormField>;
   }
 
   return checkbox;

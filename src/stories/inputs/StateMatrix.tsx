@@ -61,46 +61,53 @@ export function StateMatrix<
   cellWidth = ['3xsmall', 'min-content'],
 }: StateMatrixProps<RowType, ColumnType>) {
   return (
-    <Box overflow="auto">
-      <Grid
-        columns={[
-          rowLabelWidth,
-          ...columns.map(() =>
-            Array.isArray(cellWidth) ? cellWidth[0] : cellWidth,
-          ),
-        ]}
-        // rows={Array(rows.length + 1).fill('auto')}
-        gap="xsmall"
-      >
-        <Box />
-        {columns.map((column) => (
-          <Box key={column.key} pad="xsmall" align="center" justify="center">
-            <Text weight="bold" size="small" textAlign="center">
-              {column.label}
+    <Grid
+      columns={[
+        rowLabelWidth,
+        ...columns.map(() =>
+          Array.isArray(cellWidth) ? cellWidth[0] : cellWidth,
+        ),
+      ]}
+    >
+      {/* This empty box is for the top-left corner of the grid, where the row and column headers meet. */}
+      <Box border={{ color: 'border-weak', side: 'bottom' }} />
+      {columns.map((column) => (
+        <Box
+          key={column.key}
+          pad="xsmall"
+          align="center"
+          justify="center"
+          border={{ color: 'border-weak', side: 'bottom' }}
+        >
+          <Text weight="bold" size="small" textAlign="center">
+            {column.label}
+          </Text>
+        </Box>
+      ))}
+      {rows.map((row) => (
+        <React.Fragment key={row.key}>
+          <Box
+            pad="xsmall"
+            justify="center"
+            border={{ color: 'border-weak', side: 'bottom' }}
+          >
+            <Text weight="bold" size="small">
+              {row.label}
             </Text>
           </Box>
-        ))}
-
-        {rows.map((row) => (
-          <React.Fragment key={row.key}>
-            <Box pad="xsmall" justify="center">
-              <Text weight="bold" size="small">
-                {row.label}
-              </Text>
+          {columns.map((column) => (
+            <Box
+              key={`${row.key}-${column.key}`}
+              pad="xsmall"
+              align="center"
+              justify="center"
+              border={{ color: 'border-weak', side: 'bottom' }}
+            >
+              {renderCell(row, column) ?? fallback}
             </Box>
-            {columns.map((column) => (
-              <Box
-                key={`${row.key}-${column.key}`}
-                pad="xsmall"
-                align="center"
-                justify="center"
-              >
-                {renderCell(row, column) ?? fallback}
-              </Box>
-            ))}
-          </React.Fragment>
-        ))}
-      </Grid>
-    </Box>
+          ))}
+        </React.Fragment>
+      ))}
+    </Grid>
   );
 }
