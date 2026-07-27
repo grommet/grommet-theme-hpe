@@ -125,7 +125,8 @@ export const buildMiscTheme = (tokens, context) => {
             iconSize: 'xsmall',
           },
           hover: {
-            border: 'icon-primary',
+            border: 'icon-primary-hover',
+            color: 'icon-primary-hover',
           },
         },
         label: {
@@ -142,10 +143,6 @@ export const buildMiscTheme = (tokens, context) => {
           color: 'icon-critical',
           substep: {
             iconSize: 'xsmall',
-          },
-          hover: {
-            border: 'icon-critical',
-            color: 'icon-critical',
           },
         },
         label: {
@@ -168,8 +165,6 @@ export const buildMiscTheme = (tokens, context) => {
             iconSize: 'xsmall',
           },
           hover: {
-            background: 'icon-critical',
-            border: 'transparent',
             color: 'icon-onStrong',
           },
         },
