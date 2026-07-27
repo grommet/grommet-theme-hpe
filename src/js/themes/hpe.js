@@ -11,6 +11,7 @@ import {
 } from 'hpe-design-tokens/grommet';
 
 import { Checkmark } from '@hpe-design/icons-grommet/icons/Checkmark';
+import { CircleFill } from '@hpe-design/icons-grommet/icons/CircleFill';
 import { Close } from '@hpe-design/icons-grommet/icons/Close';
 import { Element } from '@hpe-design/icons-grommet/icons/Element';
 import { Filter } from '@hpe-design/icons-grommet/icons/Filter';
@@ -106,7 +107,10 @@ const buildTheme = (tokens, flags) => {
   });
   const miscTheme = buildMiscTheme(tokens, {
     icons: {
+      Checkmark,
+      CircleFill,
       Close,
+      StatusCritical,
     },
   });
   const contentTheme = buildContentTheme(tokens, {
