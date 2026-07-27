@@ -1,29 +1,50 @@
 import React from 'react';
 import { Grommet, Box } from 'grommet';
 import {
-  primitives as localPrimitives,
-  dark as localDark,
-  light as localLight,
-  dimension as localDimension,
-  small as localSmall,
-  global as localGlobal,
-  components as localComponents,
+  primitives,
+  dark,
+  light,
+  dimension,
+  small,
+  global,
+  components,
 } from 'hpe-design-tokens/grommet';
 import { buildTheme, hpe } from '../src/js/themes/hpe';
+import {
+  primitives as qaPrimitives,
+  dark as qaDark,
+  light as qaLight,
+  dimension as qaDimension,
+  small as qaSmall,
+  global as qaGlobal,
+  components as qaComponents,
+} from '../.tmp/dist/grommet';
 
 const tokens = {
-  primitives: localPrimitives,
-  light: localLight,
-  dark: localDark,
-  small: localSmall,
-  large: localDimension,
-  global: localGlobal,
-  components: localComponents,
+  primitives,
+  light,
+  dark,
+  small,
+  large: dimension,
+  global,
+  components,
 };
 
 const storyThemes = {
   default: hpe,
-  compatibility: buildTheme(tokens, { 'v6-backwards-compatibility': true }),
+  tokensQA: buildTheme(
+    {
+      primitives: qaPrimitives,
+      light: qaLight,
+      dark: qaDark,
+      small: qaSmall,
+      large: qaDimension,
+      global: qaGlobal,
+      components: qaComponents,
+    },
+    { 'v6-backwards-compatibility': false },
+  ),
+  v6Compatibility: buildTheme(tokens, { 'v6-backwards-compatibility': true }),
 };
 
 const withTheme = (Story, context) => {
@@ -63,7 +84,8 @@ export const globalTypes = {
       icon: 'paintbrush',
       items: [
         { value: 'default', title: 'Default' },
-        { value: 'compatibility', title: 'V6 compatibility' },
+        { value: 'tokensQA', title: 'Tokens QA' },
+        { value: 'v6Compatibility', title: 'V6 compatibility' },
       ],
     },
   },
