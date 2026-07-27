@@ -1,5 +1,6 @@
 import { BackgroundColors } from './BackgroundColors';
 import { BorderColors } from './BorderColors';
+import { ForegroundColors } from './ForegroundColors';
 
 const meta = {
   title: 'Theme/Colors',
@@ -13,4 +14,8 @@ export const Background = {
 
 export const Border = {
   render: BorderColors,
+};
+
+export const Foreground = {
+  render: ForegroundColors,
 };
