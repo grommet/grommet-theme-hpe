@@ -144,10 +144,6 @@ export const buildMiscTheme = (tokens, context) => {
           substep: {
             iconSize: 'xsmall',
           },
-          hover: {
-            border: 'icon-critical',
-            color: 'icon-critical',
-          },
         },
         label: {
           color: 'text-critical',
