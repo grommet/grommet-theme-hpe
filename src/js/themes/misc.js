@@ -169,8 +169,6 @@ export const buildMiscTheme = (tokens, context) => {
             iconSize: 'xsmall',
           },
           hover: {
-            background: 'icon-critical',
-            border: 'transparent',
             color: 'icon-onStrong',
           },
         },
