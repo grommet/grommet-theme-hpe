@@ -1169,7 +1169,6 @@
       "icon": {
         "type": {},
         "key": null,
-        "ref": null,
         "props": {},
         "_owner": null,
         "_store": {}
@@ -1190,7 +1189,6 @@
       "icon": {
         "type": {},
         "key": null,
-        "ref": null,
         "props": {},
         "_owner": null,
         "_store": {}
@@ -1886,7 +1884,11 @@
         "background": "background-selected-primary-strong",
         "color": "text-onSelectedPrimaryStrong",
         "hover": {
-          "background": "background-selected-primary-strong-hover"
+          "background": "background-selected-primary-strong-hover",
+          "color": {
+            "dark": "#ffffff",
+            "light": "#292d3a"
+          }
         },
         "font": {
           "weight": 500
@@ -2533,7 +2535,6 @@
       "icon": {
         "type": {},
         "key": null,
-        "ref": null,
         "props": {
           "size": "small",
           "color": "#cc1f1a"
@@ -3621,7 +3622,6 @@
       "search": {
         "type": {},
         "key": null,
-        "ref": null,
         "props": {
           "aria-hidden": true
         },

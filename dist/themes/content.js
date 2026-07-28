@@ -5,7 +5,9 @@ exports.buildContentTheme = void 0;
 var buildContentTheme = exports.buildContentTheme = function buildContentTheme(tokens, context) {
   var _components$hpe$eleme, _components$hpe$eleme2, _components$hpe$eleme3, _components$hpe$eleme4, _components$hpe$eleme5;
   var components = tokens.components,
-    global = tokens.global;
+    global = tokens.global,
+    light = tokens.light,
+    dark = tokens.dark;
   var baseSpacing = context.baseSpacing,
     mediumIconOnlyPad = context.mediumIconOnlyPad;
   var _context$icons = context.icons,
@@ -15,6 +17,13 @@ var buildContentTheme = exports.buildContentTheme = function buildContentTheme(t
     Right = _context$icons.Right,
     Subtract = _context$icons.Subtract,
     Up = _context$icons.Up;
+
+  // Pulling the raw values directly from the token files gives us the color
+  // exactly as authored.
+  var textOnSelectedPrimaryStrong = {
+    light: light.hpe.color.text.onSelectedPrimaryStrong,
+    dark: dark.hpe.color.text.onSelectedPrimaryStrong
+  };
   return {
     avatar: {
       size: {
@@ -55,7 +64,11 @@ var buildContentTheme = exports.buildContentTheme = function buildContentTheme(t
           background: 'background-selected-primary-strong',
           color: 'text-onSelectedPrimaryStrong',
           hover: {
-            background: 'background-selected-primary-strong-hover'
+            background: 'background-selected-primary-strong-hover',
+            color: {
+              dark: textOnSelectedPrimaryStrong.light,
+              light: textOnSelectedPrimaryStrong.dark
+            }
           },
           font: {
             weight: global.hpe.fontWeight.medium
@@ -70,11 +83,6 @@ var buildContentTheme = exports.buildContentTheme = function buildContentTheme(t
           font: {
             weight: global.hpe.fontWeight.medium
           }
-        },
-        extend: function extend(_ref) {
-          var isSelected = _ref.isSelected,
-            theme = _ref.theme;
-          return isSelected ? "color: " + theme.global.colors['text-onSelectedPrimaryStrong'][theme.dark ? 'light' : 'dark'] + ";" : '';
         }
       },
       range: {

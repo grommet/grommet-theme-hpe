@@ -233,7 +233,17 @@ exports[`Theme snapshot groups matches button snapshot 1`] = `
       "font": {
         "weight": 500,
       },
-      "icon": <Element />,
+      "icon": {
+        "$$typeof": Symbol(react.transitional.element),
+        "_owner": null,
+        "_store": {},
+        "key": null,
+        "props": {},
+        "type": {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+      },
       "reverse": true,
     },
     "cta-primary": {
@@ -247,7 +257,17 @@ exports[`Theme snapshot groups matches button snapshot 1`] = `
       "font": {
         "weight": 500,
       },
-      "icon": <Element />,
+      "icon": {
+        "$$typeof": Symbol(react.transitional.element),
+        "_owner": null,
+        "_store": {},
+        "key": null,
+        "props": {},
+        "type": {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+      },
       "reverse": true,
     },
     "default": {
@@ -893,7 +913,6 @@ exports[`Theme snapshot groups matches content snapshot 1`] = `
       "adjacent": {
         "color": "text-weak",
       },
-      "extend": [Function],
       "hover": {
         "background": "background-hover",
         "color": "text-strong",
@@ -916,6 +935,10 @@ exports[`Theme snapshot groups matches content snapshot 1`] = `
         },
         "hover": {
           "background": "background-selected-primary-strong-hover",
+          "color": {
+            "dark": "#ffffff",
+            "light": "#292d3a",
+          },
         },
       },
     },
@@ -2008,10 +2031,20 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
       "container": {
         "gap": "3xsmall",
       },
-      "icon": <Alert
-        color="#cc1f1a"
-        size="small"
-      />,
+      "icon": {
+        "$$typeof": Symbol(react.transitional.element),
+        "_owner": null,
+        "_store": {},
+        "key": null,
+        "props": {
+          "color": "#cc1f1a",
+          "size": "small",
+        },
+        "type": {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+      },
       "margin": {
         "bottom": "3xsmall",
         "horizontal": "none",
@@ -2203,9 +2236,19 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
         "left": "xsmall",
         "right": "12px",
       },
-      "search": <Search
-        aria-hidden={true}
-      />,
+      "search": {
+        "$$typeof": Symbol(react.transitional.element),
+        "_owner": null,
+        "_store": {},
+        "key": null,
+        "props": {
+          "aria-hidden": true,
+        },
+        "type": {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
+      },
       "up": {
         "$$typeof": Symbol(react.forward_ref),
         "render": [Function],
