@@ -58,7 +58,7 @@ export function StateMatrix<
   renderCell,
   fallback = '--',
   rowLabelWidth = 'max-content',
-  cellWidth = ['3xsmall', 'min-content'],
+  cellWidth = ['max-content', 'small'],
 }: StateMatrixProps<RowType, ColumnType>) {
   return (
     <Grid

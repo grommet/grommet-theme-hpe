@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   CheckBox,
+  CheckBoxGroup,
   DateInput,
   Form,
   FormField,
@@ -20,6 +21,7 @@ const initialValue = {
   category: 'Option 1',
   choice: 'A',
   active: true,
+  fruits: ['Apples'],
   date: '2026-01-15',
   range: 45,
 };
@@ -29,35 +31,48 @@ const Template = () => (
     <Heading margin="none">Form Controls</Heading>
 
     <Form value={initialValue} onSubmit={() => {}}>
-      <FormField name="name" label="Name">
-        <TextInput name="name" />
+      <FormField name="name" label="Name" htmlFor="name-input">
+        <TextInput id="name-input" name="name" />
       </FormField>
 
-      <FormField name="notes" label="Notes">
-        <TextArea name="notes" resize={false} />
+      <FormField name="notes" label="Notes" htmlFor="notes-input">
+        <TextArea id="notes-input" name="notes" resize={false} />
       </FormField>
 
-      <FormField name="category" label="Select">
+      <FormField name="category" label="Select" htmlFor="category-select">
         <Select
+          id="category-select"
           name="category"
           options={['Option 1', 'Option 2', 'Option 3']}
         />
       </FormField>
 
-      <FormField name="choice" label="Radio options">
-        <RadioButtonGroup name="choice" options={['A', 'B', 'C']} />
+      <FormField name="choice" label="Radio options" htmlFor="choice-group">
+        <RadioButtonGroup
+          id="choice-group"
+          name="choice"
+          options={['A', 'B', 'C']}
+        />
       </FormField>
 
-      <FormField name="active" label="CheckBox">
-        <CheckBox name="active" label="Enabled" />
+      <FormField name="active">
+        <CheckBox id="active-checkbox" name="active" label="Enabled" />
       </FormField>
 
-      <FormField name="date" label="Date input">
-        <DateInput name="date" format="mm/dd/yyyy" />
+      <FormField name="fruits" label="CheckBoxGroup" htmlFor="fruits-group">
+        <CheckBoxGroup
+          id="fruits-group"
+          name="fruits"
+          options={['Apples', 'Bananas', 'Cherries']}
+        />
       </FormField>
 
-      <FormField name="range" label="Range input">
-        <RangeInput name="range" min={0} max={100} step={1} />
+      <FormField name="date" label="Date input" htmlFor="date-input">
+        <DateInput id="date-input" name="date" format="mm/dd/yyyy" />
+      </FormField>
+
+      <FormField name="range" label="Range input" htmlFor="range-input">
+        <RangeInput id="range-input" name="range" min={0} max={100} step={1} />
       </FormField>
 
       <Box direction="row" gap="small" margin={{ top: 'small' }}>
