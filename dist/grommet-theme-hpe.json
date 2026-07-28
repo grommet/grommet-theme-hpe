@@ -3720,6 +3720,162 @@
       "unselected": {}
     }
   },
+  "stepper": {
+    "description": {
+      "color": "text-default"
+    },
+    "pending": {
+      "indicator": {
+        "border": "icon-weak",
+        "substep": {
+          "iconSize": "xsmall"
+        },
+        "hover": {
+          "border": "icon-strong"
+        }
+      },
+      "label": {
+        "color": "text-default",
+        "hover": {
+          "color": "text-strong"
+        }
+      },
+      "connector": {
+        "color": "border-default"
+      }
+    },
+    "current": {
+      "indicator": {
+        "icon": {},
+        "background": "background-selected-primary-strong",
+        "color": {
+          "light": "#ffffff",
+          "dark": "#292d3a"
+        },
+        "border": "transparent",
+        "substep": {
+          "iconSize": "xsmall"
+        },
+        "hover": {
+          "background": "background-selected-primary-strong-hover",
+          "color": {
+            "light": "#ffffff",
+            "dark": "#292d3a"
+          },
+          "border": "transparent"
+        }
+      },
+      "label": {
+        "color": "text-primary"
+      }
+    },
+    "currentCompleted": {
+      "indicator": {
+        "icon": {},
+        "background": "background-selected-primary-strong",
+        "color": {
+          "light": "#ffffff",
+          "dark": "#292d3a"
+        },
+        "border": "transparent",
+        "substep": {
+          "iconSize": "xsmall"
+        },
+        "hover": {
+          "background": "background-selected-primary-strong-hover",
+          "color": {
+            "light": "#ffffff",
+            "dark": "#292d3a"
+          },
+          "border": "transparent"
+        }
+      },
+      "label": {
+        "color": "text-primary"
+      }
+    },
+    "completed": {
+      "indicator": {
+        "icon": {},
+        "color": "icon-primary",
+        "border": "icon-primary",
+        "substep": {
+          "iconSize": "xsmall"
+        },
+        "hover": {
+          "border": "icon-primary-hover",
+          "color": "icon-primary-hover"
+        }
+      },
+      "label": {
+        "color": "text-primary"
+      },
+      "connector": {
+        "color": "foreground-primary"
+      }
+    },
+    "error": {
+      "indicator": {
+        "icon": {},
+        "border": "icon-critical",
+        "color": "icon-critical",
+        "substep": {
+          "iconSize": "xsmall"
+        }
+      },
+      "label": {
+        "color": "text-critical"
+      },
+      "connector": {
+        "color": "border-critical"
+      },
+      "helperText": {
+        "color": "text-critical"
+      }
+    },
+    "currentError": {
+      "indicator": {
+        "icon": {},
+        "border": "transparent",
+        "background": "icon-critical",
+        "color": "icon-onStrong",
+        "substep": {
+          "iconSize": "xsmall"
+        },
+        "hover": {
+          "color": "icon-onStrong"
+        }
+      },
+      "label": {
+        "color": "text-critical"
+      },
+      "connector": {
+        "color": "border-critical"
+      },
+      "helperText": {
+        "color": "text-critical"
+      }
+    },
+    "disabled": {
+      "indicator": {
+        "border": "icon-disabled",
+        "background": "transparent",
+        "hover": {
+          "border": "icon-disabled",
+          "background": "transparent"
+        }
+      },
+      "label": {
+        "color": "text-default"
+      },
+      "connector": {
+        "color": "border-disabled"
+      },
+      "helperText": {
+        "color": "text-default"
+      }
+    }
+  },
   "tab": {
     "color": "text",
     "active": {

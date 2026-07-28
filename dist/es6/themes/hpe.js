@@ -3,6 +3,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 import React from 'react';
 import { primitives as localPrimitives, dark as localDark, light as localLight, dimension as localDimension, small as localSmall, global as localGlobal, components as localComponents } from 'hpe-design-tokens/grommet';
 import { Checkmark } from '@hpe-design/icons-grommet/icons/Checkmark';
+import { CircleFill } from '@hpe-design/icons-grommet/icons/CircleFill';
 import { Close } from '@hpe-design/icons-grommet/icons/Close';
 import { Element } from '@hpe-design/icons-grommet/icons/Element';
 import { Filter } from '@hpe-design/icons-grommet/icons/Filter';
@@ -101,7 +102,10 @@ var buildTheme = function buildTheme(tokens, flags) {
   });
   var miscTheme = buildMiscTheme(tokens, {
     icons: {
-      Close: Close
+      Checkmark: Checkmark,
+      CircleFill: CircleFill,
+      Close: Close,
+      StatusCritical: StatusCritical
     }
   });
   var contentTheme = buildContentTheme(tokens, {
@@ -344,6 +348,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     sidebar: navigationTheme.sidebar,
     spinner: feedbackTheme.spinner,
     starRating: formTheme.starRating,
+    stepper: miscTheme.stepper,
     tab: navigationTheme.tab,
     tabs: navigationTheme.tabs,
     table: contentTheme.table,

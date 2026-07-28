@@ -5,6 +5,7 @@ exports.hpe = exports.buildTheme = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _grommet = require("hpe-design-tokens/grommet");
 var _Checkmark = require("@hpe-design/icons-grommet/icons/Checkmark");
+var _CircleFill = require("@hpe-design/icons-grommet/icons/CircleFill");
 var _Close = require("@hpe-design/icons-grommet/icons/Close");
 var _Element = require("@hpe-design/icons-grommet/icons/Element");
 var _Filter = require("@hpe-design/icons-grommet/icons/Filter");
@@ -105,7 +106,10 @@ var buildTheme = exports.buildTheme = function buildTheme(tokens, flags) {
   });
   var miscTheme = (0, _misc.buildMiscTheme)(tokens, {
     icons: {
-      Close: _Close.Close
+      Checkmark: _Checkmark.Checkmark,
+      CircleFill: _CircleFill.CircleFill,
+      Close: _Close.Close,
+      StatusCritical: _StatusCritical.StatusCritical
     }
   });
   var contentTheme = (0, _content.buildContentTheme)(tokens, {
@@ -348,6 +352,7 @@ var buildTheme = exports.buildTheme = function buildTheme(tokens, flags) {
     sidebar: navigationTheme.sidebar,
     spinner: feedbackTheme.spinner,
     starRating: formTheme.starRating,
+    stepper: miscTheme.stepper,
     tab: navigationTheme.tab,
     tabs: navigationTheme.tabs,
     table: contentTheme.table,
