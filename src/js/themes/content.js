@@ -1,7 +1,14 @@
 export const buildContentTheme = (tokens, context) => {
-  const { components, global } = tokens;
+  const { components, global, light, dark } = tokens;
   const { baseSpacing, mediumIconOnlyPad } = context;
   const { Down, Left, Pin, Right, Subtract, Up } = context.icons;
+
+  // Pulling the raw values directly from the token files gives us the color
+  // exactly as authored.
+  const textOnSelectedPrimaryStrong = {
+    light: light.hpe.color.text.onSelectedPrimaryStrong,
+    dark: dark.hpe.color.text.onSelectedPrimaryStrong,
+  };
 
   return {
     avatar: {
@@ -37,7 +44,13 @@ export const buildContentTheme = (tokens, context) => {
         selected: {
           background: 'background-selected-primary-strong',
           color: 'text-onSelectedPrimaryStrong',
-          hover: { background: 'background-selected-primary-strong-hover' },
+          hover: {
+            background: 'background-selected-primary-strong-hover',
+            color: {
+              dark: textOnSelectedPrimaryStrong.light,
+              light: textOnSelectedPrimaryStrong.dark,
+            },
+          },
           font: { weight: global.hpe.fontWeight.medium },
         },
         inRange: {
@@ -48,14 +61,6 @@ export const buildContentTheme = (tokens, context) => {
           },
           font: { weight: global.hpe.fontWeight.medium },
         },
-        extend: ({ isSelected, theme }) =>
-          isSelected
-            ? `color: ${
-                theme.global.colors['text-onSelectedPrimaryStrong'][
-                  theme.dark ? 'light' : 'dark'
-                ]
-              };`
-            : '',
       },
       range: { background: 'background-selected-primary' },
       icons: {
