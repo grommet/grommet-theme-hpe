@@ -11,6 +11,7 @@ import {
 } from 'hpe-design-tokens/grommet';
 
 import { Checkmark } from '@hpe-design/icons-grommet/icons/Checkmark';
+import { Clock } from '@hpe-design/icons-grommet/icons/Clock';
 import { CircleFill } from '@hpe-design/icons-grommet/icons/CircleFill';
 import { Close } from '@hpe-design/icons-grommet/icons/Close';
 import { Element } from '@hpe-design/icons-grommet/icons/Element';
@@ -132,6 +133,7 @@ const buildTheme = (tokens, flags) => {
       Alert,
       Blank,
       Calendar,
+      Clock,
       Close,
       Copy,
       Dislike,
@@ -432,6 +434,7 @@ const buildTheme = (tokens, flags) => {
       },
     },
     textInput: formTheme.textInput,
+    timeInput: formTheme.timeInput,
     tip: navigationTheme.tip,
     thumbsRating: formTheme.thumbsRating,
     toggleGroup: navigationTheme.toggleGroup,
