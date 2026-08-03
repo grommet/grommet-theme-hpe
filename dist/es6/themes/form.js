@@ -7,6 +7,7 @@ import { getThemeColor } from './utils';
 export var buildFormTheme = function buildFormTheme(tokens, context) {
   var primitives = tokens.primitives,
     light = tokens.light,
+    dark = tokens.dark,
     large = tokens.large,
     components = tokens.components;
   var dimensions = context.dimensions,
@@ -15,6 +16,7 @@ export var buildFormTheme = function buildFormTheme(tokens, context) {
     Alert = _context$icons.Alert,
     Blank = _context$icons.Blank,
     Calendar = _context$icons.Calendar,
+    ClockIcon = _context$icons.Clock,
     Close = _context$icons.Close,
     Copy = _context$icons.Copy,
     Dislike = _context$icons.Dislike,
@@ -26,6 +28,12 @@ export var buildFormTheme = function buildFormTheme(tokens, context) {
     Star = _context$icons.Star,
     StarFill = _context$icons.StarFill,
     Up = _context$icons.Up;
+  // Pulling the raw values directly from the token files gives us the color
+  // exactly as authored.
+  var textOnSelectedPrimaryStrong = {
+    light: light.hpe.color.text.onSelectedPrimaryStrong,
+    dark: dark.hpe.color.text.onSelectedPrimaryStrong
+  };
   return {
     checkBox: {
       hover: {
@@ -603,6 +611,40 @@ export var buildFormTheme = function buildFormTheme(tokens, context) {
         dislikeSelected: DislikeFill,
         like: Like,
         likeSelected: LikeFill
+      }
+    },
+    timeInput: {
+      container: {
+        round: components.hpe.formField["default"].medium.input.container.borderRadius
+      },
+      button: {
+        margin: {
+          right: '3xsmall'
+        }
+      },
+      active: {
+        background: 'background-active',
+        pad: '5xsmall',
+        indicator: {
+          color: 'focus'
+        }
+      },
+      drop: {
+        option: {
+          hover: {
+            background: 'background-active'
+          },
+          selected: {
+            background: 'background-selected-primary-strong',
+            color: textOnSelectedPrimaryStrong,
+            hover: {
+              background: 'background-selected-primary-strong-hover'
+            }
+          }
+        }
+      },
+      icon: {
+        clock: ClockIcon
       }
     }
   };

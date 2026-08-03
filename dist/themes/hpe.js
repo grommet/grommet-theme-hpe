@@ -5,6 +5,7 @@ exports.hpe = exports.buildTheme = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _grommet = require("hpe-design-tokens/grommet");
 var _Checkmark = require("@hpe-design/icons-grommet/icons/Checkmark");
+var _Clock = require("@hpe-design/icons-grommet/icons/Clock");
 var _CircleFill = require("@hpe-design/icons-grommet/icons/CircleFill");
 var _Close = require("@hpe-design/icons-grommet/icons/Close");
 var _Element = require("@hpe-design/icons-grommet/icons/Element");
@@ -131,6 +132,7 @@ var buildTheme = exports.buildTheme = function buildTheme(tokens, flags) {
       Alert: _Alert.Alert,
       Blank: _Blank.Blank,
       Calendar: _Calendar.Calendar,
+      Clock: _Clock.Clock,
       Close: _Close.Close,
       Copy: _Copy.Copy,
       Dislike: _Dislike.Dislike,
@@ -365,6 +367,7 @@ var buildTheme = exports.buildTheme = function buildTheme(tokens, flags) {
       }
     }),
     textInput: formTheme.textInput,
+    timeInput: formTheme.timeInput,
     tip: navigationTheme.tip,
     thumbsRating: formTheme.thumbsRating,
     toggleGroup: navigationTheme.toggleGroup,

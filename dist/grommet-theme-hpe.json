@@ -4127,6 +4127,43 @@
     },
     "suggestions": {}
   },
+  "timeInput": {
+    "container": {
+      "round": "8px"
+    },
+    "button": {
+      "margin": {
+        "right": "3xsmall"
+      }
+    },
+    "active": {
+      "background": "background-active",
+      "pad": "5xsmall",
+      "indicator": {
+        "color": "focus"
+      }
+    },
+    "drop": {
+      "option": {
+        "hover": {
+          "background": "background-active"
+        },
+        "selected": {
+          "background": "background-selected-primary-strong",
+          "color": {
+            "light": "#ffffff",
+            "dark": "#292d3a"
+          },
+          "hover": {
+            "background": "background-selected-primary-strong-hover"
+          }
+        }
+      }
+    },
+    "icon": {
+      "clock": {}
+    }
+  },
   "tip": {
     "content": {
       "background": "background-floating",
