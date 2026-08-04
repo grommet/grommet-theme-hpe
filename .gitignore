@@ -4,3 +4,4 @@ coverage
 dist
 .DS_Store
 .yalc
+src/js/themes/themeVersion.js

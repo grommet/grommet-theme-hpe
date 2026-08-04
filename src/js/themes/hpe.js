@@ -60,6 +60,7 @@ import { buildLayoutTheme } from './layout';
 import { buildDeprecations } from './deprecations';
 import { getGraphikFamily, getGraphikFontFaces } from './fonts';
 import { buildGlobalTheme } from './global';
+import { themeVersion } from './themeVersion';
 
 const buildTheme = (tokens, flags) => {
   const { light, dark, global, components } = tokens;
@@ -436,7 +437,7 @@ const buildTheme = (tokens, flags) => {
     rounding: 4,
     scale: 1.1,
     spacing: 24,
-    version: process.env.npm_package_version,
+    version: themeVersion,
   });
 };
 

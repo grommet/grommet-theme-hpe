@@ -122,7 +122,6 @@ describe('Theme snapshot groups', () => {
       rounding: theme.rounding,
       scale: theme.scale,
       spacing: theme.spacing,
-      version: theme.version,
     }).toMatchSnapshot();
   });
 
