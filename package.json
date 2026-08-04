@@ -80,7 +80,7 @@
   "scripts": {
     "prepare": "husky",
     "generate-version": "babel-node ./tools/generate-version",
-    "test": "jest",
+    "test": "npm run generate-version && jest",
     "storybook": "npm run generate-version && storybook dev -p 6006",
     "build-storybook": "npm run generate-version && storybook build",
     "prepublishOnly": "npm run build && npm run jsonify",
