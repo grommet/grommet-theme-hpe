@@ -11,6 +11,8 @@ import {
 } from 'hpe-design-tokens/grommet';
 
 import { Checkmark } from '@hpe-design/icons-grommet/icons/Checkmark';
+import { Clock } from '@hpe-design/icons-grommet/icons/Clock';
+import { CircleFill } from '@hpe-design/icons-grommet/icons/CircleFill';
 import { Close } from '@hpe-design/icons-grommet/icons/Close';
 import { Element } from '@hpe-design/icons-grommet/icons/Element';
 import { Filter } from '@hpe-design/icons-grommet/icons/Filter';
@@ -46,7 +48,6 @@ import { StatusCritical } from '@hpe-design/icons-grommet/icons/StatusCritical';
 import { baseSpacing, deepFreeze, getThemeColor } from './utils';
 
 import { backgrounds } from './backgrounds';
-import { colors } from './colors';
 import { buildDimensions } from './dimensions';
 import { buildTypography } from './typography';
 import { buildButtonTheme } from './button';
@@ -60,6 +61,7 @@ import { buildLayoutTheme } from './layout';
 import { buildDeprecations } from './deprecations';
 import { getGraphikFamily, getGraphikFontFaces } from './fonts';
 import { buildGlobalTheme } from './global';
+import { buildColors } from './colors';
 
 // ignore unresolved for CI lint
 // eslint-disable-next-line import/no-unresolved, import/extensions
@@ -67,6 +69,7 @@ import { themeVersion } from './themeVersion';
 
 const buildTheme = (tokens, flags) => {
   const { light, dark, global, components } = tokens;
+  const colors = buildColors(tokens);
 
   const dimensions = buildDimensions(tokens, flags);
 
@@ -109,7 +112,10 @@ const buildTheme = (tokens, flags) => {
   });
   const miscTheme = buildMiscTheme(tokens, {
     icons: {
+      Checkmark,
+      CircleFill,
       Close,
+      StatusCritical,
     },
   });
   const contentTheme = buildContentTheme(tokens, {
@@ -131,6 +137,7 @@ const buildTheme = (tokens, flags) => {
       Alert,
       Blank,
       Calendar,
+      Clock,
       Close,
       Copy,
       Dislike,
@@ -419,6 +426,7 @@ const buildTheme = (tokens, flags) => {
     sidebar: navigationTheme.sidebar,
     spinner: feedbackTheme.spinner,
     starRating: formTheme.starRating,
+    stepper: miscTheme.stepper,
     tab: navigationTheme.tab,
     tabs: navigationTheme.tabs,
     table: contentTheme.table,
@@ -430,6 +438,7 @@ const buildTheme = (tokens, flags) => {
       },
     },
     textInput: formTheme.textInput,
+    timeInput: formTheme.timeInput,
     tip: navigationTheme.tip,
     thumbsRating: formTheme.thumbsRating,
     toggleGroup: navigationTheme.toggleGroup,

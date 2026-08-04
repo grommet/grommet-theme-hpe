@@ -2,6 +2,7 @@ node_modules
 yarn-error.log
 coverage
 dist
+storybook-static
 .DS_Store
 .yalc
 src/js/themes/themeVersion.js

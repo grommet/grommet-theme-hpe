@@ -24,6 +24,19 @@
       "env": {
         "jest": true
       }
+    },
+    {
+      "files": [".storybook/**/*.js", "src/stories/**/*.js", "**/*.stories.js"],
+      "rules": {
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": true
+          }
+        ],
+        "react/function-component-definition": 0,
+        "react/prop-types": 0
+      }
     }
   ]
 }
