@@ -60,6 +60,9 @@ import { buildLayoutTheme } from './layout';
 import { buildDeprecations } from './deprecations';
 import { getGraphikFamily, getGraphikFontFaces } from './fonts';
 import { buildGlobalTheme } from './global';
+
+// ignore unresolved for CI lint
+// eslint-disable-next-line import/no-unresolved, import/extensions
 import { themeVersion } from './themeVersion';
 
 const buildTheme = (tokens, flags) => {
