@@ -3376,6 +3376,7 @@ exports[`Theme snapshot groups matches top-level theme shape 1`] = `
   "toolbar",
   "version",
   "video",
+  "wizard",
 ]
 `;
 
