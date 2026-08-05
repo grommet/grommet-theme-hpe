@@ -100,4 +100,15 @@ describe('Theme snapshot groups', function () {
       avatar: theme.avatar
     }).toMatchSnapshot();
   });
+  it('matches theme metadata snapshot', function () {
+    expect({
+      name: theme.name,
+      rounding: theme.rounding,
+      scale: theme.scale,
+      spacing: theme.spacing
+    }).toMatchSnapshot();
+  });
+  it('matches top-level theme shape', function () {
+    expect(Object.keys(theme).sort()).toMatchSnapshot();
+  });
 });

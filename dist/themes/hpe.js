@@ -55,8 +55,11 @@ var _deprecations = require("./deprecations");
 var _fonts = require("./fonts");
 var _global = require("./global");
 var _colors = require("./colors");
+var _themeVersion = require("./themeVersion");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); } // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
+// ignore unresolved for CI lint
+// eslint-disable-next-line import/no-unresolved, import/extensions
 var buildTheme = exports.buildTheme = function buildTheme(tokens, flags) {
   var light = tokens.light,
     dark = tokens.dark,
@@ -377,7 +380,8 @@ var buildTheme = exports.buildTheme = function buildTheme(tokens, flags) {
     name: 'HPE 1',
     rounding: 4,
     scale: 1.1,
-    spacing: 24
+    spacing: 24,
+    version: _themeVersion.themeVersion
   });
 };
 var hpe = exports.hpe = buildTheme({

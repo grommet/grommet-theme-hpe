@@ -4224,5 +4224,6 @@
   "name": "HPE 1",
   "rounding": 4,
   "scale": 1.1,
-  "spacing": 24
+  "spacing": 24,
+  "version": "8.1.4"
 }

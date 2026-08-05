@@ -53,6 +53,10 @@ import { buildDeprecations } from './deprecations';
 import { getGraphikFamily, getGraphikFontFaces } from './fonts';
 import { buildGlobalTheme } from './global';
 import { buildColors } from './colors';
+
+// ignore unresolved for CI lint
+// eslint-disable-next-line import/no-unresolved, import/extensions
+import { themeVersion } from './themeVersion';
 var buildTheme = function buildTheme(tokens, flags) {
   var light = tokens.light,
     dark = tokens.dark,
@@ -373,7 +377,8 @@ var buildTheme = function buildTheme(tokens, flags) {
     name: 'HPE 1',
     rounding: 4,
     scale: 1.1,
-    spacing: 24
+    spacing: 24,
+    version: themeVersion
   });
 };
 export { buildTheme };
