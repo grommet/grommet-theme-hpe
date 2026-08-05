@@ -63,6 +63,10 @@ import { getGraphikFamily, getGraphikFontFaces } from './fonts';
 import { buildGlobalTheme } from './global';
 import { buildColors } from './colors';
 
+// ignore unresolved for CI lint
+// eslint-disable-next-line import/no-unresolved, import/extensions
+import { themeVersion } from './themeVersion';
+
 const buildTheme = (tokens, flags) => {
   const { light, dark, global, components } = tokens;
   const colors = buildColors(tokens);
@@ -445,6 +449,7 @@ const buildTheme = (tokens, flags) => {
     rounding: 4,
     scale: 1.1,
     spacing: 24,
+    version: themeVersion,
   });
 };
 
