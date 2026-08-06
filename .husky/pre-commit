@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 set -e
 
+yarn license-staged
 yarn lint-fix
 yarn prettier
