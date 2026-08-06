@@ -228,7 +228,7 @@ export const buildMiscTheme = (tokens, context) => {
         description: {
           size: 'large',
           color: 'text-default',
-          margin: { top: '5xsmall' },
+          margin: { top: '3xsmall' },
         },
       },
       content: {
