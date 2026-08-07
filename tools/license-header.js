@@ -47,7 +47,7 @@ function isIncluded(filePath) {
 
 // This is meant for progressive migration: only touch
 // files that are staged for commit and live under a managed
-// root and are eligible for a header licence text.
+// root and are eligible for a header license text.
 function collectStagedFiles() {
   const output = execFileSync(
     'git',
