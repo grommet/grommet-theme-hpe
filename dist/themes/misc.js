@@ -69,6 +69,22 @@ var buildMiscTheme = exports.buildMiscTheme = function buildMiscTheme(tokens, co
       description: {
         color: 'text-default'
       },
+      button: {
+        pad: '5xsmall'
+      },
+      horizontal: {
+        connector: {
+          margin: '5xsmall'
+        },
+        button: {
+          gap: '3xsmall'
+        }
+      },
+      vertical: {
+        button: {
+          gap: 'xsmall'
+        }
+      },
       pending: {
         indicator: {
           border: 'icon-weak',

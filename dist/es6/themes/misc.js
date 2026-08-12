@@ -65,6 +65,22 @@ export var buildMiscTheme = function buildMiscTheme(tokens, context) {
       description: {
         color: 'text-default'
       },
+      button: {
+        pad: '5xsmall'
+      },
+      horizontal: {
+        connector: {
+          margin: '5xsmall'
+        },
+        button: {
+          gap: '3xsmall'
+        }
+      },
+      vertical: {
+        button: {
+          gap: 'xsmall'
+        }
+      },
       pending: {
         indicator: {
           border: 'icon-weak',
