@@ -244,11 +244,6 @@ export const buildMiscTheme = (tokens, context) => {
           skip: { icon: Right },
         },
       },
-      error: {
-        color: 'text-critical',
-        size: 'small',
-        margin: { top: '3xsmall' },
-      },
     },
     tag: {
       border: { color: 'border-weak' },
