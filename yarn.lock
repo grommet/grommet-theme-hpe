@@ -4645,7 +4645,7 @@ grommet-icons@^4.14.0:
 
 "grommet@https://github.com/grommet/grommet/tarball/stable":
   version "2.56.0"
-  resolved "https://github.com/grommet/grommet/tarball/stable#184a19e21409794ac35e3b6660a211a94a558ec2"
+  resolved "https://github.com/grommet/grommet/tarball/stable#d64d987c92a5dea26b33f8fa6b05d23bd47812ce"
   dependencies:
     "@emotion/is-prop-valid" "^1.4.0"
     grommet-icons "^4.14.0"
