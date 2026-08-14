@@ -11,7 +11,7 @@ export const buildFormTheme = (tokens, context) => {
   const {
     Alert,
     Blank,
-    Calendar: CalendarIcon,
+    Calendar,
     Clock: ClockIcon,
     Close,
     Copy,
@@ -258,7 +258,7 @@ export const buildFormTheme = (tokens, context) => {
           components.hpe.formField.default.medium.input.container.borderRadius,
       },
       icon: {
-        calendar: CalendarIcon,
+        calendar: Calendar,
         size: 'small',
       },
       button: { margin: 'xsmall' },
@@ -290,7 +290,7 @@ export const buildFormTheme = (tokens, context) => {
         pad: '5xsmall',
       },
       icon: {
-        calendar: CalendarIcon,
+        calendar: Calendar,
       },
     },
     fileInput: {
