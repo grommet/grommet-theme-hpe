@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import React from 'react';
 import { css } from 'styled-components';
 
@@ -9,7 +11,7 @@ export const buildFormTheme = (tokens, context) => {
   const {
     Alert,
     Blank,
-    Calendar,
+    Calendar: CalendarIcon,
     Clock: ClockIcon,
     Close,
     Copy,
@@ -222,8 +224,9 @@ export const buildFormTheme = (tokens, context) => {
       extend: ({ disabled, theme }) => css`
         font-weight: ${components.hpe.checkbox.default.label.rest.fontWeight};
         width: auto;
-        border: ${components.hpe.formField.default.medium.input.container
-            .borderWidth}
+        border: ${
+          components.hpe.formField.default.medium.input.container.borderWidth
+        }
           solid
           ${getThemeColor(
             components.hpe.formField.default.input.group.item.rest.borderColor,
@@ -255,10 +258,40 @@ export const buildFormTheme = (tokens, context) => {
           components.hpe.formField.default.medium.input.container.borderRadius,
       },
       icon: {
-        calendar: Calendar,
+        calendar: CalendarIcon,
         size: 'small',
       },
       button: { margin: 'xsmall' },
+    },
+    dateTimeInput: {
+      button: {
+        margin: { right: '3xsmall' },
+      },
+      container: {
+        round:
+          components.hpe.formField.default.medium.input.container.borderRadius,
+      },
+      active: {
+        background: 'background-active',
+        pad: '5xsmall',
+        indicator: {
+          color: 'focus',
+        },
+      },
+      drop: {
+        pad: 'small',
+        gap: 'small',
+        border: {
+          color: 'border',
+          size: 'xsmall',
+        },
+      },
+      separator: {
+        pad: '5xsmall',
+      },
+      icon: {
+        calendar: CalendarIcon,
+      },
     },
     fileInput: {
       anchor: {
@@ -680,22 +713,28 @@ export const buildFormTheme = (tokens, context) => {
       },
       control: {
         extend: ({ disabled }) => css`
-          ${disabled &&
-          `
+          ${
+            disabled &&
+            `
           opacity: 0.3;
           input {
             cursor: default;
-          }`}
+          }`
+          }
 
           &[class*="SelectMultiple"] [role="listbox"] {
-            padding-block: ${components.hpe.select.default.medium.drop
-              .paddingY};
-            padding-inline: ${components.hpe.select.default.medium.drop
-              .paddingX};
+            padding-block: ${
+              components.hpe.select.default.medium.drop.paddingY
+            };
+            padding-inline: ${
+              components.hpe.select.default.medium.drop.paddingX
+            };
             & [role='option'] {
-              border-radius: ${dimensions.edgeSize[
-                components.hpe.select.default.medium.option.borderRadius
-              ] || components.hpe.select.default.medium.option.borderRadius};
+              border-radius: ${
+                dimensions.edgeSize[
+                  components.hpe.select.default.medium.option.borderRadius
+                ] || components.hpe.select.default.medium.option.borderRadius
+              };
             }
           }
         `,
