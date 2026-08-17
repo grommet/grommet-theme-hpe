@@ -1920,6 +1920,40 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
       "size": "small",
     },
   },
+  "dateTimeInput": {
+    "active": {
+      "background": "background-active",
+      "indicator": {
+        "color": "focus",
+      },
+      "pad": "5xsmall",
+    },
+    "button": {
+      "margin": {
+        "right": "3xsmall",
+      },
+    },
+    "container": {
+      "round": "8px",
+    },
+    "drop": {
+      "border": {
+        "color": "border",
+        "size": "xsmall",
+      },
+      "gap": "small",
+      "pad": "small",
+    },
+    "icon": {
+      "calendar": {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
+    "separator": {
+      "pad": "5xsmall",
+    },
+  },
   "fileInput": {
     "anchor": {
       "margin": "xsmall",
@@ -3326,6 +3360,7 @@ exports[`Theme snapshot groups matches top-level theme shape 1`] = `
   "dataTable",
   "dataTableColumns",
   "dateInput",
+  "dateTimeInput",
   "defaultMode",
   "diagram",
   "distribution",

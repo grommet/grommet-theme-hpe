@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import React from 'react';
 import {
@@ -393,6 +395,7 @@ const buildTheme = (tokens, flags) => {
     dataFilter: dataTheme.dataFilter,
     dataFilters: dataTheme.dataFilters,
     dateInput: formTheme.dateInput,
+    dateTimeInput: formTheme.dateTimeInput,
     dataSearch: dataTheme.dataSearch,
     dataSort: dataTheme.dataSort,
     dataSummary: dataTheme.dataSummary,

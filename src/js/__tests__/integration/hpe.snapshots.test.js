@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import {
   primitives as localPrimitives,
   dark as localDark,
@@ -58,6 +60,7 @@ describe('Theme snapshot groups', () => {
       rangeSelector: theme.rangeSelector,
       fileInput: theme.fileInput,
       dateInput: theme.dateInput,
+      dateTimeInput: theme.dateTimeInput,
     }).toMatchSnapshot();
   });
 
