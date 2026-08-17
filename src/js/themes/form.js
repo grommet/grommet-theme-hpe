@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import React from 'react';
 import { css } from 'styled-components';
 
@@ -222,8 +224,9 @@ export const buildFormTheme = (tokens, context) => {
       extend: ({ disabled, theme }) => css`
         font-weight: ${components.hpe.checkbox.default.label.rest.fontWeight};
         width: auto;
-        border: ${components.hpe.formField.default.medium.input.container
-            .borderWidth}
+        border: ${
+          components.hpe.formField.default.medium.input.container.borderWidth
+        }
           solid
           ${getThemeColor(
             components.hpe.formField.default.input.group.item.rest.borderColor,
@@ -259,6 +262,36 @@ export const buildFormTheme = (tokens, context) => {
         size: 'small',
       },
       button: { margin: 'xsmall' },
+    },
+    dateTimeInput: {
+      button: {
+        margin: { right: '3xsmall' },
+      },
+      container: {
+        round:
+          components.hpe.formField.default.medium.input.container.borderRadius,
+      },
+      active: {
+        background: 'background-active',
+        pad: '5xsmall',
+        indicator: {
+          color: 'focus',
+        },
+      },
+      drop: {
+        pad: 'small',
+        gap: 'small',
+        border: {
+          color: 'border',
+          size: 'xsmall',
+        },
+      },
+      separator: {
+        pad: '5xsmall',
+      },
+      icon: {
+        calendar: Calendar,
+      },
     },
     fileInput: {
       anchor: {

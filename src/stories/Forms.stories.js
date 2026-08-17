@@ -1,9 +1,12 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import React from 'react';
 import {
   Box,
   Button,
   CheckBox,
   DateInput,
+  DateTimeInput,
   Form,
   FormField,
   Heading,
@@ -58,6 +61,18 @@ const Template = () => (
 
       <FormField name="range" label="Range input">
         <RangeInput name="range" min={0} max={100} step={1} />
+      </FormField>
+      <FormField
+        htmlFor="appointment-date-time"
+        label="Choose an appointment date and time"
+        name="appointment"
+        required
+      >
+        <DateTimeInput
+          id="appointment-date-time"
+          name="appointment"
+          format="12"
+        />
       </FormField>
 
       <Box direction="row" gap="small" margin={{ top: 'small' }}>
