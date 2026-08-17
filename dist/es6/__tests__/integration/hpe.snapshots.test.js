@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import { primitives as localPrimitives, dark as localDark, light as localLight, dimension as localDimension, small as localSmall, global as localGlobal, components as localComponents } from 'hpe-design-tokens/grommet';
 import { buildTheme } from '../../themes/hpe';
 var tokens = {
@@ -45,7 +47,8 @@ describe('Theme snapshot groups', function () {
       rangeInput: theme.rangeInput,
       rangeSelector: theme.rangeSelector,
       fileInput: theme.fileInput,
-      dateInput: theme.dateInput
+      dateInput: theme.dateInput,
+      dateTimeInput: theme.dateTimeInput
     }).toMatchSnapshot();
   });
   it('matches typography snapshot', function () {

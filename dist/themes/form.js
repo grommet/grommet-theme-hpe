@@ -5,7 +5,8 @@ exports.buildFormTheme = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _styledComponents = require("styled-components");
 var _utils = require("./utils");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4; // SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _taggedTemplateLiteralLoose(e, t) { return t || (t = e.slice(0)), e.raw = t, e; }
@@ -170,6 +171,37 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
       },
       button: {
         margin: 'xsmall'
+      }
+    },
+    dateTimeInput: {
+      button: {
+        margin: {
+          right: '3xsmall'
+        }
+      },
+      container: {
+        round: components.hpe.formField["default"].medium.input.container.borderRadius
+      },
+      active: {
+        background: 'background-active',
+        pad: '5xsmall',
+        indicator: {
+          color: 'focus'
+        }
+      },
+      drop: {
+        pad: 'small',
+        gap: 'small',
+        border: {
+          color: 'border',
+          size: 'xsmall'
+        }
+      },
+      separator: {
+        pad: '5xsmall'
+      },
+      icon: {
+        calendar: Calendar
       }
     },
     fileInput: {

@@ -1,4 +1,6 @@
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import { primitives as localPrimitives, dark as localDark, light as localLight, dimension as localDimension, small as localSmall, global as localGlobal, components as localComponents } from 'hpe-design-tokens/grommet';
 import { buildTheme } from '../../themes/hpe';
 describe('Structural and Contract Tests', function () {
@@ -53,6 +55,16 @@ describe('Structural and Contract Tests', function () {
     it('should have form field definitions', function () {
       expect(theme.formField).toBeDefined();
       expect(typeof theme.formField).toBe('object');
+    });
+    it('should have dateTimeInput definitions', function () {
+      expect(theme.dateTimeInput).toBeDefined();
+      expect(theme.dateTimeInput.container.round).toBeDefined();
+      expect(theme.dateTimeInput.button.margin).toBeDefined();
+      expect(theme.dateTimeInput.active.background).toBeDefined();
+      expect(theme.dateTimeInput.active.indicator.color).toBeDefined();
+      expect(theme.dateTimeInput.drop.border.size).toBeDefined();
+      expect(theme.dateTimeInput.separator.pad).toBeDefined();
+      expect(theme.dateTimeInput.icon.calendar).toBeDefined();
     });
   });
   describe('Color definitions', function () {

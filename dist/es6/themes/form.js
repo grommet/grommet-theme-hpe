@@ -1,6 +1,8 @@
 var _templateObject, _templateObject2, _templateObject3, _templateObject4;
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 function _taggedTemplateLiteralLoose(e, t) { return t || (t = e.slice(0)), e.raw = t, e; }
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import React from 'react';
 import { css } from 'styled-components';
 import { getThemeColor } from './utils';
@@ -165,6 +167,37 @@ export var buildFormTheme = function buildFormTheme(tokens, context) {
       },
       button: {
         margin: 'xsmall'
+      }
+    },
+    dateTimeInput: {
+      button: {
+        margin: {
+          right: '3xsmall'
+        }
+      },
+      container: {
+        round: components.hpe.formField["default"].medium.input.container.borderRadius
+      },
+      active: {
+        background: 'background-active',
+        pad: '5xsmall',
+        indicator: {
+          color: 'focus'
+        }
+      },
+      drop: {
+        pad: 'small',
+        gap: 'small',
+        border: {
+          color: 'border',
+          size: 'xsmall'
+        }
+      },
+      separator: {
+        pad: '5xsmall'
+      },
+      icon: {
+        calendar: Calendar
       }
     },
     fileInput: {

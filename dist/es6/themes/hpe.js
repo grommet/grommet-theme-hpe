@@ -1,4 +1,6 @@
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import React from 'react';
 import { primitives as localPrimitives, dark as localDark, light as localLight, dimension as localDimension, small as localSmall, global as localGlobal, components as localComponents } from 'hpe-design-tokens/grommet';
@@ -315,6 +317,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     dataFilter: dataTheme.dataFilter,
     dataFilters: dataTheme.dataFilters,
     dateInput: formTheme.dateInput,
+    dateTimeInput: formTheme.dateTimeInput,
     dataSearch: dataTheme.dataSearch,
     dataSort: dataTheme.dataSort,
     dataSummary: dataTheme.dataSummary,

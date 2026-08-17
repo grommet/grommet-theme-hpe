@@ -2,6 +2,9 @@
 
 var _grommet = require("hpe-design-tokens/grommet");
 var _hpe = require("../../themes/hpe");
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
+
 var tokens = {
   primitives: _grommet.primitives,
   light: _grommet.light,
@@ -47,7 +50,8 @@ describe('Theme snapshot groups', function () {
       rangeInput: theme.rangeInput,
       rangeSelector: theme.rangeSelector,
       fileInput: theme.fileInput,
-      dateInput: theme.dateInput
+      dateInput: theme.dateInput,
+      dateTimeInput: theme.dateTimeInput
     }).toMatchSnapshot();
   });
   it('matches typography snapshot', function () {
