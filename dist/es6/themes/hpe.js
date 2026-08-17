@@ -112,6 +112,8 @@ var buildTheme = function buildTheme(tokens, flags) {
       Checkmark: Checkmark,
       CircleFill: CircleFill,
       Close: Close,
+      Left: Left,
+      Right: Right,
       StatusCritical: StatusCritical
     }
   });
@@ -376,6 +378,7 @@ var buildTheme = function buildTheme(tokens, flags) {
     toggleGroup: navigationTheme.toggleGroup,
     toolbar: dataTheme.toolbar,
     video: layoutTheme.video,
+    wizard: miscTheme.wizard,
     // Theme-Designer only parameters
     name: 'HPE 1',
     rounding: 4,

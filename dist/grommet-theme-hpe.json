@@ -4268,6 +4268,69 @@
       }
     }
   },
+  "wizard": {
+    "body": {
+      "pad": "xlarge"
+    },
+    "header": {
+      "pad": {
+        "horizontal": "xlarge",
+        "vertical": "xsmall"
+      },
+      "title": {
+        "size": "large"
+      },
+      "close": {
+        "icon": {}
+      }
+    },
+    "progress": {
+      "vertical": {
+        "width": "xsmall"
+      }
+    },
+    "stepHeader": {
+      "counter": {
+        "size": "small",
+        "color": "text-default"
+      },
+      "title": {
+        "size": "xlarge"
+      },
+      "description": {
+        "size": "large",
+        "color": "text-default",
+        "margin": {
+          "top": "3xsmall"
+        }
+      }
+    },
+    "content": {
+      "round": "xsmall"
+    },
+    "footer": {
+      "pad": {
+        "horizontal": "xlarge",
+        "vertical": "xsmall"
+      },
+      "gap": {
+        "row": "3xsmall",
+        "column": "xsmall"
+      },
+      "background": "background-front",
+      "button": {
+        "next": {
+          "icon": {}
+        },
+        "previous": {
+          "icon": {}
+        },
+        "skip": {
+          "icon": {}
+        }
+      }
+    }
+  },
   "name": "HPE 1",
   "rounding": 4,
   "scale": 1.1,

@@ -13,6 +13,8 @@ var buildMiscTheme = exports.buildMiscTheme = function buildMiscTheme(tokens, co
     Close = _context$icons.Close,
     CircleFill = _context$icons.CircleFill,
     Checkmark = _context$icons.Checkmark,
+    Left = _context$icons.Left,
+    Right = _context$icons.Right,
     StatusCritical = _context$icons.StatusCritical;
 
   // `icon-onSelectedPrimaryStrong` in theme.global.colors (colors.js) has its
@@ -222,6 +224,69 @@ var buildMiscTheme = exports.buildMiscTheme = function buildMiscTheme(tokens, co
         },
         helperText: {
           color: 'text-default'
+        }
+      }
+    },
+    wizard: {
+      body: {
+        pad: 'xlarge'
+      },
+      header: {
+        pad: {
+          horizontal: 'xlarge',
+          vertical: 'xsmall'
+        },
+        title: {
+          size: 'large'
+        },
+        close: {
+          icon: Close
+        }
+      },
+      progress: {
+        vertical: {
+          width: 'xsmall'
+        }
+      },
+      stepHeader: {
+        counter: {
+          size: 'small',
+          color: 'text-default'
+        },
+        title: {
+          size: 'xlarge'
+        },
+        description: {
+          size: 'large',
+          color: 'text-default',
+          margin: {
+            top: '3xsmall'
+          }
+        }
+      },
+      content: {
+        round: 'xsmall'
+      },
+      footer: {
+        pad: {
+          horizontal: 'xlarge',
+          vertical: 'xsmall'
+        },
+        gap: {
+          row: '3xsmall',
+          column: 'xsmall'
+        },
+        background: 'background-front',
+        button: {
+          next: {
+            icon: Right
+          },
+          previous: {
+            icon: Left
+          },
+          skip: {
+            icon: Right
+          }
         }
       }
     },
