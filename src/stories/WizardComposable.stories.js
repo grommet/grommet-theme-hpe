@@ -74,7 +74,7 @@ Composable.args = {
 };
 
 export default {
-  title: 'Layout/Wizard/Composable',
+  title: 'Theme/Wizard/Composable',
 };
 
 export { Composable };

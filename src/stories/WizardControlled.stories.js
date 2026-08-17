@@ -124,7 +124,7 @@ Controlled.args = {
 };
 
 export default {
-  title: 'Layout/Wizard/Controlled',
+  title: 'Theme/Wizard/Controlled',
 };
 
 export { Controlled };

@@ -70,7 +70,7 @@ NestedSubSteps.args = {
 };
 
 export default {
-  title: 'Layout/Wizard/Nested Sub-Steps',
+  title: 'Theme/Wizard/Nested Sub-Steps',
 };
 
 export { NestedSubSteps };

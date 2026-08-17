@@ -67,7 +67,7 @@ BasicLinear.args = {
 };
 
 export default {
-  title: 'Layout/Wizard/Basic Linear',
+  title: 'Theme/Wizard/Basic Linear',
 };
 
 export { BasicLinear };
