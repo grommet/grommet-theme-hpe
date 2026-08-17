@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 export const buildFeedbackTheme = (tokens, icons) => {
   const { global, components } = tokens;
   const {
