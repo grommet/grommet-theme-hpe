@@ -117,6 +117,8 @@ const buildTheme = (tokens, flags) => {
       Checkmark,
       CircleFill,
       Close,
+      Left,
+      Right,
       StatusCritical,
     },
   });
@@ -447,6 +449,7 @@ const buildTheme = (tokens, flags) => {
     toggleGroup: navigationTheme.toggleGroup,
     toolbar: dataTheme.toolbar,
     video: layoutTheme.video,
+    wizard: miscTheme.wizard,
     // Theme-Designer only parameters
     name: 'HPE 1',
     rounding: 4,

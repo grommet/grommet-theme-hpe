@@ -713,22 +713,28 @@ export const buildFormTheme = (tokens, context) => {
       },
       control: {
         extend: ({ disabled }) => css`
-          ${disabled &&
-          `
+          ${
+            disabled &&
+            `
           opacity: 0.3;
           input {
             cursor: default;
-          }`}
+          }`
+          }
 
           &[class*="SelectMultiple"] [role="listbox"] {
-            padding-block: ${components.hpe.select.default.medium.drop
-              .paddingY};
-            padding-inline: ${components.hpe.select.default.medium.drop
-              .paddingX};
+            padding-block: ${
+              components.hpe.select.default.medium.drop.paddingY
+            };
+            padding-inline: ${
+              components.hpe.select.default.medium.drop.paddingX
+            };
             & [role='option'] {
-              border-radius: ${dimensions.edgeSize[
-                components.hpe.select.default.medium.option.borderRadius
-              ] || components.hpe.select.default.medium.option.borderRadius};
+              border-radius: ${
+                dimensions.edgeSize[
+                  components.hpe.select.default.medium.option.borderRadius
+                ] || components.hpe.select.default.medium.option.borderRadius
+              };
             }
           }
         `,

@@ -1,6 +1,7 @@
 export const buildMiscTheme = (tokens, context) => {
   const { components, global, large, light, dark } = tokens;
-  const { Close, CircleFill, Checkmark, StatusCritical } = context.icons;
+  const { Close, CircleFill, Checkmark, Left, Right, StatusCritical } =
+    context.icons;
 
   // `icon-onSelectedPrimaryStrong` in theme.global.colors (colors.js) has its
   // light/dark values intentionally swapped to compensate for Grommet's
@@ -211,6 +212,52 @@ export const buildMiscTheme = (tokens, context) => {
         },
         helperText: {
           color: 'text-default',
+        },
+      },
+    },
+    wizard: {
+      body: {
+        pad: 'xlarge',
+      },
+      header: {
+        pad: { horizontal: 'xlarge', vertical: 'xsmall' },
+        title: {
+          size: 'large',
+        },
+        close: {
+          icon: Close,
+        },
+      },
+      progress: {
+        vertical: {
+          width: 'xsmall',
+        },
+      },
+      stepHeader: {
+        counter: {
+          size: 'small',
+          color: 'text-default',
+        },
+        title: {
+          size: 'xlarge',
+        },
+        description: {
+          size: 'large',
+          color: 'text-default',
+          margin: { top: '3xsmall' },
+        },
+      },
+      content: {
+        round: 'xsmall',
+      },
+      footer: {
+        pad: { horizontal: 'xlarge', vertical: 'xsmall' },
+        gap: { row: '3xsmall', column: 'xsmall' },
+        background: 'background-front',
+        button: {
+          next: { icon: Right },
+          previous: { icon: Left },
+          skip: { icon: Right },
         },
       },
     },
