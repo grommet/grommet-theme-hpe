@@ -1,7 +1,9 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 /**
- * In the event your application relies on color names that have been deprecated, 
+ * In the event your application relies on color names that have been deprecated,
  * use this theme to restore the deprecated color names.
- * The following theme has transitional properties to 
+ * The following theme has transitional properties to
  * mitigate the upgrade to the design-system theme, i.e. migrating from hpe
  * theme version ^1.0.0 to ^2.0.0
  * Using the v2migration interim theme support will help you avoid critical
@@ -9,8 +11,8 @@
  *
  * How does it work?
  * After upgrading your official HPE theme to point to the new HPE
- * design-system theme 2.0.0 (via your package.json), 
- * copy the content of this file to your local theme file. 
+ * design-system theme 2.0.0 (via your package.json),
+ * copy the content of this file to your local theme file.
  * Copying the content of this file will help you avoid immediate
  * breaking changes behavior (such as undefined colors)
  * However the main goal is for your theme to work independently without

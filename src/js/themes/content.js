@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 export const buildContentTheme = (tokens, context) => {
   const { components, global, light, dark } = tokens;
   const { baseSpacing, mediumIconOnlyPad } = context;

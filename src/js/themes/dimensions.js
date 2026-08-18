@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import { baseSpacing } from './utils';
 
 // static global sizes for backwards compatibility with v6 theme. Dimension tokens

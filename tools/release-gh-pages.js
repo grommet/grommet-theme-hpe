@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
 import del from 'del';

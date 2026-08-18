@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 const referenceColorDocumentationMessage =
   'Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors';
 
