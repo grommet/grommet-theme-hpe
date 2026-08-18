@@ -4,6 +4,9 @@ exports.__esModule = true;
 exports.buildDataTheme = void 0;
 var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
+
 var buildDataTheme = exports.buildDataTheme = function buildDataTheme(tokens, context) {
   var _components$hpe$dataC;
   var components = tokens.components;

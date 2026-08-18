@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 export var buildLayoutTheme = function buildLayoutTheme(tokens) {
   var global = tokens.global;
   return {

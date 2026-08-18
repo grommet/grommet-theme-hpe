@@ -2,6 +2,8 @@
 
 exports.__esModule = true;
 exports.buildLayoutTheme = void 0;
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 var buildLayoutTheme = exports.buildLayoutTheme = function buildLayoutTheme(tokens) {
   var global = tokens.global;
   return {

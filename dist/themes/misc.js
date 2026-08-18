@@ -2,6 +2,8 @@
 
 exports.__esModule = true;
 exports.buildMiscTheme = void 0;
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 var buildMiscTheme = exports.buildMiscTheme = function buildMiscTheme(tokens, context) {
   var _components$hpe$eleme, _components$hpe$eleme2, _components$hpe$eleme3, _components$hpe$eleme4, _components$hpe$eleme5, _components$hpe$eleme6, _components$hpe$eleme7, _components$hpe$eleme8, _components$hpe$eleme9, _components$hpe$eleme0, _components$hpe$eleme1, _components$hpe$eleme10;
   var components = tokens.components,

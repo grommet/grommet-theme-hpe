@@ -2,6 +2,8 @@
 
 exports.__esModule = true;
 exports.getGraphikFontFaces = exports.getGraphikFamily = void 0;
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 var getGraphikFamily = exports.getGraphikFamily = function getGraphikFamily(fontStackPrimary) {
   return fontStackPrimary.split(',').map(function (s) {
     return s.trim().replace(/['"]/g, '');

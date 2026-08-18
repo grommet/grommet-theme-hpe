@@ -3,6 +3,9 @@
 exports.__esModule = true;
 exports.buildTypography = void 0;
 var _utils = require("./utils");
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
+
 var buildTypography = exports.buildTypography = function buildTypography(tokens) {
   var small = tokens.small,
     large = tokens.large,

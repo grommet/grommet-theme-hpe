@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 export var getGraphikFamily = function getGraphikFamily(fontStackPrimary) {
   return fontStackPrimary.split(',').map(function (s) {
     return s.trim().replace(/['"]/g, '');

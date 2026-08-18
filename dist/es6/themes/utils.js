@@ -1,5 +1,7 @@
 var _templateObject, _templateObject2;
 function _taggedTemplateLiteralLoose(e, t) { return t || (t = e.slice(0)), e.raw = t, e; }
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import { css } from 'styled-components';
 var baseSpacing = 24;
 var isObject = function isObject(item) {

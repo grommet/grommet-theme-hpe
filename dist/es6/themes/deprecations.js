@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 var referenceColorDocumentationMessage = 'Please reference the HPE Design System color documentation (https://design-system.hpe.design/foundation/color) for a list of available colors';
 var backgroundDeprecationMessage = function backgroundDeprecationMessage(background) {
   return "The background '" + background + "' is deprecated and will be removed in v10 to ensure access to the latest Brand assets. Please replace this key by referencing an image URL directly. You can find approved backgrounds within HPE Brand Central (https://brandcentral.hpe.com/brand-central/content/imagery).";

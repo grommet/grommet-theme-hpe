@@ -3,7 +3,8 @@
 exports.__esModule = true;
 exports.textSizes = exports.isObject = exports.headingLevelToSize = exports.getThemeColor = exports.getTextSize = exports.getHeadingSize = exports.deepFreeze = exports.componentSizes = exports.buttonStates = exports.buttonKinds = exports.breakpointStyle = exports.baseSpacing = void 0;
 var _styledComponents = require("styled-components");
-var _templateObject, _templateObject2;
+var _templateObject, _templateObject2; // SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 function _taggedTemplateLiteralLoose(e, t) { return t || (t = e.slice(0)), e.raw = t, e; }
 var baseSpacing = exports.baseSpacing = 24;
 var isObject = exports.isObject = function isObject(item) {

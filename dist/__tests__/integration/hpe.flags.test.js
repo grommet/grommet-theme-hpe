@@ -3,6 +3,9 @@
 var _grommet = require("hpe-design-tokens/grommet");
 var _themes = require("../../themes");
 var _hpe = require("../../themes/hpe");
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
+
 var tokens = {
   primitives: _grommet.primitives,
   light: _grommet.light,

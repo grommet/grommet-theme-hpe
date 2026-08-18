@@ -2,6 +2,8 @@
 
 exports.__esModule = true;
 exports.buildContentTheme = void 0;
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 var buildContentTheme = exports.buildContentTheme = function buildContentTheme(tokens, context) {
   var _components$hpe$eleme, _components$hpe$eleme2, _components$hpe$eleme3, _components$hpe$eleme4, _components$hpe$eleme5;
   var components = tokens.components,

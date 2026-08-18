@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import { breakpointStyle, getHeadingSize, getTextSize, getThemeColor, headingLevelToSize, textSizes } from './utils';
 export var buildTypography = function buildTypography(tokens) {
   var small = tokens.small,
