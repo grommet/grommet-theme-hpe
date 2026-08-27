@@ -886,7 +886,12 @@ export const buildFormTheme = (tokens, context) => {
         },
       },
       drop: {
+        gap: '3xsmall',
+        pad: 'xsmall',
         option: {
+          gap: '4xsmall',
+          pad: { vertical: '5xsmall', horizontal: 'xsmall' },
+          size: 'medium',
           hover: {
             background: 'background-active',
           },
