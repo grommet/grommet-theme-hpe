@@ -215,8 +215,9 @@ export const buildFormTheme = (tokens, context) => {
       extend: ({ disabled, theme }) => css`
         font-weight: ${components.hpe.checkbox.default.label.rest.fontWeight};
         width: auto;
-        border: ${components.hpe.formField.default.medium.input.container
-            .borderWidth}
+        border: ${
+          components.hpe.formField.default.medium.input.container.borderWidth
+        }
           solid
           ${getThemeColor(
             components.hpe.formField.default.input.group.item.rest.borderColor,
@@ -291,8 +292,10 @@ export const buildFormTheme = (tokens, context) => {
       extend: `border-radius: ${components.hpe.formField.default.medium.input.container.borderRadius};`,
     },
     formField: {
-      extend: ({ theme }) =>
-        `
+      extend: (props) => {
+        const { theme } = props;
+        console.log('formField extend', props);
+        return `
           [class*="ContentBox"] {
             label {
               padding-block: ${
@@ -358,7 +361,8 @@ export const buildFormTheme = (tokens, context) => {
               }
             }
           }
-      `,
+      `;
+      },
       content: { margin: { vertical: '3xsmall' }, pad: 'none' },
       border: {
         error: {
@@ -673,22 +677,28 @@ export const buildFormTheme = (tokens, context) => {
       },
       control: {
         extend: ({ disabled }) => css`
-          ${disabled &&
-          `
+          ${
+            disabled &&
+            `
           opacity: 0.3;
           input {
             cursor: default;
-          }`}
+          }`
+          }
 
           &[class*="SelectMultiple"] [role="listbox"] {
-            padding-block: ${components.hpe.select.default.medium.drop
-              .paddingY};
-            padding-inline: ${components.hpe.select.default.medium.drop
-              .paddingX};
+            padding-block: ${
+              components.hpe.select.default.medium.drop.paddingY
+            };
+            padding-inline: ${
+              components.hpe.select.default.medium.drop.paddingX
+            };
             & [role='option'] {
-              border-radius: ${dimensions.edgeSize[
-                components.hpe.select.default.medium.option.borderRadius
-              ] || components.hpe.select.default.medium.option.borderRadius};
+              border-radius: ${
+                dimensions.edgeSize[
+                  components.hpe.select.default.medium.option.borderRadius
+                ] || components.hpe.select.default.medium.option.borderRadius
+              };
             }
           }
         `,

@@ -55,10 +55,6 @@ const Template = () => (
         />
       </FormField>
 
-      <FormField name="active">
-        <CheckBox id="active-checkbox" name="active" label="Enabled" />
-      </FormField>
-
       <FormField name="fruits" label="CheckBoxGroup" htmlFor="fruits-group">
         <CheckBoxGroup
           id="fruits-group"
@@ -73,6 +69,14 @@ const Template = () => (
 
       <FormField name="range" label="Range input" htmlFor="range-input">
         <RangeInput id="range-input" name="range" min={0} max={100} step={1} />
+      </FormField>
+
+      <FormField name="active">
+        <CheckBox
+          id="active-checkbox"
+          name="active"
+          label="I accept all terms"
+        />
       </FormField>
 
       <Box direction="row" gap="small" margin={{ top: 'small' }}>

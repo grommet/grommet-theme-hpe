@@ -1,6 +1,7 @@
 import React from 'react';
 import { CheckboxInput } from './Checkbox';
 import { RadioButtonGroupInput } from './RadioButtonGroup';
+import { TextInputInput } from './TextInput';
 import { Page, PageContent, PageHeader } from 'grommet';
 
 const StoryWrapper = ({
@@ -36,6 +37,14 @@ export const RadioButtonGroup = {
   render: () => (
     <StoryWrapper title="RadioButtonGroup">
       <RadioButtonGroupInput />
+    </StoryWrapper>
+  ),
+};
+
+export const TextInput = {
+  render: () => (
+    <StoryWrapper title="TextInput">
+      <TextInputInput />
     </StoryWrapper>
   ),
 };
