@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import { light, dark } from 'hpe-design-tokens/grommet';
 import { hpe } from './hpe';
 

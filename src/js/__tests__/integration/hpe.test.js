@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import {
   primitives as localPrimitives,
   dark as localDark,
@@ -69,6 +71,17 @@ describe('Structural and Contract Tests', () => {
     it('should have form field definitions', () => {
       expect(theme.formField).toBeDefined();
       expect(typeof theme.formField).toBe('object');
+    });
+
+    it('should have dateTimeInput definitions', () => {
+      expect(theme.dateTimeInput).toBeDefined();
+      expect(theme.dateTimeInput.container.round).toBeDefined();
+      expect(theme.dateTimeInput.button.margin).toBeDefined();
+      expect(theme.dateTimeInput.active.background).toBeDefined();
+      expect(theme.dateTimeInput.active.indicator.color).toBeDefined();
+      expect(theme.dateTimeInput.drop.border.size).toBeDefined();
+      expect(theme.dateTimeInput.separator.pad).toBeDefined();
+      expect(theme.dateTimeInput.icon.calendar).toBeDefined();
     });
   });
 

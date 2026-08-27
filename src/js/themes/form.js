@@ -1,15 +1,18 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import React from 'react';
 import { css } from 'styled-components';
 
 import { getThemeColor } from './utils';
 
 export const buildFormTheme = (tokens, context) => {
-  const { primitives, light, large, components } = tokens;
+  const { primitives, light, dark, large, components } = tokens;
   const { dimensions, option } = context;
   const {
     Alert,
     Blank,
     Calendar,
+    Clock: ClockIcon,
     Close,
     Copy,
     Dislike,
@@ -22,6 +25,12 @@ export const buildFormTheme = (tokens, context) => {
     StarFill,
     Up,
   } = context.icons;
+  // Pulling the raw values directly from the token files gives us the color
+  // exactly as authored.
+  const textOnSelectedPrimaryStrong = {
+    light: light.hpe.color.text.onSelectedPrimaryStrong,
+    dark: dark.hpe.color.text.onSelectedPrimaryStrong,
+  };
 
   return {
     checkBox: {
@@ -253,6 +262,36 @@ export const buildFormTheme = (tokens, context) => {
         size: 'small',
       },
       button: { margin: 'xsmall' },
+    },
+    dateTimeInput: {
+      button: {
+        margin: { right: '3xsmall' },
+      },
+      container: {
+        round:
+          components.hpe.formField.default.medium.input.container.borderRadius,
+      },
+      active: {
+        background: 'background-active',
+        pad: '5xsmall',
+        indicator: {
+          color: 'focus',
+        },
+      },
+      drop: {
+        pad: 'small',
+        gap: 'small',
+        border: {
+          color: 'border',
+          size: 'xsmall',
+        },
+      },
+      separator: {
+        pad: '5xsmall',
+      },
+      icon: {
+        calendar: Calendar,
+      },
     },
     fileInput: {
       anchor: {
@@ -825,6 +864,37 @@ export const buildFormTheme = (tokens, context) => {
         dislikeSelected: DislikeFill,
         like: Like,
         likeSelected: LikeFill,
+      },
+    },
+    timeInput: {
+      container: {
+        round:
+          components.hpe.formField.default.medium.input.container.borderRadius,
+      },
+      button: {
+        margin: { right: '3xsmall' },
+      },
+      active: {
+        background: 'background-active',
+        pad: '5xsmall',
+        indicator: {
+          color: 'focus',
+        },
+      },
+      drop: {
+        option: {
+          hover: {
+            background: 'background-active',
+          },
+          selected: {
+            background: 'background-selected-primary-strong',
+            color: textOnSelectedPrimaryStrong,
+            hover: { background: 'background-selected-primary-strong-hover' },
+          },
+        },
+      },
+      icon: {
+        clock: ClockIcon,
       },
     },
   };

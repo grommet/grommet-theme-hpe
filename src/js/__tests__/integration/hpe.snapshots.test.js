@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import {
   primitives as localPrimitives,
   dark as localDark,
@@ -58,6 +60,7 @@ describe('Theme snapshot groups', () => {
       rangeSelector: theme.rangeSelector,
       fileInput: theme.fileInput,
       dateInput: theme.dateInput,
+      dateTimeInput: theme.dateTimeInput,
     }).toMatchSnapshot();
   });
 
@@ -114,5 +117,18 @@ describe('Theme snapshot groups', () => {
       calendar: theme.calendar,
       avatar: theme.avatar,
     }).toMatchSnapshot();
+  });
+
+  it('matches theme metadata snapshot', () => {
+    expect({
+      name: theme.name,
+      rounding: theme.rounding,
+      scale: theme.scale,
+      spacing: theme.spacing,
+    }).toMatchSnapshot();
+  });
+
+  it('matches top-level theme shape', () => {
+    expect(Object.keys(theme).sort()).toMatchSnapshot();
   });
 });

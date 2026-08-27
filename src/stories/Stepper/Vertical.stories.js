@@ -1,0 +1,61 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
+import React, { useState } from 'react';
+
+import { Box, Text, Heading, Paragraph, Stepper } from 'grommet';
+
+const VerticalSteps = () => {
+  const [currentStep, setCurrentStep] = useState('deploy');
+  const steps = [
+    {
+      id: 'setup',
+      title: 'Setup',
+      description: 'Configure your environment.',
+      status: 'completed',
+    },
+    {
+      id: 'deploy',
+      title: 'Deploy',
+      status: 'pending',
+    },
+    {
+      id: 'verify',
+      title: 'Verify',
+      description: 'Run post-deployment checks.',
+      status: 'pending',
+    },
+  ];
+  return (
+    <Box direction="row" gap="medium" pad="medium">
+      <Stepper
+        steps={steps}
+        currentStep={currentStep}
+        direction="vertical"
+        onStepClick={(id) => setCurrentStep(id)}
+      />
+
+      <Box
+        flex
+        pad="medium"
+        background="background-contrast"
+        round="small"
+        height={{ min: 'medium' }}
+        gap="none"
+      >
+        <Heading level={2}>
+          {steps.find((s) => s.id === currentStep)?.title}
+        </Heading>
+        <Text color="text-strong">
+          {steps.find((s) => s.id === currentStep)?.description}
+        </Text>
+        <Paragraph>Step content</Paragraph>
+      </Box>
+    </Box>
+  );
+};
+
+export default {
+  title: 'Theme/Stepper/Vertical Steps',
+};
+
+export { VerticalSteps };

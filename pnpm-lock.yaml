@@ -102,8 +102,8 @@ importers:
         specifier: ^11.2.0
         version: 11.4.0
       grommet:
-        specifier: ^2.55.0
-        version: 2.56.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
+        specifier: https://github.com/grommet/grommet/tarball/stable
+        version: https://codeload.github.com/grommet/grommet/legacy.tar.gz/refs/heads/stable(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -4895,11 +4895,12 @@ packages:
       react-dom: ^16.6.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       styled-components: '>= 5.x'
 
-  grommet@2.56.1:
+  grommet@https://codeload.github.com/grommet/grommet/legacy.tar.gz/refs/heads/stable:
     resolution:
       {
-        integrity: sha512-NIO7pf87qfklsqyvVr+w+S4t2hyWu5cb1ToBXJmACAfOk8kw8GHIFe2Xr5MuO+En1kW76oapROUqqWc3sObBGA==,
+        tarball: https://codeload.github.com/grommet/grommet/legacy.tar.gz/refs/heads/stable,
       }
+    version: 2.56.1
     engines: { node: '>= 16' }
     peerDependencies:
       react: ^16.6.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
@@ -11488,7 +11489,7 @@ snapshots:
       react-dom: 19.2.8(react@19.2.8)
       styled-components: 6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
 
-  grommet@2.56.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)):
+  grommet@https://codeload.github.com/grommet/grommet/legacy.tar.gz/refs/heads/stable(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)):
     dependencies:
       '@emotion/is-prop-valid': 1.4.0
       grommet-icons: 4.14.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))

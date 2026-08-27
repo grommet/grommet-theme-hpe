@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 // (C) Copyright 2020-2021 Hewlett Packard Enterprise Development LP
 import React from 'react';
 import {
@@ -11,6 +13,8 @@ import {
 } from 'hpe-design-tokens/grommet';
 
 import { Checkmark } from '@hpe-design/icons-grommet/icons/Checkmark';
+import { Clock } from '@hpe-design/icons-grommet/icons/Clock';
+import { CircleFill } from '@hpe-design/icons-grommet/icons/CircleFill';
 import { Close } from '@hpe-design/icons-grommet/icons/Close';
 import { Element } from '@hpe-design/icons-grommet/icons/Element';
 import { Filter } from '@hpe-design/icons-grommet/icons/Filter';
@@ -61,6 +65,10 @@ import { getGraphikFamily, getGraphikFontFaces } from './fonts';
 import { buildGlobalTheme } from './global';
 import { buildColors } from './colors';
 
+// ignore unresolved for CI lint
+// eslint-disable-next-line import/no-unresolved, import/extensions
+import { themeVersion } from './themeVersion';
+
 const buildTheme = (tokens, flags) => {
   const { light, dark, global, components } = tokens;
   const colors = buildColors(tokens);
@@ -106,7 +114,12 @@ const buildTheme = (tokens, flags) => {
   });
   const miscTheme = buildMiscTheme(tokens, {
     icons: {
+      Checkmark,
+      CircleFill,
       Close,
+      Left,
+      Right,
+      StatusCritical,
     },
   });
   const contentTheme = buildContentTheme(tokens, {
@@ -128,6 +141,7 @@ const buildTheme = (tokens, flags) => {
       Alert,
       Blank,
       Calendar,
+      Clock,
       Close,
       Copy,
       Dislike,
@@ -381,6 +395,7 @@ const buildTheme = (tokens, flags) => {
     dataFilter: dataTheme.dataFilter,
     dataFilters: dataTheme.dataFilters,
     dateInput: formTheme.dateInput,
+    dateTimeInput: formTheme.dateTimeInput,
     dataSearch: dataTheme.dataSearch,
     dataSort: dataTheme.dataSort,
     dataSummary: dataTheme.dataSummary,
@@ -416,6 +431,7 @@ const buildTheme = (tokens, flags) => {
     sidebar: navigationTheme.sidebar,
     spinner: feedbackTheme.spinner,
     starRating: formTheme.starRating,
+    stepper: miscTheme.stepper,
     tab: navigationTheme.tab,
     tabs: navigationTheme.tabs,
     table: contentTheme.table,
@@ -427,16 +443,19 @@ const buildTheme = (tokens, flags) => {
       },
     },
     textInput: formTheme.textInput,
+    timeInput: formTheme.timeInput,
     tip: navigationTheme.tip,
     thumbsRating: formTheme.thumbsRating,
     toggleGroup: navigationTheme.toggleGroup,
     toolbar: dataTheme.toolbar,
     video: layoutTheme.video,
+    wizard: miscTheme.wizard,
     // Theme-Designer only parameters
     name: 'HPE 1',
     rounding: 4,
     scale: 1.1,
     spacing: 24,
+    version: themeVersion,
   });
 };
 

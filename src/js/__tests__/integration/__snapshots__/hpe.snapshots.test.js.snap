@@ -913,7 +913,6 @@ exports[`Theme snapshot groups matches content snapshot 1`] = `
       "adjacent": {
         "color": "text-weak",
       },
-      "extend": [Function],
       "hover": {
         "background": "background-hover",
         "color": "text-strong",
@@ -936,6 +935,10 @@ exports[`Theme snapshot groups matches content snapshot 1`] = `
         },
         "hover": {
           "background": "background-selected-primary-strong-hover",
+          "color": {
+            "dark": "#ffffff",
+            "light": "#292d3a",
+          },
         },
       },
     },
@@ -1915,6 +1918,40 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
         "render": [Function],
       },
       "size": "small",
+    },
+  },
+  "dateTimeInput": {
+    "active": {
+      "background": "background-active",
+      "indicator": {
+        "color": "focus",
+      },
+      "pad": "5xsmall",
+    },
+    "button": {
+      "margin": {
+        "right": "3xsmall",
+      },
+    },
+    "container": {
+      "round": "8px",
+    },
+    "drop": {
+      "border": {
+        "color": "border",
+        "size": "xsmall",
+      },
+      "gap": "small",
+      "pad": "small",
+    },
+    "icon": {
+      "calendar": {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      },
+    },
+    "separator": {
+      "pad": "5xsmall",
     },
   },
   "fileInput": {
@@ -3288,6 +3325,94 @@ exports[`Theme snapshot groups matches navigation snapshot 1`] = `
     },
   },
 }
+`;
+
+exports[`Theme snapshot groups matches theme metadata snapshot 1`] = `
+{
+  "name": "HPE 1",
+  "rounding": 4,
+  "scale": 1.1,
+  "spacing": 24,
+}
+`;
+
+exports[`Theme snapshot groups matches top-level theme shape 1`] = `
+[
+  "accordion",
+  "anchor",
+  "avatar",
+  "box",
+  "button",
+  "calendar",
+  "card",
+  "cards",
+  "carousel",
+  "chart",
+  "checkBox",
+  "checkBoxGroup",
+  "data",
+  "dataChart",
+  "dataFilter",
+  "dataFilters",
+  "dataSearch",
+  "dataSort",
+  "dataSummary",
+  "dataTable",
+  "dataTableColumns",
+  "dateInput",
+  "dateTimeInput",
+  "defaultMode",
+  "diagram",
+  "distribution",
+  "fileInput",
+  "footer",
+  "formField",
+  "global",
+  "header",
+  "heading",
+  "icon",
+  "layer",
+  "list",
+  "maskedInput",
+  "menu",
+  "meter",
+  "name",
+  "nameValueList",
+  "nameValuePair",
+  "nav",
+  "notification",
+  "page",
+  "pageHeader",
+  "pagination",
+  "paragraph",
+  "radioButton",
+  "radioButtonGroup",
+  "rangeInput",
+  "rangeSelector",
+  "rounding",
+  "scale",
+  "select",
+  "selectMultiple",
+  "sidebar",
+  "spacing",
+  "spinner",
+  "starRating",
+  "stepper",
+  "tab",
+  "table",
+  "tabs",
+  "tag",
+  "text",
+  "textInput",
+  "thumbsRating",
+  "timeInput",
+  "tip",
+  "toggleGroup",
+  "toolbar",
+  "version",
+  "video",
+  "wizard",
+]
 `;
 
 exports[`Theme snapshot groups matches typography snapshot 1`] = `

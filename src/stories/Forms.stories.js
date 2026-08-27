@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import React from 'react';
 import {
   Box,
@@ -5,6 +7,7 @@ import {
   CheckBox,
   CheckBoxGroup,
   DateInput,
+  DateTimeInput,
   Form,
   FormField,
   Heading,
@@ -76,6 +79,18 @@ const Template = () => (
           id="active-checkbox"
           name="active"
           label="I accept all terms"
+        />
+      </FormField>
+      <FormField
+        htmlFor="appointment-date-time"
+        label="Choose an appointment date and time"
+        name="appointment"
+        required
+      >
+        <DateTimeInput
+          id="appointment-date-time"
+          name="appointment"
+          format="12"
         />
       </FormField>
 

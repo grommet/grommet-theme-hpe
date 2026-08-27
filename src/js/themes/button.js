@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import { buttonKinds, buttonStates, componentSizes } from './utils';
 
 export const buildButtonTheme = (tokens, dimensions) => {

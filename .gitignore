@@ -5,3 +5,4 @@ dist
 storybook-static
 .DS_Store
 .yalc
+src/js/themes/themeVersion.js
