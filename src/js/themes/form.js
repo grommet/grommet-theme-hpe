@@ -331,9 +331,148 @@ export const buildFormTheme = (tokens, context) => {
       extend: `border-radius: ${components.hpe.formField.default.medium.input.container.borderRadius};`,
     },
     formField: {
+      border: {
+        error: {
+          color:
+            components.hpe.formField.default.input.container.error.rest
+              .borderColor,
+        },
+        color:
+          components.hpe.formField.default.input.container.rest.borderColor,
+        side: 'all',
+      },
+      content: { margin: { vertical: '3xsmall' }, pad: 'none' },
+      help: {
+        size: 'xsmall',
+        color: components.hpe.formField.default.help.rest.color,
+        margin: 'none',
+      },
+      info: {
+        size: 'xsmall',
+        color: components.hpe.formField.default.info.rest.color,
+        margin: { bottom: '3xsmall', top: 'none', horizontal: 'none' },
+      },
+      label: {
+        size: 'xsmall',
+        color: components.hpe.formField.default.label.rest.textColor,
+        margin: { bottom: 'none', top: '3xsmall', horizontal: 'none' },
+        requiredIndicator: true,
+        weight: components.hpe.formField.default.medium.label.fontWeight,
+      },
+      margin: { bottom: 'none' },
+      round:
+        components.hpe.formField.default.medium.input.container.borderRadius,
+      /* FormField states */
+      disabled: {
+        background:
+          components.hpe.formField.default.input.group.container.disabled.rest
+            .background,
+        border: {
+          color:
+            components.hpe.formField.default.input.container.disabled.rest
+              .borderColor,
+        },
+        label: {
+          color: components.hpe.formField.default.label.disabled.rest.textColor,
+        },
+        help: {
+          color: components.hpe.formField.default.help.disabled.rest.textColor,
+        },
+        info: {
+          color: components.hpe.formField.default.info.disabled.rest.textColor,
+        },
+      },
+      error: {
+        background: {
+          color:
+            components.hpe.formField.default.input.container.error.rest
+              .background,
+        },
+        container: { gap: '3xsmall' },
+        icon: <Alert size="small" color={light.hpe.color.icon.critical} />,
+        size: 'xsmall',
+        color: components.hpe.formField.default.error.rest.textColor,
+        margin: { bottom: '3xsmall', top: 'none', horizontal: 'none' },
+      },
+      focus: {
+        containerFocus: false,
+        background: undefined,
+        border: {
+          color: undefined,
+        },
+      },
+      /* Input specific styles */
+      checkBox: {
+        pad: {
+          horizontal:
+            components.hpe.formField.default.medium.input.group.item.paddingX,
+          vertical:
+            components.hpe.formField.default.medium.input.group.item.paddingY,
+        },
+        container: {
+          extend: ({ error }) =>
+            `border-color: ${
+              error
+                ? components.hpe.formField.default.input.group.container.error
+                    .rest.borderColor
+                : components.hpe.formField.default.input.group.container.rest
+                    .borderColor
+            }; `,
+        },
+      },
+      checkBoxGroup: {
+        container: {
+          extend: ({ error }) =>
+            `border-color: ${
+              error
+                ? components.hpe.formField.default.input.group.container.error
+                    .rest.borderColor
+                : components.hpe.formField.default.input.group.container.rest
+                    .borderColor
+            }; `,
+        },
+      },
+      radioButtonGroup: {
+        container: {
+          extend: ({ error }) =>
+            `border-color: ${
+              error
+                ? components.hpe.formField.default.input.group.container.error
+                    .rest.borderColor
+                : components.hpe.formField.default.input.group.container.rest
+                    .borderColor
+            }; `,
+        },
+      },
+      thumbsRating: {
+        container: {
+          extend: ({ error }) =>
+            `border-color: ${
+              error
+                ? components.hpe.formField.default.input.group.container.error
+                    .rest.borderColor
+                : components.hpe.formField.default.input.group.container.rest
+                    .borderColor
+            }; `,
+        },
+      },
+      starRating: {
+        container: {
+          extend: ({ error }) =>
+            `border-color: ${
+              error
+                ? components.hpe.formField.default.input.group.container.error
+                    .rest.borderColor
+                : components.hpe.formField.default.input.group.container.rest
+                    .borderColor
+            }; `,
+        },
+      },
+      survey: {
+        label: { margin: { bottom: 'none' }, size: 'medium', weight: 500 },
+      },
       extend: (props) => {
         const { theme } = props;
-        console.log('formField extend', props);
         return `
           [class*="ContentBox"] {
             label {
@@ -401,144 +540,6 @@ export const buildFormTheme = (tokens, context) => {
             }
           }
       `;
-      },
-      content: { margin: { vertical: '3xsmall' }, pad: 'none' },
-      border: {
-        error: {
-          color:
-            components.hpe.formField.default.input.container.error.rest
-              .borderColor,
-        },
-        color:
-          components.hpe.formField.default.input.container.rest.borderColor,
-        side: 'all',
-      },
-      checkBox: {
-        pad: {
-          horizontal:
-            components.hpe.formField.default.medium.input.group.item.paddingX,
-          vertical:
-            components.hpe.formField.default.medium.input.group.item.paddingY,
-        },
-        container: {
-          extend: ({ error }) =>
-            `border-color: ${
-              error
-                ? components.hpe.formField.default.input.group.container.error
-                    .rest.borderColor
-                : components.hpe.formField.default.input.group.container.rest
-                    .borderColor
-            }; `,
-        },
-      },
-      checkBoxGroup: {
-        container: {
-          extend: ({ error }) =>
-            `border-color: ${
-              error
-                ? components.hpe.formField.default.input.group.container.error
-                    .rest.borderColor
-                : components.hpe.formField.default.input.group.container.rest
-                    .borderColor
-            }; `,
-        },
-      },
-      radioButtonGroup: {
-        container: {
-          extend: ({ error }) =>
-            `border-color: ${
-              error
-                ? components.hpe.formField.default.input.group.container.error
-                    .rest.borderColor
-                : components.hpe.formField.default.input.group.container.rest
-                    .borderColor
-            }; `,
-        },
-      },
-      thumbsRating: {
-        container: {
-          extend: ({ error }) =>
-            `border-color: ${
-              error
-                ? components.hpe.formField.default.input.group.container.error
-                    .rest.borderColor
-                : components.hpe.formField.default.input.group.container.rest
-                    .borderColor
-            }; `,
-        },
-      },
-      starRating: {
-        container: {
-          extend: ({ error }) =>
-            `border-color: ${
-              error
-                ? components.hpe.formField.default.input.group.container.error
-                    .rest.borderColor
-                : components.hpe.formField.default.input.group.container.rest
-                    .borderColor
-            }; `,
-        },
-      },
-      disabled: {
-        background:
-          components.hpe.formField.default.input.group.container.disabled.rest
-            .background,
-        border: {
-          color:
-            components.hpe.formField.default.input.container.disabled.rest
-              .borderColor,
-        },
-        label: {
-          color: components.hpe.formField.default.label.disabled.rest.textColor,
-        },
-        help: {
-          color: components.hpe.formField.default.help.disabled.rest.textColor,
-        },
-        info: {
-          color: components.hpe.formField.default.info.disabled.rest.textColor,
-        },
-      },
-      error: {
-        background: {
-          color:
-            components.hpe.formField.default.input.container.error.rest
-              .background,
-        },
-        container: { gap: '3xsmall' },
-        icon: <Alert size="small" color={light.hpe.color.icon.critical} />,
-        size: 'xsmall',
-        color: components.hpe.formField.default.error.rest.textColor,
-        margin: { bottom: '3xsmall', top: 'none', horizontal: 'none' },
-      },
-      focus: {
-        containerFocus: false,
-        background: undefined,
-        border: {
-          color: undefined,
-        },
-      },
-      help: {
-        size: 'xsmall',
-        color: components.hpe.formField.default.help.rest.color,
-        margin: 'none',
-      },
-      info: {
-        size: 'xsmall',
-        color: components.hpe.formField.default.info.rest.color,
-        margin: { bottom: '3xsmall', top: 'none', horizontal: 'none' },
-      },
-      label: {
-        size: 'xsmall',
-        color: components.hpe.formField.default.label.rest.textColor,
-        margin: { bottom: 'none', top: '3xsmall', horizontal: 'none' },
-        requiredIndicator: true,
-        weight: components.hpe.formField.default.medium.label.fontWeight,
-      },
-      margin: { bottom: 'none' },
-      round:
-        components.hpe.formField.default.medium.input.container.borderRadius,
-      survey: {
-        label: { margin: { bottom: 'none' }, size: 'medium', weight: 500 },
       },
     },
     radioButton: {
