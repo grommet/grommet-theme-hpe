@@ -401,6 +401,12 @@ export const buildFormTheme = (tokens, context) => {
           color: undefined,
         },
       },
+      hover: {
+        border: {
+          color:
+            components.hpe.formField.default.input.container.hover.borderColor,
+        },
+      },
       /* Input specific styles */
       checkBox: {
         pad: {
