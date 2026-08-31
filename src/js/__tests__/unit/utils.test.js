@@ -4,6 +4,7 @@ import {
   deepFreeze,
   getHeadingSize,
   getTextSize,
+  getTokenColorPair,
   getThemeColor,
   isObject,
 } from '../../themes/utils';
@@ -88,6 +89,20 @@ describe('Pure utility functions', () => {
     it('should return original color token when key is missing', () => {
       const theme = { dark: false, global: { colors: {} } };
       expect(getThemeColor('unknown-token', theme)).toBe('unknown-token');
+    });
+  });
+
+  describe('getTokenColorPair', () => {
+    it('should resolve raw light and dark token values from a color path', () => {
+      const tokens = {
+        dark: { hpe: { color: { background: { active: '#222222' } } } },
+        light: { hpe: { color: { background: { active: '#eeeeee' } } } },
+      };
+
+      expect(getTokenColorPair('color.background.active', tokens)).toEqual({
+        dark: '#222222',
+        light: '#eeeeee',
+      });
     });
   });
 

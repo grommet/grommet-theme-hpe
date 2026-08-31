@@ -3,10 +3,10 @@
 import React from 'react';
 import { css } from 'styled-components';
 
-import { getThemeColor } from './utils';
+import { getThemeColor, getTokenColorPair } from './utils';
 
 export const buildFormTheme = (tokens, context) => {
-  const { primitives, light, dark, large, components } = tokens;
+  const { primitives, light, large, global, components } = tokens;
   const { dimensions, option } = context;
   const {
     Alert,
@@ -27,10 +27,10 @@ export const buildFormTheme = (tokens, context) => {
   } = context.icons;
   // Pulling the raw values directly from the token files gives us the color
   // exactly as authored.
-  const textOnSelectedPrimaryStrong = {
-    light: light.hpe.color.text.onSelectedPrimaryStrong,
-    dark: dark.hpe.color.text.onSelectedPrimaryStrong,
-  };
+  const textOnSelectedPrimaryStrong = getTokenColorPair(
+    'color.text.onSelectedPrimaryStrong',
+    tokens,
+  );
 
   return {
     checkBox: {
@@ -876,29 +876,47 @@ export const buildFormTheme = (tokens, context) => {
           components.hpe.formField.default.medium.input.container.borderRadius,
       },
       button: {
-        margin: { right: '3xsmall' },
+        margin: {
+          right:
+            components.hpe.formField.default.medium.input.container.textToIconX,
+        },
       },
       active: {
-        background: 'background-active',
-        pad: '5xsmall',
+        background: getTokenColorPair('color.background.active', tokens),
+        pad: large.hpe.spacing['5xsmall'],
         indicator: {
-          color: 'focus',
+          color: getTokenColorPair('color.focus', tokens),
         },
       },
       drop: {
-        gap: '3xsmall',
-        pad: 'xsmall',
+        gap: components.hpe.select.default.medium.drop.gapY,
+        pad: large.hpe.spacing.xsmall,
         option: {
-          gap: '4xsmall',
-          pad: { vertical: '5xsmall', horizontal: 'xsmall' },
-          size: 'medium',
-          hover: {
-            background: 'background-active',
+          gap: large.hpe.spacing['4xsmall'],
+          pad: {
+            vertical: components.hpe.element.medium.paddingY,
+            horizontal:
+              components.hpe.formField.default.medium.input.group.item
+                .textToElementX,
           },
+          size: large.hpe.text.medium.fontSize,
+          hover: {
+            background: getTokenColorPair('color.background.active', tokens),
+          },
+          round: components.hpe.select.default.medium.option.borderRadius,
           selected: {
-            background: 'background-selected-primary-strong',
+            background: getTokenColorPair(
+              'color.background.selected.primary.strong',
+              tokens,
+            ),
             color: textOnSelectedPrimaryStrong,
-            hover: { background: 'background-selected-primary-strong-hover' },
+            text: { weight: global.hpe.fontWeight.medium },
+            hover: {
+              background: getTokenColorPair(
+                'color.background.selected.primary.strong.hover',
+                tokens,
+              ),
+            },
           },
         },
       },
