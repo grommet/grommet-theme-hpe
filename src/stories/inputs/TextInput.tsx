@@ -27,6 +27,7 @@ const renderTextInput = (
 ) => {
   if (
     interactiveState.state === 'active' ||
+    interactiveState.state === 'focus' ||
     applicationState.state === 'indeterminate' ||
     applicationState.state === 'pinned'
   ) {
