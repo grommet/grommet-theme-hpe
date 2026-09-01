@@ -45,6 +45,7 @@ const renderTextInput = (
       id={`${applicationState.state}-${interactiveState.state}`}
       disabled={applicationState.state === 'disabled'}
       readOnly={applicationState.state === 'readonly'}
+      onChange={() => {}}
       value={
         applicationState.state === 'selected'
           ? 'Selected value'
