@@ -426,9 +426,6 @@ export const buildFormTheme = (tokens, context) => {
             }; `,
         },
         hover: {
-          background: {
-            color: 'pink',
-          },
           border: {
             color: undefined,
           },
