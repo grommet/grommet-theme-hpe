@@ -20,7 +20,7 @@ import {
   small as qaSmall,
   global as qaGlobal,
   components as qaComponents,
-} from '../.tmp/dist/grommet';
+} from './hpe-design-tokens-QA/dist/grommet';
 
 const tokens = {
   primitives,
