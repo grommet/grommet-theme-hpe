@@ -48,7 +48,7 @@ type StateMatrixProps<
   renderCell: (row: RowType, column: ColumnType) => React.ReactNode;
   fallback?: React.ReactNode;
   rowLabelWidth?: string;
-  cellWidth?: string | [string, string];
+  cellWidth?: string;
 };
 
 export function StateMatrix<
@@ -60,15 +60,13 @@ export function StateMatrix<
   renderCell,
   fallback = '--',
   rowLabelWidth = 'max-content',
-  cellWidth = ['max-content', 'small'],
+  cellWidth = 'max-content',
 }: StateMatrixProps<RowType, ColumnType>) {
   return (
     <Grid
       columns={[
         rowLabelWidth,
-        ...columns.map(() =>
-          Array.isArray(cellWidth) ? cellWidth[0] : cellWidth,
-        ),
+        ...columns.map(() => cellWidth),
       ]}
     >
       {/* This empty box is for the top-left corner of the grid, where the row and column headers meet. */}
