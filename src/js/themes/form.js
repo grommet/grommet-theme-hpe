@@ -292,6 +292,13 @@ export const buildFormTheme = (tokens, context) => {
       icon: {
         calendar: Calendar,
       },
+      calendar: {
+        day: {
+          selected: {
+            background: 'background-selected-primary-strong',
+          },
+        },
+      },
     },
     fileInput: {
       anchor: {
