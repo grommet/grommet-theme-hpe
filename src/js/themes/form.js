@@ -425,6 +425,14 @@ export const buildFormTheme = (tokens, context) => {
                     .borderColor
             }; `,
         },
+        hover: {
+          background: {
+            color: 'pink',
+          },
+          border: {
+            color: undefined,
+          },
+        },
       },
       checkBoxGroup: {
         container: {
@@ -437,6 +445,11 @@ export const buildFormTheme = (tokens, context) => {
                     .borderColor
             }; `,
         },
+        hover: {
+          border: {
+            color: undefined,
+          },
+        },
       },
       radioButtonGroup: {
         container: {
@@ -448,6 +461,11 @@ export const buildFormTheme = (tokens, context) => {
                 : components.hpe.formField.default.input.group.container.rest
                     .borderColor
             }; `,
+        },
+        hover: {
+          border: {
+            color: undefined,
+          },
         },
       },
       thumbsRating: {

@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import React from 'react';
 import { FormField, TextInput } from 'grommet';
 import {
@@ -40,23 +42,30 @@ const renderTextInput = (
 
   const input = (
     <StoryTextInput
-      aria-label={`${applicationState.label} ${interactiveState.label}`}
+      id={`${applicationState.state}-${interactiveState.state}`}
       disabled={applicationState.state === 'disabled'}
-      focus={interactiveState.state !== 'rest'}
-      focusIndicator={interactiveState.state === 'focus'}
       readOnly={applicationState.state === 'readonly'}
-      value={applicationState.state === 'selected' ? 'Selected value' : ''}
+      value={
+        applicationState.state === 'selected'
+          ? 'Selected value'
+          : 'HPE Design System'
+      }
     />
   );
 
-  if (applicationState.state === 'error') {
-    return <FormField error="Error">{input}</FormField>;
-  }
-
-  return input;
+  return (
+    <FormField
+      label="Label"
+      htmlFor={`${applicationState.state}-${interactiveState.state}`}
+      disabled={applicationState.state === 'disabled'}
+      error={applicationState.state === 'error' ? 'Error' : undefined}
+    >
+      {input}
+    </FormField>
+  );
 };
 
-export const TextInputInput = () => (
+export const TextInputMatrix = () => (
   <StateMatrix
     rows={applicationStateItems}
     columns={interactiveStateItems}
