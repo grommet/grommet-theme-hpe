@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import React from 'react';
 import { Data, List, Page, PageContent, PageHeader } from 'grommet';
 import { ThemeContext } from 'styled-components';
@@ -11,8 +13,7 @@ type BorderColorRow = {
 
 export const BorderColors = () => {
   const theme = React.useContext(ThemeContext) as
-    | { global?: { colors?: ThemeColors } }
-    | undefined;
+    { global?: { colors?: ThemeColors } } | undefined;
   const globalColors: ThemeColors = theme?.global?.colors ?? {};
   const borderColorRows: BorderColorRow[] = Object.entries(globalColors)
     .filter(([token]) => token.startsWith('border'))

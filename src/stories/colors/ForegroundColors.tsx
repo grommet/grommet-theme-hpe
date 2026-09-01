@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
 import React from 'react';
 import { Data, List, Page, PageContent, PageHeader } from 'grommet';
 import { ThemeContext } from 'styled-components';
@@ -11,8 +13,7 @@ type ForegroundColorRow = {
 
 export const ForegroundColors = () => {
   const theme = React.useContext(ThemeContext) as
-    | { global?: { colors?: ThemeColors } }
-    | undefined;
+    { global?: { colors?: ThemeColors } } | undefined;
   const globalColors: ThemeColors = theme?.global?.colors ?? {};
   const foregroundColorRows: ForegroundColorRow[] = Object.entries(globalColors)
     .filter(([token]) => token.startsWith('foreground'))
