@@ -202,6 +202,13 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
       },
       icon: {
         calendar: Calendar
+      },
+      calendar: {
+        day: {
+          selected: {
+            background: 'background-selected-primary-strong'
+          }
+        }
       }
     },
     fileInput: {

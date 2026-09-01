@@ -2302,6 +2302,13 @@
     },
     "icon": {
       "calendar": {}
+    },
+    "calendar": {
+      "day": {
+        "selected": {
+          "background": "background-selected-primary-strong"
+        }
+      }
     }
   },
   "dataSearch": {
