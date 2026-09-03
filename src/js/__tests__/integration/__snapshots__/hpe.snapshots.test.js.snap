@@ -1933,6 +1933,13 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
         "right": "3xsmall",
       },
     },
+    "calendar": {
+      "day": {
+        "selected": {
+          "background": "background-selected-primary-strong",
+        },
+      },
+    },
     "container": {
       "round": "8px",
     },
