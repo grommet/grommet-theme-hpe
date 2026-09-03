@@ -472,18 +472,6 @@ export const buildFormTheme = (tokens, context) => {
           },
         },
       },
-      thumbsRating: {
-        container: {
-          extend: ({ error }) =>
-            `border-color: ${
-              error
-                ? components.hpe.formField.default.input.group.container.error
-                    .rest.borderColor
-                : components.hpe.formField.default.input.group.container.rest
-                    .borderColor
-            }; `,
-        },
-      },
       starRating: {
         container: {
           extend: ({ error }) =>
@@ -495,9 +483,31 @@ export const buildFormTheme = (tokens, context) => {
                     .borderColor
             }; `,
         },
+        hover: {
+          border: {
+            color: undefined,
+          },
+        },
       },
       survey: {
         label: { margin: { bottom: 'none' }, size: 'medium', weight: 500 },
+      },
+      thumbsRating: {
+        container: {
+          extend: ({ error }) =>
+            `border-color: ${
+              error
+                ? components.hpe.formField.default.input.group.container.error
+                    .rest.borderColor
+                : components.hpe.formField.default.input.group.container.rest
+                    .borderColor
+            }; `,
+        },
+        hover: {
+          border: {
+            color: undefined,
+          },
+        },
       },
       extend: (props) => {
         const { theme } = props;
