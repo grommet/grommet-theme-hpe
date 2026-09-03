@@ -2033,6 +2033,11 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
       "container": {
         "extend": [Function],
       },
+      "hover": {
+        "border": {
+          "color": undefined,
+        },
+      },
       "pad": {
         "horizontal": "12px",
         "vertical": "5px",
@@ -2041,6 +2046,11 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
     "checkBoxGroup": {
       "container": {
         "extend": [Function],
+      },
+      "hover": {
+        "border": {
+          "color": undefined,
+        },
       },
     },
     "content": {
@@ -2106,6 +2116,11 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
       "margin": "none",
       "size": "xsmall",
     },
+    "hover": {
+      "border": {
+        "color": "border-default",
+      },
+    },
     "info": {
       "color": undefined,
       "margin": {
@@ -2133,11 +2148,21 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
       "container": {
         "extend": [Function],
       },
+      "hover": {
+        "border": {
+          "color": undefined,
+        },
+      },
     },
     "round": "8px",
     "starRating": {
       "container": {
         "extend": [Function],
+      },
+      "hover": {
+        "border": {
+          "color": undefined,
+        },
       },
     },
     "survey": {
@@ -2152,6 +2177,11 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
     "thumbsRating": {
       "container": {
         "extend": [Function],
+      },
+      "hover": {
+        "border": {
+          "color": undefined,
+        },
       },
     },
   },

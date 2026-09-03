@@ -6,3 +6,8 @@ storybook-static
 .DS_Store
 .yalc
 src/js/themes/themeVersion.js
+
+!.storybook/
+!.storybook/hpe-design-tokens-QA/
+!.storybook/hpe-design-tokens-QA/dist/
+!.storybook/hpe-design-tokens-QA/dist/**
