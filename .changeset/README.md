@@ -4,7 +4,7 @@ This repository uses Changesets to record user-visible package changes and gener
 
 ## Add a changeset
 
-For a source change that affects consumers, run:
+Every pull request should include a changeset. For a source change that affects consumers, run:
 
 ```text
 yarn changeset
@@ -12,7 +12,13 @@ yarn changeset
 
 Select `grommet-theme-hpe`, choose the appropriate semver level, and write a concise description for consumers. Commit the generated file in `.changeset/` with the pull request.
 
-Changesets are not normally required for documentation-only, CI-only, or internal changes. Explain that exemption in the pull request.
+For documentation-only, CI-only, or internal changes, create an empty changeset instead:
+
+```text
+yarn changeset add --empty
+```
+
+Commit the generated empty file in `.changeset/` with the pull request. It records that the change was reviewed and intentionally does not require a release.
 
 Maintainers use the collected changesets to generate the release version and update `CHANGELOG.md` with:
 

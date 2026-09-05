@@ -28,7 +28,7 @@ Relevant implementation files:
 1. Confirm the working tree is clean and update `master`.
 2. Install dependencies with the repository-supported Node and Yarn versions.
 3. Review merged changes since the last release.
-4. Add or review Changesets for user-visible package changes. The repository already has Changesets configured for the single package.
+4. Add or review a Changeset for the pull request. Use a regular changeset for user-visible package changes and `yarn changeset add --empty` for documentation-only, CI-only, or internal changes. The repository is configured for the single package.
 5. Generate the version update using the repository's Changesets workflow. Review the resulting `package.json` version and `CHANGELOG.md` entry.
 6. Run the release checks locally where practical:
 
@@ -137,7 +137,7 @@ The migration plan must account for the main risks: permission differences, filt
 ## Release Checklist
 
 - [ ] `master` is current and the working tree is clean.
-- [ ] Changesets are present or an exemption is documented.
+- [ ] A regular or empty changeset is present.
 - [ ] Version PR has been reviewed and merged.
 - [ ] Local checks and CircleCI checks passed.
 - [ ] `package.json` and `CHANGELOG.md` contain the intended version.

@@ -16,7 +16,7 @@
 
 #### Changeset
 
-- [ ] I added a changeset for this user-visible package change.
-- [ ] This PR does not require a changeset; the reason is documented below.
+- [ ] I added a regular changeset for this user-visible package change.
+- [ ] I added an empty changeset because this PR does not require a release.
 
-Changeset exemption or additional release context:
+Additional release context:
