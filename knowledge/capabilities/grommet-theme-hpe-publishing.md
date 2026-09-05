@@ -9,6 +9,7 @@ Use this capability to prepare, approve, publish, and verify a `grommet-theme-hp
 CircleCI currently owns the executable release path:
 
 - Pull requests and branch builds run compatibility tests, lint, and build checks.
+- Feature branches also validate that a regular or empty Changeset exists relative to `master`.
 - A successful `master` build promotes generated artifacts to `stable` and `gh-pages`.
 - A tag matching `v*` runs the `publish` job, which authenticates to NPM and runs `npm publish`.
 - The GitHub release record is currently created manually.
@@ -96,6 +97,7 @@ A human should review and post the announcement. Automated Slack posting is defe
 Automate or retain as CI checks:
 
 - Dependency installation.
+- Changeset validation on feature branches.
 - React compatibility tests.
 - Linting.
 - Build and JSON artifact generation.
