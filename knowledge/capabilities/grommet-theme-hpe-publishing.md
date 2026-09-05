@@ -34,14 +34,11 @@ Relevant implementation files:
 
    ```text
    yarn lint
+   yarn test
+   yarn build
+   yarn jsonify
+   yarn license-check
    ```
-
-yarn test
-yarn build
-yarn jsonify
-yarn license-check
-
-````
 
 ### 2. Review and merge
 
@@ -61,10 +58,10 @@ Do not create or push a release tag until the version PR is approved and merged 
 2. Confirm the package version in `package.json` matches the intended release.
 3. Create and push an annotated tag using the CircleCI convention:
 
-```text
-git tag -a vX.Y.Z -m "Release vX.Y.Z"
-git push origin vX.Y.Z
-````
+   ```text
+   git tag -a vX.Y.Z -m "Release vX.Y.Z"
+   git push origin vX.Y.Z
+   ```
 
 4. Create the GitHub release for `vX.Y.Z` from `master`.
 5. Use the matching `CHANGELOG.md` section as the release notes.
