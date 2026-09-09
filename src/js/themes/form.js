@@ -903,7 +903,7 @@ export const buildFormTheme = (tokens, context) => {
           hover: {
             background: getTokenColorPair('color.background.active', tokens),
           },
-          round: components.hpe.select.default.medium.option.borderRadius,
+          round: large.hpe.radius.xxsmall,
           selected: {
             background: getTokenColorPair(
               'color.background.selected.primary.strong',
