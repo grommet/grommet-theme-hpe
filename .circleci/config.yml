@@ -57,6 +57,14 @@ jobs:
           root: ~/grommet-ci
           paths:
             - ./
+  changeset-status:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/grommet-ci
+      - run:
+          name: Validate Changesets
+          command: yarn changeset status --since=master
   release-stable:
     <<: *defaults
     steps:
@@ -188,6 +196,22 @@ workflows:
               only: /.*/
             branches:
               ignore:
+                - stable
+                - NEXT-stable
+                - AUDIT-stable
+                - TOKENS-stable
+                - v2-alpha-stable
+                - hpe-design-tokens-v2-stable
+                - gh-pages
+      - changeset-status:
+          requires:
+            - checkout
+          filters:
+            tags:
+              ignore: /.*/
+            branches:
+              ignore:
+                - master
                 - stable
                 - NEXT-stable
                 - AUDIT-stable
