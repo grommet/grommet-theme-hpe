@@ -197,6 +197,30 @@
         "light": "rgba(0, 0, 0, 0.04)",
         "dark": "rgba(255, 255, 255, 0.06)"
       },
+      "background-accent-blue-strong": {
+        "light": "#0069e8",
+        "dark": "#65aef9"
+      },
+      "background-accent-blue-weak": {
+        "light": "#e3f1ff",
+        "dark": "#1c3053"
+      },
+      "background-accent-cyan-strong": {
+        "light": "#00838f",
+        "dark": "#00a4b3"
+      },
+      "background-accent-cyan-weak": {
+        "light": "#c7f9ff",
+        "dark": "#163a3e"
+      },
+      "background-accent-purple-strong": {
+        "light": "#6751ff",
+        "dark": "#9b84fc"
+      },
+      "background-accent-purple-weak": {
+        "light": "#ece7ff",
+        "dark": "#32275c"
+      },
       "background-back": {
         "light": "#f7f7f7",
         "dark": "#1d1f27"
@@ -259,7 +283,7 @@
       },
       "background-screenOverlay": {
         "light": "rgba(0, 0, 0, 0.12)",
-        "dark": "rgba(0, 0, 0, 0.12)"
+        "dark": "rgba(0, 0, 0, 0.48)"
       },
       "background-selected-primary": {
         "light": "#d1ffee",
@@ -284,6 +308,18 @@
       "background-warning": {
         "light": "#fff3dd",
         "dark": "#3c361e"
+      },
+      "border-accent-blue-strong": {
+        "light": "#0069e8",
+        "dark": "#65aef9"
+      },
+      "border-accent-cyan-strong": {
+        "light": "#00838f",
+        "dark": "#00a4b3"
+      },
+      "border-accent-purple-strong": {
+        "light": "#6751ff",
+        "dark": "#9b84fc"
       },
       "border-critical": {
         "light": "#cc1f1a",
@@ -392,6 +428,10 @@
       "foreground-critical": {
         "light": "#ec3331",
         "dark": "#fc6161"
+      },
+      "foreground-info": {
+        "light": "#0055da",
+        "dark": "#65aef9"
       },
       "foreground-ok": {
         "light": "#009a71",
@@ -601,7 +641,7 @@
         "light": "#01a982"
       },
       "background-layer-overlay": {
-        "dark": "rgba(0, 0, 0, 0.12)",
+        "dark": "rgba(0, 0, 0, 0.48)",
         "light": "rgba(0, 0, 0, 0.12)"
       },
       "active-background": {
@@ -2071,7 +2111,7 @@
     },
     "color": "background-front",
     "border": {
-      "color": "border-default",
+      "color": "border-strong",
       "width": "1px"
     },
     "check": {
@@ -2516,12 +2556,6 @@
     "gap": "medium"
   },
   "formField": {
-    "content": {
-      "margin": {
-        "vertical": "3xsmall"
-      },
-      "pad": "none"
-    },
     "border": {
       "error": {
         "color": "border-critical"
@@ -2529,25 +2563,39 @@
       "color": "border-default",
       "side": "all"
     },
-    "checkBox": {
-      "pad": {
-        "horizontal": "12px",
-        "vertical": "5px"
+    "content": {
+      "margin": {
+        "vertical": "3xsmall"
       },
-      "container": {}
+      "pad": "none"
     },
-    "checkBoxGroup": {
-      "container": {}
+    "help": {
+      "size": "xsmall",
+      "margin": "none"
     },
-    "radioButtonGroup": {
-      "container": {}
+    "info": {
+      "size": "xsmall",
+      "margin": {
+        "bottom": "3xsmall",
+        "top": "none",
+        "horizontal": "none"
+      }
     },
-    "thumbsRating": {
-      "container": {}
+    "label": {
+      "size": "xsmall",
+      "color": "text-strong",
+      "margin": {
+        "bottom": "none",
+        "top": "3xsmall",
+        "horizontal": "none"
+      },
+      "requiredIndicator": true,
+      "weight": 500
     },
-    "starRating": {
-      "container": {}
+    "margin": {
+      "bottom": "none"
     },
+    "round": "8px",
     "disabled": {
       "background": "transparent",
       "border": {
@@ -2592,33 +2640,39 @@
       "containerFocus": false,
       "border": {}
     },
-    "help": {
-      "size": "xsmall",
-      "margin": "none"
-    },
-    "info": {
-      "size": "xsmall",
-      "margin": {
-        "bottom": "3xsmall",
-        "top": "none",
-        "horizontal": "none"
+    "hover": {
+      "border": {
+        "color": "border-strong"
       }
     },
-    "label": {
-      "size": "xsmall",
-      "color": "text-strong",
-      "margin": {
-        "bottom": "none",
-        "top": "3xsmall",
-        "horizontal": "none"
+    "checkBox": {
+      "pad": {
+        "horizontal": "12px",
+        "vertical": "5px"
       },
-      "requiredIndicator": true,
-      "weight": 500
+      "container": {},
+      "hover": {
+        "border": {}
+      }
     },
-    "margin": {
-      "bottom": "none"
+    "checkBoxGroup": {
+      "container": {},
+      "hover": {
+        "border": {}
+      }
     },
-    "round": "8px",
+    "radioButtonGroup": {
+      "container": {},
+      "hover": {
+        "border": {}
+      }
+    },
+    "starRating": {
+      "container": {},
+      "hover": {
+        "border": {}
+      }
+    },
     "survey": {
       "label": {
         "margin": {
@@ -2626,6 +2680,12 @@
         },
         "size": "medium",
         "weight": 500
+      }
+    },
+    "thumbsRating": {
+      "container": {},
+      "hover": {
+        "border": {}
       }
     }
   },
@@ -3548,7 +3608,7 @@
   },
   "radioButton": {
     "border": {
-      "color": "border-default",
+      "color": "border-strong",
       "width": "default"
     },
     "check": {

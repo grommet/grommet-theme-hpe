@@ -266,16 +266,6 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
       extend: "border-radius: " + components.hpe.formField["default"].medium.input.container.borderRadius + ";"
     },
     formField: {
-      extend: function extend(_ref7) {
-        var theme = _ref7.theme;
-        return "\n          [class*=\"ContentBox\"] {\n            label {\n              padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n              &:hover:not([disabled]) {\n                background: " + (0, _utils.getThemeColor)(components.hpe.formField["default"].input.container.hover.background, theme) + ";\n              }\n            }\n            [role=\"group\"], [role=\"radiogroup\"] {\n              gap: 0;\n              padding-block: " + components.hpe.formField["default"].medium.input.group.container.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.container.paddingX + ";\n              label {\n                border: " + (dimensions.borderSize[components.hpe.formField["default"].medium.input.group.item.borderWidth] || components.hpe.formField["default"].medium.input.group.item.borderWidth) + " solid " + (0, _utils.getThemeColor)(components.hpe.formField["default"].input.group.item.rest.borderColor, theme) + ";\n                padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n                padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n                border-radius: " + dimensions.radius[components.hpe.formField["default"].medium.input.group.item.borderRadius] + ";\n                &:hover:not([disabled]) {\n                  background: " + (0, _utils.getThemeColor)(components.hpe.formField["default"].input.group.item.hover.background, theme) + ";\n                }\n              }\n            }\n          }\n      ";
-      },
-      content: {
-        margin: {
-          vertical: '3xsmall'
-        },
-        pad: 'none'
-      },
       border: {
         error: {
           color: components.hpe.formField["default"].input.container.error.rest.borderColor
@@ -283,50 +273,42 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
         color: components.hpe.formField["default"].input.container.rest.borderColor,
         side: 'all'
       },
-      checkBox: {
-        pad: {
-          horizontal: components.hpe.formField["default"].medium.input.group.item.paddingX,
-          vertical: components.hpe.formField["default"].medium.input.group.item.paddingY
+      content: {
+        margin: {
+          vertical: '3xsmall'
         },
-        container: {
-          extend: function extend(_ref8) {
-            var error = _ref8.error;
-            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
-          }
+        pad: 'none'
+      },
+      help: {
+        size: 'xsmall',
+        color: components.hpe.formField["default"].help.rest.color,
+        margin: 'none'
+      },
+      info: {
+        size: 'xsmall',
+        color: components.hpe.formField["default"].info.rest.color,
+        margin: {
+          bottom: '3xsmall',
+          top: 'none',
+          horizontal: 'none'
         }
       },
-      checkBoxGroup: {
-        container: {
-          extend: function extend(_ref9) {
-            var error = _ref9.error;
-            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
-          }
-        }
+      label: {
+        size: 'xsmall',
+        color: components.hpe.formField["default"].label.rest.textColor,
+        margin: {
+          bottom: 'none',
+          top: '3xsmall',
+          horizontal: 'none'
+        },
+        requiredIndicator: true,
+        weight: components.hpe.formField["default"].medium.label.fontWeight
       },
-      radioButtonGroup: {
-        container: {
-          extend: function extend(_ref0) {
-            var error = _ref0.error;
-            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
-          }
-        }
+      margin: {
+        bottom: 'none'
       },
-      thumbsRating: {
-        container: {
-          extend: function extend(_ref1) {
-            var error = _ref1.error;
-            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
-          }
-        }
-      },
-      starRating: {
-        container: {
-          extend: function extend(_ref10) {
-            var error = _ref10.error;
-            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
-          }
-        }
-      },
+      round: components.hpe.formField["default"].medium.input.container.borderRadius,
+      /* FormField states */
       disabled: {
         background: components.hpe.formField["default"].input.group.container.disabled.rest.background,
         border: {
@@ -368,35 +350,68 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
           color: undefined
         }
       },
-      help: {
-        size: 'xsmall',
-        color: components.hpe.formField["default"].help.rest.color,
-        margin: 'none'
-      },
-      info: {
-        size: 'xsmall',
-        color: components.hpe.formField["default"].info.rest.color,
-        margin: {
-          bottom: '3xsmall',
-          top: 'none',
-          horizontal: 'none'
+      hover: {
+        border: {
+          color: components.hpe.formField["default"].input.container.hover.borderColor
         }
       },
-      label: {
-        size: 'xsmall',
-        color: components.hpe.formField["default"].label.rest.textColor,
-        margin: {
-          bottom: 'none',
-          top: '3xsmall',
-          horizontal: 'none'
+      /* Input specific styles */
+      checkBox: {
+        pad: {
+          horizontal: components.hpe.formField["default"].medium.input.group.item.paddingX,
+          vertical: components.hpe.formField["default"].medium.input.group.item.paddingY
         },
-        requiredIndicator: true,
-        weight: components.hpe.formField["default"].medium.label.fontWeight
+        container: {
+          extend: function extend(_ref7) {
+            var error = _ref7.error;
+            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
+          }
+        },
+        hover: {
+          border: {
+            color: undefined
+          }
+        }
       },
-      margin: {
-        bottom: 'none'
+      checkBoxGroup: {
+        container: {
+          extend: function extend(_ref8) {
+            var error = _ref8.error;
+            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
+          }
+        },
+        hover: {
+          border: {
+            color: undefined
+          }
+        }
       },
-      round: components.hpe.formField["default"].medium.input.container.borderRadius,
+      radioButtonGroup: {
+        container: {
+          extend: function extend(_ref9) {
+            var error = _ref9.error;
+            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
+          }
+        },
+        hover: {
+          border: {
+            color: undefined
+          }
+        }
+      },
+      starRating: {
+        container: {
+          extend: function extend(_ref0) {
+            var error = _ref0.error;
+            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
+          }
+        },
+        hover: {
+          border: {
+            color: undefined
+          }
+        }
+      },
       survey: {
         label: {
           margin: {
@@ -405,6 +420,23 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
           size: 'medium',
           weight: 500
         }
+      },
+      thumbsRating: {
+        container: {
+          extend: function extend(_ref1) {
+            var error = _ref1.error;
+            return "border-color: " + (error ? components.hpe.formField["default"].input.group.container.error.rest.borderColor : components.hpe.formField["default"].input.group.container.rest.borderColor) + "; ";
+          }
+        },
+        hover: {
+          border: {
+            color: undefined
+          }
+        }
+      },
+      extend: function extend(props) {
+        var theme = props.theme;
+        return "\n          [class*=\"ContentBox\"] {\n            label {\n              padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n              &:hover:not([disabled]) {\n                background: " + (0, _utils.getThemeColor)(components.hpe.formField["default"].input.container.hover.background, theme) + ";\n              }\n            }\n            [role=\"group\"], [role=\"radiogroup\"] {\n              gap: 0;\n              padding-block: " + components.hpe.formField["default"].medium.input.group.container.paddingY + ";\n              padding-inline: " + components.hpe.formField["default"].medium.input.group.container.paddingX + ";\n              label {\n                border: " + (dimensions.borderSize[components.hpe.formField["default"].medium.input.group.item.borderWidth] || components.hpe.formField["default"].medium.input.group.item.borderWidth) + " solid " + (0, _utils.getThemeColor)(components.hpe.formField["default"].input.group.item.rest.borderColor, theme) + ";\n                padding-block: " + components.hpe.formField["default"].medium.input.group.item.paddingY + ";\n                padding-inline: " + components.hpe.formField["default"].medium.input.group.item.paddingX + ";\n                border-radius: " + dimensions.radius[components.hpe.formField["default"].medium.input.group.item.borderRadius] + ";\n                &:hover:not([disabled]) {\n                  background: " + (0, _utils.getThemeColor)(components.hpe.formField["default"].input.group.item.hover.background, theme) + ";\n                }\n              }\n            }\n          }\n      ";
       }
     },
     radioButton: {
@@ -419,8 +451,8 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
       },
       color: components.hpe.radioButton["default"].control.selected.rest.borderColor,
       container: {
-        extend: function extend(_ref11) {
-          var theme = _ref11.theme;
+        extend: function extend(_ref10) {
+          var theme = _ref10.theme;
           return "\n          width: auto;\n          &:has(input[checked]) {\n            & div:has(> svg[aria-hidden=\"true\"]) {\n              background: " + (0, _utils.getThemeColor)(components.hpe.radioButton["default"].control.selected.rest.background, theme) + ";\n              border-color: " + (0, _utils.getThemeColor)(components.hpe.radioButton["default"].control.selected.rest.borderColor, theme) + ";\n            }\n          }\n          &:has(input[checked]):hover:not([disabled]) {\n              & div:has(> svg[aria-hidden=\"true\"]) {\n                background: " + (0, _utils.getThemeColor)(components.hpe.radioButton["default"].control.selected.hover.background, theme) + ";\n                border-color: " + (0, _utils.getThemeColor)(components.hpe.radioButton["default"].control.selected.hover.borderColor, theme) + ";\n              }\n          }\n          ";
         }
       },
@@ -438,8 +470,8 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
         weight: components.hpe.radioButton["default"].label.rest.fontWeight
       },
       icons: {
-        circle: function circle(_ref12) {
-          var theme = _ref12.theme;
+        circle: function circle(_ref11) {
+          var theme = _ref11.theme;
           return /*#__PURE__*/_react["default"].createElement(Blank, {
             preserveAspectRatio: "xMidYMid meet",
             color: (0, _utils.getThemeColor)(components.hpe.radioButton["default"].control.selected.rest.iconColor, _extends({}, theme, {
@@ -463,8 +495,8 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
     },
     maskedInput: {
       container: {
-        extend: function extend(_ref13) {
-          var theme = _ref13.theme;
+        extend: function extend(_ref12) {
+          var theme = _ref12.theme;
           return "\n          svg {\n            fill: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n            stroke: " + theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light'] + ";\n          }\n        ";
         }
       }
@@ -484,8 +516,8 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
             dark: '#616161'
           }
         },
-        extend: function extend(_ref14) {
-          var theme = _ref14.theme;
+        extend: function extend(_ref13) {
+          var theme = _ref13.theme;
           return "\n        border-radius: " + large.hpe.radius.full + ";\n        // firefox only selector, since pseudo-element\n        // isn't supported\n        @-moz-document url-prefix() {\n          border: 1px solid " + (0, _utils.getThemeColor)('border-strong', theme) + ";\n        }";
         }
       },
@@ -501,9 +533,9 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
           }
         }
       },
-      extend: function extend(_ref15) {
-        var disabled = _ref15.disabled,
-          theme = _ref15.theme;
+      extend: function extend(_ref14) {
+        var disabled = _ref14.disabled,
+          theme = _ref14.theme;
         return "\n        &::before {\n          display: block;\n          position: absolute;\n          content: '';\n          width: " + primitives.hpe.base.dimension[100] + ";\n          height: " + primitives.hpe.base.dimension[100] + ";\n          border-radius: " + large.hpe.radius.full + ";\n          right: 0;\n          top: 50%;\n          transform: translateY(-50%);\n          background: " + (0, _utils.getThemeColor)(disabled ? 'background-disabled' : 'background-neutral-xstrong', theme) + ";\n        }\n    ";
       }
     },
@@ -549,8 +581,8 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
         }
       },
       control: {
-        extend: function extend(_ref16) {
-          var disabled = _ref16.disabled;
+        extend: function extend(_ref15) {
+          var disabled = _ref15.disabled;
           return (0, _styledComponents.css)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteralLoose(["\n          ", "\n\n          &[class*=\"SelectMultiple\"] [role=\"listbox\"] {\n            padding-block: ", ";\n            padding-inline: ", ";\n            & [role='option'] {\n              border-radius: ", ";\n            }\n          }\n        "])), disabled && "\n          opacity: 0.3;\n          input {\n            cursor: default;\n          }", components.hpe.select["default"].medium.drop.paddingY, components.hpe.select["default"].medium.drop.paddingX, dimensions.edgeSize[components.hpe.select["default"].medium.option.borderRadius] || components.hpe.select["default"].medium.option.borderRadius);
         }
       },
@@ -628,8 +660,8 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
     },
     textInput: {
       container: {
-        extend: function extend(_ref17) {
-          var theme = _ref17.theme;
+        extend: function extend(_ref16) {
+          var theme = _ref16.theme;
           return "\n          svg {\n            fill: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n            stroke: " + theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light'] + ";\n          }\n        ";
         }
       },
@@ -637,8 +669,8 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
         copy: Copy
       },
       suggestions: {
-        extend: function extend(_ref18) {
-          var theme = _ref18.theme;
+        extend: function extend(_ref17) {
+          var theme = _ref17.theme;
           return "\n          padding-block: " + components.hpe.select["default"].medium.drop.paddingY + ";\n          padding-inline: " + components.hpe.select["default"].medium.drop.paddingX + ";\n          gap: " + components.hpe.select["default"].medium.drop.gapY + ";\n          display: flex;\n          flex-direction: column;\n          [role=\"option\"]:hover {\n            background: " + (0, _utils.getThemeColor)(components.hpe.select["default"].option.hover.background, theme) + ";\n          }\n        ";
         }
       }
