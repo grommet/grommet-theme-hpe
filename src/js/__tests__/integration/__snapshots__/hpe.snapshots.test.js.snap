@@ -1866,7 +1866,7 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
 {
   "checkBox": {
     "border": {
-      "color": "border-default",
+      "color": "border-strong",
       "width": "1px",
     },
     "check": {
@@ -2118,7 +2118,7 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
     },
     "hover": {
       "border": {
-        "color": "border-default",
+        "color": "border-strong",
       },
     },
     "info": {
@@ -2187,7 +2187,7 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
   },
   "radioButton": {
     "border": {
-      "color": "border-default",
+      "color": "border-strong",
       "width": "default",
     },
     "check": {
@@ -2389,6 +2389,30 @@ exports[`Theme snapshot groups matches global snapshot 1`] = `
         "dark": "#1d1f27",
         "light": "#ffffff",
       },
+      "background-accent-blue-strong": {
+        "dark": "#65aef9",
+        "light": "#0069e8",
+      },
+      "background-accent-blue-weak": {
+        "dark": "#1c3053",
+        "light": "#e3f1ff",
+      },
+      "background-accent-cyan-strong": {
+        "dark": "#00a4b3",
+        "light": "#00838f",
+      },
+      "background-accent-cyan-weak": {
+        "dark": "#163a3e",
+        "light": "#c7f9ff",
+      },
+      "background-accent-purple-strong": {
+        "dark": "#9b84fc",
+        "light": "#6751ff",
+      },
+      "background-accent-purple-weak": {
+        "dark": "#32275c",
+        "light": "#ece7ff",
+      },
       "background-active": {
         "dark": "rgba(255, 255, 255, 0.06)",
         "light": "rgba(0, 0, 0, 0.04)",
@@ -2435,7 +2459,7 @@ exports[`Theme snapshot groups matches global snapshot 1`] = `
         "light": "#e3f1ff",
       },
       "background-layer-overlay": {
-        "dark": "rgba(0, 0, 0, 0.12)",
+        "dark": "rgba(0, 0, 0, 0.48)",
         "light": "rgba(0, 0, 0, 0.12)",
       },
       "background-neutral-xstrong": {
@@ -2463,7 +2487,7 @@ exports[`Theme snapshot groups matches global snapshot 1`] = `
         "light": "#093d32",
       },
       "background-screenOverlay": {
-        "dark": "rgba(0, 0, 0, 0.12)",
+        "dark": "rgba(0, 0, 0, 0.48)",
         "light": "rgba(0, 0, 0, 0.12)",
       },
       "background-selected-primary": {
@@ -2498,6 +2522,18 @@ exports[`Theme snapshot groups matches global snapshot 1`] = `
       "border": {
         "dark": "rgba(255, 255, 255, 0.36)",
         "light": "#b1b9be",
+      },
+      "border-accent-blue-strong": {
+        "dark": "#65aef9",
+        "light": "#0069e8",
+      },
+      "border-accent-cyan-strong": {
+        "dark": "#00a4b3",
+        "light": "#00838f",
+      },
+      "border-accent-purple-strong": {
+        "dark": "#9b84fc",
+        "light": "#6751ff",
       },
       "border-critical": {
         "dark": "#fc6161",
@@ -2616,6 +2652,10 @@ exports[`Theme snapshot groups matches global snapshot 1`] = `
       "foreground-critical": {
         "dark": "#fc6161",
         "light": "#ec3331",
+      },
+      "foreground-info": {
+        "dark": "#65aef9",
+        "light": "#0055da",
       },
       "foreground-ok": {
         "dark": "#05cc93",
