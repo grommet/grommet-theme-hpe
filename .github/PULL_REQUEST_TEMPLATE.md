@@ -13,3 +13,10 @@
 #### Is this change backward compatible or could it be a breaking change for the official HPE theme?
 
 #### How should this PR be communicated in the release notes?
+
+#### Changeset
+
+- [ ] I added a regular changeset for this user-visible package change.
+- [ ] I added an empty changeset because this PR does not require a release.
+
+Additional release context:
