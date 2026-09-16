@@ -1,5 +1,20 @@
 # grommet-theme-hpe
 
+## 8.2.0
+
+### Minor Changes
+
+- Updated `hpe-design-tokens` dependency to v2.3.0. This adds a new accent color palette and a new `foreground-info` color to the theme, fixes the unselected CheckBox/RadioButton control border contrast, and aligns `FormField` inputs' hover styling.
+
+  - Added accent colors (`background-accent-{blue,purple,cyan}-{weak,strong}`, `border-accent-{blue,purple,cyan}-strong`) for use as functional, sparingly-applied brand accents. Hues carry no fixed semantic meaning. Background accent colors have been contrast-validated when paired with `{text,icon}-{default,strong,weak}` light and dark modes.
+  - Added `foreground-info` color for representing an informational status in foreground graphics such as `Meter` and progress bars. Completes the foreground status set (`foreground-critical`, `foreground-warning`, `foreground-ok`, `foreground-unknown`, `foreground-info`).
+  - Fixed the unselected `CheckBox` and `RadioButton` control border to use `border-strong`, meeting the WCAG 2.1/2.2 SC 1.4.11 non-text contrast requirement (3:1).
+  - Aligned form-input hover styling:
+    - `FormField` inputs darken their border to `border-strong` on hover.
+  - Darkened the dark mode modal scrim (`background-screenOverlay`) so the overlay behind modals is clearly perceivable, indicating the underlying page is non-interactive. Light mode is unchanged.
+
+  If you were using the `decorative` color palette for functional UI element backgrounds, replacement with `background-accent` colors are recommended to meet WCAG contrast requirements.
+
 ## 8.1.4
 
 - Fixed Pagination selected button styling to visually match the “active/selected” state of other buttons. (https://github.com/grommet/grommet-theme-hpe/pull/595)
@@ -185,66 +200,70 @@ These items are no longer recommended for use and will be removed in v9 of the t
 - 203bc52: Introduces breaking changes to t-shirt sizes.
 
   **`pad`, `gap`, `margin` t-shirt sizes**
-  | Current | New | Value |
-  |---------|-----|-----:|
-  | hair | hair | 1px |
-  | xxsmall | 5xsmall | 3px |
-  | -- | 4xsmall (NEW) | 4px |
-  | xsmall | 3xsmall | 6px |
-  | -- | xxsmall (NEW) | 8px |
-  | small | xsmall | 12px |
-  | -- | small (NEW) | 16px |
-  | medium | medium | 24px |
-  | -- | large (NEW) | 32px |
-  | large | xlarge | 48px |
-  | -- | xxlarge (NEW) | 64px |
-  | xlarge | 3xlarge | 96px |
+
+  | Current | New           | Value |
+  | ------- | ------------- | ----: |
+  | hair    | hair          |   1px |
+  | xxsmall | 5xsmall       |   3px |
+  | --      | 4xsmall (NEW) |   4px |
+  | xsmall  | 3xsmall       |   6px |
+  | --      | xxsmall (NEW) |   8px |
+  | small   | xsmall        |  12px |
+  | --      | small (NEW)   |  16px |
+  | medium  | medium        |  24px |
+  | --      | large (NEW)   |  32px |
+  | large   | xlarge        |  48px |
+  | --      | xxlarge (NEW) |  64px |
+  | xlarge  | 3xlarge       |  96px |
 
   **`round` t-shirt sizes**
-  | Current | New | Value |
-  |---------|-----|-----:|
-  | none | none | 0px |
-  | hair | hair | 1px |
-  | xxsmall | -- | 3px |
-  | -- | xxsmall (NEW) | 4px |
-  | xsmall | xsmall | 6px |
-  | -- | small (NEW) | 8px |
-  | small | medium | 12px |
-  | -- | large (NEW) | 16px |
-  | medium | xlarge | 24px |
-  | -- | xxlarge (NEW) | 32px |
-  | large | -- | 48px |
-  | -- | -- | 64px |
-  | xlarge | -- | 96px |
-  | full | full | 9999px |
+
+  | Current | New           |  Value |
+  | ------- | ------------- | -----: |
+  | none    | none          |    0px |
+  | hair    | hair          |    1px |
+  | xxsmall | --            |    3px |
+  | --      | xxsmall (NEW) |    4px |
+  | xsmall  | xsmall        |    6px |
+  | --      | small (NEW)   |    8px |
+  | small   | medium        |   12px |
+  | --      | large (NEW)   |   16px |
+  | medium  | xlarge        |   24px |
+  | --      | xxlarge (NEW) |   32px |
+  | large   | --            |   48px |
+  | --      | --            |   64px |
+  | xlarge  | --            |   96px |
+  | full    | full          | 9999px |
 
   **border size t-shirt sizes**
-  | Current | New | Value |
-  |---------|-----|-----:|
-  | -- | none | 0px |
-  | xsmall | xsmall | 1px |
-  | small | small | 2px |
-  | medium | medium | 4px |
-  | -- | large | 6px |
-  | large | -- | 12px |
-  | xlarge | -- | 24px |
-  | -- | default | 1px |
+
+  | Current | New     | Value |
+  | ------- | ------- | ----: |
+  | --      | none    |   0px |
+  | xsmall  | xsmall  |   1px |
+  | small   | small   |   2px |
+  | medium  | medium  |   4px |
+  | --      | large   |   6px |
+  | large   | --      |  12px |
+  | xlarge  | --      |  24px |
+  | --      | default |   1px |
 
   **`width`, `height` t-shirt sizes**
-  | Current | New | Value |
-  |---------|-----|-----:|
-  | xxsmall | 5xsmall | 48px |
-  | -- | 4xsmall (NEW) | 64px |
-  | xsmall | 3xsmall | 96px |
-  | -- | xxsmall (NEW)| 128px |
-  | small | xsmall | 192px |
-  | -- | small (NEW) | 256px |
-  | medium | medium | 384px |
-  | -- | large | 512px |
-  | large | xlarge (NEW) | 768px |
-  | -- | xxlarge | 1024px |
-  | xlarge | -- | 1152px (value eliminated because it doesn't follow formula) |
-  | xxlarge | 3xlarge | 1536px |
+
+  | Current | New           |                                                       Value |
+  | ------- | ------------- | ----------------------------------------------------------: |
+  | xxsmall | 5xsmall       |                                                        48px |
+  | --      | 4xsmall (NEW) |                                                        64px |
+  | xsmall  | 3xsmall       |                                                        96px |
+  | --      | xxsmall (NEW) |                                                       128px |
+  | small   | xsmall        |                                                       192px |
+  | --      | small (NEW)   |                                                       256px |
+  | medium  | medium        |                                                       384px |
+  | --      | large         |                                                       512px |
+  | large   | xlarge (NEW)  |                                                       768px |
+  | --      | xxlarge       |                                                      1024px |
+  | xlarge  | --            | 1152px (value eliminated because it doesn't follow formula) |
+  | xxlarge | 3xlarge       |                                                      1536px |
 
 - 203bc52: - Improves accessibility of the RangeSelector component by increasing the interactive area of its edge controls to meet WCAG 2.1 AA success criterion 2.5.5 (Target Size).
 - 203bc52: - Fixed inconsistent focus styles in the Select component to meet WCAG 2.4.7 Focus Visible requirements.
