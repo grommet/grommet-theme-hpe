@@ -13,7 +13,7 @@
     - `FormField` inputs darken their border to `border-strong` on hover.
   - Darkened the dark mode modal scrim (`background-screenOverlay`) so the overlay behind modals is clearly perceivable, indicating the underlying page is non-interactive. Light mode is unchanged.
 
-  If you were using the `decorative` color palette for functional UI element backgrounds, replacement with `background-accent` colors are recommended to meet WCAG contrast requirements.
+  If you were using the `decorative` color palette for functional UI element backgrounds, it is recommended to replace them with `background-accent` colors to meet WCAG contrast requirements.
 
 ## 8.1.4
 
