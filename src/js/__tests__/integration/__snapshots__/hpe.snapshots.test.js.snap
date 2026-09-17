@@ -2750,8 +2750,8 @@ exports[`Theme snapshot groups matches global snapshot 1`] = `
         "light": "#292d3a",
       },
       "icon-onStrong": {
-        "dark": "#292d3a",
-        "light": "#ffffff",
+        "dark": "#ffffff",
+        "light": "#292d3a",
       },
       "icon-primary": {
         "dark": "#05cc93",
@@ -2884,8 +2884,8 @@ exports[`Theme snapshot groups matches global snapshot 1`] = `
         "light": "#292d3a",
       },
       "text-onStrong": {
-        "dark": "#292d3a",
-        "light": "#ffffff",
+        "dark": "#ffffff",
+        "light": "#292d3a",
       },
       "text-onUnknown": {
         "dark": "#e6e8e9",
