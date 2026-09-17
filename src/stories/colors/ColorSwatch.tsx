@@ -3,7 +3,6 @@
 import React from 'react';
 import { Box, Text } from 'grommet';
 import { User } from '@hpe-design/icons-grommet';
-import { text } from 'node:stream/consumers';
 
 type ColorValue = string | { light: string; dark: string };
 
@@ -39,8 +38,13 @@ export const ColorSwatch: React.FC<ColorSwatchProps> = ({
   }
 
   const textColor = onSuffix ? `text-on${onSuffix}` : undefined;
-  // there is no icon-on{Status} token, only text-on{Status}
-  const iconColor = onSuffix && !status ? `icon-on${onSuffix}` : undefined;
+  // status icons use icon-{status}, not icon-on{Status}
+  let iconColor;
+  if (status) {
+    iconColor = `icon-${status}`;
+  } else if (onSuffix) {
+    iconColor = `icon-on${onSuffix}`;
+  }
 
   return (
     <Box direction="row" gap="small" align="center" {...rest}>
