@@ -4,47 +4,52 @@ import React from 'react';
 import { Button } from 'grommet';
 import { ButtonStates } from './ButtonStates';
 
-export const PrimaryButtonStates = () => {
+export const SecondaryButtonStates = () => {
   return (
     <ButtonStates>
-      <Button gridArea="none-rest" kind="primary" label="Primary" />
+      <Button gridArea="none-rest" kind="secondary" label="Secondary" />
       <Button
         className="pseudo-hover"
         gridArea="none-hover"
-        kind="primary"
-        label="Primary"
+        kind="secondary"
+        label="Secondary"
       />
       <Button
         className="pseudo-focus pseudo-focus-visible"
         gridArea="none-focus"
-        kind="primary"
-        label="Primary"
+        kind="secondary"
+        label="Secondary"
       />
-      <Button gridArea="none-active" kind="primary" label="Primary" active />
+      <Button
+        gridArea="none-active"
+        kind="secondary"
+        label="Secondary"
+        active
+      />
       <Button
         gridArea="disabled-rest"
-        kind="primary"
-        label="Primary"
+        kind="secondary"
+        label="Secondary"
         disabled
       />
       <Button
         className="pseudo-hover"
         gridArea="disabled-hover"
-        kind="primary"
-        label="Primary"
+        kind="secondary"
+        label="Secondary"
         disabled
       />
       <Button
         className="pseudo-focus"
         gridArea="disabled-focus"
-        kind="primary"
-        label="Primary"
+        kind="secondary"
+        label="Secondary"
         disabled
       />
       <Button
         gridArea="disabled-active"
-        kind="primary"
-        label="Primary"
+        kind="secondary"
+        label="Secondary"
         disabled
       />
     </ButtonStates>
