@@ -33,12 +33,19 @@ export const PrimaryButtonStates = () => {
   return (
     <StateMatrix>
       <Button gridArea="none-rest" kind="primary" label="Primary" />
-      <Button gridArea="none-hover" kind="primary" label="Primary" />
       <Button
+        id="primary-button-hover"
+        className="pseudo-hover"
+        gridArea="none-hover"
+        kind="primary"
+        label="Primary"
+      />
+      <Button
+        id="primary-button-focus"
+        className="pseudo-focus pseudo-focus-visible"
         gridArea="none-focus"
         kind="primary"
         label="Primary"
-        focusIndicator
       />
       <Button gridArea="none-active" kind="primary" label="Primary" active />
       <Button

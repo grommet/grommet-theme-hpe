@@ -7,6 +7,7 @@ const config = {
     '@storybook/addon-links',
     '@storybook/addon-a11y',
     '@storybook/addon-themes',
+    'storybook-addon-pseudo-states',
     '@storybook/addon-webpack5-compiler-babel',
   ],
   framework: {

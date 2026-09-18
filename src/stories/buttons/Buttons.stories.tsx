@@ -57,4 +57,17 @@ export const Overview = {
 
 export const Primary = {
   render: PrimaryButtonStates,
+  parameters: {
+    pseudo: {
+      hover: {
+        selector: '#primary-button-hover',
+      },
+      focus: {
+        selector: '#primary-button-focus',
+      },
+      'focus-visible': {
+        selector: '#primary-button-focus',
+      },
+    },
+  },
 };
