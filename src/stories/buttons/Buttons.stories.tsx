@@ -4,6 +4,7 @@ import React from 'react';
 import { Box, Button, Heading, Text } from 'grommet';
 import { PrimaryButtonStates } from './PrimaryButtonStates';
 import { SecondaryButtonStates } from './SecondaryButtonStates';
+import { ToolbarButtonStates } from './ToolbarButtonStates';
 
 type ButtonRowProps = {
   label: string;
@@ -62,4 +63,8 @@ export const Primary = {
 
 export const Secondary = {
   render: SecondaryButtonStates,
+};
+
+export const Toolbar = {
+  render: ToolbarButtonStates,
 };
