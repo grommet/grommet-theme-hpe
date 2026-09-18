@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import React from 'react';
 import { Box, Button, Heading, Text } from 'grommet';
+import { DefaultButtonStates } from './DefaultButtonStates';
 import { PrimaryButtonStates } from './PrimaryButtonStates';
 import { SecondaryButtonStates } from './SecondaryButtonStates';
 import { ToolbarButtonStates } from './ToolbarButtonStates';
@@ -55,6 +56,10 @@ export default meta;
 
 export const Overview = {
   render: Template,
+};
+
+export const Default = {
+  render: DefaultButtonStates,
 };
 
 export const Primary = {
