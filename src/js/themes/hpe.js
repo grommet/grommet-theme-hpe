@@ -377,10 +377,7 @@ const buildTheme = (tokens, flags) => {
           // "kind" hover background from applying
           // https://github.com/grommet/grommet/issues/7504
           style += `
-            &:hover { 
-              background: ${getThemeColor(colorValue, theme)};
-              color: white;
-            }
+            &:hover { background: ${getThemeColor(colorValue, theme)}; }
           `;
         }
         return style;
