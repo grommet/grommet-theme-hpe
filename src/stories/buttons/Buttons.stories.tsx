@@ -2,10 +2,19 @@
 // SPDX-License-Identifier: Apache-2.0
 import React from 'react';
 import { Box, Button, Heading, Text } from 'grommet';
+import { DefaultButtonStates } from './DefaultButtonStates';
+import { PrimaryButtonStates } from './PrimaryButtonStates';
+import { SecondaryButtonStates } from './SecondaryButtonStates';
+import { ToolbarButtonStates } from './ToolbarButtonStates';
 
-const ButtonRow = ({ label, kind }) => (
+type ButtonRowProps = {
+  label: string;
+  kind?: 'primary' | 'secondary';
+};
+
+const ButtonRow = ({ label, kind }: ButtonRowProps) => (
   <Box direction="row" wrap gap="small" align="center">
-    <Box width="150px">
+    <Box width="xxsmall">
       <Text size="small">{label}</Text>
     </Box>
     <Button label="Default" kind={kind} onClick={() => {}} />
@@ -31,9 +40,7 @@ const Template = () => (
     <ButtonRow label="Secondary" kind="secondary" />
 
     <Box direction="row" gap="small" align="center">
-      <Text size="small" width="150px">
-        Sizes
-      </Text>
+      <Text size="small">Sizes</Text>
       <Button label="Small" size="small" onClick={() => {}} />
       <Button label="Medium" size="medium" onClick={() => {}} />
       <Button label="Large" size="large" onClick={() => {}} />
@@ -43,11 +50,26 @@ const Template = () => (
 
 const meta = {
   title: 'Theme/Buttons',
-  tags: ['autodocs'],
 };
 
 export default meta;
 
 export const Overview = {
   render: Template,
+};
+
+export const Default = {
+  render: DefaultButtonStates,
+};
+
+export const Primary = {
+  render: PrimaryButtonStates,
+};
+
+export const Secondary = {
+  render: SecondaryButtonStates,
+};
+
+export const Toolbar = {
+  render: ToolbarButtonStates,
 };

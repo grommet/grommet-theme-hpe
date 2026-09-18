@@ -31,6 +31,7 @@ const flattenObject = (obj, delimiter = '.', prefix = '') =>
 // Utility to access nested object properties via dot-notation string path
 // and swap light/dark theme values.
 const access = (path, object) => path.split('.').reduce((o, i) => o[i], object);
+
 const swapped = (path, darkTheme, lightTheme) => {
   const lightValue = access(`${path}`, darkTheme);
   const darkValue = access(`${path}`, lightTheme);
@@ -78,6 +79,7 @@ export const buildColors = (tokens) => {
     ...tokenColors,
     // Override specific colors to swap light and dark.hpe values
     // See https://github.com/grommet/grommet/issues/7818
+    'text-onStrong': swapped('hpe.color.text.onStrong', dark, light),
     'text-onPrimaryStrong': swapped(
       'hpe.color.text.onPrimaryStrong',
       dark,
@@ -88,6 +90,7 @@ export const buildColors = (tokens) => {
       dark,
       light,
     ),
+    'icon-onStrong': swapped('hpe.color.icon.onStrong', dark, light),
     'icon-onPrimaryStrong': swapped(
       'hpe.color.icon.onPrimaryStrong',
       dark,
