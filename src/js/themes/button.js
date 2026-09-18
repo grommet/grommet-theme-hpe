@@ -71,8 +71,9 @@ export const buildButtonTheme = (tokens, dimensions) => {
               components.hpe.button?.[kind]?.[adjustedState].rest.fontWeight,
           },
         };
-        if (!('active' in buttonStatesTheme.hover))
+        if (!('active' in buttonStatesTheme.hover)) {
           buttonStatesTheme.hover.active = {};
+        }
         buttonStatesTheme.hover[state][kind] = {
           background: {
             color:

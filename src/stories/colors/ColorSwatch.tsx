@@ -39,12 +39,11 @@ export const ColorSwatch: React.FC<ColorSwatchProps> = ({
 
   const textColor = onSuffix ? `text-on${onSuffix}` : undefined;
   // status icons use icon-{status}, not icon-on{Status}
-  let iconColor;
-  if (status) {
-    iconColor = `icon-${status}`;
-  } else if (onSuffix) {
-    iconColor = `icon-on${onSuffix}`;
-  }
+  const iconColor = status
+    ? `icon-${status}`
+    : onSuffix
+      ? `icon-on${onSuffix}`
+      : undefined;
 
   return (
     <Box direction="row" gap="small" align="center" {...rest}>
