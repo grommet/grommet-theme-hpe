@@ -368,8 +368,10 @@ const buildTheme = (tokens, flags) => {
           const iconColor = theme.dark
             ? dark.hpe.color.icon.onStrong
             : light.hpe.color.icon.onStrong;
-          style += `&:hover { color: ${hoverColor}; }`;
-          style += `&:hover svg { fill: ${iconColor}; }`;
+          style += `&:hover { 
+            color: ${hoverColor}; 
+            svg { fill: ${iconColor}; }
+          }`;
         }
         if (colorValue) {
           // color prop is not recommended to be used, but providing
