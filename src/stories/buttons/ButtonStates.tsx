@@ -15,25 +15,41 @@ const gridAreas = [
   ],
 ];
 
-const StateMatrix = ({ children }: { children: React.ReactNode }) => {
+const StateMatrix = ({
+  children,
+  columnHeadings = true,
+  ...rest
+}: {
+  children: React.ReactNode;
+  columnHeadings?: boolean;
+  [key: string]: any;
+}) => {
   return (
     <Grid
       gap={{ row: 'small', column: 'xsmall' }}
       areas={gridAreas}
+      columns={['3xsmall', 'auto', 'auto', 'auto', 'auto']}
+      rows={['auto']}
       align="center"
+      justify="center"
+      {...rest}
     >
-      <Text gridArea="rest" textAlign="center" weight="bold">
-        Rest
-      </Text>
-      <Text gridArea="hover" textAlign="center" weight="bold">
-        Hover
-      </Text>
-      <Text gridArea="focus" textAlign="center" weight="bold">
-        Focus
-      </Text>
-      <Text gridArea="active" textAlign="center" weight="bold">
-        Active
-      </Text>
+      {columnHeadings && (
+        <>
+          <Text gridArea="rest" textAlign="center" weight="bold">
+            Rest
+          </Text>
+          <Text gridArea="hover" textAlign="center" weight="bold">
+            Hover
+          </Text>
+          <Text gridArea="focus" textAlign="center" weight="bold">
+            Focus
+          </Text>
+          <Text gridArea="active" textAlign="center" weight="bold">
+            Active
+          </Text>
+        </>
+      )}
       <Text gridArea="none" textAlign="end" weight="bold">
         None
       </Text>
@@ -45,6 +61,12 @@ const StateMatrix = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export const ButtonStates = ({ children }: { children: React.ReactNode }) => {
-  return <StateMatrix>{children}</StateMatrix>;
+export const ButtonStates = ({
+  children,
+  ...rest
+}: {
+  children: React.ReactNode;
+  [key: string]: any;
+}) => {
+  return <StateMatrix {...rest}>{children}</StateMatrix>;
 };
