@@ -4,6 +4,7 @@
 'use client';
 
 export { hpe } from './hpe';
+export { hpeCompact } from './hpe_compact';
 export * from './hpePop';
 export * from './backgrounds';
 export { colors } from './colors';
