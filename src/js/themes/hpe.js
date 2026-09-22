@@ -29,6 +29,7 @@ import { DislikeFill } from '@hpe-design/icons-grommet/icons/DislikeFill';
 import { Down } from '@hpe-design/icons-grommet/icons/Down';
 import { Element } from '@hpe-design/icons-grommet/icons/Element';
 import { Filter } from '@hpe-design/icons-grommet/icons/Filter';
+import { Hide } from '@hpe-design/icons-grommet/icons/Hide';
 import { Info } from '@hpe-design/icons-grommet/icons/Info';
 import { Left } from '@hpe-design/icons-grommet/icons/Left';
 import { Like } from '@hpe-design/icons-grommet/icons/Like';
@@ -47,6 +48,8 @@ import { StatusWarning } from '@hpe-design/icons-grommet/icons/StatusWarning';
 import { Subtract } from '@hpe-design/icons-grommet/icons/Subtract';
 import { Unsorted } from '@hpe-design/icons-grommet/icons/Unsorted';
 import { Up } from '@hpe-design/icons-grommet/icons/Up';
+import { View } from '@hpe-design/icons-grommet/icons/View';
+
 import { baseSpacing, deepFreeze, getThemeColor } from './utils';
 
 import { backgrounds } from './backgrounds';
@@ -147,12 +150,14 @@ const buildTheme = (tokens, flags) => {
       Dislike,
       DislikeFill,
       Down,
+      Hide,
       Like,
       LikeFill,
       Search,
       Star,
       StarFill,
       Up,
+      View,
     },
   });
   const layoutTheme = buildLayoutTheme(tokens);
