@@ -3,9 +3,9 @@
 import React from 'react';
 import { Box, Button } from 'grommet';
 import { AIGenFill } from '@hpe-design/icons-grommet';
-import { StateMatrix } from '../shared/StateMatrix';
+import { StateMatrix, type ApplicationStates } from '../shared/StateMatrix';
 
-const applicationStates = {
+const applicationStates: ApplicationStates = {
   default: true,
   disabled: true,
 };

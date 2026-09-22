@@ -3,6 +3,17 @@
 import React from 'react';
 import { Grid, Text } from 'grommet';
 
+export type ApplicationState =
+  | 'default'
+  | 'error'
+  | 'disabled'
+  | 'readonly'
+  | 'selected'
+  | 'indeterminate'
+  | 'pinned';
+
+export type ApplicationStates = Partial<Record<ApplicationState, boolean>>;
+
 const gridAreas = [
   ['blank', 'rest', 'hover', 'focus', 'active'],
   [
@@ -44,7 +55,7 @@ const gridAreas = [
   ['pinned', 'pinned-rest', 'pinned-hover', 'pinned-focus', 'pinned-active'],
 ];
 
-const defaultApplicationStates = {
+const defaultApplicationStates: Record<ApplicationState, boolean> = {
   default: true,
   error: true,
   disabled: true,
@@ -54,20 +65,22 @@ const defaultApplicationStates = {
   pinned: false,
 };
 
-const gridAreaForApplicationState = (state: string) =>
+const gridAreaForApplicationState = (state: ApplicationState) =>
   state === 'default' ? 'default-label' : state;
+
+interface StateMatrixProps {
+  children: React.ReactNode;
+  applicationStates?: ApplicationStates;
+  columnHeadings?: boolean;
+  [key: string]: any;
+}
 
 export const StateMatrix = ({
   children,
   applicationStates = defaultApplicationStates,
   columnHeadings = true,
   ...rest
-}: {
-  children: React.ReactNode;
-  applicationStates?: { [key: string]: boolean };
-  columnHeadings?: boolean;
-  [key: string]: any;
-}) => {
+}: StateMatrixProps) => {
   return (
     <Grid
       gap={{ row: 'small', column: 'xsmall' }}
@@ -94,7 +107,7 @@ export const StateMatrix = ({
           </Text>
         </>
       )}
-      {Object.keys(applicationStates).map(
+      {(Object.keys(applicationStates) as ApplicationState[]).map(
         (state) =>
           applicationStates[state] && (
             <Text

@@ -2,7 +2,11 @@
 // SPDX-License-Identifier: Apache-2.0
 import React from 'react';
 import { Box, Heading, TextInput, Text } from 'grommet';
-import { StateMatrix } from '../shared/StateMatrix';
+import {
+  StateMatrix,
+  type ApplicationState,
+  type ApplicationStates,
+} from '../shared/StateMatrix';
 
 const StoryTextInput = ({
   gridArea,
@@ -18,7 +22,7 @@ const StoryTextInput = ({
   );
 };
 
-const applicationStates: Record<string, boolean> = {
+const applicationStates: ApplicationStates = {
   default: true,
   disabled: true,
   readonly: true,
@@ -34,7 +38,7 @@ const interactiveStates: Record<string, boolean> = {
 const nonApplicableStates: Record<string, boolean> = {};
 
 // for each application state, determine non-applicable interactive states
-Object.keys(applicationStates).forEach((appState: string) => {
+(Object.keys(applicationStates) as ApplicationState[]).forEach((appState) => {
   Object.keys(interactiveStates).forEach((interactiveState: string) => {
     if (applicationStates[appState] && !interactiveStates[interactiveState]) {
       nonApplicableStates[`${appState}-${interactiveState}`] = true;
