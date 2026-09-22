@@ -4,6 +4,7 @@ import React from 'react';
 import { CheckboxInput } from './Checkbox';
 import { RadioButtonGroupInput } from './RadioButtonGroup';
 import { TextInputMatrix } from './TextInput';
+import { TextInputPassword as TextInputPasswordStory } from './TextInputPassword';
 import { Page, PageContent, PageHeader } from 'grommet';
 
 const StoryWrapper = ({
@@ -47,6 +48,14 @@ export const TextInput = {
   render: () => (
     <StoryWrapper title="TextInput">
       <TextInputMatrix />
+    </StoryWrapper>
+  ),
+};
+
+export const TextInputPassword = {
+  render: () => (
+    <StoryWrapper title="TextInput w/ Password">
+      <TextInputPasswordStory />
     </StoryWrapper>
   ),
 };
