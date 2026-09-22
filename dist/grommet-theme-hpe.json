@@ -482,8 +482,8 @@
         "dark": "#ffffff"
       },
       "icon-onStrong": {
-        "light": "#ffffff",
-        "dark": "#292d3a"
+        "light": "#292d3a",
+        "dark": "#ffffff"
       },
       "icon-primary": {
         "light": "#006750",
@@ -578,8 +578,8 @@
         "dark": "#ffffff"
       },
       "text-onStrong": {
-        "light": "#ffffff",
-        "dark": "#292d3a"
+        "light": "#292d3a",
+        "dark": "#ffffff"
       },
       "text-onUnknown": {
         "light": "#3e4550",

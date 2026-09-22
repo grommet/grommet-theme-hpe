@@ -69,7 +69,9 @@ var buildButtonTheme = exports.buildButtonTheme = function buildButtonTheme(toke
             weight: (_components$hpe$butto0 = components.hpe.button) == null || (_components$hpe$butto0 = _components$hpe$butto0[kind]) == null ? void 0 : _components$hpe$butto0[adjustedState].rest.fontWeight
           }
         };
-        if (!('active' in buttonStatesTheme.hover)) buttonStatesTheme.hover.active = {};
+        if (!('active' in buttonStatesTheme.hover)) {
+          buttonStatesTheme.hover.active = {};
+        }
         buttonStatesTheme.hover[state][kind] = {
           background: {
             color: (_components$hpe$butto1 = components.hpe.button) == null || (_components$hpe$butto1 = _components$hpe$butto1[kind]) == null || (_components$hpe$butto1 = _components$hpe$butto1[adjustedState]) == null || (_components$hpe$butto1 = _components$hpe$butto1.hover) == null ? void 0 : _components$hpe$butto1.background

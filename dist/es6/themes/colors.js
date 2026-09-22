@@ -62,8 +62,10 @@ export var buildColors = function buildColors(tokens) {
   return _extends({}, tokenColors, {
     // Override specific colors to swap light and dark.hpe values
     // See https://github.com/grommet/grommet/issues/7818
+    'text-onStrong': swapped('hpe.color.text.onStrong', dark, light),
     'text-onPrimaryStrong': swapped('hpe.color.text.onPrimaryStrong', dark, light),
     'text-onSelectedPrimaryStrong': swapped('hpe.color.text.onSelectedPrimaryStrong', dark, light),
+    'icon-onStrong': swapped('hpe.color.icon.onStrong', dark, light),
     'icon-onPrimaryStrong': swapped('hpe.color.icon.onPrimaryStrong', dark, light),
     'icon-onSelectedPrimaryStrong': swapped('hpe.color.icon.onSelectedPrimaryStrong', dark, light),
     control: 'background-primary-strong',
