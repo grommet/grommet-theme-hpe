@@ -18,12 +18,14 @@ export const buildFormTheme = (tokens, context) => {
     Dislike,
     DislikeFill,
     Down,
+    Hide,
     Like,
     LikeFill,
     Search,
     Star,
     StarFill,
     Up,
+    View,
   } = context.icons;
   // Pulling the raw values directly from the token files gives us the color
   // exactly as authored.
@@ -225,8 +227,8 @@ export const buildFormTheme = (tokens, context) => {
         font-weight: ${components.hpe.checkbox.default.label.rest.fontWeight};
         width: auto;
         border: ${
-          components.hpe.formField.default.medium.input.container.borderWidth
-        }
+            components.hpe.formField.default.medium.input.container.borderWidth
+          }
           solid
           ${getThemeColor(
             components.hpe.formField.default.input.group.item.rest.borderColor,
@@ -878,6 +880,8 @@ export const buildFormTheme = (tokens, context) => {
       },
       icons: {
         copy: Copy,
+        hidePassword: Hide,
+        showPassword: View,
       },
       suggestions: {
         extend: ({ theme }) => `
