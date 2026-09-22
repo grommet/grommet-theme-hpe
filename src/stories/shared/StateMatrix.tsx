@@ -84,7 +84,13 @@ export const StateMatrix = ({
   return (
     <Grid
       gap={{ row: 'small', column: 'xsmall' }}
-      areas={gridAreas}
+      areas={[
+        gridAreas[0],
+        ...gridAreas.slice(1).filter(([label]) => {
+          const state = label === 'default-label' ? 'default' : label;
+          return applicationStates[state as ApplicationState];
+        }),
+      ]}
       columns={['3xsmall', 'auto', 'auto', 'auto', 'auto']}
       rows={['auto']}
       align="center"

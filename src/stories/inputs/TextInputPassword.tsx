@@ -21,7 +21,7 @@ const StoryTextInput = ({
   error?: string;
   [key: string]: any;
 }) => {
-  const id = `${gridArea}-password-input`;
+  const id = `${formField ? 'form-field' : 'standard'}-${gridArea}-password-input`;
   const input = <TextInput id={id} disabled={disabled} {...rest} />;
 
   return (
