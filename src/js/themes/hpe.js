@@ -361,15 +361,17 @@ const buildTheme = (tokens, flags) => {
           !active
         ) {
           // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
-          // not a long term solution. Also, reliance on !important is not ideal.
-          style += `color: ${getThemeColor(
-            'text-onStrong',
-            theme,
-          )} !important;`;
+          // not a long term solution.
+          const hoverColor = theme.dark
+            ? dark.hpe.color.text.onStrong
+            : light.hpe.color.text.onStrong;
           const iconColor = theme.dark
             ? dark.hpe.color.icon.onStrong
             : light.hpe.color.icon.onStrong;
-          style += `svg { fill: ${iconColor}; }`;
+          style += `&:hover { 
+            color: ${hoverColor}; 
+            svg { fill: ${iconColor}; }
+          }`;
         }
         if (colorValue) {
           // color prop is not recommended to be used, but providing
