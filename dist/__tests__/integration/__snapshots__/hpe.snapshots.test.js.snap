@@ -2398,7 +2398,7 @@ exports[`Theme snapshot groups matches global snapshot 1`] = `
         "light": "#e3f1ff",
       },
       "background-accent-cyan-strong": {
-        "dark": "#00a4b3",
+        "dark": "#1fbccb",
         "light": "#00838f",
       },
       "background-accent-cyan-weak": {

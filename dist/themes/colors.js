@@ -63,6 +63,14 @@ var buildColors = exports.buildColors = function buildColors(tokens) {
     }
   });
   return _extends({}, tokenColors, {
+    // Override background-accent-cyan-strong dark mode value. Chosen so
+    // that Grommet's colorIsDark function evaluates it as a light color
+    // for proper contrast for text and icons. Remove once
+    // https://github.com/grommet/hpe-design-system/issues/6589 is resolved.
+    'background-accent-cyan-strong': {
+      light: tokenColors['background-accent-cyan-strong'].light,
+      dark: '#1fbccb'
+    },
     // Override specific colors to swap light and dark.hpe values
     // See https://github.com/grommet/grommet/issues/7818
     'text-onStrong': swapped('hpe.color.text.onStrong', dark, light),
