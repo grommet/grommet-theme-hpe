@@ -1,0 +1,33 @@
+name: PR Preview Link
+
+on:
+  pull_request:
+    types: [opened]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  update-preview-link:
+    name: Insert PR number into deploy preview URL
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fill in PR number in deploy preview URL
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const placeholder = '[insert PR # here]';
+            const pr = context.payload.pull_request;
+
+            if (!pr.body || !pr.body.includes(placeholder)) {
+              return;
+            }
+
+            const updatedBody = pr.body.split(placeholder).join(String(pr.number));
+
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number,
+              body: updatedBody,
+            });
