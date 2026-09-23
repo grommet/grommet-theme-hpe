@@ -1,6 +1,6 @@
 <!--- Provide a general summary of the PR in the Title above -->
 
-[Theme deploy preview](https://deploy-preview-[insert PR # here]--gregarious-clafoutis-525547.netlify.app/)
+[Theme deploy preview](https://deploy-preview-PR_NUMBER--gregarious-clafoutis-525547.netlify.app/)
 
 #### What does this PR do?
 
