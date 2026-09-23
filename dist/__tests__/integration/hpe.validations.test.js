@@ -1,6 +1,8 @@
 "use strict";
 
 var _grommet = require("hpe-design-tokens/grommet");
+var _Hide = require("@hpe-design/icons-grommet/icons/Hide");
+var _View = require("@hpe-design/icons-grommet/icons/View");
 var _hpe = require("../../themes/hpe");
 // SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
 // SPDX-License-Identifier: Apache-2.0
@@ -107,6 +109,13 @@ describe('Value-Validation Tests', function () {
       });
       expect(theme.checkBox).toBeDefined();
       expect(typeof theme.checkBox).toBe('object');
+    });
+    it('should expose password visibility icons on text input theme', function () {
+      var theme = (0, _hpe.buildTheme)(tokens, {
+        'v6-backwards-compatibility': false
+      });
+      expect(theme.textInput.icons.hidePassword).toBe(_Hide.Hide);
+      expect(theme.textInput.icons.showPassword).toBe(_View.View);
     });
   });
   describe('Dimension values', function () {

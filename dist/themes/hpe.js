@@ -4,41 +4,43 @@ exports.__esModule = true;
 exports.hpe = exports.buildTheme = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _grommet = require("hpe-design-tokens/grommet");
-var _Checkmark = require("@hpe-design/icons-grommet/icons/Checkmark");
-var _Clock = require("@hpe-design/icons-grommet/icons/Clock");
-var _CircleFill = require("@hpe-design/icons-grommet/icons/CircleFill");
-var _Close = require("@hpe-design/icons-grommet/icons/Close");
-var _Element = require("@hpe-design/icons-grommet/icons/Element");
-var _Filter = require("@hpe-design/icons-grommet/icons/Filter");
-var _Search = require("@hpe-design/icons-grommet/icons/Search");
-var _Descend = require("@hpe-design/icons-grommet/icons/Descend");
 var _Add = require("@hpe-design/icons-grommet/icons/Add");
-var _Subtract = require("@hpe-design/icons-grommet/icons/Subtract");
-var _Lock = require("@hpe-design/icons-grommet/icons/Lock");
-var _Splits = require("@hpe-design/icons-grommet/icons/Splits");
-var _Calendar = require("@hpe-design/icons-grommet/icons/Calendar");
 var _Alert = require("@hpe-design/icons-grommet/icons/Alert");
-var _Star = require("@hpe-design/icons-grommet/icons/Star");
-var _StarFill = require("@hpe-design/icons-grommet/icons/StarFill");
-var _Left = require("@hpe-design/icons-grommet/icons/Left");
-var _Right = require("@hpe-design/icons-grommet/icons/Right");
-var _Copy = require("@hpe-design/icons-grommet/icons/Copy");
-var _Like = require("@hpe-design/icons-grommet/icons/Like");
-var _LikeFill = require("@hpe-design/icons-grommet/icons/LikeFill");
-var _Dislike = require("@hpe-design/icons-grommet/icons/Dislike");
-var _DislikeFill = require("@hpe-design/icons-grommet/icons/DislikeFill");
 var _Ascending = require("@hpe-design/icons-grommet/icons/Ascending");
 var _Blank = require("@hpe-design/icons-grommet/icons/Blank");
+var _Calendar = require("@hpe-design/icons-grommet/icons/Calendar");
+var _Checkmark = require("@hpe-design/icons-grommet/icons/Checkmark");
+var _CircleFill = require("@hpe-design/icons-grommet/icons/CircleFill");
+var _Clock = require("@hpe-design/icons-grommet/icons/Clock");
+var _Close = require("@hpe-design/icons-grommet/icons/Close");
+var _Copy = require("@hpe-design/icons-grommet/icons/Copy");
+var _Descend = require("@hpe-design/icons-grommet/icons/Descend");
 var _Descending = require("@hpe-design/icons-grommet/icons/Descending");
+var _Dislike = require("@hpe-design/icons-grommet/icons/Dislike");
+var _DislikeFill = require("@hpe-design/icons-grommet/icons/DislikeFill");
 var _Down = require("@hpe-design/icons-grommet/icons/Down");
-var _Unsorted = require("@hpe-design/icons-grommet/icons/Unsorted");
-var _Up = require("@hpe-design/icons-grommet/icons/Up");
+var _Element = require("@hpe-design/icons-grommet/icons/Element");
+var _Filter = require("@hpe-design/icons-grommet/icons/Filter");
+var _Hide = require("@hpe-design/icons-grommet/icons/Hide");
+var _Info = require("@hpe-design/icons-grommet/icons/Info");
+var _Left = require("@hpe-design/icons-grommet/icons/Left");
+var _Like = require("@hpe-design/icons-grommet/icons/Like");
+var _LikeFill = require("@hpe-design/icons-grommet/icons/LikeFill");
+var _Lock = require("@hpe-design/icons-grommet/icons/Lock");
 var _Pin = require("@hpe-design/icons-grommet/icons/Pin");
-var _StatusWarning = require("@hpe-design/icons-grommet/icons/StatusWarning");
+var _Right = require("@hpe-design/icons-grommet/icons/Right");
+var _Search = require("@hpe-design/icons-grommet/icons/Search");
+var _Splits = require("@hpe-design/icons-grommet/icons/Splits");
+var _Star = require("@hpe-design/icons-grommet/icons/Star");
+var _StarFill = require("@hpe-design/icons-grommet/icons/StarFill");
+var _StatusCritical = require("@hpe-design/icons-grommet/icons/StatusCritical");
 var _StatusGood = require("@hpe-design/icons-grommet/icons/StatusGood");
 var _StatusUnknown = require("@hpe-design/icons-grommet/icons/StatusUnknown");
-var _Info = require("@hpe-design/icons-grommet/icons/Info");
-var _StatusCritical = require("@hpe-design/icons-grommet/icons/StatusCritical");
+var _StatusWarning = require("@hpe-design/icons-grommet/icons/StatusWarning");
+var _Subtract = require("@hpe-design/icons-grommet/icons/Subtract");
+var _Unsorted = require("@hpe-design/icons-grommet/icons/Unsorted");
+var _Up = require("@hpe-design/icons-grommet/icons/Up");
+var _View = require("@hpe-design/icons-grommet/icons/View");
 var _utils = require("./utils");
 var _backgrounds = require("./backgrounds");
 var _dimensions = require("./dimensions");
@@ -145,12 +147,14 @@ var buildTheme = exports.buildTheme = function buildTheme(tokens, flags) {
       Dislike: _Dislike.Dislike,
       DislikeFill: _DislikeFill.DislikeFill,
       Down: _Down.Down,
+      Hide: _Hide.Hide,
       Like: _Like.Like,
       LikeFill: _LikeFill.LikeFill,
       Search: _Search.Search,
       Star: _Star.Star,
       StarFill: _StarFill.StarFill,
-      Up: _Up.Up
+      Up: _Up.Up,
+      View: _View.View
     }
   });
   var layoutTheme = (0, _layout.buildLayoutTheme)(tokens);

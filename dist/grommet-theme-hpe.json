@@ -4237,7 +4237,9 @@
   "textInput": {
     "container": {},
     "icons": {
-      "copy": {}
+      "copy": {},
+      "hidePassword": {},
+      "showPassword": {}
     },
     "suggestions": {}
   },

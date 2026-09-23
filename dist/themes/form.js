@@ -28,12 +28,14 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
     Dislike = _context$icons.Dislike,
     DislikeFill = _context$icons.DislikeFill,
     Down = _context$icons.Down,
+    Hide = _context$icons.Hide,
     Like = _context$icons.Like,
     LikeFill = _context$icons.LikeFill,
     Search = _context$icons.Search,
     Star = _context$icons.Star,
     StarFill = _context$icons.StarFill,
-    Up = _context$icons.Up;
+    Up = _context$icons.Up,
+    View = _context$icons.View;
   // Pulling the raw values directly from the token files gives us the color
   // exactly as authored.
   var textOnSelectedPrimaryStrong = {
@@ -666,7 +668,9 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
         }
       },
       icons: {
-        copy: Copy
+        copy: Copy,
+        hidePassword: Hide,
+        showPassword: View
       },
       suggestions: {
         extend: function extend(_ref17) {
