@@ -2,35 +2,40 @@
 // SPDX-License-Identifier: Apache-2.0
 import React from 'react';
 import { Box, Button } from 'grommet';
-import { ButtonStates } from './ButtonStates';
 import { AIGenFill } from '@hpe-design/icons-grommet';
+import { StateMatrix, type ApplicationStates } from '../shared/StateMatrix';
+
+const applicationStates: ApplicationStates = {
+  default: true,
+  disabled: true,
+};
 
 export const PrimaryButtonStates = () => {
   return (
     <Box gap="large">
-      <ButtonStates>
+      <StateMatrix applicationStates={applicationStates}>
         <Button
-          gridArea="none-rest"
+          gridArea="default-rest"
           kind="primary"
           label="Primary"
           icon={<AIGenFill aria-hidden="true" />}
         />
         <Button
           className="pseudo-hover"
-          gridArea="none-hover"
+          gridArea="default-hover"
           kind="primary"
           label="Primary"
           icon={<AIGenFill aria-hidden="true" />}
         />
         <Button
           className="pseudo-focus pseudo-focus-visible"
-          gridArea="none-focus"
+          gridArea="default-focus"
           kind="primary"
           label="Primary"
           icon={<AIGenFill aria-hidden="true" />}
         />
         <Button
-          gridArea="none-active"
+          gridArea="default-active"
           kind="primary"
           label="Primary"
           icon={<AIGenFill aria-hidden="true" />}
@@ -66,30 +71,30 @@ export const PrimaryButtonStates = () => {
           icon={<AIGenFill aria-hidden="true" />}
           disabled
         />
-      </ButtonStates>
-      <ButtonStates columnHeadings={false}>
+      </StateMatrix>
+      <StateMatrix applicationStates={applicationStates} columnHeadings={false}>
         <Button
-          gridArea="none-rest"
+          gridArea="default-rest"
           kind="primary"
           icon={<AIGenFill aria-hidden="true" />}
           aria-label="Primary"
         />
         <Button
           className="pseudo-hover"
-          gridArea="none-hover"
+          gridArea="default-hover"
           kind="primary"
           icon={<AIGenFill aria-hidden="true" />}
           aria-label="Primary"
         />
         <Button
           className="pseudo-focus pseudo-focus-visible"
-          gridArea="none-focus"
+          gridArea="default-focus"
           kind="primary"
           aria-label="Primary"
           icon={<AIGenFill aria-hidden="true" />}
         />
         <Button
-          gridArea="none-active"
+          gridArea="default-active"
           kind="primary"
           icon={<AIGenFill aria-hidden="true" />}
           aria-label="Primary"
@@ -125,7 +130,7 @@ export const PrimaryButtonStates = () => {
           icon={<AIGenFill aria-hidden="true" />}
           disabled
         />
-      </ButtonStates>
+      </StateMatrix>
     </Box>
   );
 };
