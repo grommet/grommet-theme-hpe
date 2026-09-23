@@ -906,7 +906,7 @@ export const buildFormTheme = (tokens, context) => {
           round: large.hpe.radius.xxsmall,
           selected: {
             background: getTokenColorPair(
-              'color.background.selected.primary.strong',
+'color.background.selected-primary-strong,
               tokens,
             ),
             color: textOnSelectedPrimaryStrong,
