@@ -2458,6 +2458,14 @@ exports[`Theme snapshot groups matches global snapshot 1`] = `
         "dark": "#2b3547",
         "light": "#e3f1ff",
       },
+      "background-input": {
+        "dark": "rgba(0, 0, 0, 0.04)",
+        "light": "rgba(255, 255, 255, 0.72)",
+      },
+      "background-input-hover": {
+        "dark": "rgba(0, 0, 0, 0.04)",
+        "light": "rgba(255, 255, 255, 0.72)",
+      },
       "background-layer-overlay": {
         "dark": "rgba(0, 0, 0, 0.48)",
         "light": "rgba(0, 0, 0, 0.12)",
