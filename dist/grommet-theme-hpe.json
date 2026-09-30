@@ -257,6 +257,14 @@
         "light": "#e3f1ff",
         "dark": "#2b3547"
       },
+      "background-input": {
+        "light": "rgba(255, 255, 255, 0.72)",
+        "dark": "rgba(0, 0, 0, 0.04)"
+      },
+      "background-input-hover": {
+        "light": "rgba(255, 255, 255, 0.72)",
+        "dark": "rgba(0, 0, 0, 0.04)"
+      },
       "background-neutral-xstrong": {
         "light": "#292d3a",
         "dark": "#f7f7f7"
