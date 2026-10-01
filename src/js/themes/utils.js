@@ -69,6 +69,14 @@ const getThemeColor = (color, theme) =>
     ? theme.global.colors[color]
     : theme.global.colors[color]?.[theme.dark ? 'dark' : 'light'] || color;
 
+const getTokenValue = (path, tokenSet) =>
+  path.split('.').reduce((object, key) => object?.[key], tokenSet);
+
+const getTokenColorPair = (path, tokens) => ({
+  dark: getTokenValue(`hpe.${path}`, tokens.dark),
+  light: getTokenValue(`hpe.${path}`, tokens.light),
+});
+
 const getTextSize = (size) => {
   if (size === '3xlarge') return '3xl';
   if (size === '4xlarge') return '4xl';
@@ -89,5 +97,6 @@ export {
   breakpointStyle,
   getHeadingSize,
   getThemeColor,
+  getTokenColorPair,
   getTextSize,
 };
