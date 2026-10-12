@@ -3,7 +3,7 @@
 import React from 'react';
 import { css } from 'styled-components';
 
-import { getThemeColor, getTokenColorPair } from './utils';
+import { getThemeColor } from './utils';
 
 export const buildFormTheme = (tokens, context) => {
   const { primitives, light, large, global, components } = tokens;
@@ -27,12 +27,6 @@ export const buildFormTheme = (tokens, context) => {
     Up,
     View,
   } = context.icons;
-  // Pulling the raw values directly from the token files gives us the color
-  // exactly as authored.
-  const textOnSelectedPrimaryStrong = getTokenColorPair(
-    'color.text.onSelectedPrimaryStrong',
-    tokens,
-  );
 
   return {
     checkBox: {
@@ -914,53 +908,62 @@ export const buildFormTheme = (tokens, context) => {
         round:
           components.hpe.formField.default.medium.input.container.borderRadius,
       },
-      button: {
-        margin: {
-          right:
-            components.hpe.formField.default.medium.input.container.textToIconX,
+      segment: {
+        pad: {
+          start: large.hpe.spacing['6xsmall'],
+          end: large.hpe.spacing['6xsmall'],
         },
-      },
-      active: {
-        background: getTokenColorPair('color.background.active', tokens),
-        pad: large.hpe.spacing['5xsmall'],
-        indicator: {
-          color: getTokenColorPair('color.focus', tokens),
+        active: {
+          background: 'background-active',
+          indicator: {
+            size: large.hpe.spacing['4xsmall'],
+            color: 'focus',
+          },
+          pad: {
+            start: large.hpe.spacing['6xsmall'],
+            end: large.hpe.spacing['6xsmall'],
+          },
         },
       },
       drop: {
-        gap: components.hpe.select.default.medium.drop.gapY,
-        pad: large.hpe.spacing.xsmall,
-        option: {
+        column: {
           gap: large.hpe.spacing['4xsmall'],
-          pad: {
-            vertical: components.hpe.element.medium.paddingY,
-            horizontal:
-              components.hpe.formField.default.medium.input.group.item
-                .textToElementX,
-          },
-          size: large.hpe.text.medium.fontSize,
-          hover: {
-            background: getTokenColorPair('color.background.active', tokens),
-          },
-          round: components.hpe.select.default.medium.option.borderRadius,
-          selected: {
-            background: getTokenColorPair(
-              'color.background.selected.primary.strong',
-              tokens,
-            ),
-            color: textOnSelectedPrimaryStrong,
-            text: { weight: global.hpe.fontWeight.medium },
+          pad: { horizontal: large.hpe.spacing['3xsmall'] },
+        },
+        pad: {
+          horizontal: large.hpe.spacing['3xsmall'],
+          vertical: large.hpe.spacing.xsmall,
+        },
+        option: {
+          container: {
+            pad: {
+              vertical: components.hpe.element.medium.paddingY,
+              horizontal: components.hpe.element.medium.paddingX.default,
+            },
+            round: large.hpe.radius.xxsmall,
             hover: {
-              background: getTokenColorPair(
-                'color.background.selected.primary.strong.hover',
-                tokens,
-              ),
+              background: 'background-active',
+            },
+            selected: {
+              background: 'background-selected-primary-strong',
+              hover: {
+                background: 'background-selected-primary-strong-hover',
+              },
+            },
+          },
+          text: {
+            size: large.hpe.text.medium.fontSize,
+            selected: {
+              color: 'text-onSelectedPrimaryStrong',
+              weight: global.hpe.fontWeight.medium,
             },
           },
         },
-      },
-      icon: {
-        clock: ClockIcon,
+        dropButton: {
+          icon: {
+            clock: ClockIcon,
+          },
+        },
       },
     },
   };
