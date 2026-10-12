@@ -879,6 +879,7 @@ export const buildFormTheme = (tokens, context) => {
         `,
       },
       icons: {
+        clear: Close,
         copy: Copy,
         hidePassword: Hide,
         showPassword: View,
