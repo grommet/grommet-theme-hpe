@@ -3,7 +3,7 @@
 import React from 'react';
 import { css } from 'styled-components';
 
-import { getThemeColor } from './utils';
+import { getThemeColor, getTokenColorPair } from './utils';
 
 export const buildFormTheme = (tokens, context) => {
   const { primitives, light, large, global, components } = tokens;
@@ -27,6 +27,29 @@ export const buildFormTheme = (tokens, context) => {
     Up,
     View,
   } = context.icons;
+  // Pulling the raw values directly from the token files gives us the color
+  // exactly as authored.
+  const backgroundActive = getTokenColorPair('color.background.active', tokens);
+  const focusColor = getTokenColorPair('color.focus', tokens);
+  const backgroundSelectedPrimaryStrong = getTokenColorPair(
+    'color.background.selected-primary-strong',
+    tokens,
+  );
+  const backgroundSelectedPrimaryStrongHover = getTokenColorPair(
+    'color.background.selected-primary-strong-hover',
+    tokens,
+  );
+  // text-onSelectedPrimaryStrong is authored with light/dark swapped
+  // (see https://github.com/grommet/grommet/issues/7818), so flip them here
+  // to match the theme mode they're rendered in.
+  const rawTextOnSelectedPrimaryStrong = getTokenColorPair(
+    'color.text.onSelectedPrimaryStrong',
+    tokens,
+  );
+  const textOnSelectedPrimaryStrong = {
+    dark: rawTextOnSelectedPrimaryStrong.light,
+    light: rawTextOnSelectedPrimaryStrong.dark,
+  };
 
   return {
     checkBox: {
@@ -914,10 +937,10 @@ export const buildFormTheme = (tokens, context) => {
           end: large.hpe.spacing['6xsmall'],
         },
         active: {
-          background: 'background-active',
+          background: backgroundActive,
           indicator: {
             size: large.hpe.spacing['4xsmall'],
-            color: 'focus',
+            color: focusColor,
           },
           pad: {
             start: large.hpe.spacing['6xsmall'],
@@ -942,19 +965,19 @@ export const buildFormTheme = (tokens, context) => {
             },
             round: large.hpe.radius.xxsmall,
             hover: {
-              background: 'background-active',
+              background: backgroundActive,
             },
             selected: {
-              background: 'background-selected-primary-strong',
+              background: backgroundSelectedPrimaryStrong,
               hover: {
-                background: 'background-selected-primary-strong-hover',
+                background: backgroundSelectedPrimaryStrongHover,
               },
             },
           },
           text: {
             size: large.hpe.text.medium.fontSize,
             selected: {
-              color: 'text-onSelectedPrimaryStrong',
+              color: textOnSelectedPrimaryStrong,
               weight: global.hpe.fontWeight.medium,
             },
           },

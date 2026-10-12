@@ -2369,6 +2369,91 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
       },
     },
   },
+  "timeInput": {
+    "container": {
+      "round": "8px",
+    },
+    "drop": {
+      "column": {
+        "gap": "4px",
+        "pad": {
+          "horizontal": "6px",
+        },
+      },
+      "dropButton": {
+        "icon": {
+          "clock": {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+        },
+      },
+      "option": {
+        "container": {
+          "hover": {
+            "background": {
+              "dark": "rgba(255, 255, 255, 0.06)",
+              "light": "rgba(0, 0, 0, 0.04)",
+            },
+          },
+          "pad": {
+            "horizontal": "10px",
+            "vertical": "5px",
+          },
+          "round": "4px",
+          "selected": {
+            "background": {
+              "dark": "#05cc93",
+              "light": "#068667",
+            },
+            "hover": {
+              "background": {
+                "dark": "#00e0af",
+                "light": "#006750",
+              },
+            },
+          },
+        },
+        "text": {
+          "selected": {
+            "color": {
+              "dark": "#ffffff",
+              "light": "#292d3a",
+            },
+            "weight": 500,
+          },
+          "size": "1rem",
+        },
+      },
+      "pad": {
+        "horizontal": "6px",
+        "vertical": "12px",
+      },
+    },
+    "segment": {
+      "active": {
+        "background": {
+          "dark": "rgba(255, 255, 255, 0.06)",
+          "light": "rgba(0, 0, 0, 0.04)",
+        },
+        "indicator": {
+          "color": {
+            "dark": "#ffffff",
+            "light": "#292d3a",
+          },
+          "size": "4px",
+        },
+        "pad": {
+          "end": "2px",
+          "start": "2px",
+        },
+      },
+      "pad": {
+        "end": "2px",
+        "start": "2px",
+      },
+    },
+  },
 }
 `;
 
