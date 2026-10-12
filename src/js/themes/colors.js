@@ -31,6 +31,7 @@ const flattenObject = (obj, delimiter = '.', prefix = '') =>
 // Utility to access nested object properties via dot-notation string path
 // and swap light/dark theme values.
 const access = (path, object) => path.split('.').reduce((o, i) => o[i], object);
+
 const swapped = (path, darkTheme, lightTheme) => {
   const lightValue = access(`${path}`, darkTheme);
   const darkValue = access(`${path}`, lightTheme);
@@ -76,8 +77,17 @@ export const buildColors = (tokens) => {
   return {
     // Here we're passing through all the colors from hpe-design-tokens
     ...tokenColors,
+    // Override background-accent-cyan-strong dark mode value. Chosen so
+    // that Grommet's colorIsDark function evaluates it as a light color
+    // for proper contrast for text and icons. Remove once
+    // https://github.com/grommet/hpe-design-system/issues/6589 is resolved.
+    'background-accent-cyan-strong': {
+      light: tokenColors['background-accent-cyan-strong'].light,
+      dark: '#1fbccb',
+    },
     // Override specific colors to swap light and dark.hpe values
     // See https://github.com/grommet/grommet/issues/7818
+    'text-onStrong': swapped('hpe.color.text.onStrong', dark, light),
     'text-onPrimaryStrong': swapped(
       'hpe.color.text.onPrimaryStrong',
       dark,
@@ -88,6 +98,7 @@ export const buildColors = (tokens) => {
       dark,
       light,
     ),
+    'icon-onStrong': swapped('hpe.color.icon.onStrong', dark, light),
     'icon-onPrimaryStrong': swapped(
       'hpe.color.icon.onPrimaryStrong',
       dark,

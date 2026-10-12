@@ -9,6 +9,8 @@ import {
   global as localGlobal,
   components as localComponents,
 } from 'hpe-design-tokens/grommet';
+import { Hide } from '@hpe-design/icons-grommet/icons/Hide';
+import { View } from '@hpe-design/icons-grommet/icons/View';
 import { buildTheme } from '../../themes/hpe';
 
 describe('Value-Validation Tests', () => {
@@ -103,6 +105,12 @@ describe('Value-Validation Tests', () => {
       const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
       expect(theme.checkBox).toBeDefined();
       expect(typeof theme.checkBox).toBe('object');
+    });
+
+    it('should expose password visibility icons on text input theme', () => {
+      const theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
+      expect(theme.textInput.icons.hidePassword).toBe(Hide);
+      expect(theme.textInput.icons.showPassword).toBe(View);
     });
   });
 

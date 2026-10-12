@@ -12,41 +12,44 @@ import {
   components as localComponents,
 } from 'hpe-design-tokens/grommet';
 
-import { Checkmark } from '@hpe-design/icons-grommet/icons/Checkmark';
-import { Clock } from '@hpe-design/icons-grommet/icons/Clock';
-import { CircleFill } from '@hpe-design/icons-grommet/icons/CircleFill';
-import { Close } from '@hpe-design/icons-grommet/icons/Close';
-import { Element } from '@hpe-design/icons-grommet/icons/Element';
-import { Filter } from '@hpe-design/icons-grommet/icons/Filter';
-import { Search } from '@hpe-design/icons-grommet/icons/Search';
-import { Descend } from '@hpe-design/icons-grommet/icons/Descend';
 import { Add } from '@hpe-design/icons-grommet/icons/Add';
-import { Subtract } from '@hpe-design/icons-grommet/icons/Subtract';
-import { Lock } from '@hpe-design/icons-grommet/icons/Lock';
-import { Splits } from '@hpe-design/icons-grommet/icons/Splits';
-import { Calendar } from '@hpe-design/icons-grommet/icons/Calendar';
 import { Alert } from '@hpe-design/icons-grommet/icons/Alert';
-import { Star } from '@hpe-design/icons-grommet/icons/Star';
-import { StarFill } from '@hpe-design/icons-grommet/icons/StarFill';
-import { Left } from '@hpe-design/icons-grommet/icons/Left';
-import { Right } from '@hpe-design/icons-grommet/icons/Right';
-import { Copy } from '@hpe-design/icons-grommet/icons/Copy';
-import { Like } from '@hpe-design/icons-grommet/icons/Like';
-import { LikeFill } from '@hpe-design/icons-grommet/icons/LikeFill';
-import { Dislike } from '@hpe-design/icons-grommet/icons/Dislike';
-import { DislikeFill } from '@hpe-design/icons-grommet/icons/DislikeFill';
 import { Ascending } from '@hpe-design/icons-grommet/icons/Ascending';
 import { Blank } from '@hpe-design/icons-grommet/icons/Blank';
+import { Calendar } from '@hpe-design/icons-grommet/icons/Calendar';
+import { Checkmark } from '@hpe-design/icons-grommet/icons/Checkmark';
+import { CircleFill } from '@hpe-design/icons-grommet/icons/CircleFill';
+import { Clock } from '@hpe-design/icons-grommet/icons/Clock';
+import { Close } from '@hpe-design/icons-grommet/icons/Close';
+import { Copy } from '@hpe-design/icons-grommet/icons/Copy';
+import { Descend } from '@hpe-design/icons-grommet/icons/Descend';
 import { Descending } from '@hpe-design/icons-grommet/icons/Descending';
+import { Dislike } from '@hpe-design/icons-grommet/icons/Dislike';
+import { DislikeFill } from '@hpe-design/icons-grommet/icons/DislikeFill';
 import { Down } from '@hpe-design/icons-grommet/icons/Down';
-import { Unsorted } from '@hpe-design/icons-grommet/icons/Unsorted';
-import { Up } from '@hpe-design/icons-grommet/icons/Up';
+import { Element } from '@hpe-design/icons-grommet/icons/Element';
+import { Filter } from '@hpe-design/icons-grommet/icons/Filter';
+import { Hide } from '@hpe-design/icons-grommet/icons/Hide';
+import { Info } from '@hpe-design/icons-grommet/icons/Info';
+import { Left } from '@hpe-design/icons-grommet/icons/Left';
+import { Like } from '@hpe-design/icons-grommet/icons/Like';
+import { LikeFill } from '@hpe-design/icons-grommet/icons/LikeFill';
+import { Lock } from '@hpe-design/icons-grommet/icons/Lock';
 import { Pin } from '@hpe-design/icons-grommet/icons/Pin';
-import { StatusWarning } from '@hpe-design/icons-grommet/icons/StatusWarning';
+import { Right } from '@hpe-design/icons-grommet/icons/Right';
+import { Search } from '@hpe-design/icons-grommet/icons/Search';
+import { Splits } from '@hpe-design/icons-grommet/icons/Splits';
+import { Star } from '@hpe-design/icons-grommet/icons/Star';
+import { StarFill } from '@hpe-design/icons-grommet/icons/StarFill';
+import { StatusCritical } from '@hpe-design/icons-grommet/icons/StatusCritical';
 import { StatusGood } from '@hpe-design/icons-grommet/icons/StatusGood';
 import { StatusUnknown } from '@hpe-design/icons-grommet/icons/StatusUnknown';
-import { Info } from '@hpe-design/icons-grommet/icons/Info';
-import { StatusCritical } from '@hpe-design/icons-grommet/icons/StatusCritical';
+import { StatusWarning } from '@hpe-design/icons-grommet/icons/StatusWarning';
+import { Subtract } from '@hpe-design/icons-grommet/icons/Subtract';
+import { Unsorted } from '@hpe-design/icons-grommet/icons/Unsorted';
+import { Up } from '@hpe-design/icons-grommet/icons/Up';
+import { View } from '@hpe-design/icons-grommet/icons/View';
+
 import { baseSpacing, deepFreeze, getThemeColor } from './utils';
 
 import { backgrounds } from './backgrounds';
@@ -147,12 +150,14 @@ const buildTheme = (tokens, flags) => {
       Dislike,
       DislikeFill,
       Down,
+      Hide,
       Like,
       LikeFill,
       Search,
       Star,
       StarFill,
       Up,
+      View,
     },
   });
   const layoutTheme = buildLayoutTheme(tokens);
@@ -361,15 +366,17 @@ const buildTheme = (tokens, flags) => {
           !active
         ) {
           // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
-          // not a long term solution. Also, reliance on !important is not ideal.
-          style += `color: ${getThemeColor(
-            'text-onStrong',
-            theme,
-          )} !important;`;
+          // not a long term solution.
+          const hoverColor = theme.dark
+            ? dark.hpe.color.text.onStrong
+            : light.hpe.color.text.onStrong;
           const iconColor = theme.dark
             ? dark.hpe.color.icon.onStrong
             : light.hpe.color.icon.onStrong;
-          style += `svg { fill: ${iconColor}; }`;
+          style += `&:hover { 
+            color: ${hoverColor}; 
+            svg { fill: ${iconColor}; }
+          }`;
         }
         if (colorValue) {
           // color prop is not recommended to be used, but providing

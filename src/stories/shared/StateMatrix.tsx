@@ -1,0 +1,132 @@
+// SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
+// SPDX-License-Identifier: Apache-2.0
+import React from 'react';
+import { Grid, Text } from 'grommet';
+
+export type ApplicationState =
+  | 'default'
+  | 'error'
+  | 'disabled'
+  | 'readonly'
+  | 'selected'
+  | 'indeterminate'
+  | 'pinned';
+
+export type ApplicationStates = Partial<Record<ApplicationState, boolean>>;
+
+const gridAreas = [
+  ['blank', 'rest', 'hover', 'focus', 'active'],
+  [
+    'default-label',
+    'default-rest',
+    'default-hover',
+    'default-focus',
+    'default-active',
+  ],
+  ['error', 'error-rest', 'error-hover', 'error-focus', 'error-active'],
+  [
+    'disabled',
+    'disabled-rest',
+    'disabled-hover',
+    'disabled-focus',
+    'disabled-active',
+  ],
+  [
+    'readonly',
+    'readonly-rest',
+    'readonly-hover',
+    'readonly-focus',
+    'readonly-active',
+  ],
+  [
+    'selected',
+    'selected-rest',
+    'selected-hover',
+    'selected-focus',
+    'selected-active',
+  ],
+  [
+    'indeterminate',
+    'indeterminate-rest',
+    'indeterminate-hover',
+    'indeterminate-focus',
+    'indeterminate-active',
+  ],
+  ['pinned', 'pinned-rest', 'pinned-hover', 'pinned-focus', 'pinned-active'],
+];
+
+const defaultApplicationStates: Record<ApplicationState, boolean> = {
+  default: true,
+  error: true,
+  disabled: true,
+  readonly: true,
+  selected: true,
+  indeterminate: false,
+  pinned: false,
+};
+
+const gridAreaForApplicationState = (state: ApplicationState) =>
+  state === 'default' ? 'default-label' : state;
+
+interface StateMatrixProps {
+  children: React.ReactNode;
+  applicationStates?: ApplicationStates;
+  columnHeadings?: boolean;
+  [key: string]: any;
+}
+
+export const StateMatrix = ({
+  children,
+  applicationStates = defaultApplicationStates,
+  columnHeadings = true,
+  ...rest
+}: StateMatrixProps) => {
+  return (
+    <Grid
+      gap={{ row: 'small', column: 'xsmall' }}
+      areas={[
+        gridAreas[0],
+        ...gridAreas.slice(1).filter(([label]) => {
+          const state = label === 'default-label' ? 'default' : label;
+          return applicationStates[state as ApplicationState];
+        }),
+      ]}
+      columns={['3xsmall', 'auto', 'auto', 'auto', 'auto']}
+      rows={['auto']}
+      align="center"
+      justify="center"
+      {...rest}
+    >
+      {columnHeadings && (
+        <>
+          <Text gridArea="rest" textAlign="center" weight="bold">
+            Rest
+          </Text>
+          <Text gridArea="hover" textAlign="center" weight="bold">
+            Hover
+          </Text>
+          <Text gridArea="focus" textAlign="center" weight="bold">
+            Focus
+          </Text>
+          <Text gridArea="active" textAlign="center" weight="bold">
+            Active
+          </Text>
+        </>
+      )}
+      {(Object.keys(applicationStates) as ApplicationState[]).map(
+        (state) =>
+          applicationStates[state] && (
+            <Text
+              key={state}
+              gridArea={gridAreaForApplicationState(state)}
+              textAlign="end"
+              weight="bold"
+            >
+              {state.charAt(0).toUpperCase() + state.slice(1)}
+            </Text>
+          ),
+      )}
+      {children}
+    </Grid>
+  );
+};
