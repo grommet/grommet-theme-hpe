@@ -2184,6 +2184,13 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
         },
       },
     },
+    "timeInput": {
+      "hover": {
+        "border": {
+          "color": undefined,
+        },
+      },
+    },
   },
   "radioButton": {
     "border": {
@@ -2415,6 +2422,10 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
           },
         },
         "text": {
+          "color": {
+            "dark": "#e6e8e9",
+            "light": "#3e4550",
+          },
           "selected": {
             "color": {
               "dark": "#ffffff",
