@@ -50,6 +50,7 @@ export const buildFormTheme = (tokens, context) => {
     dark: rawTextOnSelectedPrimaryStrong.light,
     light: rawTextOnSelectedPrimaryStrong.dark,
   };
+  const textDefaultColor = getTokenColorPair('color.text.default', tokens);
 
   return {
     checkBox: {
@@ -510,6 +511,13 @@ export const buildFormTheme = (tokens, context) => {
       },
       survey: {
         label: { margin: { bottom: 'none' }, size: 'medium', weight: 500 },
+      },
+      timeInput: {
+        hover: {
+          border: {
+            color: undefined,
+          },
+        },
       },
       thumbsRating: {
         container: {
@@ -976,6 +984,7 @@ export const buildFormTheme = (tokens, context) => {
           },
           text: {
             size: large.hpe.text.medium.fontSize,
+            color: textDefaultColor,
             selected: {
               color: textOnSelectedPrimaryStrong,
               weight: global.hpe.fontWeight.medium,
