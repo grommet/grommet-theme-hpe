@@ -3,10 +3,10 @@
 import React from 'react';
 import { css } from 'styled-components';
 
-import { getThemeColor, getTokenColorPair } from './utils';
+import { getThemeColor, getTokenColorPair, swapped } from './utils';
 
 export const buildFormTheme = (tokens, context) => {
-  const { primitives, light, large, global, components } = tokens;
+  const { primitives, light, dark, large, global, components } = tokens;
   const { dimensions, option } = context;
   const {
     Alert,
@@ -30,6 +30,7 @@ export const buildFormTheme = (tokens, context) => {
   // Pulling the raw values directly from the token files gives us the color
   // exactly as authored.
   const backgroundActive = getTokenColorPair('color.background.active', tokens);
+  const backgroundHover = getTokenColorPair('color.background.hover', tokens);
   const focusColor = getTokenColorPair('color.focus', tokens);
   const backgroundSelectedPrimaryStrong = getTokenColorPair(
     'color.background.selected-primary-strong',
@@ -39,17 +40,13 @@ export const buildFormTheme = (tokens, context) => {
     'color.background.selected-primary-strong-hover',
     tokens,
   );
-  // text-onSelectedPrimaryStrong is authored with light/dark swapped
-  // (see https://github.com/grommet/grommet/issues/7818), so flip them here
-  // to match the theme mode they're rendered in.
-  const rawTextOnSelectedPrimaryStrong = getTokenColorPair(
-    'color.text.onSelectedPrimaryStrong',
-    tokens,
+  // text-onSelectedPrimaryStrong is authored with light/dark swapped.
+  // See https://github.com/grommet/grommet/issues/7818
+  const textOnSelectedPrimaryStrong = swapped(
+    'hpe.color.text.onSelectedPrimaryStrong',
+    dark,
+    light,
   );
-  const textOnSelectedPrimaryStrong = {
-    dark: rawTextOnSelectedPrimaryStrong.light,
-    light: rawTextOnSelectedPrimaryStrong.dark,
-  };
   const textDefaultColor = getTokenColorPair('color.text.default', tokens);
 
   return {
@@ -934,18 +931,14 @@ export const buildFormTheme = (tokens, context) => {
       },
       segment: {
         pad: {
-          start: large.hpe.spacing['6xsmall'],
-          end: large.hpe.spacing['6xsmall'],
+          left: large.hpe.spacing['6xsmall'],
+          right: large.hpe.spacing['6xsmall'],
         },
         active: {
           background: backgroundActive,
           border: {
-            size: large.hpe.spacing['6xsmall'],
+            size: large.hpe.borderWidth.small,
             color: focusColor,
-          },
-          pad: {
-            start: large.hpe.spacing['6xsmall'],
-            end: large.hpe.spacing['6xsmall'],
           },
         },
       },
@@ -966,7 +959,7 @@ export const buildFormTheme = (tokens, context) => {
             },
             round: large.hpe.radius.xxsmall,
             hover: {
-              background: backgroundActive,
+              background: backgroundHover,
             },
             selected: {
               background: backgroundSelectedPrimaryStrong,
