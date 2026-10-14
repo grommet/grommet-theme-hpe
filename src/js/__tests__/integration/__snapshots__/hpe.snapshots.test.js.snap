@@ -2184,13 +2184,6 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
         },
       },
     },
-    "timeInput": {
-      "hover": {
-        "border": {
-          "color": undefined,
-        },
-      },
-    },
   },
   "radioButton": {
     "border": {

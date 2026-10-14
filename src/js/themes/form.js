@@ -512,13 +512,6 @@ export const buildFormTheme = (tokens, context) => {
       survey: {
         label: { margin: { bottom: 'none' }, size: 'medium', weight: 500 },
       },
-      timeInput: {
-        hover: {
-          border: {
-            color: undefined,
-          },
-        },
-      },
       thumbsRating: {
         container: {
           extend: ({ error }) =>

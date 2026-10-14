@@ -5,7 +5,7 @@ import { Box, Form, FormField, Heading, Text, TimeInput } from 'grommet';
 
 const Template = () => (
   <Box pad="large" gap="large" width={{ max: '500px' }}>
-    <Heading margin="none">TimeInput</Heading>
+    <Heading margin="none">TimeInput wrapped in FormField</Heading>
 
     <Box gap="medium">
       <Text size="small" color="text-weak" weight="bold">
@@ -81,6 +81,54 @@ const Template = () => (
           />
         </FormField>
       </Form>
+    </Box>
+    <Heading margin="none">TimeInput without FormField</Heading>
+
+    <Box gap="medium">
+      <Text size="small" color="text-weak" weight="bold">
+        12-hour format
+      </Text>
+      <TimeInput id="time-12h" name="time12h" format="12" />
+    </Box>
+
+    <Box gap="medium">
+      <Text size="small" color="text-weak" weight="bold">
+        24-hour format
+      </Text>
+      <TimeInput id="time-24h" name="time24h" format="24" />
+    </Box>
+
+    <Box gap="medium">
+      <Text size="small" color="text-weak" weight="bold">
+        With seconds
+      </Text>
+      <TimeInput id="time-seconds" name="timeSeconds" format="24" showSeconds />
+    </Box>
+
+    <Box gap="medium">
+      <Text size="small" color="text-weak" weight="bold">
+        Disabled
+      </Text>
+      <TimeInput
+        id="time-disabled"
+        name="timeDisabled"
+        format="12"
+        value="02:30 PM"
+        disabled
+      />
+    </Box>
+
+    <Box gap="medium">
+      <Text size="small" color="text-weak" weight="bold">
+        Read only
+      </Text>
+      <TimeInput
+        id="time-readonly"
+        name="timeReadonly"
+        format="12"
+        value="09:00 AM"
+        readOnly
+      />
     </Box>
   </Box>
 );
