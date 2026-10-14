@@ -2440,12 +2440,12 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
           "dark": "rgba(255, 255, 255, 0.06)",
           "light": "rgba(0, 0, 0, 0.04)",
         },
-        "indicator": {
+        "border": {
           "color": {
             "dark": "#ffffff",
             "light": "#292d3a",
           },
-          "size": "4px",
+          "size": "2px",
         },
         "pad": {
           "end": "2px",

@@ -940,7 +940,7 @@ export const buildFormTheme = (tokens, context) => {
         active: {
           background: backgroundActive,
           border: {
-            size: large.hpe.spacing['4xsmall'],
+            size: large.hpe.spacing['6xsmall'],
             color: focusColor,
           },
           pad: {
