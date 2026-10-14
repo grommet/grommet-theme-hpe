@@ -2447,14 +2447,10 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
           },
           "size": "2px",
         },
-        "pad": {
-          "end": "2px",
-          "start": "2px",
-        },
       },
       "pad": {
-        "end": "2px",
-        "start": "2px",
+        "left": "2px",
+        "right": "2px",
       },
     },
   },
