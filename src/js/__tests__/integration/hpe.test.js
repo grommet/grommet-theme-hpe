@@ -87,7 +87,7 @@ describe('Structural and Contract Tests', () => {
     it('should have timeInput definitions', () => {
       expect(theme.timeInput).toBeDefined();
       expect(theme.timeInput.container.round).toBeDefined();
-      expect(theme.timeInput.segment.pad.start).toBeDefined();
+      expect(theme.timeInput.segment.pad.left).toBeDefined();
       expect(theme.timeInput.segment.active.background).toBeDefined();
       expect(theme.timeInput.segment.active.border.size).toBeDefined();
       expect(theme.timeInput.segment.active.border.color).toBeDefined();
