@@ -939,7 +939,7 @@ export const buildFormTheme = (tokens, context) => {
         },
         active: {
           background: backgroundActive,
-          indicator: {
+          border: {
             size: large.hpe.spacing['4xsmall'],
             color: focusColor,
           },
