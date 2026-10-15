@@ -51,7 +51,8 @@ describe('Theme snapshot groups', function () {
       rangeSelector: theme.rangeSelector,
       fileInput: theme.fileInput,
       dateInput: theme.dateInput,
-      dateTimeInput: theme.dateTimeInput
+      dateTimeInput: theme.dateTimeInput,
+      timeInput: theme.timeInput
     }).toMatchSnapshot();
   });
   it('matches typography snapshot', function () {

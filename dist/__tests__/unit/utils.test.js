@@ -97,6 +97,34 @@ describe('Pure utility functions', function () {
       expect((0, _utils.getThemeColor)('unknown-token', theme)).toBe('unknown-token');
     });
   });
+  describe('getTokenColorPair', function () {
+    it('should resolve raw light and dark token values from a color path', function () {
+      var tokens = {
+        dark: {
+          hpe: {
+            color: {
+              background: {
+                active: '#222222'
+              }
+            }
+          }
+        },
+        light: {
+          hpe: {
+            color: {
+              background: {
+                active: '#eeeeee'
+              }
+            }
+          }
+        }
+      };
+      expect((0, _utils.getTokenColorPair)('color.background.active', tokens)).toEqual({
+        dark: '#222222',
+        light: '#eeeeee'
+      });
+    });
+  });
   describe('getHeadingSize', function () {
     it('should map heading levels to appropriate sizes', function () {
       var breakpointTokens = {

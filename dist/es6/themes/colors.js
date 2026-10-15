@@ -2,6 +2,7 @@ function _extends() { return _extends = Object.assign ? Object.assign.bind() : f
 // SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
 // SPDX-License-Identifier: Apache-2.0
 import { primitives as localPrimitives, dark as localDark, light as localLight, components as localComponents } from 'hpe-design-tokens/grommet';
+import { access, swapped } from './utils';
 var _flattenObject = function flattenObject(obj, delimiter, prefix) {
   if (delimiter === void 0) {
     delimiter = '.';
@@ -14,22 +15,6 @@ var _flattenObject = function flattenObject(obj, delimiter, prefix) {
     if (typeof obj[k] === 'object' && obj[k] !== null && Object.keys(obj[k]).length > 0 && !('$value' in obj[k])) Object.assign(acc, _flattenObject(obj[k], delimiter, !['hpe', 'color'].includes(k) ? pre + k : ''));else acc[pre + k] = obj[k];
     return acc;
   }, {});
-};
-
-// Utility to access nested object properties via dot-notation string path
-// and swap light/dark theme values.
-var access = function access(path, object) {
-  return path.split('.').reduce(function (o, i) {
-    return o[i];
-  }, object);
-};
-var swapped = function swapped(path, darkTheme, lightTheme) {
-  var lightValue = access("" + path, darkTheme);
-  var darkValue = access("" + path, lightTheme);
-  return {
-    light: lightValue,
-    dark: darkValue
-  };
 };
 export var buildColors = function buildColors(tokens) {
   var primitives = tokens.primitives,

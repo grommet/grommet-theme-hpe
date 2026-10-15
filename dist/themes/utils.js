@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.textSizes = exports.isObject = exports.headingLevelToSize = exports.getThemeColor = exports.getTextSize = exports.getHeadingSize = exports.deepFreeze = exports.componentSizes = exports.buttonStates = exports.buttonKinds = exports.breakpointStyle = exports.baseSpacing = void 0;
+exports.textSizes = exports.swapped = exports.isObject = exports.headingLevelToSize = exports.getTokenColorPair = exports.getThemeColor = exports.getTextSize = exports.getHeadingSize = exports.deepFreeze = exports.componentSizes = exports.buttonStates = exports.buttonKinds = exports.breakpointStyle = exports.baseSpacing = exports.access = void 0;
 var _styledComponents = require("styled-components");
 var _templateObject, _templateObject2; // SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
 // SPDX-License-Identifier: Apache-2.0
@@ -41,6 +41,34 @@ var getHeadingSize = exports.getHeadingSize = function getHeadingSize(breakpoint
 var getThemeColor = exports.getThemeColor = function getThemeColor(color, theme) {
   var _theme$global$colors$;
   return typeof theme.global.colors[color] === 'string' ? theme.global.colors[color] : ((_theme$global$colors$ = theme.global.colors[color]) == null ? void 0 : _theme$global$colors$[theme.dark ? 'dark' : 'light']) || color;
+};
+var getTokenValue = function getTokenValue(path, tokenSet) {
+  return path.split('.').reduce(function (object, key) {
+    return object == null ? void 0 : object[key];
+  }, tokenSet);
+};
+var getTokenColorPair = exports.getTokenColorPair = function getTokenColorPair(path, tokens) {
+  return {
+    dark: getTokenValue("hpe." + path, tokens.dark),
+    light: getTokenValue("hpe." + path, tokens.light)
+  };
+};
+
+// Utility to access nested object properties via dot-notation string path
+// and swap light/dark theme values.
+var access = exports.access = function access(path, object) {
+  return path.split('.').reduce(function (o, i) {
+    return o[i];
+  }, object);
+};
+
+// swaps a token's light/dark values between theme modes.
+// See https://github.com/grommet/grommet/issues/7818
+var swapped = exports.swapped = function swapped(path, darkTheme, lightTheme) {
+  return {
+    light: access(path, darkTheme),
+    dark: access(path, lightTheme)
+  };
 };
 var getTextSize = exports.getTextSize = function getTextSize(size) {
   if (size === '3xlarge') return '3xl';

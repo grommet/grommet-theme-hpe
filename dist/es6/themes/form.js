@@ -5,12 +5,13 @@ function _taggedTemplateLiteralLoose(e, t) { return t || (t = e.slice(0)), e.raw
 // SPDX-License-Identifier: Apache-2.0
 import React from 'react';
 import { css } from 'styled-components';
-import { getThemeColor } from './utils';
+import { getThemeColor, getTokenColorPair, swapped } from './utils';
 export var buildFormTheme = function buildFormTheme(tokens, context) {
   var primitives = tokens.primitives,
     light = tokens.light,
     dark = tokens.dark,
     large = tokens.large,
+    global = tokens.global,
     components = tokens.components;
   var dimensions = context.dimensions,
     option = context.option;
@@ -34,10 +35,15 @@ export var buildFormTheme = function buildFormTheme(tokens, context) {
     View = _context$icons.View;
   // Pulling the raw values directly from the token files gives us the color
   // exactly as authored.
-  var textOnSelectedPrimaryStrong = {
-    light: light.hpe.color.text.onSelectedPrimaryStrong,
-    dark: dark.hpe.color.text.onSelectedPrimaryStrong
-  };
+  var backgroundActive = getTokenColorPair('color.background.active', tokens);
+  var backgroundHover = getTokenColorPair('color.background.hover', tokens);
+  var focusColor = getTokenColorPair('color.focus', tokens);
+  var backgroundSelectedPrimaryStrong = getTokenColorPair('color.background.selected-primary-strong', tokens);
+  var backgroundSelectedPrimaryStrongHover = getTokenColorPair('color.background.selected-primary-strong-hover', tokens);
+  // text-onSelectedPrimaryStrong is authored with light/dark swapped.
+  // See https://github.com/grommet/grommet/issues/7818
+  var textOnSelectedPrimaryStrong = swapped('hpe.color.text.onSelectedPrimaryStrong', dark, light);
+  var textDefaultColor = getTokenColorPair('color.text.default', tokens);
   return {
     checkBox: {
       hover: {
@@ -693,34 +699,61 @@ export var buildFormTheme = function buildFormTheme(tokens, context) {
       container: {
         round: components.hpe.formField["default"].medium.input.container.borderRadius
       },
-      button: {
-        margin: {
-          right: '3xsmall'
-        }
-      },
-      active: {
-        background: 'background-active',
-        pad: '5xsmall',
-        indicator: {
-          color: 'focus'
-        }
-      },
-      drop: {
-        option: {
-          hover: {
-            background: 'background-active'
-          },
-          selected: {
-            background: 'background-selected-primary-strong',
-            color: textOnSelectedPrimaryStrong,
-            hover: {
-              background: 'background-selected-primary-strong-hover'
-            }
+      segment: {
+        pad: {
+          left: large.hpe.spacing['6xsmall'],
+          right: large.hpe.spacing['6xsmall']
+        },
+        active: {
+          background: backgroundActive,
+          border: {
+            size: large.hpe.borderWidth.small,
+            color: focusColor
           }
         }
       },
-      icon: {
-        clock: ClockIcon
+      drop: {
+        column: {
+          gap: large.hpe.spacing['4xsmall'],
+          pad: {
+            horizontal: large.hpe.spacing['3xsmall']
+          }
+        },
+        pad: {
+          horizontal: large.hpe.spacing['3xsmall'],
+          vertical: large.hpe.spacing.xsmall
+        },
+        option: {
+          container: {
+            pad: {
+              vertical: components.hpe.element.medium.paddingY,
+              horizontal: components.hpe.element.medium.paddingX["default"]
+            },
+            round: large.hpe.radius.xxsmall,
+            hover: {
+              background: backgroundHover
+            },
+            selected: {
+              background: backgroundSelectedPrimaryStrong,
+              hover: {
+                background: backgroundSelectedPrimaryStrongHover
+              }
+            }
+          },
+          text: {
+            size: large.hpe.text.medium.fontSize,
+            color: textDefaultColor,
+            selected: {
+              color: textOnSelectedPrimaryStrong,
+              weight: global.hpe.fontWeight.medium
+            }
+          }
+        },
+        dropButton: {
+          icon: {
+            clock: ClockIcon
+          }
+        }
       }
     }
   };

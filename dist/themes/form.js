@@ -15,6 +15,7 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
     light = tokens.light,
     dark = tokens.dark,
     large = tokens.large,
+    global = tokens.global,
     components = tokens.components;
   var dimensions = context.dimensions,
     option = context.option;
@@ -38,10 +39,15 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
     View = _context$icons.View;
   // Pulling the raw values directly from the token files gives us the color
   // exactly as authored.
-  var textOnSelectedPrimaryStrong = {
-    light: light.hpe.color.text.onSelectedPrimaryStrong,
-    dark: dark.hpe.color.text.onSelectedPrimaryStrong
-  };
+  var backgroundActive = (0, _utils.getTokenColorPair)('color.background.active', tokens);
+  var backgroundHover = (0, _utils.getTokenColorPair)('color.background.hover', tokens);
+  var focusColor = (0, _utils.getTokenColorPair)('color.focus', tokens);
+  var backgroundSelectedPrimaryStrong = (0, _utils.getTokenColorPair)('color.background.selected-primary-strong', tokens);
+  var backgroundSelectedPrimaryStrongHover = (0, _utils.getTokenColorPair)('color.background.selected-primary-strong-hover', tokens);
+  // text-onSelectedPrimaryStrong is authored with light/dark swapped.
+  // See https://github.com/grommet/grommet/issues/7818
+  var textOnSelectedPrimaryStrong = (0, _utils.swapped)('hpe.color.text.onSelectedPrimaryStrong', dark, light);
+  var textDefaultColor = (0, _utils.getTokenColorPair)('color.text.default', tokens);
   return {
     checkBox: {
       hover: {
@@ -697,34 +703,61 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
       container: {
         round: components.hpe.formField["default"].medium.input.container.borderRadius
       },
-      button: {
-        margin: {
-          right: '3xsmall'
-        }
-      },
-      active: {
-        background: 'background-active',
-        pad: '5xsmall',
-        indicator: {
-          color: 'focus'
-        }
-      },
-      drop: {
-        option: {
-          hover: {
-            background: 'background-active'
-          },
-          selected: {
-            background: 'background-selected-primary-strong',
-            color: textOnSelectedPrimaryStrong,
-            hover: {
-              background: 'background-selected-primary-strong-hover'
-            }
+      segment: {
+        pad: {
+          left: large.hpe.spacing['6xsmall'],
+          right: large.hpe.spacing['6xsmall']
+        },
+        active: {
+          background: backgroundActive,
+          border: {
+            size: large.hpe.borderWidth.small,
+            color: focusColor
           }
         }
       },
-      icon: {
-        clock: ClockIcon
+      drop: {
+        column: {
+          gap: large.hpe.spacing['4xsmall'],
+          pad: {
+            horizontal: large.hpe.spacing['3xsmall']
+          }
+        },
+        pad: {
+          horizontal: large.hpe.spacing['3xsmall'],
+          vertical: large.hpe.spacing.xsmall
+        },
+        option: {
+          container: {
+            pad: {
+              vertical: components.hpe.element.medium.paddingY,
+              horizontal: components.hpe.element.medium.paddingX["default"]
+            },
+            round: large.hpe.radius.xxsmall,
+            hover: {
+              background: backgroundHover
+            },
+            selected: {
+              background: backgroundSelectedPrimaryStrong,
+              hover: {
+                background: backgroundSelectedPrimaryStrongHover
+              }
+            }
+          },
+          text: {
+            size: large.hpe.text.medium.fontSize,
+            color: textDefaultColor,
+            selected: {
+              color: textOnSelectedPrimaryStrong,
+              weight: global.hpe.fontWeight.medium
+            }
+          }
+        },
+        dropButton: {
+          icon: {
+            clock: ClockIcon
+          }
+        }
       }
     }
   };

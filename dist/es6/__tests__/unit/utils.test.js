@@ -1,7 +1,7 @@
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 // SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
 // SPDX-License-Identifier: Apache-2.0
-import { deepFreeze, getHeadingSize, getTextSize, getThemeColor, isObject } from '../../themes/utils';
+import { deepFreeze, getHeadingSize, getTextSize, getTokenColorPair, getThemeColor, isObject } from '../../themes/utils';
 describe('Pure utility functions', function () {
   describe('isObject', function () {
     it('should correctly identify plain objects', function () {
@@ -94,6 +94,34 @@ describe('Pure utility functions', function () {
         }
       };
       expect(getThemeColor('unknown-token', theme)).toBe('unknown-token');
+    });
+  });
+  describe('getTokenColorPair', function () {
+    it('should resolve raw light and dark token values from a color path', function () {
+      var tokens = {
+        dark: {
+          hpe: {
+            color: {
+              background: {
+                active: '#222222'
+              }
+            }
+          }
+        },
+        light: {
+          hpe: {
+            color: {
+              background: {
+                active: '#eeeeee'
+              }
+            }
+          }
+        }
+      };
+      expect(getTokenColorPair('color.background.active', tokens)).toEqual({
+        dark: '#222222',
+        light: '#eeeeee'
+      });
     });
   });
   describe('getHeadingSize', function () {

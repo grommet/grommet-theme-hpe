@@ -3,6 +3,7 @@
 exports.__esModule = true;
 exports.colors = exports.buildColors = void 0;
 var _grommet = require("hpe-design-tokens/grommet");
+var _utils = require("./utils");
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); } // SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
 // SPDX-License-Identifier: Apache-2.0
 var _flattenObject = function flattenObject(obj, delimiter, prefix) {
@@ -17,22 +18,6 @@ var _flattenObject = function flattenObject(obj, delimiter, prefix) {
     if (typeof obj[k] === 'object' && obj[k] !== null && Object.keys(obj[k]).length > 0 && !('$value' in obj[k])) Object.assign(acc, _flattenObject(obj[k], delimiter, !['hpe', 'color'].includes(k) ? pre + k : ''));else acc[pre + k] = obj[k];
     return acc;
   }, {});
-};
-
-// Utility to access nested object properties via dot-notation string path
-// and swap light/dark theme values.
-var access = function access(path, object) {
-  return path.split('.').reduce(function (o, i) {
-    return o[i];
-  }, object);
-};
-var swapped = function swapped(path, darkTheme, lightTheme) {
-  var lightValue = access("" + path, darkTheme);
-  var darkValue = access("" + path, lightTheme);
-  return {
-    light: lightValue,
-    dark: darkValue
-  };
 };
 var buildColors = exports.buildColors = function buildColors(tokens) {
   var primitives = tokens.primitives,
@@ -56,8 +41,8 @@ var buildColors = exports.buildColors = function buildColors(tokens) {
           category = _color$split[0];
         var flatName = color.split('-').slice(1).join('-');
         tokenColors[color] = {
-          light: access("hpe.color." + category + (flatName ? "." + flatName : ''), light),
-          dark: access("hpe.color." + category + (flatName ? "." + flatName : ''), dark)
+          light: (0, _utils.access)("hpe.color." + category + (flatName ? "." + flatName : ''), light),
+          dark: (0, _utils.access)("hpe.color." + category + (flatName ? "." + flatName : ''), dark)
         };
       }
     }
@@ -73,12 +58,12 @@ var buildColors = exports.buildColors = function buildColors(tokens) {
     },
     // Override specific colors to swap light and dark.hpe values
     // See https://github.com/grommet/grommet/issues/7818
-    'text-onStrong': swapped('hpe.color.text.onStrong', dark, light),
-    'text-onPrimaryStrong': swapped('hpe.color.text.onPrimaryStrong', dark, light),
-    'text-onSelectedPrimaryStrong': swapped('hpe.color.text.onSelectedPrimaryStrong', dark, light),
-    'icon-onStrong': swapped('hpe.color.icon.onStrong', dark, light),
-    'icon-onPrimaryStrong': swapped('hpe.color.icon.onPrimaryStrong', dark, light),
-    'icon-onSelectedPrimaryStrong': swapped('hpe.color.icon.onSelectedPrimaryStrong', dark, light),
+    'text-onStrong': (0, _utils.swapped)('hpe.color.text.onStrong', dark, light),
+    'text-onPrimaryStrong': (0, _utils.swapped)('hpe.color.text.onPrimaryStrong', dark, light),
+    'text-onSelectedPrimaryStrong': (0, _utils.swapped)('hpe.color.text.onSelectedPrimaryStrong', dark, light),
+    'icon-onStrong': (0, _utils.swapped)('hpe.color.icon.onStrong', dark, light),
+    'icon-onPrimaryStrong': (0, _utils.swapped)('hpe.color.icon.onPrimaryStrong', dark, light),
+    'icon-onSelectedPrimaryStrong': (0, _utils.swapped)('hpe.color.icon.onSelectedPrimaryStrong', dark, light),
     control: 'background-primary-strong',
     'active-text': 'text-strong',
     'text-primary-button': components.hpe.button.primary.rest.textColor,

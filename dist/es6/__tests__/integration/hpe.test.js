@@ -66,6 +66,20 @@ describe('Structural and Contract Tests', function () {
       expect(theme.dateTimeInput.separator.pad).toBeDefined();
       expect(theme.dateTimeInput.icon.calendar).toBeDefined();
     });
+    it('should have timeInput definitions', function () {
+      expect(theme.timeInput).toBeDefined();
+      expect(theme.timeInput.container.round).toBeDefined();
+      expect(theme.timeInput.segment.pad.left).toBeDefined();
+      expect(theme.timeInput.segment.active.background).toBeDefined();
+      expect(theme.timeInput.segment.active.border.size).toBeDefined();
+      expect(theme.timeInput.segment.active.border.color).toBeDefined();
+      expect(theme.timeInput.drop.column.gap).toBeDefined();
+      expect(theme.timeInput.drop.pad.horizontal).toBeDefined();
+      expect(theme.timeInput.drop.option.container.pad.vertical).toBeDefined();
+      expect(theme.timeInput.drop.option.container.round).toBeDefined();
+      expect(theme.timeInput.drop.option.text.size).toBeDefined();
+      expect(theme.timeInput.drop.dropButton.icon.clock).toBeDefined();
+    });
   });
   describe('Color definitions', function () {
     it('should have text-strong color defined', function () {

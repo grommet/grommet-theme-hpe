@@ -4255,37 +4255,82 @@
     "container": {
       "round": "8px"
     },
-    "button": {
-      "margin": {
-        "right": "3xsmall"
-      }
-    },
-    "active": {
-      "background": "background-active",
-      "pad": "5xsmall",
-      "indicator": {
-        "color": "focus"
-      }
-    },
-    "drop": {
-      "option": {
-        "hover": {
-          "background": "background-active"
+    "segment": {
+      "pad": {
+        "left": "2px",
+        "right": "2px"
+      },
+      "active": {
+        "background": {
+          "dark": "rgba(255, 255, 255, 0.06)",
+          "light": "rgba(0, 0, 0, 0.04)"
         },
-        "selected": {
-          "background": "background-selected-primary-strong",
+        "border": {
+          "size": "2px",
           "color": {
-            "light": "#ffffff",
-            "dark": "#292d3a"
-          },
-          "hover": {
-            "background": "background-selected-primary-strong-hover"
+            "dark": "#ffffff",
+            "light": "#292d3a"
           }
         }
       }
     },
-    "icon": {
-      "clock": {}
+    "drop": {
+      "column": {
+        "gap": "4px",
+        "pad": {
+          "horizontal": "6px"
+        }
+      },
+      "pad": {
+        "horizontal": "6px",
+        "vertical": "12px"
+      },
+      "option": {
+        "container": {
+          "pad": {
+            "vertical": "5px",
+            "horizontal": "10px"
+          },
+          "round": "4px",
+          "hover": {
+            "background": {
+              "dark": "rgba(255, 255, 255, 0.06)",
+              "light": "rgba(0, 0, 0, 0.04)"
+            }
+          },
+          "selected": {
+            "background": {
+              "dark": "#05cc93",
+              "light": "#068667"
+            },
+            "hover": {
+              "background": {
+                "dark": "#00e0af",
+                "light": "#006750"
+              }
+            }
+          }
+        },
+        "text": {
+          "size": "1rem",
+          "color": {
+            "dark": "#e6e8e9",
+            "light": "#3e4550"
+          },
+          "selected": {
+            "color": {
+              "light": "#292d3a",
+              "dark": "#ffffff"
+            },
+            "weight": 500
+          }
+        }
+      },
+      "dropButton": {
+        "icon": {
+          "clock": {}
+        }
+      }
     }
   },
   "tip": {

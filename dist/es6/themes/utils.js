@@ -39,6 +39,34 @@ var getThemeColor = function getThemeColor(color, theme) {
   var _theme$global$colors$;
   return typeof theme.global.colors[color] === 'string' ? theme.global.colors[color] : ((_theme$global$colors$ = theme.global.colors[color]) == null ? void 0 : _theme$global$colors$[theme.dark ? 'dark' : 'light']) || color;
 };
+var getTokenValue = function getTokenValue(path, tokenSet) {
+  return path.split('.').reduce(function (object, key) {
+    return object == null ? void 0 : object[key];
+  }, tokenSet);
+};
+var getTokenColorPair = function getTokenColorPair(path, tokens) {
+  return {
+    dark: getTokenValue("hpe." + path, tokens.dark),
+    light: getTokenValue("hpe." + path, tokens.light)
+  };
+};
+
+// Utility to access nested object properties via dot-notation string path
+// and swap light/dark theme values.
+var access = function access(path, object) {
+  return path.split('.').reduce(function (o, i) {
+    return o[i];
+  }, object);
+};
+
+// swaps a token's light/dark values between theme modes.
+// See https://github.com/grommet/grommet/issues/7818
+var swapped = function swapped(path, darkTheme, lightTheme) {
+  return {
+    light: access(path, darkTheme),
+    dark: access(path, lightTheme)
+  };
+};
 var getTextSize = function getTextSize(size) {
   if (size === '3xlarge') return '3xl';
   if (size === '4xlarge') return '4xl';
@@ -46,4 +74,4 @@ var getTextSize = function getTextSize(size) {
   if (size === '6xlarge') return '6xl';
   return size;
 };
-export { baseSpacing, isObject, deepFreeze, componentSizes, buttonKinds, buttonStates, textSizes, headingLevelToSize, breakpointStyle, getHeadingSize, getThemeColor, getTextSize };
+export { baseSpacing, isObject, deepFreeze, componentSizes, buttonKinds, buttonStates, textSizes, headingLevelToSize, breakpointStyle, getHeadingSize, getThemeColor, getTokenColorPair, getTextSize, access, swapped };
