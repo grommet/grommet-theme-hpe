@@ -7,6 +7,8 @@ import {
   components as localComponents,
 } from 'hpe-design-tokens/grommet';
 
+import { access, swapped } from './utils';
+
 const flattenObject = (obj, delimiter = '.', prefix = '') =>
   Object.keys(obj).reduce((acc, k) => {
     const pre = prefix.length ? `${prefix}${delimiter}` : '';
@@ -27,20 +29,6 @@ const flattenObject = (obj, delimiter = '.', prefix = '') =>
     else acc[pre + k] = obj[k];
     return acc;
   }, {});
-
-// Utility to access nested object properties via dot-notation string path
-// and swap light/dark theme values.
-const access = (path, object) => path.split('.').reduce((o, i) => o[i], object);
-
-const swapped = (path, darkTheme, lightTheme) => {
-  const lightValue = access(`${path}`, darkTheme);
-  const darkValue = access(`${path}`, lightTheme);
-
-  return {
-    light: lightValue,
-    dark: darkValue,
-  };
-};
 
 export const buildColors = (tokens) => {
   const { primitives, dark, light, components } = tokens;
