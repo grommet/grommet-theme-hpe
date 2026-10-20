@@ -977,10 +977,10 @@ export const buildFormTheme = (tokens, context) => {
             },
           },
         },
-        dropButton: {
-          icon: {
-            clock: ClockIcon,
-          },
+      },
+      dropButton: {
+        icon: {
+          clock: ClockIcon,
         },
       },
     },
