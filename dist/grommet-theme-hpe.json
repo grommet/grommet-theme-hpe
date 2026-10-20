@@ -4325,11 +4325,11 @@
             "weight": 500
           }
         }
-      },
-      "dropButton": {
-        "icon": {
-          "clock": {}
-        }
+      }
+    },
+    "dropButton": {
+      "icon": {
+        "clock": {}
       }
     }
   },

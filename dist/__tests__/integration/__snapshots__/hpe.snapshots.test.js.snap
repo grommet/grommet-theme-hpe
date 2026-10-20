@@ -2380,14 +2380,6 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
           "horizontal": "6px",
         },
       },
-      "dropButton": {
-        "icon": {
-          "clock": {
-            "$$typeof": Symbol(react.forward_ref),
-            "render": [Function],
-          },
-        },
-      },
       "option": {
         "container": {
           "hover": {
@@ -2432,6 +2424,14 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
       "pad": {
         "horizontal": "6px",
         "vertical": "12px",
+      },
+    },
+    "dropButton": {
+      "icon": {
+        "clock": {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        },
       },
     },
     "segment": {

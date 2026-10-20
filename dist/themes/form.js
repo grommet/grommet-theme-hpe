@@ -752,11 +752,11 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
               weight: global.hpe.fontWeight.medium
             }
           }
-        },
-        dropButton: {
-          icon: {
-            clock: ClockIcon
-          }
+        }
+      },
+      dropButton: {
+        icon: {
+          clock: ClockIcon
         }
       }
     }
