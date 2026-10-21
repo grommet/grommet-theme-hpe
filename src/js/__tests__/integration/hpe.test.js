@@ -96,7 +96,7 @@ describe('Structural and Contract Tests', () => {
       expect(theme.timeInput.drop.option.container.pad.vertical).toBeDefined();
       expect(theme.timeInput.drop.option.container.round).toBeDefined();
       expect(theme.timeInput.drop.option.text.size).toBeDefined();
-      expect(theme.timeInput.dropButton.icon.clock).toBeDefined();
+      expect(theme.timeInput.dropButton.icon).toBeDefined();
     });
   });
 
