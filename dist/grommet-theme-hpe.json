@@ -4328,9 +4328,7 @@
       }
     },
     "dropButton": {
-      "icon": {
-        "clock": {}
-      }
+      "icon": {}
     }
   },
   "tip": {

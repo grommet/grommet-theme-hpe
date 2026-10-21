@@ -755,9 +755,7 @@ var buildFormTheme = exports.buildFormTheme = function buildFormTheme(tokens, co
         }
       },
       dropButton: {
-        icon: {
-          clock: ClockIcon
-        }
+        icon: ClockIcon
       }
     }
   };

@@ -2428,10 +2428,8 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
     },
     "dropButton": {
       "icon": {
-        "clock": {
-          "$$typeof": Symbol(react.forward_ref),
-          "render": [Function],
-        },
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
       },
     },
     "segment": {
