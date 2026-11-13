@@ -12,6 +12,7 @@ import {
   components,
 } from 'hpe-design-tokens/grommet';
 import { buildTheme, hpe } from '../src/js/themes/hpe';
+import { hpePop } from '../src/js/themes/hpePop';
 import {
   primitives as qaPrimitives,
   dark as qaDark,
@@ -34,6 +35,7 @@ const tokens = {
 
 const storyThemes = {
   default: hpe,
+  hpePop,
   tokensQA: buildTheme(
     {
       primitives: qaPrimitives,
@@ -86,6 +88,7 @@ export const globalTypes = {
       icon: 'paintbrush',
       items: [
         { value: 'default', title: 'Default' },
+        { value: 'hpePop', title: 'HPE Pop' },
         { value: 'tokensQA', title: 'Tokens QA' },
         { value: 'v6Compatibility', title: 'V6 compatibility' },
       ],
