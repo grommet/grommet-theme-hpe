@@ -1,6 +1,5 @@
 // SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
 // SPDX-License-Identifier: Apache-2.0
-import { light, dark } from 'hpe-design-tokens/grommet';
 import { hpe } from './hpe';
 
 export const isObject = (item) =>
@@ -31,11 +30,6 @@ export const deepMerge = (target, ...sources) => {
 
   return output;
 };
-
-const getThemeColor = (color, theme) =>
-  typeof theme.global.colors[color] === 'string'
-    ? theme.global.colors[color]
-    : theme.global.colors[color]?.[theme.dark ? 'dark' : 'light'] || color;
 
 const defaultPad = {
   small: { horizontal: '23px', vertical: '15px', iconOnly: '19px' },
@@ -210,16 +204,9 @@ export const hpePop = deepMerge(hpe, {
     size: {
       ...popButtonSizes,
     },
-    extend: ({
-      sizeProp,
-      hasLabel,
-      hasIcon,
-      kind,
-      theme,
-      colorValue,
-      disabled,
-    }) => {
-      let style = '';
+    extend: (props) => {
+      const { sizeProp, hasLabel, hasIcon, kind } = props;
+      let style = hpe.button.extend(props);
       if (sizeProp === 'large')
         // 24px, 28px (custom instead of "large" text size)
         style += 'font-size: 1.5rem; line-height: 1.75rem;';
@@ -227,27 +214,6 @@ export const hpePop = deepMerge(hpe, {
       // Grommet doesn't support kind-specific iconOnly padding, so we define it here.
       if (kind === 'secondary' && hasIcon && !hasLabel) {
         style += `padding: ${popButtonSizes[sizeProp].iconOnly.secondary.pad.vertical};`;
-      }
-      if (kind === 'primary' && !disabled) {
-        // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
-        // not a long term solution. Also, reliance on !important is not ideal.
-        style += `color: ${getThemeColor(
-          'text-onPrimaryStrong',
-          theme,
-        )} !important;`;
-        const iconColor = theme.dark
-          ? dark.hpe.color.icon.onPrimaryStrong
-          : light.hpe.color.icon.onPrimaryStrong;
-        style += `svg { stroke: ${iconColor}; fill: ${iconColor}; }`;
-      }
-      if (colorValue) {
-        // color prop is not recommended to be used, but providing
-        // a better fallback behavior for hover styles to avoid
-        // "kind" hover background from applying
-        // https://github.com/grommet/grommet/issues/7504
-        style += `
-          &:hover { background: ${getThemeColor(colorValue, theme)}; }
-        `;
       }
       return style;
     },
