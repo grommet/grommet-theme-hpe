@@ -19,7 +19,7 @@ It publishes theme objects and supporting exports that downstream applications c
 
 - `package.json`: Package metadata, dependency graph, publish/build/test/lint scripts.
 - `jest.config.js`: Jest setup (jsdom, Babel transform, test matching, coverage collection).
-- `.eslintrc`: Linting rules and test-environment overrides.
+- `.eslintrc.json`: Linting rules and test-environment overrides. The explicit JSON extension ensures ESLint and Prettier use the same format.
 - `webpack.config.babel.js`: Bundling config for browser artifact generation.
 - `.babelrc`: Babel transpilation settings.
 - `README.md`: Public usage information for consumers.
