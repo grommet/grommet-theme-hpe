@@ -1,42 +1,54 @@
 {
-  "parser": "@babel/eslint-parser",
-  "extends": ["airbnb", "prettier"],
-  "plugins": ["prettier"],
-  "env": {
-    "node": true,
-    "es6": true
-  },
-  "rules": {
-    "comma-dangle": ["error", "always-multiline"],
-    "import/prefer-default-export": 0,
-    "react/jsx-filename-extension": 0,
-    "import/no-unresolved": [
-      "error",
-      {
-        // currently, lint rule causes a false positive for packages that use "exports" in package.json
-        "ignore": ["^hpe-design-tokens/.+", "^@hpe-design/icons.+"]
-      }
-    ]
-  },
-  "overrides": [
+  'parser': '@babel/eslint-parser',
+  'extends': ['airbnb', 'prettier'],
+  'plugins': ['prettier'],
+  'env': { 'node': true, 'es6': true },
+  'settings':
     {
-      "files": ["**/__tests__/**/*.js", "**/*.test.js"],
-      "env": {
-        "jest": true
-      }
+      'import/resolver':
+        {
+          'node':
+            { 'extensions': ['.mjs', '.js', '.jsx', '.tsx', '.json', '.node'] },
+        },
     },
+  'rules':
     {
-      "files": [".storybook/**/*.js", "src/stories/**/*.js", "**/*.stories.js"],
-      "rules": {
-        "import/no-extraneous-dependencies": [
-          "error",
-          {
-            "devDependencies": true
-          }
+      'comma-dangle': ['error', 'always-multiline'],
+      'import/prefer-default-export': 0,
+      'react/jsx-filename-extension': 0,
+      'import/extensions':
+        [
+          'error',
+          'ignorePackages',
+          { 'js': 'never', 'mjs': 'never', 'jsx': 'never', 'tsx': 'never' },
         ],
-        "react/function-component-definition": 0,
-        "react/prop-types": 0
-      }
-    }
-  ]
+      'import/no-unresolved':
+        [
+          'error',
+          {
+            // currently,
+            ? lint rule causes a false positive for packages that use "exports" in package.json
+              "ignore"
+            : ['^hpe-design-tokens/.+', '^@hpe-design/icons.+'],
+          },
+        ],
+    },
+  'overrides':
+    [
+      {
+        'files': ['**/__tests__/**/*.js', '**/*.test.js'],
+        'env': { 'jest': true },
+      },
+      {
+        'files':
+          ['.storybook/**/*.js', 'src/stories/**/*.js', '**/*.stories.js'],
+        'rules':
+          {
+            'import/no-extraneous-dependencies':
+              ['error', { 'devDependencies': true }],
+            'react/function-component-definition': 0,
+            'react/prop-types': 0,
+          },
+      },
+    ],
 }
