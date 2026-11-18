@@ -168,7 +168,7 @@ The `jsonify` script generates:
 
 ## Tooling and Scripts (`tools`)
 
-- `convert-to-json.js`: Converts theme export to JSON (`yarn jsonify`).
+- `convert-to-json.js`: Converts the source theme export to JSON (`yarn jsonify`). The command registers Babel for both `.js` and `.tsx` modules.
 - `release-stable.js`: Stable release automation entry.
 - `release-gh-pages.js`: GitHub Pages release/deploy support.
 - `grommet-babel-preset-env.js`: Babel-related helper config.
