@@ -1,11 +1,228 @@
 // SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
 // SPDX-License-Identifier: Apache-2.0
 import React from 'react';
+import type { BoxProps, TextProps, ThemeType } from 'grommet';
+import type { Icon } from 'grommet-icons';
 import { css } from 'styled-components';
 
 import { getThemeColor, getTokenColorPair, swapped } from './utils';
 
-export const buildFormTheme = (tokens, context) => {
+type TokenFields<Keys extends string> = Record<Keys, string>;
+type ControlColors = TokenFields<'background' | 'borderColor'>;
+type SelectedControlColors = ControlColors & TokenFields<'iconColor'>;
+type ControlStates = {
+  rest: ControlColors;
+  hover: ControlColors;
+  selected: { rest: SelectedControlColors; hover: ControlColors };
+  disabled: { rest: SelectedControlColors };
+};
+type LabelStates = {
+  rest: TokenFields<'fontWeight'>;
+  disabled: { rest: TokenFields<'textColor'> };
+};
+type ButtonColors = TokenFields<'background' | 'textColor'>;
+
+// The token package ships untyped exports. Describe only the fields read here.
+type FormTokens = {
+  primitives: { hpe: { base: { dimension: Record<100 | 600, string> } } };
+  light: { hpe: { color: { icon: TokenFields<'critical'> } } };
+  dark: object;
+  large: {
+    hpe: {
+      radius: TokenFields<'full' | 'xxsmall'>;
+      spacing: TokenFields<'6xsmall' | '4xsmall' | '3xsmall' | 'xsmall'>;
+      borderWidth: TokenFields<'small'>;
+      text: { medium: TokenFields<'fontSize'> };
+    };
+  };
+  global: { hpe: { fontWeight: { medium: number | `${number}` } } };
+  components: {
+    hpe: {
+      button: {
+        secondary: {
+          rest: ButtonColors & TokenFields<'fontWeight'>;
+          hover: ButtonColors;
+          medium: TokenFields<'borderRadius' | 'paddingX' | 'paddingY'>;
+        };
+      };
+      checkbox: {
+        default: {
+          control: ControlStates;
+          label: LabelStates;
+          medium: TokenFields<'gapX'> & {
+            control: TokenFields<'borderRadius' | 'borderWidth' | 'width'>;
+          };
+        };
+      };
+      element: {
+        medium: TokenFields<'paddingY'> & { paddingX: TokenFields<'default'> };
+      };
+      formField: {
+        default: {
+          help: {
+            rest: TokenFields<'color'>;
+            disabled: { rest: TokenFields<'textColor'> };
+          };
+          info: {
+            rest: TokenFields<'color'>;
+            disabled: { rest: TokenFields<'textColor'> };
+          };
+          error: { rest: TokenFields<'textColor'> };
+          label: {
+            rest: TokenFields<'textColor'>;
+            disabled: { rest: TokenFields<'textColor'> };
+          };
+          input: {
+            container: {
+              rest: ControlColors;
+              hover: ControlColors;
+              disabled: { rest: ControlColors };
+              error: { rest: ControlColors };
+            };
+            group: {
+              container: {
+                rest: ControlColors;
+                disabled: { rest: ControlColors };
+                error: { rest: ControlColors };
+              };
+              item: { rest: ControlColors; hover: ControlColors };
+            };
+          };
+          medium: {
+            label: { fontWeight: number | `${number}` };
+            input: {
+              container: TokenFields<'borderRadius' | 'borderWidth'>;
+              group: {
+                container: TokenFields<'paddingX' | 'paddingY'>;
+                item: TokenFields<
+                  'paddingX' | 'paddingY' | 'borderRadius' | 'borderWidth'
+                >;
+              };
+            };
+          };
+        };
+      };
+      radioButton: {
+        default: {
+          control: Pick<ControlStates, 'rest' | 'hover' | 'selected'>;
+          label: Pick<LabelStates, 'rest'>;
+          medium: TokenFields<'gapX'> & {
+            control: TokenFields<'borderWidth' | 'height' | 'width'>;
+          };
+        };
+      };
+      select: {
+        default: {
+          medium: {
+            drop: TokenFields<'paddingX' | 'paddingY' | 'gapY'>;
+            option: TokenFields<
+              'borderRadius' | 'borderWidth' | 'paddingX' | 'paddingY'
+            >;
+          };
+          option: {
+            rest: TokenFields<'fontWeight'>;
+            hover: TokenFields<'background'>;
+          };
+        };
+      };
+      switch: {
+        default: {
+          control: {
+            track: Omit<ControlStates, 'selected' | 'disabled'> & {
+              selected: { rest: ControlColors; hover: ControlColors };
+              disabled: { rest: ControlColors };
+            };
+            handle: {
+              rest: ControlColors & TokenFields<'boxShadow'>;
+              disabled: { rest: TokenFields<'borderColor'> };
+            };
+          };
+          medium: {
+            control: {
+              track: TokenFields<'width'>;
+              handle: TokenFields<'borderWidth' | 'height' | 'width'>;
+            };
+          };
+        };
+      };
+    };
+  };
+};
+
+type FormThemeContext = {
+  dimensions: Record<
+    'borderSize' | 'edgeSize' | 'radius',
+    Record<string, string>
+  >;
+  option: { pad: BoxProps['pad'] };
+  icons: Record<
+    | 'Alert'
+    | 'Blank'
+    | 'Calendar'
+    | 'Clock'
+    | 'Close'
+    | 'Copy'
+    | 'Dislike'
+    | 'DislikeFill'
+    | 'Down'
+    | 'Hide'
+    | 'Like'
+    | 'LikeFill'
+    | 'Search'
+    | 'Star'
+    | 'StarFill'
+    | 'Up'
+    | 'View',
+    Icon
+  >;
+};
+
+type ResolvedTheme = ThemeType & { dark?: boolean };
+type ThemeProps = { theme: ResolvedTheme };
+type ControlProps = ThemeProps & {
+  checked?: boolean;
+  disabled?: boolean;
+  indeterminate?: boolean;
+  toggle?: boolean;
+};
+type ErrorProps = ThemeProps & { error?: React.ReactNode };
+
+type ThemeSection<K extends keyof ThemeType> = NonNullable<ThemeType[K]>;
+type FormField = ThemeSection<'formField'>;
+type ButtonKind = NonNullable<ThemeSection<'button'>['secondary']>;
+type ButtonStyle = ButtonKind & {
+  border?: { size?: string };
+  pad?: ButtonKind['padding'];
+  hover?: ButtonKind;
+};
+
+// Keep runtime-supported fields that Grommet's declarations do not yet cover.
+type FormTheme = ThemeType & {
+  checkBox: ThemeSection<'checkBox'> & {
+    hover?: { border?: { width?: string } };
+  };
+  fileInput: ThemeSection<'fileInput'> & {
+    button?: ButtonStyle;
+    label?: Pick<BoxProps, 'gap'>;
+  };
+  formField: FormField & {
+    help?: Pick<TextProps, 'size'>;
+    info?: Pick<TextProps, 'size'>;
+    error?: Pick<TextProps, 'size'>;
+    survey?: { label?: Pick<TextProps, 'weight'> };
+  };
+  select: ThemeSection<'select'> & {
+    clear?: { button?: ButtonStyle };
+  };
+  selectMultiple: ThemeSection<'selectMultiple'> & {
+    summary?: Pick<BoxProps, 'gap' | 'height'>;
+  };
+};
+
+export const buildFormTheme = (
+  tokens: FormTokens,
+  context: FormThemeContext,
+) => {
   const { primitives, light, dark, large, global, components } = tokens;
   const { dimensions, option } = context;
   const {
@@ -61,7 +278,7 @@ export const buildFormTheme = (tokens, context) => {
         },
         // applies to container around control and label
         background: { color: undefined },
-        extend: ({ theme, toggle, checked }) => {
+        extend: ({ theme, toggle, checked }: ControlProps) => {
           if (!checked) {
             return css``;
           }
@@ -94,7 +311,7 @@ export const buildFormTheme = (tokens, context) => {
       check: {
         radius: components.hpe.checkbox.default.medium.control.borderRadius,
         thickness: '2px',
-        extend: ({ theme, checked, indeterminate, disabled }) => {
+        extend: ({ theme, checked, indeterminate, disabled }: ControlProps) => {
           let background = getThemeColor(
             components.hpe.checkbox.default.control.rest.background,
             theme,
@@ -143,7 +360,7 @@ export const buildFormTheme = (tokens, context) => {
         },
       },
       icon: {
-        extend: ({ theme, disabled }) => {
+        extend: ({ theme, disabled }: ControlProps) => {
           // Grommet normally applies a "smart" background/foreground pairing that
           // selects foreground colors based on the background (light/dark) to keep
           // text and icons readable. Because the "icon-onSelectedPrimaryStrong" token's
@@ -168,7 +385,7 @@ export const buildFormTheme = (tokens, context) => {
         color: components.hpe.switch.default.control.handle.rest.background,
         size: components.hpe.switch.default.medium.control.track.width,
         knob: {
-          extend: ({ theme, checked, disabled }) => {
+          extend: ({ theme, checked, disabled }: ControlProps) => {
             const { borderWidth } =
               components.hpe.switch.default.medium.control.handle;
             const insetHandle =
@@ -176,7 +393,7 @@ export const buildFormTheme = (tokens, context) => {
 
             return `
           box-shadow: ${
-            theme.global.elevation[theme.dark ? 'dark' : 'light'][
+            theme.global?.elevation?.[theme.dark ? 'dark' : 'light']?.[
               components.hpe.switch.default.control.handle.rest.boxShadow
             ]
           };
@@ -195,7 +412,7 @@ export const buildFormTheme = (tokens, context) => {
           },
         },
         // applies to track around handle
-        extend: ({ checked, theme, disabled }) => {
+        extend: ({ checked, theme, disabled }: ControlProps) => {
           let background;
           let hoverBackground = getThemeColor(
             components.hpe.switch.default.control.track.hover.background,
@@ -238,7 +455,7 @@ export const buildFormTheme = (tokens, context) => {
         `;
         },
       },
-      extend: ({ disabled, theme }) => css`
+      extend: ({ disabled, theme }: ControlProps) => css`
         font-weight: ${components.hpe.checkbox.default.label.rest.fontWeight};
         width: auto;
         border: ${
@@ -343,7 +560,10 @@ export const buildFormTheme = (tokens, context) => {
           color: components.hpe.button.secondary.hover.textColor,
         },
       },
-      dragOver: { background: 'background-hover', border: 'none' },
+      dragOver: {
+        background: 'background-hover',
+        border: { color: 'transparent' },
+      },
       hover: { border: { color: 'border' } },
       icons: {
         error: Alert,
@@ -381,7 +601,9 @@ export const buildFormTheme = (tokens, context) => {
         color: components.hpe.formField.default.label.rest.textColor,
         margin: { bottom: 'none', top: '3xsmall', horizontal: 'none' },
         requiredIndicator: true,
-        weight: components.hpe.formField.default.medium.label.fontWeight,
+        weight: Number(
+          components.hpe.formField.default.medium.label.fontWeight,
+        ),
       },
       margin: { bottom: 'none' },
       round:
@@ -440,7 +662,7 @@ export const buildFormTheme = (tokens, context) => {
             components.hpe.formField.default.medium.input.group.item.paddingY,
         },
         container: {
-          extend: ({ error }) =>
+          extend: ({ error }: ErrorProps) =>
             `border-color: ${
               error
                 ? components.hpe.formField.default.input.group.container.error
@@ -457,7 +679,7 @@ export const buildFormTheme = (tokens, context) => {
       },
       checkBoxGroup: {
         container: {
-          extend: ({ error }) =>
+          extend: ({ error }: ErrorProps) =>
             `border-color: ${
               error
                 ? components.hpe.formField.default.input.group.container.error
@@ -474,7 +696,7 @@ export const buildFormTheme = (tokens, context) => {
       },
       radioButtonGroup: {
         container: {
-          extend: ({ error }) =>
+          extend: ({ error }: ErrorProps) =>
             `border-color: ${
               error
                 ? components.hpe.formField.default.input.group.container.error
@@ -491,7 +713,7 @@ export const buildFormTheme = (tokens, context) => {
       },
       starRating: {
         container: {
-          extend: ({ error }) =>
+          extend: ({ error }: ErrorProps) =>
             `border-color: ${
               error
                 ? components.hpe.formField.default.input.group.container.error
@@ -511,7 +733,7 @@ export const buildFormTheme = (tokens, context) => {
       },
       thumbsRating: {
         container: {
-          extend: ({ error }) =>
+          extend: ({ error }: ErrorProps) =>
             `border-color: ${
               error
                 ? components.hpe.formField.default.input.group.container.error
@@ -526,8 +748,7 @@ export const buildFormTheme = (tokens, context) => {
           },
         },
       },
-      extend: (props) => {
-        const { theme } = props;
+      extend: ({ theme }: ThemeProps) => {
         return `
           [class*="ContentBox"] {
             label {
@@ -611,7 +832,7 @@ export const buildFormTheme = (tokens, context) => {
       color:
         components.hpe.radioButton.default.control.selected.rest.borderColor,
       container: {
-        extend: ({ theme }) => `
+        extend: ({ theme }: ThemeProps) => `
           width: auto;
           &:has(input[checked]) {
             & div:has(> svg[aria-hidden="true"]) {
@@ -655,7 +876,7 @@ export const buildFormTheme = (tokens, context) => {
         weight: components.hpe.radioButton.default.label.rest.fontWeight,
       },
       icons: {
-        circle: ({ theme }) => (
+        circle: ({ theme }: ThemeProps) => (
           <Blank
             preserveAspectRatio="xMidYMid meet"
             color={getThemeColor(
@@ -675,14 +896,10 @@ export const buildFormTheme = (tokens, context) => {
     },
     maskedInput: {
       container: {
-        extend: ({ theme }) => `
+        extend: ({ theme }: ThemeProps) => `
           svg {
-            fill: ${
-              theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
-            };
-            stroke: ${
-              theme.global.colors['text-strong'][theme.dark ? 'dark' : 'light']
-            };
+            fill: ${getThemeColor('text-strong', theme)};
+            stroke: ${getThemeColor('text-strong', theme)};
           }
         `,
       },
@@ -697,7 +914,7 @@ export const buildFormTheme = (tokens, context) => {
         upper: {
           color: { light: '#e0e0e0', dark: '#616161' },
         },
-        extend: ({ theme }) => `
+        extend: ({ theme }: ThemeProps) => `
         border-radius: ${large.hpe.radius.full};
         // firefox only selector, since pseudo-element
         // isn't supported
@@ -712,7 +929,7 @@ export const buildFormTheme = (tokens, context) => {
           color: { light: 'rgb(245, 245, 245)', dark: 'rgb(44, 44, 44)' },
         },
       },
-      extend: ({ disabled, theme }) => `
+      extend: ({ disabled, theme }: ControlProps) => `
         &::before {
           display: block;
           position: absolute;
@@ -771,7 +988,9 @@ export const buildFormTheme = (tokens, context) => {
         `,
       },
       control: {
-        extend: ({ disabled }) => css`
+        extend: ({
+          disabled,
+        }: ThemeProps & Pick<ControlProps, 'disabled'>) => css`
           ${
             disabled &&
             `
@@ -882,14 +1101,10 @@ export const buildFormTheme = (tokens, context) => {
     },
     textInput: {
       container: {
-        extend: ({ theme }) => `
+        extend: ({ theme }: ThemeProps) => `
           svg {
-            fill: ${
-              theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light']
-            };
-            stroke: ${
-              theme.global.colors['icon-strong'][theme.dark ? 'dark' : 'light']
-            };
+            fill: ${getThemeColor('icon-strong', theme)};
+            stroke: ${getThemeColor('icon-strong', theme)};
           }
         `,
       },
@@ -899,7 +1114,7 @@ export const buildFormTheme = (tokens, context) => {
         showPassword: View,
       },
       suggestions: {
-        extend: ({ theme }) => `
+        extend: ({ theme }: ThemeProps) => `
           padding-block: ${components.hpe.select.default.medium.drop.paddingY};
           padding-inline: ${components.hpe.select.default.medium.drop.paddingX};
           gap: ${components.hpe.select.default.medium.drop.gapY};
@@ -973,7 +1188,7 @@ export const buildFormTheme = (tokens, context) => {
             color: textDefaultColor,
             selected: {
               color: textOnSelectedPrimaryStrong,
-              weight: global.hpe.fontWeight.medium,
+              weight: Number(global.hpe.fontWeight.medium),
             },
           },
         },
@@ -982,5 +1197,5 @@ export const buildFormTheme = (tokens, context) => {
         icon: ClockIcon,
       },
     },
-  };
+  } satisfies FormTheme;
 };

@@ -1991,7 +1991,9 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
     },
     "dragOver": {
       "background": "background-hover",
-      "border": "none",
+      "border": {
+        "color": "transparent",
+      },
     },
     "extend": "border-radius: 8px;",
     "hover": {

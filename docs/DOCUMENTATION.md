@@ -19,7 +19,7 @@ It publishes theme objects and supporting exports that downstream applications c
 
 - `package.json`: Package metadata, dependency graph, publish/build/test/lint scripts.
 - `jest.config.js`: Jest setup (jsdom, Babel transform, test matching, coverage collection).
-- `.eslintrc`: Linting rules and test-environment overrides.
+- `.eslintrc.json`: Linting rules and test-environment overrides. The explicit JSON extension ensures ESLint and Prettier use the same format.
 - `webpack.config.babel.js`: Bundling config for browser artifact generation.
 - `.babelrc`: Babel transpilation settings.
 - `README.md`: Public usage information for consumers.
@@ -104,7 +104,7 @@ const theme = buildTheme(tokens, {
 | `src/js/themes/utils.js`        | Shared helper utilities (for example object freezing and token resolution helpers). | Common logic used by theme code and unit-tested directly.                                                                           |
 | `src/js/themes/typography.js`   | Typography builder.                                                                 | Assembles anchor, text, paragraph, and heading theme structures.                                                                    |
 | `src/js/themes/button.js`       | Button theme builder.                                                               | Constructs button kinds, states, sizes, and option behavior primitives.                                                             |
-| `src/js/themes/form.js`         | Form family builder.                                                                | Assembles field/input/select/range/rating-related component themes.                                                                 |
+| `src/js/themes/form.tsx`        | Type-checked form family builder.                                                   | Assembles field/input/select/range/rating-related component themes against Grommet's `ThemeType`.                                   |
 | `src/js/themes/data.js`         | Data family builder.                                                                | Assembles data table/chart/filter/search/sort/summary and toolbar themes.                                                           |
 | `src/js/themes/feedback.js`     | Feedback family builder.                                                            | Assembles notification, spinner, and layer themes.                                                                                  |
 | `src/js/themes/navigation.js`   | Navigation family builder.                                                          | Assembles tabs, menu, pagination, sidebar, nav, tip, and toggle group themes.                                                       |
@@ -168,7 +168,7 @@ The `jsonify` script generates:
 
 ## Tooling and Scripts (`tools`)
 
-- `convert-to-json.js`: Converts theme export to JSON (`yarn jsonify`).
+- `convert-to-json.js`: Converts the source theme export to JSON (`yarn jsonify`). The command registers Babel for both `.js` and `.tsx` modules.
 - `release-stable.js`: Stable release automation entry.
 - `release-gh-pages.js`: GitHub Pages release/deploy support.
 - `grommet-babel-preset-env.js`: Babel-related helper config.
