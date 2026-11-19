@@ -77,7 +77,7 @@ export const buildMiscTheme = (tokens, context) => {
       },
       subStep: {
         indicator: {
-          iconSize: large.hpe.icon.large.size,
+          iconSize: large.hpe.icon.medium.size,
         },
       },
       pending: {
