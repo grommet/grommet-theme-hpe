@@ -2,7 +2,7 @@
 
 Hewlett Packard Enterprise design system theme.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/088ecfcc-bf46-4367-920f-39d7b7945c49/deploy-status)](https://app.netlify.com/projects/grommet-theme-hpe-storybook/deploys) [Storybook](grommet-theme-hpe-storybook.netlify.app)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/088ecfcc-bf46-4367-920f-39d7b7945c49/deploy-status)](https://app.netlify.com/projects/grommet-theme-hpe-storybook/deploys) [Storybook](https://grommet-theme-hpe-storybook.netlify.app/)
 
 ## Installation
 
