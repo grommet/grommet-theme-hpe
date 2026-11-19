@@ -59,7 +59,8 @@ export const buildMiscTheme = (tokens, context) => {
     },
     stepper: {
       button: {
-        pad: '5xsmall',
+        pad: large.hpe.spacing['5xsmall'],
+        gap: large.hpe.spacing.xxsmall,
       },
       label: { color: 'text-default' },
       description: { color: 'text-default' },
@@ -67,16 +68,16 @@ export const buildMiscTheme = (tokens, context) => {
       disabledReason: { color: 'text-default' },
       connector: {
         color: 'border-default',
-        gap: '4xsmall',
+        gap: large.hpe.spacing['4xsmall'],
       },
       vertical: {
         button: {
-          gap: 'xsmall',
+          gap: large.hpe.spacing.small,
         },
       },
       subStep: {
         indicator: {
-          iconSize: 'xsmall',
+          iconSize: large.hpe.icon.large.size,
         },
       },
       pending: {
