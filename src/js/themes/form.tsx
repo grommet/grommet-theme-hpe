@@ -50,7 +50,9 @@ type FormTokens = {
           control: ControlStates;
           label: LabelStates;
           medium: TokenFields<'gapX'> & {
-            control: TokenFields<'borderRadius' | 'borderWidth' | 'width'>;
+            control: TokenFields<
+              'borderRadius' | 'borderWidth' | 'height' | 'width'
+            >;
           };
         };
       };
@@ -139,7 +141,7 @@ type FormTokens = {
           };
           medium: {
             control: {
-              track: TokenFields<'width'>;
+              track: TokenFields<'width' | 'height' | 'borderWidth'>;
               handle: TokenFields<'borderWidth' | 'height' | 'width'>;
             };
           };
@@ -268,118 +270,51 @@ export const buildFormTheme = (
 
   return {
     checkBox: {
-      hover: {
+      control: {
+        background: components.hpe.checkbox.default.control.rest.background,
         border: {
-          color: undefined,
-          width:
-            dimensions.borderSize[
-              components.hpe.checkbox.default.medium.control.borderWidth
-            ] || components.hpe.checkbox.default.medium.control.borderWidth,
+          color: components.hpe.checkbox.default.control.rest.borderColor,
+          size: components.hpe.checkbox.default.medium.control.borderWidth,
         },
-        // applies to container around control and label
-        background: { color: undefined },
-        extend: ({ theme, toggle, checked }: ControlProps) => {
-          if (!checked) {
-            return css``;
-          }
-
-          const borderColor = toggle
-            ? getThemeColor(
-                components.hpe.switch.default.control.track.selected.hover
-                  .borderColor,
-                theme,
-              )
-            : getThemeColor(
+        height: components.hpe.checkbox.default.medium.control.height,
+        round: components.hpe.checkbox.default.medium.control.borderRadius,
+        width: components.hpe.checkbox.default.medium.control.width,
+        hover: {
+          background: {
+            color: components.hpe.checkbox.default.control.hover.background,
+          },
+          border: {
+            color: components.hpe.checkbox.default.control.hover.borderColor,
+          },
+        },
+        selected: {
+          background:
+            components.hpe.checkbox.default.control.selected.rest.background,
+          border: {
+            color:
+              components.hpe.checkbox.default.control.selected.rest.borderColor,
+          },
+          hover: {
+            background: {
+              color:
+                components.hpe.checkbox.default.control.selected.hover
+                  .background,
+            },
+            border: {
+              color:
                 components.hpe.checkbox.default.control.selected.hover
                   .borderColor,
-                theme,
-              );
-
-          return css`
-            border-color: ${borderColor};
-          `;
+            },
+          },
         },
       },
       color: components.hpe.switch.default.control.handle.rest.background,
-      border: {
-        color: components.hpe.checkbox.default.control.rest.borderColor,
-        width:
-          dimensions.borderSize[
-            components.hpe.checkbox.default.medium.control.borderWidth
-          ] || components.hpe.checkbox.default.medium.control.borderWidth,
-      },
       check: {
-        radius: components.hpe.checkbox.default.medium.control.borderRadius,
-        thickness: '2px',
-        extend: ({ theme, checked, indeterminate, disabled }: ControlProps) => {
-          let background = getThemeColor(
-            components.hpe.checkbox.default.control.rest.background,
-            theme,
-          );
-          let hoverBackground = getThemeColor(
-            components.hpe.checkbox.default.control.hover.background,
-            theme,
-          );
-          let borderColor = getThemeColor(
-            components.hpe.checkbox.default.control.rest.borderColor,
-            theme,
-          );
-          if (checked || indeterminate) {
-            background = getThemeColor(
-              components.hpe.checkbox.default.control.selected.rest.background,
-              theme,
-            );
-            borderColor = getThemeColor(
-              components.hpe.checkbox.default.control.selected.rest.borderColor,
-              theme,
-            );
-          }
-          if (checked || indeterminate) {
-            hoverBackground = getThemeColor(
-              components.hpe.checkbox.default.control.selected.hover.background,
-              theme,
-            );
-          }
-          if (disabled) {
-            background = getThemeColor(
-              components.hpe.checkbox.default.control.disabled.rest.background,
-              theme,
-            );
-            borderColor = getThemeColor(
-              components.hpe.checkbox.default.control.disabled.rest.borderColor,
-              theme,
-            );
-          }
-          return `
-            background: ${background};
-            border-color: ${borderColor};
-            &:hover {
-              ${!disabled ? `background: ${hoverBackground};` : ''}
-            }
-          `;
-        },
-      },
-      icon: {
-        extend: ({ theme, disabled }: ControlProps) => {
-          // Grommet normally applies a "smart" background/foreground pairing that
-          // selects foreground colors based on the background (light/dark) to keep
-          // text and icons readable. Because the "icon-onSelectedPrimaryStrong" token's
-          // light/dark values are intentionally swapped in our tokens, invert
-          // theme.dark here so the token is resolved exactly as authored.
-          const themeToUse = disabled ? theme : { ...theme, dark: !theme.dark };
-          return `stroke-width: 2px;
-      stroke: ${getThemeColor(
-        disabled
-          ? components.hpe.checkbox.default.control.disabled.rest.iconColor
-          : components.hpe.checkbox.default.control.selected.rest.iconColor,
-        themeToUse,
-      )}`;
-        },
+        thickness: large.hpe.borderWidth.small,
       },
       gap: components.hpe.checkbox.default.medium.gapX,
       label: { align: 'start' },
       pad: 'none',
-      size: components.hpe.checkbox.default.medium.control.width,
       toggle: {
         background: components.hpe.switch.default.control.track.rest.background,
         color: components.hpe.switch.default.control.handle.rest.background,
@@ -392,54 +327,38 @@ export const buildFormTheme = (
               dimensions.borderSize[borderWidth] || borderWidth;
 
             return `
-          box-shadow: ${
-            theme.global?.elevation?.[theme.dark ? 'dark' : 'light']?.[
-              components.hpe.switch.default.control.handle.rest.boxShadow
-            ]
-          };
-          border: ${dimensions.borderSize[borderWidth] || borderWidth} solid ${getThemeColor(
-            disabled
-              ? components.hpe.switch.default.control.handle.disabled.rest
-                  .borderColor
-              : components.hpe.switch.default.control.handle.rest.borderColor,
-            theme,
-          )};
-          width: ${components.hpe.switch.default.medium.control.handle.width};
-          height: ${components.hpe.switch.default.medium.control.handle.height};
-          top: ${insetHandle};
-          left: ${!checked ? insetHandle : '25px'};
+              box-shadow: ${
+                theme.global?.elevation?.[theme.dark ? 'dark' : 'light']?.[
+                  components.hpe.switch.default.control.handle.rest.boxShadow
+                ]
+              };
+              border: ${dimensions.borderSize[borderWidth] || borderWidth} solid ${getThemeColor(
+                disabled
+                  ? components.hpe.switch.default.control.handle.disabled.rest
+                      .borderColor
+                  : components.hpe.switch.default.control.handle.rest
+                      .borderColor,
+                theme,
+              )};
+              width: ${components.hpe.switch.default.medium.control.handle.width};
+              height: ${components.hpe.switch.default.medium.control.handle.height};
+              top: ${insetHandle};
+              left: ${!checked ? insetHandle : '25px'};
           `;
           },
         },
         // applies to track around handle
         extend: ({ checked, theme, disabled }: ControlProps) => {
+          const { track } = components.hpe.switch.default.control;
+          const hover = checked ? track.selected.hover : track.hover;
+          const hoverBackground = getThemeColor(hover.background, theme);
           let background;
-          let hoverBackground = getThemeColor(
-            components.hpe.switch.default.control.track.hover.background,
-            theme,
-          );
-          let borderColor = getThemeColor(
-            components.hpe.switch.default.control.track.rest.borderColor,
-            theme,
-          );
+          let borderColor = getThemeColor(track.rest.borderColor, theme);
           if (checked) {
-            background = getThemeColor(
-              components.hpe.switch.default.control.track.selected.rest
-                .background,
-              theme,
-            );
-            hoverBackground = getThemeColor(
-              components.hpe.switch.default.control.track.selected.hover
-                .background,
-              theme,
-            );
+            background = getThemeColor(track.selected.rest.background, theme);
           }
           if (disabled) {
-            background = getThemeColor(
-              components.hpe.switch.default.control.track.disabled.rest
-                .background,
-              theme,
-            );
+            background = getThemeColor(track.disabled.rest.background, theme);
             borderColor = getThemeColor(
               components.hpe.switch.default.control.handle.disabled.rest
                 .borderColor,
@@ -447,41 +366,24 @@ export const buildFormTheme = (
             );
           }
           return `
+            height: ${components.hpe.switch.default.medium.control.track.height};
+            border-width: ${components.hpe.switch.default.medium.control.track.borderWidth};
             border-color: ${borderColor};
             background: ${background};
             &:hover {
               ${!disabled ? `background: ${hoverBackground};` : ''}
             }
+            ${
+              // Match label hover and outrank Grommet's shared hover rule.
+              !disabled
+                ? `label:hover input:not([disabled]) + && {
+                    border-color: ${getThemeColor(hover.borderColor, theme)};
+                  }`
+                : ''
+            }
         `;
         },
       },
-      extend: ({ disabled, theme }: ControlProps) => css`
-        font-weight: ${components.hpe.checkbox.default.label.rest.fontWeight};
-        width: auto;
-        border: ${
-            components.hpe.formField.default.medium.input.container.borderWidth
-          }
-          solid
-          ${getThemeColor(
-            components.hpe.formField.default.input.group.item.rest.borderColor,
-            theme,
-          )};
-        &
-          input:checked
-          + span[class*='CheckBoxToggle']
-          > span[class*='CheckBoxKnob'] {
-          left: 25px;
-        }
-        ${
-          // override built in disabled opacity: 0.5 from grommet
-          disabled &&
-          `opacity: 1;
-        color: ${getThemeColor(
-          components.hpe.checkbox.default.label.disabled.rest.textColor,
-          theme,
-        )};`
-        }
-      `,
     },
     checkBoxGroup: {
       container: { cssGap: true, gap: 'xsmall', margin: 'none' },

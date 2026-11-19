@@ -113,6 +113,12 @@ const theme = buildTheme(tokens, {
 | `src/js/themes/layout.js`       | Layout family builder.                                                              | Assembles page, pageHeader, video, and nameValuePair themes.                                                                        |
 | `src/js/themes/prism.js`        | Prism syntax-highlighting theme definitions.                                        | Code-block syntax color styling separate from base component theming.                                                               |
 
+Checkbox hover borders use `checkBox.control.hover.border.color` and
+`checkBox.control.selected.hover.border.color` for the square control.
+Switch-track hover borders use the switch tokens in `checkBox.toggle.extend`
+and apply when the checkbox label is hovered. The track also uses the switch
+track's height token there, independently of the shared `checkBox.size`.
+
 ## Test Layout (`src/js/__tests__`)
 
 ### Integration Tests (`src/js/__tests__/integration`)

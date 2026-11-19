@@ -31,6 +31,9 @@ import { hpe } from 'grommet-theme-hpe';
 
 Use Storybook to visually validate updates to the generated theme object and component styling.
 
+Under **Theme / Inputs**, the Checkbox and Toggle stories each show separate
+matrices for standalone controls and controls wrapped in a FormField.
+
 ```
 yarn storybook
 ```
