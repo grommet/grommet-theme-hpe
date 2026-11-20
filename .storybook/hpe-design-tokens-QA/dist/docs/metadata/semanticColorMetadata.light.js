@@ -117,6 +117,26 @@ export const semanticColorMetadata = {
     scale: 'default',
     state: 'REST',
   },
+  'color/background/critical/strong/REST': {
+    type: 'color',
+    target: 'background',
+    role: {
+      family: null,
+      name: 'critical',
+    },
+    scale: 'strong',
+    state: 'REST',
+  },
+  'color/background/critical/strong/hover': {
+    type: 'color',
+    target: 'background',
+    role: {
+      family: null,
+      name: 'critical',
+    },
+    scale: 'strong',
+    state: 'hover',
+  },
   'color/background/default/REST': {
     type: 'color',
     target: 'background',
@@ -166,6 +186,26 @@ export const semanticColorMetadata = {
     },
     scale: 'default',
     state: 'REST',
+  },
+  'color/background/input/DEFAULT/REST': {
+    type: 'color',
+    target: 'background',
+    role: {
+      family: null,
+      name: 'input',
+    },
+    scale: 'default',
+    state: 'REST',
+  },
+  'color/background/input/DEFAULT/hover': {
+    type: 'color',
+    target: 'background',
+    role: {
+      family: null,
+      name: 'input',
+    },
+    scale: 'default',
+    state: 'hover',
   },
   'color/background/neutral/xstrong/REST': {
     type: 'color',
@@ -657,6 +697,16 @@ export const semanticColorMetadata = {
     },
     scale: 'default',
     state: 'REST',
+  },
+  'color/icon/critical/DEFAULT/hover': {
+    type: 'color',
+    target: 'icon',
+    role: {
+      family: null,
+      name: 'critical',
+    },
+    scale: 'default',
+    state: 'hover',
   },
   'color/icon/default/REST': {
     type: 'color',
