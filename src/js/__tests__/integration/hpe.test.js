@@ -28,6 +28,46 @@ describe('Structural and Contract Tests', () => {
     theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
   });
 
+  describe('Toggle track', () => {
+    it('sets the track height independently of the shared checkbox size', () => {
+      const { track } = localComponents.hpe.switch.default.medium.control;
+      const customTheme = {
+        ...theme,
+        checkBox: { ...theme.checkBox, size: '40px' },
+      };
+
+      expect(theme.checkBox.toggle.extend({ theme: customTheme })).toContain(
+        `height: ${track.height};`,
+      );
+    });
+
+    it.each([false, true])(
+      'uses the switch token when checked is %s',
+      (checked) => {
+        const { track } = localComponents.hpe.switch.default.control;
+        const color = (checked ? track.selected.hover : track.hover)
+          .borderColor;
+        const hoverTheme = {
+          ...theme,
+          global: {
+            ...theme.global,
+            colors: { ...theme.global.colors, [color]: '#123456' },
+          },
+        };
+
+        expect(
+          theme.checkBox.toggle.extend({ checked, theme: hoverTheme }),
+        ).toMatch(/label:hover[^{}]+\{\s*border-color: #123456;/);
+      },
+    );
+
+    it('does not style the track on hover when disabled', () => {
+      expect(
+        theme.checkBox.toggle.extend({ disabled: true, theme }),
+      ).not.toContain('label:hover');
+    });
+  });
+
   describe('Critical property paths', () => {
     it('should have global.colors object', () => {
       expect(theme.global).toBeDefined();

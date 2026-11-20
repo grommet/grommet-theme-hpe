@@ -1865,36 +1865,47 @@ exports[`Theme snapshot groups matches feedback snapshot 1`] = `
 exports[`Theme snapshot groups matches form controls snapshot 1`] = `
 {
   "checkBox": {
-    "border": {
-      "color": "border-strong",
-      "width": "1px",
-    },
     "check": {
-      "extend": [Function],
-      "radius": "6px",
       "thickness": "2px",
     },
     "color": "background-front",
-    "extend": [Function],
-    "gap": "12px",
-    "hover": {
-      "background": {
-        "color": undefined,
-      },
+    "control": {
+      "background": "background-input",
       "border": {
-        "color": undefined,
-        "width": "1px",
+        "color": "border-strong",
+        "size": "default",
       },
-      "extend": [Function],
+      "height": "24px",
+      "hover": {
+        "background": {
+          "color": "background-hover",
+        },
+        "border": {
+          "color": "border-strong",
+        },
+      },
+      "round": "6px",
+      "selected": {
+        "background": "background-selected-primary-strong",
+        "border": {
+          "color": "transparent",
+        },
+        "hover": {
+          "background": {
+            "color": "background-selected-primary-strong-hover",
+          },
+          "border": {
+            "color": "transparent",
+          },
+        },
+      },
+      "width": "24px",
     },
-    "icon": {
-      "extend": [Function],
-    },
+    "gap": "12px",
     "label": {
       "align": "start",
     },
     "pad": "none",
-    "size": "24px",
     "toggle": {
       "background": "decorative-neutral",
       "color": "background-front",
