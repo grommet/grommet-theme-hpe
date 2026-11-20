@@ -33,6 +33,9 @@ import { hpe } from 'grommet-theme-hpe';
 
 Use Storybook to visually validate updates to the generated theme object and component styling.
 
+The color swatches pair strong status backgrounds and their interaction states
+with `icon-onStrong`.
+
 ```
 yarn storybook
 ```

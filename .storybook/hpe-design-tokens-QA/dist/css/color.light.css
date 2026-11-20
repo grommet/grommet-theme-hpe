@@ -93,6 +93,7 @@
   --hpe-base-color-red-500: #fc6161;
   --hpe-base-color-red-600: #ec3331;
   --hpe-base-color-red-800: #cc1f1a;
+  --hpe-base-color-red-900: #9c0f0b;
   --hpe-base-color-red-1000: #552120;
   --hpe-base-color-white-100: #ffffff;
   --hpe-base-color-white-opacity10: rgba(255, 255, 255, 0.1);
@@ -203,6 +204,12 @@
   --hpe-color-background-critical: var(
     --hpe-base-color-red-50
   ); /** Use for backgrounds communicating errors or danger. Keywords: status */
+  --hpe-color-background-critical-strong: var(
+    --hpe-base-color-red-800
+  ); /** The strong variant of background-critical. Use for solid, high-emphasis fills communicating errors or danger, such as a selected control in an error state. Pair with text-onStrong and icon-onStrong. Keywords: status */
+  --hpe-color-background-critical-strong-hover: var(
+    --hpe-base-color-red-900
+  ); /** Hover variant of background-critical-strong. */
   --hpe-color-background-default: var(
     --hpe-base-color-white-100
   ); /** Default background color to be used on containers. */
@@ -218,6 +225,12 @@
   --hpe-color-background-info: var(
     --hpe-base-color-blue-50
   ); /** Use for backgrounds communicating neutral information. Keywords: status */
+  --hpe-color-background-input: var(
+    --hpe-base-color-white-opacity72
+  ); /** Background fill for inputs in their rest state. Use for form input containers and for checkbox and radio control fills. */
+  --hpe-color-background-input-hover: var(
+    --hpe-base-color-white-opacity72
+  ); /** Background fill for inputs in their hover state. Use for form input containers. */
   --hpe-color-background-neutral-xstrong: var(
     --hpe-base-color-grey-1000
   ); /** Highest emphasis variant of neutral palette. */
@@ -327,6 +340,9 @@
   --hpe-color-icon-critical: var(
     --hpe-base-color-red-800
   ); /** Use for icons communicating errors or danger. Keywords: status */
+  --hpe-color-icon-critical-hover: var(
+    --hpe-base-color-red-900
+  ); /** Hover variant of icon-critical. Use for interactive icons and icon-like indicators communicating errors or danger. Keywords: status */
   --hpe-color-icon-info: var(
     --hpe-base-color-blue-700
   ); /** Use for icons communicating neutral information. Keywords: status */
@@ -407,7 +423,6 @@
   --hpe-checkbox-default-control-indeterminate-rest-borderColor: var(
     --hpe-color-transparent
   );
-  --hpe-checkbox-default-control-rest-background: var(--hpe-color-transparent);
   --hpe-checkbox-default-control-selected-hover-borderColor: var(
     --hpe-color-transparent
   );
@@ -429,16 +444,13 @@
   --hpe-formField-default-input-container-disabled-rest-background: var(
     --hpe-color-transparent
   );
-  --hpe-formField-default-input-container-hover-background: var(
-    --hpe-color-transparent
-  );
-  --hpe-formField-default-input-container-rest-background: var(
-    --hpe-color-transparent
-  );
   --hpe-formField-default-input-group-container-disabled-rest-background: var(
     --hpe-color-transparent
   );
   --hpe-formField-default-input-group-container-disabled-rest-borderColor: var(
+    --hpe-color-transparent
+  );
+  --hpe-formField-default-input-group-container-rest-background: var(
     --hpe-color-transparent
   );
   --hpe-formField-default-input-group-container-rest-borderColor: var(
@@ -477,9 +489,6 @@
   --hpe-menu-default-item-hover-borderColor: var(--hpe-color-transparent);
   --hpe-menu-default-item-rest-background: var(--hpe-color-transparent);
   --hpe-menu-default-item-rest-borderColor: var(--hpe-color-transparent);
-  --hpe-radioButton-default-control-rest-background: var(
-    --hpe-color-transparent
-  );
   --hpe-radioButton-default-control-selected-hover-borderColor: var(
     --hpe-color-transparent
   );
@@ -695,6 +704,9 @@
   --hpe-checkbox-default-control-indeterminate-rest-iconColor: var(
     --hpe-color-icon-onSelectedPrimaryStrong
   );
+  --hpe-checkbox-default-control-rest-background: var(
+    --hpe-color-background-input
+  );
   --hpe-checkbox-default-control-rest-borderColor: var(
     --hpe-color-border-strong
   );
@@ -768,6 +780,9 @@
   --hpe-formField-default-input-container-error-rest-borderColor: var(
     --hpe-color-border-critical
   );
+  --hpe-formField-default-input-container-hover-background: var(
+    --hpe-color-background-input-hover
+  );
   --hpe-formField-default-input-container-hover-borderColor: var(
     --hpe-color-border-strong
   );
@@ -776,6 +791,9 @@
   );
   --hpe-formField-default-input-container-readOnly-rest-borderColor: var(
     --hpe-color-border-weak
+  );
+  --hpe-formField-default-input-container-rest-background: var(
+    --hpe-color-background-input
   );
   --hpe-formField-default-input-container-rest-borderColor: var(
     --hpe-color-border-default
@@ -786,11 +804,11 @@
   --hpe-formField-default-input-group-container-error-rest-borderColor: var(
     --hpe-color-border-critical
   );
+  --hpe-formField-default-input-group-container-hover-background: var(
+    --hpe-formField-default-input-group-container-rest-background
+  );
   --hpe-formField-default-input-group-container-hover-borderColor: var(
     --hpe-formField-default-input-group-container-rest-borderColor
-  );
-  --hpe-formField-default-input-group-container-rest-background: var(
-    --hpe-formField-default-input-container-rest-background
   );
   --hpe-formField-default-label-disabled-rest-textColor: var(
     --hpe-color-text-disabled
@@ -844,6 +862,9 @@
   );
   --hpe-radioButton-default-control-hover-borderColor: var(
     --hpe-color-border-strong
+  );
+  --hpe-radioButton-default-control-rest-background: var(
+    --hpe-color-background-input
   );
   --hpe-radioButton-default-control-rest-borderColor: var(
     --hpe-color-border-strong
@@ -1091,9 +1112,6 @@
   );
   --hpe-footerCell-default-rest-textColor: var(
     --hpe-dataCell-default-rest-textColor
-  );
-  --hpe-formField-default-input-group-container-hover-background: var(
-    --hpe-formField-default-input-group-container-rest-background
   );
   --hpe-formField-default-input-group-container-readOnly-rest-background: var(
     --hpe-formField-default-input-container-readOnly-rest-background

@@ -783,7 +783,7 @@ module.exports = {
             },
           },
           rest: {
-            background: 'transparent',
+            background: 'background-input',
             borderColor: 'border-strong',
           },
           selected: {
@@ -1084,7 +1084,7 @@ module.exports = {
               },
             },
             hover: {
-              background: 'transparent',
+              background: 'background-input-hover',
               borderColor: 'border-strong',
             },
             readOnly: {
@@ -1094,7 +1094,7 @@ module.exports = {
               },
             },
             rest: {
-              background: 'transparent',
+              background: 'background-input',
               borderColor: 'border-default',
             },
           },
@@ -1419,7 +1419,7 @@ module.exports = {
             borderColor: 'border-strong',
           },
           rest: {
-            background: 'transparent',
+            background: 'background-input',
             borderColor: 'border-strong',
           },
           selected: {
