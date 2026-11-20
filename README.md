@@ -2,6 +2,8 @@
 
 Hewlett Packard Enterprise design system theme.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/088ecfcc-bf46-4367-920f-39d7b7945c49/deploy-status)](https://app.netlify.com/projects/grommet-theme-hpe-storybook/deploys) [Storybook](https://grommet-theme-hpe-storybook.netlify.app/)
+
 ## Installation
 
 ```
@@ -30,6 +32,9 @@ import { hpe } from 'grommet-theme-hpe';
 ## Storybook
 
 Use Storybook to visually validate updates to the generated theme object and component styling.
+
+The color swatches pair strong status backgrounds and their interaction states
+with `icon-onStrong`.
 
 Under **Theme / Inputs**, the Checkbox and Toggle stories each show separate
 matrices for standalone controls and controls wrapped in a FormField.

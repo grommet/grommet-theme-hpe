@@ -458,6 +458,80 @@ export default {
     path: ['color', 'background', 'critical', 'DEFAULT', 'REST'],
     key: '{color.background.critical.DEFAULT.REST}',
   },
+  'hpe.color.background.critical.strong': {
+    $description:
+      'The strong variant of background-critical. Use for solid, high-emphasis fills communicating errors or danger, such as a selected control in an error state. Pair with text-onStrong and icon-onStrong. Keywords: status',
+    $extensions: {
+      'com.figma': {
+        codeSyntax: {},
+        hiddenFromPublishing: false,
+        scopes: ['FRAME_FILL', 'SHAPE_FILL'],
+      },
+    },
+    $type: 'color',
+    $value: '#fc6161',
+    filePath: 'tokens/semantic/color.dark.json',
+    isSource: true,
+    original: {
+      $description:
+        'The strong variant of background-critical. Use for solid, high-emphasis fills communicating errors or danger, such as a selected control in an error state. Pair with text-onStrong and icon-onStrong. Keywords: status',
+      $extensions: {
+        'com.figma': {
+          codeSyntax: {},
+          hiddenFromPublishing: false,
+          scopes: ['FRAME_FILL', 'SHAPE_FILL'],
+        },
+      },
+      $type: 'color',
+      $value: '{base.color.red.500}',
+    },
+    name: 'hpe.color.background.critical.strong',
+    attributes: {
+      category: 'color',
+      type: 'background',
+      item: 'critical',
+      subitem: 'strong',
+      state: 'REST',
+    },
+    path: ['color', 'background', 'critical', 'strong', 'REST'],
+    key: '{color.background.critical.strong.REST}',
+  },
+  'hpe.color.background.critical.strong.hover': {
+    $description: 'Hover variant of background-critical-strong.',
+    $extensions: {
+      'com.figma': {
+        codeSyntax: {},
+        hiddenFromPublishing: false,
+        scopes: ['FRAME_FILL', 'SHAPE_FILL'],
+      },
+    },
+    $type: 'color',
+    $value: '#ff7b7b',
+    filePath: 'tokens/semantic/color.dark.json',
+    isSource: true,
+    original: {
+      $description: 'Hover variant of background-critical-strong.',
+      $extensions: {
+        'com.figma': {
+          codeSyntax: {},
+          hiddenFromPublishing: false,
+          scopes: ['FRAME_FILL', 'SHAPE_FILL'],
+        },
+      },
+      $type: 'color',
+      $value: '{base.color.red.400}',
+    },
+    name: 'hpe.color.background.critical.strong.hover',
+    attributes: {
+      category: 'color',
+      type: 'background',
+      item: 'critical',
+      subitem: 'strong',
+      state: 'hover',
+    },
+    path: ['color', 'background', 'critical', 'strong', 'hover'],
+    key: '{color.background.critical.strong.hover}',
+  },
   'hpe.color.background.default': {
     $description: 'Default background color to be used on containers.',
     $extensions: {
@@ -644,6 +718,82 @@ export default {
     },
     path: ['color', 'background', 'info', 'DEFAULT', 'REST'],
     key: '{color.background.info.DEFAULT.REST}',
+  },
+  'hpe.color.background.input': {
+    $description:
+      'Background fill for inputs in their rest state. Use for form input containers and for checkbox and radio control fills.',
+    $extensions: {
+      'com.figma': {
+        codeSyntax: {},
+        hiddenFromPublishing: true,
+        scopes: ['FRAME_FILL', 'SHAPE_FILL'],
+      },
+    },
+    $type: 'color',
+    $value: 'rgba(0, 0, 0, 0.04)',
+    filePath: 'tokens/semantic/color.dark.json',
+    isSource: true,
+    original: {
+      $description:
+        'Background fill for inputs in their rest state. Use for form input containers and for checkbox and radio control fills.',
+      $extensions: {
+        'com.figma': {
+          codeSyntax: {},
+          hiddenFromPublishing: true,
+          scopes: ['FRAME_FILL', 'SHAPE_FILL'],
+        },
+      },
+      $type: 'color',
+      $value: '{base.color.black.opacity4}',
+    },
+    name: 'hpe.color.background.input',
+    attributes: {
+      category: 'color',
+      type: 'background',
+      item: 'input',
+      subitem: 'DEFAULT',
+      state: 'REST',
+    },
+    path: ['color', 'background', 'input', 'DEFAULT', 'REST'],
+    key: '{color.background.input.DEFAULT.REST}',
+  },
+  'hpe.color.background.input.hover': {
+    $description:
+      'Background fill for inputs in their hover state. Use for form input containers.',
+    $extensions: {
+      'com.figma': {
+        codeSyntax: {},
+        hiddenFromPublishing: true,
+        scopes: ['FRAME_FILL', 'SHAPE_FILL'],
+      },
+    },
+    $type: 'color',
+    $value: 'rgba(0, 0, 0, 0.04)',
+    filePath: 'tokens/semantic/color.dark.json',
+    isSource: true,
+    original: {
+      $description:
+        'Background fill for inputs in their hover state. Use for form input containers.',
+      $extensions: {
+        'com.figma': {
+          codeSyntax: {},
+          hiddenFromPublishing: true,
+          scopes: ['FRAME_FILL', 'SHAPE_FILL'],
+        },
+      },
+      $type: 'color',
+      $value: '{base.color.black.opacity4}',
+    },
+    name: 'hpe.color.background.input.hover',
+    attributes: {
+      category: 'color',
+      type: 'background',
+      item: 'input',
+      subitem: 'DEFAULT',
+      state: 'hover',
+    },
+    path: ['color', 'background', 'input', 'DEFAULT', 'hover'],
+    key: '{color.background.input.DEFAULT.hover}',
   },
   'hpe.color.background.neutral.xstrong': {
     $description: 'Highest emphasis variant of neutral palette.',
@@ -2493,6 +2643,44 @@ export default {
     },
     path: ['color', 'icon', 'critical', 'DEFAULT', 'REST'],
     key: '{color.icon.critical.DEFAULT.REST}',
+  },
+  'hpe.color.icon.critical.hover': {
+    $description:
+      'Hover variant of icon-critical. Use for interactive icons and icon-like indicators communicating errors or danger. Keywords: status',
+    $extensions: {
+      'com.figma': {
+        codeSyntax: {},
+        hiddenFromPublishing: false,
+        scopes: ['FRAME_FILL', 'SHAPE_FILL', 'STROKE_COLOR'],
+      },
+    },
+    $type: 'color',
+    $value: '#ff7b7b',
+    filePath: 'tokens/semantic/color.dark.json',
+    isSource: true,
+    original: {
+      $description:
+        'Hover variant of icon-critical. Use for interactive icons and icon-like indicators communicating errors or danger. Keywords: status',
+      $extensions: {
+        'com.figma': {
+          codeSyntax: {},
+          hiddenFromPublishing: false,
+          scopes: ['FRAME_FILL', 'SHAPE_FILL', 'STROKE_COLOR'],
+        },
+      },
+      $type: 'color',
+      $value: '{base.color.red.400}',
+    },
+    name: 'hpe.color.icon.critical.hover',
+    attributes: {
+      category: 'color',
+      type: 'icon',
+      item: 'critical',
+      subitem: 'DEFAULT',
+      state: 'hover',
+    },
+    path: ['color', 'icon', 'critical', 'DEFAULT', 'hover'],
+    key: '{color.icon.critical.DEFAULT.hover}',
   },
   'hpe.color.icon.default': {
     $description:

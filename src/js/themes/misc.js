@@ -58,43 +58,40 @@ export const buildMiscTheme = (tokens, context) => {
       gap: '5xsmall',
     },
     stepper: {
-      description: {
-        color: 'text-default',
-      },
       button: {
-        pad: '5xsmall',
+        pad: large.hpe.spacing['5xsmall'],
+        gap: large.hpe.spacing.xxsmall,
       },
-      horizontal: {
-        connector: {
-          margin: '5xsmall',
-        },
-        button: {
-          gap: '3xsmall',
-        },
+      label: { color: 'text-default' },
+      description: { color: 'text-default' },
+      errorText: { color: 'text-critical' },
+      disabledReason: { color: 'text-default' },
+      connector: {
+        color: 'border-default',
+        gap: large.hpe.spacing['4xsmall'],
       },
       vertical: {
         button: {
-          gap: 'xsmall',
+          gap: large.hpe.spacing.small,
+        },
+      },
+      subStep: {
+        indicator: {
+          iconSize: large.hpe.icon.medium.size,
         },
       },
       pending: {
         indicator: {
-          border: 'icon-weak',
-          substep: {
-            iconSize: 'xsmall',
-          },
-          hover: {
-            border: 'icon-strong',
-          },
+          border: { color: 'icon-weak' },
         },
-        label: {
-          color: 'text-default',
-          hover: {
+        hover: {
+          indicator: {
+            border: { color: 'icon-strong' },
+            background: 'transparent',
+          },
+          label: {
             color: 'text-strong',
           },
-        },
-        connector: {
-          color: 'border-default',
         },
       },
       current: {
@@ -102,18 +99,17 @@ export const buildMiscTheme = (tokens, context) => {
           icon: CircleFill,
           background: 'background-selected-primary-strong',
           color: iconOnSelectedPrimaryStrong,
-          border: 'transparent',
-          substep: {
-            iconSize: 'xsmall',
-          },
-          hover: {
-            background: 'background-selected-primary-strong-hover',
-            color: iconOnSelectedPrimaryStrong,
-            border: 'transparent',
-          },
+          border: { color: 'transparent' },
         },
         label: {
           color: 'text-primary',
+        },
+        hover: {
+          indicator: {
+            background: 'background-selected-primary-strong-hover',
+            color: iconOnSelectedPrimaryStrong,
+            border: { color: 'transparent' },
+          },
         },
       },
       currentCompleted: {
@@ -121,32 +117,7 @@ export const buildMiscTheme = (tokens, context) => {
           icon: Checkmark,
           background: 'background-selected-primary-strong',
           color: iconOnSelectedPrimaryStrong,
-          border: 'transparent',
-          substep: {
-            iconSize: 'xsmall',
-          },
-          hover: {
-            background: 'background-selected-primary-strong-hover',
-            color: iconOnSelectedPrimaryStrong,
-            border: 'transparent',
-          },
-        },
-        label: {
-          color: 'text-primary',
-        },
-      },
-      completed: {
-        indicator: {
-          icon: Checkmark,
-          color: 'icon-primary',
-          border: 'icon-primary',
-          substep: {
-            iconSize: 'xsmall',
-          },
-          hover: {
-            border: 'icon-primary-hover',
-            color: 'icon-primary-hover',
-          },
+          border: { color: 'transparent' },
         },
         label: {
           color: 'text-primary',
@@ -154,15 +125,38 @@ export const buildMiscTheme = (tokens, context) => {
         connector: {
           color: 'foreground-primary',
         },
+        hover: {
+          indicator: {
+            background: 'background-selected-primary-strong-hover',
+            color: iconOnSelectedPrimaryStrong,
+            border: { color: 'transparent' },
+          },
+        },
+      },
+      completed: {
+        indicator: {
+          icon: Checkmark,
+          color: 'icon-primary',
+          border: { color: 'icon-primary' },
+        },
+        label: {
+          color: 'text-primary',
+        },
+        connector: {
+          color: 'foreground-primary',
+        },
+        hover: {
+          indicator: {
+            border: { color: 'icon-primary-hover' },
+            color: 'icon-primary-hover',
+          },
+        },
       },
       error: {
         indicator: {
           icon: StatusCritical,
-          border: 'icon-critical',
+          border: { color: 'icon-critical' },
           color: 'icon-critical',
-          substep: {
-            iconSize: 'xsmall',
-          },
         },
         label: {
           color: 'text-critical',
@@ -170,22 +164,20 @@ export const buildMiscTheme = (tokens, context) => {
         connector: {
           color: 'border-critical',
         },
-        helperText: {
-          color: 'text-critical',
+        hover: {
+          indicator: {
+            border: { color: 'icon-critical-hover' },
+            color: 'icon-critical-hover',
+            background: 'transparent',
+          },
         },
       },
       currentError: {
         indicator: {
           icon: StatusCritical,
-          border: 'transparent',
-          background: 'icon-critical',
-          color: 'icon-onStrong',
-          substep: {
-            iconSize: 'xsmall',
-          },
-          hover: {
-            color: 'icon-onStrong',
-          },
+          border: { color: 'transparent' },
+          background: 'background-critical-strong',
+          color: 'icon-onCriticalStrong',
         },
         label: {
           color: 'text-critical',
@@ -193,27 +185,27 @@ export const buildMiscTheme = (tokens, context) => {
         connector: {
           color: 'border-critical',
         },
-        helperText: {
+        description: {
           color: 'text-critical',
+        },
+        hover: {
+          indicator: {
+            border: { color: 'background-critical-strong-hover' },
+            color: 'icon-onCriticalStrong',
+            background: 'background-critical-strong-hover',
+          },
         },
       },
       disabled: {
         indicator: {
-          border: 'icon-disabled',
+          border: { color: 'icon-disabled' },
           background: 'transparent',
-          hover: {
-            border: 'icon-disabled',
-            background: 'transparent',
-          },
         },
         label: {
           color: 'text-default',
         },
         connector: {
           color: 'border-disabled',
-        },
-        helperText: {
-          color: 'text-default',
         },
       },
     },
