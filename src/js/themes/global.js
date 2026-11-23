@@ -7,7 +7,6 @@ export const buildGlobalTheme = (
     colors,
     dimensions,
     deprecations,
-    getThemeColor,
     fontFaceFamily,
     getGraphikFontFaces,
   },
@@ -35,16 +34,27 @@ export const buildGlobalTheme = (
       colors: deprecations.colors,
     },
     input: {
+      background:
+        components.hpe.formField.default.input.container.rest.background,
+      border: {
+        color:
+          components.hpe.formField.default.input.container.rest.borderColor,
+      },
       font: {
         height: 'inherit',
         weight: components.hpe.formField.default.medium.value.fontWeight,
       },
-      padding: {
+      pad: {
         horizontal:
           components.hpe.formField.default.medium.input.container.paddingX,
         vertical:
           components.hpe.formField.default.medium.input.container.paddingY,
       },
+      round: 'none',
+      placeholder: {
+        color: components.hpe.formField.default.placeholder.rest.textColor,
+      },
+      // Application states
       readOnly: {
         background:
           components.hpe.formField.default.input.container.readOnly.rest
@@ -55,29 +65,38 @@ export const buildGlobalTheme = (
               .borderColor,
         },
       },
-      extend: ({ theme }) => `
-          color: ${getThemeColor(
-            components.hpe.formField.default.value.rest.textColor,
-            theme,
-          )};
-          &::-webkit-input-placeholder {
-          font-weight: ${
-            components.hpe.formField.default.medium.placeholder.fontWeight
-          };
-        }
-      
-        &::-moz-placeholder {
-          font-weight: ${
-            components.hpe.formField.default.medium.placeholder.fontWeight
-          };
-        }
-      
-        &:-ms-input-placeholder {
-          font-weight: ${
-            components.hpe.formField.default.medium.placeholder.fontWeight
-          };
-        }
-        `,
+      // Interactive states
+      hover: {
+        background:
+          components.hpe.formField.default.input.container.hover.background,
+        border: {
+          color:
+            components.hpe.formField.default.input.container.hover.borderColor,
+        },
+      },
+      // extend: ({ theme }) => `
+      //     color: ${getThemeColor(
+      //       components.hpe.formField.default.value.rest.textColor,
+      //       theme,
+      //     )};
+      //     &::-webkit-input-placeholder {
+      //     font-weight: ${
+      //       components.hpe.formField.default.medium.placeholder.fontWeight
+      //     };
+      //   }
+
+      //   &::-moz-placeholder {
+      //     font-weight: ${
+      //       components.hpe.formField.default.medium.placeholder.fontWeight
+      //     };
+      //   }
+
+      //   &:-ms-input-placeholder {
+      //     font-weight: ${
+      //       components.hpe.formField.default.medium.placeholder.fontWeight
+      //     };
+      //   }
+      //   `,
     },
     font: {
       family: global.hpe.fontStack.primary,
