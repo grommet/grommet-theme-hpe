@@ -2209,6 +2209,10 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
           "color": "transparent",
         },
       },
+      "pad": {
+        "horizontal": "12px",
+        "vertical": "5px",
+      },
     },
     "survey": {
       "label": {
@@ -2229,6 +2233,10 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
         "border": {
           "color": "transparent",
         },
+      },
+      "pad": {
+        "horizontal": "12px",
+        "vertical": "5px",
       },
     },
   },
