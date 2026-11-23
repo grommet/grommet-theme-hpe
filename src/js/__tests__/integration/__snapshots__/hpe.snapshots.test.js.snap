@@ -2196,6 +2196,9 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
           "color": "transparent",
         },
       },
+      "pad": {
+        "vertical": "0px",
+      },
     },
     "round": "8px",
     "starRating": {
@@ -2210,7 +2213,6 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
         },
       },
       "pad": {
-        "horizontal": "12px",
         "vertical": "5px",
       },
     },
@@ -2235,37 +2237,65 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
         },
       },
       "pad": {
-        "horizontal": "12px",
         "vertical": "5px",
       },
     },
   },
   "radioButton": {
-    "border": {
-      "color": "border-strong",
-      "width": "default",
-    },
     "check": {
       "background": {
         "color": "background-selected-primary-strong",
       },
     },
-    "color": "transparent",
     "container": {
-      "extend": [Function],
+      "border": {
+        "color": "transparent",
+        "size": "default",
+      },
+      "hover": {
+        "background": "background-hover",
+        "border": {
+          "color": "transparent",
+        },
+      },
+      "pad": {
+        "horizontal": "12px",
+        "vertical": "5px",
+      },
+      "round": "8px",
+      "width": "auto",
+    },
+    "control": {
+      "background": {
+        "color": "background-input",
+      },
+      "border": {
+        "color": "border-strong",
+        "size": "default",
+      },
+      "hover": {
+        "background": "background-hover",
+        "border": {
+          "color": "border-strong",
+        },
+      },
+      "selected": {
+        "background": "background-selected-primary-strong",
+        "border": {
+          "color": "transparent",
+        },
+        "hover": {
+          "background": "background-selected-primary-strong-hover",
+          "border": {
+            "color": "transparent",
+          },
+        },
+      },
     },
     "font": {
       "weight": 400,
     },
     "gap": "12px",
-    "hover": {
-      "background": {
-        "color": "transparent",
-      },
-      "border": {
-        "color": "border-strong",
-      },
-    },
     "icons": {
       "circle": [Function],
     },
