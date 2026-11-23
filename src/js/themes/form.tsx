@@ -668,6 +668,12 @@ export const buildFormTheme = (
             components.hpe.formField.default.input.group.container.rest
               .borderColor,
         },
+        pad: {
+          // horizontal handled by each item individually
+          vertical:
+            components.hpe.formField.default.medium.input.group.container
+              .paddingY,
+        },
         hover: {
           background:
             components.hpe.formField.default.input.group.container.hover
@@ -689,8 +695,7 @@ export const buildFormTheme = (
               .borderColor,
         },
         pad: {
-          horizontal:
-            components.hpe.formField.default.medium.input.container.paddingX,
+          // horizontal handled by each item individually
           vertical:
             components.hpe.formField.default.medium.input.container.paddingY,
         },
@@ -718,8 +723,7 @@ export const buildFormTheme = (
               .borderColor,
         },
         pad: {
-          horizontal:
-            components.hpe.formField.default.medium.input.container.paddingX,
+          // horizontal handled by each item individually
           vertical:
             components.hpe.formField.default.medium.input.container.paddingY,
         },
@@ -734,129 +738,76 @@ export const buildFormTheme = (
           },
         },
       },
-      // extend: ({ theme }: ThemeProps) => {
-      //   return `
-      //     [class*="ContentBox"] {
-      //       label {
-      //         padding-block: ${
-      //           components.hpe.formField.default.medium.input.group.item
-      //             .paddingY
-      //         };
-      //         padding-inline: ${
-      //           components.hpe.formField.default.medium.input.group.item
-      //             .paddingX
-      //         };
-      //         &:hover:not([disabled]) {
-      //           background: ${getThemeColor(
-      //             components.hpe.formField.default.input.container.hover
-      //               .background,
-      //             theme,
-      //           )};
-      //         }
-      //       }
-      //       [role="group"], [role="radiogroup"] {
-      //         gap: 0;
-      //         padding-block: ${
-      //           components.hpe.formField.default.medium.input.group.container
-      //             .paddingY
-      //         };
-      //         padding-inline: ${
-      //           components.hpe.formField.default.medium.input.group.container
-      //             .paddingX
-      //         };
-      //         label {
-      //           border: ${
-      //             dimensions.borderSize[
-      //               components.hpe.formField.default.medium.input.group.item
-      //                 .borderWidth
-      //             ] ||
-      //             components.hpe.formField.default.medium.input.group.item
-      //               .borderWidth
-      //           } solid ${getThemeColor(
-      //             components.hpe.formField.default.input.group.item.rest
-      //               .borderColor,
-      //             theme,
-      //           )};
-      //           padding-block: ${
-      //             components.hpe.formField.default.medium.input.group.item
-      //               .paddingY
-      //           };
-      //           padding-inline: ${
-      //             components.hpe.formField.default.medium.input.group.item
-      //               .paddingX
-      //           };
-      //           border-radius: ${
-      //             dimensions.radius[
-      //               components.hpe.formField.default.medium.input.group.item
-      //                 .borderRadius
-      //             ]
-      //           };
-      //           &:hover:not([disabled]) {
-      //             background: ${getThemeColor(
-      //               components.hpe.formField.default.input.group.item.hover
-      //                 .background,
-      //               theme,
-      //             )};
-      //           }
-      //         }
-      //       }
-      //     }
-      // `;
-      // },
     },
     radioButton: {
-      border: {
-        color: components.hpe.radioButton.default.control.rest.borderColor,
-        width: components.hpe.radioButton.default.medium.control.borderWidth,
-      },
       check: {
         background: {
           color:
             components.hpe.radioButton.default.control.selected.rest.background,
         },
       },
-      color:
-        components.hpe.radioButton.default.control.selected.rest.borderColor,
       container: {
-        extend: ({ theme }: ThemeProps) => `
-          width: auto;
-          &:has(input[checked]) {
-            & div:has(> svg[aria-hidden="true"]) {
-              background: ${getThemeColor(
-                components.hpe.radioButton.default.control.selected.rest
-                  .background,
-                theme,
-              )};
-              border-color: ${getThemeColor(
-                components.hpe.radioButton.default.control.selected.rest
-                  .borderColor,
-                theme,
-              )};
-            }
-          }
-          &:has(input[checked]):hover:not([disabled]) {
-              & div:has(> svg[aria-hidden="true"]) {
-                background: ${getThemeColor(
-                  components.hpe.radioButton.default.control.selected.hover
-                    .background,
-                  theme,
-                )};
-                border-color: ${getThemeColor(
-                  components.hpe.radioButton.default.control.selected.hover
-                    .borderColor,
-                  theme,
-                )};
-              }
-          }
-          `,
-      },
-      gap: components.hpe.radioButton.default.medium.gapX,
-      hover: {
-        background: { color: 'transparent' },
         border: {
-          color: components.hpe.radioButton.default.control.hover.borderColor,
+          color:
+            components.hpe.formField.default.input.group.item.rest.borderColor,
+          size: components.hpe.formField.default.medium.input.group.item
+            .borderWidth,
+        },
+        pad: {
+          horizontal:
+            components.hpe.formField.default.medium.input.container.paddingX,
+          vertical:
+            components.hpe.formField.default.medium.input.container.paddingY,
+        },
+        round:
+          components.hpe.formField.default.medium.input.container.borderRadius,
+        width: 'auto',
+        hover: {
+          background:
+            components.hpe.formField.default.input.group.item.hover.background,
+          border: {
+            color:
+              components.hpe.formField.default.input.group.item.hover
+                .borderColor,
+          },
         },
       },
+      control: {
+        background: {
+          color: components.hpe.radioButton.default.control.rest.background,
+        },
+        border: {
+          color: components.hpe.radioButton.default.control.rest.borderColor,
+          size: components.hpe.radioButton.default.medium.control.borderWidth,
+        },
+        hover: {
+          background:
+            components.hpe.radioButton.default.control.hover.background,
+          border: {
+            color: components.hpe.radioButton.default.control.hover.borderColor,
+          },
+        },
+        selected: {
+          background:
+            components.hpe.radioButton.default.control.selected.rest.background,
+          border: {
+            color:
+              components.hpe.radioButton.default.control.selected.rest
+                .borderColor,
+          },
+          hover: {
+            background:
+              components.hpe.radioButton.default.control.selected.hover
+                .background,
+            border: {
+              color:
+                components.hpe.radioButton.default.control.selected.hover
+                  .borderColor,
+            },
+          },
+        },
+      },
+      gap: components.hpe.radioButton.default.medium.gapX,
       size: components.hpe.radioButton.default.medium.control.height,
       font: {
         weight: components.hpe.radioButton.default.label.rest.fontWeight,
@@ -878,7 +829,7 @@ export const buildFormTheme = (
       },
     },
     radioButtonGroup: {
-      container: { cssGap: true, gap: 'xsmall', margin: 'none' },
+      container: { cssGap: true, gap: 'none', margin: 'none' },
     },
     maskedInput: {
       container: {
