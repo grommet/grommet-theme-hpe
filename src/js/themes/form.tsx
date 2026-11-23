@@ -643,8 +643,10 @@ export const buildFormTheme = (
               .borderColor,
         },
         pad: {
+          // horizontal handled by each item individually
           vertical:
-            components.hpe.formField.default.medium.input.group.item.paddingY,
+            components.hpe.formField.default.medium.input.group.container
+              .paddingY,
         },
         hover: {
           background:
@@ -678,16 +680,6 @@ export const buildFormTheme = (
         },
       },
       starRating: {
-        // container: {
-        //   extend: ({ error }: ErrorProps) =>
-        //     `border-color: ${
-        //       error
-        //         ? components.hpe.formField.default.input.group.container.error
-        //             .rest.borderColor
-        //         : components.hpe.formField.default.input.group.container.rest
-        //             .borderColor
-        //     }; `,
-        // },
         background:
           components.hpe.formField.default.input.group.container.rest
             .background,
@@ -695,6 +687,12 @@ export const buildFormTheme = (
           color:
             components.hpe.formField.default.input.group.container.rest
               .borderColor,
+        },
+        pad: {
+          horizontal:
+            components.hpe.formField.default.medium.input.container.paddingX,
+          vertical:
+            components.hpe.formField.default.medium.input.container.paddingY,
         },
         hover: {
           background:
@@ -711,16 +709,6 @@ export const buildFormTheme = (
         label: { margin: { bottom: 'none' }, size: 'medium', weight: 500 },
       },
       thumbsRating: {
-        // container: {
-        //   extend: ({ error }: ErrorProps) =>
-        //     `border-color: ${
-        //       error
-        //         ? components.hpe.formField.default.input.group.container.error
-        //             .rest.borderColor
-        //         : components.hpe.formField.default.input.group.container.rest
-        //             .borderColor
-        //     }; `,
-        // },
         background:
           components.hpe.formField.default.input.group.container.rest
             .background,
@@ -728,6 +716,12 @@ export const buildFormTheme = (
           color:
             components.hpe.formField.default.input.group.container.rest
               .borderColor,
+        },
+        pad: {
+          horizontal:
+            components.hpe.formField.default.medium.input.container.paddingX,
+          vertical:
+            components.hpe.formField.default.medium.input.container.paddingY,
         },
         hover: {
           background:
