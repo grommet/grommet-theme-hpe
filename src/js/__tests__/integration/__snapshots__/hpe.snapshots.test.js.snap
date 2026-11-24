@@ -2101,6 +2101,9 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
     },
     "disabled": {
       "background": "transparent",
+      "border": {
+        "color": "border-disabled",
+      },
       "help": {
         "color": "text-disabled",
       },
@@ -2262,7 +2265,7 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
         "horizontal": "12px",
         "vertical": "5px",
       },
-      "round": "8px",
+      "round": "xsmall",
       "width": "auto",
     },
     "control": {
