@@ -9,6 +9,7 @@ export const buildGlobalTheme = (
     deprecations,
     fontFaceFamily,
     getGraphikFontFaces,
+    getThemeColor,
   },
 ) => {
   const { light, dark, large, global, components } = tokens;
@@ -41,6 +42,7 @@ export const buildGlobalTheme = (
           components.hpe.formField.default.input.container.rest.borderColor,
       },
       font: {
+        // TODO: Add color property for input text
         height: 'inherit',
         weight: components.hpe.formField.default.medium.value.fontWeight,
       },
@@ -53,6 +55,7 @@ export const buildGlobalTheme = (
       round:
         components.hpe.formField.default.medium.input.container.borderRadius,
       placeholder: {
+        // TODO: Add font weight, size, line height for placeholder text
         color: components.hpe.formField.default.placeholder.rest.textColor,
       },
       // Application states
@@ -75,29 +78,29 @@ export const buildGlobalTheme = (
             components.hpe.formField.default.input.container.hover.borderColor,
         },
       },
-      // extend: ({ theme }) => `
-      //     color: ${getThemeColor(
-      //       components.hpe.formField.default.value.rest.textColor,
-      //       theme,
-      //     )};
-      //     &::-webkit-input-placeholder {
-      //     font-weight: ${
-      //       components.hpe.formField.default.medium.placeholder.fontWeight
-      //     };
-      //   }
+      extend: ({ theme }) => `
+          color: ${getThemeColor(
+            components.hpe.formField.default.value.rest.textColor,
+            theme,
+          )};
+          &::-webkit-input-placeholder {
+          font-weight: ${
+            components.hpe.formField.default.medium.placeholder.fontWeight
+          };
+        }
 
-      //   &::-moz-placeholder {
-      //     font-weight: ${
-      //       components.hpe.formField.default.medium.placeholder.fontWeight
-      //     };
-      //   }
+        &::-moz-placeholder {
+          font-weight: ${
+            components.hpe.formField.default.medium.placeholder.fontWeight
+          };
+        }
 
-      //   &:-ms-input-placeholder {
-      //     font-weight: ${
-      //       components.hpe.formField.default.medium.placeholder.fontWeight
-      //     };
-      //   }
-      //   `,
+        &:-ms-input-placeholder {
+          font-weight: ${
+            components.hpe.formField.default.medium.placeholder.fontWeight
+          };
+        }
+        `,
     },
     font: {
       family: global.hpe.fontStack.primary,
