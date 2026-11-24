@@ -497,9 +497,9 @@ export const buildFormTheme = (
       },
       dragOver: {
         background: 'background-hover',
-        border: { color: 'transparent' },
+        border: { color: 'border-strong' },
       },
-      hover: { border: { color: 'border' } },
+      hover: { border: { color: 'border-strong' } },
       icons: {
         error: Alert,
         remove: Close,
