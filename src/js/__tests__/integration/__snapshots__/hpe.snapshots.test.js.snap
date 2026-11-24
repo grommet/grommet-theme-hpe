@@ -2193,6 +2193,9 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
       "border": {
         "color": "transparent",
       },
+      "container": {
+        "extend": [Function],
+      },
       "hover": {
         "background": "transparent",
         "border": {
@@ -2208,6 +2211,9 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
       "background": "transparent",
       "border": {
         "color": "transparent",
+      },
+      "container": {
+        "extend": [Function],
       },
       "hover": {
         "background": "transparent",
@@ -2232,6 +2238,9 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
       "background": "transparent",
       "border": {
         "color": "transparent",
+      },
+      "container": {
+        "extend": [Function],
       },
       "hover": {
         "background": "transparent",

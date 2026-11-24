@@ -89,7 +89,11 @@ type FormTokens = {
                 error: { rest: ControlColors };
                 hover: ControlColors;
               };
-              item: { rest: ControlColors; hover: ControlColors };
+              item: {
+                rest: ControlColors;
+                hover: ControlColors;
+                disabled: { rest: ControlColors };
+              };
             };
           };
           medium: {
@@ -193,6 +197,7 @@ type FormThemeContext = {
 
 type ResolvedTheme = ThemeType & { dark?: boolean };
 type ThemeProps = { theme: ResolvedTheme };
+type FormFieldProps = ThemeProps & { disabledProp?: boolean };
 type ControlProps = ThemeProps & {
   checked?: boolean;
   disabled?: boolean;
@@ -279,6 +284,17 @@ export const buildFormTheme = (
     light,
   );
   const textDefaultColor = getTokenColorPair('color.text.default', tokens);
+  const disabledBorder = (
+    color: string,
+    { disabledProp, theme }: FormFieldProps,
+  ) =>
+    disabledProp ? `&& { border-color: ${getThemeColor(color, theme)}; }` : '';
+  const disabledGroupBorder = (props: FormFieldProps) =>
+    disabledBorder(
+      components.hpe.formField.default.input.group.container.disabled.rest
+        .borderColor,
+      props,
+    );
 
   return {
     checkBox: {
@@ -618,11 +634,12 @@ export const buildFormTheme = (
               .paddingY,
         },
         container: {
-          extend: () => `
-            label:hover {
-              background-color: transparent;
-            }
-          `,
+          extend: (props: FormFieldProps) =>
+            disabledBorder(
+              components.hpe.formField.default.input.group.item.disabled.rest
+                .borderColor,
+              props,
+            ),
         },
         hover: {
           background:
@@ -650,12 +667,7 @@ export const buildFormTheme = (
               .paddingY,
         },
         container: {
-          extend: ({
-            theme,
-            disabledProp,
-          }: ThemeProps & {
-            disabledProp?: boolean;
-          }) =>
+          extend: ({ theme, disabledProp }: FormFieldProps) =>
             !disabledProp
               ? `
                 [role='group'] > label:not([disabled]):hover {
@@ -666,7 +678,7 @@ export const buildFormTheme = (
                   )};
                 }
               `
-              : '',
+              : disabledGroupBorder({ theme, disabledProp }),
         },
         hover: {
           background:
@@ -694,6 +706,7 @@ export const buildFormTheme = (
             components.hpe.formField.default.medium.input.group.container
               .paddingY,
         },
+        container: { extend: disabledGroupBorder },
         hover: {
           background:
             components.hpe.formField.default.input.group.container.hover
@@ -719,6 +732,7 @@ export const buildFormTheme = (
           vertical:
             components.hpe.formField.default.medium.input.container.paddingY,
         },
+        container: { extend: disabledGroupBorder },
         hover: {
           background:
             components.hpe.formField.default.input.group.container.hover
@@ -747,6 +761,7 @@ export const buildFormTheme = (
           vertical:
             components.hpe.formField.default.medium.input.container.paddingY,
         },
+        container: { extend: disabledGroupBorder },
         hover: {
           background:
             components.hpe.formField.default.input.group.container.hover

@@ -3,7 +3,16 @@
 /* eslint-env browser */
 import React from 'react';
 import { renderToString } from 'react-dom/server.node';
-import { CheckBox, CheckBoxGroup, FormField, Grommet } from 'grommet';
+import {
+  CheckBox,
+  CheckBoxGroup,
+  FormField,
+  Grommet,
+  RadioButtonGroup,
+  StarRating,
+  TextInput,
+  ThumbsRating,
+} from 'grommet';
 import { ServerStyleSheet } from 'styled-components';
 import {
   primitives as localPrimitives,
@@ -163,6 +172,84 @@ describe('Structural and Contract Tests', () => {
 
     it('does not highlight items in a disabled FormField', () => {
       expect(itemHoverRule(renderGroup(true, true, 'light').css)).toBeNull();
+    });
+  });
+
+  describe('Disabled FormField borders', () => {
+    const renderField = (Component, props, disabled, mode) => {
+      const sheet = new ServerStyleSheet();
+      try {
+        const html = renderToString(
+          sheet.collectStyles(
+            <Grommet theme={theme} themeMode={mode}>
+              <FormField disabled={disabled}>
+                {React.createElement(Component, { ...props, disabled })}
+              </FormField>
+            </Grommet>,
+          ),
+        );
+        const document = new DOMParser().parseFromString(html, 'text/html');
+        return {
+          content: document.querySelector(
+            '[class*="FormField__FormFieldContentBox"]',
+          ),
+          css: sheet.getStyleTags(),
+        };
+      } finally {
+        sheet.seal();
+      }
+    };
+
+    const hasBorderOverride = ({ content, css }, color) =>
+      Array.from(content.classList).some((name) =>
+        css.includes(`.${name}.${name}{border-color:${color};}`),
+      );
+
+    const fields = [
+      ['CheckBox', CheckBox, { label: 'Option' }, 'item'],
+      ['CheckBoxGroup', CheckBoxGroup, { options: ['A', 'B'] }, 'container'],
+      [
+        'RadioButtonGroup',
+        RadioButtonGroup,
+        { options: ['A', 'B'] },
+        'container',
+      ],
+      ['StarRating', StarRating, {}, 'container'],
+      ['ThumbsRating', ThumbsRating, {}, 'container'],
+    ];
+
+    it.each(fields)(
+      '%s overrides only its disabled FormField border',
+      (name, Component, props, part) => {
+        const token =
+          localComponents.hpe.formField.default.input.group[part].disabled.rest
+            .borderColor;
+        ['light', 'dark'].forEach((mode) => {
+          const color = theme.global.colors[token][mode];
+          expect(
+            hasBorderOverride(renderField(Component, props, true, mode), color),
+          ).toBe(true);
+          expect(
+            hasBorderOverride(
+              renderField(Component, props, false, mode),
+              color,
+            ),
+          ).toBe(false);
+        });
+      },
+    );
+
+    it('does not override the disabled border of a TextInput FormField', () => {
+      const field = renderField(TextInput, {}, true, 'light');
+      const color = theme.global.colors['border-disabled'].light;
+      const contentStyles = Array.from(field.content.classList)
+        .map((name) => field.css.match(new RegExp(`\\.${name}\\{([^}]*)\\}`)))
+        .filter(Boolean)
+        .map((match) => match[1])
+        .join(' ');
+
+      expect(contentStyles).toContain(color);
+      expect(hasBorderOverride(field, 'rgba(0, 0, 0, 0)')).toBe(false);
     });
   });
 
