@@ -760,12 +760,12 @@ export const buildFormTheme = (
         },
         pad: {
           horizontal:
-            components.hpe.formField.default.medium.input.container.paddingX,
+            components.hpe.formField.default.medium.input.group.item.paddingX,
           vertical:
-            components.hpe.formField.default.medium.input.container.paddingY,
+            components.hpe.formField.default.medium.input.group.item.paddingY,
         },
         round:
-          components.hpe.formField.default.medium.input.container.borderRadius,
+          components.hpe.formField.default.medium.input.group.item.borderRadius,
         width: 'auto',
         hover: {
           background:
