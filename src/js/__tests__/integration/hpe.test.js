@@ -1,5 +1,10 @@
 // SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
 // SPDX-License-Identifier: Apache-2.0
+/* eslint-env browser */
+import React from 'react';
+import { renderToString } from 'react-dom/server.node';
+import { CheckBox, CheckBoxGroup, FormField, Grommet } from 'grommet';
+import { ServerStyleSheet } from 'styled-components';
 import {
   primitives as localPrimitives,
   dark as localDark,
@@ -26,6 +31,139 @@ describe('Structural and Contract Tests', () => {
 
   beforeAll(() => {
     theme = buildTheme(tokens, { 'v6-backwards-compatibility': false });
+  });
+
+  describe('Checkbox hover backgrounds', () => {
+    const renderCheckbox = (formField, disabled) => {
+      const sheet = new ServerStyleSheet();
+      const checkbox = <CheckBox label="Option" disabled={disabled} />;
+      try {
+        const html = renderToString(
+          sheet.collectStyles(
+            <Grommet theme={theme}>
+              {formField ? (
+                <FormField disabled={disabled}>{checkbox}</FormField>
+              ) : (
+                checkbox
+              )}
+            </Grommet>,
+          ),
+        );
+        const document = new DOMParser().parseFromString(html, 'text/html');
+        return {
+          label: document.querySelector('label'),
+          css: sheet.getStyleTags(),
+        };
+      } finally {
+        sheet.seal();
+      }
+    };
+
+    const hoverStyles = (element, css) =>
+      Array.from(element.classList)
+        .map((name) => css.match(new RegExp(`\\.${name}:hover\\{([^}]*)\\}`)))
+        .filter(Boolean)
+        .map((match) => match[1])
+        .join(' ');
+
+    it('only applies the container hover background inside FormField', () => {
+      const standalone = renderCheckbox(false, false);
+      const field = renderCheckbox(true, false);
+      const hoverColor =
+        theme.global.colors[
+          localComponents.hpe.formField.default.input.group.item.hover
+            .background
+        ].light;
+
+      expect(hoverStyles(standalone.label, standalone.css)).not.toContain(
+        'background-color',
+      );
+      expect(hoverStyles(field.label, field.css)).not.toContain(
+        'background-color',
+      );
+      expect(hoverStyles(field.label.parentElement, field.css)).toContain(
+        `background-color:${hoverColor}`,
+      );
+    });
+
+    it('does not apply the FormField hover background when disabled', () => {
+      const field = renderCheckbox(true, true);
+
+      expect(hoverStyles(field.label.parentElement, field.css)).not.toContain(
+        'background-color',
+      );
+    });
+  });
+
+  describe('CheckBoxGroup item hover backgrounds', () => {
+    const renderGroup = (formField, disabled, mode) => {
+      const sheet = new ServerStyleSheet();
+      const group = (
+        <CheckBoxGroup
+          options={[
+            { label: 'Enabled', value: 'enabled' },
+            { label: 'Disabled', value: 'disabled', disabled: true },
+          ]}
+        />
+      );
+      try {
+        const html = renderToString(
+          sheet.collectStyles(
+            <Grommet theme={theme} themeMode={mode}>
+              {formField ? (
+                <FormField disabled={disabled}>{group}</FormField>
+              ) : (
+                group
+              )}
+            </Grommet>,
+          ),
+        );
+        return {
+          document: new DOMParser().parseFromString(html, 'text/html'),
+          css: sheet.getStyleTags(),
+        };
+      } finally {
+        sheet.seal();
+      }
+    };
+
+    const itemHoverRule = (css) =>
+      css.match(
+        /([^{}]+?\[role=["']?group["']?\]\s*>\s*label:not\(\[disabled\]\):hover)\s*\{([^}]*)\}/,
+      );
+
+    it.each(['light', 'dark'])(
+      'highlights enabled FormField items using the %s token color',
+      (mode) => {
+        const field = renderGroup(true, false, mode);
+        const standalone = renderGroup(false, false, mode);
+        const [enabled, disabled] = field.document.querySelectorAll(
+          '[role="group"] > label',
+        );
+        const rule = itemHoverRule(field.css);
+        const token =
+          localComponents.hpe.formField.default.input.group.item.hover
+            .background;
+
+        expect(rule).not.toBeNull();
+        expect(rule[2]).toContain(
+          `background-color:${theme.global.colors[token][mode]}`,
+        );
+        enabled.setAttribute('data-hover', '');
+        disabled.setAttribute('data-hover', '');
+        const selector = rule[1]
+          .replace(/^.*\*\//, '')
+          .trim()
+          .replace(':hover', '[data-hover]');
+        expect(enabled.matches(selector)).toBe(true);
+        expect(disabled.matches(selector)).toBe(false);
+        expect(itemHoverRule(standalone.css)).toBeNull();
+      },
+    );
+
+    it('does not highlight items in a disabled FormField', () => {
+      expect(itemHoverRule(renderGroup(true, true, 'light').css)).toBeNull();
+    });
   });
 
   describe('Toggle track', () => {

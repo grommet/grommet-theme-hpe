@@ -298,10 +298,6 @@ export const buildFormTheme = (
         round:
           components.hpe.formField.default.medium.input.group.item.borderRadius,
         width: 'auto',
-        hover: {
-          background:
-            components.hpe.formField.default.input.group.item.hover.background,
-        },
       },
       control: {
         background: components.hpe.checkbox.default.control.rest.background,
@@ -652,6 +648,25 @@ export const buildFormTheme = (
           vertical:
             components.hpe.formField.default.medium.input.group.container
               .paddingY,
+        },
+        container: {
+          extend: ({
+            theme,
+            disabledProp,
+          }: ThemeProps & {
+            disabledProp?: boolean;
+          }) =>
+            !disabledProp
+              ? `
+                [role='group'] > label:not([disabled]):hover {
+                  background-color: ${getThemeColor(
+                    components.hpe.formField.default.input.group.item.hover
+                      .background,
+                    theme,
+                  )};
+                }
+              `
+              : '',
         },
         hover: {
           background:

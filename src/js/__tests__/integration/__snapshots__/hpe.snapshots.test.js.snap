@@ -1874,9 +1874,6 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
         "color": "transparent",
         "size": "default",
       },
-      "hover": {
-        "background": "background-hover",
-      },
       "pad": {
         "horizontal": "12px",
         "vertical": "5px",
@@ -2079,6 +2076,9 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
       "background": "transparent",
       "border": {
         "color": "transparent",
+      },
+      "container": {
+        "extend": [Function],
       },
       "hover": {
         "background": "transparent",
