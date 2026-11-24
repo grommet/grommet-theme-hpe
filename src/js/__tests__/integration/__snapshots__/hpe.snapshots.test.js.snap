@@ -2018,13 +2018,13 @@ exports[`Theme snapshot groups matches form controls snapshot 1`] = `
     "dragOver": {
       "background": "background-hover",
       "border": {
-        "color": "transparent",
+        "color": "border-strong",
       },
     },
     "extend": "border-radius: 8px;",
     "hover": {
       "border": {
-        "color": "border",
+        "color": "border-strong",
       },
     },
     "icons": {
