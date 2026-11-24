@@ -1081,6 +1081,7 @@ export const buildFormTheme = (
         `,
       },
       icons: {
+        clear: Close,
         copy: Copy,
         hidePassword: Hide,
         showPassword: View,
