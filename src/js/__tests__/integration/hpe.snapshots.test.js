@@ -61,6 +61,7 @@ describe('Theme snapshot groups', () => {
       fileInput: theme.fileInput,
       dateInput: theme.dateInput,
       dateTimeInput: theme.dateTimeInput,
+      timeInput: theme.timeInput,
     }).toMatchSnapshot();
   });
 

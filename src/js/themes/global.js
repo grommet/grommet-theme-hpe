@@ -7,9 +7,9 @@ export const buildGlobalTheme = (
     colors,
     dimensions,
     deprecations,
-    getThemeColor,
     fontFaceFamily,
     getGraphikFontFaces,
+    getThemeColor,
   },
 ) => {
   const { light, dark, large, global, components } = tokens;
@@ -35,15 +35,39 @@ export const buildGlobalTheme = (
       colors: deprecations.colors,
     },
     input: {
+      background:
+        components.hpe.formField.default.input.container.rest.background,
+      border: {
+        color:
+          components.hpe.formField.default.input.container.rest.borderColor,
+      },
       font: {
+        // TODO: Add color property for input text
         height: 'inherit',
         weight: components.hpe.formField.default.medium.value.fontWeight,
       },
-      padding: {
+      pad: {
         horizontal:
           components.hpe.formField.default.medium.input.container.paddingX,
         vertical:
           components.hpe.formField.default.medium.input.container.paddingY,
+      },
+      round:
+        components.hpe.formField.default.medium.input.container.borderRadius,
+      placeholder: {
+        // TODO: Add font weight, size, line height for placeholder text
+        color: components.hpe.formField.default.placeholder.rest.textColor,
+      },
+      // Application states
+      disabled: {
+        background:
+          components.hpe.formField.default.input.container.disabled.rest
+            .background,
+        border: {
+          color:
+            components.hpe.formField.default.input.container.disabled.rest
+              .borderColor,
+        },
       },
       readOnly: {
         background:
@@ -53,6 +77,15 @@ export const buildGlobalTheme = (
           color:
             components.hpe.formField.default.input.container.readOnly.rest
               .borderColor,
+        },
+      },
+      // Interactive states
+      hover: {
+        background:
+          components.hpe.formField.default.input.container.hover.background,
+        border: {
+          color:
+            components.hpe.formField.default.input.container.hover.borderColor,
         },
       },
       extend: ({ theme }) => `
@@ -65,13 +98,13 @@ export const buildGlobalTheme = (
             components.hpe.formField.default.medium.placeholder.fontWeight
           };
         }
-      
+
         &::-moz-placeholder {
           font-weight: ${
             components.hpe.formField.default.medium.placeholder.fontWeight
           };
         }
-      
+
         &:-ms-input-placeholder {
           font-weight: ${
             components.hpe.formField.default.medium.placeholder.fontWeight

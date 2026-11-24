@@ -5,17 +5,19 @@ import { CheckboxInput } from './Checkbox';
 import { RadioButtonGroupInput } from './RadioButtonGroup';
 import { TextInputMatrix } from './TextInput';
 import { TextInputPassword as TextInputPasswordStory } from './TextInputPassword';
-import { Page, PageContent, PageHeader } from 'grommet';
+import { ToggleInput } from './Toggle';
+import { Page, PageContent, PageHeader, type PageContentProps } from 'grommet';
 
 const StoryWrapper = ({
   children,
   title,
+  ...pageContentProps
 }: {
   children: React.ReactNode;
   title: string;
-}) => (
+} & Omit<PageContentProps, 'children'>) => (
   <Page>
-    <PageContent>
+    <PageContent {...pageContentProps}>
       <PageHeader title={title} />
       {children}
     </PageContent>
@@ -30,15 +32,23 @@ export default meta;
 
 export const Checkbox = {
   render: () => (
-    <StoryWrapper title="Checkbox">
+    <StoryWrapper title="Checkbox" background="background-back">
       <CheckboxInput />
+    </StoryWrapper>
+  ),
+};
+
+export const Toggle = {
+  render: () => (
+    <StoryWrapper title="Toggle" background="background-back">
+      <ToggleInput />
     </StoryWrapper>
   ),
 };
 
 export const RadioButtonGroup = {
   render: () => (
-    <StoryWrapper title="RadioButtonGroup">
+    <StoryWrapper title="RadioButtonGroup" background="background-back">
       <RadioButtonGroupInput />
     </StoryWrapper>
   ),
@@ -46,7 +56,7 @@ export const RadioButtonGroup = {
 
 export const TextInput = {
   render: () => (
-    <StoryWrapper title="TextInput">
+    <StoryWrapper title="TextInput" background="background-back">
       <TextInputMatrix />
     </StoryWrapper>
   ),

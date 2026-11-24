@@ -7,6 +7,8 @@ import {
   components as localComponents,
 } from 'hpe-design-tokens/grommet';
 
+import { access, swapped } from './utils';
+
 const flattenObject = (obj, delimiter = '.', prefix = '') =>
   Object.keys(obj).reduce((acc, k) => {
     const pre = prefix.length ? `${prefix}${delimiter}` : '';
@@ -28,23 +30,8 @@ const flattenObject = (obj, delimiter = '.', prefix = '') =>
     return acc;
   }, {});
 
-// Utility to access nested object properties via dot-notation string path
-// and swap light/dark theme values.
-const access = (path, object) => path.split('.').reduce((o, i) => o[i], object);
-
-const swapped = (path, darkTheme, lightTheme) => {
-  const lightValue = access(`${path}`, darkTheme);
-  const darkValue = access(`${path}`, lightTheme);
-
-  return {
-    light: lightValue,
-    dark: darkValue,
-  };
-};
-
 export const buildColors = (tokens) => {
   const { primitives, dark, light, components } = tokens;
-
   const flatColors = flattenObject(light, '-');
   const tokenColors = {};
   Object.keys(flatColors).forEach((color) => {
@@ -77,6 +64,20 @@ export const buildColors = (tokens) => {
   return {
     // Here we're passing through all the colors from hpe-design-tokens
     ...tokenColors,
+    // Temporary critical backgrounds
+    'background-critical-strong-hover': {
+      light: '#9c0f0b', // red.900 NEW
+      dark: primitives.hpe.base.color['red-400'],
+    },
+    'background-critical-strong': {
+      light: primitives.hpe.base.color['red-800'],
+      dark: primitives.hpe.base.color['red-500'],
+    },
+    'icon-onCriticalStrong': tokenColors['icon-onStrong'],
+    'icon-critical-hover': {
+      light: '#9c0f0b', // red.900 NEW
+      dark: primitives.hpe.base.color['red-400'],
+    },
     // Override background-accent-cyan-strong dark mode value. Chosen so
     // that Grommet's colorIsDark function evaluates it as a light color
     // for proper contrast for text and icons. Remove once

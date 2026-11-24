@@ -69,6 +69,25 @@ const getThemeColor = (color, theme) =>
     ? theme.global.colors[color]
     : theme.global.colors[color]?.[theme.dark ? 'dark' : 'light'] || color;
 
+const getTokenValue = (path, tokenSet) =>
+  path.split('.').reduce((object, key) => object?.[key], tokenSet);
+
+const getTokenColorPair = (path, tokens) => ({
+  dark: getTokenValue(`hpe.${path}`, tokens.dark),
+  light: getTokenValue(`hpe.${path}`, tokens.light),
+});
+
+// Utility to access nested object properties via dot-notation string path
+// and swap light/dark theme values.
+const access = (path, object) => path.split('.').reduce((o, i) => o[i], object);
+
+// swaps a token's light/dark values between theme modes.
+// See https://github.com/grommet/grommet/issues/7818
+const swapped = (path, darkTheme, lightTheme) => ({
+  light: access(path, darkTheme),
+  dark: access(path, lightTheme),
+});
+
 const getTextSize = (size) => {
   if (size === '3xlarge') return '3xl';
   if (size === '4xlarge') return '4xl';
@@ -89,5 +108,8 @@ export {
   breakpointStyle,
   getHeadingSize,
   getThemeColor,
+  getTokenColorPair,
   getTextSize,
+  access,
+  swapped,
 };

@@ -13,13 +13,13 @@ export default {
     'styled-components': 'styled',
   },
   resolve: {
-    extensions: ['.js', '.json'],
+    extensions: ['.js', '.tsx', '.json'],
   },
   node: false,
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|tsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
       },

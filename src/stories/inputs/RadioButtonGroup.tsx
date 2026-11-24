@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
 // SPDX-License-Identifier: Apache-2.0
 import React from 'react';
-import { FormField, RadioButtonGroup } from 'grommet';
+import { Box, FormField, Heading, RadioButtonGroup } from 'grommet';
 import {
   StateMatrix,
   type ApplicationState,
@@ -14,7 +14,6 @@ import {
 type RadioButtonGroupOption = {
   disabled?: boolean;
   focus?: boolean;
-  focusIndicator?: boolean;
   label: string;
   value: string;
 };
@@ -22,6 +21,7 @@ type RadioButtonGroupOption = {
 type RadioButtonGroupStoryProps = React.ComponentProps<
   typeof RadioButtonGroup
 > & {
+  className?: string;
   options: RadioButtonGroupOption[];
 };
 
@@ -36,40 +36,18 @@ const baseOptions: RadioButtonGroupOption[] = [
   { label: 'Option B', value: 'option-b' },
 ];
 
-const applyInteractiveState = (
-  options: RadioButtonGroupOption[],
-  interactiveState: InteractiveState,
-) => {
-  if (interactiveState === 'rest') {
-    return options;
-  }
-
-  if (interactiveState === 'active') {
-    return null;
-  }
-
-  return options.map((option, index) => {
-    if (index !== 0) {
-      return option;
-    }
-
-    return {
-      ...option,
-      focus: true,
-      focusIndicator: interactiveState === 'focus',
-    };
-  });
-};
+const unsupportedStates: ApplicationState[] = [
+  'indeterminate',
+  'pinned',
+  'readonly',
+];
 
 const renderRadioButtonGroup = (
   applicationState: RadioButtonGroupRowItem,
   interactiveState: RadioButtonGroupColumnItem,
+  formField: boolean,
 ) => {
-  if (
-    applicationState.state === 'pinned' ||
-    applicationState.state === 'indeterminate' ||
-    applicationState.state === 'readonly'
-  ) {
+  if (interactiveState.state === 'active') {
     return null;
   }
 
@@ -80,32 +58,72 @@ const renderRadioButtonGroup = (
     return null;
   }
 
-  const options = applyInteractiveState(baseOptions, interactiveState.state);
-  if (!options) {
-    return null;
-  }
+  const disabled = applicationState.state === 'disabled';
+  const id = `radio-group-${applicationState.key}-${interactiveState.key}${
+    formField ? '-form-field' : ''
+  }`;
+  // Grommet draws the focus ring from React state, not a CSS pseudo-class.
+  const options =
+    interactiveState.state === 'focus'
+      ? baseOptions.map((option, index) =>
+          index === 0 ? { ...option, focus: true } : option,
+        )
+      : baseOptions;
 
   const group = (
     <StoryRadioButtonGroup
       aria-label={`${applicationState.label} ${interactiveState.label}`}
-      disabled={applicationState.state === 'disabled'}
-      name={`radio-group-${applicationState.key}-${interactiveState.key}`}
+      // Group props are spread onto its container, so hover applies to every
+      // option, showing both unselected and selected hover treatments.
+      className={
+        interactiveState.state === 'hover' ? 'pseudo-hover-all' : undefined
+      }
+      disabled={disabled}
+      id={id}
+      name={id}
       options={options}
       value={applicationState.state === 'selected' ? 'option-a' : ''}
     />
   );
 
-  if (applicationState.state === 'error') {
-    return <FormField error="Error">{group}</FormField>;
+  if (formField) {
+    return (
+      <Box width="xsmall">
+        <FormField
+          label="Label"
+          disabled={disabled}
+          error={applicationState.state === 'error' ? 'Error' : undefined}
+          htmlFor={id}
+        >
+          {group}
+        </FormField>
+      </Box>
+    );
   }
 
   return group;
 };
 
-export const RadioButtonGroupInput = () => (
+type RadioButtonGroupMatrixProps = { formField?: boolean };
+
+const RadioButtonGroupMatrix = ({
+  formField = false,
+}: RadioButtonGroupMatrixProps) => (
   <StateMatrix
-    rows={applicationStateItems}
+    rows={applicationStateItems.filter(
+      ({ state }) =>
+        !unsupportedStates.includes(state) && (formField || state !== 'error'),
+    )}
     columns={interactiveStateItems}
-    renderCell={renderRadioButtonGroup}
+    renderCell={(row, column) => renderRadioButtonGroup(row, column, formField)}
   />
+);
+
+export const RadioButtonGroupInput = () => (
+  <Box gap="large">
+    <Heading level={2}>Standard</Heading>
+    <RadioButtonGroupMatrix />
+    <Heading level={2}>FormField</Heading>
+    <RadioButtonGroupMatrix formField />
+  </Box>
 );
