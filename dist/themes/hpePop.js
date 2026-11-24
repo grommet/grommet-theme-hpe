@@ -2,7 +2,6 @@
 
 exports.__esModule = true;
 exports.isObject = exports.hpePop = exports.deepMerge = void 0;
-var _grommet = require("hpe-design-tokens/grommet");
 var _hpe = require("./hpe");
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); } // SPDX-FileCopyrightText: © Hewlett Packard Enterprise Development LP
 // SPDX-License-Identifier: Apache-2.0
@@ -33,10 +32,6 @@ var _deepMerge = exports.deepMerge = function deepMerge(target) {
     }
   });
   return output;
-};
-var getThemeColor = function getThemeColor(color, theme) {
-  var _theme$global$colors$;
-  return typeof theme.global.colors[color] === 'string' ? theme.global.colors[color] : ((_theme$global$colors$ = theme.global.colors[color]) == null ? void 0 : _theme$global$colors$[theme.dark ? 'dark' : 'light']) || color;
 };
 var defaultPad = {
   small: {
@@ -210,35 +205,18 @@ var hpePop = exports.hpePop = _deepMerge(_hpe.hpe, {
     disabled: _extends({}, _hpe.hpe.button.disabled, buttonStatesTheme.disabled),
     hover: _extends({}, _hpe.hpe.button.hover, buttonStatesTheme.hover),
     size: _extends({}, popButtonSizes),
-    extend: function extend(_ref) {
-      var sizeProp = _ref.sizeProp,
-        hasLabel = _ref.hasLabel,
-        hasIcon = _ref.hasIcon,
-        kind = _ref.kind,
-        theme = _ref.theme,
-        colorValue = _ref.colorValue,
-        disabled = _ref.disabled;
-      var style = '';
+    extend: function extend(props) {
+      var sizeProp = props.sizeProp,
+        hasLabel = props.hasLabel,
+        hasIcon = props.hasIcon,
+        kind = props.kind;
+      var style = _hpe.hpe.button.extend(props);
       if (sizeProp === 'large')
         // 24px, 28px (custom instead of "large" text size)
         style += 'font-size: 1.5rem; line-height: 1.75rem;';else if (sizeProp === 'medium') style += 'line-height: 1.5rem;'; // 24px (custom instead of "medium" line-height)
       // Grommet doesn't support kind-specific iconOnly padding, so we define it here.
       if (kind === 'secondary' && hasIcon && !hasLabel) {
         style += "padding: " + popButtonSizes[sizeProp].iconOnly.secondary.pad.vertical + ";";
-      }
-      if (kind === 'primary' && !disabled) {
-        // Temporary fix for grommet bug with light/dark logic. This temp fix will override the color prop on an icon, so this is
-        // not a long term solution. Also, reliance on !important is not ideal.
-        style += "color: " + getThemeColor('text-onPrimaryStrong', theme) + " !important;";
-        var iconColor = theme.dark ? _grommet.dark.hpe.color.icon.onPrimaryStrong : _grommet.light.hpe.color.icon.onPrimaryStrong;
-        style += "svg { stroke: " + iconColor + "; fill: " + iconColor + "; }";
-      }
-      if (colorValue) {
-        // color prop is not recommended to be used, but providing
-        // a better fallback behavior for hover styles to avoid
-        // "kind" hover background from applying
-        // https://github.com/grommet/grommet/issues/7504
-        style += "\n          &:hover { background: " + getThemeColor(colorValue, theme) + "; }\n        ";
       }
       return style;
     }
@@ -408,9 +386,9 @@ var hpePop = exports.hpePop = _deepMerge(_hpe.hpe, {
         }
       }
     },
-    extend: function extend(_ref2) {
-      var level = _ref2.level,
-        size = _ref2.size;
+    extend: function extend(_ref) {
+      var level = _ref.level,
+        size = _ref.size;
       var fontStyle = '';
       // Brand direction makes use of Graphik Condensed font for marquee page titles
       // Reserving H1 xlarge and xxlarge sizes for Condensed.

@@ -45,6 +45,22 @@ export var buildColors = function buildColors(tokens) {
     }
   });
   return _extends({}, tokenColors, {
+    // Temporary critical backgrounds
+    'background-critical-strong-hover': {
+      light: '#9c0f0b',
+      // red.900 NEW
+      dark: primitives.hpe.base.color['red-400']
+    },
+    'background-critical-strong': {
+      light: primitives.hpe.base.color['red-800'],
+      dark: primitives.hpe.base.color['red-500']
+    },
+    'icon-onCriticalStrong': tokenColors['icon-onStrong'],
+    'icon-critical-hover': {
+      light: '#9c0f0b',
+      // red.900 NEW
+      dark: primitives.hpe.base.color['red-400']
+    },
     // Override background-accent-cyan-strong dark mode value. Chosen so
     // that Grommet's colorIsDark function evaluates it as a light color
     // for proper contrast for text and icons. Remove once

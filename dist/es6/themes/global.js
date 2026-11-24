@@ -6,9 +6,9 @@ export var buildGlobalTheme = function buildGlobalTheme(tokens, _ref) {
     colors = _ref.colors,
     dimensions = _ref.dimensions,
     deprecations = _ref.deprecations,
-    getThemeColor = _ref.getThemeColor,
     fontFaceFamily = _ref.fontFaceFamily,
-    getGraphikFontFaces = _ref.getGraphikFontFaces;
+    getGraphikFontFaces = _ref.getGraphikFontFaces,
+    getThemeColor = _ref.getThemeColor;
   var light = tokens.light,
     dark = tokens.dark,
     large = tokens.large,
@@ -35,13 +35,30 @@ export var buildGlobalTheme = function buildGlobalTheme(tokens, _ref) {
       colors: deprecations.colors
     },
     input: {
+      background: components.hpe.formField["default"].input.container.rest.background,
+      border: {
+        color: components.hpe.formField["default"].input.container.rest.borderColor
+      },
       font: {
+        // TODO: Add color property for input text
         height: 'inherit',
         weight: components.hpe.formField["default"].medium.value.fontWeight
       },
-      padding: {
+      pad: {
         horizontal: components.hpe.formField["default"].medium.input.container.paddingX,
         vertical: components.hpe.formField["default"].medium.input.container.paddingY
+      },
+      round: components.hpe.formField["default"].medium.input.container.borderRadius,
+      placeholder: {
+        // TODO: Add font weight, size, line height for placeholder text
+        color: components.hpe.formField["default"].placeholder.rest.textColor
+      },
+      // Application states
+      disabled: {
+        background: components.hpe.formField["default"].input.container.disabled.rest.background,
+        border: {
+          color: components.hpe.formField["default"].input.container.disabled.rest.borderColor
+        }
       },
       readOnly: {
         background: components.hpe.formField["default"].input.container.readOnly.rest.background,
@@ -49,9 +66,16 @@ export var buildGlobalTheme = function buildGlobalTheme(tokens, _ref) {
           color: components.hpe.formField["default"].input.container.readOnly.rest.borderColor
         }
       },
+      // Interactive states
+      hover: {
+        background: components.hpe.formField["default"].input.container.hover.background,
+        border: {
+          color: components.hpe.formField["default"].input.container.hover.borderColor
+        }
+      },
       extend: function extend(_ref2) {
         var theme = _ref2.theme;
-        return "\n          color: " + getThemeColor(components.hpe.formField["default"].value.rest.textColor, theme) + ";\n          &::-webkit-input-placeholder {\n          font-weight: " + components.hpe.formField["default"].medium.placeholder.fontWeight + ";\n        }\n      \n        &::-moz-placeholder {\n          font-weight: " + components.hpe.formField["default"].medium.placeholder.fontWeight + ";\n        }\n      \n        &:-ms-input-placeholder {\n          font-weight: " + components.hpe.formField["default"].medium.placeholder.fontWeight + ";\n        }\n        ";
+        return "\n          color: " + getThemeColor(components.hpe.formField["default"].value.rest.textColor, theme) + ";\n          &::-webkit-input-placeholder {\n          font-weight: " + components.hpe.formField["default"].medium.placeholder.fontWeight + ";\n        }\n\n        &::-moz-placeholder {\n          font-weight: " + components.hpe.formField["default"].medium.placeholder.fontWeight + ";\n        }\n\n        &:-ms-input-placeholder {\n          font-weight: " + components.hpe.formField["default"].medium.placeholder.fontWeight + ";\n        }\n        ";
       }
     },
     font: {

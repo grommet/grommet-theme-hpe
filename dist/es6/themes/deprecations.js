@@ -33,9 +33,9 @@ export var buildDeprecations = function buildDeprecations() {
   });
   var colors = [].concat(['accent-1', 'accent-2', 'accent-3', 'accent-4', 'neutral-1', 'neutral-2', 'neutral-3', 'neutral-4', 'neutral-5', 'status-error'].map(function (name) {
     return deprecationEntry(name, colorUndefinedDeprecationMessage(name));
-  }), [0, 1, 2, 3, 4, 5, 6, 7].map(function (i) {
+  }).slice(), [0, 1, 2, 3, 4, 5, 6, 7].map(function (i) {
     return deprecationEntry("graph-" + i, colorUndefinedDeprecationMessage("graph-" + i, true, "dataVis-categorical-" + (i + 1) * 10));
-  }), [deprecationEntry('status-disabled', colorUndefinedDeprecationMessage('status-disabled', true, 'text-weak')), deprecationEntry('disabled-text', colorRemovedDeprecationMessage('disabled-text', 'text-disabled')), deprecationEntry('background-cta-alternate', colorRemovedDeprecationMessage('background-cta-alternate'))]);
+  }).slice(), [deprecationEntry('status-disabled', colorUndefinedDeprecationMessage('status-disabled', true, 'text-weak')), deprecationEntry('disabled-text', colorRemovedDeprecationMessage('disabled-text', 'text-disabled')), deprecationEntry('background-cta-alternate', colorRemovedDeprecationMessage('background-cta-alternate'))]);
   return {
     backgrounds: backgrounds,
     buttonKinds: buttonKinds,
