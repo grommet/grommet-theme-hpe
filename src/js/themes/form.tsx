@@ -555,6 +555,11 @@ export const buildFormTheme = (
         background:
           components.hpe.formField.default.input.container.disabled.rest
             .background,
+        border: {
+          color:
+            components.hpe.formField.default.input.container.disabled.rest
+              .borderColor,
+        },
         label: {
           color: components.hpe.formField.default.label.disabled.rest.textColor,
         },
