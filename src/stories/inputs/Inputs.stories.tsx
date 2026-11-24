@@ -6,6 +6,7 @@ import { RadioButtonGroupInput } from './RadioButtonGroup';
 import { TextInputMatrix } from './TextInput';
 import { TextInputPassword as TextInputPasswordStory } from './TextInputPassword';
 import { ToggleInput } from './Toggle';
+import { AllInputs as AllInputsStory } from './AllInputs';
 import { Page, PageContent, PageHeader, type PageContentProps } from 'grommet';
 
 const StoryWrapper = ({
@@ -29,6 +30,14 @@ const meta = {
 };
 
 export default meta;
+
+export const AllInputs = {
+  render: () => (
+    <StoryWrapper title="All Inputs" background="background-back">
+      <AllInputsStory />
+    </StoryWrapper>
+  ),
+};
 
 export const Checkbox = {
   render: () => (
