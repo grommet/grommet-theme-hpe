@@ -59,6 +59,16 @@ export const buildGlobalTheme = (
         color: components.hpe.formField.default.placeholder.rest.textColor,
       },
       // Application states
+      disabled: {
+        background:
+          components.hpe.formField.default.input.container.disabled.rest
+            .background,
+        border: {
+          color:
+            components.hpe.formField.default.input.container.disabled.rest
+              .borderColor,
+        },
+      },
       readOnly: {
         background:
           components.hpe.formField.default.input.container.readOnly.rest
