@@ -8,27 +8,46 @@ import {
   CheckBoxGroup,
   DateInput,
   DateTimeInput,
+  FileInput,
   Form,
   FormField,
   Heading,
+  MaskedInput,
   RadioButtonGroup,
   RangeInput,
+  RangeSelector,
   Select,
+  SelectMultiple,
   StarRating,
   TextArea,
   TextInput,
   ThumbsRating,
+  TimeInput,
 } from 'grommet';
+
+const phoneMask = [
+  { fixed: '(' },
+  { length: 3, regexp: /^[0-9]{1,3}$/, placeholder: 'xxx' },
+  { fixed: ') ' },
+  { length: 3, regexp: /^[0-9]{1,3}$/, placeholder: 'xxx' },
+  { fixed: '-' },
+  { length: 4, regexp: /^[0-9]{1,4}$/, placeholder: 'xxxx' },
+];
 
 const initialValue = {
   name: 'Theme Inspector',
   notes: 'Sample text for spacing and typography checks.',
   category: 'Option 1',
+  regions: ['North America'],
+  phone: '',
   choice: 'A',
   active: true,
   fruits: ['Apples'],
   date: '2026-01-15',
   range: 45,
+  priceRange: [20, 80],
+  view: 'List',
+  notifications: true,
 };
 
 const Template = () => {
@@ -109,6 +128,34 @@ const Template = () => {
               />
             </FormField>
             <FormField
+              name="regions"
+              label="Select multiple"
+              htmlFor="regions-select"
+              error={error}
+              disabled={disabled}
+            >
+              <SelectMultiple
+                id="regions-select"
+                name="regions"
+                disabled={disabled}
+                options={['North America', 'South America', 'Europe', 'Asia']}
+              />
+            </FormField>
+            <FormField
+              name="phone"
+              label="Masked input"
+              htmlFor="phone-input"
+              error={error}
+              disabled={disabled}
+            >
+              <MaskedInput
+                id="phone-input"
+                name="phone"
+                mask={phoneMask}
+                disabled={disabled}
+              />
+            </FormField>
+            <FormField
               name="choice"
               label="Radio options"
               htmlFor="choice-group"
@@ -167,6 +214,21 @@ const Template = () => {
               />
             </FormField>
             <FormField
+              name="priceRange"
+              label="Range selector"
+              error={error}
+              disabled={disabled}
+            >
+              {/* RangeSelector doesn't support a disabled state. */}
+              <RangeSelector
+                name="priceRange"
+                label
+                min={0}
+                max={100}
+                step={1}
+              />
+            </FormField>
+            <FormField
               htmlFor="appointment-date-time"
               label="Choose an appointment date and time"
               name="appointment"
@@ -179,6 +241,29 @@ const Template = () => {
                 name="appointment"
                 disabled={disabled}
                 format="12"
+              />
+            </FormField>
+            <FormField
+              name="time"
+              label="Time input"
+              htmlFor="time-input"
+              error={error}
+              disabled={disabled}
+            >
+              <TimeInput id="time-input" name="time" disabled={disabled} />
+            </FormField>
+            <FormField
+              name="attachments"
+              label="File input"
+              htmlFor="attachments-input"
+              error={error}
+              disabled={disabled}
+            >
+              <FileInput
+                id="attachments-input"
+                name="attachments"
+                multiple
+                disabled={disabled}
               />
             </FormField>
             <FormField
@@ -205,6 +290,15 @@ const Template = () => {
                 name="active"
                 disabled={disabled}
                 label="I accept all terms"
+              />
+            </FormField>
+            <FormField name="notifications" error={error} disabled={disabled}>
+              <CheckBox
+                id="notifications-toggle"
+                name="notifications"
+                toggle
+                disabled={disabled}
+                label="Email notifications"
               />
             </FormField>
           </>
