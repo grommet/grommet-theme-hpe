@@ -48,7 +48,7 @@ export const Toggle = {
 
 export const RadioButtonGroup = {
   render: () => (
-    <StoryWrapper title="RadioButtonGroup">
+    <StoryWrapper title="RadioButtonGroup" background="background-back">
       <RadioButtonGroupInput />
     </StoryWrapper>
   ),
