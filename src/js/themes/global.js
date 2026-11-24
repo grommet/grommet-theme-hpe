@@ -50,7 +50,8 @@ export const buildGlobalTheme = (
         vertical:
           components.hpe.formField.default.medium.input.container.paddingY,
       },
-      round: 'none',
+      round:
+        components.hpe.formField.default.medium.input.container.borderRadius,
       placeholder: {
         color: components.hpe.formField.default.placeholder.rest.textColor,
       },
