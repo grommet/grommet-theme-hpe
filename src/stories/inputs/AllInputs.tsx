@@ -137,6 +137,13 @@ export const AllInputs = () => {
             options={['A', 'B', 'C']}
           />
         </InputExample>
+        <InputExample label="Toggle group">
+          <ToggleGroup
+            aria-label="Toggle group"
+            defaultValue="Option 1"
+            options={['Option 1', 'Option 2', 'Option 3']}
+          />
+        </InputExample>
         <InputExample label="CheckBox group">
           <CheckBoxGroup
             aria-label="CheckBox group"
