@@ -1,5 +1,36 @@
 # grommet-theme-hpe
 
+## 8.3.0
+
+### Minor Changes
+
+- 2176c07: Added colors `background-input` and `background-input-hover`.
+- 2571705: TextInput - added clear icon
+- e6b9555: TextInput - added view and hide password icons
+- 482271b: [grommet-theme-hpe] Form field and input styles.
+
+  Added new `background-input` and `background-input-hover` colors to the theme and applies them to `FormField` inputs and unselected `CheckBox`/`RadioButton` controls so they lift visually from the page background.
+
+  - Added `background-input` and `background-input-hover` colors for the background fill of form inputs. Available as grommet color keys. Values are identical at rest and hover in both modes; the hover key gives `FormField` a dedicated hook should the fill ever need to diverge.
+
+    | Color key                | Value (light) | Value (dark) |
+    | ------------------------ | ------------- | ------------ |
+    | `background-input`       | `#FFFFFFB8`   | `#0000000A`  |
+    | `background-input-hover` | `#FFFFFFB8`   | `#0000000A`  |
+
+  - Changed `FormField` input containers (`TextInput`, `Select`, `SelectMultiple`, `TextArea`, `DateInput`, `FileInput`) from a transparent background to `background-input` at rest and `background-input-hover` on hover. The hover affordance continues to be carried by the `border-strong` border.
+
+  - Changed the unselected `CheckBox` and `RadioButton` control background from transparent to `background-input`, so controls read as fillable inputs consistent with `FormField`. Selected, indeterminate, hover and disabled states are unchanged; control hover fill remains `background-hover`.
+
+  - `CheckBoxGroup` and `RadioButtonGroup` containers remain transparent. The fill belongs to the individual controls, not the wrapping group.
+
+### Patch Changes
+
+- 1342870: Fix Text & Icon strong colors
+  - Ensures `{text,icon}-strong` colors are correctly paired with background strong colors to meet WCAG 4.5:1 contrast ratio.
+- e0e64ae: Set `background-accent-cyan-strong` dark mode to `#1fbccb` to meet WCAG 4.5:1 color contrast.
+- 7e7d8c9: fixed `hpePop` Primary button text color
+
 ## 8.2.0
 
 ### Minor Changes
